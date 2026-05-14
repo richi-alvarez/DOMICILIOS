@@ -1,0 +1,16 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - img [ref=e5]
+    - heading "404" [level=1] [ref=e10]
+    - heading "Página no encontrada" [level=2] [ref=e11]
+    - paragraph [ref=e12]: Lo sentimos, la página que buscas no existe o fue movida.
+    - generic [ref=e13]:
+      - link "Volver al inicio" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - img
+        - text: Volver al inicio
+      - link "Ver planes" [ref=e15] [cursor=pointer]:
+        - /url: /plans
+  - alert [ref=e16]
+  - button "Open Next.js Dev Tools" [ref=e22] [cursor=pointer]:
+    - img [ref=e23]

@@ -1,0 +1,166 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e270]:
+      - generic [ref=e273]:
+        - generic [ref=e274]:
+          - button [ref=e275] [cursor=pointer]:
+            - img [ref=e276]
+          - generic [ref=e278]: Sazón Express
+        - generic [ref=e279]:
+          - img [ref=e282]
+          - navigation [ref=e284]:
+            - list [ref=e285]:
+              - listitem [ref=e286]:
+                - list [ref=e287]:
+                  - listitem [ref=e288]:
+                    - link "Detalles" [ref=e289] [cursor=pointer]:
+                      - /url: /menus/menu-detail?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e290]
+                      - generic [ref=e291]: Detalles
+                  - listitem [ref=e292]:
+                    - link "Productos" [ref=e293] [cursor=pointer]:
+                      - /url: /menus/menu-products?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e294]
+                      - generic [ref=e295]: Productos
+                  - listitem [ref=e296]:
+                    - link "Diseño" [ref=e297] [cursor=pointer]:
+                      - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e298]
+                      - generic [ref=e299]: Diseño
+                  - listitem [ref=e300]:
+                    - link "Pedidos" [ref=e301] [cursor=pointer]:
+                      - /url: /menus/orders?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e302]
+                      - generic [ref=e303]: Pedidos
+                  - listitem [ref=e304]:
+                    - link "Pagos" [ref=e305] [cursor=pointer]:
+                      - /url: /menus/payments?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e306]
+                      - generic [ref=e307]: Pagos
+                  - listitem [ref=e308]:
+                    - link "Estadísticas" [ref=e309] [cursor=pointer]:
+                      - /url: /menus/menu-analytics?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e310]
+                      - generic [ref=e311]: Estadísticas
+                  - listitem [ref=e312]:
+                    - link "Checkout" [ref=e313] [cursor=pointer]:
+                      - /url: /menus/shopping-cart?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e314]
+                      - generic [ref=e315]: Checkout
+                  - listitem [ref=e316]:
+                    - link "Avanzado" [ref=e317] [cursor=pointer]:
+                      - /url: /menus/menu-advanced-config?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e318]
+                      - generic [ref=e319]: Avanzado
+          - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e322] [cursor=pointer]:
+            - img "Profile" [ref=e323]
+            - generic [ref=e324]:
+              - paragraph [ref=e325]: ricardo saldarriaga
+              - paragraph [ref=e326]: richi.alvarez.9402@gmail.com
+            - img [ref=e327]
+        - button [ref=e329] [cursor=pointer]:
+          - img [ref=e330]
+      - generic [ref=e333]:
+        - heading "Pedidos y Formularios" [level=2] [ref=e334]
+        - generic [ref=e336]:
+          - generic [ref=e337]:
+            - img [ref=e339]
+            - generic [ref=e341]: Pedidos este mes
+          - generic [ref=e342]:
+            - generic [ref=e343]: 1 / 30
+            - button [ref=e344] [cursor=pointer]:
+              - img [ref=e345]
+        - navigation [ref=e350]:
+          - button "Pedidos" [ref=e351] [cursor=pointer]
+          - button "Formularios" [ref=e352] [cursor=pointer]
+        - generic [ref=e353]:
+          - generic [ref=e354]:
+            - generic [ref=e355]:
+              - generic [ref=e356]:
+                - generic [ref=e357]: Estado
+                - combobox [ref=e358]:
+                  - option "Todos" [selected]
+                  - option "Recibido"
+                  - option "En Preparación"
+                  - option "Listo"
+                  - option "Entregado"
+                  - option "Cancelado"
+                  - option "Reembolsado"
+              - generic [ref=e359]:
+                - generic [ref=e360]: Buscar
+                - generic [ref=e361]:
+                  - textbox "Buscar" [ref=e362]:
+                    - /placeholder: "# Número de pedido"
+                  - img [ref=e364]
+              - generic [ref=e369]:
+                - generic [ref=e370]:
+                  - generic [ref=e371]: Desde
+                  - textbox [ref=e372] [cursor=pointer]
+                - generic [ref=e373]:
+                  - generic [ref=e374]: Hasta
+                  - textbox [ref=e375] [cursor=pointer]
+            - generic [ref=e376]:
+              - generic [ref=e378]: Recibiendo pedidos en tiempo real
+              - button "Exportar" [ref=e380] [cursor=pointer]:
+                - img [ref=e381]
+                - text: Exportar
+          - generic [ref=e387]:
+            - table [ref=e388]:
+              - rowgroup [ref=e389]:
+                - row "# Número Fecha Total Estado Detalles" [ref=e390]:
+                  - columnheader "# Número" [ref=e391]
+                  - columnheader "Fecha" [ref=e392]
+                  - columnheader "Total" [ref=e393]
+                  - columnheader "Estado" [ref=e394]
+                  - columnheader "Detalles" [ref=e395]
+              - rowgroup [ref=e396]:
+                - row "20260419001 19 abr 2026 $18.000,00 Recibido Detalles" [ref=e397]:
+                  - cell "20260419001" [ref=e398]
+                  - cell "19 abr 2026" [ref=e399]
+                  - cell "$18.000,00" [ref=e400]
+                  - cell "Recibido" [ref=e401]:
+                    - combobox [ref=e403]:
+                      - option "Recibido" [selected]
+                      - option "En Preparación"
+                      - option "Listo"
+                      - option "Entregado"
+                      - option "Cancelado"
+                      - option "Reembolsado"
+                  - cell "Detalles" [ref=e404]:
+                    - button "Detalles" [ref=e405] [cursor=pointer]:
+                      - generic [ref=e406]: Detalles
+            - generic [ref=e408]:
+              - generic [ref=e409]: 1 Pedidos
+              - generic [ref=e410]:
+                - combobox [ref=e411]:
+                  - option "20" [selected]
+                  - option "30"
+                  - option "50"
+                - button "Anterior" [disabled] [ref=e412]
+                - generic [ref=e413]: Página 1 de 1
+                - button "Siguiente" [disabled] [ref=e414]
+    - banner "Banner de consentimiento de cookies" [ref=e143]:
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - generic [ref=e147]: 🍪
+          - generic [ref=e148]:
+            - paragraph [ref=e149]:
+              - strong [ref=e150]: Usamos cookies en este sitio web
+            - paragraph [ref=e151]:
+              - text: Utilizamos cookies para mejorar tu experiencia.
+              - link "Leer nuestra política de privacidad" [ref=e152] [cursor=pointer]:
+                - /url: /privacy
+                - text: Política de privacidad
+        - generic [ref=e153]:
+          - button "Personalizar configuración de cookies" [ref=e154] [cursor=pointer]:
+            - img [ref=e155]
+          - button "Aceptar todas las cookies" [ref=e158] [cursor=pointer]: Aceptar todas
+    - generic [ref=e416] [cursor=pointer]:
+      - generic [ref=e418]: 80%
+      - generic [ref=e419]: Primeros Pasos
+      - img [ref=e420]
+  - dialog "Haz clic aquí para ver los detalles y completar tu incorporación" [ref=e424]:
+    - img
+    - generic:
+      - generic: Haz clic aquí para ver los detalles y completar tu incorporación
+    - status [ref=e425]: Haz clic aquí para ver los detalles y completar tu incorporación

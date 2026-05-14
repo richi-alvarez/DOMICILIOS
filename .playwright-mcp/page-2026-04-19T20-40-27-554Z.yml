@@ -1,0 +1,53 @@
+- generic [ref=e2]:
+  - generic [ref=e92]:
+    - heading "¿A dónde se deben enviar los pedidos? 📱" [level=2] [ref=e93]
+    - paragraph [ref=e94]: La página generará un mensaje prellenado que los clientes podrán enviar con los detalles de su pedido
+    - generic [ref=e95]:
+      - generic [ref=e96]: Selecciona el método de recepción de pedidos
+      - generic [ref=e97] [cursor=pointer]:
+        - img [ref=e98]
+        - generic [ref=e100]:
+          - generic [ref=e101]: WhatsApp
+          - generic [ref=e102]: Abre WhatsApp con un mensaje prellenado para que los clientes lo envíen
+        - radio [checked] [ref=e103]
+      - generic [ref=e104] [cursor=pointer]:
+        - img [ref=e105]
+        - generic [ref=e107]:
+          - generic [ref=e108]: Email
+          - generic [ref=e109]: Los pedidos se envían a esta dirección de correo
+        - radio [ref=e110]
+    - generic [ref=e111]:
+      - generic [ref=e112]: Número de WhatsApp
+      - generic [ref=e113]:
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - generic [ref=e118]:
+              - img "CO" [ref=e119]
+              - generic [ref=e120]: "57"
+            - combobox [ref=e122]
+          - button "Clear all" [ref=e123] [cursor=pointer]:
+            - generic: ×
+        - textbox "1234567890" [ref=e125]
+    - generic [ref=e126]:
+      - button "Atrás" [ref=e127] [cursor=pointer]
+      - button "Crear" [disabled] [ref=e128]
+  - banner "Banner de consentimiento de cookies" [ref=e42]:
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]: 🍪
+        - generic [ref=e47]:
+          - paragraph [ref=e48]:
+            - strong [ref=e49]: Usamos cookies en este sitio web
+          - paragraph [ref=e50]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e51] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e52]:
+        - button "Personalizar configuración de cookies" [ref=e53] [cursor=pointer]:
+          - img [ref=e54]
+        - button "Aceptar todas las cookies" [ref=e57] [cursor=pointer]: Aceptar todas
+  - generic [ref=e73] [cursor=pointer]:
+    - generic [ref=e75]: 0%
+    - generic [ref=e76]: Primeros Pasos
+    - img [ref=e77]

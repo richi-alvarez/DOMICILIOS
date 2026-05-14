@@ -1,0 +1,43 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - img "Your Company" [ref=e6] [cursor=pointer]
+      - heading "Accede a tu cuenta para comenzar" [level=2] [ref=e7]
+    - generic [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - generic [ref=e12]: Correo
+            - textbox "Correo" [ref=e13]
+          - generic [ref=e14]:
+            - generic [ref=e15]: Contraseña
+            - textbox "Contraseña" [ref=e16]
+          - button "Iniciar Sesión" [disabled] [ref=e18]
+        - button "Continuar con Google" [ref=e20] [cursor=pointer]:
+          - img [ref=e21]
+          - generic [ref=e22]: Continuar con Google
+      - generic [ref=e23]:
+        - link " ¿Olvidaste tu contraseña?" [ref=e24] [cursor=pointer]:
+          - /url: /password_forgot
+          - generic [ref=e25]: 
+          - text: ¿Olvidaste tu contraseña?
+        - paragraph [ref=e26]:
+          - text: ¿Aún no tienes cuenta?
+          - link "Crear cuenta" [ref=e27] [cursor=pointer]:
+            - /url: /signup
+  - banner "Banner de consentimiento de cookies" [ref=e28]:
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]: 🍪
+        - generic [ref=e33]:
+          - paragraph [ref=e34]:
+            - strong [ref=e35]: Usamos cookies en este sitio web
+          - paragraph [ref=e36]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e37] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e38]:
+        - button "Personalizar configuración de cookies" [ref=e39] [cursor=pointer]:
+          - img [ref=e40]
+        - button "Aceptar todas las cookies" [ref=e43] [cursor=pointer]: Aceptar todas

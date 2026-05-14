@@ -1,0 +1,62 @@
+
+> domicilios@0.1.0 test
+> playwright test tests/capture-oauth-error.spec.ts --project=chromium
+
+
+Running 1 test using 1 worker
+
+[1A[2K[1/1] [chromium] › tests/capture-oauth-error.spec.ts:5:6 › Capture OAuth Error After Redirect
+[1A[2K[chromium] › tests/capture-oauth-error.spec.ts:5:6 › Capture OAuth Error After Redirect
+🚀 Navegando a /signup
+
+[1A[2K[INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+
+[1A[2K[LOG] [Fast Refresh] rebuilding
+
+[1A[2K[LOG] [Fast Refresh] done in 122ms
+
+[1A[2K✅ Haciendo clic en "Continuar con Google"...
+
+[1A[2K👉 AHORA: Completa el login en Google en el navegador visible
+
+[1A[2K
+⏳ Esperando redirección de Google (3 minutos)...
+
+[1A[2K
+✅ Redirección recibida!
+
+[1A[2K[LOG] %c%s color: red; background: yellow; font-size: 24px; WARNING!
+
+[1A[2K[LOG] %c%s font-size: 18px; Using this console may allow attackers to impersonate you and steal your information using an attack called Self-XSS.
+Do not enter or paste code that you do not understand.
+
+[1A[2K
+📊 ESTADO FINAL:
+
+[1A[2KURL: https://accounts.google.com/v3/signin/identifier?opparams=%253F&dsh=S-214968863%3A1778727766827059&client_id=1038474471943-64n4tpt6a0pn2sctt6oq971qqs96aubv.apps.googleusercontent.com&code_challenge=3xRzG-SvEBLJIUZAUvQQprF6-33Uqoc8uAl_6WS4pY4&code_challenge_method=S256&o2v=2&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback%2Fgoogle&response_type=code&scope=openid+profile+email&service=lso&flowName=GeneralOAuthFlow&continue=https%3A%2F%2Faccounts.google.com%2Fsignin%2Foauth%2Fconsent%3Fauthuser%3Dunknown%26part%3DAJi8hAMsym8PEBOTTTRJCFzDg2OyxHmHFNubTLuw1Xqy3UMsNG_6Y_NHYkX3lbYzxmgiT6P2Q54lLLcQ4k5Ljxa1IO9USbgcgd7U2aH9Dc8jRH6IWf3uzqBTu895_AnSbXtaQsQjR5yMrYKIQu_jSBDVmLn8B1NzQ_TewYt8rPEeV1NcaP8Gvg1XbO-O34FsGQiwflO7G8j33ZzMXWdPm6yPZSOSSsVzEXQsr5F0cDU2KDg9ipaAfWlM1HH7lpNuueYMsPchiMEL9kbV4gziQ74tOYVn5QS9YxX3xiEk3XyDOMdnpJakKelBMAIoQH0eDmVbj_Qsay6bJ3uftB_U1x2zWuqV1RYvDRzrj7GhxE2oMJ_v9xmrqHyDBnqIJCSTrrFMnM_ZDQ__rrFtwUWaOSiUrnpAWzdCrc541qI4Cw3_QJYy5gl14pfdEWIWN_UJbM13gmaN2LR_jgKK269JRIOQgEXHx8iZNQ%26flowName%3DGeneralOAuthFlow%26as%3DS-214968863%253A1778727766827059%26client_id%3D1038474471943-64n4tpt6a0pn2sctt6oq971qqs96aubv.apps.googleusercontent.com%26requestPath%3D%252Fsignin%252Foauth%252Fconsent%23&app_domain=http%3A%2F%2Flocalhost%3A3000&rart=ANgoxccyQoAjIiGrxWVLlCXV2jXM-0IbivXSfVf9z-24V_qGBS2H2j-9e-3bBi1AD_mtm7o2Db8O5VfrV8eOhMCXA07drOTIcPr3fIY4nWoWrUrjGxJ7t8w
+
+[1A[2KTitle: Sign in - Google Accounts
+
+[1A[2KBody contains error: YES
+
+[1A[2KBody contains 'Error': YES
+
+[1A[2K
+📝 Contenido de la página (primeros 500 chars):
+
+[1A[2KSign in with GoogleSign into continue to Mi AppEmail or phoneForgot email?Type the text you hear or seeNextCreate accountwindow.wiz_progress&&window.wiz_progress();window.wiz_tick&&window.wiz_tick('chA7fe');window.IJ_values = ['https:\/\/accounts.google.com','opparams\x3d%253F\x26dsh\x3dS-214968863:1778727766827059\x26client_id\x3d1038474471943-64n4tpt6a0pn2sctt6oq971qqs96aubv.apps.googleusercontent.com\x26code_challenge\x3d3xRzG-SvEBLJIUZAUvQQprF6-33Uqoc8uAl_6WS4pY4\x26code_challenge_method\x3d
+
+[1A[2K
+📋 LOGS CAPTURADOS (5 total):
+
+[1A[2K  [info] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devt
+
+[1A[2K  [log] [Fast Refresh] rebuilding
+
+[1A[2K  [log] [Fast Refresh] done in 122ms
+
+[1A[2K  [log] %c%s color: red; background: yellow; font-size: 24px; WARNING!
+
+[1A[2K  [log] %c%s font-size: 18px; Using this console may allow attackers to impersonate you and steal your infor
+
+[1A[2K  1 passed (6.5s)

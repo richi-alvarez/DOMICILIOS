@@ -1,0 +1,314 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "D Domicilios" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: D
+        - generic [ref=e7]: Domicilios
+      - navigation [ref=e8]:
+        - link "Inicio" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Planes" [ref=e10] [cursor=pointer]:
+          - /url: /plans
+        - link "Agencias" [ref=e11] [cursor=pointer]:
+          - /url: /agencies
+        - button "Recursos" [ref=e13]:
+          - text: Recursos
+          - img [ref=e14]
+      - generic [ref=e16]:
+        - link "Iniciar Sesión" [ref=e17] [cursor=pointer]:
+          - /url: /login
+        - link "Registrarme gratis" [ref=e18] [cursor=pointer]:
+          - /url: /signup
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - generic [ref=e22]:
+        - heading "Planes sin comisiones sobre ventas" [level=1] [ref=e23]
+        - paragraph [ref=e24]: Empieza gratis. Crece cuando estés listo. Sin sorpresas en la factura.
+      - generic [ref=e27]:
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - button "Mensual" [ref=e30]
+            - button "Anual 3 meses gratis" [ref=e31]:
+              - text: Anual
+              - generic [ref=e32]: 3 meses gratis
+          - combobox [ref=e34]:
+            - option "USD — Dólar"
+            - option "COP — Peso colombiano" [selected]
+            - option "MXN — Peso mexicano"
+            - option "BRL — Real brasileño"
+            - option "CAD — Dólar canadiense"
+            - option "CLP — Peso chileno"
+            - option "CRC — Colón costarricense"
+            - option "EUR — Euro"
+            - option "PEN — Sol peruano"
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - heading "Gratis" [level=3] [ref=e38]
+              - paragraph [ref=e39]: Para empezar sin riesgo
+              - generic [ref=e41]: Gratis
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - img [ref=e44]
+                - text: 30 productos
+              - listitem [ref=e46]:
+                - img [ref=e47]
+                - text: 1 catálogo
+              - listitem [ref=e49]:
+                - img [ref=e50]
+                - text: 30 pedidos/mes
+              - listitem [ref=e52]:
+                - img [ref=e53]
+                - text: Dominio domicilios.app/tu-tienda
+              - listitem [ref=e55]:
+                - img [ref=e56]
+                - text: Pedidos por WhatsApp
+              - listitem [ref=e58]:
+                - img [ref=e59]
+                - text: Editor de bloques básico
+              - listitem [ref=e61]:
+                - img [ref=e62]
+                - text: Analítica básica
+            - link "Empezar gratis" [ref=e64] [cursor=pointer]:
+              - /url: /signup
+          - generic [ref=e65]:
+            - generic [ref=e66]:
+              - heading "Basic" [level=3] [ref=e67]
+              - paragraph [ref=e68]: Para negocios que arrancan
+              - generic [ref=e69]:
+                - generic [ref=e70]: $ 39.900
+                - generic [ref=e71]: /mes
+            - list [ref=e72]:
+              - listitem [ref=e73]:
+                - img [ref=e74]
+                - text: 100 productos
+              - listitem [ref=e76]:
+                - img [ref=e77]
+                - text: 1 catálogo
+              - listitem [ref=e79]:
+                - img [ref=e80]
+                - text: 300 pedidos/mes
+              - listitem [ref=e82]:
+                - img [ref=e83]
+                - text: Pagos integrados (1 método)
+              - listitem [ref=e85]:
+                - img [ref=e86]
+                - text: QR personalizable
+              - listitem [ref=e88]:
+                - img [ref=e89]
+                - text: Soporte por email
+              - listitem [ref=e91]:
+                - img [ref=e92]
+                - text: Sin marca Domicilios
+            - link "Probar 14 días gratis" [ref=e94] [cursor=pointer]:
+              - /url: /signup
+          - generic [ref=e95]:
+            - generic [ref=e97]: Más popular
+            - generic [ref=e98]:
+              - heading "Pro" [level=3] [ref=e99]
+              - paragraph [ref=e100]: El más popular para crecer
+              - generic [ref=e101]:
+                - generic [ref=e102]: $ 79.900
+                - generic [ref=e103]: /mes
+            - list [ref=e104]:
+              - listitem [ref=e105]:
+                - img [ref=e106]
+                - text: 500 productos
+              - listitem [ref=e108]:
+                - img [ref=e109]
+                - text: 3 catálogos
+              - listitem [ref=e111]:
+                - img [ref=e112]
+                - text: Pedidos ilimitados
+              - listitem [ref=e114]:
+                - img [ref=e115]
+                - text: Todos los métodos de pago
+              - listitem [ref=e117]:
+                - img [ref=e118]
+                - text: Dominio propio
+              - listitem [ref=e120]:
+                - img [ref=e121]
+                - text: Bloques premium
+              - listitem [ref=e123]:
+                - img [ref=e124]
+                - text: "IA: descripciones y catálogo"
+              - listitem [ref=e126]:
+                - img [ref=e127]
+                - text: Analítica avanzada
+              - listitem [ref=e129]:
+                - img [ref=e130]
+                - text: Soporte prioritario
+            - link "Probar 14 días gratis" [ref=e132] [cursor=pointer]:
+              - /url: /signup
+          - generic [ref=e133]:
+            - generic [ref=e134]:
+              - heading "Business" [level=3] [ref=e135]
+              - paragraph [ref=e136]: Para marcas y equipos grandes
+              - generic [ref=e137]:
+                - generic [ref=e138]: $ 159.900
+                - generic [ref=e139]: /mes
+            - list [ref=e140]:
+              - listitem [ref=e141]:
+                - img [ref=e142]
+                - text: Productos ilimitados
+              - listitem [ref=e144]:
+                - img [ref=e145]
+                - text: 10 catálogos
+              - listitem [ref=e147]:
+                - img [ref=e148]
+                - text: Pedidos ilimitados
+              - listitem [ref=e150]:
+                - img [ref=e151]
+                - text: Colaboradores ilimitados
+              - listitem [ref=e153]:
+                - img [ref=e154]
+                - text: White-label completo
+              - listitem [ref=e156]:
+                - img [ref=e157]
+                - text: Reconocimiento de imágenes con IA
+              - listitem [ref=e159]:
+                - img [ref=e160]
+                - text: API de pedidos
+              - listitem [ref=e162]:
+                - img [ref=e163]
+                - text: Gestor de inventario
+              - listitem [ref=e165]:
+                - img [ref=e166]
+                - text: Soporte 24/7
+            - link "Probar 14 días gratis" [ref=e168] [cursor=pointer]:
+              - /url: /signup
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - paragraph [ref=e172]: Para agencias y multi-marca
+            - heading "¿Gestionas catálogos de varios clientes?" [level=3] [ref=e173]
+            - paragraph [ref=e174]: Planes especiales desde 5 hasta 300 catálogos. Un solo panel, facturación consolidada.
+          - generic [ref=e175]:
+            - link "Ver planes de agencia" [ref=e176] [cursor=pointer]:
+              - /url: /agencies
+            - link "Agendar demo" [ref=e177] [cursor=pointer]:
+              - /url: /agencies#demo
+        - button "Ver comparativa completa de planes" [ref=e179]:
+          - img [ref=e180]
+          - text: Ver comparativa completa de planes
+        - generic [ref=e182]:
+          - heading "Preguntas frecuentes" [level=2] [ref=e183]
+          - generic [ref=e184]:
+            - heading "¿Puedo cambiar de plan en cualquier momento?" [level=3] [ref=e186]:
+              - button "¿Puedo cambiar de plan en cualquier momento?" [ref=e187]:
+                - text: ¿Puedo cambiar de plan en cualquier momento?
+                - img [ref=e188]
+            - heading "¿Hay comisiones sobre mis ventas?" [level=3] [ref=e191]:
+              - button "¿Hay comisiones sobre mis ventas?" [ref=e192]:
+                - text: ¿Hay comisiones sobre mis ventas?
+                - img [ref=e193]
+            - heading "¿Qué pasa si supero el límite de pedidos en el plan Gratis?" [level=3] [ref=e196]:
+              - button "¿Qué pasa si supero el límite de pedidos en el plan Gratis?" [ref=e197]:
+                - text: ¿Qué pasa si supero el límite de pedidos en el plan Gratis?
+                - img [ref=e198]
+            - heading "¿Puedo probar el plan Pro antes de pagar?" [level=3] [ref=e201]:
+              - button "¿Puedo probar el plan Pro antes de pagar?" [ref=e202]:
+                - text: ¿Puedo probar el plan Pro antes de pagar?
+                - img [ref=e203]
+            - heading "¿Cómo funciona el pago anual?" [level=3] [ref=e206]:
+              - button "¿Cómo funciona el pago anual?" [ref=e207]:
+                - text: ¿Cómo funciona el pago anual?
+                - img [ref=e208]
+            - heading "¿Puedo cancelar en cualquier momento?" [level=3] [ref=e211]:
+              - button "¿Puedo cancelar en cualquier momento?" [ref=e212]:
+                - text: ¿Puedo cancelar en cualquier momento?
+                - img [ref=e213]
+  - contentinfo [ref=e215]:
+    - generic [ref=e216]:
+      - generic [ref=e217]:
+        - generic [ref=e218]:
+          - link "D Domicilios" [ref=e219] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e221]: D
+            - generic [ref=e222]: Domicilios
+          - paragraph [ref=e223]: Crea tu catálogo digital y recibe pedidos por WhatsApp. Sin comisiones sobre ventas.
+          - generic [ref=e224]:
+            - link "Instagram" [ref=e225] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e226]
+            - link "Twitter / X" [ref=e229] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e230]
+            - link "YouTube" [ref=e232] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e233]
+            - link "Email" [ref=e236] [cursor=pointer]:
+              - /url: mailto:hola@domicilios.app
+              - img [ref=e237]
+            - link "WhatsApp" [ref=e240] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e241]
+        - generic [ref=e243]:
+          - heading "Producto" [level=3] [ref=e244]
+          - list [ref=e245]:
+            - listitem [ref=e246]:
+              - link "Planes y precios" [ref=e247] [cursor=pointer]:
+                - /url: /plans
+            - listitem [ref=e248]:
+              - link "Para agencias" [ref=e249] [cursor=pointer]:
+                - /url: /agencies
+            - listitem [ref=e250]:
+              - link "Catálogo digital" [ref=e251] [cursor=pointer]:
+                - /url: /digitalcatalog
+            - listitem [ref=e252]:
+              - link "Menú digital" [ref=e253] [cursor=pointer]:
+                - /url: /digitalmenu
+            - listitem [ref=e254]:
+              - link "Crear cuenta gratis" [ref=e255] [cursor=pointer]:
+                - /url: /signup
+        - generic [ref=e256]:
+          - heading "Herramientas" [level=3] [ref=e257]
+          - list [ref=e258]:
+            - listitem [ref=e259]:
+              - link "Generador WhatsApp" [ref=e260] [cursor=pointer]:
+                - /url: /tools/whatsapp-link-generator
+            - listitem [ref=e261]:
+              - link "Descripciones con IA" [ref=e262] [cursor=pointer]:
+                - /url: /tools/product-description-generator
+            - listitem [ref=e263]:
+              - link "Calculadora margen" [ref=e264] [cursor=pointer]:
+                - /url: /tools/profit-margin-calculator
+            - listitem [ref=e265]:
+              - link "Generador QR" [ref=e266] [cursor=pointer]:
+                - /url: /tools/qr-code-menu-generator
+            - listitem [ref=e267]:
+              - link "Nombres de negocio" [ref=e268] [cursor=pointer]:
+                - /url: /tools/business-name-generator
+        - generic [ref=e269]:
+          - heading "Guías" [level=3] [ref=e270]
+          - list [ref=e271]:
+            - listitem [ref=e272]:
+              - link "Guías por industria" [ref=e273] [cursor=pointer]:
+                - /url: /como-vender
+            - listitem [ref=e274]:
+              - link "Vender ropa" [ref=e275] [cursor=pointer]:
+                - /url: /como-vender/ropa
+            - listitem [ref=e276]:
+              - link "Vender comida" [ref=e277] [cursor=pointer]:
+                - /url: /como-vender/comida
+            - listitem [ref=e278]:
+              - link "Comparativas" [ref=e279] [cursor=pointer]:
+                - /url: /guides
+            - listitem [ref=e280]:
+              - link "Blog" [ref=e281] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e282]:
+          - heading "Información" [level=3] [ref=e283]
+          - list [ref=e284]:
+            - listitem [ref=e285]:
+              - link "Términos de uso" [ref=e286] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e287]:
+              - link "Privacidad" [ref=e288] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e289]:
+              - link "Uso aceptable" [ref=e290] [cursor=pointer]:
+                - /url: /aup
+      - generic [ref=e291]:
+        - paragraph [ref=e292]: © 2026 Domicilios. Todos los derechos reservados.
+        - paragraph [ref=e293]: Hecho con ♥ para comerciantes de Latinoamérica

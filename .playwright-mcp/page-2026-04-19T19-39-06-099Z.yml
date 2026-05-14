@@ -1,0 +1,403 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - link "Logo" [ref=e8] [cursor=pointer]:
+          - /url: /agencies
+          - img "Logo" [ref=e9]
+        - generic [ref=e10]:
+          - link "Agencias" [ref=e11] [cursor=pointer]:
+            - /url: /agencies
+          - link "Crear" [ref=e12] [cursor=pointer]:
+            - /url: /menus
+          - button "ES" [ref=e14] [cursor=pointer]:
+            - generic [ref=e15]: ES
+            - img [ref=e16]
+          - link "Agenda una demo" [ref=e19] [cursor=pointer]:
+            - /url: https://zeeg.me/R/rq5jhw2qmecso81
+    - generic [ref=e20]:
+      - generic [ref=e24]:
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - heading "Crea y gestiona múltiples catálogos desde un solo panel" [level=1] [ref=e33]
+            - paragraph [ref=e34]: Catálogos web con pedidos a WhatsApp, checkout nativo y actualización masiva.
+          - link "Agenda una demo" [ref=e36] [cursor=pointer]:
+            - /url: https://zeeg.me/R/rq5jhw2qmecso81
+            - text: Agenda una demo
+            - img [ref=e37]
+        - generic:
+          - img
+        - button "Scroll to next section" [ref=e40] [cursor=pointer]:
+          - img [ref=e41]
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - heading "Planes de Crecimiento" [level=2] [ref=e49]
+          - paragraph [ref=e50]: Elige el paquete que mejor se adapte a las necesidades de tu negocio
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - heading "Calcula tu Inversión" [level=3] [ref=e56]
+            - paragraph [ref=e57]: Ajusta la cantidad de catálogos y ve tu precio personalizado
+          - generic [ref=e58]:
+            - generic [ref=e60]: Cantidad de Catálogos
+            - generic [ref=e61]:
+              - button [disabled] [ref=e62]:
+                - img [ref=e63]
+              - generic [ref=e64]:
+                - generic [ref=e65]: "5"
+                - generic [ref=e66]: catálogos
+              - button [ref=e67] [cursor=pointer]:
+                - img [ref=e68]
+            - generic [ref=e71]: Starter
+            - generic [ref=e72]:
+              - button "5" [ref=e73] [cursor=pointer]
+              - button "20" [ref=e74] [cursor=pointer]
+              - button "50" [ref=e75] [cursor=pointer]
+              - button "100" [ref=e76] [cursor=pointer]
+              - button "200" [ref=e77] [cursor=pointer]
+              - button "300" [ref=e78] [cursor=pointer]
+          - generic [ref=e80]:
+            - button "Mensual" [ref=e81] [cursor=pointer]
+            - button "Anual" [ref=e82] [cursor=pointer]
+          - combobox [ref=e84]:
+            - option "$ MXN" [selected]
+            - option "$ USD"
+            - option "€ EUR"
+            - option "R$ BRL"
+            - option "$ CAD"
+            - option "$ CLP"
+            - option "$ COP"
+            - option "S/. PEN"
+          - generic [ref=e85]:
+            - generic [ref=e86]: Precio por catálogo
+            - generic [ref=e87]: $400.00 / catálogo / mes
+            - generic [ref=e88]: 5 catálogos = $2,000.00 / mes
+          - generic [ref=e89]:
+            - button "Comenzar Ahora" [ref=e90] [cursor=pointer]
+            - button "Aclarar dudas" [ref=e91] [cursor=pointer]
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - heading "Comparar Características" [level=3] [ref=e94]
+            - paragraph [ref=e95]: Descubre todo lo que incluye el plan Agency
+          - region "Feature comparison" [ref=e99]:
+            - heading "Feature comparison" [level=2] [ref=e100]
+            - heading "Detalles de planes" [level=2] [ref=e101]
+            - generic [ref=e102]:
+              - generic [ref=e104]:
+                - heading "Gratis" [level=3] [ref=e105]:
+                  - button "Gratis" [ref=e106] [cursor=pointer]:
+                    - generic [ref=e107]: Gratis
+                    - img [ref=e109]
+                - paragraph [ref=e112]: Empieza a recibir pedidos y prueba tu catálogo digital sin costo.
+              - generic [ref=e114]:
+                - heading "Business" [level=3] [ref=e115]:
+                  - button "Business" [ref=e116] [cursor=pointer]:
+                    - generic [ref=e117]: Business
+                    - img [ref=e119]
+                - paragraph [ref=e122]: Pedidos ilimitados, colaboracion en equipo y soporte multi-sucursal.
+              - generic [ref=e124]:
+                - heading "Agency Growth" [level=3] [ref=e125]:
+                  - button "Agency Growth" [ref=e126] [cursor=pointer]:
+                    - generic [ref=e127]: Agency Growth
+                    - img [ref=e129]
+                - paragraph [ref=e132]: Escala tu agencia con gestión centralizada, 0% comisión Marea y todas las funciones Business para cada catálogo.
+        - generic [ref=e133]:
+          - heading "Todos los planes incluyen:" [level=3] [ref=e134]
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - img [ref=e137]
+              - generic [ref=e139]: Catálogos con bloques personalizables
+            - generic [ref=e140]:
+              - img [ref=e141]
+              - generic [ref=e143]: Checkout nativo + carrito de compras
+            - generic [ref=e144]:
+              - img [ref=e145]
+              - generic [ref=e147]: Pedidos por WhatsApp con mensaje pre-llenado
+            - generic [ref=e148]:
+              - img [ref=e149]
+              - generic [ref=e151]: IA para descripciones de productos y bloques
+            - generic [ref=e152]:
+              - img [ref=e153]
+              - generic [ref=e155]: Dominio o subdominio conectado por catálogo
+            - generic [ref=e156]:
+              - img [ref=e157]
+              - generic [ref=e159]: Operaciones masivas (actualiza todos a la vez)
+            - generic [ref=e160]:
+              - img [ref=e161]
+              - generic [ref=e163]: Soporte prioritario (humano) <24h
+          - generic [ref=e164]:
+            - heading "Sin comisiones sobre ventas" [level=4] [ref=e165]
+            - paragraph [ref=e166]: Solo pagas tu suscripción. Cero comisión de Marea sobre transacciones. (Aplican tarifas de Stripe/PayPal si usas checkout nativo)
+      - generic [ref=e171]:
+        - heading "¿Cómo funciona?" [level=2] [ref=e173]
+        - generic [ref=e183]:
+          - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e185]
+          - generic [ref=e187]:
+            - generic [ref=e188]:
+              - generic:
+                - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+              - img "Video Thumbnail" [ref=e190]
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e192] [cursor=pointer]':
+              - img [ref=e195]
+            - generic:
+              - generic:
+                - generic [ref=e199]:
+                  - generic: 1:18
+                  - slider "Playbar" [ref=e201] [cursor=pointer]
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - button "Mute":
+                            - generic:
+                              - img
+                      - generic:
+                        - generic:
+                          - button "Show settings menu":
+                            - generic:
+                              - img
+                      - generic:
+                        - generic:
+                          - button "Fullscreen":
+                            - generic:
+                              - img
+                  - link "Wistia Logo -- Learn More" [ref=e207] [cursor=pointer]:
+                    - /url: https://wistia.com/?utm_type=player&utm_campaign=wistia-branding&utm_medium=referral&utm_source=wistia&about=1254168
+                    - img [ref=e209]
+                  - button "Show more buttons" [ref=e214] [cursor=pointer]:
+                    - img [ref=e216]
+      - generic [ref=e227]:
+        - generic [ref=e228]:
+          - heading "Casos de uso reales" [level=2] [ref=e229]
+          - paragraph [ref=e230]: Agencias, distribuidoras y multi-marca que ya operan con Marea hacen esto con éxito
+        - generic [ref=e231]:
+          - article [ref=e232]:
+            - generic [ref=e233]:
+              - img [ref=e237]
+              - generic [ref=e239]:
+                - heading "Agencia con 15 restaurantes" [level=3] [ref=e240]
+                - paragraph [ref=e241]: Cada restaurante con menú digital en su dominio → Pedidos directo a WhatsApp del restaurante → Actualización de platillos en segundos para todos → Códigos de descuento para promociones
+          - article [ref=e242]:
+            - generic [ref=e243]:
+              - img [ref=e247]
+              - generic [ref=e249]:
+                - heading "Marca con 3 líneas de producto" [level=3] [ref=e250]
+                - paragraph [ref=e251]: Línea premium, económica y outlet. Cada una con su propio catálogo, analíticas separadas y estrategia de precio independiente.
+          - article [ref=e252]:
+            - generic [ref=e253]:
+              - img [ref=e257]
+              - generic [ref=e259]:
+                - heading "Distribuidor con 30 catálogos B2B" [level=3] [ref=e260]
+                - paragraph [ref=e261]: Catálogo por cliente mayorista con precios personalizados → Checkout propio o pedido por WhatsApp según cliente → Sin compartir inventarios entre clientes → Actualización masiva de stock/precios
+          - article [ref=e262]:
+            - generic [ref=e263]:
+              - img [ref=e267]
+              - generic [ref=e269]:
+                - heading "Restaurante con 2 sucursales" [level=3] [ref=e270]
+                - paragraph [ref=e271]: Sucursal Centro con menú ejecutivo → Sucursal Norte con menú gourmet → Cada una con su catálogo, precios y pedidos a WhatsApp independiente → Actualización de platillos disponibles en tiempo real por ubicación
+      - region "Beneficios clave" [ref=e274]:
+        - generic [ref=e276]:
+          - generic [ref=e277]:
+            - heading "Beneficios clave" [level=2] [ref=e278]
+            - paragraph [ref=e279]: Todo lo que necesitas para gestionar múltiples catálogos sin complicaciones
+          - generic [ref=e280]:
+            - article [ref=e281]:
+              - img "Multi-catalog dashboard" [ref=e283]
+              - generic [ref=e285]:
+                - img [ref=e287]
+                - generic [ref=e289]:
+                  - heading "Gestión multi-catálogo" [level=3] [ref=e290]
+                  - paragraph [ref=e291]: Panel único para todos tus catálogos con actualización masiva de productos y control centralizado
+            - article [ref=e292]:
+              - img "Payment checkout" [ref=e294]
+              - generic [ref=e296]:
+                - img [ref=e298]
+                - generic [ref=e300]:
+                  - heading "Pagos integrados" [level=3] [ref=e301]
+                  - paragraph [ref=e302]: Stripe (Oxxo, tarjeta, Apple Pay, Google Pay, etc.), PayPal, transferencias y métodos personalizados.
+            - article [ref=e303]:
+              - img "Subscription pricing" [ref=e305]
+              - generic [ref=e307]:
+                - img [ref=e309]
+                - generic [ref=e311]:
+                  - heading "Ingresos recurrentes" [level=3] [ref=e312]
+                  - paragraph [ref=e313]: Cero comisiones sobre ventas. Cobra a tus clientes y escala sin costos variables
+      - generic [ref=e318]:
+        - heading "Preguntas frecuentes" [level=2] [ref=e320]
+        - generic [ref=e321]:
+          - generic [ref=e322]:
+            - button "¿Funciona para mi agencia con solo 3-5 clientes?" [ref=e323] [cursor=pointer]:
+              - generic [ref=e324]: ¿Funciona para mi agencia con solo 3-5 clientes?
+              - img [ref=e325]
+            - generic [ref=e327]: Sí. El plan Starter incluye hasta 5 catálogos por $1,999/mes. Perfecto para agencias que están empezando. Conforme creces, migras al plan Professional con mejores precios por catálogo.
+          - generic [ref=e328]:
+            - button "¿Por qué no mejor usar WhatsApp Business Catalogs en lugar de Marea?" [ref=e329] [cursor=pointer]:
+              - generic [ref=e330]: ¿Por qué no mejor usar WhatsApp Business Catalogs en lugar de Marea?
+              - img [ref=e331]
+            - generic [ref=e333]: "WhatsApp Business Catalogs no tiene: SEO (Google no te encuentra, IAs tampoco), códigos de descuento, conexión condominio propio, ni checkout personalizado. Marea te da todo esto + gestión de múltiples catálogos desde un panel."
+          - generic [ref=e334]:
+            - button "¿Mis catálogos pueden aparecer en Google y en búsquedas de IA?" [ref=e335] [cursor=pointer]:
+              - generic [ref=e336]: ¿Mis catálogos pueden aparecer en Google y en búsquedas de IA?
+              - img [ref=e337]
+            - generic [ref=e339]: Sí. Cada catálogo es una página web completa con SEO optimizado. Apareces en Google cuando buscan tu tipo de negocio. Además, las IAs como ChatGPT pueden encontrarte y recomendarte. Estamos a la vanguardia preparando integración directa con LLMs para que puedan consultar tu catálogo automáticamente.
+          - generic [ref=e340]:
+            - button "¿Mis clientes pueden usar sus propios dominios?" [ref=e341] [cursor=pointer]:
+              - generic [ref=e342]: ¿Mis clientes pueden usar sus propios dominios?
+              - img [ref=e343]
+            - generic [ref=e345]: "Sí. Cada catálogo puede conectarse a su dominio o subdominio propio: restauranteX.com, salonY.empresa.com. Tu cliente final nunca ve 'Marea' - solo la marca."
+          - generic [ref=e346]:
+            - button "¿Puedo configurar diferentes opciones de pago por catálogo?" [ref=e347] [cursor=pointer]:
+              - generic [ref=e348]: ¿Puedo configurar diferentes opciones de pago por catálogo?
+              - img [ref=e349]
+            - generic [ref=e351]: "Totalmente personalizable por catálogo. Puedes activar/desactivar: checkout con pagos integrados (Stripe/PayPal/efectivo/métodos personalizados), pedidos directos por WhatsApp, opciones de entrega (delivery, pickup, comer en mesa). Cada cliente puede tener una configuración única según su modelo de negocio."
+          - generic [ref=e352]:
+            - button "¿Cobran comisión sobre las ventas?" [ref=e353] [cursor=pointer]:
+              - generic [ref=e354]: ¿Cobran comisión sobre las ventas?
+              - img [ref=e355]
+            - generic [ref=e357]: No. Solo pagas tu suscripción mensual. Cero comisión de Marea sobre transacciones. Si usas checkout nativo con Stripe/PayPal, aplican sus tarifas estándar de procesamiento (~3.6%). Los pedidos por WhatsApp no tienen costo adicional.
+      - generic [ref=e362]:
+        - heading "Gestiona todos tus catálogos desde un solo lugar" [level=2] [ref=e363]
+        - paragraph [ref=e364]: Fácil, escalable y poderoso.
+        - link "Agenda una demo" [ref=e366] [cursor=pointer]:
+          - /url: https://zeeg.me/R/rq5jhw2qmecso81
+          - text: Agenda una demo
+          - img [ref=e367]
+      - generic [ref=e370]:
+        - contentinfo [ref=e371]:
+          - generic [ref=e372]:
+            - link "Marea Alcalina" [ref=e375] [cursor=pointer]:
+              - /url: /agencies
+              - img "Marea Alcalina" [ref=e376]
+            - generic [ref=e377]:
+              - generic [ref=e378]:
+                - heading "Marea Alcalina" [level=4] [ref=e379]
+                - list [ref=e381]:
+                  - listitem [ref=e382]:
+                    - link "Inicio" [ref=e383] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e384]:
+                    - link "Planes" [ref=e385] [cursor=pointer]:
+                      - /url: javascript:void(0);
+                  - listitem [ref=e386]:
+                    - link "Catálogo Digital" [ref=e387] [cursor=pointer]:
+                      - /url: /digitalcatalog
+                  - listitem [ref=e388]:
+                    - link "Menú Digital" [ref=e389] [cursor=pointer]:
+                      - /url: /digitalmenu
+                  - listitem [ref=e390]:
+                    - link "Proveedores Chinos" [ref=e391] [cursor=pointer]:
+                      - /url: /proveedores-chinos
+                  - listitem [ref=e392]:
+                    - link "Panel Principal" [ref=e393] [cursor=pointer]:
+                      - /url: /menus
+                  - listitem [ref=e394]:
+                    - link "Blog" [ref=e395] [cursor=pointer]:
+                      - /url: https://blog.mareaalcalina.com
+              - generic [ref=e396]:
+                - heading "Herramientas" [level=4] [ref=e397]
+                - list [ref=e399]:
+                  - listitem [ref=e400]:
+                    - link "Generador de Descripción de Producto" [ref=e401] [cursor=pointer]:
+                      - /url: /tools/product-description-generator
+                  - listitem [ref=e402]:
+                    - link "Generador de Link de WhatsApp" [ref=e403] [cursor=pointer]:
+                      - /url: /tools/whatsapp-link-generator
+                  - listitem [ref=e404]:
+                    - link "Calculadora de Margen de Ganancia" [ref=e405] [cursor=pointer]:
+                      - /url: /tools/profit-margin-calculator
+                  - listitem [ref=e406]:
+                    - link "Generador de Nombres para Negocio" [ref=e407] [cursor=pointer]:
+                      - /url: /tools/business-name-generator
+                  - listitem [ref=e408]:
+                    - link "Generador de QR para Menú" [ref=e409] [cursor=pointer]:
+                      - /url: /tools/qr-code-menu-generator
+                  - listitem [ref=e410]:
+                    - link "Generador de Biografías con IA" [ref=e411] [cursor=pointer]:
+                      - /url: /tools/biography-generator
+              - generic [ref=e412]:
+                - heading "Guías" [level=4] [ref=e413]
+                - list [ref=e415]:
+                  - listitem [ref=e416]:
+                    - link "Mejor Plataforma WhatsApp" [ref=e417] [cursor=pointer]:
+                      - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                  - listitem [ref=e418]:
+                    - link "Comparativa de Plataformas" [ref=e419] [cursor=pointer]:
+                      - /url: /guides/marea-alcalina-vs-tiendanube
+                  - listitem [ref=e420]:
+                    - link "Tienda en Línea Gratis" [ref=e421] [cursor=pointer]:
+                      - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                  - listitem [ref=e422]:
+                    - link "Menú Digital Restaurantes" [ref=e423] [cursor=pointer]:
+                      - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                  - listitem [ref=e424]:
+                    - link "Cómo Vender por WhatsApp" [ref=e425] [cursor=pointer]:
+                      - /url: /como-vender
+                  - listitem [ref=e426]:
+                    - link "Vender Ropa por WhatsApp" [ref=e427] [cursor=pointer]:
+                      - /url: /como-vender/ropa-por-whatsapp
+                  - listitem [ref=e428]:
+                    - link "Vender Comida por WhatsApp" [ref=e429] [cursor=pointer]:
+                      - /url: /como-vender/comida-por-whatsapp
+                  - listitem [ref=e430]:
+                    - link "Vender Pasteles por WhatsApp" [ref=e431] [cursor=pointer]:
+                      - /url: /como-vender/pasteles-por-whatsapp
+                  - listitem [ref=e432]:
+                    - link "Vender Cosméticos por WhatsApp" [ref=e433] [cursor=pointer]:
+                      - /url: /como-vender/cosmeticos-por-whatsapp
+              - generic [ref=e434]:
+                - heading "Información" [level=4] [ref=e435]
+                - list [ref=e437]:
+                  - listitem [ref=e438]:
+                    - link "Términos y Condiciones" [ref=e439] [cursor=pointer]:
+                      - /url: /terms
+                  - listitem [ref=e440]:
+                    - link "Políticas de Privacidad" [ref=e441] [cursor=pointer]:
+                      - /url: /privacy
+                  - listitem [ref=e442]:
+                    - link "Política de Uso Aceptable" [ref=e443] [cursor=pointer]:
+                      - /url: /aup
+                  - listitem [ref=e444]:
+                    - link "Preferencias de cookies" [ref=e445] [cursor=pointer]:
+                      - /url: javascript:void(0);
+              - generic [ref=e446]:
+                - heading "Soporte" [level=4] [ref=e447]
+                - list [ref=e449]:
+                  - paragraph [ref=e450]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                  - listitem [ref=e451]:
+                    - link "Messenger" [ref=e452] [cursor=pointer]:
+                      - /url: https://m.me/mareaalcalina
+                  - listitem [ref=e453]:
+                    - link "Instagram" [ref=e454] [cursor=pointer]:
+                      - /url: https://www.instagram.com/mareaalcalina_/
+              - generic [ref=e458]:
+                - heading "Síguenos" [level=4] [ref=e459]
+                - list [ref=e461]:
+                  - listitem [ref=e462]:
+                    - link [ref=e463] [cursor=pointer]:
+                      - /url: https://www.facebook.com/pg/mareaalcalina
+                      - img [ref=e464]
+                  - listitem [ref=e465]:
+                    - link "" [ref=e466] [cursor=pointer]:
+                      - /url: https://www.instagram.com/mareaalcalina_/
+                      - generic [ref=e467]: 
+                  - listitem [ref=e468]:
+                    - link [ref=e469] [cursor=pointer]:
+                      - /url: https://www.tiktok.com/@mareaalcalina
+                      - img [ref=e470]
+        - paragraph [ref=e476]: 2026 © Marea Alcalina
+  - banner "Banner de consentimiento de cookies" [ref=e477]:
+    - generic [ref=e479]:
+      - generic [ref=e480]:
+        - generic [ref=e481]: 🍪
+        - generic [ref=e482]:
+          - paragraph [ref=e483]:
+            - strong [ref=e484]: Usamos cookies en este sitio web
+          - paragraph [ref=e485]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e486] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e487]:
+        - button "Personalizar configuración de cookies" [ref=e488] [cursor=pointer]:
+          - img [ref=e489]
+        - button "Aceptar todas las cookies" [ref=e492] [cursor=pointer]: Aceptar todas

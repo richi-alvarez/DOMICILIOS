@@ -1,0 +1,17 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - img [ref=e5]
+    - heading "¡Pedido Generado!" [level=1] [ref=e8]
+    - paragraph [ref=e9]: Continúa para enviar tu orden
+    - generic [ref=e10]:
+      - img [ref=e11]
+      - text: "Pedido #20260425001"
+    - generic [ref=e15]:
+      - link "Ver detalle del pedido" [ref=e17] [cursor=pointer]:
+        - /url: /s/demo/order/20260425001
+      - link "Volver a la tienda" [ref=e18] [cursor=pointer]:
+        - /url: /s/demo
+  - region "Notifications alt+T"
+  - alert [ref=e19]
+  - button "Open Next.js Dev Tools" [ref=e25] [cursor=pointer]:
+    - img [ref=e26]

@@ -1,0 +1,257 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - link "Logo" [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e9]
+        - generic [ref=e10]:
+          - link "Inicio" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Planes" [ref=e12] [cursor=pointer]:
+            - /url: /plans
+          - link "Agencias" [ref=e13] [cursor=pointer]:
+            - /url: /agencies
+          - link "Crear" [ref=e14] [cursor=pointer]:
+            - /url: /menus
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: https://blog.mareaalcalina.com
+          - button "ES" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18]: ES
+            - img [ref=e19]
+          - generic [ref=e21]:
+            - link "Iniciar Sesión" [ref=e22] [cursor=pointer]:
+              - /url: /login
+            - link "Registrarme" [ref=e23] [cursor=pointer]:
+              - /url: /signup
+    - main [ref=e24]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - img [ref=e28]
+          - generic [ref=e31]: Herramientas Gratuitas
+        - heading "Herramientas Gratuitas para Emprendedores" [level=1] [ref=e32]
+        - paragraph [ref=e33]: Herramientas con inteligencia artificial diseñadas para ayudarte a crear, vender y hacer crecer tu negocio. Todas gratuitas, sin registro.
+        - paragraph [ref=e35]: "Marea Alcalina ofrece 6 herramientas gratuitas: Generador de Links de WhatsApp, Generador de Descripciones de Productos con IA, Calculadora de Margen de Ganancia, Generador de Nombres de Negocio con IA, Generador de Códigos QR para Menús, y Generador de Biografías con IA. No requieren cuenta."
+      - generic [ref=e37]:
+        - heading "¿Qué herramientas gratuitas ofrece Marea Alcalina?" [level=2] [ref=e38]
+        - paragraph [ref=e40]: Marea Alcalina pone a disposición de emprendedores y pequeños negocios un conjunto de herramientas gratuitas potenciadas con inteligencia artificial. Desde generar links directos de WhatsApp hasta crear descripciones persuasivas de productos, nombres creativos para tu negocio o biografías profesionales para redes sociales. Todas funcionan sin necesidad de registrarse.
+      - generic [ref=e43]:
+        - link "WhatsApp Generador de Links de WhatsApp Crea links directos de WhatsApp (wa.me) con mensajes prellenados. Incluye generación de código QR y detección automática de código de país. Usar herramienta" [ref=e44] [cursor=pointer]:
+          - /url: /tools/whatsapp-link-generator
+          - generic [ref=e45]: WhatsApp
+          - heading "Generador de Links de WhatsApp" [level=3] [ref=e46]
+          - paragraph [ref=e47]: Crea links directos de WhatsApp (wa.me) con mensajes prellenados. Incluye generación de código QR y detección automática de código de país.
+          - generic [ref=e48]:
+            - generic [ref=e49]: Usar herramienta
+            - img [ref=e50]
+        - link "IA Generador de Descripciones de Productos con IA Genera 3 descripciones unicas y persuasivas para tus productos. Elige categoria, tono y longitud. Usar herramienta" [ref=e52] [cursor=pointer]:
+          - /url: /tools/product-description-generator
+          - generic [ref=e53]: IA
+          - heading "Generador de Descripciones de Productos con IA" [level=3] [ref=e54]
+          - paragraph [ref=e55]: Genera 3 descripciones unicas y persuasivas para tus productos. Elige categoria, tono y longitud.
+          - generic [ref=e56]:
+            - generic [ref=e57]: Usar herramienta
+            - img [ref=e58]
+        - link "Finanzas Calculadora de Margen de Ganancia Calcula margen de ganancia, markup y precio de venta. Soporta multiples monedas, impuestos por pais y costos adicionales. Usar herramienta" [ref=e60] [cursor=pointer]:
+          - /url: /tools/profit-margin-calculator
+          - generic [ref=e61]: Finanzas
+          - heading "Calculadora de Margen de Ganancia" [level=3] [ref=e62]
+          - paragraph [ref=e63]: Calcula margen de ganancia, markup y precio de venta. Soporta multiples monedas, impuestos por pais y costos adicionales.
+          - generic [ref=e64]:
+            - generic [ref=e65]: Usar herramienta
+            - img [ref=e66]
+        - link "IA Generador de Nombres de Negocio con IA Genera nombres creativos y unicos para tu negocio. Elige industria, estilo y palabras clave. Usar herramienta" [ref=e68] [cursor=pointer]:
+          - /url: /tools/business-name-generator
+          - generic [ref=e69]: IA
+          - heading "Generador de Nombres de Negocio con IA" [level=3] [ref=e70]
+          - paragraph [ref=e71]: Genera nombres creativos y unicos para tu negocio. Elige industria, estilo y palabras clave.
+          - generic [ref=e72]:
+            - generic [ref=e73]: Usar herramienta
+            - img [ref=e74]
+        - link "Restaurantes Generador de Códigos QR para Menús Crea códigos QR personalizados para tu menú o catálogo digital. Elige estilo, colores y agrega tu logo. Usar herramienta" [ref=e76] [cursor=pointer]:
+          - /url: /tools/qr-code-menu-generator
+          - generic [ref=e77]: Restaurantes
+          - heading "Generador de Códigos QR para Menús" [level=3] [ref=e78]
+          - paragraph [ref=e79]: Crea códigos QR personalizados para tu menú o catálogo digital. Elige estilo, colores y agrega tu logo.
+          - generic [ref=e80]:
+            - generic [ref=e81]: Usar herramienta
+            - img [ref=e82]
+        - link "IA Generador de Biografías con IA Genera biografías profesionales para Instagram, LinkedIn, WhatsApp Business y sitios web. Elige rol, tono y palabras clave. Usar herramienta" [ref=e84] [cursor=pointer]:
+          - /url: /tools/biography-generator
+          - generic [ref=e85]: IA
+          - heading "Generador de Biografías con IA" [level=3] [ref=e86]
+          - paragraph [ref=e87]: Genera biografías profesionales para Instagram, LinkedIn, WhatsApp Business y sitios web. Elige rol, tono y palabras clave.
+          - generic [ref=e88]:
+            - generic [ref=e89]: Usar herramienta
+            - img [ref=e90]
+      - generic [ref=e93]:
+        - heading "Guías para Emprendedores" [level=2] [ref=e94]
+        - paragraph [ref=e95]: Aprende más con nuestras guías gratuitas y comparativas de plataformas.
+        - generic [ref=e96]:
+          - link "Mejor Plataforma WhatsApp Mexico" [ref=e97] [cursor=pointer]:
+            - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+            - text: Mejor Plataforma WhatsApp Mexico
+            - img [ref=e98]
+          - link "Crear Tienda Gratis Mexico" [ref=e100] [cursor=pointer]:
+            - /url: /guides/crear-tienda-en-linea-gratis-mexico
+            - text: Crear Tienda Gratis Mexico
+            - img [ref=e101]
+          - link "Menú Digital QR Restaurantes" [ref=e103] [cursor=pointer]:
+            - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+            - text: Menú Digital QR Restaurantes
+            - img [ref=e104]
+      - generic [ref=e107]:
+        - heading "Preguntas Frecuentes sobre las Herramientas" [level=2] [ref=e109]
+        - list [ref=e111]:
+          - listitem [ref=e112]:
+            - button "¿Qué herramientas gratuitas ofrece Marea Alcalina?" [ref=e113] [cursor=pointer]:
+              - generic [ref=e114]: ¿Qué herramientas gratuitas ofrece Marea Alcalina?
+              - img [ref=e116]
+          - listitem [ref=e118]:
+            - button "¿Las herramientas son realmente gratuitas?" [ref=e119] [cursor=pointer]:
+              - generic [ref=e120]: ¿Las herramientas son realmente gratuitas?
+              - img [ref=e122]
+          - listitem [ref=e124]:
+            - button "¿Para quién son estas herramientas?" [ref=e125] [cursor=pointer]:
+              - generic [ref=e126]: ¿Para quién son estas herramientas?
+              - img [ref=e128]
+          - listitem [ref=e130]:
+            - button "¿Cada cuánto se actualizan las herramientas?" [ref=e131] [cursor=pointer]:
+              - generic [ref=e132]: ¿Cada cuánto se actualizan las herramientas?
+              - img [ref=e134]
+          - listitem [ref=e136]:
+            - button "¿Necesito una cuenta para usar las herramientas?" [ref=e137] [cursor=pointer]:
+              - generic [ref=e138]: ¿Necesito una cuenta para usar las herramientas?
+              - img [ref=e140]
+          - listitem [ref=e142]:
+            - button "¿Qué otros recursos ofrece Marea Alcalina?" [ref=e143] [cursor=pointer]:
+              - generic [ref=e144]: ¿Qué otros recursos ofrece Marea Alcalina?
+              - img [ref=e146]
+    - generic [ref=e152]:
+      - heading "¿Listo para llevar tu negocio al siguiente nivel?" [level=2] [ref=e153]
+      - paragraph [ref=e154]: Crea tu catálogo digital con inteligencia artificial. Pedidos por WhatsApp, pagos integrados y más.
+      - link "Crear mi catálogo gratis" [ref=e155] [cursor=pointer]:
+        - /url: /signup?utm_source=tools&utm_medium=organic&utm_campaign=tools-index
+        - text: Crear mi catálogo gratis
+        - img [ref=e156]
+    - generic [ref=e158]:
+      - contentinfo [ref=e159]:
+        - generic [ref=e160]:
+          - link "Marea Alcalina" [ref=e163] [cursor=pointer]:
+            - /url: /
+            - img "Marea Alcalina" [ref=e164]
+          - generic [ref=e165]:
+            - generic [ref=e166]:
+              - heading "Marea Alcalina" [level=4] [ref=e167]
+              - list [ref=e169]:
+                - listitem [ref=e170]:
+                  - link "Inicio" [ref=e171] [cursor=pointer]:
+                    - /url: /
+                - listitem [ref=e172]:
+                  - link "Planes" [ref=e173] [cursor=pointer]:
+                    - /url: /plans
+                - listitem [ref=e174]:
+                  - link "Panel Principal" [ref=e175] [cursor=pointer]:
+                    - /url: /menus
+                - listitem [ref=e176]:
+                  - link "Perfil" [ref=e177] [cursor=pointer]:
+                    - /url: /menus/profile
+                - listitem [ref=e178]:
+                  - link "Blog" [ref=e179] [cursor=pointer]:
+                    - /url: https://blog.mareaalcalina.com
+            - generic [ref=e180]:
+              - heading "Herramientas" [level=4] [ref=e181]
+              - list [ref=e183]:
+                - listitem [ref=e184]:
+                  - link "Generador de Descripción de Producto" [ref=e185] [cursor=pointer]:
+                    - /url: /tools/product-description-generator
+                - listitem [ref=e186]:
+                  - link "Generador de Link de WhatsApp" [ref=e187] [cursor=pointer]:
+                    - /url: /tools/whatsapp-link-generator
+                - listitem [ref=e188]:
+                  - link "Calculadora de Margen de Ganancia" [ref=e189] [cursor=pointer]:
+                    - /url: /tools/profit-margin-calculator
+                - listitem [ref=e190]:
+                  - link "Generador de Nombres para Negocio" [ref=e191] [cursor=pointer]:
+                    - /url: /tools/business-name-generator
+                - listitem [ref=e192]:
+                  - link "Generador de QR para Menú" [ref=e193] [cursor=pointer]:
+                    - /url: /tools/qr-code-menu-generator
+                - listitem [ref=e194]:
+                  - link "Generador de Biografías con IA" [ref=e195] [cursor=pointer]:
+                    - /url: /tools/biography-generator
+            - generic [ref=e196]:
+              - heading "Guías" [level=4] [ref=e197]
+              - list [ref=e199]:
+                - listitem [ref=e200]:
+                  - link "Mejor Plataforma WhatsApp" [ref=e201] [cursor=pointer]:
+                    - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                - listitem [ref=e202]:
+                  - link "Comparativa de Plataformas" [ref=e203] [cursor=pointer]:
+                    - /url: /guides/marea-alcalina-vs-tiendanube
+                - listitem [ref=e204]:
+                  - link "Tienda en Línea Gratis" [ref=e205] [cursor=pointer]:
+                    - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                - listitem [ref=e206]:
+                  - link "Menú Digital Restaurantes" [ref=e207] [cursor=pointer]:
+                    - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                - listitem [ref=e208]:
+                  - link "Cómo Vender por WhatsApp" [ref=e209] [cursor=pointer]:
+                    - /url: /como-vender
+            - generic [ref=e210]:
+              - heading "Información" [level=4] [ref=e211]
+              - list [ref=e213]:
+                - listitem [ref=e214]:
+                  - link "Términos y Condiciones" [ref=e215] [cursor=pointer]:
+                    - /url: /terms
+                - listitem [ref=e216]:
+                  - link "Políticas de Privacidad" [ref=e217] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e218]:
+                  - link "Política de Uso Aceptable" [ref=e219] [cursor=pointer]:
+                    - /url: /aup
+                - listitem [ref=e220]:
+                  - link "Preferencias de cookies" [ref=e221] [cursor=pointer]:
+                    - /url: javascript:void(0);
+            - generic [ref=e222]:
+              - heading "Soporte" [level=4] [ref=e223]
+              - list [ref=e225]:
+                - paragraph [ref=e226]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                - listitem [ref=e227]:
+                  - link "Messenger" [ref=e228] [cursor=pointer]:
+                    - /url: https://m.me/mareaalcalina
+                - listitem [ref=e229]:
+                  - link "Instagram" [ref=e230] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+            - generic [ref=e234]:
+              - heading "Síguenos" [level=4] [ref=e235]
+              - list [ref=e237]:
+                - listitem [ref=e238]:
+                  - link [ref=e239] [cursor=pointer]:
+                    - /url: https://www.facebook.com/pg/mareaalcalina
+                    - img [ref=e240]
+                - listitem [ref=e241]:
+                  - link "" [ref=e242] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+                    - generic [ref=e243]: 
+                - listitem [ref=e244]:
+                  - link [ref=e245] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@mareaalcalina
+                    - img [ref=e246]
+      - paragraph [ref=e252]: 2026 © Marea Alcalina
+  - banner "Banner de consentimiento de cookies" [ref=e253]:
+    - generic [ref=e255]:
+      - generic [ref=e256]:
+        - generic [ref=e257]: 🍪
+        - generic [ref=e258]:
+          - paragraph [ref=e259]:
+            - strong [ref=e260]: Usamos cookies en este sitio web
+          - paragraph [ref=e261]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e262] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e263]:
+        - button "Personalizar configuración de cookies" [ref=e264] [cursor=pointer]:
+          - img [ref=e265]
+        - button "Aceptar todas las cookies" [ref=e268] [cursor=pointer]: Aceptar todas

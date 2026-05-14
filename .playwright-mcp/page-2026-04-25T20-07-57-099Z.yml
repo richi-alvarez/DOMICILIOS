@@ -1,0 +1,45 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - button "Volver" [ref=e5]:
+          - img [ref=e6]
+        - heading "Opciones de Entrega" [level=1] [ref=e8]
+        - link "Cerrar" [ref=e9] [cursor=pointer]:
+          - /url: /s/demo
+          - img [ref=e10]
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "¿Cómo recibes tu pedido?" [level=2] [ref=e15]
+        - button "Recoger en tienda Recoge tu pedido en el local del comerciante" [ref=e16]:
+          - generic [ref=e17]:
+            - img [ref=e19]
+            - generic [ref=e24]:
+              - paragraph [ref=e25]: Recoger en tienda
+              - paragraph [ref=e26]: Recoge tu pedido en el local del comerciante
+            - img [ref=e28]
+        - button "A domicilio Recibe tu pedido en la dirección que indiques" [ref=e30]:
+          - generic [ref=e31]:
+            - img [ref=e33]
+            - generic [ref=e38]:
+              - paragraph [ref=e39]: A domicilio
+              - paragraph [ref=e40]: Recibe tu pedido en la dirección que indiques
+      - generic [ref=e42]:
+        - heading "Resumen" [level=2] [ref=e43]
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - generic [ref=e46]: Subtotal
+            - generic [ref=e47]: $ 0
+          - generic [ref=e48]:
+            - generic [ref=e49]: Envío
+            - generic [ref=e50]: Gratis
+          - generic [ref=e51]:
+            - generic [ref=e52]: Total
+            - generic [ref=e53]: $ 0
+    - button "Continuar" [ref=e56]:
+      - text: Continuar
+      - img [ref=e57]
+  - region "Notifications alt+T"
+  - alert [ref=e59]
+  - button "Open Next.js Dev Tools" [ref=e65] [cursor=pointer]:
+    - img [ref=e66]

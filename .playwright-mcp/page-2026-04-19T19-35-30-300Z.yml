@@ -1,0 +1,420 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - navigation [ref=e4]:
+        - generic [ref=e6]:
+          - link "Logo" [ref=e8] [cursor=pointer]:
+            - /url: /
+            - img "Logo" [ref=e9]
+          - generic [ref=e10]:
+            - link "Inicio" [ref=e11] [cursor=pointer]:
+              - /url: /
+            - link "Planes" [ref=e12] [cursor=pointer]:
+              - /url: /plans
+            - link "Agencias" [ref=e13] [cursor=pointer]:
+              - /url: /agencies
+            - link "Crear" [ref=e14] [cursor=pointer]:
+              - /url: /menus
+            - button "Recursos" [ref=e16] [cursor=pointer]:
+              - text: Recursos
+              - img [ref=e17]
+            - button "ES" [ref=e20] [cursor=pointer]:
+              - generic [ref=e21]: ES
+              - img [ref=e22]
+            - generic [ref=e24]:
+              - link "Iniciar Sesión" [ref=e25] [cursor=pointer]:
+                - /url: /login
+              - link "Registrarme" [ref=e26] [cursor=pointer]:
+                - /url: /signup
+      - generic [ref=e27]:
+        - generic [ref=e29]:
+          - generic [ref=e35]:
+            - generic [ref=e36]:
+              - generic [ref=e37]:
+                - generic [ref=e38]:
+                  - heading "Crea Catálogos Digitales Sin Complicaciones" [level=1] [ref=e39]
+                  - paragraph [ref=e40]: Tus clientes ven tu catálogo, eligen productos y te hacen pedidos. Así de simple.
+                - generic [ref=e41]:
+                  - link "Comenzar" [ref=e42] [cursor=pointer]:
+                    - /url: /signup
+                    - text: Comenzar
+                    - img [ref=e43]
+                  - button "Ver en Acción" [ref=e47] [cursor=pointer]:
+                    - img [ref=e48]
+                    - text: Ver en Acción
+              - generic [ref=e53]:
+                - generic [ref=e55]:
+                  - generic [ref=e56]: ★★★★★
+                  - generic [ref=e57]: (5/5)
+                  - generic [ref=e58]: Trustpilot
+                - blockquote [ref=e59]: "\"Es excelente la plataforma es intuitiva, muy fácil de manejar y su línea de soporte es espectacular, siempre están atentos a brindar una respuesta.\""
+                - generic [ref=e60]: — Julian Andrés Castro Gil, Dueño de ÁGIL SHOP - Colombia
+            - generic [ref=e62]:
+              - generic [ref=e64]:
+                - img "Captura de pantalla de Boutique Rosa" [ref=e67]
+                - generic [ref=e68]:
+                  - button "Ver catálogo Catálogo Turquesa" [ref=e69] [cursor=pointer]
+                  - button "Ver catálogo Boutique Rosa" [ref=e70] [cursor=pointer]
+                  - button "Ver catálogo Estilo Magenta" [ref=e71] [cursor=pointer]
+                  - button "Ver catálogo Verde Natura" [ref=e72] [cursor=pointer]
+                  - button "Ver catálogo Golden Store" [ref=e73] [cursor=pointer]
+              - generic [ref=e75]:
+                - img [ref=e76]
+                - generic [ref=e78]:
+                  - generic [ref=e79]: "580"
+                  - generic [ref=e80]: pedidos/mes
+              - generic "Notificación de nuevo pedido" [ref=e81]:
+                - generic [ref=e82]:
+                  - paragraph [ref=e85]: Nuevo pedido
+                  - generic [ref=e86]: 🎉
+              - generic [ref=e88]:
+                - img [ref=e89]
+                - generic [ref=e92]: +$14.500/mes
+          - button "Scroll to next section" [ref=e94] [cursor=pointer]:
+            - img [ref=e95]
+        - generic [ref=e100]:
+          - heading "Herramientas Que Impulsan Negocios" [level=2] [ref=e102]
+          - generic [ref=e103]:
+            - generic [ref=e106]:
+              - img [ref=e110]
+              - heading "Detalles de Pedido por WhatsApp" [level=3] [ref=e112]
+              - paragraph [ref=e113]: Recibe automáticamente un mensaje de WhatsApp con el resumen completo del pedido y datos del cliente listos para contactar. Además, alertas con sonido para que nunca pierdas una venta.
+              - img [ref=e116]
+            - generic [ref=e120]:
+              - img [ref=e124]
+              - heading "Pagos Flexibles Integrados" [level=3] [ref=e126]
+              - paragraph [ref=e127]: Acepta pagos con tarjeta a través de Stripe y PayPal, o métodos personalizados como efectivo y transferencias. Todo centralizado en tu panel.
+              - generic [ref=e128]:
+                - img [ref=e130]
+                - img [ref=e133]
+            - generic [ref=e142]:
+              - img [ref=e146]
+              - heading "Múltiples Opciones de Entrega" [level=3] [ref=e148]
+              - paragraph [ref=e149]: En mesa, recogida o domicilio. Tus clientes eligen cómo recibir su pedido, tú recibes toda la información organizada en un solo lugar.
+            - generic [ref=e152]:
+              - img [ref=e156]
+              - heading "Panel de Control Completo" [level=3] [ref=e158]
+              - paragraph [ref=e159]: Filtra por estado, fecha y busca pedidos al instante. Edita pedidos con historial completo de cambios y ver todos sus detalles.
+            - generic [ref=e162]:
+              - img [ref=e166]
+              - heading "Analíticas Que Impulsan Decisiones" [level=3] [ref=e168]
+              - paragraph [ref=e169]: Descubre qué productos vender más, cuándo tienes más ventas y cómo prefieren pagar tus clientes. Todo lo que necesitas para crecer con datos reales.
+            - generic [ref=e178]:
+              - img [ref=e182]
+              - heading "Gestión de Stock Automática" [level=3] [ref=e184]
+              - paragraph [ref=e185]: El inventario se actualiza solo con cada venta. Aplica promociones y descuentos automáticos sin complicaciones.
+          - button "Crear Mi Catálogo Gratis" [ref=e187] [cursor=pointer]:
+            - generic [ref=e188]: Crear Mi Catálogo Gratis
+            - img [ref=e189]
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - heading "Mira la Plataforma en Acción" [level=2] [ref=e195]
+            - paragraph [ref=e196]: Descubre cómo Marea Alcalina transforma negocios con herramientas inteligentes y fáciles de usar
+          - generic [ref=e198]:
+            - generic [ref=e199]:
+              - generic [ref=e202]:
+                - generic [ref=e203]:
+                  - img "Creación de Catálogo con IA" [ref=e205]
+                  - generic [ref=e206]: 1/6
+                - generic [ref=e207]:
+                  - heading "Creación de Catálogo con IA" [level=3] [ref=e208]
+                  - paragraph [ref=e209]: Describe tu negocio y la IA genera automáticamente un catálogo con productos y categorías, para tener un punto de partida en instantes.
+              - generic [ref=e212]:
+                - generic [ref=e213]:
+                  - img "Editor Visual de Bloques" [ref=e215]
+                  - generic [ref=e216]: 2/6
+                - generic [ref=e217]:
+                  - heading "Editor Visual de Bloques" [level=3] [ref=e218]
+                  - paragraph [ref=e219]: Arrastra y suelta elementos para personalizar tu catálogo. 16+ bloques disponibles para crear la experiencia perfecta.
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "Reconocimiento de Imágenes con IA"
+                      - generic: 3/6
+                    - generic:
+                      - heading "Reconocimiento de Imágenes con IA" [level=3]
+                      - paragraph: Sube fotos de productos y la IA completa automáticamente títulos y descripciones.
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "Gestión de Pedidos"
+                      - generic: 4/6
+                    - generic:
+                      - heading "Gestión de Pedidos" [level=3]
+                      - paragraph: Revisa tus pedidos en un solo lugar, con los detalles del cliente y el pedido. Todo organizado y listo para procesar.
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "Conecta tu Dominio y Comparte"
+                      - generic: 5/6
+                    - generic:
+                      - heading "Conecta tu Dominio y Comparte" [level=3]
+                      - paragraph: Conecta tu dominio personalizado, descarga tu código QR para compartir y proyecta una imagen profesional que inspire confianza.
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "Procesamiento de Pagos"
+                      - generic: 6/6
+                    - generic:
+                      - heading "Procesamiento de Pagos" [level=3]
+                      - paragraph: Cobra directamente con tarjeta a través de Stripe o da opciones personalizadas para tus clientes.
+            - generic:
+              - button [ref=e220] [cursor=pointer]:
+                - img [ref=e221]
+              - button [ref=e223] [cursor=pointer]:
+                - img [ref=e224]
+          - generic [ref=e226]:
+            - button [ref=e227] [cursor=pointer]
+            - button [ref=e228] [cursor=pointer]
+            - button [ref=e229] [cursor=pointer]
+            - button [ref=e230] [cursor=pointer]
+            - button [ref=e231] [cursor=pointer]
+            - button [ref=e232] [cursor=pointer]
+        - generic [ref=e234]:
+          - generic [ref=e235]:
+            - heading "Aprende a Vender por WhatsApp" [level=2] [ref=e236]
+            - paragraph [ref=e237]: Guías gratuitas con consejos especializados para tu industria
+          - generic [ref=e238]:
+            - link "Vender Ropa" [ref=e239] [cursor=pointer]:
+              - /url: /como-vender/ropa-por-whatsapp
+              - generic [ref=e240]: 👗
+              - text: Vender Ropa
+            - link "Vender Comida" [ref=e241] [cursor=pointer]:
+              - /url: /como-vender/comida-por-whatsapp
+              - generic [ref=e242]: 🍲
+              - text: Vender Comida
+            - link "Vender Pasteles" [ref=e243] [cursor=pointer]:
+              - /url: /como-vender/pasteles-por-whatsapp
+              - generic [ref=e244]: 🎂
+              - text: Vender Pasteles
+            - link "Vender Cosméticos" [ref=e245] [cursor=pointer]:
+              - /url: /como-vender/cosmeticos-por-whatsapp
+              - generic [ref=e246]: 💄
+              - text: Vender Cosméticos
+            - link "Vender Joyería" [ref=e247] [cursor=pointer]:
+              - /url: /como-vender/joyeria-por-whatsapp
+              - generic [ref=e248]: 💍
+              - text: Vender Joyería
+            - link "Vender Café" [ref=e249] [cursor=pointer]:
+              - /url: /como-vender/cafe-por-whatsapp
+              - generic [ref=e250]: ☕
+              - text: Vender Café
+            - link "Vender Artesanías" [ref=e251] [cursor=pointer]:
+              - /url: /como-vender/artesanias-por-whatsapp
+              - generic [ref=e252]: 🎨
+              - text: Vender Artesanías
+            - link "Vender Zapatos" [ref=e253] [cursor=pointer]:
+              - /url: /como-vender/zapatos-por-whatsapp
+              - generic [ref=e254]: 👟
+              - text: Vender Zapatos
+          - generic [ref=e255]:
+            - link "Ver las 30 guías por industria" [ref=e256] [cursor=pointer]:
+              - /url: /como-vender
+              - text: Ver las 30 guías por industria
+              - img [ref=e257]
+            - generic [ref=e259]: "|"
+            - link "Herramientas Gratuitas" [ref=e260] [cursor=pointer]:
+              - /url: /tools
+            - generic [ref=e261]: "|"
+            - link "Guías y Comparativas" [ref=e262] [cursor=pointer]:
+              - /url: /guides
+            - generic [ref=e263]: "|"
+            - link "Catálogo Digital" [ref=e264] [cursor=pointer]:
+              - /url: /digitalcatalog
+            - generic [ref=e265]: "|"
+            - link "Menú Digital" [ref=e266] [cursor=pointer]:
+              - /url: /digitalmenu
+        - generic [ref=e269]:
+          - generic [ref=e270]:
+            - heading "¿Qué dicen nuestros usuarios?" [level=2] [ref=e271]
+            - paragraph [ref=e272]: Miles de negocios confían en Marea Alcalina para potenciar sus ventas
+            - generic [ref=e273]:
+              - img [ref=e274]
+              - generic [ref=e276]: Reseñas verificadas de Trustpilot
+          - generic [ref=e277]:
+            - generic [ref=e278]:
+              - img [ref=e281]
+              - generic [ref=e283]:
+                - generic [ref=e284]:
+                  - generic [ref=e285]:
+                    - img [ref=e286]
+                    - img [ref=e288]
+                    - img [ref=e290]
+                    - img [ref=e292]
+                    - img [ref=e294]
+                  - paragraph [ref=e296]: "\"Super, me encanta es muy fácil de usar además se ha vuelto una herramienta muy importante de publicidad virtual para mi negocio que recién empiezo, mis clientes quedan muy satisfechos.\""
+                - generic [ref=e297]:
+                  - generic [ref=e298]: FM
+                  - generic [ref=e299]:
+                    - heading "Fernando Martínez" [level=4] [ref=e300]
+                    - paragraph [ref=e301]: Emprendedor - Nicaragua
+            - button [ref=e302] [cursor=pointer]:
+              - img [ref=e303]
+            - button [ref=e305] [cursor=pointer]:
+              - img [ref=e306]
+            - generic [ref=e308]:
+              - button [ref=e309] [cursor=pointer]
+              - button [ref=e310] [cursor=pointer]
+              - button [ref=e311] [cursor=pointer]
+              - button [ref=e312] [cursor=pointer]
+        - generic [ref=e315]:
+          - heading "Empieza hoy mismo" [level=2] [ref=e316]
+          - paragraph [ref=e317]: Únete a miles de negocios que ya reciben pedidos con su catálogo digital en Marea Alcalina
+          - button "Crea tu catálogo gratis" [ref=e319] [cursor=pointer]
+        - generic [ref=e320]:
+          - contentinfo [ref=e321]:
+            - generic [ref=e322]:
+              - link "Marea Alcalina" [ref=e325] [cursor=pointer]:
+                - /url: /
+                - img "Marea Alcalina" [ref=e326]
+              - generic [ref=e327]:
+                - generic [ref=e328]:
+                  - heading "Marea Alcalina" [level=4] [ref=e329]
+                  - list [ref=e331]:
+                    - listitem [ref=e332]:
+                      - link "Inicio" [ref=e333] [cursor=pointer]:
+                        - /url: /
+                    - listitem [ref=e334]:
+                      - link "Planes" [ref=e335] [cursor=pointer]:
+                        - /url: /plans
+                    - listitem [ref=e336]:
+                      - link "Catálogo Digital" [ref=e337] [cursor=pointer]:
+                        - /url: /digitalcatalog
+                    - listitem [ref=e338]:
+                      - link "Menú Digital" [ref=e339] [cursor=pointer]:
+                        - /url: /digitalmenu
+                    - listitem [ref=e340]:
+                      - link "Proveedores Chinos" [ref=e341] [cursor=pointer]:
+                        - /url: /proveedores-chinos
+                    - listitem [ref=e342]:
+                      - link "Panel Principal" [ref=e343] [cursor=pointer]:
+                        - /url: /menus
+                    - listitem [ref=e344]:
+                      - link "Blog" [ref=e345] [cursor=pointer]:
+                        - /url: https://blog.mareaalcalina.com
+                - generic [ref=e346]:
+                  - heading "Herramientas" [level=4] [ref=e347]
+                  - list [ref=e349]:
+                    - listitem [ref=e350]:
+                      - link "Generador de Descripción de Producto" [ref=e351] [cursor=pointer]:
+                        - /url: /tools/product-description-generator
+                    - listitem [ref=e352]:
+                      - link "Generador de Link de WhatsApp" [ref=e353] [cursor=pointer]:
+                        - /url: /tools/whatsapp-link-generator
+                    - listitem [ref=e354]:
+                      - link "Calculadora de Margen de Ganancia" [ref=e355] [cursor=pointer]:
+                        - /url: /tools/profit-margin-calculator
+                    - listitem [ref=e356]:
+                      - link "Generador de Nombres para Negocio" [ref=e357] [cursor=pointer]:
+                        - /url: /tools/business-name-generator
+                    - listitem [ref=e358]:
+                      - link "Generador de QR para Menú" [ref=e359] [cursor=pointer]:
+                        - /url: /tools/qr-code-menu-generator
+                    - listitem [ref=e360]:
+                      - link "Generador de Biografías con IA" [ref=e361] [cursor=pointer]:
+                        - /url: /tools/biography-generator
+                - generic [ref=e362]:
+                  - heading "Guías" [level=4] [ref=e363]
+                  - list [ref=e365]:
+                    - listitem [ref=e366]:
+                      - link "Mejor Plataforma WhatsApp" [ref=e367] [cursor=pointer]:
+                        - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                    - listitem [ref=e368]:
+                      - link "Comparativa de Plataformas" [ref=e369] [cursor=pointer]:
+                        - /url: /guides/marea-alcalina-vs-tiendanube
+                    - listitem [ref=e370]:
+                      - link "Tienda en Línea Gratis" [ref=e371] [cursor=pointer]:
+                        - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                    - listitem [ref=e372]:
+                      - link "Menú Digital Restaurantes" [ref=e373] [cursor=pointer]:
+                        - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                    - listitem [ref=e374]:
+                      - link "Cómo Vender por WhatsApp" [ref=e375] [cursor=pointer]:
+                        - /url: /como-vender
+                    - listitem [ref=e376]:
+                      - link "Vender Ropa por WhatsApp" [ref=e377] [cursor=pointer]:
+                        - /url: /como-vender/ropa-por-whatsapp
+                    - listitem [ref=e378]:
+                      - link "Vender Comida por WhatsApp" [ref=e379] [cursor=pointer]:
+                        - /url: /como-vender/comida-por-whatsapp
+                    - listitem [ref=e380]:
+                      - link "Vender Pasteles por WhatsApp" [ref=e381] [cursor=pointer]:
+                        - /url: /como-vender/pasteles-por-whatsapp
+                    - listitem [ref=e382]:
+                      - link "Vender Cosméticos por WhatsApp" [ref=e383] [cursor=pointer]:
+                        - /url: /como-vender/cosmeticos-por-whatsapp
+                - generic [ref=e384]:
+                  - heading "Información" [level=4] [ref=e385]
+                  - list [ref=e387]:
+                    - listitem [ref=e388]:
+                      - link "Términos y Condiciones" [ref=e389] [cursor=pointer]:
+                        - /url: /terms
+                    - listitem [ref=e390]:
+                      - link "Políticas de Privacidad" [ref=e391] [cursor=pointer]:
+                        - /url: /privacy
+                    - listitem [ref=e392]:
+                      - link "Política de Uso Aceptable" [ref=e393] [cursor=pointer]:
+                        - /url: /aup
+                    - listitem [ref=e394]:
+                      - link "Preferencias de cookies" [ref=e395] [cursor=pointer]:
+                        - /url: javascript:void(0);
+                - generic [ref=e396]:
+                  - heading "Soporte" [level=4] [ref=e397]
+                  - list [ref=e399]:
+                    - paragraph [ref=e400]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                    - listitem [ref=e401]:
+                      - link "Messenger" [ref=e402] [cursor=pointer]:
+                        - /url: https://m.me/mareaalcalina
+                    - listitem [ref=e403]:
+                      - link "Instagram" [ref=e404] [cursor=pointer]:
+                        - /url: https://www.instagram.com/mareaalcalina_/
+                - generic [ref=e408]:
+                  - heading "Síguenos" [level=4] [ref=e409]
+                  - list [ref=e411]:
+                    - listitem [ref=e412]:
+                      - link [ref=e413] [cursor=pointer]:
+                        - /url: https://www.facebook.com/pg/mareaalcalina
+                        - img [ref=e414]
+                    - listitem [ref=e415]:
+                      - link "" [ref=e416] [cursor=pointer]:
+                        - /url: https://www.instagram.com/mareaalcalina_/
+                        - generic [ref=e417]: 
+                    - listitem [ref=e418]:
+                      - link [ref=e419] [cursor=pointer]:
+                        - /url: https://www.tiktok.com/@mareaalcalina
+                        - img [ref=e420]
+          - paragraph [ref=e426]: 2026 © Marea Alcalina
+    - banner "Banner de consentimiento de cookies" [ref=e427]:
+      - generic [ref=e429]:
+        - generic [ref=e430]:
+          - generic [ref=e431]: 🍪
+          - generic [ref=e432]:
+            - paragraph [ref=e433]:
+              - strong [ref=e434]: Usamos cookies en este sitio web
+            - paragraph [ref=e435]:
+              - text: Utilizamos cookies para mejorar tu experiencia.
+              - link "Leer nuestra política de privacidad" [ref=e436] [cursor=pointer]:
+                - /url: /privacy
+                - text: Política de privacidad
+        - generic [ref=e437]:
+          - button "Personalizar configuración de cookies" [ref=e438] [cursor=pointer]:
+            - img [ref=e439]
+          - button "Aceptar todas las cookies" [ref=e442] [cursor=pointer]: Aceptar todas
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e451]:
+      - generic [ref=e452]:
+        - generic:
+          - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+        - img "Video Thumbnail" [ref=e454]
+      - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e456] [cursor=pointer]':
+        - img [ref=e459]
+    - button "Close" [ref=e461] [cursor=pointer]:
+      - img "Click to close video" [ref=e462]

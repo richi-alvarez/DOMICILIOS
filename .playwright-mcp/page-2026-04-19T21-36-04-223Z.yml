@@ -1,0 +1,269 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e248]:
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - button [ref=e253] [cursor=pointer]:
+          - img [ref=e254]
+        - generic [ref=e256]: Sazón Express
+      - generic [ref=e257]:
+        - img [ref=e260]
+        - navigation [ref=e262]:
+          - list [ref=e263]:
+            - listitem [ref=e264]:
+              - list [ref=e265]:
+                - listitem [ref=e266]:
+                  - link "Detalles" [ref=e267] [cursor=pointer]:
+                    - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e268]
+                    - generic [ref=e269]: Detalles
+                - listitem [ref=e270]:
+                  - link "Productos" [ref=e271] [cursor=pointer]:
+                    - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e272]
+                    - generic [ref=e273]: Productos
+                - listitem [ref=e274]:
+                  - link "Diseño" [ref=e275] [cursor=pointer]:
+                    - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e276]
+                    - generic [ref=e277]: Diseño
+                - listitem [ref=e278]:
+                  - link "Pedidos" [ref=e279] [cursor=pointer]:
+                    - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e280]
+                    - generic [ref=e281]: Pedidos
+                - listitem [ref=e282]:
+                  - link "Pagos" [ref=e283] [cursor=pointer]:
+                    - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e284]
+                    - generic [ref=e285]: Pagos
+                - listitem [ref=e286]:
+                  - link "Estadísticas" [ref=e287] [cursor=pointer]:
+                    - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e288]
+                    - generic [ref=e289]: Estadísticas
+                - listitem [ref=e290]:
+                  - link "Checkout" [ref=e291] [cursor=pointer]:
+                    - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e292]
+                    - generic [ref=e293]: Checkout
+                - listitem [ref=e294]:
+                  - link "Avanzado" [ref=e295] [cursor=pointer]:
+                    - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e296]
+                    - generic [ref=e297]: Avanzado
+        - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e300] [cursor=pointer]:
+          - img "Profile" [ref=e301]
+          - generic [ref=e302]:
+            - paragraph [ref=e303]: ricardo saldarriaga
+            - paragraph [ref=e304]: richi.alvarez.9402@gmail.com
+          - img [ref=e305]
+      - button [ref=e307] [cursor=pointer]:
+        - img [ref=e308]
+    - generic [ref=e311]:
+      - generic [ref=e312]: Configuración de Checkout
+      - generic [ref=e313]:
+        - navigation "Tabs" [ref=e314]:
+          - generic [ref=e316]:
+            - button "General" [ref=e317] [cursor=pointer]: General
+            - button "Sucursales" [ref=e319] [cursor=pointer]: Sucursales
+            - button "Mensaje" [ref=e320] [cursor=pointer]: Mensaje
+            - button "Promociones" [ref=e321] [cursor=pointer]: Promociones
+            - button "Términos y Condiciones" [ref=e322] [cursor=pointer]: Términos y Condiciones
+            - button "Estados de Pedido" [ref=e323] [cursor=pointer]: Estados de Pedido
+        - generic [ref=e327]:
+          - generic [ref=e333]:
+            - heading "Destino del pedido" [level=3] [ref=e334]
+            - generic [ref=e336]:
+              - generic [ref=e337]:
+                - heading "Destino" [level=4] [ref=e339]
+                - button "WhatsApp" [expanded] [ref=e343] [cursor=pointer]:
+                  - generic [ref=e344]:
+                    - img [ref=e346]
+                    - text: WhatsApp
+                  - generic:
+                    - img
+              - generic [ref=e350]:
+                - generic [ref=e351]:
+                  - generic [ref=e352]: Código de país
+                  - generic [ref=e356]:
+                    - textbox "Seleccionar código de país" [ref=e357]: Colombia (57)
+                    - generic:
+                      - img
+                - generic [ref=e358]:
+                  - generic [ref=e359]: Número telefónico
+                  - textbox "Escribe un número de teléfono" [ref=e361]: "3184210294"
+            - generic [ref=e362]:
+              - heading "Ubicación del Negocio" [level=3] [ref=e363]
+              - generic [ref=e365]:
+                - paragraph [ref=e368]: Esta dirección se utilizará para el procesamiento de pagos y direcciones para clientes
+                - generic [ref=e370]:
+                  - generic [ref=e371]: Busca la dirección de tu negocio
+                  - generic [ref=e372]:
+                    - textbox "Empieza a escribir la dirección de tu negocio..." [ref=e373]
+                    - generic:
+                      - img
+          - generic [ref=e377]:
+            - heading "Moneda" [level=4] [ref=e378]
+            - generic [ref=e382]:
+              - textbox "Buscar moneda" [ref=e383]: Colombia Peso (COP)
+              - generic:
+                - img
+          - generic [ref=e384]:
+            - heading "Seguimiento de pedidos" [level=3] [ref=e385]
+            - generic [ref=e387]:
+              - generic [ref=e388]:
+                - generic [ref=e389]:
+                  - img [ref=e390]
+                  - heading "Incluir enlace de estado del pedido" [level=4] [ref=e392]
+                - paragraph [ref=e393]: Los clientes reciben un enlace donde pueden ver el estado de su pedido en tiempo real.
+              - switch [ref=e396] [cursor=pointer]
+          - generic [ref=e397]:
+            - heading "Impuestos" [level=3] [ref=e398]
+            - generic [ref=e400]:
+              - generic [ref=e401]:
+                - generic [ref=e402]:
+                  - img [ref=e403]
+                  - heading "Habilitar Impuestos" [level=4] [ref=e405]
+                - paragraph [ref=e406]: Agrega impuestos a tus pedidos. Cada impuesto se calcula sobre el subtotal después de descuentos.
+              - switch [ref=e409] [cursor=pointer]
+          - generic [ref=e410]:
+            - generic [ref=e411]:
+              - heading "Opciones de tipos de pedido" [level=3] [ref=e412]
+              - generic [ref=e413]:
+                - generic [ref=e414]:
+                  - generic [ref=e416]:
+                    - generic [ref=e417]:
+                      - generic [ref=e418]:
+                        - img [ref=e420]
+                        - heading "Entrega a domicilio" [level=4] [ref=e426]
+                      - switch [checked] [ref=e429] [cursor=pointer]
+                    - paragraph [ref=e430]: Antes de crear un pedido, tus clientes deberán ingresar una dirección que se incluirá en el mensaje final del pedido.
+                    - generic [ref=e431]:
+                      - generic [ref=e432]:
+                        - generic [ref=e433]: Precio de entrega (Fijo)
+                        - generic [ref=e434]:
+                          - generic:
+                            - generic: $
+                          - spinbutton [ref=e435]: "0"
+                          - generic:
+                            - generic: COP
+                      - generic [ref=e436]:
+                        - generic [ref=e437]: Distancia máxima de entrega
+                        - generic [ref=e438]:
+                          - spinbutton [ref=e439]
+                          - generic:
+                            - generic: km
+                        - paragraph [ref=e440]: Deja vacío para rango ilimitado. Clientes más allá de esta distancia no pueden pedir entrega a domicilio.
+                      - generic [ref=e441]:
+                        - generic [ref=e442]:
+                          - generic [ref=e443]:
+                            - heading "Precios por distancia" [level=5] [ref=e444]
+                            - generic [ref=e445] [cursor=pointer]:
+                              - img [ref=e446]
+                              - text: BASIC
+                          - paragraph [ref=e448]: Establece diferentes precios según rangos de distancia
+                        - switch [disabled] [ref=e451] [cursor=pointer]
+                      - generic [ref=e452]:
+                        - generic [ref=e453]:
+                          - heading "Solo ubicación manual" [level=5] [ref=e454]
+                          - paragraph [ref=e455]: Pide la dirección de entrega con campos de texto en lugar de Google Maps.
+                        - switch [ref=e458] [cursor=pointer]
+                  - generic [ref=e460]:
+                    - generic [ref=e461]:
+                      - generic [ref=e462]:
+                        - img [ref=e464]
+                        - heading "Recoger en sucursal" [level=4] [ref=e466]
+                      - switch [checked] [ref=e469] [cursor=pointer]
+                    - paragraph [ref=e470]: Los clientes podrán recoger su pedido en tu sucursal.
+                  - generic [ref=e472]:
+                    - generic [ref=e473]:
+                      - generic [ref=e474]:
+                        - img [ref=e476]
+                        - heading "Pedido en mesa" [level=4] [ref=e480]
+                      - switch [ref=e483] [cursor=pointer]
+                    - paragraph [ref=e484]: Se podrá especificar el número de mesa.
+                - generic [ref=e485]:
+                  - heading "Información de cliente" [level=3] [ref=e486]
+                  - generic [ref=e487]:
+                    - generic [ref=e488]:
+                      - switch [checked] [ref=e492] [cursor=pointer]
+                      - generic [ref=e493]:
+                        - img [ref=e495]
+                        - generic [ref=e497]:
+                          - heading "Nombre" [level=4] [ref=e498]
+                          - paragraph [ref=e499]: El nombre del cliente se solicitará al momento de crear el pedido.
+                    - generic [ref=e500]:
+                      - switch [checked] [ref=e504] [cursor=pointer]
+                      - generic [ref=e505]:
+                        - img [ref=e507]
+                        - generic [ref=e509]:
+                          - heading "Teléfono" [level=4] [ref=e510]
+                          - paragraph [ref=e511]: El teléfono del cliente se solicitará al momento de crear el pedido.
+                    - generic [ref=e512]:
+                      - switch [ref=e516] [cursor=pointer]
+                      - generic [ref=e517]:
+                        - img [ref=e519]
+                        - generic [ref=e521]:
+                          - heading "Email" [level=4] [ref=e522]
+                          - paragraph [ref=e523]: El correo del cliente se solicitará al momento de crear el pedido.
+            - generic [ref=e524]:
+              - heading "Horarios de atención" [level=3] [ref=e525]
+              - generic [ref=e526]:
+                - generic [ref=e527]:
+                  - generic [ref=e528]:
+                    - generic [ref=e529]:
+                      - img [ref=e530]
+                      - heading "Activar horarios de atención" [level=4] [ref=e532]
+                    - paragraph [ref=e533]: Cuando está desactivado, tu catálogo acepta pedidos las 24 horas del día, los 7 días de la semana
+                  - switch [ref=e536] [cursor=pointer]
+                - generic [ref=e538]:
+                  - img [ref=e540]
+                  - heading "Actualmente aceptas pedidos las 24 horas" [level=5] [ref=e543]
+            - generic [ref=e544]:
+              - generic [ref=e545]:
+                - heading "Métodos de Pago" [level=3] [ref=e546]
+                - button "Más información" [ref=e547] [cursor=pointer]:
+                  - img [ref=e548]
+                  - text: Más información
+              - generic [ref=e550]:
+                - generic [ref=e551]:
+                  - generic [ref=e552]:
+                    - img [ref=e554]
+                    - generic [ref=e556]:
+                      - heading "Sin opción de pago" [level=4] [ref=e557]
+                      - paragraph [ref=e558]: Omitir la selección de método de pago.
+                  - switch [checked] [ref=e561] [cursor=pointer]
+                - paragraph [ref=e562]: Configura los métodos de pago disponibles para tus clientes durante el proceso del carrito de compras.
+                - generic [ref=e564]:
+                  - generic [ref=e565]: "Agregar método de pago:"
+                  - generic [ref=e566]:
+                    - button "Tarjeta de crédito o débito" [ref=e567] [cursor=pointer]:
+                      - img [ref=e569]
+                      - generic [ref=e570]: Tarjeta de crédito o débito
+                      - img [ref=e572]
+                    - button "Efectivo" [ref=e574] [cursor=pointer]:
+                      - img [ref=e576]
+                      - generic [ref=e579]: Efectivo
+                    - button "Personalizado PRO" [ref=e580] [cursor=pointer]:
+                      - img [ref=e582]
+                      - generic [ref=e585]: Personalizado
+                      - generic [ref=e588]:
+                        - img [ref=e589]
+                        - text: PRO
+                - generic [ref=e592]:
+                  - img [ref=e594]
+                  - generic [ref=e596]:
+                    - heading "Sin opción de pago" [level=3] [ref=e597]
+                    - paragraph [ref=e599]: Los clientes procederán directamente a crear el pedido sin seleccionar un método de pago
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e88]:
+      - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e90]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic:
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+          - img "Video Thumbnail" [ref=e95]
+        - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e97] [cursor=pointer]':
+          - img [ref=e100]
+    - button "Close" [ref=e102] [cursor=pointer]:
+      - img "Click to close video" [ref=e103]

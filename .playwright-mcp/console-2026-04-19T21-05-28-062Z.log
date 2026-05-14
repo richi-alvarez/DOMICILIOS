@@ -1,0 +1,97 @@
+[    3888ms] [WARNING] Unrecognized feature: 'web-share'. @ https://www.google.com/xjs/_/js/k=xjs.s.es_419.UjxdGLCCJOA.2019.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAIgAAAgAQACABAAAAAAAAAAAAAAAAAAIABEAA8AAAAAAAAAAAAAAAAAAAAAAAAAAEEAEAAANAAAAAAAAAAEAAAAQBAAAAAAAAAAAAABgAIAAACCIQAAACgAAAAAAAAAAAAAAAAAAAAAEASAAAAEBJIAADwb_sGaAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAFgAAACAUBgAAAQBBAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAABAAAAAAgAIAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAoAAAAAAA4AAAAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAADQAAAAAAABAAQCAAH4AAAEQAAAAAAAABwAAAAAQCAAAAAAAcAFhBAAAAwAAAACQA8DjARwiOAAAAAAAAAAAAAAAAAAAAAAAAAAIgAIYB5IfEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAASBE2BQAAAAAA2BoAEA/d=0/dg=0/br=1/rs=ACT90oEC3c5m9Dn9iZVD5i7hM3jTCUuM3g/cb=loaded_h_0/m=sy39l,P10Owf,sy34m,gSZvdb,sy694,sy1xq,sy1s2,sy1s0,sy1s1,sy361,sy360,VD4Qme,sy6aq,TmFfhf,sy12z,Dq2Yjb,sy133,sy132,sy130,NVlnE,sy135,sy12h,qmdEUe,sy137,sy136,UqGwg,sy6wq,qcH9Lc,sy8q5,pjDTFb,gCngrf,sy6wp,sy2xl,sA1ssc,sy6wj,khkNpe?cb=121509378&xjs=s4:153
+[    3955ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHJf1-fueGrsCIcd_J1yCe2j-p7SHCTUL-jfFTSQUI&s:0
+[    4717ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin ('https://www.google.com'). @ https://www.youtube.com/s/player/4b0d80ee/www-widgetapi.vflset/www-widgetapi.js:209
+[    4961ms] [WARNING] Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin ('https://www.google.com'). @ https://www.youtube.com/s/player/4b0d80ee/www-widgetapi.vflset/www-widgetapi.js:209
+[    6671ms] [WARNING] Unrecognized feature: 'web-share'. @ https://www.google.com/xjs/_/js/k=xjs.s.es_419.UjxdGLCCJOA.2019.O/am=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAIgAAAgAQACABAAAAAAAAAAAAAAAAAAIABEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAEEAEAAAJAAAAAAAAAAEAAAAABAAAAAAAAAAAAABgAIAAACCIQAAACgAAAAAAAAAAAAAAAAAAAAAEAQAAAAABJIAADwb_sGaAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAFgAAACAUBgAAAQBBAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAABAAAAAAgAIAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAoAAAAAAA4AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAAAAABAAQCAAH4AAAEQAAAAAAAABwAAAAAQCAAAAAAAcAFhBAAAAwAAAACQA8DjARwiKAAAAAAAAAAAAAAAAAAAAAAAAAAIgAIYB5IfEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAASBE2BQAAAAAA2BoAEA/d=0/dg=0/br=1/rs=ACT90oH8ZjGCbCOis-PAHcWhwKjkkGMleg/cb=loaded_h_0/m=sy39l,P10Owf,sy34m,gSZvdb,sy694,sy1xq,sy1s2,sy1s0,sy1s1,sy361,sy360,VD4Qme,sy6aq,TmFfhf,sy12z,Dq2Yjb,sy133,sy132,sy130,NVlnE,sy135,sy12h,qmdEUe,sy137,sy136,UqGwg,sy6wq,qcH9Lc,sy8q5,pjDTFb,gCngrf,sy6wp,sy2xl,sA1ssc,sy6wj,khkNpe?cb=121509378&xjs=s4:153
+[   14731ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'. @ :0
+[   16365ms] [ERROR] ErrorUtils caught an error:
+
+[storage] storage bucket persistence denied (aquire-persistent-storage-denied)
+
+Subsequent non-fatal errors won't be logged; see https://fburl.com/debugjs. {column: 17870, clientTime: 1776632744, extra: Object, guardList: Array(0), hash: pklf0v} @ https://static.whatsapp.net/rsrc.php/v4/yn/r/1Rk4BX8YPYQ.js:78
+[   34714ms] [WARNING] The PerformanceObserver does not support buffered flag with the entryTypes argument. @ https://static.whatsapp.net/rsrc.php/v4/yY/r/F3Bh_vg1DviLWMP-XotM2KHTEFngCYwvvPbjCpseDapUrBGl1VNl-DEa_zHNlDMhh_CeeUTDH2pdaN2BaG9ISuhoe0qnL2dG90HwJ34wthXfB3u63lw_MkRQA.js:169
+[   34780ms] [WARNING] WARNING: Too many active WebGL contexts. Oldest context will be lost. @ https://static.whatsapp.net/rsrc.php/v4imd14/yX/l/es_ES-j/unF840dKIUU3wSHnSoQhqHWl_HC4ZDPfuIonz22i6PJ0cjipda8Wn6_Tw2-UFmJHj8jbafboK91eBOwo1GF5ZPg0T6UuaZmnoJ7Xhot8uhwfQVRllPHE3TYE6kKglZLm8LYQANYbQi0UDlcOmHs77wjK-NIAigV-5idW9GSdHeMgZ91IdDSG-qfIXL9OCHY_hgScfYBxtQCRYCzZs2Hp5uzXNYP2qLHCXmPk0ZWe5VsiJZ0h1pCsviLnUnBmUH3fsmO0wHThdf-K6dZS2nKL1vZ3VY3Y_6uEo5q-4X5wzwCd1xqrhA4lXwHN4rOuWGx.js:313
+[   34784ms] [WARNING] WARNING: Too many active WebGL contexts. Oldest context will be lost. @ https://static.whatsapp.net/rsrc.php/v4imd14/yX/l/es_ES-j/unF840dKIUU3wSHnSoQhqHWl_HC4ZDPfuIonz22i6PJ0cjipda8Wn6_Tw2-UFmJHj8jbafboK91eBOwo1GF5ZPg0T6UuaZmnoJ7Xhot8uhwfQVRllPHE3TYE6kKglZLm8LYQANYbQi0UDlcOmHs77wjK-NIAigV-5idW9GSdHeMgZ91IdDSG-qfIXL9OCHY_hgScfYBxtQCRYCzZs2Hp5uzXNYP2qLHCXmPk0ZWe5VsiJZ0h1pCsviLnUnBmUH3fsmO0wHThdf-K6dZS2nKL1vZ3VY3Y_6uEo5q-4X5wzwCd1xqrhA4lXwHN4rOuWGx.js:313
+[   34841ms] [WARNING] WARNING: Too many active WebGL contexts. Oldest context will be lost. @ https://static.whatsapp.net/rsrc.php/v4imd14/yX/l/es_ES-j/unF840dKIUU3wSHnSoQhqHWl_HC4ZDPfuIonz22i6PJ0cjipda8Wn6_Tw2-UFmJHj8jbafboK91eBOwo1GF5ZPg0T6UuaZmnoJ7Xhot8uhwfQVRllPHE3TYE6kKglZLm8LYQANYbQi0UDlcOmHs77wjK-NIAigV-5idW9GSdHeMgZ91IdDSG-qfIXL9OCHY_hgScfYBxtQCRYCzZs2Hp5uzXNYP2qLHCXmPk0ZWe5VsiJZ0h1pCsviLnUnBmUH3fsmO0wHThdf-K6dZS2nKL1vZ3VY3Y_6uEo5q-4X5wzwCd1xqrhA4lXwHN4rOuWGx.js:313
+[   34849ms] [WARNING] WARNING: Too many active WebGL contexts. Oldest context will be lost. @ https://static.whatsapp.net/rsrc.php/v4imd14/yX/l/es_ES-j/unF840dKIUU3wSHnSoQhqHWl_HC4ZDPfuIonz22i6PJ0cjipda8Wn6_Tw2-UFmJHj8jbafboK91eBOwo1GF5ZPg0T6UuaZmnoJ7Xhot8uhwfQVRllPHE3TYE6kKglZLm8LYQANYbQi0UDlcOmHs77wjK-NIAigV-5idW9GSdHeMgZ91IdDSG-qfIXL9OCHY_hgScfYBxtQCRYCzZs2Hp5uzXNYP2qLHCXmPk0ZWe5VsiJZ0h1pCsviLnUnBmUH3fsmO0wHThdf-K6dZS2nKL1vZ3VY3Y_6uEo5q-4X5wzwCd1xqrhA4lXwHN4rOuWGx.js:313
+[   40448ms] [ERROR] Refused to display 'https://flows.whatsapp.net/' in a frame because it set 'X-Frame-Options' to 'deny'. @ chrome-error://chromewebdata/:0
+[   41011ms] [ERROR] ErrorUtils caught an error:
+
+Failed to find a Haste-supplied config for the QPL event identified by token `106`.
+
+Subsequent non-fatal errors won't be logged; see https://fburl.com/debugjs. {column: 17870, clientTime: 1776632769, extra: Object, guardList: Array(0), hash: ibimoy} @ https://static.whatsapp.net/rsrc.php/v4/yN/r/TBZr39ZITgt.js:77
+[   41048ms] [LOG] 18:58:57.108 os_core_unix. !pjlib 2.13 for POSIX initialized @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41050ms] [LOG] 20:52:01.112 wa_media_api. !init_media_endpt_and_codecs Enter @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41050ms] [LOG] 20:52:01.112    audiodev.c  External audio not supported for this platform - Registering Virtual Audio as drv[0] @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41051ms] [LOG] 20:52:01.112 virtual_audio  virtual_audio_factory_refresh() @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41051ms] [LOG] 20:52:01.112 virtual_audio  Added sound device default @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41051ms] [LOG] 20:52:01.112 virtual_audio  Virtual audio factory initialized @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41051ms] [LOG] 03:20:17.113    audiodev.c  Initialized Audio driver with device count: 1 and driver index:0 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41052ms] [LOG] 03:20:17.113         pjlib  select() I/O Queue created (0xc80818) @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41052ms] [LOG] 09:48:33.114    endpoint.c  worker thread started @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41053ms] [LOG] 09:48:33.114 wa_media_api.  pjmedia_endpt_create = 0 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41053ms] [LOG] 09:48:33.114     wa_opus.c  pjmedia_codec_opus_init start @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41061ms] [LOG] 13:34:41.122     wa_opus.c  Creating opus global state @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41061ms] [LOG] 20:02:57.123     wa_opus.c  pjmedia_codec_opus_init success @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41062ms] [LOG] 20:02:57.123 wa_media_api.  Warning: codec priority set failed for AMR, status: 70006 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41062ms] [LOG] 20:02:57.123 wa_media_api.  Warning: codec priority set failed for PCMU, status: 70006 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41062ms] [LOG] 20:02:57.123 wa_media_api.  init_audio_codecs = 0 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41062ms] [LOG] 20:02:57.123 wa_media_api.  init_media_endpt_and_codecs Exit @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41073ms] [LOG] 12:45:37.133 wa_call_event !call_event_proc started @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   41083ms] [LOG] 08:10:25.136 voip-jsWorker !Thread quitting @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[   78186ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://crashlogs.whatsapp.net/wa_fls_upload_check?type=crashlog&access_token=1063127757113399%7C745146ffa34413f9dbb5469f5370b7af:0
+[  344902ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  344904ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  344905ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  344905ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  344908ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  344908ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  345291ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  345292ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  345302ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  345303ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  345307ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  345307ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  345943ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  345944ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  345946ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  345946ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  345963ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  345963ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  347129ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  347129ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  347137ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  347138ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  347181ms] [ERROR] Access to fetch at 'https://dit.whatsapp.net/deidentified_telemetry' from origin 'https://web.whatsapp.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://web.whatsapp.com/:0
+[  347181ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://dit.whatsapp.net/deidentified_telemetry:0
+[  350551ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'bluetooth'. @ :0
+[  351504ms] [ERROR] ErrorUtils caught an error:
+
+[storage] storage bucket persistence denied (aquire-persistent-storage-denied)
+
+Subsequent non-fatal errors won't be logged; see https://fburl.com/debugjs. {column: 17870, clientTime: 1776633079, extra: Object, guardList: Array(0), hash: uyx5rv} @ https://static.whatsapp.net/rsrc.php/v4/yn/r/1Rk4BX8YPYQ.js:78
+[  351922ms] [WARNING] The PerformanceObserver does not support buffered flag with the entryTypes argument. @ https://static.whatsapp.net/rsrc.php/v4/yY/r/F3Bh_vg1DviLWMP-XotM2KHTEFngCYwvvPbjCpseDapUrBGl1VNl-DEa_zHNlDMhh_CeeUTDH2pdaN2BaG9ISuhoe0qnL2dG90HwJ34wthXfB3u63lw_MkRQA.js:169
+[  355130ms] [ERROR] ErrorUtils caught an error:
+
+Failed to find a Haste-supplied config for the QPL event identified by token `106`.
+
+Subsequent non-fatal errors won't be logged; see https://fburl.com/debugjs. {column: 17870, clientTime: 1776633083, extra: Object, guardList: Array(0), hash: ibimoy} @ https://static.whatsapp.net/rsrc.php/v4/yN/r/TBZr39ZITgt.js:77
+[  355198ms] [LOG] 05:44:11.258 os_core_unix. !pjlib 2.13 for POSIX initialized @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355199ms] [LOG] 18:40:43.260 wa_media_api. !init_media_endpt_and_codecs Enter @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355199ms] [LOG] 18:40:43.260    audiodev.c  External audio not supported for this platform - Registering Virtual Audio as drv[0] @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355199ms] [LOG] 01:08:59.261 virtual_audio  virtual_audio_factory_refresh() @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355199ms] [LOG] 01:08:59.261 virtual_audio  Added sound device default @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355200ms] [LOG] 01:08:59.261 virtual_audio  Virtual audio factory initialized @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355200ms] [LOG] 01:08:59.261    audiodev.c  Initialized Audio driver with device count: 1 and driver index:0 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355200ms] [LOG] 01:08:59.261         pjlib  select() I/O Queue created (0xc80818) @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355201ms] [LOG] 14:05:31.263    endpoint.c  worker thread started @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355201ms] [LOG] 14:05:31.263 wa_media_api.  pjmedia_endpt_create = 0 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355202ms] [LOG] 14:05:31.263     wa_opus.c  pjmedia_codec_opus_init start @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355206ms] [LOG] 15:58:35.267     wa_opus.c  Creating opus global state @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355206ms] [LOG] 22:26:51.268     wa_opus.c  pjmedia_codec_opus_init success @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355206ms] [LOG] 22:26:51.268 wa_media_api.  Warning: codec priority set failed for AMR, status: 70006 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355206ms] [LOG] 22:26:51.268 wa_media_api.  Warning: codec priority set failed for PCMU, status: 70006 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355206ms] [LOG] 22:26:51.268 wa_media_api.  init_audio_codecs = 0 @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355206ms] [LOG] 22:26:51.268 wa_media_api.  init_media_endpt_and_codecs Exit @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355218ms] [LOG] 00:19:55.272 voip-jsWorker !Thread quitting @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4
+[  355221ms] [LOG] 00:19:55.272 wa_call_event !call_event_proc started @ https://static.whatsapp.net/rsrc.php/v4/y4/r/loDkp75wDUQ.js:4

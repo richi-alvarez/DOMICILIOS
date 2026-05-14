@@ -1,0 +1,162 @@
+- generic [ref=e2]:
+  - generic [ref=e419]:
+    - generic [ref=e423]:
+      - generic [ref=e426]:
+        - generic [ref=e427]:
+          - button [ref=e428] [cursor=pointer]:
+            - img [ref=e429]
+          - generic [ref=e431]: Sazón Express
+        - generic [ref=e432]:
+          - img [ref=e435]
+          - navigation [ref=e437]:
+            - list [ref=e438]:
+              - listitem [ref=e439]:
+                - list [ref=e440]:
+                  - listitem [ref=e441]:
+                    - link "Detalles" [ref=e442] [cursor=pointer]:
+                      - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&onboarding=new&id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e443]
+                      - generic [ref=e444]: Detalles
+                  - listitem [ref=e445]:
+                    - link "Productos" [ref=e446] [cursor=pointer]:
+                      - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&onboarding=new&id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e447]
+                      - generic [ref=e448]: Productos
+                  - listitem [ref=e449]:
+                    - link "Diseño" [ref=e450] [cursor=pointer]:
+                      - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6&onboarding=new
+                      - img [ref=e451]
+                      - generic [ref=e452]: Diseño
+                  - listitem [ref=e453]:
+                    - link "Estadísticas" [ref=e454] [cursor=pointer]:
+                      - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&onboarding=new&id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e455]
+                      - generic [ref=e456]: Estadísticas
+                  - listitem [ref=e457]:
+                    - link "Pedidos" [ref=e458] [cursor=pointer]:
+                      - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&onboarding=new&id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e459]
+                      - generic [ref=e460]: Pedidos
+                  - listitem [ref=e461]:
+                    - link "Carrito" [ref=e462] [cursor=pointer]:
+                      - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&onboarding=new&id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e463]
+                      - generic [ref=e464]: Carrito
+                  - listitem [ref=e465]:
+                    - link "Avanzado" [ref=e466] [cursor=pointer]:
+                      - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&onboarding=new&id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e467]
+                      - generic [ref=e468]: Avanzado
+          - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e471] [cursor=pointer]:
+            - img "Profile" [ref=e472]
+            - generic [ref=e473]:
+              - paragraph [ref=e474]: ricardo saldarriaga
+              - paragraph [ref=e475]: richi.alvarez.9402@gmail.com
+            - img [ref=e476]
+        - button [ref=e478] [cursor=pointer]:
+          - img [ref=e479]
+      - generic [ref=e481]:
+        - generic [ref=e482]:
+          - generic [ref=e483]: Comparte
+          - generic [ref=e484]:
+            - generic [ref=e575]:
+              - button "Personalizar" [ref=e576] [cursor=pointer]:
+                - img [ref=e577]
+                - text: Personalizar
+                - img [ref=e579]
+              - button "PNG" [ref=e581] [cursor=pointer]:
+                - img [ref=e582]
+                - text: PNG
+              - button "SVG" [ref=e584] [cursor=pointer]:
+                - img [ref=e585]
+                - text: SVG
+              - button "Imprimir QR" [ref=e587] [cursor=pointer]:
+                - img [ref=e588]
+                - text: Imprimir QR
+            - generic [ref=e491]:
+              - generic [ref=e492]:
+                - generic [ref=e493]: "URL:"
+                - generic [ref=e494]:
+                  - link "https://marea.pro/tienda-demo-clon" [ref=e495] [cursor=pointer]:
+                    - /url: https://marea.pro/tienda-demo-clon
+                  - button "Copiar enlace" [ref=e496] [cursor=pointer]:
+                    - img [ref=e497]
+              - generic [ref=e499]:
+                - button "Visitar" [ref=e500] [cursor=pointer]:
+                  - img [ref=e501]
+                  - text: Visitar
+                - button "Editar Diseño" [ref=e504] [cursor=pointer]:
+                  - img [ref=e505]
+                  - text: Editar Diseño
+              - generic [ref=e507] [cursor=pointer]:
+                - text: ¡Conecta tu dominio personalizado aquí!
+                - text: ej. www.mipagina.com
+        - generic [ref=e508]:
+          - generic [ref=e509]:
+            - generic [ref=e510]: Información
+            - generic [ref=e511]:
+              - generic [ref=e512]:
+                - generic [ref=e513]: "Nombre:"
+                - generic [ref=e514]:
+                  - generic [ref=e515]: Sazón Express
+                  - button [ref=e516] [cursor=pointer]:
+                    - img [ref=e517]
+              - generic [ref=e519]:
+                - generic [ref=e520]: Fecha de creación
+                - text: 19 abr 2026
+              - generic [ref=e521]:
+                - generic [ref=e522]: "Última actualización:"
+                - text: 19 abr 2026
+              - generic [ref=e523]:
+                - generic [ref=e524]: "Total de visitas:"
+                - text: "0"
+          - generic [ref=e525]:
+            - generic [ref=e526]: SEO y Vista Previa
+            - button "Logo y SEO" [ref=e529] [cursor=pointer]:
+              - img [ref=e530]
+              - generic [ref=e532]: Logo y SEO
+        - link "Califícanos en Trustpilot" [ref=e534] [cursor=pointer]:
+          - /url: https://es.trustpilot.com/review/mareaalcalina.com
+          - text: Califícanos en
+          - img "Trustpilot" [ref=e538]
+    - generic [ref=e543]:
+      - generic [ref=e546]:
+        - generic [ref=e547]: 🎯
+        - heading "¡Hora de probar tu página!" [level=2] [ref=e548]
+        - paragraph [ref=e549]: Realiza tu primer pedido de prueba
+      - generic [ref=e550]:
+        - generic [ref=e551]:
+          - generic [ref=e552]:
+            - generic [ref=e554]: 📱
+            - generic [ref=e555]:
+              - heading "¿Cómo probar?" [level=3] [ref=e556]
+              - paragraph [ref=e557]: Puedes escanear el código QR con un teléfono o haz clic en el botón 'Visitar' para ver tu página como la verán tus clientes.
+          - generic [ref=e558]:
+            - generic [ref=e560]: 🛒
+            - generic [ref=e561]:
+              - heading "¿Qué hacer ahora?" [level=3] [ref=e562]
+              - paragraph [ref=e563]: Navega por tu página, agrega productos al carrito y completa un pedido de prueba. Esto te ayudará a entender la experiencia de tus clientes.
+        - generic [ref=e565]:
+          - generic [ref=e566]: Progreso
+          - generic [ref=e567]: 2/4 pasos
+        - button "Entendido, voy a probar" [ref=e571] [cursor=pointer]
+  - banner "Banner de consentimiento de cookies" [ref=e42]:
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]: 🍪
+        - generic [ref=e47]:
+          - paragraph [ref=e48]:
+            - strong [ref=e49]: Usamos cookies en este sitio web
+          - paragraph [ref=e50]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e51] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e52]:
+        - button "Personalizar configuración de cookies" [ref=e53] [cursor=pointer]:
+          - img [ref=e54]
+        - button "Aceptar todas las cookies" [ref=e57] [cursor=pointer]: Aceptar todas
+  - generic [ref=e73] [cursor=pointer]:
+    - generic [ref=e75]: 60%
+    - generic [ref=e76]: Primeros Pasos
+    - img [ref=e77]

@@ -1,0 +1,295 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e5]:
+      - link [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img [ref=e8]
+      - generic [ref=e9]:
+        - link [ref=e10] [cursor=pointer]:
+          - /url: /menus
+          - text: Panel Principal
+        - button [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+          - generic [ref=e15]: "1"
+        - button [ref=e17] [cursor=pointer]:
+          - img [ref=e18]
+    - generic [ref=e24]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - generic [ref=e30]:
+            - img [ref=e31]
+            - generic [ref=e34]: "45"
+          - generic [ref=e35]:
+            - heading [level=3] [ref=e36]: Qué sigue
+            - paragraph [ref=e37]: Sazón Express
+        - generic [ref=e39]:
+          - button [ref=e40] [cursor=pointer]:
+            - generic [ref=e41]:
+              - img [ref=e43]
+              - generic [ref=e45]:
+                - heading [level=4] [ref=e47]: Agrega fotos
+                - paragraph [ref=e48]: 5 productos sin foto. Los catálogos con fotos reciben 3x más órdenes.
+              - img [ref=e49]
+          - button [ref=e51] [cursor=pointer]:
+            - generic [ref=e52]:
+              - img [ref=e54]
+              - generic [ref=e56]:
+                - heading [level=4] [ref=e58]: Comparte tu catálogo
+                - paragraph [ref=e59]: Comparte tu enlace en redes sociales para atraer clientes.
+              - img [ref=e60]
+          - button [ref=e62] [cursor=pointer]:
+            - generic [ref=e63]:
+              - img [ref=e65]
+              - generic [ref=e67]:
+                - heading [level=4] [ref=e69]: Crece tu catálogo
+                - paragraph [ref=e70]: Tienes 5 productos. Los catálogos con 10+ productos generan más ventas.
+              - img [ref=e71]
+      - generic [ref=e77]:
+        - generic [ref=e80]:
+          - button [ref=e81] [cursor=pointer]:
+            - img [ref=e82]
+            - generic [ref=e85]: "45"
+          - generic [ref=e87]: CreciendoVer detalles
+        - generic [ref=e88] [cursor=pointer]:
+          - img [ref=e90]
+          - generic [ref=e92]:
+            - generic [ref=e93]: Sazón Express
+            - generic [ref=e95]:
+              - button [ref=e96]: Editar
+              - button [ref=e97]: Visitar
+              - button [ref=e98]: Duplicar
+        - generic [ref=e101]:
+          - button [ref=e102] [cursor=pointer]:
+            - img [ref=e103]
+            - text: "Visitas:"
+          - button [ref=e106] [cursor=pointer]: "1"
+      - button [ref=e108] [cursor=pointer]:
+        - img [ref=e109]
+    - generic [ref=e111]:
+      - contentinfo [ref=e112]:
+        - generic [ref=e113]:
+          - link [ref=e116] [cursor=pointer]:
+            - /url: /
+            - img [ref=e117]
+          - generic [ref=e118]:
+            - generic [ref=e119]:
+              - heading [level=4] [ref=e120]: Marea Alcalina
+              - list [ref=e122]:
+                - listitem [ref=e123]:
+                  - link [ref=e124] [cursor=pointer]:
+                    - /url: /
+                    - text: Inicio
+                - listitem [ref=e125]:
+                  - link [ref=e126] [cursor=pointer]:
+                    - /url: /plans
+                    - text: Planes
+                - listitem [ref=e127]:
+                  - link [ref=e128] [cursor=pointer]:
+                    - /url: /digitalcatalog
+                    - text: Catálogo Digital
+                - listitem [ref=e129]:
+                  - link [ref=e130] [cursor=pointer]:
+                    - /url: /digitalmenu
+                    - text: Menú Digital
+                - listitem [ref=e131]:
+                  - link [ref=e132] [cursor=pointer]:
+                    - /url: /proveedores-chinos
+                    - text: Proveedores Chinos
+                - listitem [ref=e133]:
+                  - link [ref=e134] [cursor=pointer]:
+                    - /url: /menus
+                    - text: Panel Principal
+                - listitem [ref=e135]:
+                  - link [ref=e136] [cursor=pointer]:
+                    - /url: https://blog.mareaalcalina.com
+                    - text: Blog
+            - generic [ref=e137]:
+              - heading [level=4] [ref=e138]: Herramientas
+              - list [ref=e140]:
+                - listitem [ref=e141]:
+                  - link [ref=e142] [cursor=pointer]:
+                    - /url: /tools/product-description-generator
+                    - text: Generador de Descripción de Producto
+                - listitem [ref=e143]:
+                  - link [ref=e144] [cursor=pointer]:
+                    - /url: /tools/whatsapp-link-generator
+                    - text: Generador de Link de WhatsApp
+                - listitem [ref=e145]:
+                  - link [ref=e146] [cursor=pointer]:
+                    - /url: /tools/profit-margin-calculator
+                    - text: Calculadora de Margen de Ganancia
+                - listitem [ref=e147]:
+                  - link [ref=e148] [cursor=pointer]:
+                    - /url: /tools/business-name-generator
+                    - text: Generador de Nombres para Negocio
+                - listitem [ref=e149]:
+                  - link [ref=e150] [cursor=pointer]:
+                    - /url: /tools/qr-code-menu-generator
+                    - text: Generador de QR para Menú
+                - listitem [ref=e151]:
+                  - link [ref=e152] [cursor=pointer]:
+                    - /url: /tools/biography-generator
+                    - text: Generador de Biografías con IA
+            - generic [ref=e153]:
+              - heading [level=4] [ref=e154]: Guías
+              - list [ref=e156]:
+                - listitem [ref=e157]:
+                  - link [ref=e158] [cursor=pointer]:
+                    - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                    - text: Mejor Plataforma WhatsApp
+                - listitem [ref=e159]:
+                  - link [ref=e160] [cursor=pointer]:
+                    - /url: /guides/marea-alcalina-vs-tiendanube
+                    - text: Comparativa de Plataformas
+                - listitem [ref=e161]:
+                  - link [ref=e162] [cursor=pointer]:
+                    - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                    - text: Tienda en Línea Gratis
+                - listitem [ref=e163]:
+                  - link [ref=e164] [cursor=pointer]:
+                    - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                    - text: Menú Digital Restaurantes
+                - listitem [ref=e165]:
+                  - link [ref=e166] [cursor=pointer]:
+                    - /url: /como-vender
+                    - text: Cómo Vender por WhatsApp
+                - listitem [ref=e167]:
+                  - link [ref=e168] [cursor=pointer]:
+                    - /url: /como-vender/ropa-por-whatsapp
+                    - text: Vender Ropa por WhatsApp
+                - listitem [ref=e169]:
+                  - link [ref=e170] [cursor=pointer]:
+                    - /url: /como-vender/comida-por-whatsapp
+                    - text: Vender Comida por WhatsApp
+                - listitem [ref=e171]:
+                  - link [ref=e172] [cursor=pointer]:
+                    - /url: /como-vender/pasteles-por-whatsapp
+                    - text: Vender Pasteles por WhatsApp
+                - listitem [ref=e173]:
+                  - link [ref=e174] [cursor=pointer]:
+                    - /url: /como-vender/cosmeticos-por-whatsapp
+                    - text: Vender Cosméticos por WhatsApp
+            - generic [ref=e175]:
+              - heading [level=4] [ref=e176]: Información
+              - list [ref=e178]:
+                - listitem [ref=e179]:
+                  - link [ref=e180] [cursor=pointer]:
+                    - /url: /terms
+                    - text: Términos y Condiciones
+                - listitem [ref=e181]:
+                  - link [ref=e182] [cursor=pointer]:
+                    - /url: /privacy
+                    - text: Políticas de Privacidad
+                - listitem [ref=e183]:
+                  - link [ref=e184] [cursor=pointer]:
+                    - /url: /aup
+                    - text: Política de Uso Aceptable
+                - listitem [ref=e185]:
+                  - link [ref=e186] [cursor=pointer]:
+                    - /url: javascript:void(0);
+                    - text: Preferencias de cookies
+            - generic [ref=e187]:
+              - heading [level=4] [ref=e188]: Soporte
+              - list [ref=e190]:
+                - paragraph [ref=e191]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                - listitem [ref=e192]:
+                  - link [ref=e193] [cursor=pointer]:
+                    - /url: https://m.me/mareaalcalina
+                    - text: Messenger
+                - listitem [ref=e194]:
+                  - link [ref=e195] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+                    - text: Instagram
+            - generic [ref=e199]:
+              - heading [level=4] [ref=e200]: Síguenos
+              - list [ref=e202]:
+                - listitem [ref=e203]:
+                  - link [ref=e204] [cursor=pointer]:
+                    - /url: https://www.facebook.com/pg/mareaalcalina
+                    - img [ref=e205]
+                - listitem [ref=e206]:
+                  - link [ref=e207] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+                    - generic [ref=e208]: 
+                - listitem [ref=e209]:
+                  - link [ref=e210] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@mareaalcalina
+                    - img [ref=e211]
+      - paragraph [ref=e217]: 2026 © Marea Alcalina
+  - dialog [ref=e221]:
+    - generic [ref=e225]:
+      - heading "Datos de tu negocio" [level=2] [ref=e226]
+      - generic [ref=e227]:
+        - generic [ref=e228]: Escribe el nombre de tu negocio
+        - textbox "Escribe el nombre de tu negocio" [active] [ref=e229]
+      - generic [ref=e230]:
+        - generic [ref=e231]: Selecciona una categoría
+        - combobox "Selecciona una categoría" [ref=e232]:
+          - option "Agencia de Marketing"
+          - option "Alimentos en la despensa"
+          - option "Artículos de oficina"
+          - option "Artículos para el hogar"
+          - option "Bebidas Alcohólicas"
+          - option "Bebidas no alcohólicas"
+          - option "Belleza y cuidado personal"
+          - option "Celulares"
+          - option "Comida a domicilio"
+          - option "Consolas y videojuegos"
+          - option "Cultura"
+          - option "Deportes"
+          - option "Electrónicos"
+          - option "Electrodomésticos"
+          - option "Farmacia"
+          - option "Herramientas"
+          - option "Infantil"
+          - option "Instrumentos musicales"
+          - option "Joyería"
+          - option "Juguetes"
+          - option "Mejora del hogar"
+          - option "Moda"
+          - option "Muebles y decoración del hogar"
+          - option "Mascotas"
+          - option "Refacciones y autopartes"
+          - option "Restaurante"
+          - option "Servicios profesionales"
+          - option "Vehículos"
+          - option "Otro"
+      - generic [ref=e233]:
+        - generic [ref=e234]: ¿Cuál es el ingreso anual?
+        - combobox "¿Cuál es el ingreso anual?" [ref=e235]:
+          - option "<$1,000 USD"
+          - option "$1,001 - $5,000 USD"
+          - option "$5,001 - $10,000 USD"
+          - option "$10,001 - $100,000 USD"
+          - option "$100,000 - $1,000,000 USD"
+          - option "$1,000,001 - $10,000,000 USD"
+          - option "> $10,000,001"
+      - generic [ref=e236]:
+        - generic [ref=e237]: ¿Cómo nos encontraste?
+        - combobox "¿Cómo nos encontraste?" [ref=e238]:
+          - option "ChatGPT"
+          - option "Claude"
+          - option "Gemini"
+          - option "Perplexity"
+          - option "Otro Chat de IA"
+          - option "Facebook"
+          - option "Google"
+          - option "Instagram"
+          - option "LinkedIn"
+          - option "Pinterest"
+          - option "Recomendación"
+          - option "Reddit"
+          - option "Threads"
+          - option "TikTok"
+          - option "X (Twitter)"
+          - option "YouTube"
+          - option "Otro"
+      - button "Continuar" [disabled] [ref=e240]
+  - alert [ref=e242]:
+    - generic [ref=e244]:
+      - generic [ref=e245]:
+        - img [ref=e247]
+        - paragraph [ref=e250]: Alguien acaba de visitar tu catálogo. Tu negocio está siendo descubierto.
+      - button [ref=e251] [cursor=pointer]:
+        - img [ref=e252]
+    - text: "!"

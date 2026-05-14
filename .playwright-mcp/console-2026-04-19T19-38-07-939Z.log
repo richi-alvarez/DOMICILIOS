@@ -1,0 +1,6 @@
+[     497ms] [LOG] SweetAlert2 success icon globally overridden @ https://mareaalcalina.com/main.c92896007a79b0d8.js:0
+[    1485ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/digitalcatalog:0
+[    2428ms] [ERROR] Duplicate DOM ID found for container "video-button". Changing it to "wistia-opjeaf7k5s-1" to avoid issues. JSHandle@node @ https://fast.wistia.com/assets/external/E-v1.js:0
+[    5469ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/digitalcatalog:0
+[   10471ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/digitalcatalog:0
+[   15475ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/digitalcatalog:0

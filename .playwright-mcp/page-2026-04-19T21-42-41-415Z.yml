@@ -1,0 +1,138 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e248]:
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - button [ref=e253] [cursor=pointer]:
+          - img [ref=e254]
+        - generic [ref=e256]: Sazón Express
+      - generic [ref=e257]:
+        - img [ref=e260]
+        - navigation [ref=e262]:
+          - list [ref=e263]:
+            - listitem [ref=e264]:
+              - list [ref=e265]:
+                - listitem [ref=e266]:
+                  - link "Detalles" [ref=e267] [cursor=pointer]:
+                    - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e268]
+                    - generic [ref=e269]: Detalles
+                - listitem [ref=e270]:
+                  - link "Productos" [ref=e271] [cursor=pointer]:
+                    - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e272]
+                    - generic [ref=e273]: Productos
+                - listitem [ref=e274]:
+                  - link "Diseño" [ref=e275] [cursor=pointer]:
+                    - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e276]
+                    - generic [ref=e277]: Diseño
+                - listitem [ref=e278]:
+                  - link "Pedidos" [ref=e279] [cursor=pointer]:
+                    - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e280]
+                    - generic [ref=e281]: Pedidos
+                - listitem [ref=e282]:
+                  - link "Pagos" [ref=e283] [cursor=pointer]:
+                    - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e284]
+                    - generic [ref=e285]: Pagos
+                - listitem [ref=e286]:
+                  - link "Estadísticas" [ref=e287] [cursor=pointer]:
+                    - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e288]
+                    - generic [ref=e289]: Estadísticas
+                - listitem [ref=e290]:
+                  - link "Checkout" [ref=e291] [cursor=pointer]:
+                    - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e292]
+                    - generic [ref=e293]: Checkout
+                - listitem [ref=e294]:
+                  - link "Avanzado" [ref=e295] [cursor=pointer]:
+                    - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e296]
+                    - generic [ref=e297]: Avanzado
+        - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e300] [cursor=pointer]:
+          - img "Profile" [ref=e301]
+          - generic [ref=e302]:
+            - paragraph [ref=e303]: ricardo saldarriaga
+            - paragraph [ref=e304]: richi.alvarez.9402@gmail.com
+          - img [ref=e305]
+      - button [ref=e307] [cursor=pointer]:
+        - img [ref=e308]
+    - generic [ref=e311]:
+      - generic [ref=e312]: Configuración de Checkout
+      - generic [ref=e313]:
+        - navigation "Tabs" [ref=e314]:
+          - generic [ref=e316]:
+            - button "General" [ref=e317] [cursor=pointer]: General
+            - button "Sucursales" [ref=e319] [cursor=pointer]: Sucursales
+            - button "Mensaje" [ref=e320] [cursor=pointer]: Mensaje
+            - button "Promociones" [ref=e321] [cursor=pointer]: Promociones
+            - button "Términos y Condiciones" [ref=e322] [cursor=pointer]: Términos y Condiciones
+            - button "Estados de Pedido" [ref=e323] [cursor=pointer]: Estados de Pedido
+        - generic [ref=e884]:
+          - generic [ref=e885]:
+            - generic [ref=e886]:
+              - heading "Flujo de Estados de Pedido" [level=3] [ref=e887]
+              - paragraph [ref=e888]: Define las etapas por las que pasa un pedido desde la recepción hasta la entrega. Arrastra para reordenar.
+            - button "Restaurar valores predeterminados" [ref=e889] [cursor=pointer]
+          - generic [ref=e891]:
+            - generic [ref=e894]: Recibido
+            - generic [ref=e898]: En Preparación
+            - generic [ref=e902]: Listo
+            - generic [ref=e906]: Entregado
+          - generic [ref=e907]:
+            - generic [ref=e909]:
+              - img [ref=e912]
+              - generic [ref=e915]: Recibido
+              - generic [ref=e917]: Predeterminado
+              - generic [ref=e918]:
+                - button [ref=e919] [cursor=pointer]:
+                  - img [ref=e920]
+                - button [ref=e922] [cursor=pointer]:
+                  - img [ref=e923]
+            - generic [ref=e926]:
+              - img [ref=e929]
+              - generic [ref=e932]: En Preparación
+              - generic [ref=e933]:
+                - button [ref=e934] [cursor=pointer]:
+                  - img [ref=e935]
+                - button [ref=e937] [cursor=pointer]:
+                  - img [ref=e938]
+            - generic [ref=e941]:
+              - img [ref=e944]
+              - generic [ref=e947]: Listo
+              - generic [ref=e948]:
+                - button [ref=e949] [cursor=pointer]:
+                  - img [ref=e950]
+                - button [ref=e952] [cursor=pointer]:
+                  - img [ref=e953]
+            - generic [ref=e956]:
+              - img [ref=e959]
+              - generic [ref=e962]: Entregado
+              - generic [ref=e964]: Final
+              - generic [ref=e965]:
+                - button [ref=e966] [cursor=pointer]:
+                  - img [ref=e967]
+                - button [ref=e969] [cursor=pointer]:
+                  - img [ref=e970]
+          - button "+ Agregar estado" [ref=e973] [cursor=pointer]
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e88]:
+      - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e90]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic:
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+          - img "Video Thumbnail" [ref=e95]
+        - generic:
+          - generic:
+            - generic:
+              - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e876] [cursor=pointer]':
+                - img [ref=e879]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+    - button "Close" [ref=e102] [cursor=pointer]:
+      - img "Click to close video" [ref=e103]

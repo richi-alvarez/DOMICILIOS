@@ -1,0 +1,131 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "La Tienda Demo 🍔" [ref=e5] [cursor=pointer]:
+          - /url: /s/demo
+        - generic [ref=e6]:
+          - button "Buscar" [ref=e7]:
+            - img [ref=e8]
+          - link "Carrito" [ref=e11] [cursor=pointer]:
+            - /url: /s/demo/cart
+            - img [ref=e12]
+            - generic [ref=e182]: "1"
+    - generic [ref=e18]:
+      - img [ref=e20]
+      - generic [ref=e25]:
+        - heading "La Tienda Demo 🍔" [level=1] [ref=e26]
+        - paragraph [ref=e27]: Prueba el storefront sin necesidad de base de datos
+    - generic [ref=e28]:
+      - generic [ref=e30]:
+        - link "Todos" [ref=e31] [cursor=pointer]:
+          - /url: /s/demo
+          - img [ref=e32]
+          - text: Todos
+        - link "Hamburguesas" [ref=e37] [cursor=pointer]:
+          - /url: /s/demo?cat=hamburguesas
+        - link "Bebidas" [ref=e38] [cursor=pointer]:
+          - /url: /s/demo?cat=bebidas
+        - link "Postres" [ref=e39] [cursor=pointer]:
+          - /url: /s/demo?cat=postres
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - link [ref=e42] [cursor=pointer]:
+            - /url: /s/demo/p/hamburguesa-clasica
+            - img [ref=e44]
+          - generic [ref=e51]: "-18%"
+          - generic [ref=e52]:
+            - link "Hamburguesa Clásica" [ref=e53] [cursor=pointer]:
+              - /url: /s/demo/p/hamburguesa-clasica
+              - heading "Hamburguesa Clásica" [level=3] [ref=e54]
+            - paragraph [ref=e55]: Carne 100% res, lechuga, tomate, cebolla caramelizada y salsa especial de la casa.
+            - generic [ref=e56]:
+              - generic [ref=e57]:
+                - generic [ref=e58]: $ 18.000
+                - generic [ref=e59]: $ 22.000
+              - generic [ref=e183]:
+                - button "Disminuir cantidad" [ref=e184]:
+                  - img [ref=e185]
+                - generic [ref=e186]: "1"
+                - button "Aumentar cantidad" [ref=e187]:
+                  - img [ref=e188]
+        - generic [ref=e65]:
+          - link [ref=e66] [cursor=pointer]:
+            - /url: /s/demo/p/hamburguesa-doble
+            - img [ref=e68]
+          - generic [ref=e75]:
+            - link "Hamburguesa Doble" [ref=e76] [cursor=pointer]:
+              - /url: /s/demo/p/hamburguesa-doble
+              - heading "Hamburguesa Doble" [level=3] [ref=e77]
+            - paragraph [ref=e78]: Doble carne, doble queso, tocino crocante y nuestra salsa secreta.
+            - generic [ref=e79]:
+              - generic [ref=e81]: $ 26.000
+              - button "Agregar" [ref=e82]:
+                - img [ref=e83]
+                - text: Agregar
+        - generic [ref=e87]:
+          - link [ref=e88] [cursor=pointer]:
+            - /url: /s/demo/p/veggie-burger
+            - img [ref=e90]
+          - generic [ref=e97]:
+            - link "Veggie Burger" [ref=e98] [cursor=pointer]:
+              - /url: /s/demo/p/veggie-burger
+              - heading "Veggie Burger" [level=3] [ref=e99]
+            - paragraph [ref=e100]: Medallón de garbanzos, aguacate, germinados y aderezo tahini. 100% plant-based.
+            - generic [ref=e101]:
+              - generic [ref=e103]: $ 20.000
+              - button "Agregar" [ref=e104]:
+                - img [ref=e105]
+                - text: Agregar
+        - generic [ref=e109]:
+          - link [ref=e110] [cursor=pointer]:
+            - /url: /s/demo/p/limonada-de-coco
+            - img [ref=e112]
+          - generic [ref=e119]:
+            - link "Limonada de Coco" [ref=e120] [cursor=pointer]:
+              - /url: /s/demo/p/limonada-de-coco
+              - heading "Limonada de Coco" [level=3] [ref=e121]
+            - paragraph [ref=e122]: Refrescante limonada con crema de coco, menta y hielo.
+            - generic [ref=e123]:
+              - generic [ref=e125]: $ 8.000
+              - button "Agregar" [ref=e126]:
+                - img [ref=e127]
+                - text: Agregar
+        - generic [ref=e131]:
+          - link [ref=e132] [cursor=pointer]:
+            - /url: /s/demo/p/brownie-con-helado
+            - img [ref=e134]
+          - generic [ref=e141]:
+            - link "Brownie con Helado" [ref=e142] [cursor=pointer]:
+              - /url: /s/demo/p/brownie-con-helado
+              - heading "Brownie con Helado" [level=3] [ref=e143]
+            - paragraph [ref=e144]: Brownie de chocolate caliente con bola de helado de vainilla y salsa de caramelo.
+            - generic [ref=e145]:
+              - generic [ref=e147]: $ 12.000
+              - generic [ref=e148]: Agotado
+        - generic [ref=e149]:
+          - link [ref=e150] [cursor=pointer]:
+            - /url: /s/demo/p/agua-natural
+            - img [ref=e152]
+          - generic [ref=e159]:
+            - link "Agua Natural" [ref=e160] [cursor=pointer]:
+              - /url: /s/demo/p/agua-natural
+              - heading "Agua Natural" [level=3] [ref=e161]
+            - paragraph [ref=e162]: Botella de agua mineral 500ml.
+            - generic [ref=e163]:
+              - generic [ref=e165]: $ 3.000
+              - button "Agregar" [ref=e166]:
+                - img [ref=e167]
+                - text: Agregar
+    - link "1 Ver carrito $ 18.000" [ref=e190] [cursor=pointer]:
+      - /url: /s/demo/cart
+      - generic [ref=e191]:
+        - img [ref=e192]
+        - generic [ref=e196]: "1"
+      - generic [ref=e197]: Ver carrito
+      - generic [ref=e198]: $ 18.000
+    - contentinfo [ref=e171]: Creado con Domicilios
+  - region "Notifications alt+T"
+  - alert [ref=e172]
+  - button "Open Next.js Dev Tools" [ref=e178] [cursor=pointer]:
+    - img [ref=e179]

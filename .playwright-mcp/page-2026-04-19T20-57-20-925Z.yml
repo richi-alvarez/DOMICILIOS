@@ -1,0 +1,262 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e270]:
+      - generic [ref=e273]:
+        - generic [ref=e274]:
+          - button [ref=e275] [cursor=pointer]:
+            - img [ref=e276]
+          - generic [ref=e278]: Sazón Express
+        - generic [ref=e279]:
+          - img [ref=e282]
+          - navigation [ref=e284]:
+            - list [ref=e285]:
+              - listitem [ref=e286]:
+                - list [ref=e287]:
+                  - listitem [ref=e288]:
+                    - link [ref=e426] [cursor=pointer]:
+                      - /url: /menus/menu-detail?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e290]
+                      - generic [ref=e291]: Detalles
+                  - listitem [ref=e292]:
+                    - link [ref=e427] [cursor=pointer]:
+                      - /url: /menus/menu-products?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e294]
+                      - generic [ref=e295]: Productos
+                  - listitem [ref=e296]:
+                    - link [ref=e428] [cursor=pointer]:
+                      - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e298]
+                      - generic [ref=e299]: Diseño
+                  - listitem [ref=e300]:
+                    - link [ref=e429] [cursor=pointer]:
+                      - /url: /menus/orders?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e302]
+                      - generic [ref=e303]: Pedidos
+                  - listitem [ref=e304]:
+                    - link [ref=e430] [cursor=pointer]:
+                      - /url: /menus/payments?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e306]
+                      - generic [ref=e307]: Pagos
+                  - listitem [ref=e308]:
+                    - link [ref=e431] [cursor=pointer]:
+                      - /url: /menus/menu-analytics?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e310]
+                      - generic [ref=e311]: Estadísticas
+                  - listitem [ref=e312]:
+                    - link [ref=e432] [cursor=pointer]:
+                      - /url: /menus/shopping-cart?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e314]
+                      - generic [ref=e315]: Checkout
+                  - listitem [ref=e316]:
+                    - link [ref=e433] [cursor=pointer]:
+                      - /url: /menus/menu-advanced-config?id=6KaFRGxPSInvPLlCgqu6
+                      - img [ref=e318]
+                      - generic [ref=e319]: Avanzado
+          - button [ref=e434] [cursor=pointer]:
+            - img [ref=e435]
+            - generic [ref=e324]:
+              - paragraph [ref=e325]: ricardo saldarriaga
+              - paragraph [ref=e326]: richi.alvarez.9402@gmail.com
+            - img [ref=e327]
+        - button [ref=e329] [cursor=pointer]:
+          - img [ref=e330]
+      - generic [ref=e333]:
+        - heading [level=2] [ref=e436]: Pedidos y Formularios
+        - generic [ref=e336]:
+          - generic [ref=e337]:
+            - img [ref=e339]
+            - generic [ref=e341]: Pedidos este mes
+          - generic [ref=e342]:
+            - generic [ref=e343]: 1 / 30
+            - button [ref=e344] [cursor=pointer]:
+              - img [ref=e345]
+        - navigation [ref=e350]:
+          - button [ref=e437] [cursor=pointer]: Pedidos
+          - button [ref=e438] [cursor=pointer]: Formularios
+        - generic [ref=e353]:
+          - generic [ref=e354]:
+            - generic [ref=e355]:
+              - generic [ref=e356]:
+                - generic [ref=e357]: Estado
+                - combobox [ref=e358]
+              - generic [ref=e359]:
+                - generic [ref=e360]: Buscar
+                - generic [ref=e361]:
+                  - textbox [ref=e439]:
+                    - /placeholder: "# Número de pedido"
+                  - img [ref=e364]
+              - generic [ref=e369]:
+                - generic [ref=e370]:
+                  - generic [ref=e371]: Desde
+                  - textbox [ref=e372] [cursor=pointer]
+                - generic [ref=e373]:
+                  - generic [ref=e374]: Hasta
+                  - textbox [ref=e375] [cursor=pointer]
+            - generic [ref=e376]:
+              - generic [ref=e378]: Recibiendo pedidos en tiempo real
+              - button [ref=e440] [cursor=pointer]:
+                - img [ref=e381]
+                - text: Exportar
+          - generic [ref=e387]:
+            - table [ref=e388]:
+              - rowgroup [ref=e389]:
+                - row [ref=e441]:
+                  - columnheader [ref=e442]: "# Número"
+                  - columnheader [ref=e443]: Fecha
+                  - columnheader [ref=e444]: Total
+                  - columnheader [ref=e445]: Estado
+                  - columnheader [ref=e446]: Detalles
+              - rowgroup [ref=e396]:
+                - row [ref=e447]:
+                  - cell [ref=e448]: "20260419001"
+                  - cell [ref=e449]: 19 abr 2026
+                  - cell [ref=e450]: $18.000,00
+                  - cell [ref=e451]:
+                    - combobox [ref=e403]
+                  - cell [ref=e452]:
+                    - button [ref=e453] [cursor=pointer]:
+                      - generic [ref=e406]: Detalles
+            - generic [ref=e408]:
+              - generic [ref=e409]: 1 Pedidos
+              - generic [ref=e410]:
+                - combobox [ref=e411]
+                - button [disabled] [ref=e454]: Anterior
+                - generic [ref=e413]: Página 1 de 1
+                - button [disabled] [ref=e455]: Siguiente
+    - banner [ref=e456]:
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - generic [ref=e147]: 🍪
+          - generic [ref=e148]:
+            - paragraph [ref=e149]:
+              - strong [ref=e150]: Usamos cookies en este sitio web
+            - paragraph [ref=e151]:
+              - text: Utilizamos cookies para mejorar tu experiencia.
+              - link [ref=e457] [cursor=pointer]:
+                - /url: /privacy
+                - text: Política de privacidad
+        - generic [ref=e153]:
+          - button [ref=e458] [cursor=pointer]:
+            - img [ref=e155]
+          - button [ref=e459] [cursor=pointer]: Aceptar todas
+    - generic [ref=e574]:
+      - generic [ref=e575]:
+        - generic [ref=e576]:
+          - generic [ref=e577]: 🏆
+          - heading [level=2] [ref=e578]: Felicidades!
+          - paragraph [ref=e579]: Has dominado los fundamentos de Marea Alcalina
+        - generic [ref=e581]:
+          - generic [ref=e582]: 100% Completado
+          - generic [ref=e583]: 🎉
+        - generic [ref=e584]:
+          - heading [level=3] [ref=e585]: Lo Que Has Logrado
+          - generic [ref=e586]:
+            - generic [ref=e587]:
+              - img [ref=e589]
+              - paragraph [ref=e591]: Creaste tu primera página
+            - generic [ref=e592]:
+              - img [ref=e594]
+              - paragraph [ref=e596]: Publicaste la página al mundo
+            - generic [ref=e597]:
+              - img [ref=e599]
+              - paragraph [ref=e601]: Realizaste un pedido de prueba
+            - generic [ref=e602]:
+              - img [ref=e604]
+              - paragraph [ref=e606]: Gestionaste tu primer pedido
+        - generic [ref=e607]:
+          - heading [level=3] [ref=e608]:
+            - img [ref=e609]
+            - generic [ref=e611]: ¿Qué Sigue?
+          - list [ref=e612]:
+            - listitem [ref=e613]:
+              - img [ref=e614]
+              - generic [ref=e616]: Comparte tu página en redes sociales y con clientes
+            - listitem [ref=e617]:
+              - img [ref=e618]
+              - generic [ref=e620]: Personaliza productos, precios y categorías
+            - listitem [ref=e621]:
+              - img [ref=e622]
+              - generic [ref=e624]: Explora funciones avanzadas como cupones y métodos de pago
+      - button [ref=e626] [cursor=pointer]: ¡Empezar a Vender!
+  - dialog [ref=e463]:
+    - generic [ref=e467]:
+      - 'heading "Pedido #20260419001 Resumen del pedido Editar pedido Close" [level=1] [ref=e468]':
+        - generic [ref=e469]:
+          - generic [ref=e470]:
+            - 'heading "Pedido #20260419001" [level=2] [ref=e472]'
+            - paragraph [ref=e473]: Resumen del pedido
+          - generic [ref=e474]:
+            - button "Editar pedido" [active] [ref=e475] [cursor=pointer]:
+              - img [ref=e476]
+              - generic [ref=e478]: Editar pedido
+            - button "Close" [ref=e479] [cursor=pointer]:
+              - generic [ref=e480]: Close
+              - img [ref=e481]
+      - generic [ref=e486]:
+        - generic [ref=e487]:
+          - generic [ref=e488]:
+            - generic [ref=e491]: Recibido
+            - generic [ref=e495]: En Preparación
+            - generic [ref=e499]: Listo
+            - generic [ref=e503]: Entregado
+          - button "Avanzar a \"En Preparación\"" [ref=e505] [cursor=pointer]:
+            - img [ref=e506]
+            - text: Avanzar a "En Preparación"
+        - generic [ref=e508]:
+          - generic [ref=e509]:
+            - heading "Información General" [level=3] [ref=e510]
+            - generic [ref=e511]:
+              - generic [ref=e512]:
+                - term [ref=e513]: Fecha
+                - definition [ref=e514]: 19 abr 2026, 15:50:23
+              - generic [ref=e515]:
+                - term [ref=e516]: Precio Total del Pedido
+                - definition [ref=e517]: $18.000,00
+              - generic [ref=e518]:
+                - term [ref=e519]: Fuente
+                - definition [ref=e520]: whatsApp
+              - generic [ref=e521]:
+                - term [ref=e522]: Estado de Pago
+                - definition [ref=e523]: Pago Pendiente
+          - generic [ref=e524]:
+            - heading "Información del cliente" [level=3] [ref=e525]
+            - generic [ref=e526]:
+              - generic [ref=e527]:
+                - term [ref=e528]: Nombre del Cliente
+                - definition [ref=e529]: Cliente Demo
+              - generic [ref=e530]:
+                - term [ref=e531]: Teléfono del cliente
+                - definition [ref=e532]: "3009998877"
+        - generic [ref=e534]:
+          - heading "Detalles de Entrega" [level=3] [ref=e535]
+          - generic [ref=e537]:
+            - term [ref=e538]: Tipo de Entrega
+            - definition [ref=e539]: Recoger en sucursal
+        - generic [ref=e540]:
+          - heading "Productos" [level=3] [ref=e541]
+          - generic [ref=e544]:
+            - img "Almuerzo Ejecutivo" [ref=e545]
+            - generic [ref=e546]:
+              - heading "Almuerzo Ejecutivo" [level=4] [ref=e547]
+              - paragraph [ref=e548]: Plato del día con proteína, arroz, ensalada, acompañante y bebida.
+              - generic [ref=e549]:
+                - generic [ref=e550]: 1x
+                - generic [ref=e551]: $18.000,00
+        - generic [ref=e553]:
+          - generic [ref=e554]:
+            - term [ref=e555]: Subtotal
+            - definition [ref=e556]: $18.000,00
+          - generic [ref=e557]:
+            - term [ref=e558]: Total
+            - definition [ref=e559]: $18.000,00
+        - generic [ref=e560]:
+          - generic [ref=e561]:
+            - button "Imprimir Ticket" [ref=e562] [cursor=pointer]:
+              - img [ref=e563]
+              - text: Imprimir Ticket
+            - button "Cerrar Detalles" [ref=e565] [cursor=pointer]:
+              - img [ref=e566]
+              - text: Cerrar Detalles
+          - button "Eliminar Pedido" [ref=e569] [cursor=pointer]:
+            - img [ref=e570]
+            - text: Eliminar Pedido

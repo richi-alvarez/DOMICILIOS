@@ -1,0 +1,87 @@
+- generic [ref=e7]:
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - button [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+      - generic [ref=e15]: Sazón Express
+    - generic [ref=e16]:
+      - img [ref=e19]
+      - navigation [ref=e21]:
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Detalles" [ref=e26] [cursor=pointer]:
+                  - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e27]
+                  - generic [ref=e28]: Detalles
+              - listitem [ref=e29]:
+                - link "Productos" [ref=e30] [cursor=pointer]:
+                  - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e31]
+                  - generic [ref=e32]: Productos
+              - listitem [ref=e33]:
+                - link "Diseño" [ref=e34] [cursor=pointer]:
+                  - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e35]
+                  - generic [ref=e36]: Diseño
+              - listitem [ref=e37]:
+                - link "Pedidos" [ref=e38] [cursor=pointer]:
+                  - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e39]
+                  - generic [ref=e40]: Pedidos
+              - listitem [ref=e41]:
+                - link "Pagos" [ref=e42] [cursor=pointer]:
+                  - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e43]
+                  - generic [ref=e44]: Pagos
+              - listitem [ref=e45]:
+                - link "Estadísticas" [ref=e46] [cursor=pointer]:
+                  - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e47]
+                  - generic [ref=e48]: Estadísticas
+              - listitem [ref=e49]:
+                - link "Checkout" [ref=e50] [cursor=pointer]:
+                  - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e51]
+                  - generic [ref=e52]: Checkout
+              - listitem [ref=e53]:
+                - link "Avanzado" [ref=e54] [cursor=pointer]:
+                  - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e55]
+                  - generic [ref=e56]: Avanzado
+      - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e59] [cursor=pointer]:
+        - img "Profile" [ref=e60]
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: ricardo saldarriaga
+          - paragraph [ref=e63]: richi.alvarez.9402@gmail.com
+        - img [ref=e64]
+    - button [ref=e66] [cursor=pointer]:
+      - img [ref=e67]
+  - generic [ref=e70]:
+    - generic [ref=e71]: Configuración Avanzada
+    - generic [ref=e72]:
+      - navigation "Tabs" [ref=e73]:
+        - generic [ref=e75]:
+          - button "Integraciones" [ref=e76] [cursor=pointer]: Integraciones
+          - button "Analítica" [ref=e77] [cursor=pointer]: Analítica
+          - button "Notificaciones" [ref=e78] [cursor=pointer]: Notificaciones
+          - button "Configuración" [ref=e80] [cursor=pointer]: Configuración
+          - button "Colaboración" [ref=e81] [cursor=pointer]: Colaboración
+          - button "Gestión" [ref=e82] [cursor=pointer]: Gestión
+      - generic [ref=e274]:
+        - generic [ref=e275]:
+          - generic [ref=e276]:
+            - img [ref=e279]
+            - generic [ref=e281]:
+              - heading "Acceso de Usuarios" [level=2] [ref=e282]
+              - paragraph [ref=e283]: Permite que otras cuentas accedan a esta página y administra sus permisos de forma individual.
+          - generic [ref=e285]:
+            - img [ref=e286]
+            - text: BUSINESS
+        - generic [ref=e290]:
+          - generic [ref=e291]: Dar acceso
+          - generic [ref=e292]:
+            - textbox "Dar acceso" [ref=e294]:
+              - /placeholder: correo@gmail.com
+            - button "Dar acceso" [disabled] [ref=e295]

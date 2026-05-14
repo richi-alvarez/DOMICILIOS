@@ -1,0 +1,8 @@
+[     795ms] [WARNING] [Meta Pixel] - Duplicate Pixel ID: 298317844820823. @ https://connect.facebook.net/en_US/fbevents.js:181
+[     956ms] [LOG] SweetAlert2 success icon globally overridden @ https://mareaalcalina.com/main.c8f84b500b41d358.js:0
+[    1306ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[    1836ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[    5827ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[   10866ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[   15844ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[   30833ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0

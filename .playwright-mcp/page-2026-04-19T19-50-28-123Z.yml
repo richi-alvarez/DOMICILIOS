@@ -1,0 +1,241 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - link "Logo" [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e9]
+        - generic [ref=e10]:
+          - link "Inicio" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Planes" [ref=e12] [cursor=pointer]:
+            - /url: /plans
+          - link "Agencias" [ref=e13] [cursor=pointer]:
+            - /url: /agencies
+          - link "Crear" [ref=e14] [cursor=pointer]:
+            - /url: /menus
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: https://blog.mareaalcalina.com
+          - button "ES" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18]: ES
+            - img [ref=e19]
+          - generic [ref=e21]:
+            - link "Iniciar Sesión" [ref=e22] [cursor=pointer]:
+              - /url: /login
+            - link "Registrarme" [ref=e23] [cursor=pointer]:
+              - /url: /signup
+    - main [ref=e24]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - img [ref=e28]
+          - generic [ref=e30]: Guias para Emprendedores
+        - heading "Guias para Vender en Linea y por WhatsApp" [level=1] [ref=e31]
+        - paragraph [ref=e32]: Comparativas, tutoriales y estrategias para crear tu tienda digital, vender por WhatsApp y hacer crecer tu negocio en Latinoamerica.
+        - paragraph [ref=e34]: "Marea Alcalina ofrece 4 guias gratuitas: comparativa de plataformas para vender por WhatsApp en Mexico, Marea Alcalina vs Tiendanube, como crear una tienda en linea gratis, y menus digitales QR para restaurantes. Todas actualizadas para 2026."
+      - generic [ref=e36]:
+        - heading "¿Que guias ofrece Marea Alcalina?" [level=2] [ref=e37]
+        - paragraph [ref=e39]: "Nuestras guias cubren los temas mas importantes para emprendedores y negocios en Latinoamerica: desde elegir la mejor plataforma para vender por WhatsApp, hasta crear tu primera tienda en linea gratis o digitalizar el menu de tu restaurante con codigos QR. Cada guia incluye comparativas detalladas, pasos practicos y recomendaciones basadas en datos reales."
+      - generic [ref=e42]:
+        - 'link "Comparativa Mejor Plataforma para Vender por WhatsApp en Mexico 2026 Comparativa completa de 7 plataformas: precios, funciones, pagos integrados, herramientas de IA y soporte multi-tienda. Leer guia" [ref=e43] [cursor=pointer]':
+          - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+          - generic [ref=e44]: Comparativa
+          - heading "Mejor Plataforma para Vender por WhatsApp en Mexico 2026" [level=3] [ref=e45]
+          - paragraph [ref=e46]: "Comparativa completa de 7 plataformas: precios, funciones, pagos integrados, herramientas de IA y soporte multi-tienda."
+          - generic [ref=e47]:
+            - generic [ref=e48]: Leer guia
+            - img [ref=e49]
+        - 'link "Versus Marea Alcalina vs Tiendanube 2026 Comparacion directa entre Marea Alcalina y Tiendanube: precios, comisiones, WhatsApp, IA y facilidad de uso. Leer guia" [ref=e51] [cursor=pointer]':
+          - /url: /guides/marea-alcalina-vs-tiendanube
+          - generic [ref=e52]: Versus
+          - heading "Marea Alcalina vs Tiendanube 2026" [level=3] [ref=e53]
+          - paragraph [ref=e54]: "Comparacion directa entre Marea Alcalina y Tiendanube: precios, comisiones, WhatsApp, IA y facilidad de uso."
+          - generic [ref=e55]:
+            - generic [ref=e56]: Leer guia
+            - img [ref=e57]
+        - link "Tutorial Como Crear una Tienda en Linea Gratis en Mexico 2026 Guia paso a paso para crear tu tienda en linea gratis con Marea Alcalina. Incluye comparativa de opciones gratuitas. Leer guia" [ref=e59] [cursor=pointer]:
+          - /url: /guides/crear-tienda-en-linea-gratis-mexico
+          - generic [ref=e60]: Tutorial
+          - heading "Como Crear una Tienda en Linea Gratis en Mexico 2026" [level=3] [ref=e61]
+          - paragraph [ref=e62]: Guia paso a paso para crear tu tienda en linea gratis con Marea Alcalina. Incluye comparativa de opciones gratuitas.
+          - generic [ref=e63]:
+            - generic [ref=e64]: Leer guia
+            - img [ref=e65]
+        - 'link "Restaurantes Menu Digital para Restaurantes: QR + Pedidos por WhatsApp Guia completa para digitalizar tu menu con codigos QR y pedidos por WhatsApp. Comparativa de plataformas y mejores practicas. Leer guia" [ref=e67] [cursor=pointer]':
+          - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+          - generic [ref=e68]: Restaurantes
+          - 'heading "Menu Digital para Restaurantes: QR + Pedidos por WhatsApp" [level=3] [ref=e69]'
+          - paragraph [ref=e70]: Guia completa para digitalizar tu menu con codigos QR y pedidos por WhatsApp. Comparativa de plataformas y mejores practicas.
+          - generic [ref=e71]:
+            - generic [ref=e72]: Leer guia
+            - img [ref=e73]
+      - generic [ref=e76]:
+        - heading "Herramientas Gratuitas" [level=2] [ref=e77]
+        - paragraph [ref=e78]: Complementa tu aprendizaje con nuestras herramientas gratuitas para emprendedores.
+        - generic [ref=e79]:
+          - link "Generador de Links WhatsApp" [ref=e80] [cursor=pointer]:
+            - /url: /tools/whatsapp-link-generator
+            - text: Generador de Links WhatsApp
+            - img [ref=e81]
+          - link "Generador de Descripciones" [ref=e83] [cursor=pointer]:
+            - /url: /tools/product-description-generator
+            - text: Generador de Descripciones
+            - img [ref=e84]
+          - link "Calculadora de Margen" [ref=e86] [cursor=pointer]:
+            - /url: /tools/profit-margin-calculator
+            - text: Calculadora de Margen
+            - img [ref=e87]
+      - generic [ref=e91]:
+        - heading "Preguntas Frecuentes sobre las Guias" [level=2] [ref=e93]
+        - list [ref=e95]:
+          - listitem [ref=e96]:
+            - button "¿Que guias ofrece Marea Alcalina?" [ref=e97] [cursor=pointer]:
+              - generic [ref=e98]: ¿Que guias ofrece Marea Alcalina?
+              - img [ref=e100]
+          - listitem [ref=e102]:
+            - button "¿Las guias son gratuitas?" [ref=e103] [cursor=pointer]:
+              - generic [ref=e104]: ¿Las guias son gratuitas?
+              - img [ref=e106]
+          - listitem [ref=e108]:
+            - button "¿Para quien son estas guias?" [ref=e109] [cursor=pointer]:
+              - generic [ref=e110]: ¿Para quien son estas guias?
+              - img [ref=e112]
+          - listitem [ref=e114]:
+            - button "¿Cada cuanto se actualizan las guias?" [ref=e115] [cursor=pointer]:
+              - generic [ref=e116]: ¿Cada cuanto se actualizan las guias?
+              - img [ref=e118]
+          - listitem [ref=e120]:
+            - button "¿Necesito una cuenta para leer las guias?" [ref=e121] [cursor=pointer]:
+              - generic [ref=e122]: ¿Necesito una cuenta para leer las guias?
+              - img [ref=e124]
+          - listitem [ref=e126]:
+            - button "¿Que otros recursos ofrece Marea Alcalina?" [ref=e127] [cursor=pointer]:
+              - generic [ref=e128]: ¿Que otros recursos ofrece Marea Alcalina?
+              - img [ref=e130]
+    - generic [ref=e137]:
+      - heading "¿Listo para crear tu catalogo digital?" [level=2] [ref=e138]
+      - paragraph [ref=e139]: Crea tu tienda en linea en minutos con inteligencia artificial. Plan gratuito disponible.
+      - link "Crear mi catalogo gratis" [ref=e140] [cursor=pointer]:
+        - /url: /signup?utm_source=guides&utm_medium=organic&utm_campaign=guides-index
+        - text: Crear mi catalogo gratis
+        - img [ref=e141]
+    - generic [ref=e143]:
+      - contentinfo [ref=e144]:
+        - generic [ref=e145]:
+          - link "Marea Alcalina" [ref=e148] [cursor=pointer]:
+            - /url: /
+            - img "Marea Alcalina" [ref=e149]
+          - generic [ref=e150]:
+            - generic [ref=e151]:
+              - heading "Marea Alcalina" [level=4] [ref=e152]
+              - list [ref=e154]:
+                - listitem [ref=e155]:
+                  - link "Inicio" [ref=e156] [cursor=pointer]:
+                    - /url: /
+                - listitem [ref=e157]:
+                  - link "Planes" [ref=e158] [cursor=pointer]:
+                    - /url: /plans
+                - listitem [ref=e159]:
+                  - link "Panel Principal" [ref=e160] [cursor=pointer]:
+                    - /url: /menus
+                - listitem [ref=e161]:
+                  - link "Perfil" [ref=e162] [cursor=pointer]:
+                    - /url: /menus/profile
+                - listitem [ref=e163]:
+                  - link "Blog" [ref=e164] [cursor=pointer]:
+                    - /url: https://blog.mareaalcalina.com
+            - generic [ref=e165]:
+              - heading "Herramientas" [level=4] [ref=e166]
+              - list [ref=e168]:
+                - listitem [ref=e169]:
+                  - link "Generador de Descripción de Producto" [ref=e170] [cursor=pointer]:
+                    - /url: /tools/product-description-generator
+                - listitem [ref=e171]:
+                  - link "Generador de Link de WhatsApp" [ref=e172] [cursor=pointer]:
+                    - /url: /tools/whatsapp-link-generator
+                - listitem [ref=e173]:
+                  - link "Calculadora de Margen de Ganancia" [ref=e174] [cursor=pointer]:
+                    - /url: /tools/profit-margin-calculator
+                - listitem [ref=e175]:
+                  - link "Generador de Nombres para Negocio" [ref=e176] [cursor=pointer]:
+                    - /url: /tools/business-name-generator
+                - listitem [ref=e177]:
+                  - link "Generador de QR para Menú" [ref=e178] [cursor=pointer]:
+                    - /url: /tools/qr-code-menu-generator
+                - listitem [ref=e179]:
+                  - link "Generador de Biografías con IA" [ref=e180] [cursor=pointer]:
+                    - /url: /tools/biography-generator
+            - generic [ref=e181]:
+              - heading "Guías" [level=4] [ref=e182]
+              - list [ref=e184]:
+                - listitem [ref=e185]:
+                  - link "Mejor Plataforma WhatsApp" [ref=e186] [cursor=pointer]:
+                    - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                - listitem [ref=e187]:
+                  - link "Comparativa de Plataformas" [ref=e188] [cursor=pointer]:
+                    - /url: /guides/marea-alcalina-vs-tiendanube
+                - listitem [ref=e189]:
+                  - link "Tienda en Línea Gratis" [ref=e190] [cursor=pointer]:
+                    - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                - listitem [ref=e191]:
+                  - link "Menú Digital Restaurantes" [ref=e192] [cursor=pointer]:
+                    - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                - listitem [ref=e193]:
+                  - link "Cómo Vender por WhatsApp" [ref=e194] [cursor=pointer]:
+                    - /url: /como-vender
+            - generic [ref=e195]:
+              - heading "Información" [level=4] [ref=e196]
+              - list [ref=e198]:
+                - listitem [ref=e199]:
+                  - link "Términos y Condiciones" [ref=e200] [cursor=pointer]:
+                    - /url: /terms
+                - listitem [ref=e201]:
+                  - link "Políticas de Privacidad" [ref=e202] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e203]:
+                  - link "Política de Uso Aceptable" [ref=e204] [cursor=pointer]:
+                    - /url: /aup
+                - listitem [ref=e205]:
+                  - link "Preferencias de cookies" [ref=e206] [cursor=pointer]:
+                    - /url: javascript:void(0);
+            - generic [ref=e207]:
+              - heading "Soporte" [level=4] [ref=e208]
+              - list [ref=e210]:
+                - paragraph [ref=e211]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                - listitem [ref=e212]:
+                  - link "Messenger" [ref=e213] [cursor=pointer]:
+                    - /url: https://m.me/mareaalcalina
+                - listitem [ref=e214]:
+                  - link "Instagram" [ref=e215] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+            - generic [ref=e219]:
+              - heading "Síguenos" [level=4] [ref=e220]
+              - list [ref=e222]:
+                - listitem [ref=e223]:
+                  - link [ref=e224] [cursor=pointer]:
+                    - /url: https://www.facebook.com/pg/mareaalcalina
+                    - img [ref=e225]
+                - listitem [ref=e226]:
+                  - link "" [ref=e227] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+                    - generic [ref=e228]: 
+                - listitem [ref=e229]:
+                  - link [ref=e230] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@mareaalcalina
+                    - img [ref=e231]
+      - paragraph [ref=e237]: 2026 © Marea Alcalina
+  - banner "Banner de consentimiento de cookies" [ref=e238]:
+    - generic [ref=e240]:
+      - generic [ref=e241]:
+        - generic [ref=e242]: 🍪
+        - generic [ref=e243]:
+          - paragraph [ref=e244]:
+            - strong [ref=e245]: Usamos cookies en este sitio web
+          - paragraph [ref=e246]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e247] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e248]:
+        - button "Personalizar configuración de cookies" [ref=e249] [cursor=pointer]:
+          - img [ref=e250]
+        - button "Aceptar todas las cookies" [ref=e253] [cursor=pointer]: Aceptar todas

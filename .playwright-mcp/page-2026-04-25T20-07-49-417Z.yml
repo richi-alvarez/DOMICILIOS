@@ -1,0 +1,11 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - img [ref=e3]
+    - paragraph [ref=e7]: Tu carrito está vacío
+    - paragraph [ref=e8]: Agrega productos para continuar
+    - link "Ver catálogo" [ref=e9] [cursor=pointer]:
+      - /url: /s/demo
+  - region "Notifications alt+T"
+  - alert [ref=e10]
+  - button "Open Next.js Dev Tools" [ref=e16] [cursor=pointer]:
+    - img [ref=e17]

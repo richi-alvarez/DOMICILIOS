@@ -1,0 +1,36 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - button "Volver" [ref=e5]:
+          - img [ref=e6]
+        - heading "Datos" [level=1] [ref=e8]
+        - link "Cerrar" [ref=e9] [cursor=pointer]:
+          - /url: /s/demo
+          - img [ref=e10]
+    - generic [ref=e13]:
+      - heading "Información de contacto" [level=2] [ref=e14]
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - text: Nombre *
+          - textbox "Tu nombre completo" [ref=e21]
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - img [ref=e24]
+            - text: Teléfono *
+          - 'textbox "Ej: 3001234567" [ref=e26]'
+        - generic [ref=e27]:
+          - generic [ref=e28]:
+            - img [ref=e29]
+            - text: Email
+            - generic [ref=e32]: (opcional)
+          - textbox "tu@email.com" [ref=e33]
+    - button "Continuar" [disabled] [ref=e36]:
+      - text: Continuar
+      - img [ref=e37]
+  - region "Notifications alt+T"
+  - alert [ref=e39]
+  - button "Open Next.js Dev Tools" [ref=e45] [cursor=pointer]:
+    - img [ref=e46]

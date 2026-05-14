@@ -1,0 +1,11 @@
+[     429ms] [LOG] SweetAlert2 success icon globally overridden @ https://mareaalcalina.com/main.3f8ef18deabe58fe.js:0
+[     775ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://mareaalcalina.com/login:0
+[    1234ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0
+[    1238ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0
+[    1259ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0
+[    1264ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0
+[    1267ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0
+[    2015ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0
+[    6267ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0
+[   11006ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0
+[   15998ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/login:0

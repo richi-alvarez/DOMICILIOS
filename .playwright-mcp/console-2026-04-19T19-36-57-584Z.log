@@ -1,0 +1,8 @@
+[     319ms] Uncaught ReferenceError: fbq is not defined
+    at <anonymous> (https://connect.facebook.net/en_US/fbevents.js:19:0)
+[    1335ms] [LOG] SweetAlert2 success icon globally overridden @ https://mareaalcalina.com/main.c92896007a79b0d8.js:0
+[    2354ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/plans:0
+[    2949ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/plans:0
+[    6954ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/plans:0
+[   11946ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/plans:0
+[   16958ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/plans:0

@@ -1,0 +1,60 @@
+'use server'
+
+import { eq, asc } from 'drizzle-orm'
+import { db, blocks, catalogs } from '@/db'
+import { auth } from '@/auth'
+import { revalidatePath } from 'next/cache'
+import type { BlockConfig } from '@/lib/design/blocks'
+
+export async function getBlocksForCatalog(catalogId: string): Promise<BlockConfig[]> {
+  if (!process.env.DATABASE_URL) return []
+  try {
+    const rows = await db.query.blocks.findMany({
+      where: eq(blocks.catalogId, catalogId),
+      orderBy: [asc(blocks.position)],
+    })
+    return rows.map((r) => ({
+      type: r.type as BlockConfig['type'],
+      id: r.id,
+      active: r.active,
+      config: r.configJson as BlockConfig['config'],
+    })) as BlockConfig[]
+  } catch {
+    return []
+  }
+}
+
+export async function saveDesign(catalogId: string, blockList: BlockConfig[]) {
+  const session = await auth()
+  if (!session?.user?.id) return { error: 'No autenticado' }
+
+  if (!process.env.DATABASE_URL) return { error: 'Sin base de datos' }
+
+  try {
+    // Verify user has access to this catalog
+    const catalog = await db.query.catalogs.findFirst({ where: eq(catalogs.id, catalogId) })
+    if (!catalog) return { error: 'Catálogo no encontrado' }
+
+    // Delete all existing blocks for this catalog and re-insert
+    await db.delete(blocks).where(eq(blocks.catalogId, catalogId))
+
+    if (blockList.length > 0) {
+      await db.insert(blocks).values(
+        blockList.map((b, idx) => ({
+          catalogId,
+          type: b.type,
+          position: idx,
+          configJson: b.config,
+          active: b.active,
+        })),
+      )
+    }
+
+    revalidatePath(`/app/catalogs/${catalogId}/design`)
+    revalidatePath(`/s/${catalog.slug}`)
+    return { ok: true }
+  } catch (err) {
+    console.error('[saveDesign]', err)
+    return { error: 'Error al guardar' }
+  }
+}

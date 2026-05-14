@@ -1,0 +1,14 @@
+[     407ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:16383
+[     483ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3005/favicon.ico:0
+[     663ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[    1692ms] [LOG] [Fast Refresh] done in 1129ms @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   40553ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   40763ms] [LOG] [Fast Refresh] done in 149ms @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   47929ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   48218ms] [LOG] [Fast Refresh] done in 175ms @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   51508ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   51739ms] [LOG] [Fast Refresh] done in 155ms @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   56412ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   56557ms] [LOG] [Fast Refresh] done in 120ms @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   61519ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   61706ms] [LOG] [Fast Refresh] done in 153ms @ http://localhost:3005/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891

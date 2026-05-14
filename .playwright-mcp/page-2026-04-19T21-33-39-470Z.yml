@@ -1,0 +1,88 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e115]:
+    - generic [ref=e118]:
+      - generic [ref=e119]:
+        - button [ref=e120] [cursor=pointer]:
+          - img [ref=e121]
+        - generic [ref=e123]: Sazón Express
+      - generic [ref=e124]:
+        - img [ref=e127]
+        - navigation [ref=e129]:
+          - list [ref=e130]:
+            - listitem [ref=e131]:
+              - list [ref=e132]:
+                - listitem [ref=e133]:
+                  - link "Detalles" [ref=e134] [cursor=pointer]:
+                    - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e135]
+                    - generic [ref=e136]: Detalles
+                - listitem [ref=e137]:
+                  - link "Productos" [ref=e138] [cursor=pointer]:
+                    - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e139]
+                    - generic [ref=e140]: Productos
+                - listitem [ref=e141]:
+                  - link "Diseño" [ref=e142] [cursor=pointer]:
+                    - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e143]
+                    - generic [ref=e144]: Diseño
+                - listitem [ref=e145]:
+                  - link "Pedidos" [ref=e146] [cursor=pointer]:
+                    - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e147]
+                    - generic [ref=e148]: Pedidos
+                - listitem [ref=e149]:
+                  - link "Pagos" [ref=e150] [cursor=pointer]:
+                    - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e151]
+                    - generic [ref=e152]: Pagos
+                - listitem [ref=e153]:
+                  - link "Estadísticas" [ref=e154] [cursor=pointer]:
+                    - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e155]
+                    - generic [ref=e156]: Estadísticas
+                - listitem [ref=e157]:
+                  - link "Checkout" [ref=e158] [cursor=pointer]:
+                    - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e159]
+                    - generic [ref=e160]: Checkout
+                - listitem [ref=e161]:
+                  - link "Avanzado" [ref=e162] [cursor=pointer]:
+                    - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e163]
+                    - generic [ref=e164]: Avanzado
+        - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e167] [cursor=pointer]:
+          - img "Profile" [ref=e168]
+          - generic [ref=e169]:
+            - paragraph [ref=e170]: ricardo saldarriaga
+            - paragraph [ref=e171]: richi.alvarez.9402@gmail.com
+          - img [ref=e172]
+      - button [ref=e174] [cursor=pointer]:
+        - img [ref=e175]
+    - generic [ref=e178]:
+      - generic [ref=e179]: Pagos
+      - generic [ref=e180]:
+        - navigation "Tabs" [ref=e181]:
+          - generic [ref=e183]:
+            - button "Configuración" [ref=e184] [cursor=pointer]: Configuración
+            - button "Métodos de pago" [ref=e186] [cursor=pointer]: Métodos de pago
+            - button "Panel" [ref=e187] [cursor=pointer]: Panel
+        - generic [ref=e224]:
+          - generic [ref=e225]:
+            - img [ref=e226]
+            - generic [ref=e228]:
+              - heading "Sin opción de pago" [level=4] [ref=e229]
+              - paragraph [ref=e230]: Omitir la selección de método de pago.
+          - switch [checked] [ref=e233] [cursor=pointer]
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e88]:
+      - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e90]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic:
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+          - img "Video Thumbnail" [ref=e95]
+        - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e97] [cursor=pointer]':
+          - img [ref=e100]
+    - button "Close" [ref=e102] [cursor=pointer]:
+      - img "Click to close video" [ref=e103]

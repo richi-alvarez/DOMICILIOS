@@ -1,0 +1,25 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "D Domicilios" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: D
+      - generic [ref=e7]: Domicilios
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - heading "Iniciar Sesión" [level=3] [ref=e11]
+        - paragraph [ref=e12]: Accede a tu panel de Domicilios
+      - generic [ref=e13]:
+        - button "Continuar con Google" [ref=e14]:
+          - img
+          - text: Continuar con Google
+        - generic [ref=e17]: O continúa con email
+        - generic [ref=e19]:
+          - textbox "Correo electrónico" [ref=e20]
+          - textbox "Contraseña" [ref=e21]
+          - button "Iniciar Sesión" [ref=e22]
+        - generic [ref=e23]:
+          - link "¿Olvidaste tu contraseña?" [ref=e24] [cursor=pointer]:
+            - /url: /password-forgot
+          - link "Crear cuenta" [ref=e25] [cursor=pointer]:
+            - /url: /signup
+  - alert [ref=e26]

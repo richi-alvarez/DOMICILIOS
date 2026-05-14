@@ -1,0 +1,161 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e984]:
+    - generic [ref=e987]:
+      - generic [ref=e988]:
+        - button [ref=e989] [cursor=pointer]:
+          - img [ref=e990]
+        - generic [ref=e992]: Sazón Express
+      - generic [ref=e993]:
+        - img [ref=e996]
+        - navigation [ref=e998]:
+          - list [ref=e999]:
+            - listitem [ref=e1000]:
+              - list [ref=e1001]:
+                - listitem [ref=e1002]:
+                  - link "Detalles" [ref=e1003] [cursor=pointer]:
+                    - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1004]
+                    - generic [ref=e1005]: Detalles
+                - listitem [ref=e1006]:
+                  - link "Productos" [ref=e1007] [cursor=pointer]:
+                    - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1008]
+                    - generic [ref=e1009]: Productos
+                - listitem [ref=e1010]:
+                  - link "Diseño" [ref=e1011] [cursor=pointer]:
+                    - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1012]
+                    - generic [ref=e1013]: Diseño
+                - listitem [ref=e1014]:
+                  - link "Pedidos" [ref=e1015] [cursor=pointer]:
+                    - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1016]
+                    - generic [ref=e1017]: Pedidos
+                - listitem [ref=e1018]:
+                  - link "Pagos" [ref=e1019] [cursor=pointer]:
+                    - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1020]
+                    - generic [ref=e1021]: Pagos
+                - listitem [ref=e1022]:
+                  - link "Estadísticas" [ref=e1023] [cursor=pointer]:
+                    - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1024]
+                    - generic [ref=e1025]: Estadísticas
+                - listitem [ref=e1026]:
+                  - link "Checkout" [ref=e1027] [cursor=pointer]:
+                    - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1028]
+                    - generic [ref=e1029]: Checkout
+                - listitem [ref=e1030]:
+                  - link "Avanzado" [ref=e1031] [cursor=pointer]:
+                    - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1032]
+                    - generic [ref=e1033]: Avanzado
+        - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e1036] [cursor=pointer]:
+          - img "Profile" [ref=e1037]
+          - generic [ref=e1038]:
+            - paragraph [ref=e1039]: ricardo saldarriaga
+            - paragraph [ref=e1040]: richi.alvarez.9402@gmail.com
+          - img [ref=e1041]
+      - button [ref=e1043] [cursor=pointer]:
+        - img [ref=e1044]
+    - generic [ref=e1047]:
+      - generic [ref=e1048]: Configuración Avanzada
+      - generic [ref=e1049]:
+        - navigation "Tabs" [ref=e1050]:
+          - generic [ref=e1052]:
+            - button "Integraciones" [ref=e1053] [cursor=pointer]: Integraciones
+            - button "Analítica" [ref=e1055] [cursor=pointer]: Analítica
+            - button "Notificaciones" [ref=e1056] [cursor=pointer]: Notificaciones
+            - button "Configuración" [ref=e1057] [cursor=pointer]: Configuración
+            - button "Colaboración" [ref=e1058] [cursor=pointer]: Colaboración
+            - button "Gestión" [ref=e1059] [cursor=pointer]: Gestión
+        - generic [ref=e1103]:
+          - generic [ref=e1104]:
+            - generic [ref=e1105]:
+              - generic [ref=e1106]:
+                - img [ref=e1109]
+                - generic [ref=e1111]:
+                  - heading "Meta Pixel" [level=2] [ref=e1112]
+                  - paragraph [ref=e1113]: Realiza un seguimiento de las conversiones y optimiza tus anuncios de Facebook
+              - generic [ref=e1115]:
+                - img [ref=e1116]
+                - text: PRO
+            - generic [ref=e1119]:
+              - img [ref=e1121]
+              - generic [ref=e1123]:
+                - paragraph [ref=e1124]: Cómo configurar tu Meta Pixel
+                - paragraph [ref=e1125]:
+                  - button "Mostrar guía de configuración" [ref=e1126] [cursor=pointer]
+            - generic [ref=e1128]:
+              - generic [ref=e1129]:
+                - generic [ref=e1130]: ID de Pixel
+                - generic [ref=e1132]:
+                  - generic [ref=e1133]: FB-
+                  - textbox "ID de Pixel" [disabled] [ref=e1134]:
+                    - /placeholder: Ingresa tu ID de píxel de 15 a 18 dígitos
+              - generic [ref=e1135]:
+                - generic [ref=e1136]:
+                  - generic [ref=e1138]: Activo
+                  - generic [ref=e1139]: Cuando esté activo, el pixel recopilará datos sobre las acciones de sus visitantes.
+                - switch [disabled] [ref=e1141]
+            - generic [ref=e1143]:
+              - generic [ref=e1144]: ¿Necesitas ayuda para configurar tu píxel?
+              - link "Más información" [ref=e1145] [cursor=pointer]:
+                - /url: https://blog.mareaalcalina.com/como-agregar-el-pixel-de-facebook-meta-en-marea-alcalina/
+          - generic [ref=e1146]:
+            - generic [ref=e1147]:
+              - generic [ref=e1148]:
+                - img [ref=e1151]
+                - generic [ref=e1153]:
+                  - heading "Google Analytics 4" [level=2] [ref=e1154]
+                  - paragraph [ref=e1155]: Rastrea el tráfico del sitio web y el comportamiento del usuario con Google Analytics 4
+              - generic [ref=e1157]:
+                - img [ref=e1158]
+                - text: PRO
+            - generic [ref=e1161]:
+              - img [ref=e1163]
+              - generic [ref=e1165]:
+                - paragraph [ref=e1166]: Cómo configurar Google Analytics 4
+                - paragraph [ref=e1167]:
+                  - button "Mostrar guía de configuración" [ref=e1168] [cursor=pointer]
+            - generic [ref=e1170]:
+              - generic [ref=e1171]:
+                - generic [ref=e1172]: ID de GA4
+                - generic [ref=e1174]:
+                  - generic [ref=e1175]: G-
+                  - textbox "ID de GA4" [disabled] [ref=e1176]:
+                    - /placeholder: Ingresa tu ID de medición de GA4
+              - generic [ref=e1177]:
+                - generic [ref=e1178]:
+                  - generic [ref=e1180]: Activo
+                  - generic [ref=e1181]: Habilita el seguimiento de Google Analytics 4 en tu página
+                - switch [disabled] [ref=e1183]
+          - generic [ref=e1186]:
+            - img [ref=e1189]
+            - generic [ref=e1192]:
+              - generic [ref=e1193]:
+                - heading "Código Personalizado" [level=2] [ref=e1194]
+                - generic [ref=e1196]:
+                  - img [ref=e1197]
+                  - text: PRO
+              - paragraph [ref=e1201]: Añade código personalizado a tu página en el header o footer
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e88]:
+      - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e90]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic:
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+          - img "Video Thumbnail" [ref=e95]
+        - generic:
+          - generic:
+            - generic:
+              - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e975] [cursor=pointer]':
+                - img [ref=e978]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+    - button "Close" [ref=e102] [cursor=pointer]:
+      - img "Click to close video" [ref=e103]

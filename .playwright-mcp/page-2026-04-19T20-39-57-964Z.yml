@@ -1,0 +1,33 @@
+- generic [ref=e2]:
+  - generic [ref=e83]:
+    - heading "¡Generemos un punto de partida! 🪄" [level=2] [ref=e84]
+    - paragraph [ref=e85]: Escribe los detalles del negocio, incluido el nombre, qué vende, qué colores tiene y cualquier otra información relevante. ¡Mientras más detallado, mejor!
+    - generic [ref=e86]:
+      - generic [ref=e87]: ¿De qué se trata este negocio?
+      - textbox "¿De qué se trata este negocio?" [ref=e88]:
+        - /placeholder: El nombre de este negocio es... y es único porque vende...
+      - generic:
+        - generic: 0 / 500
+    - generic [ref=e89]:
+      - button "Regresar" [ref=e90] [cursor=pointer]
+      - button "Continuar" [disabled] [ref=e91]
+  - banner "Banner de consentimiento de cookies" [ref=e42]:
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]: 🍪
+        - generic [ref=e47]:
+          - paragraph [ref=e48]:
+            - strong [ref=e49]: Usamos cookies en este sitio web
+          - paragraph [ref=e50]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e51] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e52]:
+        - button "Personalizar configuración de cookies" [ref=e53] [cursor=pointer]:
+          - img [ref=e54]
+        - button "Aceptar todas las cookies" [ref=e57] [cursor=pointer]: Aceptar todas
+  - generic [ref=e73] [cursor=pointer]:
+    - generic [ref=e75]: 0%
+    - generic [ref=e76]: Primeros Pasos
+    - img [ref=e77]

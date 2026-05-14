@@ -1,0 +1,235 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - link "Logo" [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e9]
+        - generic [ref=e10]:
+          - link "Inicio" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Planes" [ref=e12] [cursor=pointer]:
+            - /url: /plans
+          - link "Agencias" [ref=e13] [cursor=pointer]:
+            - /url: /agencies
+          - link "Crear" [ref=e14] [cursor=pointer]:
+            - /url: /menus
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: https://blog.mareaalcalina.com
+          - button "ES" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18]: ES
+            - img [ref=e19]
+          - generic [ref=e21]:
+            - link "Iniciar Sesión" [ref=e22] [cursor=pointer]:
+              - /url: /login
+            - link "Registrarme" [ref=e23] [cursor=pointer]:
+              - /url: /signup
+    - generic [ref=e24]:
+      - generic [ref=e26]:
+        - generic [ref=e27]:
+          - heading "Catálogos Digitales Inteligentes para Tu Negocio" [level=1] [ref=e28]
+          - paragraph [ref=e29]: Despliega tus productos, maneja tu inventario y recibe pedidos en tiempo real. Sin complicaciones.
+          - link "Empezar" [ref=e31] [cursor=pointer]:
+            - /url: /signup
+        - img [ref=e34]
+      - generic [ref=e39]:
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Fácil y Eficaz" [level=3] [ref=e42]
+            - paragraph [ref=e43]: Diseña y lanza tu catálogo en minutos con nuestra interfaz intuitiva, también obtendrás ayuda de la Inteligencia Artificial para generar descripciones de productos atractivas.
+            - button "Comenzar" [ref=e44] [cursor=pointer]
+          - img "card image" [ref=e46]
+        - generic [ref=e47]:
+          - generic [ref=e48]:
+            - heading "Deja Atrás los PDFs" [level=3] [ref=e49]
+            - paragraph [ref=e50]: Olvídate de inconvenientes con PDFs pesados y cargas lentas. Nuestros catálogos digitales proporcionan una navegación fluida para tus clientes, sin necesidad de hacer zoom y con la certeza de tener tus productos actualizados en tiempo real.
+            - button "Comenzar" [ref=e51] [cursor=pointer]
+          - img "card image" [ref=e53]
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - heading "Comunicación Directa a WhatsApp y Correo" [level=3] [ref=e56]
+            - paragraph [ref=e57]: Recibe pedidos directamente por estos canales y potencia la experiencia de tus clientes. Podrás recibir mensajes con todos los detalles de los productos seleccionados, simplificando la toma de decisiones.
+            - button "Comenzar" [ref=e58] [cursor=pointer]
+          - img "card image" [ref=e60]
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "Integración Total con tu Sitio Web" [level=3] [ref=e63]
+            - paragraph [ref=e64]: Refuerza tu marca con una integración perfecta en tu propio sitio web. Nuestra conexión de dominio y subdominio te permite ofrecer un catálogo digital en tu espacio en línea, manteniendo una imagen coherente y única.
+            - button "Comenzar" [ref=e65] [cursor=pointer]
+          - img "card image" [ref=e67]
+      - generic [ref=e70]:
+        - generic [ref=e71]:
+          - img "left-wing" [ref=e72]
+          - generic [ref=e73]:
+            - paragraph [ref=e74]: 4.8 Valoración de Usuarios
+            - img "center-stars" [ref=e75]
+            - img "Hotjar Image" [ref=e77]
+          - img "right-wing" [ref=e78]
+        - generic [ref=e79]:
+          - paragraph [ref=e80]: Ayudando a +100K negocios crecer día a día ...
+          - generic [ref=e81]:
+            - img "amateco" [ref=e82]
+            - img "labajataqueria" [ref=e83]
+            - img "official.equipment" [ref=e84]
+            - img "bidadrinks" [ref=e85]
+            - img "ripario" [ref=e86]
+            - img "imisushi" [ref=e87]
+            - img "kiibook" [ref=e88]
+            - img "almavegana" [ref=e89]
+            - img "vivofitmarket" [ref=e90]
+            - img "thehealthclub" [ref=e91]
+            - img "elchiflido" [ref=e92]
+            - img "melacanela" [ref=e93]
+      - generic [ref=e95]:
+        - heading "Echa un Vistazo a Catálogos Creados por Nuestra Comunidad" [level=2] [ref=e97]
+        - generic [ref=e100]:
+          - img "amateco" [ref=e102] [cursor=pointer]
+          - img "labajataqueria" [ref=e104] [cursor=pointer]
+          - img "magacol" [ref=e106] [cursor=pointer]
+          - img "cuarzodeluz" [ref=e108] [cursor=pointer]
+          - img "aressupplies" [ref=e110] [cursor=pointer]
+          - img "cuerazo" [ref=e112] [cursor=pointer]
+          - img "sickuniforms" [ref=e114] [cursor=pointer]
+          - img "babylonstore" [ref=e116] [cursor=pointer]
+          - img "pisa firme" [ref=e118] [cursor=pointer]
+          - img "dulcesfermin" [ref=e120] [cursor=pointer]
+          - img "homydrems" [ref=e122] [cursor=pointer]
+          - img "open-house-spa-to-go" [ref=e124] [cursor=pointer]
+          - img "cbdnuma" [ref=e126] [cursor=pointer]
+          - img "rumena" [ref=e128] [cursor=pointer]
+          - img "tiajuanasplants" [ref=e130] [cursor=pointer]
+          - img "magacol" [ref=e132] [cursor=pointer]
+          - img "cuarzodeluz" [ref=e134] [cursor=pointer]
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - generic [ref=e137]: Empieza hoy mismo a crear tu tienda en línea para transformar la manera en la que muestras y vendes tus productos
+            - link "Comenzar Gratis" [ref=e138] [cursor=pointer]:
+              - /url: /signup
+          - generic [ref=e139]:
+            - generic [ref=e140]: ¿Buscas algo más?
+            - generic [ref=e141]:
+              - link "Menús Digitales" [ref=e142] [cursor=pointer]:
+                - /url: /digitalmenu
+              - link "Agencias" [ref=e143] [cursor=pointer]:
+                - /url: /agencies
+      - generic [ref=e144]:
+        - contentinfo [ref=e145]:
+          - generic [ref=e146]:
+            - link "Marea Alcalina" [ref=e149] [cursor=pointer]:
+              - /url: /
+              - img "Marea Alcalina" [ref=e150]
+            - generic [ref=e151]:
+              - generic [ref=e152]:
+                - heading "Marea Alcalina" [level=4] [ref=e153]
+                - list [ref=e155]:
+                  - listitem [ref=e156]:
+                    - link "Inicio" [ref=e157] [cursor=pointer]:
+                      - /url: /
+                  - listitem [ref=e158]:
+                    - link "Planes" [ref=e159] [cursor=pointer]:
+                      - /url: /plans
+                  - listitem [ref=e160]:
+                    - link "Panel Principal" [ref=e161] [cursor=pointer]:
+                      - /url: /menus
+                  - listitem [ref=e162]:
+                    - link "Perfil" [ref=e163] [cursor=pointer]:
+                      - /url: /menus/profile
+                  - listitem [ref=e164]:
+                    - link "Blog" [ref=e165] [cursor=pointer]:
+                      - /url: https://blog.mareaalcalina.com
+              - generic [ref=e166]:
+                - heading "Herramientas" [level=4] [ref=e167]
+                - list [ref=e169]:
+                  - listitem [ref=e170]:
+                    - link "Generador de Descripción de Producto" [ref=e171] [cursor=pointer]:
+                      - /url: /tools/product-description-generator
+                  - listitem [ref=e172]:
+                    - link "Generador de Link de WhatsApp" [ref=e173] [cursor=pointer]:
+                      - /url: /tools/whatsapp-link-generator
+                  - listitem [ref=e174]:
+                    - link "Calculadora de Margen de Ganancia" [ref=e175] [cursor=pointer]:
+                      - /url: /tools/profit-margin-calculator
+                  - listitem [ref=e176]:
+                    - link "Generador de Nombres para Negocio" [ref=e177] [cursor=pointer]:
+                      - /url: /tools/business-name-generator
+                  - listitem [ref=e178]:
+                    - link "Generador de QR para Menú" [ref=e179] [cursor=pointer]:
+                      - /url: /tools/qr-code-menu-generator
+                  - listitem [ref=e180]:
+                    - link "Generador de Biografías con IA" [ref=e181] [cursor=pointer]:
+                      - /url: /tools/biography-generator
+              - generic [ref=e182]:
+                - heading "Guías" [level=4] [ref=e183]
+                - list [ref=e185]:
+                  - listitem [ref=e186]:
+                    - link "Mejor Plataforma WhatsApp" [ref=e187] [cursor=pointer]:
+                      - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                  - listitem [ref=e188]:
+                    - link "Comparativa de Plataformas" [ref=e189] [cursor=pointer]:
+                      - /url: /guides/marea-alcalina-vs-tiendanube
+                  - listitem [ref=e190]:
+                    - link "Tienda en Línea Gratis" [ref=e191] [cursor=pointer]:
+                      - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                  - listitem [ref=e192]:
+                    - link "Menú Digital Restaurantes" [ref=e193] [cursor=pointer]:
+                      - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                  - listitem [ref=e194]:
+                    - link "Cómo Vender por WhatsApp" [ref=e195] [cursor=pointer]:
+                      - /url: /como-vender
+              - generic [ref=e196]:
+                - heading "Información" [level=4] [ref=e197]
+                - list [ref=e199]:
+                  - listitem [ref=e200]:
+                    - link "Términos y Condiciones" [ref=e201] [cursor=pointer]:
+                      - /url: /terms
+                  - listitem [ref=e202]:
+                    - link "Políticas de Privacidad" [ref=e203] [cursor=pointer]:
+                      - /url: /privacy
+                  - listitem [ref=e204]:
+                    - link "Política de Uso Aceptable" [ref=e205] [cursor=pointer]:
+                      - /url: /aup
+                  - listitem [ref=e206]:
+                    - link "Preferencias de cookies" [ref=e207] [cursor=pointer]:
+                      - /url: javascript:void(0);
+              - generic [ref=e208]:
+                - heading "Soporte" [level=4] [ref=e209]
+                - list [ref=e211]:
+                  - paragraph [ref=e212]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                  - listitem [ref=e213]:
+                    - link "Messenger" [ref=e214] [cursor=pointer]:
+                      - /url: https://m.me/mareaalcalina
+                  - listitem [ref=e215]:
+                    - link "Instagram" [ref=e216] [cursor=pointer]:
+                      - /url: https://www.instagram.com/mareaalcalina_/
+              - generic [ref=e220]:
+                - heading "Síguenos" [level=4] [ref=e221]
+                - list [ref=e223]:
+                  - listitem [ref=e224]:
+                    - link [ref=e225] [cursor=pointer]:
+                      - /url: https://www.facebook.com/pg/mareaalcalina
+                      - img [ref=e226]
+                  - listitem [ref=e227]:
+                    - link "" [ref=e228] [cursor=pointer]:
+                      - /url: https://www.instagram.com/mareaalcalina_/
+                      - generic [ref=e229]: 
+                  - listitem [ref=e230]:
+                    - link [ref=e231] [cursor=pointer]:
+                      - /url: https://www.tiktok.com/@mareaalcalina
+                      - img [ref=e232]
+        - paragraph [ref=e238]: 2026 © Marea Alcalina
+  - banner "Banner de consentimiento de cookies" [ref=e239]:
+    - generic [ref=e241]:
+      - generic [ref=e242]:
+        - generic [ref=e243]: 🍪
+        - generic [ref=e244]:
+          - paragraph [ref=e245]:
+            - strong [ref=e246]: Usamos cookies en este sitio web
+          - paragraph [ref=e247]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e248] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e249]:
+        - button "Personalizar configuración de cookies" [ref=e250] [cursor=pointer]:
+          - img [ref=e251]
+        - button "Aceptar todas las cookies" [ref=e254] [cursor=pointer]: Aceptar todas

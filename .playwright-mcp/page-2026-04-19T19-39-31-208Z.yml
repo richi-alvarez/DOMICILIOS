@@ -1,0 +1,1042 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - link "Logo" [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e9]
+        - generic [ref=e10]:
+          - link "Inicio" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Planes" [ref=e12] [cursor=pointer]:
+            - /url: /plans
+          - link "Agencias" [ref=e13] [cursor=pointer]:
+            - /url: /agencies
+          - link "Crear" [ref=e14] [cursor=pointer]:
+            - /url: /menus
+          - button "Recursos" [ref=e16] [cursor=pointer]:
+            - text: Recursos
+            - img [ref=e17]
+          - button "ES" [ref=e20] [cursor=pointer]:
+            - generic [ref=e21]: ES
+            - img [ref=e22]
+          - generic [ref=e24]:
+            - link "Iniciar Sesión" [ref=e25] [cursor=pointer]:
+              - /url: /login
+            - link "Registrarme" [ref=e26] [cursor=pointer]:
+              - /url: /signup
+    - main [ref=e27]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - img [ref=e31]
+          - generic [ref=e33]: Guias por Industria
+        - heading "Cómo Vender por WhatsApp" [level=1] [ref=e34]
+        - paragraph [ref=e35]: Guias especializadas para 30 industrias con tips, estrategias y herramientas para vender más por WhatsApp.
+        - paragraph [ref=e37]: El 93% de los usuarios de internet en Mexico usan WhatsApp, segun DataReportal 2025. Aprende a vender tu producto con un catálogo digital profesional que convierte conversaciones en ventas.
+      - generic [ref=e39]:
+        - heading "Alimentos y Bebidas" [level=2] [ref=e40]
+        - generic [ref=e42]:
+          - link "Cómo Vender Pasteles por WhatsApp Fotografía, precios y organizacion por ocasión para vender pasteles y repostería por WhatsApp. Leer guía" [ref=e43] [cursor=pointer]:
+            - /url: /como-vender/pasteles-por-whatsapp
+            - generic [ref=e44]:
+              - generic [ref=e45]: 🎂
+              - heading "Cómo Vender Pasteles por WhatsApp" [level=3] [ref=e46]
+            - paragraph [ref=e47]: Fotografía, precios y organizacion por ocasión para vender pasteles y repostería por WhatsApp.
+            - generic [ref=e48]:
+              - generic [ref=e49]: Leer guía
+              - img [ref=e50]
+          - link "Cómo Vender Comida por WhatsApp Menu del día, zonas de entrega y horarios de corte para vender comida casera por WhatsApp. Leer guía" [ref=e52] [cursor=pointer]:
+            - /url: /como-vender/comida-por-whatsapp
+            - generic [ref=e53]:
+              - generic [ref=e54]: 🍲
+              - heading "Cómo Vender Comida por WhatsApp" [level=3] [ref=e55]
+            - paragraph [ref=e56]: Menu del día, zonas de entrega y horarios de corte para vender comida casera por WhatsApp.
+            - generic [ref=e57]:
+              - generic [ref=e58]: Leer guía
+              - img [ref=e59]
+          - link "Cómo Vender Comida Rápida por WhatsApp Ahorra 18-30% en comisiones de apps de delivery vendiendo hamburguesas y comida rápida directo por WhatsApp. Leer guía" [ref=e61] [cursor=pointer]:
+            - /url: /como-vender/comida-rapida-por-whatsapp
+            - generic [ref=e62]:
+              - generic [ref=e63]: 🍔
+              - heading "Cómo Vender Comida Rápida por WhatsApp" [level=3] [ref=e64]
+            - paragraph [ref=e65]: Ahorra 18-30% en comisiones de apps de delivery vendiendo hamburguesas y comida rápida directo por WhatsApp.
+            - generic [ref=e66]:
+              - generic [ref=e67]: Leer guía
+              - img [ref=e68]
+          - link "Cómo Vender Café por WhatsApp Origen, perfiles de tueste, suscripciones y notas de cata para vender café artesanal por WhatsApp. Leer guía" [ref=e70] [cursor=pointer]:
+            - /url: /como-vender/cafe-por-whatsapp
+            - generic [ref=e71]:
+              - generic [ref=e72]: ☕
+              - heading "Cómo Vender Café por WhatsApp" [level=3] [ref=e73]
+            - paragraph [ref=e74]: Origen, perfiles de tueste, suscripciones y notas de cata para vender café artesanal por WhatsApp.
+            - generic [ref=e75]:
+              - generic [ref=e76]: Leer guía
+              - img [ref=e77]
+          - link "Cómo Vender Salsas Artesanales por WhatsApp Cumplimiento normativo, escalas de picor y packaging para vender salsas artesanales por WhatsApp. Leer guía" [ref=e79] [cursor=pointer]:
+            - /url: /como-vender/salsas-artesanales-por-whatsapp
+            - generic [ref=e80]:
+              - generic [ref=e81]: 🌶️
+              - heading "Cómo Vender Salsas Artesanales por WhatsApp" [level=3] [ref=e82]
+            - paragraph [ref=e83]: Cumplimiento normativo, escalas de picor y packaging para vender salsas artesanales por WhatsApp.
+            - generic [ref=e84]:
+              - generic [ref=e85]: Leer guía
+              - img [ref=e86]
+          - link "Cómo Vender Botanas y Dulces por WhatsApp Paquetes por ocasión, proveedores y estrategias para vender botanas y dulces por WhatsApp. Leer guía" [ref=e88] [cursor=pointer]:
+            - /url: /como-vender/botanas-dulces-por-whatsapp
+            - generic [ref=e89]:
+              - generic [ref=e90]: 🍬
+              - heading "Cómo Vender Botanas y Dulces por WhatsApp" [level=3] [ref=e91]
+            - paragraph [ref=e92]: Paquetes por ocasión, proveedores y estrategias para vender botanas y dulces por WhatsApp.
+            - generic [ref=e93]:
+              - generic [ref=e94]: Leer guía
+              - img [ref=e95]
+          - link "Cómo Vender Tamales y Pan Artesanal por WhatsApp Pre-pedidos, temporadas clave y precios por docena para vender tamales por WhatsApp. Leer guía" [ref=e97] [cursor=pointer]:
+            - /url: /como-vender/tamales-panaderia-por-whatsapp
+            - generic [ref=e98]:
+              - generic [ref=e99]: 🫔
+              - heading "Cómo Vender Tamales y Pan Artesanal por WhatsApp" [level=3] [ref=e100]
+            - paragraph [ref=e101]: Pre-pedidos, temporadas clave y precios por docena para vender tamales por WhatsApp.
+            - generic [ref=e102]:
+              - generic [ref=e103]: Leer guía
+              - img [ref=e104]
+          - link "Cómo Vender Comida Saludable por WhatsApp Información nutricional, planes semanales y meal prep para vender comida saludable por WhatsApp. Leer guía" [ref=e106] [cursor=pointer]:
+            - /url: /como-vender/comida-saludable-por-whatsapp
+            - generic [ref=e107]:
+              - generic [ref=e108]: 🥗
+              - heading "Cómo Vender Comida Saludable por WhatsApp" [level=3] [ref=e109]
+            - paragraph [ref=e110]: Información nutricional, planes semanales y meal prep para vender comida saludable por WhatsApp.
+            - generic [ref=e111]:
+              - generic [ref=e112]: Leer guía
+              - img [ref=e113]
+          - link "Cómo Vender Pasteles por WhatsApp en Colombia Permisos INVIMA, precios en COP, cobros con Nequi y fotografía para vender pasteles en Colombia. Leer guía" [ref=e115] [cursor=pointer]:
+            - /url: /como-vender/pasteles-por-whatsapp-colombia
+            - generic [ref=e116]:
+              - generic [ref=e117]: 🎂
+              - heading "Cómo Vender Pasteles por WhatsApp en Colombia" [level=3] [ref=e118]
+            - paragraph [ref=e119]: Permisos INVIMA, precios en COP, cobros con Nequi y fotografía para vender pasteles en Colombia.
+            - generic [ref=e120]:
+              - generic [ref=e121]: Leer guía
+              - img [ref=e122]
+          - link "Cómo Vender Comida por WhatsApp en Colombia Secretaría de Salud, cobros con Nequi y domicilios para vender comida casera en Colombia. Leer guía" [ref=e124] [cursor=pointer]:
+            - /url: /como-vender/comida-por-whatsapp-colombia
+            - generic [ref=e125]:
+              - generic [ref=e126]: 🍲
+              - heading "Cómo Vender Comida por WhatsApp en Colombia" [level=3] [ref=e127]
+            - paragraph [ref=e128]: Secretaría de Salud, cobros con Nequi y domicilios para vender comida casera en Colombia.
+            - generic [ref=e129]:
+              - generic [ref=e130]: Leer guía
+              - img [ref=e131]
+          - link "Cómo Vender Comida Rápida por WhatsApp en Colombia Ahorra comisiones de Rappi, cobra con Nequi y vende hamburguesas y empanadas directo por WhatsApp en Colombia. Leer guía" [ref=e133] [cursor=pointer]:
+            - /url: /como-vender/comida-rapida-por-whatsapp-colombia
+            - generic [ref=e134]:
+              - generic [ref=e135]: 🍔
+              - heading "Cómo Vender Comida Rápida por WhatsApp en Colombia" [level=3] [ref=e136]
+            - paragraph [ref=e137]: Ahorra comisiones de Rappi, cobra con Nequi y vende hamburguesas y empanadas directo por WhatsApp en Colombia.
+            - generic [ref=e138]:
+              - generic [ref=e139]: Leer guía
+              - img [ref=e140]
+          - 'link "Como Vender Cafe por WhatsApp en Colombia Venda cafe colombiano de origen por WhatsApp: desde tinto artesanal hasta cafe especial de Huila, Narino y el Eje Cafetero. Cobre con Nequi y envie a todo el pais. Leer guía" [ref=e142] [cursor=pointer]':
+            - /url: /como-vender/cafe-por-whatsapp-colombia
+            - generic [ref=e143]:
+              - generic [ref=e144]: ☕
+              - heading "Como Vender Cafe por WhatsApp en Colombia" [level=3] [ref=e145]
+            - paragraph [ref=e146]: "Venda cafe colombiano de origen por WhatsApp: desde tinto artesanal hasta cafe especial de Huila, Narino y el Eje Cafetero. Cobre con Nequi y envie a todo el pais."
+            - generic [ref=e147]:
+              - generic [ref=e148]: Leer guía
+              - img [ref=e149]
+          - link "Como Vender Aji y Salsas Colombianas por WhatsApp en Colombia Venda aji casero, hogao, guacamole y salsas colombianas por WhatsApp. Desde la receta de su familia hasta un negocio con catalogo digital y cobros por Nequi. Leer guía" [ref=e151] [cursor=pointer]:
+            - /url: /como-vender/aji-salsas-por-whatsapp-colombia
+            - generic [ref=e152]:
+              - generic [ref=e153]: 🌶️
+              - heading "Como Vender Aji y Salsas Colombianas por WhatsApp en Colombia" [level=3] [ref=e154]
+            - paragraph [ref=e155]: Venda aji casero, hogao, guacamole y salsas colombianas por WhatsApp. Desde la receta de su familia hasta un negocio con catalogo digital y cobros por Nequi.
+            - generic [ref=e156]:
+              - generic [ref=e157]: Leer guía
+              - img [ref=e158]
+          - link "Como Vender Empanadas, Bunuelos y Snacks Colombianos por WhatsApp en Colombia Venda empanadas, bunuelos, deditos de queso y snacks colombianos por WhatsApp. Negocio de bajo costo, margenes altos y cobro por Nequi. Leer guía" [ref=e160] [cursor=pointer]:
+            - /url: /como-vender/empanadas-snacks-por-whatsapp-colombia
+            - generic [ref=e161]:
+              - generic [ref=e162]: 🥟
+              - heading "Como Vender Empanadas, Bunuelos y Snacks Colombianos por WhatsApp en Colombia" [level=3] [ref=e163]
+            - paragraph [ref=e164]: Venda empanadas, bunuelos, deditos de queso y snacks colombianos por WhatsApp. Negocio de bajo costo, margenes altos y cobro por Nequi.
+            - generic [ref=e165]:
+              - generic [ref=e166]: Leer guía
+              - img [ref=e167]
+          - link "Como Vender Tamales Colombianos por WhatsApp en Colombia Venda tamales tolimenses, vallunos, santandereanos y hayacas por WhatsApp. Preventa, cobro con Nequi y domicilios en toda Colombia. Leer guía" [ref=e169] [cursor=pointer]:
+            - /url: /como-vender/tamales-panaderia-por-whatsapp-colombia
+            - generic [ref=e170]:
+              - generic [ref=e171]: 🫔
+              - heading "Como Vender Tamales Colombianos por WhatsApp en Colombia" [level=3] [ref=e172]
+            - paragraph [ref=e173]: Venda tamales tolimenses, vallunos, santandereanos y hayacas por WhatsApp. Preventa, cobro con Nequi y domicilios en toda Colombia.
+            - generic [ref=e174]:
+              - generic [ref=e175]: Leer guía
+              - img [ref=e176]
+          - link "Como Vender Comida Saludable por WhatsApp en Colombia Venda bowls, meal prep, acai bowls y comida fitness por WhatsApp en Colombia. Planes semanales, cobro con Nequi y domicilios en las principales ciudades. Leer guía" [ref=e178] [cursor=pointer]:
+            - /url: /como-vender/comida-saludable-por-whatsapp-colombia
+            - generic [ref=e179]:
+              - generic [ref=e180]: 🥗
+              - heading "Como Vender Comida Saludable por WhatsApp en Colombia" [level=3] [ref=e181]
+            - paragraph [ref=e182]: Venda bowls, meal prep, acai bowls y comida fitness por WhatsApp en Colombia. Planes semanales, cobro con Nequi y domicilios en las principales ciudades.
+            - generic [ref=e183]:
+              - generic [ref=e184]: Leer guía
+              - img [ref=e185]
+          - link "Cómo Vender Tortas y Repostería por WhatsApp en Argentina Fotografía, precios y organización por ocasión para vender tortas, alfajores y repostería artesanal por WhatsApp en Argentina. Leer guía" [ref=e187] [cursor=pointer]:
+            - /url: /como-vender/tortas-por-whatsapp-argentina
+            - generic [ref=e188]:
+              - generic [ref=e189]: 🎂
+              - heading "Cómo Vender Tortas y Repostería por WhatsApp en Argentina" [level=3] [ref=e190]
+            - paragraph [ref=e191]: Fotografía, precios y organización por ocasión para vender tortas, alfajores y repostería artesanal por WhatsApp en Argentina.
+            - generic [ref=e192]:
+              - generic [ref=e193]: Leer guía
+              - img [ref=e194]
+          - link "Cómo Vender Comida Casera por WhatsApp en Argentina Menú del día, viandas, empanadas y zonas de entrega para vender comida casera por WhatsApp en Argentina. Leer guía" [ref=e196] [cursor=pointer]:
+            - /url: /como-vender/comida-por-whatsapp-argentina
+            - generic [ref=e197]:
+              - generic [ref=e198]: 🍲
+              - heading "Cómo Vender Comida Casera por WhatsApp en Argentina" [level=3] [ref=e199]
+            - paragraph [ref=e200]: Menú del día, viandas, empanadas y zonas de entrega para vender comida casera por WhatsApp en Argentina.
+            - generic [ref=e201]:
+              - generic [ref=e202]: Leer guía
+              - img [ref=e203]
+          - link "Cómo Vender Comida Rápida por WhatsApp en Argentina Ahorrá comisiones de PedidosYa vendiendo lomitos, hamburguesas y comida rápida directo por WhatsApp en Argentina. Leer guía" [ref=e205] [cursor=pointer]:
+            - /url: /como-vender/comida-rapida-por-whatsapp-argentina
+            - generic [ref=e206]:
+              - generic [ref=e207]: 🍔
+              - heading "Cómo Vender Comida Rápida por WhatsApp en Argentina" [level=3] [ref=e208]
+            - paragraph [ref=e209]: Ahorrá comisiones de PedidosYa vendiendo lomitos, hamburguesas y comida rápida directo por WhatsApp en Argentina.
+            - generic [ref=e210]:
+              - generic [ref=e211]: Leer guía
+              - img [ref=e212]
+          - link "Cómo Vender Café por WhatsApp en Argentina Perfiles de tueste, suscripciones y notas de cata para vender café artesanal por WhatsApp en Argentina. Leer guía" [ref=e214] [cursor=pointer]:
+            - /url: /como-vender/cafe-por-whatsapp-argentina
+            - generic [ref=e215]:
+              - generic [ref=e216]: ☕
+              - heading "Cómo Vender Café por WhatsApp en Argentina" [level=3] [ref=e217]
+            - paragraph [ref=e218]: Perfiles de tueste, suscripciones y notas de cata para vender café artesanal por WhatsApp en Argentina.
+            - generic [ref=e219]:
+              - generic [ref=e220]: Leer guía
+              - img [ref=e221]
+          - 'link "Cómo Vender Salsas y Aderezos por WhatsApp en Argentina Chimichurri, salsa criolla, aderezos artesanales y condimentos para asado: vendé salsas por WhatsApp en Argentina. Leer guía" [ref=e223] [cursor=pointer]':
+            - /url: /como-vender/chimichurri-salsas-por-whatsapp-argentina
+            - generic [ref=e224]:
+              - generic [ref=e225]: 🌶️
+              - heading "Cómo Vender Salsas y Aderezos por WhatsApp en Argentina" [level=3] [ref=e226]
+            - paragraph [ref=e227]: "Chimichurri, salsa criolla, aderezos artesanales y condimentos para asado: vendé salsas por WhatsApp en Argentina."
+            - generic [ref=e228]:
+              - generic [ref=e229]: Leer guía
+              - img [ref=e230]
+          - link "Cómo Vender Picadas y Snacks por WhatsApp en Argentina Tablas de picada, boxes de alfajores y snacks gourmet para vender por WhatsApp en Argentina. Leer guía" [ref=e232] [cursor=pointer]:
+            - /url: /como-vender/picadas-snacks-por-whatsapp-argentina
+            - generic [ref=e233]:
+              - generic [ref=e234]: 🧀
+              - heading "Cómo Vender Picadas y Snacks por WhatsApp en Argentina" [level=3] [ref=e235]
+            - paragraph [ref=e236]: Tablas de picada, boxes de alfajores y snacks gourmet para vender por WhatsApp en Argentina.
+            - generic [ref=e237]:
+              - generic [ref=e238]: Leer guía
+              - img [ref=e239]
+          - link "Cómo Vender Tamales, Humitas y Comida Regional por WhatsApp en Argentina Tamales, humitas, empanadas salteñas y comida regional del NOA para vender por WhatsApp en Argentina. Leer guía" [ref=e241] [cursor=pointer]:
+            - /url: /como-vender/tamales-humitas-por-whatsapp-argentina
+            - generic [ref=e242]:
+              - generic [ref=e243]: 🫔
+              - heading "Cómo Vender Tamales, Humitas y Comida Regional por WhatsApp en Argentina" [level=3] [ref=e244]
+            - paragraph [ref=e245]: Tamales, humitas, empanadas salteñas y comida regional del NOA para vender por WhatsApp en Argentina.
+            - generic [ref=e246]:
+              - generic [ref=e247]: Leer guía
+              - img [ref=e248]
+          - link "Cómo Vender Comida Saludable por WhatsApp en Argentina Viandas saludables, bowls, meal prep y comida plant-based para vender por WhatsApp en Argentina. Leer guía" [ref=e250] [cursor=pointer]:
+            - /url: /como-vender/comida-saludable-por-whatsapp-argentina
+            - generic [ref=e251]:
+              - generic [ref=e252]: 🥗
+              - heading "Cómo Vender Comida Saludable por WhatsApp en Argentina" [level=3] [ref=e253]
+            - paragraph [ref=e254]: Viandas saludables, bowls, meal prep y comida plant-based para vender por WhatsApp en Argentina.
+            - generic [ref=e255]:
+              - generic [ref=e256]: Leer guía
+              - img [ref=e257]
+      - generic [ref=e260]:
+        - heading "Moda y Accesorios" [level=2] [ref=e261]
+        - generic [ref=e263]:
+          - link "Cómo Vender Ropa por WhatsApp Tablas de tallas, fotografía y outfits para vender ropa y moda por WhatsApp. Leer guía" [ref=e264] [cursor=pointer]:
+            - /url: /como-vender/ropa-por-whatsapp
+            - generic [ref=e265]:
+              - generic [ref=e266]: 👗
+              - heading "Cómo Vender Ropa por WhatsApp" [level=3] [ref=e267]
+            - paragraph [ref=e268]: Tablas de tallas, fotografía y outfits para vender ropa y moda por WhatsApp.
+            - generic [ref=e269]:
+              - generic [ref=e270]: Leer guía
+              - img [ref=e271]
+          - link "Cómo Vender Zapatos por WhatsApp Tablas de tallas, fotos multi-angulo y proveedores para vender zapatos por WhatsApp. Leer guía" [ref=e273] [cursor=pointer]:
+            - /url: /como-vender/zapatos-por-whatsapp
+            - generic [ref=e274]:
+              - generic [ref=e275]: 👟
+              - heading "Cómo Vender Zapatos por WhatsApp" [level=3] [ref=e276]
+            - paragraph [ref=e277]: Tablas de tallas, fotos multi-angulo y proveedores para vender zapatos por WhatsApp.
+            - generic [ref=e278]:
+              - generic [ref=e279]: Leer guía
+              - img [ref=e280]
+          - link "Cómo Vender Joyería por WhatsApp Fotografía macro, medidas y sets para vender joyería y bisuteria por WhatsApp. Leer guía" [ref=e282] [cursor=pointer]:
+            - /url: /como-vender/joyeria-por-whatsapp
+            - generic [ref=e283]:
+              - generic [ref=e284]: 💍
+              - heading "Cómo Vender Joyería por WhatsApp" [level=3] [ref=e285]
+            - paragraph [ref=e286]: Fotografía macro, medidas y sets para vender joyería y bisuteria por WhatsApp.
+            - generic [ref=e287]:
+              - generic [ref=e288]: Leer guía
+              - img [ref=e289]
+          - link "Cómo Vender Lencería por WhatsApp Guias de tallas, empaque discreto y proveedores para vender lencería por WhatsApp. Leer guía" [ref=e291] [cursor=pointer]:
+            - /url: /como-vender/lenceria-por-whatsapp
+            - generic [ref=e292]:
+              - generic [ref=e293]: 👙
+              - heading "Cómo Vender Lencería por WhatsApp" [level=3] [ref=e294]
+            - paragraph [ref=e295]: Guias de tallas, empaque discreto y proveedores para vender lencería por WhatsApp.
+            - generic [ref=e296]:
+              - generic [ref=e297]: Leer guía
+              - img [ref=e298]
+          - link "Cómo Vender Accesorios para Celulares por WhatsApp Compatibilidad por modelo, bundles y proveedores para vender accesorios de celular por WhatsApp. Leer guía" [ref=e300] [cursor=pointer]:
+            - /url: /como-vender/accesorios-celulares-por-whatsapp
+            - generic [ref=e301]:
+              - generic [ref=e302]: 📱
+              - heading "Cómo Vender Accesorios para Celulares por WhatsApp" [level=3] [ref=e303]
+            - paragraph [ref=e304]: Compatibilidad por modelo, bundles y proveedores para vender accesorios de celular por WhatsApp.
+            - generic [ref=e305]:
+              - generic [ref=e306]: Leer guía
+              - img [ref=e307]
+          - link "Cómo Vender Ropa por WhatsApp en Colombia Proveedores en San Andresito, tablas de tallas y estrategias para vender ropa en Colombia por WhatsApp. Leer guía" [ref=e309] [cursor=pointer]:
+            - /url: /como-vender/ropa-por-whatsapp-colombia
+            - generic [ref=e310]:
+              - generic [ref=e311]: 👗
+              - heading "Cómo Vender Ropa por WhatsApp en Colombia" [level=3] [ref=e312]
+            - paragraph [ref=e313]: Proveedores en San Andresito, tablas de tallas y estrategias para vender ropa en Colombia por WhatsApp.
+            - generic [ref=e314]:
+              - generic [ref=e315]: Leer guía
+              - img [ref=e316]
+          - link "Cómo Vender Zapatos por WhatsApp en Colombia Proveedores en Bucaramanga, tablas de tallas CO/US/EU, cobros con Nequi y fotografía para vender zapatos en Colombia. Leer guía" [ref=e318] [cursor=pointer]:
+            - /url: /como-vender/zapatos-por-whatsapp-colombia
+            - generic [ref=e319]:
+              - generic [ref=e320]: 👟
+              - heading "Cómo Vender Zapatos por WhatsApp en Colombia" [level=3] [ref=e321]
+            - paragraph [ref=e322]: Proveedores en Bucaramanga, tablas de tallas CO/US/EU, cobros con Nequi y fotografía para vender zapatos en Colombia.
+            - generic [ref=e323]:
+              - generic [ref=e324]: Leer guía
+              - img [ref=e325]
+          - link "Cómo Vender Joyería por WhatsApp en Colombia Esmeraldas, filigrana de Mompox, bisutería y cobros con Nequi para vender joyería en Colombia. Leer guía" [ref=e327] [cursor=pointer]:
+            - /url: /como-vender/joyeria-por-whatsapp-colombia
+            - generic [ref=e328]:
+              - generic [ref=e329]: 💍
+              - heading "Cómo Vender Joyería por WhatsApp en Colombia" [level=3] [ref=e330]
+            - paragraph [ref=e331]: Esmeraldas, filigrana de Mompox, bisutería y cobros con Nequi para vender joyería en Colombia.
+            - generic [ref=e332]:
+              - generic [ref=e333]: Leer guía
+              - img [ref=e334]
+          - link "Cómo Vender Lencería por WhatsApp en Colombia Marcas colombianas, tablas de tallas, cobros con Nequi y domicilios discretos para vender lencería en Colombia. Leer guía" [ref=e336] [cursor=pointer]:
+            - /url: /como-vender/lenceria-por-whatsapp-colombia
+            - generic [ref=e337]:
+              - generic [ref=e338]: 👙
+              - heading "Cómo Vender Lencería por WhatsApp en Colombia" [level=3] [ref=e339]
+            - paragraph [ref=e340]: Marcas colombianas, tablas de tallas, cobros con Nequi y domicilios discretos para vender lencería en Colombia.
+            - generic [ref=e341]:
+              - generic [ref=e342]: Leer guía
+              - img [ref=e343]
+          - link "Cómo Vender Accesorios para Celulares por WhatsApp en Colombia Proveedores en San Andresito, margenes de 100-300%, cobros con Nequi y MercadoLibre para vender accesorios de celulares en Colombia. Leer guía" [ref=e345] [cursor=pointer]:
+            - /url: /como-vender/accesorios-celulares-por-whatsapp-colombia
+            - generic [ref=e346]:
+              - generic [ref=e347]: 📱
+              - heading "Cómo Vender Accesorios para Celulares por WhatsApp en Colombia" [level=3] [ref=e348]
+            - paragraph [ref=e349]: Proveedores en San Andresito, margenes de 100-300%, cobros con Nequi y MercadoLibre para vender accesorios de celulares en Colombia.
+            - generic [ref=e350]:
+              - generic [ref=e351]: Leer guía
+              - img [ref=e352]
+          - link "Cómo Vender Ropa por WhatsApp en Argentina Proveedores en Flores y Avellaneda, talles argentinos, precios en ARS y tips para vender ropa por WhatsApp en Argentina. Leer guía" [ref=e354] [cursor=pointer]:
+            - /url: /como-vender/ropa-por-whatsapp-argentina
+            - generic [ref=e355]:
+              - generic [ref=e356]: 👗
+              - heading "Cómo Vender Ropa por WhatsApp en Argentina" [level=3] [ref=e357]
+            - paragraph [ref=e358]: Proveedores en Flores y Avellaneda, talles argentinos, precios en ARS y tips para vender ropa por WhatsApp en Argentina.
+            - generic [ref=e359]:
+              - generic [ref=e360]: Leer guía
+              - img [ref=e361]
+          - link "Cómo Vender Zapatos por WhatsApp en Argentina Proveedores en Villa Crespo y Avellaneda, talles argentinos, precios en ARS y tips para vender zapatos por WhatsApp. Leer guía" [ref=e363] [cursor=pointer]:
+            - /url: /como-vender/zapatos-por-whatsapp-argentina
+            - generic [ref=e364]:
+              - generic [ref=e365]: 👟
+              - heading "Cómo Vender Zapatos por WhatsApp en Argentina" [level=3] [ref=e366]
+            - paragraph [ref=e367]: Proveedores en Villa Crespo y Avellaneda, talles argentinos, precios en ARS y tips para vender zapatos por WhatsApp.
+            - generic [ref=e368]:
+              - generic [ref=e369]: Leer guía
+              - img [ref=e370]
+          - link "Cómo Vender Joyería por WhatsApp en Argentina Plata argentina, bisutería, diseño mapuche, proveedores en Libertad y San Telmo para vender joyería por WhatsApp. Leer guía" [ref=e372] [cursor=pointer]:
+            - /url: /como-vender/joyeria-por-whatsapp-argentina
+            - generic [ref=e373]:
+              - generic [ref=e374]: 💍
+              - heading "Cómo Vender Joyería por WhatsApp en Argentina" [level=3] [ref=e375]
+            - paragraph [ref=e376]: Plata argentina, bisutería, diseño mapuche, proveedores en Libertad y San Telmo para vender joyería por WhatsApp.
+            - generic [ref=e377]:
+              - generic [ref=e378]: Leer guía
+              - img [ref=e379]
+          - link "Cómo Vender Lencería por WhatsApp en Argentina Marcas argentinas como Caro Cuore y Cocot, talles AR, proveedores mayoristas y tips para vender lencería por WhatsApp. Leer guía" [ref=e381] [cursor=pointer]:
+            - /url: /como-vender/lenceria-por-whatsapp-argentina
+            - generic [ref=e382]:
+              - generic [ref=e383]: 👙
+              - heading "Cómo Vender Lencería por WhatsApp en Argentina" [level=3] [ref=e384]
+            - paragraph [ref=e385]: Marcas argentinas como Caro Cuore y Cocot, talles AR, proveedores mayoristas y tips para vender lencería por WhatsApp.
+            - generic [ref=e386]:
+              - generic [ref=e387]: Leer guía
+              - img [ref=e388]
+          - link "Cómo Vender Accesorios de Celulares por WhatsApp en Argentina Proveedores en Once, fundas, cargadores, precios en ARS y tips para vender accesorios de celulares por WhatsApp en Argentina. Leer guía" [ref=e390] [cursor=pointer]:
+            - /url: /como-vender/accesorios-celulares-por-whatsapp-argentina
+            - generic [ref=e391]:
+              - generic [ref=e392]: 📱
+              - heading "Cómo Vender Accesorios de Celulares por WhatsApp en Argentina" [level=3] [ref=e393]
+            - paragraph [ref=e394]: Proveedores en Once, fundas, cargadores, precios en ARS y tips para vender accesorios de celulares por WhatsApp en Argentina.
+            - generic [ref=e395]:
+              - generic [ref=e396]: Leer guía
+              - img [ref=e397]
+      - generic [ref=e400]:
+        - heading "Belleza y Salud" [level=2] [ref=e401]
+        - generic [ref=e403]:
+          - link "Cómo Vender Cosméticos por WhatsApp Registro COFEPRIS, rutinas de belleza y bundles para vender cosméticos por WhatsApp. Leer guía" [ref=e404] [cursor=pointer]:
+            - /url: /como-vender/cosmeticos-por-whatsapp
+            - generic [ref=e405]:
+              - generic [ref=e406]: 💄
+              - heading "Cómo Vender Cosméticos por WhatsApp" [level=3] [ref=e407]
+            - paragraph [ref=e408]: Registro COFEPRIS, rutinas de belleza y bundles para vender cosméticos por WhatsApp.
+            - generic [ref=e409]:
+              - generic [ref=e410]: Leer guía
+              - img [ref=e411]
+          - link "Cómo Vender Perfumes por WhatsApp Autenticidad, notas olfativas y sets de descubrimiento para vender perfumes por WhatsApp. Leer guía" [ref=e413] [cursor=pointer]:
+            - /url: /como-vender/perfumes-por-whatsapp
+            - generic [ref=e414]:
+              - generic [ref=e415]: 🧴
+              - heading "Cómo Vender Perfumes por WhatsApp" [level=3] [ref=e416]
+            - paragraph [ref=e417]: Autenticidad, notas olfativas y sets de descubrimiento para vender perfumes por WhatsApp.
+            - generic [ref=e418]:
+              - generic [ref=e419]: Leer guía
+              - img [ref=e420]
+          - link "Cómo Vender Maquillaje y Servicios de Unas por WhatsApp Portafolio digital, agenda de citas y precios para vender servicios de maquillaje y unas por WhatsApp. Leer guía" [ref=e422] [cursor=pointer]:
+            - /url: /como-vender/maquillaje-unas-por-whatsapp
+            - generic [ref=e423]:
+              - generic [ref=e424]: 💅
+              - heading "Cómo Vender Maquillaje y Servicios de Unas por WhatsApp" [level=3] [ref=e425]
+            - paragraph [ref=e426]: Portafolio digital, agenda de citas y precios para vender servicios de maquillaje y unas por WhatsApp.
+            - generic [ref=e427]:
+              - generic [ref=e428]: Leer guía
+              - img [ref=e429]
+          - link "Cómo Vender Productos Naturistas por WhatsApp Ingredientes, COFEPRIS y consultas personalizadas para vender productos naturistas por WhatsApp. Leer guía" [ref=e431] [cursor=pointer]:
+            - /url: /como-vender/productos-naturistas-por-whatsapp
+            - generic [ref=e432]:
+              - generic [ref=e433]: 🌿
+              - heading "Cómo Vender Productos Naturistas por WhatsApp" [level=3] [ref=e434]
+            - paragraph [ref=e435]: Ingredientes, COFEPRIS y consultas personalizadas para vender productos naturistas por WhatsApp.
+            - generic [ref=e436]:
+              - generic [ref=e437]: Leer guía
+              - img [ref=e438]
+          - link "Cómo Vender Cosméticos por WhatsApp en Colombia Notificacion INVIMA, rutinas de belleza y cobros con Nequi para vender cosméticos en Colombia. Leer guía" [ref=e440] [cursor=pointer]:
+            - /url: /como-vender/cosmeticos-por-whatsapp-colombia
+            - generic [ref=e441]:
+              - generic [ref=e442]: 💄
+              - heading "Cómo Vender Cosméticos por WhatsApp en Colombia" [level=3] [ref=e443]
+            - paragraph [ref=e444]: Notificacion INVIMA, rutinas de belleza y cobros con Nequi para vender cosméticos en Colombia.
+            - generic [ref=e445]:
+              - generic [ref=e446]: Leer guía
+              - img [ref=e447]
+          - link "Cómo Vender Perfumes por WhatsApp en Colombia Autenticidad, notas olfativas, sets de descubrimiento y cobros con Nequi para vender perfumes en Colombia. Leer guía" [ref=e449] [cursor=pointer]:
+            - /url: /como-vender/perfumes-por-whatsapp-colombia
+            - generic [ref=e450]:
+              - generic [ref=e451]: 🧴
+              - heading "Cómo Vender Perfumes por WhatsApp en Colombia" [level=3] [ref=e452]
+            - paragraph [ref=e453]: Autenticidad, notas olfativas, sets de descubrimiento y cobros con Nequi para vender perfumes en Colombia.
+            - generic [ref=e454]:
+              - generic [ref=e455]: Leer guía
+              - img [ref=e456]
+          - link "Cómo Vender Maquillaje y Servicios de Uñas por WhatsApp en Colombia Portafolio digital, citas, productos de belleza y cobros con Nequi para vender maquillaje y uñas en Colombia. Leer guía" [ref=e458] [cursor=pointer]:
+            - /url: /como-vender/maquillaje-unas-por-whatsapp-colombia
+            - generic [ref=e459]:
+              - generic [ref=e460]: 💅
+              - heading "Cómo Vender Maquillaje y Servicios de Uñas por WhatsApp en Colombia" [level=3] [ref=e461]
+            - paragraph [ref=e462]: Portafolio digital, citas, productos de belleza y cobros con Nequi para vender maquillaje y uñas en Colombia.
+            - generic [ref=e463]:
+              - generic [ref=e464]: Leer guía
+              - img [ref=e465]
+          - link "Cómo Vender Productos Naturistas por WhatsApp en Colombia Registro INVIMA, suplementos, plantas medicinales y cobros con Nequi para vender productos naturistas en Colombia. Leer guía" [ref=e467] [cursor=pointer]:
+            - /url: /como-vender/productos-naturistas-por-whatsapp-colombia
+            - generic [ref=e468]:
+              - generic [ref=e469]: 🌿
+              - heading "Cómo Vender Productos Naturistas por WhatsApp en Colombia" [level=3] [ref=e470]
+            - paragraph [ref=e471]: Registro INVIMA, suplementos, plantas medicinales y cobros con Nequi para vender productos naturistas en Colombia.
+            - generic [ref=e472]:
+              - generic [ref=e473]: Leer guía
+              - img [ref=e474]
+          - link "Cómo Vender Cosméticos por WhatsApp en Argentina Regulacion ANMAT, marcas como Natura y Avon, cultura de revendedoras y tips para vender cosméticos por WhatsApp en Argentina. Leer guía" [ref=e476] [cursor=pointer]:
+            - /url: /como-vender/cosmeticos-por-whatsapp-argentina
+            - generic [ref=e477]:
+              - generic [ref=e478]: 💄
+              - heading "Cómo Vender Cosméticos por WhatsApp en Argentina" [level=3] [ref=e479]
+            - paragraph [ref=e480]: Regulacion ANMAT, marcas como Natura y Avon, cultura de revendedoras y tips para vender cosméticos por WhatsApp en Argentina.
+            - generic [ref=e481]:
+              - generic [ref=e482]: Leer guía
+              - img [ref=e483]
+          - link "Cómo Vender Perfumes por WhatsApp en Argentina Marcas argentinas, probadores, discovery sets, regulacion ANMAT y tips para vender perfumes por WhatsApp en Argentina. Leer guía" [ref=e485] [cursor=pointer]:
+            - /url: /como-vender/perfumes-por-whatsapp-argentina
+            - generic [ref=e486]:
+              - generic [ref=e487]: 🧴
+              - heading "Cómo Vender Perfumes por WhatsApp en Argentina" [level=3] [ref=e488]
+            - paragraph [ref=e489]: Marcas argentinas, probadores, discovery sets, regulacion ANMAT y tips para vender perfumes por WhatsApp en Argentina.
+            - generic [ref=e490]:
+              - generic [ref=e491]: Leer guía
+              - img [ref=e492]
+          - link "Cómo Vender Maquillaje y Uñas por WhatsApp en Argentina Marcas argentinas, nail art, servicios de maquillaje, regulacion ANMAT y tips para vender por WhatsApp en Argentina. Leer guía" [ref=e494] [cursor=pointer]:
+            - /url: /como-vender/maquillaje-unas-por-whatsapp-argentina
+            - generic [ref=e495]:
+              - generic [ref=e496]: 💅
+              - heading "Cómo Vender Maquillaje y Uñas por WhatsApp en Argentina" [level=3] [ref=e497]
+            - paragraph [ref=e498]: Marcas argentinas, nail art, servicios de maquillaje, regulacion ANMAT y tips para vender por WhatsApp en Argentina.
+            - generic [ref=e499]:
+              - generic [ref=e500]: Leer guía
+              - img [ref=e501]
+          - link "Cómo Vender Productos Naturistas por WhatsApp en Argentina Dieteticas online, yerba mate, suplementos, regulacion ANMAT/INAL y tips para vender productos naturistas por WhatsApp en Argentina. Leer guía" [ref=e503] [cursor=pointer]:
+            - /url: /como-vender/productos-naturistas-por-whatsapp-argentina
+            - generic [ref=e504]:
+              - generic [ref=e505]: 🌿
+              - heading "Cómo Vender Productos Naturistas por WhatsApp en Argentina" [level=3] [ref=e506]
+            - paragraph [ref=e507]: Dieteticas online, yerba mate, suplementos, regulacion ANMAT/INAL y tips para vender productos naturistas por WhatsApp en Argentina.
+            - generic [ref=e508]:
+              - generic [ref=e509]: Leer guía
+              - img [ref=e510]
+      - generic [ref=e513]:
+        - heading "Artesanal y Manualidades" [level=2] [ref=e514]
+        - generic [ref=e516]:
+          - link "Cómo Vender Artesanias por WhatsApp Historia del artesano, exportacion y certificados de autenticidad para vender artesanias por WhatsApp. Leer guía" [ref=e517] [cursor=pointer]:
+            - /url: /como-vender/artesanias-por-whatsapp
+            - generic [ref=e518]:
+              - generic [ref=e519]: 🎨
+              - heading "Cómo Vender Artesanias por WhatsApp" [level=3] [ref=e520]
+            - paragraph [ref=e521]: Historia del artesano, exportacion y certificados de autenticidad para vender artesanias por WhatsApp.
+            - generic [ref=e522]:
+              - generic [ref=e523]: Leer guía
+              - img [ref=e524]
+          - link "Cómo Vender Velas Artesanales por WhatsApp Margenes de 300%+, perfiles de aroma y fotografía atmosferica para vender velas artesanales. Leer guía" [ref=e526] [cursor=pointer]:
+            - /url: /como-vender/velas-artesanales-por-whatsapp
+            - generic [ref=e527]:
+              - generic [ref=e528]: 🕯️
+              - heading "Cómo Vender Velas Artesanales por WhatsApp" [level=3] [ref=e529]
+            - paragraph [ref=e530]: Margenes de 300%+, perfiles de aroma y fotografía atmosferica para vender velas artesanales.
+            - generic [ref=e531]:
+              - generic [ref=e532]: Leer guía
+              - img [ref=e533]
+          - link "Cómo Vender Tejidos y Manualidades por WhatsApp Tiempos de producción, pedidos personalizados y multi-canal para vender tejidos por WhatsApp. Leer guía" [ref=e535] [cursor=pointer]:
+            - /url: /como-vender/manualidades-tejidos-por-whatsapp
+            - generic [ref=e536]:
+              - generic [ref=e537]: 🧶
+              - heading "Cómo Vender Tejidos y Manualidades por WhatsApp" [level=3] [ref=e538]
+            - paragraph [ref=e539]: Tiempos de producción, pedidos personalizados y multi-canal para vender tejidos por WhatsApp.
+            - generic [ref=e540]:
+              - generic [ref=e541]: Leer guía
+              - img [ref=e542]
+          - link "Cómo Vender Flores y Arreglos Florales por WhatsApp Temporadas clave, organizacion por ocasión y tamaños para vender flores y arreglos por WhatsApp. Leer guía" [ref=e544] [cursor=pointer]:
+            - /url: /como-vender/flores-por-whatsapp
+            - generic [ref=e545]:
+              - generic [ref=e546]: 💐
+              - heading "Cómo Vender Flores y Arreglos Florales por WhatsApp" [level=3] [ref=e547]
+            - paragraph [ref=e548]: Temporadas clave, organizacion por ocasión y tamaños para vender flores y arreglos por WhatsApp.
+            - generic [ref=e549]:
+              - generic [ref=e550]: Leer guía
+              - img [ref=e551]
+          - link "Cómo Vender Artesanías por WhatsApp en Colombia Mochilas Wayúu, filigrana de Mompox, hamacas y cobros con Nequi para vender artesanías colombianas por WhatsApp. Leer guía" [ref=e553] [cursor=pointer]:
+            - /url: /como-vender/artesanias-por-whatsapp-colombia
+            - generic [ref=e554]:
+              - generic [ref=e555]: 🎨
+              - heading "Cómo Vender Artesanías por WhatsApp en Colombia" [level=3] [ref=e556]
+            - paragraph [ref=e557]: Mochilas Wayúu, filigrana de Mompox, hamacas y cobros con Nequi para vender artesanías colombianas por WhatsApp.
+            - generic [ref=e558]:
+              - generic [ref=e559]: Leer guía
+              - img [ref=e560]
+          - link "Cómo Vender Velas Artesanales por WhatsApp en Colombia Cera de soya, fragancias, margenes de 300%+ y cobros con Nequi para vender velas artesanales en Colombia. Leer guía" [ref=e562] [cursor=pointer]:
+            - /url: /como-vender/velas-artesanales-por-whatsapp-colombia
+            - generic [ref=e563]:
+              - generic [ref=e564]: 🕯️
+              - heading "Cómo Vender Velas Artesanales por WhatsApp en Colombia" [level=3] [ref=e565]
+            - paragraph [ref=e566]: Cera de soya, fragancias, margenes de 300%+ y cobros con Nequi para vender velas artesanales en Colombia.
+            - generic [ref=e567]:
+              - generic [ref=e568]: Leer guía
+              - img [ref=e569]
+          - 'link "Cómo Vender Tejidos por WhatsApp en Colombia Mochilas Wayúu, hamacas, crochet y tejidos artesanales: fotografía, precios en COP y domicilios para vender por WhatsApp en Colombia. Leer guía" [ref=e571] [cursor=pointer]':
+            - /url: /como-vender/manualidades-tejidos-por-whatsapp-colombia
+            - generic [ref=e572]:
+              - generic [ref=e573]: 🧶
+              - heading "Cómo Vender Tejidos por WhatsApp en Colombia" [level=3] [ref=e574]
+            - paragraph [ref=e575]: "Mochilas Wayúu, hamacas, crochet y tejidos artesanales: fotografía, precios en COP y domicilios para vender por WhatsApp en Colombia."
+            - generic [ref=e576]:
+              - generic [ref=e577]: Leer guía
+              - img [ref=e578]
+          - 'link "Cómo Vender Flores por WhatsApp en Colombia Rosas, claveles, hortensias y arreglos: fotografía, precios en COP y domicilios de flores por WhatsApp en Colombia. Leer guía" [ref=e580] [cursor=pointer]':
+            - /url: /como-vender/flores-por-whatsapp-colombia
+            - generic [ref=e581]:
+              - generic [ref=e582]: 💐
+              - heading "Cómo Vender Flores por WhatsApp en Colombia" [level=3] [ref=e583]
+            - paragraph [ref=e584]: "Rosas, claveles, hortensias y arreglos: fotografía, precios en COP y domicilios de flores por WhatsApp en Colombia."
+            - generic [ref=e585]:
+              - generic [ref=e586]: Leer guía
+              - img [ref=e587]
+          - 'link "Cómo Vender Artesanías por WhatsApp en Argentina Vendé artesanías argentinas por WhatsApp: textiles norteños, mates, platería mapuche y cueros gauchescos. Descubrí cómo armar tu catálogo digital y llegar a clientes en todo el país. Leer guía" [ref=e589] [cursor=pointer]':
+            - /url: /como-vender/artesanias-por-whatsapp-argentina
+            - generic [ref=e590]:
+              - generic [ref=e591]: 🎨
+              - heading "Cómo Vender Artesanías por WhatsApp en Argentina" [level=3] [ref=e592]
+            - paragraph [ref=e593]: "Vendé artesanías argentinas por WhatsApp: textiles norteños, mates, platería mapuche y cueros gauchescos. Descubrí cómo armar tu catálogo digital y llegar a clientes en todo el país."
+            - generic [ref=e594]:
+              - generic [ref=e595]: Leer guía
+              - img [ref=e596]
+          - link "Cómo Vender Velas Artesanales por WhatsApp en Argentina Vendé velas artesanales de soja por WhatsApp en Argentina. Inversión desde $50,000 ARS, tips de catálogo, envío y cobro con billeteras virtuales. Leer guía" [ref=e598] [cursor=pointer]:
+            - /url: /como-vender/velas-artesanales-por-whatsapp-argentina
+            - generic [ref=e599]:
+              - generic [ref=e600]: 🕯️
+              - heading "Cómo Vender Velas Artesanales por WhatsApp en Argentina" [level=3] [ref=e601]
+            - paragraph [ref=e602]: Vendé velas artesanales de soja por WhatsApp en Argentina. Inversión desde $50,000 ARS, tips de catálogo, envío y cobro con billeteras virtuales.
+            - generic [ref=e603]:
+              - generic [ref=e604]: Leer guía
+              - img [ref=e605]
+          - 'link "Cómo Vender Tejidos Artesanales por WhatsApp en Argentina Vendé tejidos artesanales de lana patagónica por WhatsApp. Telar mapuche, crochet, dos agujas: armá tu catálogo digital y llegá a clientes en todo el país. Leer guía" [ref=e607] [cursor=pointer]':
+            - /url: /como-vender/manualidades-tejidos-por-whatsapp-argentina
+            - generic [ref=e608]:
+              - generic [ref=e609]: 🧶
+              - heading "Cómo Vender Tejidos Artesanales por WhatsApp en Argentina" [level=3] [ref=e610]
+            - paragraph [ref=e611]: "Vendé tejidos artesanales de lana patagónica por WhatsApp. Telar mapuche, crochet, dos agujas: armá tu catálogo digital y llegá a clientes en todo el país."
+            - generic [ref=e612]:
+              - generic [ref=e613]: Leer guía
+              - img [ref=e614]
+          - link "Cómo Vender Flores por WhatsApp en Argentina Vendé flores y arreglos florales por WhatsApp en Argentina. Delivery en Buenos Aires, tips de catálogo y fechas clave del calendario argentino. Leer guía" [ref=e616] [cursor=pointer]:
+            - /url: /como-vender/flores-por-whatsapp-argentina
+            - generic [ref=e617]:
+              - generic [ref=e618]: 💐
+              - heading "Cómo Vender Flores por WhatsApp en Argentina" [level=3] [ref=e619]
+            - paragraph [ref=e620]: Vendé flores y arreglos florales por WhatsApp en Argentina. Delivery en Buenos Aires, tips de catálogo y fechas clave del calendario argentino.
+            - generic [ref=e621]:
+              - generic [ref=e622]: Leer guía
+              - img [ref=e623]
+      - generic [ref=e626]:
+        - heading "Productos y Hogar" [level=2] [ref=e627]
+        - generic [ref=e629]:
+          - link "Cómo Vender Productos para Mascotas por WhatsApp Recordatorios de recompra, filtros por mascota y programas de lealtad para pet shops por WhatsApp. Leer guía" [ref=e630] [cursor=pointer]:
+            - /url: /como-vender/productos-mascotas-por-whatsapp
+            - generic [ref=e631]:
+              - generic [ref=e632]: 🐾
+              - heading "Cómo Vender Productos para Mascotas por WhatsApp" [level=3] [ref=e633]
+            - paragraph [ref=e634]: Recordatorios de recompra, filtros por mascota y programas de lealtad para pet shops por WhatsApp.
+            - generic [ref=e635]:
+              - generic [ref=e636]: Leer guía
+              - img [ref=e637]
+          - link "Cómo Vender Productos de Limpieza por WhatsApp Suscripciones, clientes B2B y entregas recurrentes para vender productos de limpieza por WhatsApp. Leer guía" [ref=e639] [cursor=pointer]:
+            - /url: /como-vender/productos-limpieza-por-whatsapp
+            - generic [ref=e640]:
+              - generic [ref=e641]: 🧹
+              - heading "Cómo Vender Productos de Limpieza por WhatsApp" [level=3] [ref=e642]
+            - paragraph [ref=e643]: Suscripciones, clientes B2B y entregas recurrentes para vender productos de limpieza por WhatsApp.
+            - generic [ref=e644]:
+              - generic [ref=e645]: Leer guía
+              - img [ref=e646]
+          - link "Cómo Vender Plantas por WhatsApp Nivel de dificultad, guias de cuidado y rutas de entrega para vender plantas por WhatsApp. Leer guía" [ref=e648] [cursor=pointer]:
+            - /url: /como-vender/plantas-por-whatsapp
+            - generic [ref=e649]:
+              - generic [ref=e650]: 🪴
+              - heading "Cómo Vender Plantas por WhatsApp" [level=3] [ref=e651]
+            - paragraph [ref=e652]: Nivel de dificultad, guias de cuidado y rutas de entrega para vender plantas por WhatsApp.
+            - generic [ref=e653]:
+              - generic [ref=e654]: Leer guía
+              - img [ref=e655]
+          - link "Cómo Vender Papeleria por WhatsApp Paquetes por grado escolar, temporadas y precios competitivos para vender papeleria por WhatsApp. Leer guía" [ref=e657] [cursor=pointer]:
+            - /url: /como-vender/papeleria-por-whatsapp
+            - generic [ref=e658]:
+              - generic [ref=e659]: 📝
+              - heading "Cómo Vender Papeleria por WhatsApp" [level=3] [ref=e660]
+            - paragraph [ref=e661]: Paquetes por grado escolar, temporadas y precios competitivos para vender papeleria por WhatsApp.
+            - generic [ref=e662]:
+              - generic [ref=e663]: Leer guía
+              - img [ref=e664]
+          - link "Cómo Vender Frutas y Verduras a Domicilio por WhatsApp Canastas basicas, rutas de entrega y frescura para vender frutas y verduras por WhatsApp. Leer guía" [ref=e666] [cursor=pointer]:
+            - /url: /como-vender/frutas-verduras-abarrotes-por-whatsapp
+            - generic [ref=e667]:
+              - generic [ref=e668]: 🍎
+              - heading "Cómo Vender Frutas y Verduras a Domicilio por WhatsApp" [level=3] [ref=e669]
+            - paragraph [ref=e670]: Canastas basicas, rutas de entrega y frescura para vender frutas y verduras por WhatsApp.
+            - generic [ref=e671]:
+              - generic [ref=e672]: Leer guía
+              - img [ref=e673]
+          - 'link "Cómo Vender Productos para Mascotas por WhatsApp en Colombia Alimento, accesorios y productos para mascotas con domicilio: precios en COP y tips para vender por WhatsApp en Colombia. Leer guía" [ref=e675] [cursor=pointer]':
+            - /url: /como-vender/productos-mascotas-por-whatsapp-colombia
+            - generic [ref=e676]:
+              - generic [ref=e677]: 🐾
+              - heading "Cómo Vender Productos para Mascotas por WhatsApp en Colombia" [level=3] [ref=e678]
+            - paragraph [ref=e679]: "Alimento, accesorios y productos para mascotas con domicilio: precios en COP y tips para vender por WhatsApp en Colombia."
+            - generic [ref=e680]:
+              - generic [ref=e681]: Leer guía
+              - img [ref=e682]
+          - 'link "Cómo Vender Productos de Limpieza por WhatsApp en Colombia Jabón, cloro, multiusos y desinfectantes: domicilios B2B, precios en COP y tips para vender productos de aseo por WhatsApp en Colombia. Leer guía" [ref=e684] [cursor=pointer]':
+            - /url: /como-vender/productos-limpieza-por-whatsapp-colombia
+            - generic [ref=e685]:
+              - generic [ref=e686]: 🧹
+              - heading "Cómo Vender Productos de Limpieza por WhatsApp en Colombia" [level=3] [ref=e687]
+            - paragraph [ref=e688]: "Jabón, cloro, multiusos y desinfectantes: domicilios B2B, precios en COP y tips para vender productos de aseo por WhatsApp en Colombia."
+            - generic [ref=e689]:
+              - generic [ref=e690]: Leer guía
+              - img [ref=e691]
+          - 'link "Cómo Vender Plantas por WhatsApp en Colombia Suculentas, orquídeas, monstera y plantas de interior: fotografía, domicilios y precios en COP para vender por WhatsApp en Colombia. Leer guía" [ref=e693] [cursor=pointer]':
+            - /url: /como-vender/plantas-por-whatsapp-colombia
+            - generic [ref=e694]:
+              - generic [ref=e695]: 🪴
+              - heading "Cómo Vender Plantas por WhatsApp en Colombia" [level=3] [ref=e696]
+            - paragraph [ref=e697]: "Suculentas, orquídeas, monstera y plantas de interior: fotografía, domicilios y precios en COP para vender por WhatsApp en Colombia."
+            - generic [ref=e698]:
+              - generic [ref=e699]: Leer guía
+              - img [ref=e700]
+          - 'link "Cómo Vender Papelería por WhatsApp en Colombia Útiles escolares, cuadernos Norma y papelería: regreso a clases, precios en COP y domicilios para vender por WhatsApp en Colombia. Leer guía" [ref=e702] [cursor=pointer]':
+            - /url: /como-vender/papeleria-por-whatsapp-colombia
+            - generic [ref=e703]:
+              - generic [ref=e704]: 📝
+              - heading "Cómo Vender Papelería por WhatsApp en Colombia" [level=3] [ref=e705]
+            - paragraph [ref=e706]: "Útiles escolares, cuadernos Norma y papelería: regreso a clases, precios en COP y domicilios para vender por WhatsApp en Colombia."
+            - generic [ref=e707]:
+              - generic [ref=e708]: Leer guía
+              - img [ref=e709]
+          - 'link "Cómo Vender Frutas y Verduras por WhatsApp en Colombia Frutas tropicales, verduras y canastas familiares: domicilios semanales, precios en COP y tips para vender por WhatsApp en Colombia. Leer guía" [ref=e711] [cursor=pointer]':
+            - /url: /como-vender/frutas-verduras-por-whatsapp-colombia
+            - generic [ref=e712]:
+              - generic [ref=e713]: 🍎
+              - heading "Cómo Vender Frutas y Verduras por WhatsApp en Colombia" [level=3] [ref=e714]
+            - paragraph [ref=e715]: "Frutas tropicales, verduras y canastas familiares: domicilios semanales, precios en COP y tips para vender por WhatsApp en Colombia."
+            - generic [ref=e716]:
+              - generic [ref=e717]: Leer guía
+              - img [ref=e718]
+          - link "Cómo Vender Productos para Mascotas por WhatsApp en Argentina Vendé alimentos y productos para mascotas por WhatsApp en Argentina. Delivery de bolsones, accesorios y productos premium directo a la puerta del cliente. Leer guía" [ref=e720] [cursor=pointer]:
+            - /url: /como-vender/productos-mascotas-por-whatsapp-argentina
+            - generic [ref=e721]:
+              - generic [ref=e722]: 🐾
+              - heading "Cómo Vender Productos para Mascotas por WhatsApp en Argentina" [level=3] [ref=e723]
+            - paragraph [ref=e724]: Vendé alimentos y productos para mascotas por WhatsApp en Argentina. Delivery de bolsones, accesorios y productos premium directo a la puerta del cliente.
+            - generic [ref=e725]:
+              - generic [ref=e726]: Leer guía
+              - img [ref=e727]
+          - link "Cómo Vender Productos de Limpieza por WhatsApp en Argentina Vendé productos de limpieza por WhatsApp en Argentina. B2B y B2C con suscripción mensual, delivery y marcas nacionales e importadas. Leer guía" [ref=e729] [cursor=pointer]:
+            - /url: /como-vender/productos-limpieza-por-whatsapp-argentina
+            - generic [ref=e730]:
+              - generic [ref=e731]: 🧹
+              - heading "Cómo Vender Productos de Limpieza por WhatsApp en Argentina" [level=3] [ref=e732]
+            - paragraph [ref=e733]: Vendé productos de limpieza por WhatsApp en Argentina. B2B y B2C con suscripción mensual, delivery y marcas nacionales e importadas.
+            - generic [ref=e734]:
+              - generic [ref=e735]: Leer guía
+              - img [ref=e736]
+          - 'link "Cómo Vender Plantas por WhatsApp en Argentina Vendé plantas, suculentas y macetas por WhatsApp en Argentina. El viverismo está en auge: armá tu catálogo digital y llegá a plantlovers de todo el país. Leer guía" [ref=e738] [cursor=pointer]':
+            - /url: /como-vender/plantas-por-whatsapp-argentina
+            - generic [ref=e739]:
+              - generic [ref=e740]: 🪴
+              - heading "Cómo Vender Plantas por WhatsApp en Argentina" [level=3] [ref=e741]
+            - paragraph [ref=e742]: "Vendé plantas, suculentas y macetas por WhatsApp en Argentina. El viverismo está en auge: armá tu catálogo digital y llegá a plantlovers de todo el país."
+            - generic [ref=e743]:
+              - generic [ref=e744]: Leer guía
+              - img [ref=e745]
+          - link "Cómo Vender Papelería y Útiles Escolares por WhatsApp en Argentina Vendé papelería y útiles escolares por WhatsApp en Argentina. Temporada fuerte en febrero-marzo, marcas nacionales y envío a todo el país. Leer guía" [ref=e747] [cursor=pointer]:
+            - /url: /como-vender/papeleria-por-whatsapp-argentina
+            - generic [ref=e748]:
+              - generic [ref=e749]: 📝
+              - heading "Cómo Vender Papelería y Útiles Escolares por WhatsApp en Argentina" [level=3] [ref=e750]
+            - paragraph [ref=e751]: Vendé papelería y útiles escolares por WhatsApp en Argentina. Temporada fuerte en febrero-marzo, marcas nacionales y envío a todo el país.
+            - generic [ref=e752]:
+              - generic [ref=e753]: Leer guía
+              - img [ref=e754]
+          - link "Cómo Vender Frutas y Verduras por WhatsApp en Argentina Vendé frutas, verduras y bolsones agroecológicos por WhatsApp en Argentina. Delivery semanal, Mercado Central y regulaciones CAA. Leer guía" [ref=e756] [cursor=pointer]:
+            - /url: /como-vender/frutas-verduras-por-whatsapp-argentina
+            - generic [ref=e757]:
+              - generic [ref=e758]: 🍎
+              - heading "Cómo Vender Frutas y Verduras por WhatsApp en Argentina" [level=3] [ref=e759]
+            - paragraph [ref=e760]: Vendé frutas, verduras y bolsones agroecológicos por WhatsApp en Argentina. Delivery semanal, Mercado Central y regulaciones CAA.
+            - generic [ref=e761]:
+              - generic [ref=e762]: Leer guía
+              - img [ref=e763]
+      - generic [ref=e766]:
+        - heading "Servicios y Especialidades" [level=2] [ref=e767]
+        - generic [ref=e769]:
+          - link "Cómo Vender Ropa de Bebe por WhatsApp Tallas por medidas, composicion de tela y canastillas de regalo para vender ropa de bebe por WhatsApp. Leer guía" [ref=e770] [cursor=pointer]:
+            - /url: /como-vender/ropa-bebe-por-whatsapp
+            - generic [ref=e771]:
+              - generic [ref=e772]: 👶
+              - heading "Cómo Vender Ropa de Bebe por WhatsApp" [level=3] [ref=e773]
+            - paragraph [ref=e774]: Tallas por medidas, composicion de tela y canastillas de regalo para vender ropa de bebe por WhatsApp.
+            - generic [ref=e775]:
+              - generic [ref=e776]: Leer guía
+              - img [ref=e777]
+          - link "Cómo Vender Piñatas y Artículos de Fiesta por WhatsApp Paquetes fiesta, personajes de moda y temporadas para vender piñatas y artículos por WhatsApp. Leer guía" [ref=e779] [cursor=pointer]:
+            - /url: /como-vender/pinatas-articulos-fiestas-por-whatsapp
+            - generic [ref=e780]:
+              - generic [ref=e781]: 🪅
+              - heading "Cómo Vender Piñatas y Artículos de Fiesta por WhatsApp" [level=3] [ref=e782]
+            - paragraph [ref=e783]: Paquetes fiesta, personajes de moda y temporadas para vender piñatas y artículos por WhatsApp.
+            - generic [ref=e784]:
+              - generic [ref=e785]: Leer guía
+              - img [ref=e786]
+          - link "Cómo Gestionar tu Barbería por WhatsApp Agenda digital, portafolio de estilos y paquetes de servicios para barberías por WhatsApp. Leer guía" [ref=e788] [cursor=pointer]:
+            - /url: /como-vender/barberia-peluqueria-por-whatsapp
+            - generic [ref=e789]:
+              - generic [ref=e790]: 💈
+              - heading "Cómo Gestionar tu Barbería por WhatsApp" [level=3] [ref=e791]
+            - paragraph [ref=e792]: Agenda digital, portafolio de estilos y paquetes de servicios para barberías por WhatsApp.
+            - generic [ref=e793]:
+              - generic [ref=e794]: Leer guía
+              - img [ref=e795]
+          - link "Cómo Vender Cerveza Artesanal y Mezcal por Internet Permisos legales, notas de cata y packs de descubrimiento para vender cerveza artesanal y mezcal. Leer guía" [ref=e797] [cursor=pointer]:
+            - /url: /como-vender/cerveza-artesanal-mezcal-por-whatsapp
+            - generic [ref=e798]:
+              - generic [ref=e799]: 🍺
+              - heading "Cómo Vender Cerveza Artesanal y Mezcal por Internet" [level=3] [ref=e800]
+            - paragraph [ref=e801]: Permisos legales, notas de cata y packs de descubrimiento para vender cerveza artesanal y mezcal.
+            - generic [ref=e802]:
+              - generic [ref=e803]: Leer guía
+              - img [ref=e804]
+          - 'link "Cómo Vender Ropa de Bebé por WhatsApp en Colombia Ropa de bebé, canastillas y artículos infantiles: tallas, marcas colombianas y domicilios para vender por WhatsApp en Colombia. Leer guía" [ref=e806] [cursor=pointer]':
+            - /url: /como-vender/ropa-bebe-por-whatsapp-colombia
+            - generic [ref=e807]:
+              - generic [ref=e808]: 👶
+              - heading "Cómo Vender Ropa de Bebé por WhatsApp en Colombia" [level=3] [ref=e809]
+            - paragraph [ref=e810]: "Ropa de bebé, canastillas y artículos infantiles: tallas, marcas colombianas y domicilios para vender por WhatsApp en Colombia."
+            - generic [ref=e811]:
+              - generic [ref=e812]: Leer guía
+              - img [ref=e813]
+          - 'link "Cómo Vender Artículos de Fiesta por WhatsApp en Colombia Piñatas, decoración temática, recordatorios y artículos de fiesta: precios en COP y domicilios para vender por WhatsApp en Colombia. Leer guía" [ref=e815] [cursor=pointer]':
+            - /url: /como-vender/articulos-fiestas-por-whatsapp-colombia
+            - generic [ref=e816]:
+              - generic [ref=e817]: 🪅
+              - heading "Cómo Vender Artículos de Fiesta por WhatsApp en Colombia" [level=3] [ref=e818]
+            - paragraph [ref=e819]: "Piñatas, decoración temática, recordatorios y artículos de fiesta: precios en COP y domicilios para vender por WhatsApp en Colombia."
+            - generic [ref=e820]:
+              - generic [ref=e821]: Leer guía
+              - img [ref=e822]
+          - 'link "Cómo Vender Servicios de Barbería por WhatsApp en Colombia Cortes, barba, cejas y colorimetría: citas digitales, precios en COP y tips para gestionar tu barbería por WhatsApp en Colombia. Leer guía" [ref=e824] [cursor=pointer]':
+            - /url: /como-vender/barberia-peluqueria-por-whatsapp-colombia
+            - generic [ref=e825]:
+              - generic [ref=e826]: 💈
+              - heading "Cómo Vender Servicios de Barbería por WhatsApp en Colombia" [level=3] [ref=e827]
+            - paragraph [ref=e828]: "Cortes, barba, cejas y colorimetría: citas digitales, precios en COP y tips para gestionar tu barbería por WhatsApp en Colombia."
+            - generic [ref=e829]:
+              - generic [ref=e830]: Leer guía
+              - img [ref=e831]
+          - 'link "Cómo Vender Cerveza Artesanal y Licores por WhatsApp en Colombia Cerveza artesanal, aguardiente y licores: permisos de expendio, domicilios, precios en COP y tips para vender por WhatsApp en Colombia. Leer guía" [ref=e833] [cursor=pointer]':
+            - /url: /como-vender/cerveza-artesanal-por-whatsapp-colombia
+            - generic [ref=e834]:
+              - generic [ref=e835]: 🍺
+              - heading "Cómo Vender Cerveza Artesanal y Licores por WhatsApp en Colombia" [level=3] [ref=e836]
+            - paragraph [ref=e837]: "Cerveza artesanal, aguardiente y licores: permisos de expendio, domicilios, precios en COP y tips para vender por WhatsApp en Colombia."
+            - generic [ref=e838]:
+              - generic [ref=e839]: Leer guía
+              - img [ref=e840]
+          - link "Cómo Vender Ropa de Bebé por WhatsApp en Argentina Vendé ropa de bebé, ajuares y accesorios por WhatsApp en Argentina. Baby showers, regalos y marcas nacionales con delivery a todo el país. Leer guía" [ref=e842] [cursor=pointer]:
+            - /url: /como-vender/ropa-bebe-por-whatsapp-argentina
+            - generic [ref=e843]:
+              - generic [ref=e844]: 👶
+              - heading "Cómo Vender Ropa de Bebé por WhatsApp en Argentina" [level=3] [ref=e845]
+            - paragraph [ref=e846]: Vendé ropa de bebé, ajuares y accesorios por WhatsApp en Argentina. Baby showers, regalos y marcas nacionales con delivery a todo el país.
+            - generic [ref=e847]:
+              - generic [ref=e848]: Leer guía
+              - img [ref=e849]
+          - link "Cómo Vender Cotillón y Piñatas por WhatsApp en Argentina Vendé cotillón, piñatas, candy bar y souvenirs por WhatsApp en Argentina. Todo para cumpleaños, bautismos, comuniones y fiestas. Leer guía" [ref=e851] [cursor=pointer]:
+            - /url: /como-vender/cotillon-fiestas-por-whatsapp-argentina
+            - generic [ref=e852]:
+              - generic [ref=e853]: 🪅
+              - heading "Cómo Vender Cotillón y Piñatas por WhatsApp en Argentina" [level=3] [ref=e854]
+            - paragraph [ref=e855]: Vendé cotillón, piñatas, candy bar y souvenirs por WhatsApp en Argentina. Todo para cumpleaños, bautismos, comuniones y fiestas.
+            - generic [ref=e856]:
+              - generic [ref=e857]: Leer guía
+              - img [ref=e858]
+          - link "Cómo Vender Servicios de Barbería por WhatsApp en Argentina Gestioná tu barbería con WhatsApp en Argentina. Turnos online, venta de productos y fidelización de clientes en BA, Córdoba y todo el país. Leer guía" [ref=e860] [cursor=pointer]:
+            - /url: /como-vender/barberia-peluqueria-por-whatsapp-argentina
+            - generic [ref=e861]:
+              - generic [ref=e862]: 💈
+              - heading "Cómo Vender Servicios de Barbería por WhatsApp en Argentina" [level=3] [ref=e863]
+            - paragraph [ref=e864]: Gestioná tu barbería con WhatsApp en Argentina. Turnos online, venta de productos y fidelización de clientes en BA, Córdoba y todo el país.
+            - generic [ref=e865]:
+              - generic [ref=e866]: Leer guía
+              - img [ref=e867]
+          - link "Cómo Vender Cerveza Artesanal por WhatsApp en Argentina Vendé cerveza artesanal por WhatsApp en Argentina. Craft beer de Bariloche a Buenos Aires, delivery, fernet y regulaciones de bebidas alcohólicas. Leer guía" [ref=e869] [cursor=pointer]:
+            - /url: /como-vender/cerveza-artesanal-por-whatsapp-argentina
+            - generic [ref=e870]:
+              - generic [ref=e871]: 🍺
+              - heading "Cómo Vender Cerveza Artesanal por WhatsApp en Argentina" [level=3] [ref=e872]
+            - paragraph [ref=e873]: Vendé cerveza artesanal por WhatsApp en Argentina. Craft beer de Bariloche a Buenos Aires, delivery, fernet y regulaciones de bebidas alcohólicas.
+            - generic [ref=e874]:
+              - generic [ref=e875]: Leer guía
+              - img [ref=e876]
+      - generic [ref=e879]:
+        - heading "Más Recursos para tu Negocio" [level=2] [ref=e880]
+        - paragraph [ref=e881]: Explora nuestras herramientas gratuitas y guias complementarias.
+        - generic [ref=e882]:
+          - link "Ver Todas las Guias" [ref=e883] [cursor=pointer]:
+            - /url: /guides
+            - text: Ver Todas las Guias
+            - img [ref=e884]
+          - link "Herramientas Gratuitas" [ref=e886] [cursor=pointer]:
+            - /url: /tools
+            - text: Herramientas Gratuitas
+            - img [ref=e887]
+      - generic [ref=e890]:
+        - heading "Preguntas Frecuentes Generales" [level=2] [ref=e891]
+        - generic [ref=e892]:
+          - button "¿Necesito un permiso para vender por WhatsApp?" [ref=e894] [cursor=pointer]:
+            - generic [ref=e895]: ¿Necesito un permiso para vender por WhatsApp?
+            - img [ref=e896]
+          - button "¿Cómo cobro si vendo por WhatsApp?" [ref=e899] [cursor=pointer]:
+            - generic [ref=e900]: ¿Cómo cobro si vendo por WhatsApp?
+            - img [ref=e901]
+          - button "¿Cómo hago envíos si vendo por WhatsApp?" [ref=e904] [cursor=pointer]:
+            - generic [ref=e905]: ¿Cómo hago envíos si vendo por WhatsApp?
+            - img [ref=e906]
+          - button "¿Cuánto necesito invertir para empezar a vender?" [ref=e909] [cursor=pointer]:
+            - generic [ref=e910]: ¿Cuánto necesito invertir para empezar a vender?
+            - img [ref=e911]
+          - button "¿Necesito darme de alta en el SAT?" [ref=e914] [cursor=pointer]:
+            - generic [ref=e915]: ¿Necesito darme de alta en el SAT?
+            - img [ref=e916]
+          - button "¿Cómo hago un catálogo digital para WhatsApp?" [ref=e919] [cursor=pointer]:
+            - generic [ref=e920]: ¿Cómo hago un catálogo digital para WhatsApp?
+            - img [ref=e921]
+    - generic [ref=e927]:
+      - heading "Crea Tu Catálogo Digital" [level=2] [ref=e928]
+      - paragraph [ref=e929]: Empieza a vender por WhatsApp con un catálogo profesional. Sin código, sin complicaciones.
+      - link "Crear mi Catálogo" [ref=e930] [cursor=pointer]:
+        - /url: /signup?utm_source=como-vender&utm_medium=organic&utm_campaign=como-vender-index
+        - text: Crear mi Catálogo
+        - img [ref=e931]
+    - generic [ref=e933]:
+      - contentinfo [ref=e934]:
+        - generic [ref=e935]:
+          - link "Marea Alcalina" [ref=e938] [cursor=pointer]:
+            - /url: /
+            - img "Marea Alcalina" [ref=e939]
+          - generic [ref=e940]:
+            - generic [ref=e941]:
+              - heading "Marea Alcalina" [level=4] [ref=e942]
+              - list [ref=e944]:
+                - listitem [ref=e945]:
+                  - link "Inicio" [ref=e946] [cursor=pointer]:
+                    - /url: /
+                - listitem [ref=e947]:
+                  - link "Planes" [ref=e948] [cursor=pointer]:
+                    - /url: /plans
+                - listitem [ref=e949]:
+                  - link "Catálogo Digital" [ref=e950] [cursor=pointer]:
+                    - /url: /digitalcatalog
+                - listitem [ref=e951]:
+                  - link "Menú Digital" [ref=e952] [cursor=pointer]:
+                    - /url: /digitalmenu
+                - listitem [ref=e953]:
+                  - link "Proveedores Chinos" [ref=e954] [cursor=pointer]:
+                    - /url: /proveedores-chinos
+                - listitem [ref=e955]:
+                  - link "Panel Principal" [ref=e956] [cursor=pointer]:
+                    - /url: /menus
+                - listitem [ref=e957]:
+                  - link "Blog" [ref=e958] [cursor=pointer]:
+                    - /url: https://blog.mareaalcalina.com
+            - generic [ref=e959]:
+              - heading "Herramientas" [level=4] [ref=e960]
+              - list [ref=e962]:
+                - listitem [ref=e963]:
+                  - link "Generador de Descripción de Producto" [ref=e964] [cursor=pointer]:
+                    - /url: /tools/product-description-generator
+                - listitem [ref=e965]:
+                  - link "Generador de Link de WhatsApp" [ref=e966] [cursor=pointer]:
+                    - /url: /tools/whatsapp-link-generator
+                - listitem [ref=e967]:
+                  - link "Calculadora de Margen de Ganancia" [ref=e968] [cursor=pointer]:
+                    - /url: /tools/profit-margin-calculator
+                - listitem [ref=e969]:
+                  - link "Generador de Nombres para Negocio" [ref=e970] [cursor=pointer]:
+                    - /url: /tools/business-name-generator
+                - listitem [ref=e971]:
+                  - link "Generador de QR para Menú" [ref=e972] [cursor=pointer]:
+                    - /url: /tools/qr-code-menu-generator
+                - listitem [ref=e973]:
+                  - link "Generador de Biografías con IA" [ref=e974] [cursor=pointer]:
+                    - /url: /tools/biography-generator
+            - generic [ref=e975]:
+              - heading "Guías" [level=4] [ref=e976]
+              - list [ref=e978]:
+                - listitem [ref=e979]:
+                  - link "Mejor Plataforma WhatsApp" [ref=e980] [cursor=pointer]:
+                    - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                - listitem [ref=e981]:
+                  - link "Comparativa de Plataformas" [ref=e982] [cursor=pointer]:
+                    - /url: /guides/marea-alcalina-vs-tiendanube
+                - listitem [ref=e983]:
+                  - link "Tienda en Línea Gratis" [ref=e984] [cursor=pointer]:
+                    - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                - listitem [ref=e985]:
+                  - link "Menú Digital Restaurantes" [ref=e986] [cursor=pointer]:
+                    - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                - listitem [ref=e987]:
+                  - link "Cómo Vender por WhatsApp" [ref=e988] [cursor=pointer]:
+                    - /url: /como-vender
+                - listitem [ref=e989]:
+                  - link "Vender Ropa por WhatsApp" [ref=e990] [cursor=pointer]:
+                    - /url: /como-vender/ropa-por-whatsapp
+                - listitem [ref=e991]:
+                  - link "Vender Comida por WhatsApp" [ref=e992] [cursor=pointer]:
+                    - /url: /como-vender/comida-por-whatsapp
+                - listitem [ref=e993]:
+                  - link "Vender Pasteles por WhatsApp" [ref=e994] [cursor=pointer]:
+                    - /url: /como-vender/pasteles-por-whatsapp
+                - listitem [ref=e995]:
+                  - link "Vender Cosméticos por WhatsApp" [ref=e996] [cursor=pointer]:
+                    - /url: /como-vender/cosmeticos-por-whatsapp
+            - generic [ref=e997]:
+              - heading "Información" [level=4] [ref=e998]
+              - list [ref=e1000]:
+                - listitem [ref=e1001]:
+                  - link "Términos y Condiciones" [ref=e1002] [cursor=pointer]:
+                    - /url: /terms
+                - listitem [ref=e1003]:
+                  - link "Políticas de Privacidad" [ref=e1004] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e1005]:
+                  - link "Política de Uso Aceptable" [ref=e1006] [cursor=pointer]:
+                    - /url: /aup
+                - listitem [ref=e1007]:
+                  - link "Preferencias de cookies" [ref=e1008] [cursor=pointer]:
+                    - /url: javascript:void(0);
+            - generic [ref=e1009]:
+              - heading "Soporte" [level=4] [ref=e1010]
+              - list [ref=e1012]:
+                - paragraph [ref=e1013]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                - listitem [ref=e1014]:
+                  - link "Messenger" [ref=e1015] [cursor=pointer]:
+                    - /url: https://m.me/mareaalcalina
+                - listitem [ref=e1016]:
+                  - link "Instagram" [ref=e1017] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+            - generic [ref=e1021]:
+              - heading "Síguenos" [level=4] [ref=e1022]
+              - list [ref=e1024]:
+                - listitem [ref=e1025]:
+                  - link [ref=e1026] [cursor=pointer]:
+                    - /url: https://www.facebook.com/pg/mareaalcalina
+                    - img [ref=e1027]
+                - listitem [ref=e1028]:
+                  - link "" [ref=e1029] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+                    - generic [ref=e1030]: 
+                - listitem [ref=e1031]:
+                  - link [ref=e1032] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@mareaalcalina
+                    - img [ref=e1033]
+      - paragraph [ref=e1039]: 2026 © Marea Alcalina
+  - banner "Banner de consentimiento de cookies" [ref=e1040]:
+    - generic [ref=e1042]:
+      - generic [ref=e1043]:
+        - generic [ref=e1044]: 🍪
+        - generic [ref=e1045]:
+          - paragraph [ref=e1046]:
+            - strong [ref=e1047]: Usamos cookies en este sitio web
+          - paragraph [ref=e1048]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e1049] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e1050]:
+        - button "Personalizar configuración de cookies" [ref=e1051] [cursor=pointer]:
+          - img [ref=e1052]
+        - button "Aceptar todas las cookies" [ref=e1055] [cursor=pointer]: Aceptar todas

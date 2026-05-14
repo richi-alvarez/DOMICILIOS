@@ -1,0 +1,75 @@
+- generic [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - generic [ref=e14]:
+        - heading [level=1] [ref=e148]: Sazón Express
+        - paragraph [ref=e16]: En Sazón Express preparamos almuerzos y antojos con ese toque casero que siempre provoca volver. Encuentra almuerzos ejecutivos, bandeja paisa, hamburguesas artesanales, jugos naturales y postres caseros, con domicilios rápidos en Medellín y una atención cercana.
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic [ref=e24]:
+              - button [ref=e149] [cursor=pointer]:
+                - generic [ref=e27]: ☰
+              - button [ref=e29] [cursor=pointer]:
+                - img [ref=e30]
+            - generic [ref=e33]:
+              - button [ref=e150] [cursor=pointer]: Almuerzos
+              - button [ref=e151] [cursor=pointer]: Platos Típicos
+              - button [ref=e152] [cursor=pointer]: Hamburguesas
+              - button [ref=e153] [cursor=pointer]: Jugos
+              - button [ref=e154] [cursor=pointer]: Postres
+          - generic [ref=e40]:
+            - button [ref=e155] [cursor=pointer]:
+              - img [ref=e42]
+              - generic [ref=e44]: Ordenar
+            - button [ref=e156] [cursor=pointer]:
+              - img [ref=e46]
+              - generic [ref=e48]: Filtrar
+        - generic [ref=e55] [cursor=pointer]:
+          - generic [ref=e56]:
+            - heading [level=3] [ref=e157]: Almuerzo Ejecutivo
+            - paragraph [ref=e58]: Plato del día con proteína, arroz, ensalada, acompañante y bebida.
+          - generic [ref=e59]:
+            - generic [ref=e61]: $18.000
+            - generic [ref=e64]:
+              - button [ref=e80]:
+                - img [ref=e81]
+              - generic [ref=e84]: "1"
+              - button [ref=e85]:
+                - img [ref=e86]
+      - button [ref=e158] [cursor=pointer]:
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - img [ref=e92]
+            - generic [ref=e94]: "1"
+          - generic [ref=e95]:
+            - generic [ref=e96]: Ver carrito
+            - generic [ref=e98]: $18.000
+      - generic [ref=e75]: Tu comida casera favorita, lista para llegar rápido a tu puerta en Medellín. Pide hoy y disfruta sabor, calidez y servicio cercano.
+    - generic [ref=e76] [cursor=pointer]:
+      - generic [ref=e77]: Creado con
+      - img [ref=e159]
+  - dialog [ref=e163]:
+    - generic [ref=e167]:
+      - generic [ref=e169]:
+        - button [ref=e218] [cursor=pointer]:
+          - img [ref=e219]
+        - heading "Opciones de Entrega" [level=2] [ref=e221]
+        - button [active] [ref=e171] [cursor=pointer]:
+          - img [ref=e172]
+      - generic [ref=e223]:
+        - generic [ref=e224]:
+          - generic [ref=e226]:
+            - button "Recoger en tienda ✓" [ref=e227] [cursor=pointer]:
+              - img [ref=e228]
+              - generic [ref=e230]: Recoger en tienda
+              - text: ✓
+            - button "A domicilio" [ref=e231] [cursor=pointer]:
+              - img [ref=e232]
+              - generic [ref=e238]: A domicilio
+          - generic [ref=e240]:
+            - heading "Recoger en tienda" [level=3] [ref=e242]
+            - button "Continuar" [ref=e243] [cursor=pointer]:
+              - generic [ref=e244]: Continuar
+              - img [ref=e245]
+        - text: ✓

@@ -1,0 +1,82 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e7]:
+    - generic [ref=e10]:
+      - generic [ref=e11]:
+        - button [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+        - generic [ref=e15]: Sazón Express
+      - generic [ref=e16]:
+        - img [ref=e19]
+        - navigation [ref=e21]:
+          - list [ref=e22]:
+            - listitem [ref=e23]:
+              - list [ref=e24]:
+                - listitem [ref=e25]:
+                  - link "Detalles" [ref=e26] [cursor=pointer]:
+                    - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e27]
+                    - generic [ref=e28]: Detalles
+                - listitem [ref=e29]:
+                  - link "Productos" [ref=e30] [cursor=pointer]:
+                    - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e31]
+                    - generic [ref=e32]: Productos
+                - listitem [ref=e33]:
+                  - link "Diseño" [ref=e34] [cursor=pointer]:
+                    - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e35]
+                    - generic [ref=e36]: Diseño
+                - listitem [ref=e37]:
+                  - link "Pedidos" [ref=e38] [cursor=pointer]:
+                    - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e39]
+                    - generic [ref=e40]: Pedidos
+                - listitem [ref=e41]:
+                  - link "Pagos" [ref=e42] [cursor=pointer]:
+                    - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e43]
+                    - generic [ref=e44]: Pagos
+                - listitem [ref=e45]:
+                  - link "Estadísticas" [ref=e46] [cursor=pointer]:
+                    - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e47]
+                    - generic [ref=e48]: Estadísticas
+                - listitem [ref=e49]:
+                  - link "Checkout" [ref=e50] [cursor=pointer]:
+                    - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e51]
+                    - generic [ref=e52]: Checkout
+                - listitem [ref=e53]:
+                  - link "Avanzado" [ref=e54] [cursor=pointer]:
+                    - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e55]
+                    - generic [ref=e56]: Avanzado
+        - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e59] [cursor=pointer]:
+          - img "Profile" [ref=e60]
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: ricardo saldarriaga
+            - paragraph [ref=e63]: richi.alvarez.9402@gmail.com
+          - img [ref=e64]
+      - button [ref=e66] [cursor=pointer]:
+        - img [ref=e67]
+    - generic [ref=e70]:
+      - heading "Estadísticas" [level=2] [ref=e72]
+      - generic [ref=e74]:
+        - generic [ref=e75] [cursor=pointer]: Ventas
+        - generic [ref=e76] [cursor=pointer]: Visitas
+      - generic [ref=e78]:
+        - img [ref=e79]
+        - heading "Obtén estadísticas de ventas y visitas cambiando de plan" [level=3] [ref=e81]
+        - button "Ver planes" [ref=e83] [cursor=pointer]
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e88]:
+      - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e90]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic:
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+          - img "Video Thumbnail" [ref=e95]
+        - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e97] [cursor=pointer]':
+          - img [ref=e100]
+    - button "Close" [ref=e102] [cursor=pointer]:
+      - img "Click to close video" [ref=e103]

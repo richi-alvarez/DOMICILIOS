@@ -1,0 +1,3 @@
+[     410ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3002/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[    1621ms] [LOG] [Fast Refresh] done in 1311ms @ http://localhost:3002/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[    1767ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3002/signup:0

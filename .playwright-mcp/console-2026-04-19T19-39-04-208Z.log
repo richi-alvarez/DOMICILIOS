@@ -1,0 +1,14 @@
+[     191ms] Uncaught ReferenceError: fbq is not defined
+    at <anonymous> (https://connect.facebook.net/en_US/fbevents.js:19:0)
+[     468ms] Uncaught TypeError: a[c] is not a function
+    at <anonymous> (https://www.clarity.ms/tag/j0im2jd97p:0:29)
+    at <anonymous> (https://www.clarity.ms/tag/j0im2jd97p:0:738)
+[     726ms] [LOG] SweetAlert2 success icon globally overridden @ https://mareaalcalina.com/main.c8f84b500b41d358.js:0
+[    1489ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[    1490ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[    1490ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[    1490ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[    1490ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[    1700ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[    5392ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0
+[   10395ms] [ERROR] Attestation check for Attribution Reporting on https://www.facebook.com failed. @ https://mareaalcalina.com/agencies:0

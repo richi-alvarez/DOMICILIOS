@@ -1,0 +1,169 @@
+- generic [ref=e7]:
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - button [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+      - generic [ref=e15]: Sazón Express
+    - generic [ref=e16]:
+      - img [ref=e19]
+      - navigation [ref=e21]:
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Detalles" [ref=e26] [cursor=pointer]:
+                  - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e27]
+                  - generic [ref=e28]: Detalles
+              - listitem [ref=e29]:
+                - link "Productos" [ref=e30] [cursor=pointer]:
+                  - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e31]
+                  - generic [ref=e32]: Productos
+              - listitem [ref=e33]:
+                - link "Diseño" [ref=e34] [cursor=pointer]:
+                  - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e35]
+                  - generic [ref=e36]: Diseño
+              - listitem [ref=e37]:
+                - link "Pedidos" [ref=e38] [cursor=pointer]:
+                  - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e39]
+                  - generic [ref=e40]: Pedidos
+              - listitem [ref=e41]:
+                - link "Pagos" [ref=e42] [cursor=pointer]:
+                  - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e43]
+                  - generic [ref=e44]: Pagos
+              - listitem [ref=e45]:
+                - link "Estadísticas" [ref=e46] [cursor=pointer]:
+                  - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e47]
+                  - generic [ref=e48]: Estadísticas
+              - listitem [ref=e49]:
+                - link "Checkout" [ref=e50] [cursor=pointer]:
+                  - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e51]
+                  - generic [ref=e52]: Checkout
+              - listitem [ref=e53]:
+                - link "Avanzado" [ref=e54] [cursor=pointer]:
+                  - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e55]
+                  - generic [ref=e56]: Avanzado
+      - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e59] [cursor=pointer]:
+        - img "Profile" [ref=e60]
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: ricardo saldarriaga
+          - paragraph [ref=e63]: richi.alvarez.9402@gmail.com
+        - img [ref=e64]
+    - button [ref=e66] [cursor=pointer]:
+      - img [ref=e67]
+  - generic [ref=e70]:
+    - generic [ref=e71]: Configuración Avanzada
+    - generic [ref=e72]:
+      - navigation "Tabs" [ref=e73]:
+        - generic [ref=e75]:
+          - button "Integraciones" [ref=e76] [cursor=pointer]: Integraciones
+          - button "Analítica" [ref=e77] [cursor=pointer]: Analítica
+          - button "Notificaciones" [ref=e78] [cursor=pointer]: Notificaciones
+          - button "Configuración" [ref=e80] [cursor=pointer]: Configuración
+          - button "Colaboración" [ref=e81] [cursor=pointer]: Colaboración
+          - button "Gestión" [ref=e82] [cursor=pointer]: Gestión
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - generic [ref=e88]:
+            - img [ref=e91]
+            - generic [ref=e94]:
+              - heading "Email de notificaciones" [level=2] [ref=e95]
+              - paragraph [ref=e96]: Elige dónde recibir notificaciones para esta página
+          - generic [ref=e97]:
+            - generic [ref=e98]:
+              - generic [ref=e99]:
+                - generic [ref=e100]: Email principal
+                - generic [ref=e102] [cursor=pointer]:
+                  - img [ref=e103]
+                  - text: BASIC
+              - textbox "richi.alvarez.9402@gmail.com" [ref=e106]
+              - paragraph [ref=e107]: Mejora al plan Basic para enviar notificaciones a un email diferente
+            - generic [ref=e109]:
+              - generic [ref=e111]:
+                - generic [ref=e112]: Emails en copia (CC)
+                - generic [ref=e114] [cursor=pointer]:
+                  - img [ref=e115]
+                  - text: PRO
+              - paragraph [ref=e117]: Mejora al plan Pro para agregar emails en copia
+        - generic [ref=e118]:
+          - generic [ref=e119]:
+            - img [ref=e122]
+            - generic [ref=e125]:
+              - heading "Notificaciones de pedidos" [level=2] [ref=e126]
+              - paragraph [ref=e127]: Configura cómo recibes alertas cuando llega un nuevo pedido
+          - generic [ref=e128]:
+            - generic [ref=e130]:
+              - switch "Enviarme email cuando llegue un pedido" [checked] [ref=e131] [cursor=pointer]
+              - generic [ref=e132]:
+                - generic [ref=e133]: Enviarme email cuando llegue un pedido
+                - generic [ref=e134]: Recibirás un email con un enlace para ver el pedido en Marea Alcalina
+            - generic [ref=e137]:
+              - switch "Reproducir sonido en el dashboard" [checked] [ref=e138] [cursor=pointer]
+              - generic [ref=e139]:
+                - generic [ref=e140]: Reproducir sonido en el dashboard
+                - generic [ref=e141]: Se reproducirá un sonido cuando llegue un nuevo pedido
+            - generic [ref=e142]:
+              - generic [ref=e143]: Tipo de sonido
+              - generic [ref=e144]:
+                - button "Predeterminado" [ref=e145] [cursor=pointer]
+                - button "Suave" [ref=e146] [cursor=pointer]
+                - button "Urgente" [ref=e147] [cursor=pointer]
+            - generic [ref=e150]:
+              - switch "Alerta persistente" [ref=e151] [cursor=pointer]
+              - generic [ref=e152]:
+                - generic [ref=e153]: Alerta persistente
+                - generic [ref=e154]: El sonido se repetirá hasta que abras el pedido. Ideal para restaurantes y negocios con alto volumen.
+        - generic [ref=e155]:
+          - generic [ref=e156]:
+            - img [ref=e159]
+            - generic [ref=e162]:
+              - heading "Notificaciones de formularios" [level=2] [ref=e163]
+              - paragraph [ref=e164]: Alertas cuando un cliente envía un formulario de contacto
+          - generic [ref=e166]:
+            - switch "Enviarme email cuando envíen un formulario" [checked] [ref=e167] [cursor=pointer]
+            - generic [ref=e168]:
+              - generic [ref=e169]: Enviarme email cuando envíen un formulario
+              - generic [ref=e170]: Recibirás un email con las respuestas del formulario
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - img [ref=e175]
+            - generic [ref=e177]:
+              - heading "IA y Notificaciones avanzadas" [level=2] [ref=e178]
+              - paragraph [ref=e179]: Funciones inteligentes para tu negocio
+          - generic [ref=e180]:
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - generic [ref=e184]:
+                  - generic [ref=e185]: Reporte semanal
+                  - generic [ref=e186]: Próximamente
+                  - generic [ref=e188] [cursor=pointer]:
+                    - img [ref=e189]
+                    - text: PRO
+                - paragraph [ref=e191]: "Email cada lunes con las métricas de tu semana: ventas, visitas, conversión y productos más vendidos"
+              - switch [disabled] [ref=e194] [cursor=pointer]
+            - generic [ref=e197]:
+              - generic [ref=e198]:
+                - generic [ref=e199]:
+                  - generic [ref=e200]: Alertas de inventario bajo
+                  - generic [ref=e202] [cursor=pointer]:
+                    - img [ref=e203]
+                    - text: PRO
+                - paragraph [ref=e205]: Recibe una alerta cuando un producto tenga pocas unidades
+              - switch [disabled] [ref=e208] [cursor=pointer]
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - generic [ref=e213]:
+                  - generic [ref=e214]: Asesor IA en tiempo real
+                  - generic [ref=e215]: Próximamente
+                  - generic [ref=e217] [cursor=pointer]:
+                    - img [ref=e218]
+                    - text: BUSINESS
+                - paragraph [ref=e220]: Alertas inteligentes y acciones sugeridas en tu panel según los patrones de tu negocio
+              - switch [disabled] [ref=e223] [cursor=pointer]

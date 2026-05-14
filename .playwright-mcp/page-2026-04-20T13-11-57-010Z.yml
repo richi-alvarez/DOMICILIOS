@@ -1,0 +1,89 @@
+- generic [ref=e7]:
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - button [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+      - generic [ref=e15]: Sazón Express
+    - generic [ref=e16]:
+      - img [ref=e19]
+      - navigation [ref=e21]:
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Detalles" [ref=e26] [cursor=pointer]:
+                  - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e27]
+                  - generic [ref=e28]: Detalles
+              - listitem [ref=e29]:
+                - link "Productos" [ref=e30] [cursor=pointer]:
+                  - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e31]
+                  - generic [ref=e32]: Productos
+              - listitem [ref=e33]:
+                - link "Diseño" [ref=e34] [cursor=pointer]:
+                  - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e35]
+                  - generic [ref=e36]: Diseño
+              - listitem [ref=e37]:
+                - link "Pedidos" [ref=e38] [cursor=pointer]:
+                  - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e39]
+                  - generic [ref=e40]: Pedidos
+              - listitem [ref=e41]:
+                - link "Pagos" [ref=e42] [cursor=pointer]:
+                  - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e43]
+                  - generic [ref=e44]: Pagos
+              - listitem [ref=e45]:
+                - link "Estadísticas" [ref=e46] [cursor=pointer]:
+                  - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e47]
+                  - generic [ref=e48]: Estadísticas
+              - listitem [ref=e49]:
+                - link "Checkout" [ref=e50] [cursor=pointer]:
+                  - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e51]
+                  - generic [ref=e52]: Checkout
+              - listitem [ref=e53]:
+                - link "Avanzado" [ref=e54] [cursor=pointer]:
+                  - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e55]
+                  - generic [ref=e56]: Avanzado
+      - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e59] [cursor=pointer]:
+        - img "Profile" [ref=e60]
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: ricardo saldarriaga
+          - paragraph [ref=e63]: richi.alvarez.9402@gmail.com
+        - img [ref=e64]
+    - button [ref=e66] [cursor=pointer]:
+      - img [ref=e67]
+  - generic [ref=e70]:
+    - generic [ref=e71]: Configuración Avanzada
+    - generic [ref=e72]:
+      - navigation "Tabs" [ref=e73]:
+        - generic [ref=e75]:
+          - button "Integraciones" [ref=e76] [cursor=pointer]: Integraciones
+          - button "Analítica" [ref=e77] [cursor=pointer]: Analítica
+          - button "Notificaciones" [ref=e78] [cursor=pointer]: Notificaciones
+          - button "Configuración" [ref=e80] [cursor=pointer]: Configuración
+          - button "Colaboración" [ref=e81] [cursor=pointer]: Colaboración
+          - button "Gestión" [ref=e82] [cursor=pointer]: Gestión
+      - generic [ref=e297]:
+        - generic [ref=e298]:
+          - generic [ref=e300]:
+            - img [ref=e303]
+            - generic [ref=e306]:
+              - heading "Clonar Página" [level=2] [ref=e307]
+              - paragraph [ref=e308]: Crea una copia de esta página con toda su configuración, diseño y contenido. Los datos analíticos y conexiones de pago se reiniciarán.
+          - button "Clonar Página" [ref=e310] [cursor=pointer]:
+            - img [ref=e311]
+            - text: Clonar Página
+        - generic [ref=e314]:
+          - generic [ref=e315]:
+            - img [ref=e316]
+            - heading "Zona de peligro" [level=3] [ref=e318]
+          - generic [ref=e320]:
+            - img [ref=e323]
+            - heading "Eliminar página" [level=2] [ref=e327]
+            - button "Eliminar" [ref=e328] [cursor=pointer]

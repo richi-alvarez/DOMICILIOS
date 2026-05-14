@@ -1,0 +1,214 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e248]:
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - button [ref=e253] [cursor=pointer]:
+          - img [ref=e254]
+        - generic [ref=e256]: Sazón Express
+      - generic [ref=e257]:
+        - img [ref=e260]
+        - navigation [ref=e262]:
+          - list [ref=e263]:
+            - listitem [ref=e264]:
+              - list [ref=e265]:
+                - listitem [ref=e266]:
+                  - link "Detalles" [ref=e267] [cursor=pointer]:
+                    - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e268]
+                    - generic [ref=e269]: Detalles
+                - listitem [ref=e270]:
+                  - link "Productos" [ref=e271] [cursor=pointer]:
+                    - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e272]
+                    - generic [ref=e273]: Productos
+                - listitem [ref=e274]:
+                  - link "Diseño" [ref=e275] [cursor=pointer]:
+                    - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e276]
+                    - generic [ref=e277]: Diseño
+                - listitem [ref=e278]:
+                  - link "Pedidos" [ref=e279] [cursor=pointer]:
+                    - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e280]
+                    - generic [ref=e281]: Pedidos
+                - listitem [ref=e282]:
+                  - link "Pagos" [ref=e283] [cursor=pointer]:
+                    - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e284]
+                    - generic [ref=e285]: Pagos
+                - listitem [ref=e286]:
+                  - link "Estadísticas" [ref=e287] [cursor=pointer]:
+                    - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e288]
+                    - generic [ref=e289]: Estadísticas
+                - listitem [ref=e290]:
+                  - link "Checkout" [ref=e291] [cursor=pointer]:
+                    - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e292]
+                    - generic [ref=e293]: Checkout
+                - listitem [ref=e294]:
+                  - link "Avanzado" [ref=e295] [cursor=pointer]:
+                    - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e296]
+                    - generic [ref=e297]: Avanzado
+        - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e300] [cursor=pointer]:
+          - img "Profile" [ref=e301]
+          - generic [ref=e302]:
+            - paragraph [ref=e303]: ricardo saldarriaga
+            - paragraph [ref=e304]: richi.alvarez.9402@gmail.com
+          - img [ref=e305]
+      - button [ref=e307] [cursor=pointer]:
+        - img [ref=e308]
+    - generic [ref=e311]:
+      - generic [ref=e312]: Configuración de Checkout
+      - generic [ref=e313]:
+        - navigation "Tabs" [ref=e314]:
+          - generic [ref=e316]:
+            - button "General" [ref=e317] [cursor=pointer]: General
+            - button "Sucursales" [ref=e319] [cursor=pointer]: Sucursales
+            - button "Mensaje" [ref=e320] [cursor=pointer]: Mensaje
+            - button "Promociones" [ref=e321] [cursor=pointer]: Promociones
+            - button "Términos y Condiciones" [ref=e322] [cursor=pointer]: Términos y Condiciones
+            - button "Estados de Pedido" [ref=e323] [cursor=pointer]: Estados de Pedido
+        - generic [ref=e638]:
+          - generic [ref=e639]:
+            - heading "Personalización de Mensaje" [level=3] [ref=e640]
+            - generic [ref=e642]:
+              - group [ref=e643]:
+                - generic "Mensaje de Saludo" [ref=e644] [cursor=pointer]:
+                  - heading "Mensaje de Saludo" [level=3] [ref=e645]
+                  - img [ref=e646]
+                - generic [ref=e649]:
+                  - generic [ref=e650]: Texto de saludo
+                  - textbox "¡Hola! Vengo de https://marea.pro/tienda-demo-clon" [ref=e651]:
+                    - /placeholder: ¡Hola! Vengo de  https://marea.pro/tienda-demo-clon
+                  - generic [ref=e652]:
+                    - generic [ref=e653]: ¡Mantenlo breve y amigable!
+                    - generic [ref=e654]: 50/500
+              - group [ref=e655]:
+                - generic "Información del Pedido PRO" [ref=e656] [cursor=pointer]:
+                  - generic [ref=e657]:
+                    - heading "Información del Pedido" [level=3] [ref=e658]
+                    - generic [ref=e659]:
+                      - img [ref=e660]
+                      - text: PRO
+                  - img [ref=e662]
+              - group [ref=e664]:
+                - generic "Información del Cliente PRO" [ref=e665] [cursor=pointer]:
+                  - generic [ref=e666]:
+                    - heading "Información del Cliente" [level=3] [ref=e667]
+                    - generic [ref=e668]:
+                      - img [ref=e669]
+                      - text: PRO
+                  - img [ref=e671]
+              - group [ref=e673]:
+                - generic "Tipos de Entrega PRO" [ref=e674] [cursor=pointer]:
+                  - generic [ref=e675]:
+                    - heading "Tipos de Entrega" [level=3] [ref=e676]
+                    - generic [ref=e677]:
+                      - img [ref=e678]
+                      - text: PRO
+                  - img [ref=e680]
+              - group [ref=e682]:
+                - generic "Información de Ubicación PRO" [ref=e683] [cursor=pointer]:
+                  - generic [ref=e684]:
+                    - heading "Información de Ubicación" [level=3] [ref=e685]
+                    - generic [ref=e686]:
+                      - img [ref=e687]
+                      - text: PRO
+                  - img [ref=e689]
+              - group [ref=e691]:
+                - generic "Detalles del Pedido PRO" [ref=e692] [cursor=pointer]:
+                  - generic [ref=e693]:
+                    - heading "Detalles del Pedido" [level=3] [ref=e694]
+                    - generic [ref=e695]:
+                      - img [ref=e696]
+                      - text: PRO
+                  - img [ref=e698]
+              - group [ref=e700]:
+                - generic "Costos y Precios PRO" [ref=e701] [cursor=pointer]:
+                  - generic [ref=e702]:
+                    - heading "Costos y Precios" [level=3] [ref=e703]
+                    - generic [ref=e704]:
+                      - img [ref=e705]
+                      - text: PRO
+                  - img [ref=e707]
+              - group [ref=e709]:
+                - generic "Información de Pago PRO" [ref=e710] [cursor=pointer]:
+                  - generic [ref=e711]:
+                    - heading "Información de Pago" [level=3] [ref=e712]
+                    - generic [ref=e713]:
+                      - img [ref=e714]
+                      - text: PRO
+                  - img [ref=e716]
+              - group [ref=e718]:
+                - generic "Total y Comentarios PRO" [ref=e719] [cursor=pointer]:
+                  - generic [ref=e720]:
+                    - heading "Total y Comentarios" [level=3] [ref=e721]
+                    - generic [ref=e722]:
+                      - img [ref=e723]
+                      - text: PRO
+                  - img [ref=e725]
+              - group [ref=e727]:
+                - generic "Cierre PRO" [ref=e728] [cursor=pointer]:
+                  - generic [ref=e729]:
+                    - heading "Cierre" [level=3] [ref=e730]
+                    - generic [ref=e731]:
+                      - img [ref=e732]
+                      - text: PRO
+                  - img [ref=e734]
+          - generic [ref=e737]:
+            - heading "Vista Previa del Mensaje" [level=3] [ref=e738]
+            - generic [ref=e741]:
+              - generic [ref=e742]:
+                - generic [ref=e743]: WhatsApp
+                - generic [ref=e744]:
+                  - img [ref=e745]
+                  - img [ref=e747]
+              - generic [ref=e750]:
+                - generic [ref=e752]:
+                  - text: ¡Hola! Vengo de https://marea.pro/tienda-demo-clon
+                  - text: "Número de pedido: #4490"
+                  - text: "🗓️ Fecha: 19/4/2026"
+                  - text: "🕐 Hora: 16:38"
+                  - text: "🏠 El pedido se llevará a domicilio:"
+                  - text: 👤 Información del cliente
+                  - text: "Nombre: Jeff Bezos"
+                  - text: "Teléfono: +1234567890"
+                  - text: 📍 Dirección
+                  - text: 123 Sample St, City
+                  - text: "Indicaciones Adicionales: Ring the doorbell"
+                  - text: 📝 Pedido
+                  - text: x1 Postre Casero del Día $9.000,00 COP
+                  - text: x2 Almuerzo Ejecutivo $18.000,00 COP
+                  - text: x2 Jugo Natural en Agua $7.000,00 COP
+                  - text: 💲 Costos
+                  - text: Total parcial $59.000,00 COP
+                  - text: "Costo total: $59.000,00 COP"
+                  - text: "Comentarios Generales: Please deliver ASAP"
+                  - text: 👆 Envía este mensaje para crear tu pedido.
+                - generic [ref=e753]: 16:38 ✓✓
+              - generic [ref=e755]: Vista previa del mensaje
+            - paragraph [ref=e756]: Así es como se verá el mensaje generado para el cliente cuando realice un pedido.
+            - button "Consejos de formato para whatsapp" [ref=e757] [cursor=pointer]:
+              - img [ref=e758]
+              - text: Consejos de formato para whatsapp
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e88]:
+      - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e90]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic:
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+          - img "Video Thumbnail" [ref=e95]
+        - generic:
+          - generic:
+            - generic:
+              - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e629] [cursor=pointer]':
+                - img [ref=e632]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+    - button "Close" [ref=e102] [cursor=pointer]:
+      - img "Click to close video" [ref=e103]

@@ -1,0 +1,122 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e984]:
+    - generic [ref=e987]:
+      - generic [ref=e988]:
+        - button [ref=e989] [cursor=pointer]:
+          - img [ref=e990]
+        - generic [ref=e992]: Sazón Express
+      - generic [ref=e993]:
+        - img [ref=e996]
+        - navigation [ref=e998]:
+          - list [ref=e999]:
+            - listitem [ref=e1000]:
+              - list [ref=e1001]:
+                - listitem [ref=e1002]:
+                  - link "Detalles" [ref=e1003] [cursor=pointer]:
+                    - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1004]
+                    - generic [ref=e1005]: Detalles
+                - listitem [ref=e1006]:
+                  - link "Productos" [ref=e1007] [cursor=pointer]:
+                    - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1008]
+                    - generic [ref=e1009]: Productos
+                - listitem [ref=e1010]:
+                  - link "Diseño" [ref=e1011] [cursor=pointer]:
+                    - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1012]
+                    - generic [ref=e1013]: Diseño
+                - listitem [ref=e1014]:
+                  - link "Pedidos" [ref=e1015] [cursor=pointer]:
+                    - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1016]
+                    - generic [ref=e1017]: Pedidos
+                - listitem [ref=e1018]:
+                  - link "Pagos" [ref=e1019] [cursor=pointer]:
+                    - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1020]
+                    - generic [ref=e1021]: Pagos
+                - listitem [ref=e1022]:
+                  - link "Estadísticas" [ref=e1023] [cursor=pointer]:
+                    - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1024]
+                    - generic [ref=e1025]: Estadísticas
+                - listitem [ref=e1026]:
+                  - link "Checkout" [ref=e1027] [cursor=pointer]:
+                    - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1028]
+                    - generic [ref=e1029]: Checkout
+                - listitem [ref=e1030]:
+                  - link "Avanzado" [ref=e1031] [cursor=pointer]:
+                    - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e1032]
+                    - generic [ref=e1033]: Avanzado
+        - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e1036] [cursor=pointer]:
+          - img "Profile" [ref=e1037]
+          - generic [ref=e1038]:
+            - paragraph [ref=e1039]: ricardo saldarriaga
+            - paragraph [ref=e1040]: richi.alvarez.9402@gmail.com
+          - img [ref=e1041]
+      - button [ref=e1043] [cursor=pointer]:
+        - img [ref=e1044]
+    - generic [ref=e1047]:
+      - generic [ref=e1048]: Configuración Avanzada
+      - generic [ref=e1049]:
+        - navigation "Tabs" [ref=e1050]:
+          - generic [ref=e1052]:
+            - button "Integraciones" [ref=e1053] [cursor=pointer]: Integraciones
+            - button "Analítica" [ref=e1055] [cursor=pointer]: Analítica
+            - button "Notificaciones" [ref=e1056] [cursor=pointer]: Notificaciones
+            - button "Configuración" [ref=e1057] [cursor=pointer]: Configuración
+            - button "Colaboración" [ref=e1058] [cursor=pointer]: Colaboración
+            - button "Gestión" [ref=e1059] [cursor=pointer]: Gestión
+        - generic [ref=e1061]:
+          - generic [ref=e1063]:
+            - generic [ref=e1064]:
+              - img [ref=e1065]
+              - generic [ref=e1067]:
+                - paragraph [ref=e1068]: Stripe y PayPal ahora están en la sección de Pagos
+                - paragraph [ref=e1069]: La configuración de procesadores de pago se movió a su propia sección.
+            - link "Ir a Pagos" [ref=e1070] [cursor=pointer]:
+              - /url: /menus/payments/setup?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+          - generic [ref=e1072]:
+            - generic [ref=e1073]:
+              - generic [ref=e1074]:
+                - img [ref=e1077]
+                - generic [ref=e1079]:
+                  - heading "Dominio" [level=2] [ref=e1080]
+                  - paragraph [ref=e1081]: ¡Conecta un dominio personalizado para ser más profesional y mejorar tu SEO!
+              - generic [ref=e1083]:
+                - img [ref=e1084]
+                - text: PRO
+            - navigation "Tabs" [ref=e1089]:
+              - button "Dominio" [ref=e1090] [cursor=pointer]
+              - button "Subdominio" [ref=e1091] [cursor=pointer]
+            - generic [ref=e1093]:
+              - generic [ref=e1094]: Dominio
+              - generic [ref=e1095]:
+                - textbox "Dominio" [ref=e1096]:
+                  - /placeholder: ejemplo.com
+                - button "Conectar" [disabled] [ref=e1097]
+            - generic [ref=e1099]:
+              - generic [ref=e1100]: ¿Necesitas ayuda para conectar tu dominio?
+              - button "Mira el tutorial" [ref=e1101] [cursor=pointer]
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e88]:
+      - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e90]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic:
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+          - img "Video Thumbnail" [ref=e95]
+        - generic:
+          - generic:
+            - generic:
+              - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e975] [cursor=pointer]':
+                - img [ref=e978]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+    - button "Close" [ref=e102] [cursor=pointer]:
+      - img "Click to close video" [ref=e103]

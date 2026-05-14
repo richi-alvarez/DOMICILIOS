@@ -1,0 +1,268 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - link "Logo" [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e9]
+        - generic [ref=e10]:
+          - link "Inicio" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Planes" [ref=e12] [cursor=pointer]:
+            - /url: /plans
+          - link "Agencias" [ref=e13] [cursor=pointer]:
+            - /url: /agencies
+          - link "Crear" [ref=e14] [cursor=pointer]:
+            - /url: /menus
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: https://blog.mareaalcalina.com
+          - button "ES" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18]: ES
+            - img [ref=e19]
+          - generic [ref=e21]:
+            - link "Iniciar Sesión" [ref=e22] [cursor=pointer]:
+              - /url: /login
+            - link "Registrarme" [ref=e23] [cursor=pointer]:
+              - /url: /signup
+    - main [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - img [ref=e28]
+            - generic [ref=e30]: Herramienta gratuita
+          - heading "Generador de Link de WhatsApp" [level=1] [ref=e31]
+          - paragraph [ref=e32]: Crea un enlace directo para que tus clientes te escriban en WhatsApp con un solo clic. Sin guardar tu número, sin complicaciones.
+        - generic [ref=e33]:
+          - generic [ref=e34]: Número de WhatsApp
+          - generic [ref=e35]:
+            - button "Colombia +57" [ref=e37] [cursor=pointer]:
+              - img "Colombia" [ref=e38]
+              - generic [ref=e39]: "+57"
+              - img [ref=e40]
+            - generic [ref=e42]:
+              - textbox "Número de WhatsApp" [ref=e43]:
+                - /placeholder: "Ej: 5512345678"
+              - generic:
+                - img
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: Mensaje predefinido (opcional)
+              - generic [ref=e47]: 0/500
+            - textbox "Mensaje predefinido (opcional)" [ref=e48]:
+              - /placeholder: Hola, me interesa conocer más sobre sus productos...
+          - button "Generar enlace de WhatsApp" [disabled] [ref=e49]:
+            - img [ref=e50]
+            - text: Generar enlace de WhatsApp
+      - generic [ref=e53]:
+        - heading "Cómo funciona" [level=2] [ref=e55]
+        - generic [ref=e57]:
+          - generic [ref=e59]:
+            - img [ref=e61]
+            - generic [ref=e63]: "1"
+            - heading "Ingresa tu número" [level=3] [ref=e64]
+            - paragraph [ref=e65]: Selecciona tu país e ingresa tu número de WhatsApp. Detectamos tu país automáticamente.
+          - generic [ref=e66]:
+            - img [ref=e68]
+            - generic [ref=e70]: "2"
+            - heading "Agrega un mensaje" [level=3] [ref=e71]
+            - paragraph [ref=e72]: Escribe un mensaje predefinido para que tus clientes solo tengan que darle enviar.
+          - generic [ref=e73]:
+            - img [ref=e75]
+            - generic [ref=e77]: "3"
+            - heading "Comparte tu enlace" [level=3] [ref=e78]
+            - paragraph [ref=e79]: Copia el link, descarga el QR o pruébalo directamente. Listo para Instagram, Facebook o tu sitio web.
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - heading "¿Por qué necesitas un link de WhatsApp?" [level=2] [ref=e83]
+          - paragraph [ref=e84]: El 70% de los negocios en Latinoamérica venden por WhatsApp. Un link directo elimina la fricción entre tu cliente y la venta.
+        - generic [ref=e85]:
+          - generic [ref=e87]:
+            - img [ref=e89]
+            - generic [ref=e91]:
+              - heading "Ventas más rápidas" [level=3] [ref=e92]
+              - paragraph [ref=e93]: Tus clientes te escriben con un clic desde cualquier red social o anuncio. Sin pasos extra, sin guardar tu número.
+          - generic [ref=e95]:
+            - img [ref=e97]
+            - generic [ref=e99]:
+              - heading "Úsalo en todas partes" [level=3] [ref=e100]
+              - paragraph [ref=e101]: Agrégalo a tu bio de Instagram, publicaciones de Facebook, tu sitio web, firma de correo o tarjetas de presentación.
+          - generic [ref=e103]:
+            - img [ref=e105]
+            - generic [ref=e107]:
+              - heading "Mide lo que importa" [level=3] [ref=e108]
+              - paragraph [ref=e109]: Sabe exactamente de dónde llegan tus clientes. Usa links diferentes para cada canal y optimiza tu inversión.
+          - generic [ref=e111]:
+            - img [ref=e113]
+            - generic [ref=e115]:
+              - heading "Funciona en cualquier dispositivo" [level=3] [ref=e116]
+              - paragraph [ref=e117]: El enlace abre WhatsApp automáticamente en iOS, Android o computadora de escritorio. Universal y confiable.
+      - generic [ref=e119]:
+        - heading "Preguntas frecuentes" [level=2] [ref=e121]
+        - list [ref=e123]:
+          - listitem [ref=e124]:
+            - button "¿Cómo funciona un link directo de WhatsApp?" [ref=e125] [cursor=pointer]:
+              - generic [ref=e126]: ¿Cómo funciona un link directo de WhatsApp?
+              - img [ref=e128]
+          - listitem [ref=e130]:
+            - button "¿Puedo agregar un mensaje predefinido al enlace?" [ref=e131] [cursor=pointer]:
+              - generic [ref=e132]: ¿Puedo agregar un mensaje predefinido al enlace?
+              - img [ref=e134]
+          - listitem [ref=e136]:
+            - button "¿El enlace funciona en cualquier dispositivo?" [ref=e137] [cursor=pointer]:
+              - generic [ref=e138]: ¿El enlace funciona en cualquier dispositivo?
+              - img [ref=e140]
+          - listitem [ref=e142]:
+            - button "¿Puedo usar este link en Instagram o Facebook?" [ref=e143] [cursor=pointer]:
+              - generic [ref=e144]: ¿Puedo usar este link en Instagram o Facebook?
+              - img [ref=e146]
+          - listitem [ref=e148]:
+            - button "¿Necesito tener WhatsApp Business?" [ref=e149] [cursor=pointer]:
+              - generic [ref=e150]: ¿Necesito tener WhatsApp Business?
+              - img [ref=e152]
+    - generic [ref=e158]:
+      - heading "¿Ya vendes por WhatsApp? Potencia tus ventas con un catálogo digital" [level=2] [ref=e159]
+      - paragraph [ref=e160]: Tus clientes navegan tu catálogo, eligen lo que quieren y te envían el pedido directo a WhatsApp. Todo automatizado.
+      - link "Crear mi catálogo digital" [ref=e161] [cursor=pointer]:
+        - /url: /signup?utm_source=tools&utm_medium=organic&utm_campaign=whatsapp-link-generator
+        - text: Crear mi catálogo digital
+        - img [ref=e162]
+    - generic [ref=e165]:
+      - heading "Más herramientas gratuitas" [level=2] [ref=e166]
+      - generic [ref=e167]:
+        - link "Generador de Descripciones con IA Crea descripciones persuasivas para tus productos en segundos." [ref=e168] [cursor=pointer]:
+          - /url: /tools/product-description-generator
+          - generic [ref=e169]:
+            - img [ref=e171]
+            - generic [ref=e173]:
+              - heading "Generador de Descripciones con IA" [level=4] [ref=e174]
+              - paragraph [ref=e175]: Crea descripciones persuasivas para tus productos en segundos.
+            - img [ref=e176]
+        - link "Generador de QR para Menú Crea códigos QR personalizados para tu menú o catálogo digital. Descarga en PNG o SVG." [ref=e178] [cursor=pointer]:
+          - /url: /tools/qr-code-menu-generator
+          - generic [ref=e179]:
+            - img [ref=e181]
+            - generic [ref=e183]:
+              - heading "Generador de QR para Menú" [level=4] [ref=e184]
+              - paragraph [ref=e185]: Crea códigos QR personalizados para tu menú o catálogo digital. Descarga en PNG o SVG.
+            - img [ref=e186]
+    - generic [ref=e188]:
+      - contentinfo [ref=e189]:
+        - generic [ref=e190]:
+          - link "Marea Alcalina" [ref=e193] [cursor=pointer]:
+            - /url: /
+            - img "Marea Alcalina" [ref=e194]
+          - generic [ref=e195]:
+            - generic [ref=e196]:
+              - heading "Marea Alcalina" [level=4] [ref=e197]
+              - list [ref=e199]:
+                - listitem [ref=e200]:
+                  - link "Inicio" [ref=e201] [cursor=pointer]:
+                    - /url: /
+                - listitem [ref=e202]:
+                  - link "Planes" [ref=e203] [cursor=pointer]:
+                    - /url: /plans
+                - listitem [ref=e204]:
+                  - link "Panel Principal" [ref=e205] [cursor=pointer]:
+                    - /url: /menus
+                - listitem [ref=e206]:
+                  - link "Perfil" [ref=e207] [cursor=pointer]:
+                    - /url: /menus/profile
+                - listitem [ref=e208]:
+                  - link "Blog" [ref=e209] [cursor=pointer]:
+                    - /url: https://blog.mareaalcalina.com
+            - generic [ref=e210]:
+              - heading "Herramientas" [level=4] [ref=e211]
+              - list [ref=e213]:
+                - listitem [ref=e214]:
+                  - link "Generador de Descripción de Producto" [ref=e215] [cursor=pointer]:
+                    - /url: /tools/product-description-generator
+                - listitem [ref=e216]:
+                  - link "Generador de Link de WhatsApp" [ref=e217] [cursor=pointer]:
+                    - /url: /tools/whatsapp-link-generator
+                - listitem [ref=e218]:
+                  - link "Calculadora de Margen de Ganancia" [ref=e219] [cursor=pointer]:
+                    - /url: /tools/profit-margin-calculator
+                - listitem [ref=e220]:
+                  - link "Generador de Nombres para Negocio" [ref=e221] [cursor=pointer]:
+                    - /url: /tools/business-name-generator
+                - listitem [ref=e222]:
+                  - link "Generador de QR para Menú" [ref=e223] [cursor=pointer]:
+                    - /url: /tools/qr-code-menu-generator
+                - listitem [ref=e224]:
+                  - link "Generador de Biografías con IA" [ref=e225] [cursor=pointer]:
+                    - /url: /tools/biography-generator
+            - generic [ref=e226]:
+              - heading "Guías" [level=4] [ref=e227]
+              - list [ref=e229]:
+                - listitem [ref=e230]:
+                  - link "Mejor Plataforma WhatsApp" [ref=e231] [cursor=pointer]:
+                    - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                - listitem [ref=e232]:
+                  - link "Comparativa de Plataformas" [ref=e233] [cursor=pointer]:
+                    - /url: /guides/marea-alcalina-vs-tiendanube
+                - listitem [ref=e234]:
+                  - link "Tienda en Línea Gratis" [ref=e235] [cursor=pointer]:
+                    - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                - listitem [ref=e236]:
+                  - link "Menú Digital Restaurantes" [ref=e237] [cursor=pointer]:
+                    - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                - listitem [ref=e238]:
+                  - link "Cómo Vender por WhatsApp" [ref=e239] [cursor=pointer]:
+                    - /url: /como-vender
+            - generic [ref=e240]:
+              - heading "Información" [level=4] [ref=e241]
+              - list [ref=e243]:
+                - listitem [ref=e244]:
+                  - link "Términos y Condiciones" [ref=e245] [cursor=pointer]:
+                    - /url: /terms
+                - listitem [ref=e246]:
+                  - link "Políticas de Privacidad" [ref=e247] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e248]:
+                  - link "Política de Uso Aceptable" [ref=e249] [cursor=pointer]:
+                    - /url: /aup
+                - listitem [ref=e250]:
+                  - link "Preferencias de cookies" [ref=e251] [cursor=pointer]:
+                    - /url: javascript:void(0);
+            - generic [ref=e252]:
+              - heading "Soporte" [level=4] [ref=e253]
+              - list [ref=e255]:
+                - paragraph [ref=e256]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                - listitem [ref=e257]:
+                  - link "Messenger" [ref=e258] [cursor=pointer]:
+                    - /url: https://m.me/mareaalcalina
+                - listitem [ref=e259]:
+                  - link "Instagram" [ref=e260] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+            - generic [ref=e264]:
+              - heading "Síguenos" [level=4] [ref=e265]
+              - list [ref=e267]:
+                - listitem [ref=e268]:
+                  - link [ref=e269] [cursor=pointer]:
+                    - /url: https://www.facebook.com/pg/mareaalcalina
+                    - img [ref=e270]
+                - listitem [ref=e271]:
+                  - link "" [ref=e272] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+                    - generic [ref=e273]: 
+                - listitem [ref=e274]:
+                  - link [ref=e275] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@mareaalcalina
+                    - img [ref=e276]
+      - paragraph [ref=e282]: 2026 © Marea Alcalina
+  - banner "Banner de consentimiento de cookies" [ref=e283]:
+    - generic [ref=e285]:
+      - generic [ref=e286]:
+        - generic [ref=e287]: 🍪
+        - generic [ref=e288]:
+          - paragraph [ref=e289]:
+            - strong [ref=e290]: Usamos cookies en este sitio web
+          - paragraph [ref=e291]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e292] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e293]:
+        - button "Personalizar configuración de cookies" [ref=e294] [cursor=pointer]:
+          - img [ref=e295]
+        - button "Aceptar todas las cookies" [ref=e298] [cursor=pointer]: Aceptar todas

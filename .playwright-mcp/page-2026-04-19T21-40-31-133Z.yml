@@ -1,0 +1,143 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e248]:
+    - generic [ref=e251]:
+      - generic [ref=e252]:
+        - button [ref=e253] [cursor=pointer]:
+          - img [ref=e254]
+        - generic [ref=e256]: Sazón Express
+      - generic [ref=e257]:
+        - img [ref=e260]
+        - navigation [ref=e262]:
+          - list [ref=e263]:
+            - listitem [ref=e264]:
+              - list [ref=e265]:
+                - listitem [ref=e266]:
+                  - link "Detalles" [ref=e267] [cursor=pointer]:
+                    - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e268]
+                    - generic [ref=e269]: Detalles
+                - listitem [ref=e270]:
+                  - link "Productos" [ref=e271] [cursor=pointer]:
+                    - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e272]
+                    - generic [ref=e273]: Productos
+                - listitem [ref=e274]:
+                  - link "Diseño" [ref=e275] [cursor=pointer]:
+                    - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e276]
+                    - generic [ref=e277]: Diseño
+                - listitem [ref=e278]:
+                  - link "Pedidos" [ref=e279] [cursor=pointer]:
+                    - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e280]
+                    - generic [ref=e281]: Pedidos
+                - listitem [ref=e282]:
+                  - link "Pagos" [ref=e283] [cursor=pointer]:
+                    - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e284]
+                    - generic [ref=e285]: Pagos
+                - listitem [ref=e286]:
+                  - link "Estadísticas" [ref=e287] [cursor=pointer]:
+                    - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e288]
+                    - generic [ref=e289]: Estadísticas
+                - listitem [ref=e290]:
+                  - link "Checkout" [ref=e291] [cursor=pointer]:
+                    - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e292]
+                    - generic [ref=e293]: Checkout
+                - listitem [ref=e294]:
+                  - link "Avanzado" [ref=e295] [cursor=pointer]:
+                    - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                    - img [ref=e296]
+                    - generic [ref=e297]: Avanzado
+        - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e300] [cursor=pointer]:
+          - img "Profile" [ref=e301]
+          - generic [ref=e302]:
+            - paragraph [ref=e303]: ricardo saldarriaga
+            - paragraph [ref=e304]: richi.alvarez.9402@gmail.com
+          - img [ref=e305]
+      - button [ref=e307] [cursor=pointer]:
+        - img [ref=e308]
+    - generic [ref=e311]:
+      - generic [ref=e312]: Configuración de Checkout
+      - generic [ref=e313]:
+        - navigation "Tabs" [ref=e314]:
+          - generic [ref=e316]:
+            - button "General" [ref=e317] [cursor=pointer]: General
+            - button "Sucursales" [ref=e319] [cursor=pointer]: Sucursales
+            - button "Mensaje" [ref=e320] [cursor=pointer]: Mensaje
+            - button "Promociones" [ref=e321] [cursor=pointer]: Promociones
+            - button "Términos y Condiciones" [ref=e322] [cursor=pointer]: Términos y Condiciones
+            - button "Estados de Pedido" [ref=e323] [cursor=pointer]: Estados de Pedido
+        - generic [ref=e785]:
+          - heading "Crear promoción" [level=3] [ref=e787]
+          - generic [ref=e788]:
+            - generic [ref=e789]:
+              - generic [ref=e790]: Nombre de la promoción *
+              - textbox [ref=e792]
+              - paragraph [ref=e793]: "Se mostrará en el resumen del carrito de compras. Ejemplo: Promoción de verano, Promoción de Navidad"
+            - generic [ref=e794]:
+              - generic [ref=e795]: Tipo de promoción *
+              - combobox [ref=e796]:
+                - option "Descuento porcentual" [selected]
+                - option "Descuento fijo"
+                - option "Descuento en envío"
+                - option "Descuento por compra mínima"
+              - paragraph [ref=e797]:
+                - generic [ref=e798]: Aplica un descuento porcentual al pedido completo
+            - generic [ref=e799]:
+              - generic [ref=e800]: Descripción *
+              - textbox [ref=e802]
+              - paragraph [ref=e803]: Esta descripción se mostrará en el banner de promociones si está activa; asegúrate de escribir los detalles de tu promoción.
+          - generic [ref=e805]:
+            - generic [ref=e806]: Código de promoción *
+            - textbox [ref=e808]
+          - generic [ref=e811]:
+            - generic [ref=e812]: Descuento porcentual *
+            - generic [ref=e813]:
+              - spinbutton [ref=e814]
+              - generic:
+                - generic: "%"
+            - paragraph [ref=e815]: Este descuento se aplica sólo al subtotal. Los cargos adicionales, como los gastos de envío, no están incluidos en el descuento.
+          - generic [ref=e816]:
+            - generic [ref=e817]:
+              - generic [ref=e818]: Fecha de inicio
+              - generic [ref=e819]:
+                - textbox [ref=e821]
+                - textbox [ref=e823]
+            - generic [ref=e824]:
+              - generic [ref=e825]: Fecha de finalización
+              - generic [ref=e826]:
+                - textbox [ref=e828]
+                - textbox [ref=e830]
+          - generic [ref=e831]:
+            - generic [ref=e832]:
+              - generic [ref=e833]: Máximo de usos
+              - spinbutton [ref=e834]
+              - paragraph [ref=e835]: Cuántas veces se puede aplicar esta promoción
+            - generic [ref=e839]:
+              - switch "Esta promoción está activa y los clientes pueden utilizarla." [checked] [ref=e840] [cursor=pointer]
+              - generic [ref=e842]: Esta promoción está activa y los clientes pueden utilizarla.
+          - generic [ref=e843]:
+            - button "Cancelar" [ref=e844] [cursor=pointer]
+            - button "Crear promoción" [ref=e845] [cursor=pointer]
+  - dialog "Marea Alcalina | Tiendas en línea en instantes":
+    - generic [ref=e88]:
+      - generic "Marea Alcalina | Tiendas en línea en instantes" [ref=e90]
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - generic:
+            - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes"'
+          - img "Video Thumbnail" [ref=e95]
+        - generic:
+          - generic:
+            - generic:
+              - 'button "Play Video: Marea Alcalina | Tiendas en línea en instantes" [ref=e779] [cursor=pointer]':
+                - img [ref=e782]
+              - generic:
+                - generic:
+                  - generic:
+                    - img
+    - button "Close" [ref=e102] [cursor=pointer]:
+      - img "Click to close video" [ref=e103]

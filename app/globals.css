@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Fuentes ── */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", "Inter", ui-sans-serif, sans-serif;
+
+  /* ── Paleta Domicilios ── */
+  /* Primario: coral */
+  --color-primary-50: #fff3f1;
+  --color-primary-100: #ffe4df;
+  --color-primary-200: #ffccc4;
+  --color-primary-300: #ffaa9e;
+  --color-primary-400: #ff8a79;
+  --color-primary-500: #ff6b57;
+  --color-primary-600: #f04535;
+  --color-primary-700: #cc2e20;
+  --color-primary-800: #a8271c;
+  --color-primary-900: #8b251d;
+
+  /* Secundario: azul noche */
+  --color-night-50: #e8ecf2;
+  --color-night-100: #c2cdd9;
+  --color-night-200: #96aabf;
+  --color-night-300: #6a86a5;
+  --color-night-400: #486d91;
+  --color-night-500: #2a547e;
+  --color-night-600: #1d3d62;
+  --color-night-700: #122d4d;
+  --color-night-800: #0b1f3a;
+  --color-night-900: #061428;
+
+  /* Acento: verde lima */
+  --color-lime-50: #f5fde8;
+  --color-lime-100: #e8f9c7;
+  --color-lime-200: #d4f49a;
+  --color-lime-300: #b8eb67;
+  --color-lime-400: #9be14a;
+  --color-lime-500: #7dcc2a;
+  --color-lime-600: #60a31e;
+  --color-lime-700: #4a7e18;
+  --color-lime-800: #3d6518;
+  --color-lime-900: #335518;
+
+  /* Neutros cálidos */
+  --color-warm-50: #fafaf8;
+  --color-warm-100: #f4f4f0;
+  --color-warm-200: #e8e8e2;
+  --color-warm-300: #d4d4cc;
+  --color-warm-400: #a8a89e;
+  --color-warm-500: #7c7c72;
+  --color-warm-600: #5c5c52;
+  --color-warm-700: #3c3c34;
+  --color-warm-800: #252520;
+  --color-warm-900: #14140f;
+
+  /* ── Alias semánticos ── */
+  --color-background: var(--color-warm-50);
+  --color-foreground: var(--color-night-800);
+  --color-muted: var(--color-warm-200);
+  --color-muted-foreground: var(--color-warm-500);
+  --color-border: var(--color-warm-200);
+  --color-input: var(--color-warm-200);
+  --color-ring: var(--color-primary-500);
+  --color-card: #ffffff;
+  --color-card-foreground: var(--color-night-800);
+
+  /* ── Radios ── */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* ── Sombras ── */
+  --shadow-card: 0 1px 3px 0 rgb(11 31 58 / 0.08), 0 1px 2px -1px rgb(11 31 58 / 0.06);
+  --shadow-elevated:
+    0 4px 6px -1px rgb(11 31 58 / 0.08), 0 2px 4px -2px rgb(11 31 58 / 0.05);
+  --shadow-modal:
+    0 20px 25px -5px rgb(11 31 58 / 0.12), 0 8px 10px -6px rgb(11 31 58 / 0.08);
+}
+
+/* ── Variables CSS para shadcn/ui ── */
+:root {
+  --background: 40 20% 98%;
+  --foreground: 220 52% 14%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 52% 14%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 52% 14%;
+  --primary: 9 100% 67%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 218 60% 13%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 60 6% 93%;
+  --muted-foreground: 60 3% 46%;
+  --accent: 88 73% 59%;
+  --accent-foreground: 220 52% 14%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 60 6% 90%;
+  --input: 60 6% 90%;
+  --ring: 9 100% 67%;
+  --radius: 0.625rem;
+
+  /* Chart colors */
+  --chart-1: 9 100% 67%;
+  --chart-2: 218 60% 13%;
+  --chart-3: 88 73% 59%;
+  --chart-4: 32 95% 58%;
+  --chart-5: 199 89% 48%;
+}
+
+/* ── Reset y base ── */
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "rlig" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ── Utilidades custom ── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #ff6b57 0%, #f04535 100%);
+  }
+
+  .gradient-night {
+    background: linear-gradient(135deg, #0b1f3a 0%, #1d3d62 100%);
+  }
+
+  .gradient-hero {
+    background: linear-gradient(160deg, #fff3f1 0%, #fafaf8 50%, #f0f9e0 100%);
+  }
+
+  .ring-primary {
+    --tw-ring-color: var(--color-primary-500);
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-warm-300);
+  border-radius: 99px;
+}
+
+/* ── Focus visible ── */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}

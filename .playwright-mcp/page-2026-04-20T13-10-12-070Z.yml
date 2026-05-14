@@ -1,0 +1,104 @@
+- generic [ref=e7]:
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - button [ref=e12] [cursor=pointer]:
+        - img [ref=e13]
+      - generic [ref=e15]: Sazón Express
+    - generic [ref=e16]:
+      - img [ref=e19]
+      - navigation [ref=e21]:
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - list [ref=e24]:
+              - listitem [ref=e25]:
+                - link "Detalles" [ref=e26] [cursor=pointer]:
+                  - /url: /menus/menu-detail?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e27]
+                  - generic [ref=e28]: Detalles
+              - listitem [ref=e29]:
+                - link "Productos" [ref=e30] [cursor=pointer]:
+                  - /url: /menus/menu-products?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e31]
+                  - generic [ref=e32]: Productos
+              - listitem [ref=e33]:
+                - link "Diseño" [ref=e34] [cursor=pointer]:
+                  - /url: /menus/block-editor?menuId=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e35]
+                  - generic [ref=e36]: Diseño
+              - listitem [ref=e37]:
+                - link "Pedidos" [ref=e38] [cursor=pointer]:
+                  - /url: /menus/orders?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e39]
+                  - generic [ref=e40]: Pedidos
+              - listitem [ref=e41]:
+                - link "Pagos" [ref=e42] [cursor=pointer]:
+                  - /url: /menus/payments?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e43]
+                  - generic [ref=e44]: Pagos
+              - listitem [ref=e45]:
+                - link "Estadísticas" [ref=e46] [cursor=pointer]:
+                  - /url: /menus/menu-analytics?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e47]
+                  - generic [ref=e48]: Estadísticas
+              - listitem [ref=e49]:
+                - link "Checkout" [ref=e50] [cursor=pointer]:
+                  - /url: /menus/shopping-cart?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e51]
+                  - generic [ref=e52]: Checkout
+              - listitem [ref=e53]:
+                - link "Avanzado" [ref=e54] [cursor=pointer]:
+                  - /url: /menus/menu-advanced-config?menuId=6KaFRGxPSInvPLlCgqu6&id=6KaFRGxPSInvPLlCgqu6
+                  - img [ref=e55]
+                  - generic [ref=e56]: Avanzado
+      - button "Profile ricardo saldarriaga richi.alvarez.9402@gmail.com" [ref=e59] [cursor=pointer]:
+        - img "Profile" [ref=e60]
+        - generic [ref=e61]:
+          - paragraph [ref=e62]: ricardo saldarriaga
+          - paragraph [ref=e63]: richi.alvarez.9402@gmail.com
+        - img [ref=e64]
+    - button [ref=e66] [cursor=pointer]:
+      - img [ref=e67]
+  - generic [ref=e70]:
+    - generic [ref=e71]: Configuración Avanzada
+    - generic [ref=e72]:
+      - navigation "Tabs" [ref=e73]:
+        - generic [ref=e75]:
+          - button "Integraciones" [ref=e76] [cursor=pointer]: Integraciones
+          - button "Analítica" [ref=e77] [cursor=pointer]: Analítica
+          - button "Notificaciones" [ref=e78] [cursor=pointer]: Notificaciones
+          - button "Configuración" [ref=e80] [cursor=pointer]: Configuración
+          - button "Colaboración" [ref=e81] [cursor=pointer]: Colaboración
+          - button "Gestión" [ref=e82] [cursor=pointer]: Gestión
+      - generic [ref=e225]:
+        - generic [ref=e226]:
+          - generic [ref=e228]:
+            - img [ref=e231]
+            - generic [ref=e233]:
+              - heading "Selección de Lenguaje" [level=2] [ref=e234]
+              - paragraph [ref=e235]: Esto se usará para mostrar la página en el idioma seleccionado.
+          - generic [ref=e236]:
+            - generic [ref=e237]: Selección de Lenguaje
+            - combobox "Selección de Lenguaje" [ref=e239]:
+              - option "Español" [selected]
+              - option "Inglés"
+              - option "Portugués"
+        - generic [ref=e240]:
+          - generic [ref=e241]:
+            - generic [ref=e242]:
+              - img [ref=e245]
+              - generic [ref=e248]:
+                - heading "Visibilidad de la Página" [level=2] [ref=e249]
+                - paragraph [ref=e250]: Controla si esta página es visible para los visitantes
+            - generic [ref=e252]:
+              - img [ref=e253]
+              - text: BUSINESS
+          - generic [ref=e256]:
+            - img [ref=e258]
+            - paragraph [ref=e261]:
+              - generic [ref=e262]: "Estado actual:"
+              - text: Visible para todos
+          - generic [ref=e264]:
+            - generic [ref=e265]:
+              - generic [ref=e267]: Ocultar página
+              - generic [ref=e268]: Ocultar temporalmente tu página de los visitantes
+            - switch [checked] [disabled] [ref=e270]

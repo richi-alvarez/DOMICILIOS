@@ -1,0 +1,98 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - generic [ref=e14]:
+        - heading [level=1] [ref=e148]: Sazón Express
+        - paragraph [ref=e16]: En Sazón Express preparamos almuerzos y antojos con ese toque casero que siempre provoca volver. Encuentra almuerzos ejecutivos, bandeja paisa, hamburguesas artesanales, jugos naturales y postres caseros, con domicilios rápidos en Medellín y una atención cercana.
+      - generic [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic [ref=e24]:
+              - button [ref=e149] [cursor=pointer]:
+                - generic [ref=e27]: ☰
+              - button [ref=e29] [cursor=pointer]:
+                - img [ref=e30]
+            - generic [ref=e33]:
+              - button [ref=e150] [cursor=pointer]: Almuerzos
+              - button [ref=e151] [cursor=pointer]: Platos Típicos
+              - button [ref=e152] [cursor=pointer]: Hamburguesas
+              - button [ref=e153] [cursor=pointer]: Jugos
+              - button [ref=e154] [cursor=pointer]: Postres
+          - generic [ref=e40]:
+            - button [ref=e155] [cursor=pointer]:
+              - img [ref=e42]
+              - generic [ref=e44]: Ordenar
+            - button [ref=e156] [cursor=pointer]:
+              - img [ref=e46]
+              - generic [ref=e48]: Filtrar
+        - generic [ref=e55] [cursor=pointer]:
+          - generic [ref=e56]:
+            - heading [level=3] [ref=e157]: Almuerzo Ejecutivo
+            - paragraph [ref=e58]: Plato del día con proteína, arroz, ensalada, acompañante y bebida.
+          - generic [ref=e59]:
+            - generic [ref=e61]: $18.000
+            - generic [ref=e64]:
+              - button [ref=e80]:
+                - img [ref=e81]
+              - generic [ref=e84]: "1"
+              - button [ref=e85]:
+                - img [ref=e86]
+      - button [ref=e158] [cursor=pointer]:
+        - generic [ref=e90]:
+          - generic [ref=e91]:
+            - img [ref=e92]
+            - generic [ref=e94]: "1"
+          - generic [ref=e95]:
+            - generic [ref=e96]: Ver carrito
+            - generic [ref=e98]: $18.000
+      - generic [ref=e75]: Tu comida casera favorita, lista para llegar rápido a tu puerta en Medellín. Pide hoy y disfruta sabor, calidez y servicio cercano.
+    - generic [ref=e76] [cursor=pointer]:
+      - generic [ref=e77]: Creado con
+      - img [ref=e159]
+  - dialog [ref=e163]:
+    - generic [ref=e167]:
+      - generic [ref=e169]:
+        - button [ref=e218] [cursor=pointer]:
+          - img [ref=e219]
+        - heading "Resumen" [level=2] [ref=e284]
+        - button [ref=e171] [cursor=pointer]:
+          - img [ref=e172]
+      - generic [ref=e286]:
+        - generic [ref=e287]:
+          - img [ref=e289]
+          - heading "Resumen del pedido" [level=2] [ref=e291]
+        - generic [ref=e292]:
+          - generic [ref=e294]:
+            - generic [ref=e295]:
+              - generic [ref=e296]:
+                - img [ref=e297]
+                - heading "Información de contacto" [level=3] [ref=e299]
+              - generic [ref=e301]:
+                - generic [ref=e302]:
+                  - generic [ref=e303]: Nombre
+                  - generic [ref=e304]: Cliente Demo
+                - generic [ref=e305]:
+                  - generic [ref=e306]: Teléfono
+                  - generic [ref=e307]: "3009998877"
+            - generic [ref=e308]:
+              - generic [ref=e309]:
+                - img [ref=e310]
+                - heading "Elementos" [level=3] [ref=e312]
+              - generic [ref=e314]:
+                - img "Almuerzo Ejecutivo" [ref=e316]
+                - generic [ref=e318]:
+                  - heading "Almuerzo Ejecutivo" [level=4] [ref=e319]
+                  - paragraph [ref=e320]: x1
+                - generic [ref=e321]: $18.000
+          - generic [ref=e323]:
+            - heading "Total del pedido" [level=3] [ref=e325]
+            - generic [ref=e326]:
+              - generic [ref=e327]:
+                - generic [ref=e328]: Total parcial
+                - generic [ref=e329]: $18.000
+              - generic [ref=e330]:
+                - generic [ref=e331]: COSTO TOTAL
+                - generic [ref=e332]: $18.000
+            - button "Crear Pedido" [ref=e334] [cursor=pointer]:
+              - generic [ref=e335]: Crear Pedido
+              - img [ref=e336]

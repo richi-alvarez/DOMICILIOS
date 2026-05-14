@@ -1,0 +1,344 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - link "Logo" [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img "Logo" [ref=e9]
+        - generic [ref=e10]:
+          - link "Inicio" [ref=e11] [cursor=pointer]:
+            - /url: /
+          - link "Planes" [ref=e12] [cursor=pointer]:
+            - /url: /plans
+          - link "Agencias" [ref=e13] [cursor=pointer]:
+            - /url: /agencies
+          - link "Crear" [ref=e14] [cursor=pointer]:
+            - /url: /menus
+          - link "Blog" [ref=e15] [cursor=pointer]:
+            - /url: https://blog.mareaalcalina.com
+          - button "ES" [ref=e17] [cursor=pointer]:
+            - generic [ref=e18]: ES
+            - img [ref=e19]
+          - generic [ref=e21]:
+            - link "Iniciar Sesión" [ref=e22] [cursor=pointer]:
+              - /url: /login
+            - link "Registrarme" [ref=e23] [cursor=pointer]:
+              - /url: /signup
+    - generic [ref=e24]:
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - heading "Precios" [level=2] [ref=e32]
+          - paragraph [ref=e33]: Catálogo en línea con todo el poder que necesitas
+          - paragraph [ref=e34]: Elije un plan que te acomode, lo puedes cambiar en cualquier momento.
+        - combobox [ref=e38] [cursor=pointer]:
+          - option "USD"
+          - option "MXN"
+          - option "BRL"
+          - option "CAD"
+          - option "CLP"
+          - option "COP" [selected]
+          - option "CRC"
+          - option "EUR"
+          - option "PEN"
+        - generic [ref=e40]:
+          - generic [ref=e41] [cursor=pointer]: Anual
+          - generic [ref=e42] [cursor=pointer]: Mensual
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: Mayor ahorro
+              - generic [ref=e47]: 3 meses gratis
+            - heading "Business" [level=3] [ref=e48]
+            - paragraph [ref=e49]:
+              - generic [ref=e50]: $134.999
+              - generic [ref=e51]: COP/mes
+            - generic [ref=e52]:
+              - paragraph [ref=e53]: Facturado anualmente
+              - paragraph [ref=e54]: Ahorras $540,010
+              - paragraph [ref=e55] [cursor=pointer]: ¿Prefieres mensual? $180,000/mes
+            - button "Elegir Business Anual" [ref=e56] [cursor=pointer]
+            - list [ref=e57]:
+              - listitem [ref=e58]:
+                - img [ref=e59]
+                - text: Pedidos ilimitados
+              - listitem [ref=e61]:
+                - img [ref=e62]
+                - text: Hasta 2,000 productos
+              - listitem [ref=e64]:
+                - img [ref=e65]
+                - text: Colaboración en equipo y permisos
+              - listitem [ref=e67]:
+                - img [ref=e68]
+                - text: Bloque IA para personalizar secciones
+              - listitem [ref=e70]:
+                - img [ref=e71]
+                - text: Todo lo de Pro incluido
+              - listitem [ref=e73]:
+                - img [ref=e74]
+                - generic [ref=e76]: +$413,990 Por catálogo adicional
+          - generic [ref=e77]:
+            - generic [ref=e78]: 3 meses gratis
+            - heading "Pro" [level=3] [ref=e79]
+            - paragraph [ref=e80]:
+              - generic [ref=e81]: $68.999
+              - generic [ref=e82]: COP/mes
+            - generic [ref=e83]:
+              - paragraph [ref=e84]: Facturado anualmente
+              - paragraph [ref=e85]: Ahorras $276,010
+              - paragraph [ref=e86] [cursor=pointer]: ¿Prefieres mensual? $92,000/mes
+            - button "Elegir Pro Anual" [ref=e87] [cursor=pointer]
+            - list [ref=e88]:
+              - listitem [ref=e89]:
+                - img [ref=e90]
+                - text: Hasta 1,000 pedidos al mes
+              - listitem [ref=e92]:
+                - img [ref=e93]
+                - text: Dominio personalizado
+              - listitem [ref=e95]:
+                - img [ref=e96]
+                - text: Hasta 200 productos
+              - listitem [ref=e98]:
+                - img [ref=e99]
+                - text: Todo lo de Basic incluido
+              - listitem [ref=e101]:
+                - img [ref=e102]
+                - generic [ref=e104]: +$413,990 Por catálogo adicional
+          - generic [ref=e105]:
+            - generic [ref=e106]: 3 meses gratis
+            - heading "Basic" [level=3] [ref=e107]
+            - paragraph [ref=e108]:
+              - generic [ref=e109]: $34.499
+              - generic [ref=e110]: COP/mes
+            - generic [ref=e111]:
+              - paragraph [ref=e112]: Facturado anualmente
+              - paragraph [ref=e113]: Ahorras $138,010
+              - paragraph [ref=e114] [cursor=pointer]: ¿Prefieres mensual? $46,000/mes
+            - button "Elegir Basic Anual" [ref=e115] [cursor=pointer]
+            - list [ref=e116]:
+              - listitem [ref=e117]:
+                - img [ref=e118]
+                - text: Hasta 200 pedidos al mes
+              - listitem [ref=e120]:
+                - img [ref=e121]
+                - text: Hasta 60 productos
+              - listitem [ref=e123]:
+                - img [ref=e124]
+                - text: Pagos con PayPal
+              - listitem [ref=e126]:
+                - img [ref=e127]
+                - text: Quita el logo de Marea Alcalina
+              - listitem [ref=e129]:
+                - img [ref=e130]
+                - text: Consulta todos tus pedidos
+              - listitem [ref=e132]:
+                - img [ref=e133]
+                - generic [ref=e135]: +$413,990 Por catálogo adicional
+          - generic [ref=e136]:
+            - heading "Gratis" [level=3] [ref=e137]
+            - paragraph [ref=e138]:
+              - generic [ref=e139]: $0
+              - generic [ref=e140]: Gratis para siempre
+            - button "Comenzar" [ref=e141] [cursor=pointer]
+            - list [ref=e142]:
+              - listitem [ref=e143]:
+                - img [ref=e144]
+                - text: Hasta 30 pedidos al mes
+              - listitem [ref=e146]:
+                - img [ref=e147]
+                - text: 2.5% comisión por venta online
+              - listitem [ref=e149]:
+                - img [ref=e150]
+                - text: Hasta 30 productos
+              - listitem [ref=e152]:
+                - img [ref=e153]
+                - text: Pedidos por WhatsApp o correo
+              - listitem [ref=e155]:
+                - img [ref=e156]
+                - text: Catálogo creado con IA
+        - generic [ref=e162]:
+          - heading "Plan Agency" [level=2] [ref=e163]
+          - paragraph [ref=e164]: Mejora tu gestión y administra múltiples catálogos desde un solo lugar con todas las características del plan Business, ideal para agencias, negocios con múltiples sucursales o dueños de varios negocios.
+          - paragraph [ref=e165]:
+            - generic [ref=e166]: $5999999
+            - generic [ref=e167]: COP al año.
+          - generic [ref=e168]:
+            - link "Conocer más" [ref=e169] [cursor=pointer]:
+              - /url: /agencies
+              - text: Conocer más
+              - img [ref=e170]
+            - button "Comenzar" [ref=e172] [cursor=pointer]
+      - region "Feature comparison" [ref=e176]:
+        - heading "Feature comparison" [level=2] [ref=e177]
+        - heading "Detalles de planes" [level=2] [ref=e178]
+        - generic [ref=e179]:
+          - generic [ref=e181]:
+            - heading "Gratis" [level=3] [ref=e182]:
+              - button "Gratis" [ref=e183] [cursor=pointer]:
+                - generic [ref=e184]: Gratis
+                - img [ref=e186]
+            - paragraph [ref=e189]: Empieza a recibir pedidos y prueba tu catálogo digital sin costo.
+          - generic [ref=e191]:
+            - heading "Basic" [level=3] [ref=e192]:
+              - button "Basic" [ref=e193] [cursor=pointer]:
+                - generic [ref=e194]: Basic
+                - img [ref=e196]
+            - paragraph [ref=e199]: Crece con más pedidos, pagos con PayPal y tu propia marca.
+          - generic [ref=e201]:
+            - heading "Pro" [level=3] [ref=e202]:
+              - button "Pro" [ref=e203] [cursor=pointer]:
+                - generic [ref=e204]: Pro
+                - img [ref=e206]
+            - paragraph [ref=e209]: Tu dominio, métodos de pago personalizados y control total de tu catálogo.
+          - generic [ref=e211]:
+            - heading "Business" [level=3] [ref=e212]:
+              - button "Business" [ref=e213] [cursor=pointer]:
+                - generic [ref=e214]: Business
+                - img [ref=e216]
+            - paragraph [ref=e219]: Pedidos ilimitados, colaboracion en equipo y soporte multi-sucursal.
+    - generic [ref=e221]:
+      - heading "Preguntas Frecuentes" [level=1] [ref=e224]
+      - generic [ref=e225]:
+        - generic [ref=e227] [cursor=pointer]: ¿Cómo puedo agregar catálogos adicionales a mi cuenta?
+        - generic: "Para agregar catálogos adicionales a tu cuenta, sigue estos pasos: 1. Primero, suscríbete a un plan de pago si aún no lo has hecho. 2. Ve a tu Perfil. 3. Haz clic en 'Manejar Plan'. 4. Haz clic en 'Actualizar Plan'. 5. En la sección de planes, verás un botón más (+) donde puedes seleccionar el número de catálogos adicionales que necesitas. 6. Completa el proceso de actualización. Una vez completada la actualización, podrás crear catálogos adicionales en tu cuenta."
+      - generic [ref=e228]:
+        - generic [ref=e230] [cursor=pointer]: ¿Cómo puedo pagar otro plan?
+        - generic: Puedes cambiar de plan dando clic en 'Comenzar' dentro del recuadro de plan en la parte superior de esta página, recuerda seleccionar si prefieres que tu plan sea mensual o anual. Se te redireccionará a la pasarela de pago donde podrás agregar una tarjeta de crédito o débito. Aceptamos la mayoría de las tarjetas Visa y Mastercard, también puedes usar Apple Pay y Google Pay. Una vez que tu banco acepte el cobro, tu cuenta se actualizará automáticamente y podrás disfrutar de todas las características Pro. Para revisar tus métodos de pago basta con agregar tu tarjeta como método de pago accediendo a tu Perfil, dando clic al ícono de usuario/foto de perfil ubicado en la esquina superior derecha. Ya que cargue la pantalla de Perfil, en la parte inferior dar clic al botón 'Manejar Plan'.
+      - generic [ref=e231]:
+        - generic [ref=e233] [cursor=pointer]: ¿Puedo recibir pedidos con mi catálogo/menú?
+        - generic: Sí, puedes configurar tu carrito de compras para recibir pedidos directamente por correo o WhatsApp de tus clientes. Facilitamos tus pedidos para que te comuniques directamente con tus clientes sin la necesidad de cobrarte comisión.
+      - generic [ref=e234]:
+        - generic [ref=e236] [cursor=pointer]: ¿Qué sucede con mis páginas si cambio de un plan mayor a uno menor?
+        - generic: Tus páginas seguiran estando disponibles mostrando solamente el máximo de elementos que permite tu plan actual. Si tenías más páginas creadas que las que permite tu plan actual, no podrás modificarlas hasta tener un plan que tenga un número de páginas mayor o igual a las páginas que has creado.
+      - generic [ref=e237]:
+        - generic [ref=e239] [cursor=pointer]: ¿Por qué falla mi método de pago?
+        - generic: "Las razones más comunes son: el método de pago no tiene fondos o el banco no ha aceptado el cobro. Dependiendo de tu banco nosotros podemos o no saber la razón exacta por la que un cobro ha fallado. Si tu pago ha fallado en la renovación de tu mensualidad o anualidad, te notificaremos por correo electrónico y haremos un segundo intento el día siguiente. Te recomendamos agregar más de un solo método de pago para evitar perder las características de tu plan actual."
+      - generic [ref=e240]:
+        - generic [ref=e242] [cursor=pointer]: ¿Funciona para menús/catálogos digitales o páginas web?
+        - generic: Ambas. Cada creación dentro de Marea Alcalina funciona como menú digital, catálogo digital, página de links, página de biografía, página de presentación y muchos más usos innovadores.
+      - generic [ref=e243]:
+        - generic [ref=e245] [cursor=pointer]: ¿Qué pasa con mis cobros al cambiar de Plan?
+        - generic: Podrás gozar de los beneficios y cambios al instante, tu fecha de corte será la misma y en la siguiente mensualidad se te cobrará lo que corresponde al tiempo que usaste ese plan, más la renovación del siguiente mes con la diferencia de costos entre los planes. Si cambias de Mensual a Anual, se te generará el cobro en ese momento e iniciará una nueva fecha de corte.
+      - generic [ref=e246]:
+        - generic [ref=e248] [cursor=pointer]: ¿Cómo puedo cancelar mi plan?
+        - generic: Puedes cancelar tu plan en cualquier momento simplemente ingresando a tu cuenta en la esquina superior derecha, luego haz clic en Manejar Plan. Después necesitas hacer clic en Cancelar Plan y seguir las instrucciones. Podrás disfrutar de los beneficios de tu plan actual hasta el final del período actual.
+    - generic [ref=e249]:
+      - contentinfo [ref=e250]:
+        - generic [ref=e251]:
+          - link "Marea Alcalina" [ref=e254] [cursor=pointer]:
+            - /url: /
+            - img "Marea Alcalina" [ref=e255]
+          - generic [ref=e256]:
+            - generic [ref=e257]:
+              - heading "Marea Alcalina" [level=4] [ref=e258]
+              - list [ref=e260]:
+                - listitem [ref=e261]:
+                  - link "Inicio" [ref=e262] [cursor=pointer]:
+                    - /url: /
+                - listitem [ref=e263]:
+                  - link "Planes" [ref=e264] [cursor=pointer]:
+                    - /url: /plans
+                - listitem [ref=e265]:
+                  - link "Panel Principal" [ref=e266] [cursor=pointer]:
+                    - /url: /menus
+                - listitem [ref=e267]:
+                  - link "Perfil" [ref=e268] [cursor=pointer]:
+                    - /url: /menus/profile
+                - listitem [ref=e269]:
+                  - link "Blog" [ref=e270] [cursor=pointer]:
+                    - /url: https://blog.mareaalcalina.com
+            - generic [ref=e271]:
+              - heading "Herramientas" [level=4] [ref=e272]
+              - list [ref=e274]:
+                - listitem [ref=e275]:
+                  - link "Generador de Descripción de Producto" [ref=e276] [cursor=pointer]:
+                    - /url: /tools/product-description-generator
+                - listitem [ref=e277]:
+                  - link "Generador de Link de WhatsApp" [ref=e278] [cursor=pointer]:
+                    - /url: /tools/whatsapp-link-generator
+                - listitem [ref=e279]:
+                  - link "Calculadora de Margen de Ganancia" [ref=e280] [cursor=pointer]:
+                    - /url: /tools/profit-margin-calculator
+                - listitem [ref=e281]:
+                  - link "Generador de Nombres para Negocio" [ref=e282] [cursor=pointer]:
+                    - /url: /tools/business-name-generator
+                - listitem [ref=e283]:
+                  - link "Generador de QR para Menú" [ref=e284] [cursor=pointer]:
+                    - /url: /tools/qr-code-menu-generator
+                - listitem [ref=e285]:
+                  - link "Generador de Biografías con IA" [ref=e286] [cursor=pointer]:
+                    - /url: /tools/biography-generator
+            - generic [ref=e287]:
+              - heading "Guías" [level=4] [ref=e288]
+              - list [ref=e290]:
+                - listitem [ref=e291]:
+                  - link "Mejor Plataforma WhatsApp" [ref=e292] [cursor=pointer]:
+                    - /url: /guides/mejor-plataforma-vender-whatsapp-mexico
+                - listitem [ref=e293]:
+                  - link "Comparativa de Plataformas" [ref=e294] [cursor=pointer]:
+                    - /url: /guides/marea-alcalina-vs-tiendanube
+                - listitem [ref=e295]:
+                  - link "Tienda en Línea Gratis" [ref=e296] [cursor=pointer]:
+                    - /url: /guides/crear-tienda-en-linea-gratis-mexico
+                - listitem [ref=e297]:
+                  - link "Menú Digital Restaurantes" [ref=e298] [cursor=pointer]:
+                    - /url: /guides/menu-digital-restaurantes-qr-whatsapp
+                - listitem [ref=e299]:
+                  - link "Cómo Vender por WhatsApp" [ref=e300] [cursor=pointer]:
+                    - /url: /como-vender
+            - generic [ref=e301]:
+              - heading "Información" [level=4] [ref=e302]
+              - list [ref=e304]:
+                - listitem [ref=e305]:
+                  - link "Términos y Condiciones" [ref=e306] [cursor=pointer]:
+                    - /url: /terms
+                - listitem [ref=e307]:
+                  - link "Políticas de Privacidad" [ref=e308] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e309]:
+                  - link "Política de Uso Aceptable" [ref=e310] [cursor=pointer]:
+                    - /url: /aup
+                - listitem [ref=e311]:
+                  - link "Preferencias de cookies" [ref=e312] [cursor=pointer]:
+                    - /url: javascript:void(0);
+            - generic [ref=e313]:
+              - heading "Soporte" [level=4] [ref=e314]
+              - list [ref=e316]:
+                - paragraph [ref=e317]: Si tienes alguna duda o inconveniente con nuestros servicios, no dudes en contactarnos.
+                - listitem [ref=e318]:
+                  - link "Messenger" [ref=e319] [cursor=pointer]:
+                    - /url: https://m.me/mareaalcalina
+                - listitem [ref=e320]:
+                  - link "Instagram" [ref=e321] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+            - generic [ref=e325]:
+              - heading "Síguenos" [level=4] [ref=e326]
+              - list [ref=e328]:
+                - listitem [ref=e329]:
+                  - link [ref=e330] [cursor=pointer]:
+                    - /url: https://www.facebook.com/pg/mareaalcalina
+                    - img [ref=e331]
+                - listitem [ref=e332]:
+                  - link "" [ref=e333] [cursor=pointer]:
+                    - /url: https://www.instagram.com/mareaalcalina_/
+                    - generic [ref=e334]: 
+                - listitem [ref=e335]:
+                  - link [ref=e336] [cursor=pointer]:
+                    - /url: https://www.tiktok.com/@mareaalcalina
+                    - img [ref=e337]
+      - paragraph [ref=e343]: 2026 © Marea Alcalina
+  - banner "Banner de consentimiento de cookies" [ref=e344]:
+    - generic [ref=e346]:
+      - generic [ref=e347]:
+        - generic [ref=e348]: 🍪
+        - generic [ref=e349]:
+          - paragraph [ref=e350]:
+            - strong [ref=e351]: Usamos cookies en este sitio web
+          - paragraph [ref=e352]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e353] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e354]:
+        - button "Personalizar configuración de cookies" [ref=e355] [cursor=pointer]:
+          - img [ref=e356]
+        - button "Aceptar todas las cookies" [ref=e359] [cursor=pointer]: Aceptar todas

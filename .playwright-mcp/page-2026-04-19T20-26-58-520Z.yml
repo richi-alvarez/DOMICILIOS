@@ -1,0 +1,46 @@
+- generic [ref=e2]:
+  - generic [ref=e5]:
+    - generic [ref=e6]:
+      - img "Your Company" [ref=e7] [cursor=pointer]
+      - heading "Regístrate para conocer todo el potencial de Marea Alcalina" [level=2] [ref=e8]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - button "Continuar con Google" [ref=e12] [cursor=pointer]:
+          - img [ref=e13]
+          - generic [ref=e14]: Continuar con Google
+        - generic [ref=e19]: O continúa con email
+        - generic [ref=e20]:
+          - generic [ref=e21]:
+            - generic [ref=e22]: Nombre
+            - textbox "Nombre" [ref=e24]
+          - generic [ref=e25]:
+            - generic [ref=e26]: Dirección de correo electrónico
+            - textbox "Dirección de correo electrónico" [ref=e28]
+          - generic [ref=e29]:
+            - generic [ref=e30]: Contraseña
+            - textbox "Contraseña" [ref=e32]
+          - generic [ref=e34]:
+            - checkbox "Acepto" [checked] [ref=e35] [cursor=pointer]
+            - generic [ref=e36]: Acepto
+            - generic [ref=e37] [cursor=pointer]: Términos y Condiciones
+          - button "Registrarme" [disabled] [ref=e39]
+      - generic [ref=e40]:
+        - text: ¿Ya tienes cuenta?
+        - link "Iniciar Sesión" [ref=e41] [cursor=pointer]:
+          - /url: /login
+  - banner "Banner de consentimiento de cookies" [ref=e42]:
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - generic [ref=e46]: 🍪
+        - generic [ref=e47]:
+          - paragraph [ref=e48]:
+            - strong [ref=e49]: Usamos cookies en este sitio web
+          - paragraph [ref=e50]:
+            - text: Utilizamos cookies para mejorar tu experiencia.
+            - link "Leer nuestra política de privacidad" [ref=e51] [cursor=pointer]:
+              - /url: /privacy
+              - text: Política de privacidad
+      - generic [ref=e52]:
+        - button "Personalizar configuración de cookies" [ref=e53] [cursor=pointer]:
+          - img [ref=e54]
+        - button "Aceptar todas las cookies" [ref=e57] [cursor=pointer]: Aceptar todas
