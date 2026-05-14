@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
       <body className="min-h-screen antialiased">
-        <Providers>{children}</Providers>
+        <Providers session={null}>{children}</Providers>
       </body>
     </html>
   )

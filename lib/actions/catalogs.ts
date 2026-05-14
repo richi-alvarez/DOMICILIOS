@@ -23,7 +23,7 @@ const catalogSchema = z.object({
 async function getOrgId(userId: string) {
   const membership = await db.query.memberships.findFirst({
     where: eq(memberships.userId, userId),
-    with: { organization: true },
+    columns: { organizationId: true },
   })
   return membership?.organizationId ?? null
 }

@@ -192,7 +192,7 @@ AUTH_SECRET=<generate with: openssl rand -base64 32>
 AUTH_URL=http://localhost:3000
 
 # Servicios externos (obtener en producción)
-AUTH_GOOGLE_ID=your_google_id
+AUTH_GOOGLE_ID=<YOUR_GOOGLE_CLIENT_ID>
 STRIPE_SECRET_KEY=sk_test_...
 RESEND_API_KEY=re-...
 ```
