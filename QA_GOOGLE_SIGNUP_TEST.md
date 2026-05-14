@@ -44,11 +44,11 @@ Status: Exitoso
 ```
 URL Final: https://accounts.google.com/v3/signin/identifier
 Parámetros enviados:
-  ✅ client_id: <YOUR_GOOGLE_CLIENT_ID>
+  ✅ client_id: 
   ✅ redirect_uri: http://localhost:3000/api/auth/callback/google
   ✅ response_type: code
   ✅ scope: openid profile email
-  ✅ code_challenge: AVHkd7kZY-rr23Q5wUC4izAE13PwCA94O3MknMPySow
+  ✅ code_challenge: 
   ✅ code_challenge_method: S256 (PKCE habilitado)
 ```
 

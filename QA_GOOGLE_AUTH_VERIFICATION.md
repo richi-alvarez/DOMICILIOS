@@ -43,8 +43,8 @@ Status: ✅ PASSED
 ```
 URL de Google OAuth:
 https://accounts.google.com/v3/signin/identifier?
-  client_id=<YOUR_GOOGLE_CLIENT_ID>
-  redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fauth%2Fcallback%2Fgoogle
+  client_id=
+  redirect_uri=
   response_type=code
   scope=openid+profile+email
   code_challenge=gPsgznqnzPj-APhVLRd2Mc6xUREH9iN9wKCJxr6F1t4
