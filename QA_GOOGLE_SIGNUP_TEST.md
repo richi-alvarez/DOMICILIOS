@@ -44,11 +44,11 @@ Status: Exitoso
 ```
 URL Final: https://accounts.google.com/v3/signin/identifier
 Parámetros enviados:
-  ✅ client_id: 
+  ✅ client_id: <YOUR_GOOGLE_CLIENT_ID>
   ✅ redirect_uri: http://localhost:3000/api/auth/callback/google
   ✅ response_type: code
   ✅ scope: openid profile email
-  ✅ code_challenge: 
+  ✅ code_challenge: <GENERATED_CHALLENGE>
   ✅ code_challenge_method: S256 (PKCE habilitado)
 ```
 
@@ -111,7 +111,7 @@ Google rechaza OAuth desde `localhost` por razones de seguridad. Esto es **ESPER
 
 ### ✅ Variables de Entorno (.env.local)
 ```
-AUTH_SECRET=wfqmn8ZMkh5lHxfRoof2oCRkSsTF5YTGXJWxsjoOJRc=
+AUTH_SECRET=<YOUR_AUTH_SECRET>
 AUTH_URL=http://localhost:3000
 AUTH_GOOGLE_ID=<YOUR_GOOGLE_CLIENT_ID>
 AUTH_GOOGLE_SECRET=<YOUR_GOOGLE_CLIENT_SECRET>

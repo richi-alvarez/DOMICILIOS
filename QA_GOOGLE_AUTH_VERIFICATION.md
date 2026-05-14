@@ -47,7 +47,7 @@ https://accounts.google.com/v3/signin/identifier?
   redirect_uri=
   response_type=code
   scope=openid+profile+email
-  code_challenge=gPsgznqnzPj-APhVLRd2Mc6xUREH9iN9wKCJxr6F1t4
+  code_challenge=
   code_challenge_method=S256
 ```
 
@@ -116,7 +116,7 @@ El Google OAuth está **completamente funcional** en localhost:3000. El flujo de
 
 **Variables de Entorno (.env.local):**
 ```
-AUTH_SECRET=wfqmn8ZMkh5lHxfRoof2oCRkSsTF5YTGXJWxsjoOJRc=
+AUTH_SECRET=<YOUR_AUTH_SECRET>
 AUTH_URL=http://localhost:3000
 AUTH_GOOGLE_ID=<YOUR_GOOGLE_CLIENT_ID>
 AUTH_GOOGLE_SECRET=<YOUR_GOOGLE_CLIENT_SECRET>
