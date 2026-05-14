@@ -1,6 +1,29 @@
 version: '3.8'
 
 services:
+  # Next.js Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: domicilios-app
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/domicilios
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - domicilios-net
+    command: npm run dev
+
   # PostgreSQL 16 con pgvector para embeddings de IA
   postgres:
     image: pgvector/pgvector:pg16-latest
@@ -58,7 +81,8 @@ services:
     networks:
       - domicilios-net
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:
