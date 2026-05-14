@@ -3,6 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useSession, signOut } from 'next-auth/react'
 import {
   Menu,
   X,
@@ -16,6 +17,7 @@ import {
   QrCode,
   User2,
   Zap,
+  LogOut,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -47,8 +49,10 @@ const comparisons = [
 
 export function SiteHeader() {
   const pathname = usePathname()
+  const { data: session, status } = useSession()
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [resourcesOpen, setResourcesOpen] = React.useState(false)
+  const [userMenuOpen, setUserMenuOpen] = React.useState(false)
 
   const navLinks = [
     { href: '/', label: 'Inicio' },
@@ -193,15 +197,69 @@ export function SiteHeader() {
 
         {/* CTAs desktop */}
         <div className="hidden items-center gap-3 lg:flex">
-          <Link
-            href="/login"
-            className="text-sm font-medium text-night-700 hover:text-primary-500 transition-colors"
-          >
-            Iniciar Sesión
-          </Link>
-          <Button asChild size="md">
-            <Link href="/signup">Registrarme gratis</Link>
-          </Button>
+          {status === 'authenticated' && session?.user ? (
+            <div className="relative">
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-2 rounded-full border border-warm-200 px-3 py-2 hover:bg-warm-50 transition-colors"
+              >
+                <div className="h-6 w-6 rounded-full bg-primary-500 flex items-center justify-center text-white text-xs font-bold">
+                  {session.user.name?.charAt(0) || session.user.email?.charAt(0) || 'U'}
+                </div>
+                <span className="text-sm font-medium text-night-700">
+                  {session.user.name || session.user.email}
+                </span>
+                <ChevronDown
+                  className={cn(
+                    'h-4 w-4 transition-transform text-night-500',
+                    userMenuOpen && 'rotate-180',
+                  )}
+                />
+              </button>
+
+              {userMenuOpen && (
+                <div className="absolute right-0 top-full mt-2 w-48 rounded-lg border border-warm-200 bg-white shadow-lg z-50">
+                  <div className="border-b border-warm-200 px-4 py-3">
+                    <p className="text-sm font-medium text-night-800">
+                      {session.user.name}
+                    </p>
+                    <p className="text-xs text-warm-500">
+                      {session.user.email}
+                    </p>
+                  </div>
+                  <Link
+                    href="/app"
+                    onClick={() => setUserMenuOpen(false)}
+                    className="block w-full px-4 py-2.5 text-left text-sm text-night-700 hover:bg-warm-50 transition-colors"
+                  >
+                    Mi Panel
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setUserMenuOpen(false)
+                      signOut({ callbackUrl: '/' })
+                    }}
+                    className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-warm-600 hover:bg-warm-50 transition-colors border-t border-warm-200"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Cerrar sesión
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="text-sm font-medium text-night-700 hover:text-primary-500 transition-colors"
+              >
+                Iniciar Sesión
+              </Link>
+              <Button asChild size="md">
+                <Link href="/signup">Registrarme gratis</Link>
+              </Button>
+            </>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -248,17 +306,48 @@ export function SiteHeader() {
               Guías por industria
             </Link>
           </nav>
-          <div className="mt-4 flex flex-col gap-2 border-t border-warm-200 pt-4">
-            <Button asChild variant="outline" className="w-full">
-              <Link href="/login" onClick={() => setMobileOpen(false)}>
-                Iniciar Sesión
-              </Link>
-            </Button>
-            <Button asChild className="w-full">
-              <Link href="/signup" onClick={() => setMobileOpen(false)}>
-                Registrarme gratis
-              </Link>
-            </Button>
+          <div className="mt-4 border-t border-warm-200 pt-4">
+            {status === 'authenticated' && session?.user ? (
+              <div className="flex flex-col gap-2">
+                <div className="rounded-lg bg-warm-50 p-3 mb-2">
+                  <p className="text-sm font-medium text-night-800">
+                    {session.user.name}
+                  </p>
+                  <p className="text-xs text-warm-500">
+                    {session.user.email}
+                  </p>
+                </div>
+                <Button asChild className="w-full">
+                  <Link href="/app" onClick={() => setMobileOpen(false)}>
+                    Mi Panel
+                  </Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setMobileOpen(false)
+                    signOut({ callbackUrl: '/' })
+                  }}
+                  className="w-full"
+                >
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Cerrar sesión
+                </Button>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-2">
+                <Button asChild variant="outline" className="w-full">
+                  <Link href="/login" onClick={() => setMobileOpen(false)}>
+                    Iniciar Sesión
+                  </Link>
+                </Button>
+                <Button asChild className="w-full">
+                  <Link href="/signup" onClick={() => setMobileOpen(false)}>
+                    Registrarme gratis
+                  </Link>
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       )}
