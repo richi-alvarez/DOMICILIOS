@@ -253,12 +253,25 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
 
                   <div className={`grid gap-4 ${block.template === 'list' ? 'grid-cols-1' : block.template === 'grid' ? 'grid-cols-3' : 'grid-cols-2'}`}>
                     {[1, 2, 3, 4, 5, 6].map((i) => (
-                      <div key={i} className="border rounded-lg overflow-hidden">
+                      <div key={i} className="border rounded-lg overflow-hidden flex flex-col">
                         <div className="bg-gray-200 h-40" />
-                        <div className="p-3">
+                        <div className="p-3 flex flex-col flex-1">
                           {block.showTitle && <p className="font-semibold text-sm">Producto {i}</p>}
                           {block.showDescription && <p className="text-xs text-gray-600 mt-1">Descripción del producto</p>}
                           {block.showPrice && <p className="font-bold text-sm mt-2">$19.99</p>}
+
+                          <div className="mt-auto flex flex-col gap-2">
+                            {block.showExternalLink && (
+                              <a href="#" className="text-xs text-blue-600 hover:underline">
+                                Ver más →
+                              </a>
+                            )}
+                            {block.enableCart && (
+                              <button className="text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 w-full">
+                                Agregar al carrito
+                              </button>
+                            )}
+                          </div>
                         </div>
                       </div>
                     ))}
