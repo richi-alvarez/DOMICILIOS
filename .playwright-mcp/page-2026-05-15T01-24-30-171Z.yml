@@ -1,0 +1,66 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - link "D Domicilios" [ref=e5] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e7]: D
+        - generic [ref=e8]: Domicilios
+      - generic [ref=e9]:
+        - navigation [ref=e10]:
+          - link "Mis catálogos" [ref=e11] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e12]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e17] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e18]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e23] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e24]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e26] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e27]
+          - text: Nuevo catálogo
+      - generic [ref=e29]:
+        - generic [ref=e30]: C
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - paragraph [ref=e33]: Carlos García
+            - generic [ref=e34]: Gratis
+          - paragraph [ref=e35]: carlos.garcia@test.com
+        - button "Cerrar sesión" [ref=e36]:
+          - img [ref=e37]
+    - main [ref=e40]:
+      - generic [ref=e41]:
+        - heading "Restaurante María López" [level=1] [ref=e42]
+        - paragraph [ref=e43]: /maria-restaurante
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - heading "Información Básica" [level=2] [ref=e46]
+            - generic [ref=e47]:
+              - generic [ref=e48]:
+                - term [ref=e49]: "Nombre:"
+                - definition [ref=e50]: Restaurante María López
+              - generic [ref=e51]:
+                - term [ref=e52]: "Slug:"
+                - definition [ref=e53]: maria-restaurante
+              - generic [ref=e54]:
+                - term [ref=e55]: "Estado:"
+                - definition [ref=e56]: draft
+              - generic [ref=e57]:
+                - term [ref=e58]: "Idioma:"
+                - definition [ref=e59]: es
+              - generic [ref=e60]:
+                - term [ref=e61]: "Moneda:"
+                - definition [ref=e62]: COP
+              - generic [ref=e63]:
+                - term [ref=e64]: "Canal:"
+                - definition [ref=e65]: whatsapp
+          - generic [ref=e66]:
+            - heading "Contacto" [level=2] [ref=e67]
+            - paragraph [ref=e68]: "Email: maria.lopez@test.com"
+            - paragraph [ref=e69]: "Teléfono: +57 3009876543"
+  - region "Notifications alt+T"
+  - alert [ref=e70]

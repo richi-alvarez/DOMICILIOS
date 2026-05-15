@@ -1,4 +1,4 @@
-export type PlanCode = 'free' | 'basic' | 'pro' | 'business'
+export type PlanCode = 'free' | 'pro' | 'premium' | 'business'
 
 export interface PlanLimits {
   catalogs: number
@@ -20,23 +20,23 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     analytics: false,
     aiFeatures: false,
   },
-  basic: {
-    catalogs: 1,
-    products: 100,
-    ordersPerMonth: 300,
-    collaborators: 2,
-    customDomain: false,
-    analytics: false,
-    aiFeatures: false,
-  },
   pro: {
-    catalogs: 5,
-    products: -1,
+    catalogs: 3,
+    products: 500,
     ordersPerMonth: -1,
     collaborators: 5,
     customDomain: true,
     analytics: true,
     aiFeatures: false,
+  },
+  premium: {
+    catalogs: 10,
+    products: 5000,
+    ordersPerMonth: -1,
+    collaborators: 10,
+    customDomain: true,
+    analytics: true,
+    aiFeatures: true,
   },
   business: {
     catalogs: -1,
@@ -51,15 +51,15 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
 
 export const PLAN_NAMES: Record<PlanCode, string> = {
   free: 'Gratis',
-  basic: 'Basic',
   pro: 'Pro',
+  premium: 'Premium',
   business: 'Business',
 }
 
 export const PLAN_COLORS: Record<PlanCode, string> = {
   free: 'bg-warm-200 text-warm-700',
-  basic: 'bg-blue-100 text-blue-700',
-  pro: 'bg-primary-100 text-primary-700',
+  pro: 'bg-blue-100 text-blue-700',
+  premium: 'bg-primary-100 text-primary-700',
   business: 'bg-lime-100 text-lime-700',
 }
 

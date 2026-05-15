@@ -1,0 +1,287 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "D Domicilios" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e6]: D
+        - generic [ref=e7]: Domicilios
+      - navigation [ref=e8]:
+        - link "Inicio" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Planes" [ref=e10] [cursor=pointer]:
+          - /url: /plans
+        - link "Agencias" [ref=e11] [cursor=pointer]:
+          - /url: /agencies
+        - button "Recursos" [ref=e13]:
+          - text: Recursos
+          - img [ref=e14]
+      - generic [ref=e16]:
+        - link "Iniciar Sesión" [ref=e17] [cursor=pointer]:
+          - /url: /login
+        - link "Registrarme gratis" [ref=e18] [cursor=pointer]:
+          - /url: /signup
+  - main [ref=e19]:
+    - generic [ref=e21]:
+      - generic [ref=e22]: Gratis para empezar · Sin tarjeta de crédito
+      - heading "Tu catálogo digital, pedidos por WhatsApp" [level=1] [ref=e24]
+      - paragraph [ref=e25]: Crea tu tienda en minutos con IA. Gestiona productos, recibe pedidos y cobra — todo desde un solo panel. Sin comisiones sobre tus ventas.
+      - generic [ref=e26]:
+        - link "Crear catálogo gratis" [ref=e27] [cursor=pointer]:
+          - /url: /signup
+          - text: Crear catálogo gratis
+          - img
+        - link "Ver planes" [ref=e28] [cursor=pointer]:
+          - /url: /plans
+      - list [ref=e29]:
+        - listitem [ref=e30]:
+          - img [ref=e31]
+          - text: Sin comisiones sobre tus ventas
+        - listitem [ref=e34]:
+          - img [ref=e35]
+          - text: Pedidos por WhatsApp o email
+        - listitem [ref=e38]:
+          - img [ref=e39]
+          - text: Catálogo generado con IA
+        - listitem [ref=e42]:
+          - img [ref=e43]
+          - text: Panel de pedidos en tiempo real
+        - listitem [ref=e46]:
+          - img [ref=e47]
+          - text: Pagos integrados (Stripe, MercadoPago)
+        - listitem [ref=e50]:
+          - img [ref=e51]
+          - text: Dominio propio opcional
+    - generic [ref=e57]:
+      - paragraph [ref=e58]: Para todo tipo de negocio
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: 🍕
+          - text: Restaurantes
+        - generic [ref=e62]:
+          - generic [ref=e63]: 👗
+          - text: Ropa y moda
+        - generic [ref=e64]:
+          - generic [ref=e65]: 🧁
+          - text: Pastelerías
+        - generic [ref=e66]:
+          - generic [ref=e67]: 💄
+          - text: Cosméticos
+        - generic [ref=e68]:
+          - generic [ref=e69]: ☕
+          - text: Cafés
+        - generic [ref=e70]:
+          - generic [ref=e71]: 💎
+          - text: Joyería
+        - generic [ref=e72]:
+          - generic [ref=e73]: 👟
+          - text: Zapatos
+        - generic [ref=e74]:
+          - generic [ref=e75]: 🌿
+          - text: Productos naturales
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - heading "Tu tienda en 4 pasos" [level=2] [ref=e79]
+        - paragraph [ref=e80]: Sin complicaciones. Sin código. Sin agencia de diseño.
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - generic [ref=e84]: ✍️
+          - generic [ref=e85]: "01"
+          - heading "Registra tu negocio" [level=3] [ref=e86]
+          - paragraph [ref=e87]: Crea tu cuenta gratis, elige el nombre de tu tienda y describe tu negocio.
+        - generic [ref=e88]:
+          - generic [ref=e90]: 🤖
+          - generic [ref=e91]: "02"
+          - heading "La IA construye tu catálogo" [level=3] [ref=e92]
+          - paragraph [ref=e93]: En segundos tendrás categorías, productos, precios y diseño listos para publicar.
+        - generic [ref=e94]:
+          - generic [ref=e96]: 🎨
+          - generic [ref=e97]: "03"
+          - heading "Personaliza y publica" [level=3] [ref=e98]
+          - paragraph [ref=e99]: Ajusta colores, bloques y fotos. Publica con un clic y comparte el enlace o QR.
+        - generic [ref=e100]:
+          - generic [ref=e102]: 💬
+          - generic [ref=e103]: "04"
+          - heading "Recibe pedidos por WhatsApp" [level=3] [ref=e104]
+          - paragraph [ref=e105]: Tu cliente agrega al carrito y el pedido llega a tu WhatsApp con todos los detalles.
+      - link "Empezar ahora — es gratis" [ref=e107] [cursor=pointer]:
+        - /url: /signup
+    - generic [ref=e109]:
+      - generic [ref=e110]:
+        - heading "Todo lo que necesita tu negocio" [level=2] [ref=e111]
+        - paragraph [ref=e112]: Una plataforma completa para vender online, sin complicaciones.
+      - generic [ref=e113]:
+        - generic [ref=e114]:
+          - text: 🤖
+          - heading "Catálogo generado con IA" [level=3] [ref=e115]
+          - paragraph [ref=e116]: Describe tu negocio y la IA crea categorías, productos y copys automáticamente.
+        - generic [ref=e117]:
+          - text: 📦
+          - heading "Editor de bloques" [level=3] [ref=e118]
+          - paragraph [ref=e119]: Diseña tu tienda con bloques drag-and-drop. Hero, galería, testimonios y más.
+        - generic [ref=e120]:
+          - text: 📱
+          - heading "Pedidos por WhatsApp" [level=3] [ref=e121]
+          - paragraph [ref=e122]: El carrito genera un mensaje prellenado. Tu cliente lo envía con un clic.
+        - generic [ref=e123]:
+          - text: 💳
+          - heading "Pagos integrados" [level=3] [ref=e124]
+          - paragraph [ref=e125]: Acepta Stripe, MercadoPago, PayPal o transferencia manual. Sin comisiones.
+        - generic [ref=e126]:
+          - text: 📊
+          - heading "Analítica y pedidos" [level=3] [ref=e127]
+          - paragraph [ref=e128]: Dashboard con visitas, conversiones y gestión de pedidos en tiempo real.
+        - generic [ref=e129]:
+          - text: 🌐
+          - heading "Dominio propio" [level=3] [ref=e130]
+          - paragraph [ref=e131]: Conecta tu dominio personalizado y oculta nuestra marca en planes Pro+.
+      - link "Ver comparativa completa de planes →" [ref=e133] [cursor=pointer]:
+        - /url: /plans
+    - generic [ref=e135]:
+      - generic [ref=e136]:
+        - heading "Lo que dicen nuestros usuarios" [level=2] [ref=e137]
+        - paragraph [ref=e138]: Más de 5,000 negocios ya venden con Domicilios.
+      - generic [ref=e139]:
+        - generic [ref=e140]:
+          - generic [ref=e141]:
+            - img [ref=e142]
+            - img [ref=e144]
+            - img [ref=e146]
+            - img [ref=e148]
+            - img [ref=e150]
+          - paragraph [ref=e152]: “Antes mandaba fotos por WhatsApp y perdía pedidos. Ahora tengo mi catálogo, mis clientes lo comparten entre ellos y recibo 3x más pedidos.”
+          - generic [ref=e153]:
+            - generic [ref=e154]: SM
+            - generic [ref=e155]:
+              - generic [ref=e156]: Sandra Morales
+              - generic [ref=e157]: Dueña de Pasteles SM · Bogotá, Colombia
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - img [ref=e160]
+            - img [ref=e162]
+            - img [ref=e164]
+            - img [ref=e166]
+            - img [ref=e168]
+          - paragraph [ref=e170]: “Tengo 150 productos de importación. El catálogo se ve súper profesional y mis clientes ya no me preguntan por precio, simplemente piden.”
+          - generic [ref=e171]:
+            - generic [ref=e172]: CR
+            - generic [ref=e173]:
+              - generic [ref=e174]: Carlos Reyes
+              - generic [ref=e175]: Distribuidora Reyes · Guadalajara, México
+        - generic [ref=e176]:
+          - generic [ref=e177]:
+            - img [ref=e178]
+            - img [ref=e180]
+            - img [ref=e182]
+            - img [ref=e184]
+            - img [ref=e186]
+          - paragraph [ref=e188]: “Manejo 12 clientes desde un solo panel. El plan de agencia me da todo lo que necesito y no cobro comisiones, así que mis clientes están felices.”
+          - generic [ref=e189]:
+            - generic [ref=e190]: VL
+            - generic [ref=e191]:
+              - generic [ref=e192]: Valentina López
+              - generic [ref=e193]: Agencia Vitrina Digital · Medellín, Colombia
+    - generic [ref=e195]:
+      - heading "Empieza a vender hoy, gratis" [level=2] [ref=e196]
+      - paragraph [ref=e197]: Sin tarjeta de crédito. Tu catálogo en minutos con ayuda de la IA.
+      - generic [ref=e198]:
+        - link "Crear mi catálogo gratis" [ref=e199] [cursor=pointer]:
+          - /url: /signup
+          - text: Crear mi catálogo gratis
+          - img
+        - link "Ver todos los planes" [ref=e200] [cursor=pointer]:
+          - /url: /plans
+  - contentinfo [ref=e201]:
+    - generic [ref=e202]:
+      - generic [ref=e203]:
+        - generic [ref=e204]:
+          - link "D Domicilios" [ref=e205] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e207]: D
+            - generic [ref=e208]: Domicilios
+          - paragraph [ref=e209]: Crea tu catálogo digital y recibe pedidos por WhatsApp. Sin comisiones sobre ventas.
+          - generic [ref=e210]:
+            - link "Instagram" [ref=e211] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e212]
+            - link "Twitter / X" [ref=e215] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e216]
+            - link "YouTube" [ref=e218] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e219]
+            - link "Email" [ref=e222] [cursor=pointer]:
+              - /url: mailto:hola@domicilios.app
+              - img [ref=e223]
+            - link "WhatsApp" [ref=e226] [cursor=pointer]:
+              - /url: "#"
+              - img [ref=e227]
+        - generic [ref=e229]:
+          - heading "Producto" [level=3] [ref=e230]
+          - list [ref=e231]:
+            - listitem [ref=e232]:
+              - link "Planes y precios" [ref=e233] [cursor=pointer]:
+                - /url: /plans
+            - listitem [ref=e234]:
+              - link "Para agencias" [ref=e235] [cursor=pointer]:
+                - /url: /agencies
+            - listitem [ref=e236]:
+              - link "Catálogo digital" [ref=e237] [cursor=pointer]:
+                - /url: /digitalcatalog
+            - listitem [ref=e238]:
+              - link "Menú digital" [ref=e239] [cursor=pointer]:
+                - /url: /digitalmenu
+            - listitem [ref=e240]:
+              - link "Crear cuenta gratis" [ref=e241] [cursor=pointer]:
+                - /url: /signup
+        - generic [ref=e242]:
+          - heading "Herramientas" [level=3] [ref=e243]
+          - list [ref=e244]:
+            - listitem [ref=e245]:
+              - link "Generador WhatsApp" [ref=e246] [cursor=pointer]:
+                - /url: /tools/whatsapp-link-generator
+            - listitem [ref=e247]:
+              - link "Descripciones con IA" [ref=e248] [cursor=pointer]:
+                - /url: /tools/product-description-generator
+            - listitem [ref=e249]:
+              - link "Calculadora margen" [ref=e250] [cursor=pointer]:
+                - /url: /tools/profit-margin-calculator
+            - listitem [ref=e251]:
+              - link "Generador QR" [ref=e252] [cursor=pointer]:
+                - /url: /tools/qr-code-menu-generator
+            - listitem [ref=e253]:
+              - link "Nombres de negocio" [ref=e254] [cursor=pointer]:
+                - /url: /tools/business-name-generator
+        - generic [ref=e255]:
+          - heading "Guías" [level=3] [ref=e256]
+          - list [ref=e257]:
+            - listitem [ref=e258]:
+              - link "Guías por industria" [ref=e259] [cursor=pointer]:
+                - /url: /como-vender
+            - listitem [ref=e260]:
+              - link "Vender ropa" [ref=e261] [cursor=pointer]:
+                - /url: /como-vender/ropa
+            - listitem [ref=e262]:
+              - link "Vender comida" [ref=e263] [cursor=pointer]:
+                - /url: /como-vender/comida
+            - listitem [ref=e264]:
+              - link "Comparativas" [ref=e265] [cursor=pointer]:
+                - /url: /guides
+            - listitem [ref=e266]:
+              - link "Blog" [ref=e267] [cursor=pointer]:
+                - /url: /blog
+        - generic [ref=e268]:
+          - heading "Información" [level=3] [ref=e269]
+          - list [ref=e270]:
+            - listitem [ref=e271]:
+              - link "Términos de uso" [ref=e272] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e273]:
+              - link "Privacidad" [ref=e274] [cursor=pointer]:
+                - /url: /privacy
+            - listitem [ref=e275]:
+              - link "Uso aceptable" [ref=e276] [cursor=pointer]:
+                - /url: /aup
+      - generic [ref=e277]:
+        - paragraph [ref=e278]: © 2026 Domicilios. Todos los derechos reservados.
+        - paragraph [ref=e279]: Hecho con ♥ para comerciantes de Latinoamérica
+  - region "Notifications alt+T"

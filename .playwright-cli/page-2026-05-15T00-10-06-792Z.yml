@@ -1,0 +1,40 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - link "D Domicilios" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: D
+      - generic [ref=e7]: Domicilios
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - heading "Iniciar Sesión" [level=3] [ref=e11]
+        - paragraph [ref=e12]: Accede a tu panel de Domicilios
+      - generic [ref=e14]:
+        - button "Continuar con Google" [ref=e15]:
+          - img
+          - text: Continuar con Google
+        - generic [ref=e18]: O continúa con email
+        - generic [ref=e20]:
+          - text: Correo electrónico
+          - textbox "Correo electrónico" [ref=e21]:
+            - /placeholder: tu@correo.com
+            - text: juan.test.qa@test.com
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic [ref=e24]: Contraseña
+            - link "¿Olvidaste tu contraseña?" [ref=e25] [cursor=pointer]:
+              - /url: /password-forgot
+          - generic [ref=e26]:
+            - textbox "Contraseña" [active] [ref=e27]:
+              - /placeholder: Tu contraseña
+              - text: SecurePass123!!
+            - button [ref=e28]:
+              - img [ref=e29]
+        - button "Iniciar Sesión" [disabled]
+        - paragraph [ref=e32]:
+          - text: ¿No tienes cuenta?
+          - link "Crear cuenta gratis" [ref=e33] [cursor=pointer]:
+            - /url: /signup
+  - region "Notifications alt+T"
+  - alert [ref=e34]
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]

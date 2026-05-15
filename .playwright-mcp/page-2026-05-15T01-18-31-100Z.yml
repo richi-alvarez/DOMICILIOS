@@ -1,0 +1,27 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e76]:
+    - img [ref=e78]
+    - heading "Algo salió mal" [level=1] [ref=e80]
+    - paragraph [ref=e81]: Ocurrió un error inesperado. Puedes intentar de nuevo o volver al inicio.
+    - paragraph [ref=e82]: "Ref: 672365387"
+    - generic [ref=e83]:
+      - button "Intentar de nuevo" [ref=e84]:
+        - img
+        - text: Intentar de nuevo
+      - link "Volver al inicio" [ref=e85] [cursor=pointer]:
+        - /url: /
+  - region "Notifications alt+T"
+  - alert [ref=e65]: Detalles del catálogo | Domicilios
+  - generic [ref=e70] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e71]:
+      - img [ref=e72]
+    - generic [ref=e86]:
+      - button "Open issues overlay" [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]: "1"
+          - generic [ref=e90]: "2"
+        - generic [ref=e91]:
+          - text: Issue
+          - generic [ref=e92]: s
+      - button "Collapse issues badge" [ref=e93]:
+        - img [ref=e94]

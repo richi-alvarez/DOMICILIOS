@@ -1,0 +1,65 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e45]:
+    - complementary [ref=e46]:
+      - link "D Domicilios" [ref=e48] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e50]: D
+        - generic [ref=e51]: Domicilios
+      - generic [ref=e52]:
+        - navigation [ref=e53]:
+          - link "Mis catálogos" [ref=e54] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e55]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e60] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e61]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e66] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e67]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e69] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e70]
+          - text: Nuevo catálogo
+      - generic [ref=e72]:
+        - generic [ref=e73]: C
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - paragraph [ref=e76]: Carlos García
+            - generic [ref=e77]: Gratis
+          - paragraph [ref=e78]: carlos.garcia@test.com
+        - button "Cerrar sesión" [ref=e79]:
+          - img [ref=e80]
+    - main [ref=e83]:
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - heading "Mis catálogos" [level=1] [ref=e87]
+            - paragraph [ref=e88]: 1 catálogo
+          - link "Mejorar plan" [ref=e89] [cursor=pointer]:
+            - /url: /plans
+            - button "Mejorar plan" [ref=e90]:
+              - img
+              - text: Mejorar plan
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - img [ref=e93]
+            - paragraph [ref=e95]:
+              - text: Has alcanzado el límite de
+              - strong [ref=e96]: 1 catálogo
+              - text: del plan Gratis.
+          - link "Ver planes →" [ref=e97] [cursor=pointer]:
+            - /url: /plans
+        - link "Borrador Tienda Principal de Carlos /carlos-tienda-principal" [ref=e99] [cursor=pointer]:
+          - /url: /app/catalogs/8f7fd7f8-72df-4ef8-87e1-eaef0670a428
+          - generic [ref=e100]:
+            - img [ref=e102]
+            - generic [ref=e105]: Borrador
+          - heading "Tienda Principal de Carlos" [level=3] [ref=e106]
+          - paragraph [ref=e107]: /carlos-tienda-principal
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Mis catálogos | Domicilios
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]

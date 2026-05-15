@@ -1,11 +1,12 @@
 'use server'
 
-import { eq } from 'drizzle-orm'
+import { eq, count } from 'drizzle-orm'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { auth } from '@/auth'
 import { db, catalogs, memberships } from '@/db'
 import { z } from 'zod'
+import { getOrgPlan, PLAN_LIMITS } from '@/lib/billing/limits'
 
 const catalogSchema = z.object({
   name: z.string().min(2).max(64),
@@ -39,6 +40,18 @@ export async function createCatalog(formData: FormData) {
 
   const orgId = await getOrgId(session.user.id)
   if (!orgId) throw new Error('No se encontró organización')
+
+  const plan = await getOrgPlan(orgId)
+  const limits = PLAN_LIMITS[plan]
+  const catalogCount = await db
+    .select({ count: count() })
+    .from(catalogs)
+    .where(eq(catalogs.orgId, orgId))
+    .then(result => result[0]?.count ?? 0)
+
+  if (limits.catalogs !== -1 && catalogCount >= limits.catalogs) {
+    throw new Error(`Límite de ${limits.catalogs} catálogo${limits.catalogs > 1 ? 's' : ''} alcanzado en tu plan ${plan}`)
+  }
 
   const raw = {
     name: formData.get('name') as string,
@@ -133,6 +146,18 @@ export async function createCatalogReturn(data: {
   try {
     const orgId = await getOrgId(session.user.id)
     if (!orgId) return { error: 'Sin organización' }
+
+    const plan = await getOrgPlan(orgId)
+    const limits = PLAN_LIMITS[plan]
+    const catalogCount = await db
+      .select({ count: count() })
+      .from(catalogs)
+      .where(eq(catalogs.orgId, orgId))
+      .then(result => result[0]?.count ?? 0)
+
+    if (limits.catalogs !== -1 && catalogCount >= limits.catalogs) {
+      return { error: `Límite de ${limits.catalogs} catálogo${limits.catalogs > 1 ? 's' : ''} alcanzado en tu plan ${plan}` }
+    }
 
     const parsed = catalogSchema.safeParse({
       ...data,

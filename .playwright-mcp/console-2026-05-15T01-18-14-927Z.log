@@ -1,0 +1,32 @@
+[     146ms] [ERROR] %o
+
+%s Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) The above error occurred in the <button> component. It was handled by the <ErrorBoundaryHandler> error boundary. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1863
+[     173ms] [ERROR] Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[     174ms] [ERROR] Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[     197ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[    1211ms] [LOG] [Fast Refresh] done in 1127ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[    1386ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/app/catalogs:0
+[    1491ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:16383
+[    1648ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[    1687ms] [LOG] [Fast Refresh] done in 140ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891

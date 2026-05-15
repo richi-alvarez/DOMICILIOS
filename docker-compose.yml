@@ -26,7 +26,7 @@ services:
 
   # PostgreSQL 16 con pgvector para embeddings de IA
   postgres:
-    image: pgvector/pgvector:pg16-latest
+    image: postgres:16-alpine
     container_name: domicilios-db
     environment:
       POSTGRES_USER: postgres
@@ -46,8 +46,6 @@ services:
       - domicilios-net
     command:
       - "postgres"
-      - "-c"
-      - "shared_preload_libraries=vector"
 
   # Redis para caché y sessiones
   redis:

@@ -1,0 +1,113 @@
+[     119ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[     156ms] [LOG] [Fast Refresh] done in 138ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[     716ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:16383
+[     731ms] [LOG] %c%s%c 
+[JWT CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?22:708
+[     732ms] [LOG] %c%s%c [JWT CALLBACK] Entrada: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?24:709
+[     732ms] [LOG] %c%s%c [JWT CALLBACK] Token final: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: a971462d-3364-49fd-946c-253f38e38f49, email: carlos.garcia@test.com, hasId: true} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?25:733
+[     732ms] [LOG] %c%s%c [JWT CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?26:738
+[     732ms] [LOG] %c%s%c 
+[SESSION CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?27:742
+[     732ms] [LOG] %c%s%c [SESSION CALLBACK] Session user antes: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: carlos.garcia@test.com} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?28:743
+[     733ms] [LOG] %c%s%c [SESSION CALLBACK] Token: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: a971462d-3364-49fd-946c-253f38e38f49, email: carlos.garcia@test.com, sub: a971462d-3364-49fd-946c-253f38e38f49} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?29:747
+[     733ms] [LOG] %c%s%c [SESSION CALLBACK] Session actualizado con usuario ID: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   a971462d-3364-49fd-946c-253f38e38f49 @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?30:754
+[     733ms] [LOG] %c%s%c [SESSION CALLBACK] Session user después: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: carlos.garcia@test.com, id: a971462d-3364-49fd-946c-253f38e38f49} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?31:758
+[     733ms] [LOG] %c%s%c [SESSION CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?32:762
+[     834ms] [ERROR] %o
+
+%s Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) The above error occurred in the <button> component. It was handled by the <ErrorBoundaryHandler> error boundary. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1863
+[     848ms] [ERROR] Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[     849ms] [ERROR] Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[    1041ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[    1136ms] [LOG] [Fast Refresh] done in 195ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   11684ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   11756ms] [LOG] [Fast Refresh] done in 137ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   11942ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   12209ms] [LOG] [Fast Refresh] done in 368ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   13034ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   13187ms] [LOG] [Fast Refresh] done in 253ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   13207ms] [LOG] %c%s%c 
+[JWT CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?22:708
+[   13207ms] [LOG] %c%s%c [JWT CALLBACK] Entrada: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?24:709
+[   13208ms] [LOG] %c%s%c [JWT CALLBACK] Token final: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: a971462d-3364-49fd-946c-253f38e38f49, email: carlos.garcia@test.com, hasId: true} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?25:733
+[   13208ms] [LOG] %c%s%c [JWT CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?26:738
+[   13208ms] [LOG] %c%s%c 
+[SESSION CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?27:742
+[   13208ms] [LOG] %c%s%c [SESSION CALLBACK] Session user antes: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: carlos.garcia@test.com} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?28:743
+[   13208ms] [LOG] %c%s%c [SESSION CALLBACK] Token: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: a971462d-3364-49fd-946c-253f38e38f49, email: carlos.garcia@test.com, sub: a971462d-3364-49fd-946c-253f38e38f49} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?29:747
+[   13209ms] [LOG] %c%s%c [SESSION CALLBACK] Session actualizado con usuario ID: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   a971462d-3364-49fd-946c-253f38e38f49 @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?30:754
+[   13209ms] [LOG] %c%s%c [SESSION CALLBACK] Session user después: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: carlos.garcia@test.com, id: a971462d-3364-49fd-946c-253f38e38f49} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?31:758
+[   13209ms] [LOG] %c%s%c [SESSION CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?32:762
+[   29238ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   29334ms] [LOG] [Fast Refresh] done in 164ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   29444ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4?_rsc=imq4k:0
+[   29669ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   30044ms] [LOG] [Fast Refresh] done in 476ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   31474ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:16383
+[   31495ms] [LOG] %c%s%c 
+[JWT CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?22:708
+[   31495ms] [LOG] %c%s%c [JWT CALLBACK] Entrada: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?24:709
+[   31495ms] [LOG] %c%s%c [JWT CALLBACK] Token final: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: a971462d-3364-49fd-946c-253f38e38f49, email: carlos.garcia@test.com, hasId: true} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?25:733
+[   31496ms] [LOG] %c%s%c [JWT CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?26:738
+[   31498ms] [LOG] %c%s%c 
+[SESSION CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?27:742
+[   31498ms] [LOG] %c%s%c [SESSION CALLBACK] Session user antes: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: carlos.garcia@test.com} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?28:743
+[   31499ms] [LOG] %c%s%c [SESSION CALLBACK] Token: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: a971462d-3364-49fd-946c-253f38e38f49, email: carlos.garcia@test.com, sub: a971462d-3364-49fd-946c-253f38e38f49} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?29:747
+[   31499ms] [LOG] %c%s%c [SESSION CALLBACK] Session actualizado con usuario ID: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   a971462d-3364-49fd-946c-253f38e38f49 @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?30:754
+[   31499ms] [LOG] %c%s%c [SESSION CALLBACK] Session user después: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: carlos.garcia@test.com, id: a971462d-3364-49fd-946c-253f38e38f49} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?31:758
+[   31500ms] [LOG] %c%s%c [SESSION CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?32:762
+[   31628ms] [ERROR] %o
+
+%s Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) The above error occurred in the <button> component. It was handled by the <ErrorBoundaryHandler> error boundary. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1863
+[   31637ms] [ERROR] Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[   31638ms] [ERROR] Error: Event handlers cannot be passed to Client Component props.
+  <button onClick={function onClick} className=... title=... children=...>
+                  ^^^^^^^^^^^^^^^^^^
+If you need interactivity, consider converting part of this to a Client Component.
+    at resolveErrorDev (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17602:48)
+    at processFullStringRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17818:23)
+    at processFullBinaryRow (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17806:9)
+    at progress (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:17954:102) @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[   31945ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   31959ms] [LOG] [Fast Refresh] done in 114ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891

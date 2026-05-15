@@ -1,0 +1,36 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - img [ref=e4]
+    - paragraph [ref=e6]:
+      - text: You're seeing this page because you haven't configured any homepage URL and
+      - link "debug mode" [ref=e7] [cursor=pointer]:
+        - /url: https://symfony.com/doc/5.4/debug-mode
+      - text: is enabled.
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - img [ref=e11]
+      - heading "Welcome to Symfony 5.4.48" [level=1] [ref=e14]:
+        - generic [ref=e15]: Welcome to
+        - text: Symfony 5.4.48
+    - generic [ref=e16]:
+      - code [ref=e17]:
+        - img [ref=e19]
+        - generic [ref=e22]: /var/www/html/
+      - paragraph [ref=e23]: Your application is now ready and you can start working on it.
+    - img
+  - generic [ref=e25]:
+    - generic [ref=e26]:
+      - img [ref=e27]
+      - heading "Documentation" [level=2] [ref=e30]
+      - link "Guides, components, references" [ref=e31] [cursor=pointer]:
+        - /url: https://symfony.com/doc/5.4/index.html
+    - generic [ref=e32]:
+      - img [ref=e33]
+      - heading "Tutorials" [level=2] [ref=e36]
+      - link "Create your first page" [ref=e37] [cursor=pointer]:
+        - /url: https://symfony.com/doc/5.4/page_creation.html
+    - generic [ref=e38]:
+      - img [ref=e39]
+      - heading "Community" [level=2] [ref=e42]
+      - link "Connect, get help, or contribute" [ref=e43] [cursor=pointer]:
+        - /url: https://symfony.com/community

@@ -1,0 +1,14 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - img [ref=e5]
+    - heading "Algo salió mal" [level=1] [ref=e7]
+    - paragraph [ref=e8]: Ocurrió un error inesperado. Puedes intentar de nuevo o volver al inicio.
+    - paragraph [ref=e9]: "Ref: 672365387"
+    - generic [ref=e10]:
+      - button "Intentar de nuevo" [ref=e11]:
+        - img
+        - text: Intentar de nuevo
+      - link "Volver al inicio" [ref=e12] [cursor=pointer]:
+        - /url: /
+  - region "Notifications alt+T"
+  - alert [ref=e13]
