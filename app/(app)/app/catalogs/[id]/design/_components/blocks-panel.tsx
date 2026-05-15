@@ -38,6 +38,11 @@ interface CatalogBlock extends BaseBlock {
   showCategoryFilter: boolean
   showSearch: boolean
   showSortFilter: boolean
+  showPriceFilter: boolean
+  showAvailabilityFilter: boolean
+  showRatingFilter: boolean
+  showBrandFilter: boolean
+  showDiscountFilter: boolean
   showTitle: boolean
   showPrice: boolean
   showDescription: boolean

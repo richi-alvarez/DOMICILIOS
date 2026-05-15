@@ -57,6 +57,11 @@ interface CatalogBlock extends BaseBlock {
   showCategoryFilter: boolean
   showSearch: boolean
   showSortFilter: boolean
+  showPriceFilter: boolean
+  showAvailabilityFilter: boolean
+  showRatingFilter: boolean
+  showBrandFilter: boolean
+  showDiscountFilter: boolean
   showTitle: boolean
   showPrice: boolean
   showDescription: boolean
@@ -157,6 +162,11 @@ const DEFAULT_BLOCKS: Block[] = [
     showCategoryFilter: true,
     showSearch: false,
     showSortFilter: false,
+    showPriceFilter: false,
+    showAvailabilityFilter: false,
+    showRatingFilter: false,
+    showBrandFilter: false,
+    showDiscountFilter: false,
     showTitle: true,
     showPrice: true,
     showDescription: false,
@@ -244,6 +254,11 @@ export default function DesignPage({ params }: { params: { id: string } }) {
         showCategoryFilter: true,
         showSearch: false,
         showSortFilter: false,
+        showPriceFilter: false,
+        showAvailabilityFilter: false,
+        showRatingFilter: false,
+        showBrandFilter: false,
+        showDiscountFilter: false,
         showTitle: true,
         showPrice: true,
         showDescription: false,

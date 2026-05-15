@@ -157,19 +157,99 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
             return (
               <div key={block.id} className="bg-white px-4 py-8">
                 <div className="max-w-6xl mx-auto">
-                  {block.showCategoryFilter && (
-                    <div className="mb-6 flex gap-2">
-                      <button className="px-3 py-1 rounded-full text-sm" style={{ backgroundColor: theme.primaryColor, color: 'white' }}>
-                        Todos
-                      </button>
-                      <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
-                        Categoría 1
-                      </button>
-                      <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
-                        Categoría 2
-                      </button>
+                  {/* Filters and Search Section */}
+                  <div className="mb-6 space-y-4">
+                    {/* Search Bar */}
+                    {block.showSearch && (
+                      <div className="flex">
+                        <input
+                          type="text"
+                          placeholder="🔍 Buscar productos..."
+                          className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-sm"
+                          disabled
+                        />
+                      </div>
+                    )}
+
+                    {/* Category Filter + Sort Filter */}
+                    <div className="flex gap-4 items-center flex-wrap">
+                      {/* Category Filter */}
+                      {block.showCategoryFilter && (
+                        <div className="flex gap-2">
+                          <button className="px-3 py-1 rounded-full text-sm" style={{ backgroundColor: theme.primaryColor, color: 'white' }}>
+                            Todos
+                          </button>
+                          <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                            Categoría 1
+                          </button>
+                          <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                            Categoría 2
+                          </button>
+                        </div>
+                      )}
+
+                      {/* Sort Filter */}
+                      {block.showSortFilter && (
+                        <select className="px-3 py-1 rounded border border-gray-300 text-sm bg-white" disabled>
+                          <option>Ordenar por: Relevancia</option>
+                          <option>Precio (menor a mayor)</option>
+                          <option>Precio (mayor a menor)</option>
+                          <option>Más recientes</option>
+                          <option>Más populares</option>
+                        </select>
+                      )}
+
+                      {/* Price Filter */}
+                      {block.showPriceFilter && (
+                        <div className="flex items-center gap-2 text-xs">
+                          <label>Precio:</label>
+                          <input type="number" placeholder="Mín" className="w-16 px-2 py-1 border border-gray-300 rounded" disabled />
+                          <span>-</span>
+                          <input type="number" placeholder="Máx" className="w-16 px-2 py-1 border border-gray-300 rounded" disabled />
+                        </div>
+                      )}
+
+                      {/* Availability Filter */}
+                      {block.showAvailabilityFilter && (
+                        <label className="flex items-center gap-2 text-xs cursor-pointer">
+                          <input type="checkbox" disabled />
+                          <span>En stock</span>
+                        </label>
+                      )}
+
+                      {/* Rating Filter */}
+                      {block.showRatingFilter && (
+                        <select className="px-3 py-1 rounded border border-gray-300 text-sm bg-white" disabled>
+                          <option>Calificación: Todas</option>
+                          <option>⭐⭐⭐⭐⭐ (5 estrellas)</option>
+                          <option>⭐⭐⭐⭐ (4+ estrellas)</option>
+                          <option>⭐⭐⭐ (3+ estrellas)</option>
+                        </select>
+                      )}
+
+                      {/* Brand Filter */}
+                      {block.showBrandFilter && (
+                        <div className="flex gap-2 text-xs">
+                          <label className="flex items-center gap-1">
+                            <input type="checkbox" disabled />
+                            <span>Marca A</span>
+                          </label>
+                          <label className="flex items-center gap-1">
+                            <input type="checkbox" disabled />
+                            <span>Marca B</span>
+                          </label>
+                        </div>
+                      )}
+
+                      {/* Discount Filter */}
+                      {block.showDiscountFilter && (
+                        <label className="flex items-center gap-2 text-xs cursor-pointer">
+                          <input type="checkbox" disabled />
+                          <span>Con descuento</span>
+                        </label>
+                      )}
                     </div>
-                  )}
+                  </div>
 
                   <div className={`grid gap-4 ${block.template === 'list' ? 'grid-cols-1' : block.template === 'grid' ? 'grid-cols-3' : 'grid-cols-2'}`}>
                     {[1, 2, 3, 4, 5, 6].map((i) => (

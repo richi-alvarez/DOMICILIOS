@@ -11,6 +11,11 @@ interface CatalogBlock {
   showCategoryFilter: boolean
   showSearch: boolean
   showSortFilter: boolean
+  showPriceFilter: boolean
+  showAvailabilityFilter: boolean
+  showRatingFilter: boolean
+  showBrandFilter: boolean
+  showDiscountFilter: boolean
   showTitle: boolean
   showPrice: boolean
   showDescription: boolean
@@ -107,6 +112,56 @@ export default function CatalogSettings({ block, onChange }: CatalogSettingsProp
                 className="w-4 h-4"
               />
               <span className="text-xs font-medium">Filtro de Ordenamiento</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={block.showPriceFilter}
+                onChange={(e) => onChange({ showPriceFilter: e.target.checked })}
+                className="w-4 h-4"
+              />
+              <span className="text-xs font-medium">Filtro de Precio</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={block.showAvailabilityFilter}
+                onChange={(e) => onChange({ showAvailabilityFilter: e.target.checked })}
+                className="w-4 h-4"
+              />
+              <span className="text-xs font-medium">Filtro de Disponibilidad</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={block.showRatingFilter}
+                onChange={(e) => onChange({ showRatingFilter: e.target.checked })}
+                className="w-4 h-4"
+              />
+              <span className="text-xs font-medium">Filtro de Calificación</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={block.showBrandFilter}
+                onChange={(e) => onChange({ showBrandFilter: e.target.checked })}
+                className="w-4 h-4"
+              />
+              <span className="text-xs font-medium">Filtro de Marca</span>
+            </label>
+
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={block.showDiscountFilter}
+                onChange={(e) => onChange({ showDiscountFilter: e.target.checked })}
+                className="w-4 h-4"
+              />
+              <span className="text-xs font-medium">Filtro de Descuento</span>
             </label>
           </div>
         )}
