@@ -1,0 +1,232 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e370]:
+    - complementary [ref=e372]:
+      - link "D Domicilios" [ref=e374] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e376]: D
+        - generic [ref=e377]: Domicilios
+      - generic [ref=e378]:
+        - generic [ref=e379]:
+          - generic [ref=e380]:
+            - generic [ref=e381]: Catálogo activo
+            - generic [ref=e382]: Borrador
+          - paragraph [ref=e383]: Carnes Medellí
+          - paragraph [ref=e384]: /carnes-medelli
+          - link "Ver todos los catálogos" [ref=e385] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e386]
+            - text: Ver todos los catálogos
+        - navigation [ref=e388]:
+          - link "Detalles" [ref=e389] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39
+            - img [ref=e390]
+            - text: Detalles
+          - link "Productos" [ref=e395] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39/products
+            - img [ref=e396]
+            - text: Productos
+          - link "Categorías" [ref=e400] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39/categories
+            - img [ref=e401]
+            - text: Categorías
+          - link "Diseño" [ref=e406] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39/design
+            - img [ref=e407]
+            - text: Diseño
+          - link "Pedidos" [ref=e413] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39/orders
+            - img [ref=e414]
+            - text: Pedidos
+          - link "Estadísticas" [ref=e418] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39/analytics
+            - img [ref=e419]
+            - text: Estadísticas
+          - link "Reportes" [ref=e420] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39/reports
+            - img [ref=e421]
+            - text: Reportes
+          - link "Configuración" [ref=e424] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39/settings
+            - img [ref=e425]
+            - text: Configuración
+        - navigation [ref=e428]:
+          - link "Mis catálogos" [ref=e429] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e430]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e435] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e436]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e441] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e442]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e444] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e445]
+          - text: Nuevo catálogo
+      - generic [ref=e447]:
+        - generic [ref=e448]: Q
+        - generic [ref=e449]:
+          - generic [ref=e450]:
+            - paragraph [ref=e451]: QA Test User
+            - generic [ref=e452]: Gratis
+          - paragraph [ref=e453]: qa.test.user@example.com
+        - button "Cerrar sesión" [ref=e454]:
+          - img [ref=e455]
+    - main [ref=e458]:
+      - generic [ref=e459]:
+        - generic [ref=e461]:
+          - link "Diseño de Página" [ref=e462] [cursor=pointer]:
+            - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39
+            - img [ref=e463]
+            - heading "Diseño de Página" [level=1] [ref=e465]
+          - generic [ref=e466]:
+            - generic [ref=e467]:
+              - button "Vista Desktop" [ref=e468]:
+                - img [ref=e469]
+              - button "Vista Móvil" [ref=e471]:
+                - img [ref=e472]
+            - button "Guardar" [ref=e474]:
+              - img [ref=e475]
+              - text: Guardar
+        - generic [ref=e478]:
+          - generic [ref=e480]:
+            - tablist [ref=e482]:
+              - tab "Bloques" [selected] [ref=e483]
+              - tab "Global" [ref=e484]
+            - tabpanel "Bloques" [ref=e485]:
+              - generic [ref=e486]:
+                - generic [ref=e487]:
+                  - generic [ref=e488]:
+                    - generic [ref=e489]: ❓
+                    - generic [ref=e490]:
+                      - paragraph [ref=e491]: ¿Necesitas ayuda con el editor?
+                      - paragraph [ref=e492]: Tutorial paso a paso para aprender a crear páginas increíbles.
+                  - generic [ref=e493]:
+                    - button "No mostrar de nuevo" [ref=e494]
+                    - button "Ver video tutorial" [ref=e495]
+                - button "Agregar Bloque" [ref=e496]:
+                  - img [ref=e497]
+                  - text: Agregar Bloque
+                - generic [ref=e498]:
+                  - generic [ref=e499]:
+                    - generic [ref=e500]:
+                      - generic [ref=e501]: ⠿
+                      - generic [ref=e502]: 🎯
+                      - paragraph [ref=e504]: Sección de Presentación
+                      - button "Ocultar" [ref=e505]:
+                        - img [ref=e506]
+                      - button "⋮" [ref=e510]
+                    - generic [ref=e512]:
+                      - generic [ref=e513]:
+                        - button "Ajustes de Fondo" [ref=e514]:
+                          - heading "Ajustes de Fondo" [level=4] [ref=e515]
+                          - img [ref=e516]
+                        - generic [ref=e518]:
+                          - generic [ref=e519]:
+                            - text: Tipo de Fondo
+                            - combobox [ref=e520]:
+                              - option "Color"
+                              - option "Imagen" [selected]
+                              - option "Video"
+                          - generic [ref=e521]:
+                            - text: Imagen de Fondo
+                            - generic [ref=e523]:
+                              - button "Subir imagen" [ref=e524]
+                              - button "✕" [ref=e525]
+                          - generic [ref=e526]:
+                            - generic [ref=e527]:
+                              - generic [ref=e528]: Opacidad de Superposición
+                              - generic [ref=e529]: 40%
+                            - slider [ref=e530]: "40"
+                          - generic [ref=e531]:
+                            - generic [ref=e532]: Tipo de Superposición
+                            - generic [ref=e533]:
+                              - button "Aa Oscuro" [ref=e534]
+                              - button "Aa Claro" [ref=e535]
+                      - button "Ajustes de Contenido" [ref=e537]:
+                        - heading "Ajustes de Contenido" [level=4] [ref=e538]
+                        - img [ref=e539]
+                      - button "Ajustes de Diseño" [ref=e542]:
+                        - heading "Ajustes de Diseño" [level=4] [ref=e543]
+                        - img [ref=e544]
+                  - generic [ref=e547]:
+                    - generic [ref=e548]: ⠿
+                    - generic [ref=e549]: 📦
+                    - paragraph [ref=e551]: Catálogo de Productos
+                    - button "Ocultar" [ref=e552]:
+                      - img [ref=e553]
+                    - button "⋮" [ref=e557]
+                  - generic [ref=e559]:
+                    - generic [ref=e560]: ⠿
+                    - generic [ref=e561]: 🛒
+                    - paragraph [ref=e563]: Bolsón de Carrito
+                    - button "Ocultar" [ref=e564]:
+                      - img [ref=e565]
+                    - button "⋮" [ref=e569]
+                  - generic [ref=e571]:
+                    - generic [ref=e572]: ⠿
+                    - generic [ref=e573]: 📝
+                    - paragraph [ref=e575]: Texto
+                    - button "Ocultar" [ref=e576]:
+                      - img [ref=e577]
+                    - button "⋮" [ref=e581]
+          - generic [ref=e584]:
+            - generic [ref=e586]:
+              - generic [ref=e587]: 🌐
+              - generic [ref=e588]: https://domicilios.app/s/test-restaurant
+            - generic [ref=e589]:
+              - generic [ref=e592]:
+                - heading "MDE Burgers" [level=1] [ref=e593]
+                - paragraph [ref=e594]: En MDE burgers preparamos hamburguesas, perros calientes y pizzas pensadas para disfrutar con tu familia. Realiza tu pedido ahora.
+                - button "Ordenar ahora" [ref=e595]
+              - generic [ref=e597]:
+                - generic [ref=e600]:
+                  - button "Todos" [ref=e601]
+                  - button "Categoría 1" [ref=e602]
+                  - button "Categoría 2" [ref=e603]
+                - generic [ref=e604]:
+                  - generic [ref=e607]:
+                    - paragraph [ref=e608]: Producto 1
+                    - paragraph [ref=e609]: $19.99
+                    - button "Agregar al carrito" [ref=e611]
+                  - generic [ref=e614]:
+                    - paragraph [ref=e615]: Producto 2
+                    - paragraph [ref=e616]: $19.99
+                    - button "Agregar al carrito" [ref=e618]
+                  - generic [ref=e621]:
+                    - paragraph [ref=e622]: Producto 3
+                    - paragraph [ref=e623]: $19.99
+                    - button "Agregar al carrito" [ref=e625]
+                  - generic [ref=e628]:
+                    - paragraph [ref=e629]: Producto 4
+                    - paragraph [ref=e630]: $19.99
+                    - button "Agregar al carrito" [ref=e632]
+                  - generic [ref=e635]:
+                    - paragraph [ref=e636]: Producto 5
+                    - paragraph [ref=e637]: $19.99
+                    - button "Agregar al carrito" [ref=e639]
+                  - generic [ref=e642]:
+                    - paragraph [ref=e643]: Producto 6
+                    - paragraph [ref=e644]: $19.99
+                    - button "Agregar al carrito" [ref=e646]
+              - generic [ref=e648] [cursor=pointer]:
+                - text: 🛒
+                - generic [ref=e649]: "3"
+                - generic [ref=e650]: "Total: $59.97"
+              - generic [ref=e652]: Tu contenido de texto aparecerá aquí...
+  - region "Notifications alt+T"
+  - alert [ref=e285]
+  - generic [ref=e327] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e328]:
+      - img [ref=e329]
+    - generic [ref=e653]:
+      - button "Open issues overlay" [ref=e654]:
+        - generic [ref=e655]:
+          - generic [ref=e656]: "0"
+          - generic [ref=e657]: "1"
+        - generic [ref=e658]: Issue
+      - button "Collapse issues badge" [ref=e659]:
+        - img [ref=e660]

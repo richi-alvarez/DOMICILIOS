@@ -311,12 +311,18 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
                   className={`absolute ${positionMap[block.position]} ${sizeMap[block.size]} ${animationMap[block.animation]} rounded-full flex items-center justify-center cursor-pointer group`}
                   style={{
                     backgroundColor: block.useCustomColors ? block.bgColor : theme.primaryColor,
-                    color: block.useCustomColors ? block.iconColor : 'white',
                   }}
                 >
-                  🛒
+                  <span style={{ color: block.useCustomColors ? block.iconColor : 'white' }}>
+                    🛒
+                  </span>
                   {block.showItemCount && (
-                    <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
+                    <div
+                      className="absolute -top-2 -right-2 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center"
+                      style={{
+                        backgroundColor: block.useCustomColors ? block.iconColor : '#ef4444',
+                      }}
+                    >
                       3
                     </div>
                   )}
