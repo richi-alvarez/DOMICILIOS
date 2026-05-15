@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronLeft, Monitor, Smartphone, Globe, Loader2, Check } from 'lucide-react'
 import Link from 'next/link'
 import { saveDesign } from '@/lib/actions/design'
@@ -219,6 +219,19 @@ export default function DesignPage({ params }: { params: { id: string } }) {
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
 
+  // Prevent preview tab on desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && activeTab === 'preview') {
+        setActiveTab('blocks')
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    handleResize() // Check on mount
+    return () => window.removeEventListener('resize', handleResize)
+  }, [activeTab])
+
   // Handlers
   const updateBlock = (id: string, partial: Partial<Block>) => {
     setBlocks(blocks.map(b => (b.id === id ? { ...b, ...partial } : b)))
@@ -410,14 +423,11 @@ export default function DesignPage({ params }: { params: { id: string } }) {
       {activeTab === 'preview' ? (
         // Full-width preview mode
         <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200 px-4 py-3">
+          <div className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200 px-4 py-3 md:hidden">
             <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'blocks' | 'global' | 'preview')}>
-              <TabsList className="w-40 grid grid-cols-3">
+              <TabsList className="w-full grid grid-cols-2">
                 <TabsTrigger value="blocks" className="text-xs">
                   Bloques
-                </TabsTrigger>
-                <TabsTrigger value="global" className="text-xs">
-                  Global
                 </TabsTrigger>
                 <TabsTrigger value="preview" className="text-xs">
                   Vista Previa
@@ -429,7 +439,7 @@ export default function DesignPage({ params }: { params: { id: string } }) {
             <PreviewPanel
               blocks={blocks}
               theme={theme}
-              previewMode={previewMode}
+              previewMode="mobile"
               catalogSlug="test-restaurant"
             />
           </div>
@@ -440,14 +450,14 @@ export default function DesignPage({ params }: { params: { id: string } }) {
           <div className="w-80 border-r border-gray-200 overflow-y-auto bg-gray-50">
             <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'blocks' | 'global' | 'preview')} className="h-full">
               <div className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200 px-4 py-3">
-                <TabsList className="w-full grid grid-cols-3">
+                <TabsList className="w-full grid md:grid-cols-2 grid-cols-3">
                   <TabsTrigger value="blocks" className="text-xs">
                     Bloques
                   </TabsTrigger>
                   <TabsTrigger value="global" className="text-xs">
                     Global
                   </TabsTrigger>
-                  <TabsTrigger value="preview" className="text-xs">
+                  <TabsTrigger value="preview" className="text-xs md:hidden">
                     Vista Previa
                   </TabsTrigger>
                 </TabsList>
