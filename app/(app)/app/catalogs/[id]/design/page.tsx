@@ -375,8 +375,8 @@ export default function DesignPage({ params }: { params: { id: string } }) {
           </Link>
 
           <div className="flex items-center gap-4">
-            {/* Desktop/Mobile Toggle */}
-            <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
+            {/* Desktop/Mobile Toggle - hidden on mobile */}
+            <div className="hidden md:flex items-center gap-2 bg-gray-100 rounded-lg p-1">
               <button
                 onClick={() => setPreviewMode('desktop')}
                 className={`p-2 rounded ${previewMode === 'desktop' ? 'bg-white shadow-sm' : 'text-gray-500'}`}
@@ -445,9 +445,9 @@ export default function DesignPage({ params }: { params: { id: string } }) {
           </div>
         </div>
       ) : (
-        // Split view for blocks/global
-        <>
-          <div className="w-80 border-r border-gray-200 overflow-y-auto bg-gray-50">
+        // Split view for blocks/global - responsive: full-width on mobile, split on desktop
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+          <div className="w-full md:w-80 border-b md:border-b-0 md:border-r border-gray-200 overflow-y-auto bg-gray-50">
             <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'blocks' | 'global' | 'preview')} className="h-full">
               <div className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200 px-4 py-3">
                 <TabsList className="w-full grid md:grid-cols-2 grid-cols-3">
@@ -486,8 +486,8 @@ export default function DesignPage({ params }: { params: { id: string } }) {
             </Tabs>
           </div>
 
-          {/* Right Panel - Preview (only show when not in preview tab) */}
-          <div className="flex-1 overflow-auto bg-gray-100">
+          {/* Right Panel - Preview (hidden on mobile, visible on desktop) */}
+          <div className="hidden md:flex flex-1 overflow-auto bg-gray-100">
             <PreviewPanel
               blocks={blocks}
               theme={theme}
@@ -495,7 +495,7 @@ export default function DesignPage({ params }: { params: { id: string } }) {
               catalogSlug="test-restaurant"
             />
           </div>
-        </>
+        </div>
       )}
 
       {/* Add Block Modal */}
