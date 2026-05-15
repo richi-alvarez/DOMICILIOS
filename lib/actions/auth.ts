@@ -49,8 +49,14 @@ export async function signUpWithCredentials(formData: FormData): Promise<ActionR
     .values({ ownerUserId: user.id, name: `Negocio de ${name}`, type: 'merchant', status: 'active' })
     .returning({ id: organizations.id })
 
-  if (org) {
+  if (!org) {
+    return { success: false, error: 'Error al crear la organización. Intenta de nuevo.' }
+  }
+
+  try {
     await db.insert(memberships).values({ userId: user.id, organizationId: org.id, role: 'owner' })
+  } catch (err) {
+    return { success: false, error: 'Error al configurar permisos. Intenta de nuevo.' }
   }
 
   // Generar token de verificación

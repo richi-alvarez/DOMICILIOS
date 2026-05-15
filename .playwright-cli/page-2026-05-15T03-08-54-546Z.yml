@@ -1,0 +1,37 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "D Domicilios" [ref=e6] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e8]: D
+        - generic [ref=e9]: Domicilios
+      - generic [ref=e10]:
+        - navigation [ref=e11]:
+          - link "Mis catálogos" [ref=e12] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e13]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e18] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e19]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e24] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e25]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e27] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e28]
+          - text: Nuevo catálogo
+      - generic [ref=e30]:
+        - generic [ref=e31]: T
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - paragraph [ref=e34]: Test User AI
+            - generic [ref=e35]: Gratis
+          - paragraph [ref=e36]: test.ai.user@example.com
+        - button "Cerrar sesión" [ref=e37]:
+          - img [ref=e38]
+    - main [ref=e41]
+  - region "Notifications alt+T"
+  - alert [ref=e42]

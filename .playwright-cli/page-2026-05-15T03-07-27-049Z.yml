@@ -1,0 +1,129 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e45]:
+    - complementary [ref=e47]:
+      - link "D Domicilios" [ref=e49] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e51]: D
+        - generic [ref=e52]: Domicilios
+      - generic [ref=e53]:
+        - navigation [ref=e54]:
+          - link "Mis catálogos" [ref=e55] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e56]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e61] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e62]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e67] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e68]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e70] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e71]
+          - text: Nuevo catálogo
+      - generic [ref=e73]:
+        - generic [ref=e74]: J
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - paragraph [ref=e77]: Juan Rodríguez
+            - generic [ref=e78]: Premium
+          - paragraph [ref=e79]: juan.rodriguez@test.com
+        - button "Cerrar sesión" [ref=e80]:
+          - img [ref=e81]
+    - main [ref=e84]:
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - heading "Mis catálogos" [level=1] [ref=e88]
+            - paragraph [ref=e89]: 10 catálogos
+          - link "Mejorar plan" [ref=e91] [cursor=pointer]:
+            - /url: /plans
+            - button "Mejorar plan" [ref=e92]:
+              - img
+              - text: Mejorar plan
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - img [ref=e95]
+            - paragraph [ref=e97]:
+              - text: Has alcanzado el límite de
+              - strong [ref=e98]: 10 catálogos
+              - text: del plan Premium.
+          - link "Ver planes →" [ref=e99] [cursor=pointer]:
+            - /url: /plans
+        - generic [ref=e100]:
+          - link "Borrador Comida Principal - Juan /juan-comida-principal" [ref=e101] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5
+            - generic [ref=e102]:
+              - img [ref=e104]
+              - generic [ref=e107]: Borrador
+            - heading "Comida Principal - Juan" [level=3] [ref=e108]
+            - paragraph [ref=e109]: /juan-comida-principal
+          - link "Borrador Desayunos Especiales /juan-desayunos" [ref=e110] [cursor=pointer]:
+            - /url: /app/catalogs/7c06fec5-c9d1-45a3-bca8-91c42ad5d768
+            - generic [ref=e111]:
+              - img [ref=e113]
+              - generic [ref=e116]: Borrador
+            - heading "Desayunos Especiales" [level=3] [ref=e117]
+            - paragraph [ref=e118]: /juan-desayunos
+          - link "Borrador Postres Gourmet /juan-postres" [ref=e119] [cursor=pointer]:
+            - /url: /app/catalogs/4eb0813b-f2e9-4bf1-b6c4-a05ee789a3b3
+            - generic [ref=e120]:
+              - img [ref=e122]
+              - generic [ref=e125]: Borrador
+            - heading "Postres Gourmet" [level=3] [ref=e126]
+            - paragraph [ref=e127]: /juan-postres
+          - link "Borrador Bebidas Premium /juan-bebidas" [ref=e128] [cursor=pointer]:
+            - /url: /app/catalogs/3b836b4a-0aa8-447f-862d-4d26392c73f1
+            - generic [ref=e129]:
+              - img [ref=e131]
+              - generic [ref=e134]: Borrador
+            - heading "Bebidas Premium" [level=3] [ref=e135]
+            - paragraph [ref=e136]: /juan-bebidas
+          - link "Borrador Sopas y Caldos /juan-sopas" [ref=e137] [cursor=pointer]:
+            - /url: /app/catalogs/fcc7834d-ae63-4272-a1bd-baab5c05b23f
+            - generic [ref=e138]:
+              - img [ref=e140]
+              - generic [ref=e143]: Borrador
+            - heading "Sopas y Caldos" [level=3] [ref=e144]
+            - paragraph [ref=e145]: /juan-sopas
+          - link "Borrador Ensaladas Frescas /juan-ensaladas" [ref=e146] [cursor=pointer]:
+            - /url: /app/catalogs/51396947-fee4-4d08-a86f-e39b073532c9
+            - generic [ref=e147]:
+              - img [ref=e149]
+              - generic [ref=e152]: Borrador
+            - heading "Ensaladas Frescas" [level=3] [ref=e153]
+            - paragraph [ref=e154]: /juan-ensaladas
+          - link "Borrador Sándwiches y Tortas /juan-sandwiches" [ref=e155] [cursor=pointer]:
+            - /url: /app/catalogs/cf51c517-7690-4ede-a9a9-e65548dbe65e
+            - generic [ref=e156]:
+              - img [ref=e158]
+              - generic [ref=e161]: Borrador
+            - heading "Sándwiches y Tortas" [level=3] [ref=e162]
+            - paragraph [ref=e163]: /juan-sandwiches
+          - link "Borrador Carnes Asadas /juan-carnes" [ref=e164] [cursor=pointer]:
+            - /url: /app/catalogs/e3a3df3e-42a0-4f41-b19d-6241aaf90266
+            - generic [ref=e165]:
+              - img [ref=e167]
+              - generic [ref=e170]: Borrador
+            - heading "Carnes Asadas" [level=3] [ref=e171]
+            - paragraph [ref=e172]: /juan-carnes
+          - link "Borrador Mariscos Frescos /juan-mariscos" [ref=e173] [cursor=pointer]:
+            - /url: /app/catalogs/6e44ea4f-294e-4ccf-847c-997a702c6319
+            - generic [ref=e174]:
+              - img [ref=e176]
+              - generic [ref=e179]: Borrador
+            - heading "Mariscos Frescos" [level=3] [ref=e180]
+            - paragraph [ref=e181]: /juan-mariscos
+          - link "Borrador Platos Especiales /juan-especiales" [ref=e182] [cursor=pointer]:
+            - /url: /app/catalogs/939fcc0e-645f-46f8-bd8a-2cc5400a1e7a
+            - generic [ref=e183]:
+              - img [ref=e185]
+              - generic [ref=e188]: Borrador
+            - heading "Platos Especiales" [level=3] [ref=e189]
+            - paragraph [ref=e190]: /juan-especiales
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Mis catálogos | Domicilios
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]

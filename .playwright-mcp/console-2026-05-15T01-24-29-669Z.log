@@ -16,3 +16,379 @@
 [     493ms] [LOG] [Fast Refresh] done in NaNms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
 [     651ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
 [     675ms] [LOG] [Fast Refresh] done in 124ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   35313ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   35354ms] [LOG] [Fast Refresh] done in 141ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   89870ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   89948ms] [LOG] [Fast Refresh] done in 178ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[  109403ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  109637ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  109638ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  115082ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  115082ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  115194ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  119347ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  119376ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  119376ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  119516ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  119592ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  119593ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  119749ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  119750ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  119865ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  120464ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  120464ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  120660ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  120784ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  120784ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  120949ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  121493ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  121494ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  121544ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4?_rsc=imq4k:0
+[  121667ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  121667ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  121773ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  121774ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  121829ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4?_rsc=imq4k:0
+[  121844ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  121845ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:1225
+[  121971ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4:0
+[  122089ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/node_modules_react-dom_82bb97c6._.js:15309
+[  122109ms] Error: ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+
+    at <unknown> (Error: ./app/(app)/app/catalogs/[id]/page.tsx:3:1)
+    at Object.getCompilationErrors (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:725:59)
+    at DevBundlerService.getCompilationError (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/lib/dev-bundler-service.js:39:55)
+    at DevServer.getCompilationError (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/next-dev-server.js:643:42)
+    at DevServer.findPageComponents (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/next-dev-server.js:613:43)
+    at async DevServer.renderErrorToResponseImpl (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/base-server.js:2619:26)
+[  122109ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11471
+[  122114ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[  122114ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[  122209ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[  122209ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[  122250ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11886

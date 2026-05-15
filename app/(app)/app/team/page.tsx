@@ -25,10 +25,10 @@ export default async function TeamPage() {
   }
 
   return (
-    <div className="px-6 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-warm-50 to-white px-4 py-6 sm:px-6 sm:py-8">
       <div className="mb-8">
-        <h1 className="font-display text-2xl font-bold text-night-900">Equipo</h1>
-        <p className="mt-1 text-sm text-night-400">Invita colaboradores y gestiona sus permisos en tu organización.</p>
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-night-900">Equipo</h1>
+        <p className="mt-2 text-sm text-night-400">Invita colaboradores y gestiona sus permisos en tu organización.</p>
       </div>
       <TeamManager team={team} />
     </div>

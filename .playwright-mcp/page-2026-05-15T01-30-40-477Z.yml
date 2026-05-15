@@ -1,0 +1,148 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e50]:
+    - complementary [ref=e51]:
+      - link "D Domicilios" [ref=e53] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e55]: D
+        - generic [ref=e56]: Domicilios
+      - generic [ref=e57]:
+        - generic [ref=e194]:
+          - generic [ref=e195]:
+            - generic [ref=e196]: Catálogo activo
+            - generic [ref=e197]: Borrador
+          - paragraph [ref=e198]: Comida Principal - Juan
+          - paragraph [ref=e199]: /juan-comida-principal
+          - link "Ver todos los catálogos" [ref=e200] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e201]
+            - text: Ver todos los catálogos
+        - navigation [ref=e203]:
+          - link "Detalles" [ref=e204] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5
+            - img [ref=e205]
+            - text: Detalles
+          - link "Productos" [ref=e210] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5/products
+            - img [ref=e211]
+            - text: Productos
+          - link "Categorías" [ref=e215] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5/categories
+            - img [ref=e216]
+            - text: Categorías
+          - link "Diseño" [ref=e221] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5/design
+            - img [ref=e222]
+            - text: Diseño
+          - link "Pedidos" [ref=e228] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5/orders
+            - img [ref=e229]
+            - text: Pedidos
+          - link "Estadísticas" [ref=e233] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5/analytics
+            - img [ref=e234]
+            - text: Estadísticas
+          - link "Reportes" [ref=e235] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5/reports
+            - img [ref=e236]
+            - text: Reportes
+          - link "Configuración" [ref=e239] [cursor=pointer]:
+            - /url: /app/catalogs/ce438a37-3677-49e9-9f5b-4796096b8fc5/settings
+            - img [ref=e240]
+            - text: Configuración
+        - navigation [ref=e58]:
+          - link "Mis catálogos" [ref=e59] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e60]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e65] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e66]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e71] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e72]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e74] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e75]
+          - text: Nuevo catálogo
+      - generic [ref=e77]:
+        - generic [ref=e78]: J
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - paragraph [ref=e81]: Juan Rodríguez
+            - generic [ref=e82]: Premium
+          - paragraph [ref=e83]: juan.rodriguez@test.com
+        - button "Cerrar sesión" [ref=e84]:
+          - img [ref=e85]
+    - main [ref=e88]:
+      - generic [ref=e243]:
+        - generic [ref=e245] [cursor=pointer]:
+          - img [ref=e246]
+          - heading "Comida Principal - Juan" [level=1] [ref=e248]
+        - generic [ref=e249]:
+          - generic [ref=e250]:
+            - generic [ref=e251]:
+              - img [ref=e253]
+              - generic [ref=e254]:
+                - generic [ref=e255]: "URL:"
+                - generic [ref=e256]:
+                  - textbox [ref=e257]: http://localhost:3000/s/juan-comida-principal
+                  - button "Copiar" [ref=e258]:
+                    - img [ref=e259]
+              - generic [ref=e262]:
+                - link "Visitar" [ref=e263] [cursor=pointer]:
+                  - /url: http://localhost:3000/s/juan-comida-principal
+                  - img [ref=e264]
+                  - text: Visitar
+                - button "Editar Diseño" [ref=e268]:
+                  - img [ref=e269]
+                  - text: Editar Diseño
+              - generic [ref=e272]:
+                - button "Personalizar" [ref=e273]
+                - button "PNG" [ref=e274]
+                - button "SVG" [ref=e275]
+                - button "Imprimir QR" [ref=e276]
+            - generic [ref=e277]:
+              - heading "Información" [level=2] [ref=e278]
+              - generic [ref=e279]:
+                - generic [ref=e280]:
+                  - term [ref=e281]: "Nombre:"
+                  - definition [ref=e282]: Comida Principal - Juan
+                - generic [ref=e283]:
+                  - term [ref=e284]: "Slug:"
+                  - definition [ref=e285]: /juan-comida-principal
+                - generic [ref=e286]:
+                  - term [ref=e287]: "Estado:"
+                  - definition [ref=e288]: Borrador
+                - generic [ref=e289]:
+                  - term [ref=e290]: "Idioma:"
+                  - definition [ref=e291]: ES
+                - generic [ref=e292]:
+                  - term [ref=e293]: "Moneda:"
+                  - definition [ref=e294]: COP
+                - generic [ref=e295]:
+                  - term [ref=e296]: "Canal de pedidos:"
+                  - definition [ref=e297]: WhatsApp
+                - generic [ref=e298]:
+                  - term [ref=e299]: "Fecha de creación:"
+                  - definition [ref=e300]: 14 de mayo de 2026
+                - generic [ref=e301]:
+                  - term [ref=e302]: "Última actualización:"
+                  - definition [ref=e303]: 14 de mayo de 2026
+                - generic [ref=e304]:
+                  - term [ref=e305]: "Email de contacto:"
+                  - definition [ref=e306]: juan.rodriguez@test.com
+                - generic [ref=e307]:
+                  - term [ref=e308]: "Teléfono:"
+                  - definition [ref=e309]: +57 3005555555
+          - generic [ref=e310]:
+            - heading "SEO y Vista Previa" [level=2] [ref=e311]
+            - button "📋 Logo y SEO" [ref=e312]
+            - generic [ref=e313]:
+              - paragraph [ref=e314]: ¡Conecta tu dominio personalizado aquí!
+              - paragraph [ref=e315]: ej. www.mitienda.com
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Domicilios — Catálogos digitales con pedidos por WhatsApp
+  - button "Open Next.js Dev Tools" [ref=e41] [cursor=pointer]:
+    - img [ref=e42]

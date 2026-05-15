@@ -1,0 +1,210 @@
+'use client'
+
+interface Block {
+  id: string
+  visible: boolean
+  type: 'presentation' | 'catalog' | 'cart' | 'text'
+  [key: string]: any
+}
+
+interface ThemeState {
+  selectedPalette: string | null
+  primaryColor: string
+  secondaryColor: string
+  tertiaryColor: string
+  font: string
+  borderRadius: 'none' | 'sm' | 'full'
+  bgType: 'color' | 'image' | 'video'
+  bgColor: string
+  bgImage: string | null
+  bgVideoUrl: string
+}
+
+interface PreviewPanelProps {
+  blocks: Block[]
+  theme: ThemeState
+  previewMode: 'desktop' | 'mobile'
+  catalogSlug: string
+}
+
+export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }: PreviewPanelProps) {
+  const borderRadiusMap = {
+    none: '0px',
+    sm: '8px',
+    full: '9999px',
+  }
+
+  const bgStyle = {
+    backgroundColor: theme.bgType === 'color' ? theme.bgColor : 'white',
+    backgroundImage: theme.bgType === 'image' ? `url(${theme.bgImage})` : 'none',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    fontFamily: theme.font,
+  }
+
+  const visibleBlocks = blocks.filter((b) => b.visible)
+
+  const previewContent = (
+    <div className="w-full">
+      {/* URL Bar */}
+      <div className="bg-white border-b border-gray-200 px-4 py-3">
+        <div className="flex items-center gap-2 text-sm text-gray-600">
+          <span>🌐</span>
+          <span>https://domicilios.app/s/{catalogSlug}</span>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div style={bgStyle} className="w-full min-h-screen">
+        {visibleBlocks.map((block) => {
+          if (block.type === 'presentation') {
+            return (
+              <div
+                key={block.id}
+                className="relative w-full overflow-hidden flex items-center justify-center"
+                style={{
+                  backgroundImage: block.bgType === 'image' ? `url(${block.bgImage})` : 'none',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  minHeight: block.sectionSize === 'sm' ? '300px' : block.sectionSize === 'md' ? '400px' : block.sectionSize === 'lg' ? '500px' : '600px',
+                  height: block.fullHeight ? '100vh' : 'auto',
+                }}
+              >
+                {block.bgType === 'image' && (
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      backgroundColor: block.overlayType === 'dark' ? 'rgba(0,0,0,' : 'rgba(255,255,255,',
+                      opacity: block.overlayOpacity / 100,
+                    }}
+                  />
+                )}
+                <div className="relative z-10 text-center px-4">
+                  <h1 className="text-4xl font-bold mb-2" style={{ color: block.textColor }}>
+                    {block.title}
+                  </h1>
+                  <p className="text-lg mb-4" style={{ color: block.textColor }}>
+                    {block.subtitle}
+                  </p>
+                  {block.showCta && (
+                    <button
+                      className="px-6 py-2 rounded text-white"
+                      style={{ backgroundColor: theme.primaryColor }}
+                    >
+                      {block.ctaText}
+                    </button>
+                  )}
+                </div>
+              </div>
+            )
+          }
+
+          if (block.type === 'catalog') {
+            return (
+              <div key={block.id} className="bg-white px-4 py-8">
+                <div className="max-w-6xl mx-auto">
+                  {block.showCategoryFilter && (
+                    <div className="mb-6 flex gap-2">
+                      <button className="px-3 py-1 rounded-full text-sm" style={{ backgroundColor: theme.primaryColor, color: 'white' }}>
+                        Todos
+                      </button>
+                      <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                        Categoría 1
+                      </button>
+                      <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                        Categoría 2
+                      </button>
+                    </div>
+                  )}
+
+                  <div className={`grid gap-4 ${block.template === 'list' ? 'grid-cols-1' : block.template === 'grid' ? 'grid-cols-3' : 'grid-cols-2'}`}>
+                    {[1, 2, 3, 4, 5, 6].map((i) => (
+                      <div key={i} className="border rounded-lg overflow-hidden">
+                        <div className="bg-gray-200 h-40" />
+                        <div className="p-3">
+                          {block.showTitle && <p className="font-semibold text-sm">Producto {i}</p>}
+                          {block.showDescription && <p className="text-xs text-gray-600 mt-1">Descripción del producto</p>}
+                          {block.showPrice && <p className="font-bold text-sm mt-2">$19.99</p>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )
+          }
+
+          if (block.type === 'cart') {
+            const positionMap: Record<string, string> = {
+              'bottom-right': 'bottom-4 right-4',
+              'bottom-left': 'bottom-4 left-4',
+              'top-right': 'top-4 right-4',
+              'top-left': 'top-4 left-4',
+              'center-right': 'top-1/2 right-4 -translate-y-1/2',
+              'center-left': 'top-1/2 left-4 -translate-y-1/2',
+            }
+
+            const sizeMap = {
+              sm: 'w-12 h-12 text-lg',
+              md: 'w-16 h-16 text-2xl',
+              lg: 'w-20 h-20 text-3xl',
+            }
+
+            return (
+              <div
+                key={block.id}
+                className={`fixed ${positionMap[block.position]} ${sizeMap[block.size]} rounded-full flex items-center justify-center cursor-pointer`}
+                style={{
+                  backgroundColor: block.useCustomColors ? block.bgColor : theme.primaryColor,
+                  color: block.useCustomColors ? block.iconColor : 'white',
+                }}
+              >
+                🛒
+                {block.showItemCount && (
+                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
+                    3
+                  </div>
+                )}
+              </div>
+            )
+          }
+
+          if (block.type === 'text') {
+            const alignMap = {
+              left: 'text-left',
+              center: 'text-center',
+              right: 'text-right',
+              justify: 'text-justify',
+            }
+
+            return (
+              <div key={block.id} className="bg-white px-4 py-8">
+                <div
+                  className={`max-w-2xl mx-auto ${alignMap[block.align]} ${block.bold ? 'font-bold' : ''} ${block.italic ? 'italic' : ''} ${block.underline ? 'underline' : ''} ${
+                    block.fontSize === 'sm' ? 'text-sm' : block.fontSize === 'md' ? 'text-base' : 'text-lg'
+                  }`}
+                >
+                  {block.content || 'Tu contenido de texto aparecerá aquí...'}
+                </div>
+              </div>
+            )
+          }
+
+          return null
+        })}
+      </div>
+    </div>
+  )
+
+  if (previewMode === 'mobile') {
+    return (
+      <div className="flex items-center justify-center h-full bg-gray-100 p-4">
+        <div className="relative bg-black rounded-[40px] border-[10px] border-gray-800 shadow-2xl overflow-hidden" style={{ width: '390px', height: '844px' }}>
+          <div className="absolute inset-0 overflow-y-auto">{previewContent}</div>
+        </div>
+      </div>
+    )
+  }
+
+  return <div className="overflow-y-auto h-full">{previewContent}</div>
+}

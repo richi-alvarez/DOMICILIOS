@@ -1,0 +1,51 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - link "D Domicilios" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: D
+      - generic [ref=e7]: Domicilios
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - heading "Crea tu cuenta gratis" [level=3] [ref=e46]
+        - paragraph [ref=e47]: Sin tarjeta de crédito · Tu catálogo en minutos
+      - generic [ref=e49]:
+        - button "Continuar con Google" [ref=e50]:
+          - img
+          - text: Continuar con Google
+        - generic [ref=e53]: O continúa con email
+        - generic [ref=e55]:
+          - text: Nombre completo
+          - textbox "Nombre completo" [ref=e56]:
+            - /placeholder: Tu nombre
+            - text: Test User AI
+        - generic [ref=e57]:
+          - text: Correo electrónico
+          - textbox "Correo electrónico" [ref=e58]:
+            - /placeholder: tu@correo.com
+            - text: test.ai.user@example.com
+        - generic [ref=e59]:
+          - text: Contraseña
+          - generic [ref=e60]:
+            - textbox "Contraseña" [active] [ref=e61]:
+              - /placeholder: Mínimo 8 caracteres
+              - text: TestPassword123
+            - button [ref=e62]:
+              - img [ref=e63]
+        - generic [ref=e66]:
+          - checkbox "Acepto los Términos de uso y la Política de privacidad" [checked] [ref=e67]
+          - generic [ref=e68]:
+            - text: Acepto los
+            - link "Términos de uso" [ref=e69] [cursor=pointer]:
+              - /url: /terms
+            - text: y la
+            - link "Política de privacidad" [ref=e70] [cursor=pointer]:
+              - /url: /privacy
+        - button "Registrarme" [ref=e73]
+        - paragraph [ref=e71]:
+          - text: ¿Ya tienes cuenta?
+          - link "Iniciar Sesión" [ref=e72] [cursor=pointer]:
+            - /url: /login
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Crear cuenta | Domicilios
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]

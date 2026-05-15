@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { usagePercent, formatLimit } from '@/lib/billing/limits'
+import { usagePercent, formatLimit } from '@/lib/billing/constants-only'
 
 interface Props {
   label: string

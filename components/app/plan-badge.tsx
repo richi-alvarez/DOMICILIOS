@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { PLAN_COLORS, PLAN_NAMES, type PlanCode } from '@/lib/billing/limits'
+import { PLAN_COLORS, PLAN_NAMES, type PlanCode } from '@/lib/billing/constants-only'
 
 interface Props {
   plan: PlanCode

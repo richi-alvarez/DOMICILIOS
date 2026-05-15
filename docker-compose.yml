@@ -8,11 +8,12 @@ services:
       dockerfile: Dockerfile
     container_name: domicilios-app
     ports:
-      - "3000:3000"
+      - "${APP_PORT:-3000}:3000"
     environment:
-      NODE_ENV: development
-      NEXT_PUBLIC_APP_URL: http://localhost:3000
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/domicilios
+      NODE_ENV: ${NODE_ENV}
+      NEXT_PUBLIC_APP_URL: http://localhost:${APP_PORT:-3000}
+      DATABASE_URL: ${DATABASE_URL}
+    user: "0:0"
     volumes:
       - .:/app
       - /app/node_modules
@@ -29,12 +30,12 @@ services:
     image: postgres:16-alpine
     container_name: domicilios-db
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: domicilios
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
       POSTGRES_INITDB_ARGS: "-c max_connections=200"
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -69,11 +70,11 @@ services:
     image: dpage/pgadmin4:latest
     container_name: domicilios-pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@domicilios.local
-      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
       PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
-      - "5050:80"
+      - "${PGADMIN_PORT:-5050}:80"
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     networks:

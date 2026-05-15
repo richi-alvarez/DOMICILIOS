@@ -53,11 +53,14 @@
     "next-intl": "^4.1.0",
     "pdfkit": "^0.18.0",
     "pg": "^8.20.0",
+    "qr-code-styling": "^1.9.2",
+    "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.55.0",
     "recharts": "^3.8.1",
     "resend": "^4.5.1",
+    "server-only": "^0.0.1",
     "sonner": "^2.0.3",
     "stripe": "^22.1.0",
     "tailwind-merge": "^3.2.0",
@@ -78,6 +81,6 @@
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "tailwindcss": "^4.1.5",
-    "typescript": "^5.8.3"
+    "typescript": "5.9.3"
   }
 }

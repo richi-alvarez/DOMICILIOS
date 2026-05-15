@@ -1,0 +1,354 @@
+[    2766ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/login:0
+[    5807ms] Error: ./node_modules/pg/lib/connection-parameters.js:3:13
+Module not found: Can't resolve 'dns'
+  1 | 'use strict'
+  2 |
+> 3 | const dns = require('dns')
+    |             ^^^^^^^^^^^^^^
+  4 |
+  5 | const defaults = require('./defaults')
+  6 |
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (Error: ./node_modules/pg/lib/connection-parameters.js:3:13)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)
+    at Object.getCompilationErrors (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:725:59)
+    at DevBundlerService.getCompilationError (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/lib/dev-bundler-service.js:39:55)
+    at DevServer.getCompilationError (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/next-dev-server.js:643:42)
+    at DevServer.findPageComponents (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/next-dev-server.js:613:43)
+    at async DevServer.renderErrorToResponseImpl (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/base-server.js:2619:26)
+[    5520ms] [ERROR] ./node_modules/pg/lib/connection-parameters.js:3:13
+Module not found: Can't resolve 'dns'
+  1 | 'use strict'
+  2 |
+> 3 | const dns = require('dns')
+    |             ^^^^^^^^^^^^^^
+  4 |
+  5 | const defaults = require('./defaults')
+  6 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    5525ms] [ERROR] ./node_modules/pg-connection-string/index.js:82:70
+Module not found: Can't resolve 'fs'
+  80 |
+  81 |   // Only try to load fs if we expect to read from the disk
+> 82 |   const fs = config.sslcert || config.sslkey || config.sslrootcert ? require('fs') : null
+     |                                                                      ^^^^^^^^^^^^^
+  83 |
+  84 |   if (config.sslcert) {
+  85 |     config.ssl.cert = fs.readFileSync(config.sslcert).toString()
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    5527ms] [ERROR] ./node_modules/pgpass/lib/index.js:4:10
+Module not found: Can't resolve 'fs'
+  2 |
+  3 | var path = require('path')
+> 4 |   , fs = require('fs')
+    |          ^^^^^^^^^^^^^
+  5 |   , helper = require('./helper.js')
+  6 | ;
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    5529ms] [ERROR] ./node_modules/pg/lib/connection.js:93:19
+Module not found: Can't resolve 'net'
+  91 |       }
+  92 |
+> 93 |       const net = require('net')
+     |                   ^^^^^^^^^^^^^^
+  94 |       if (net.isIP && net.isIP(host) === 0) {
+  95 |         options.servername = host
+  96 |       }
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    5529ms] [ERROR] ./node_modules/pg/lib/stream.js:22:17
+Module not found: Can't resolve 'net'
+  20 | function getNodejsStreamFuncs() {
+  21 |   function getStream(ssl) {
+> 22 |     const net = require('net')
+     |                 ^^^^^^^^^^^^^^
+  23 |     return new net.Socket()
+  24 |   }
+  25 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    5530ms] [ERROR] ./node_modules/pg/lib/stream.js:27:17
+Module not found: Can't resolve 'tls'
+  25 |
+  26 |   function getSecureStream(options) {
+> 27 |     const tls = require('tls')
+     |                 ^^^^^^^^^^^^^^
+  28 |     return tls.connect(options)
+  29 |   }
+  30 |   return {
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    5540ms] [ERROR] Failed to load resource: the server responded with a status of 404 (Not Found) @ http://localhost:3001/favicon.ico:0
+[    6212ms] [ERROR] ./node_modules/pg/lib/connection-parameters.js:3:13
+Module not found: Can't resolve 'dns'
+  1 | 'use strict'
+  2 |
+> 3 | const dns = require('dns')
+    |             ^^^^^^^^^^^^^^
+  4 |
+  5 | const defaults = require('./defaults')
+  6 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6218ms] [ERROR] ./node_modules/pg-connection-string/index.js:82:70
+Module not found: Can't resolve 'fs'
+  80 |
+  81 |   // Only try to load fs if we expect to read from the disk
+> 82 |   const fs = config.sslcert || config.sslkey || config.sslrootcert ? require('fs') : null
+     |                                                                      ^^^^^^^^^^^^^
+  83 |
+  84 |   if (config.sslcert) {
+  85 |     config.ssl.cert = fs.readFileSync(config.sslcert).toString()
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6219ms] [ERROR] ./node_modules/pgpass/lib/index.js:4:10
+Module not found: Can't resolve 'fs'
+  2 |
+  3 | var path = require('path')
+> 4 |   , fs = require('fs')
+    |          ^^^^^^^^^^^^^
+  5 |   , helper = require('./helper.js')
+  6 | ;
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6222ms] [ERROR] ./node_modules/pg/lib/connection.js:93:19
+Module not found: Can't resolve 'net'
+  91 |       }
+  92 |
+> 93 |       const net = require('net')
+     |                   ^^^^^^^^^^^^^^
+  94 |       if (net.isIP && net.isIP(host) === 0) {
+  95 |         options.servername = host
+  96 |       }
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6226ms] [ERROR] ./node_modules/pg/lib/stream.js:22:17
+Module not found: Can't resolve 'net'
+  20 | function getNodejsStreamFuncs() {
+  21 |   function getStream(ssl) {
+> 22 |     const net = require('net')
+     |                 ^^^^^^^^^^^^^^
+  23 |     return new net.Socket()
+  24 |   }
+  25 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6227ms] [ERROR] ./node_modules/pg/lib/stream.js:27:17
+Module not found: Can't resolve 'tls'
+  25 |
+  26 |   function getSecureStream(options) {
+> 27 |     const tls = require('tls')
+     |                 ^^^^^^^^^^^^^^
+  28 |     return tls.connect(options)
+  29 |   }
+  30 |   return {
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6472ms] [ERROR] ./node_modules/pg/lib/connection-parameters.js:3:13
+Module not found: Can't resolve 'dns'
+  1 | 'use strict'
+  2 |
+> 3 | const dns = require('dns')
+    |             ^^^^^^^^^^^^^^
+  4 |
+  5 | const defaults = require('./defaults')
+  6 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6473ms] [ERROR] ./node_modules/pg-connection-string/index.js:82:70
+Module not found: Can't resolve 'fs'
+  80 |
+  81 |   // Only try to load fs if we expect to read from the disk
+> 82 |   const fs = config.sslcert || config.sslkey || config.sslrootcert ? require('fs') : null
+     |                                                                      ^^^^^^^^^^^^^
+  83 |
+  84 |   if (config.sslcert) {
+  85 |     config.ssl.cert = fs.readFileSync(config.sslcert).toString()
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6475ms] [ERROR] ./node_modules/pgpass/lib/index.js:4:10
+Module not found: Can't resolve 'fs'
+  2 |
+  3 | var path = require('path')
+> 4 |   , fs = require('fs')
+    |          ^^^^^^^^^^^^^
+  5 |   , helper = require('./helper.js')
+  6 | ;
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6476ms] [ERROR] ./node_modules/pg/lib/connection.js:93:19
+Module not found: Can't resolve 'net'
+  91 |       }
+  92 |
+> 93 |       const net = require('net')
+     |                   ^^^^^^^^^^^^^^
+  94 |       if (net.isIP && net.isIP(host) === 0) {
+  95 |         options.servername = host
+  96 |       }
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6478ms] [ERROR] ./node_modules/pg/lib/stream.js:22:17
+Module not found: Can't resolve 'net'
+  20 | function getNodejsStreamFuncs() {
+  21 |   function getStream(ssl) {
+> 22 |     const net = require('net')
+     |                 ^^^^^^^^^^^^^^
+  23 |     return new net.Socket()
+  24 |   }
+  25 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[    6479ms] [ERROR] ./node_modules/pg/lib/stream.js:27:17
+Module not found: Can't resolve 'tls'
+  25 |
+  26 |   function getSecureStream(options) {
+> 27 |     const tls = require('tls')
+     |                 ^^^^^^^^^^^^^^
+  28 |     return tls.connect(options)
+  29 |   }
+  30 |   return {
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   10465ms] [ERROR] ./node_modules/pg/lib/connection-parameters.js:3:13
+Module not found: Can't resolve 'dns'
+  1 | 'use strict'
+  2 |
+> 3 | const dns = require('dns')
+    |             ^^^^^^^^^^^^^^
+  4 |
+  5 | const defaults = require('./defaults')
+  6 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   10480ms] [ERROR] ./node_modules/pg-connection-string/index.js:82:70
+Module not found: Can't resolve 'fs'
+  80 |
+  81 |   // Only try to load fs if we expect to read from the disk
+> 82 |   const fs = config.sslcert || config.sslkey || config.sslrootcert ? require('fs') : null
+     |                                                                      ^^^^^^^^^^^^^
+  83 |
+  84 |   if (config.sslcert) {
+  85 |     config.ssl.cert = fs.readFileSync(config.sslcert).toString()
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   10481ms] [ERROR] ./node_modules/pgpass/lib/index.js:4:10
+Module not found: Can't resolve 'fs'
+  2 |
+  3 | var path = require('path')
+> 4 |   , fs = require('fs')
+    |          ^^^^^^^^^^^^^
+  5 |   , helper = require('./helper.js')
+  6 | ;
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   10482ms] [ERROR] ./node_modules/pg/lib/connection.js:93:19
+Module not found: Can't resolve 'net'
+  91 |       }
+  92 |
+> 93 |       const net = require('net')
+     |                   ^^^^^^^^^^^^^^
+  94 |       if (net.isIP && net.isIP(host) === 0) {
+  95 |         options.servername = host
+  96 |       }
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   10497ms] [ERROR] ./node_modules/pg/lib/stream.js:22:17
+Module not found: Can't resolve 'net'
+  20 | function getNodejsStreamFuncs() {
+  21 |   function getStream(ssl) {
+> 22 |     const net = require('net')
+     |                 ^^^^^^^^^^^^^^
+  23 |     return new net.Socket()
+  24 |   }
+  25 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   10498ms] [ERROR] ./node_modules/pg/lib/stream.js:27:17
+Module not found: Can't resolve 'tls'
+  25 |
+  26 |   function getSecureStream(options) {
+> 27 |     const tls = require('tls')
+     |                 ^^^^^^^^^^^^^^
+  28 |     return tls.connect(options)
+  29 |   }
+  30 |   return {
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   29261ms] [ERROR] ./node_modules/pg/lib/connection-parameters.js:3:13
+Module not found: Can't resolve 'dns'
+  1 | 'use strict'
+  2 |
+> 3 | const dns = require('dns')
+    |             ^^^^^^^^^^^^^^
+  4 |
+  5 | const defaults = require('./defaults')
+  6 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   29261ms] [ERROR] ./node_modules/pg-connection-string/index.js:82:70
+Module not found: Can't resolve 'fs'
+  80 |
+  81 |   // Only try to load fs if we expect to read from the disk
+> 82 |   const fs = config.sslcert || config.sslkey || config.sslrootcert ? require('fs') : null
+     |                                                                      ^^^^^^^^^^^^^
+  83 |
+  84 |   if (config.sslcert) {
+  85 |     config.ssl.cert = fs.readFileSync(config.sslcert).toString()
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   29263ms] [ERROR] ./node_modules/pgpass/lib/index.js:4:10
+Module not found: Can't resolve 'fs'
+  2 |
+  3 | var path = require('path')
+> 4 |   , fs = require('fs')
+    |          ^^^^^^^^^^^^^
+  5 |   , helper = require('./helper.js')
+  6 | ;
+  7 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   29263ms] [ERROR] ./node_modules/pg/lib/connection.js:93:19
+Module not found: Can't resolve 'net'
+  91 |       }
+  92 |
+> 93 |       const net = require('net')
+     |                   ^^^^^^^^^^^^^^
+  94 |       if (net.isIP && net.isIP(host) === 0) {
+  95 |         options.servername = host
+  96 |       }
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   29264ms] [ERROR] ./node_modules/pg/lib/stream.js:22:17
+Module not found: Can't resolve 'net'
+  20 | function getNodejsStreamFuncs() {
+  21 |   function getStream(ssl) {
+> 22 |     const net = require('net')
+     |                 ^^^^^^^^^^^^^^
+  23 |     return new net.Socket()
+  24 |   }
+  25 |
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   29265ms] [ERROR] ./node_modules/pg/lib/stream.js:27:17
+Module not found: Can't resolve 'tls'
+  25 |
+  26 |   function getSecureStream(options) {
+> 27 |     const tls = require('tls')
+     |                 ^^^^^^^^^^^^^^
+  28 |     return tls.connect(options)
+  29 |   }
+  30 |   return {
+
+https://nextjs.org/docs/messages/module-not-found @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193

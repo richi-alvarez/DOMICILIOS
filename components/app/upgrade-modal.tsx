@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { Zap, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { type PlanCode, PLAN_NAMES, formatLimit } from '@/lib/billing/limits'
+import { type PlanCode, PLAN_NAMES, formatLimit } from '@/lib/billing/constants-only'
 
 interface Props {
   open: boolean

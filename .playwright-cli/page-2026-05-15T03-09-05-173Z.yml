@@ -1,0 +1,75 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "D Domicilios" [ref=e6] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e8]: D
+        - generic [ref=e9]: Domicilios
+      - generic [ref=e10]:
+        - navigation [ref=e11]:
+          - link "Mis catálogos" [ref=e12] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e13]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e18] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e19]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e24] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e25]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e27] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e28]
+          - text: Nuevo catálogo
+      - generic [ref=e30]:
+        - generic [ref=e31]: T
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - paragraph [ref=e34]: Test User AI
+            - generic [ref=e35]: Gratis
+          - paragraph [ref=e36]: test.ai.user@example.com
+        - button "Cerrar sesión" [ref=e37]:
+          - img [ref=e38]
+    - main [ref=e41]:
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - generic [ref=e47]: "1"
+            - generic [ref=e50]: "2"
+            - generic [ref=e53]: "3"
+          - paragraph [ref=e54]: Paso 1 de 3
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - heading "¡Bienvenido, Test!" [level=1] [ref=e58]
+            - paragraph [ref=e59]: Cuéntanos sobre tu negocio para personalizar tu experiencia.
+          - generic [ref=e60]:
+            - text: Nombre del negocio *
+            - 'textbox "Ej: Hamburguesas La Cumbre" [active] [ref=e61]'
+          - generic [ref=e62]:
+            - text: Tipo de negocio *
+            - generic [ref=e63]:
+              - button "Restaurante Menú digital, pedidos por WhatsApp" [ref=e64]:
+                - img [ref=e65]
+                - generic [ref=e68]: Restaurante
+                - generic [ref=e69]: Menú digital, pedidos por WhatsApp
+              - button "Tienda Catálogo de productos" [ref=e70]:
+                - img [ref=e71]
+                - generic [ref=e74]: Tienda
+                - generic [ref=e75]: Catálogo de productos
+              - button "Servicios Portafolio de servicios" [ref=e76]:
+                - img [ref=e77]
+                - generic [ref=e80]: Servicios
+                - generic [ref=e81]: Portafolio de servicios
+              - button "Otro Cualquier tipo de negocio" [ref=e82]:
+                - img [ref=e83]
+                - generic [ref=e88]: Otro
+                - generic [ref=e89]: Cualquier tipo de negocio
+          - button "Continuar" [disabled]:
+            - text: Continuar
+            - img
+  - region "Notifications alt+T"
+  - alert [ref=e90]
+  - button "Open Next.js Dev Tools" [ref=e96] [cursor=pointer]:
+    - img [ref=e97]

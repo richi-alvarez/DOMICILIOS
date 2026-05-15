@@ -88,77 +88,82 @@ export function TeamManager({ team }: TeamManagerProps) {
   }
 
   return (
-    <div className="space-y-8 max-w-3xl">
+    <div className="mx-auto w-full max-w-4xl space-y-6 sm:space-y-8">
       {/* Status messages */}
       {error && (
-        <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs sm:px-4 sm:py-3 sm:text-sm text-red-700 animate-in slide-in-from-top-2">
           <X className="h-4 w-4 shrink-0" />
-          {error}
+          <span>{error}</span>
         </div>
       )}
       {success && (
-        <div className="flex items-center gap-2 rounded-xl border border-lime-200 bg-lime-50 px-4 py-3 text-sm text-lime-700">
+        <div className="flex items-center gap-2 rounded-xl border border-lime-200 bg-lime-50 px-3 py-2 text-xs sm:px-4 sm:py-3 sm:text-sm text-lime-700 animate-in slide-in-from-top-2">
           <span className="font-semibold">{success}</span>
         </div>
       )}
 
       {/* Invite form */}
-      <div className="rounded-2xl border border-warm-200 bg-white p-6">
-        <div className="mb-5 flex items-center justify-between">
+      <div className="rounded-2xl border border-warm-200 bg-white p-4 sm:p-6">
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="font-display text-lg font-bold text-night-800">Invitar colaborador</h2>
-            <p className="text-sm text-night-400">
+            <p className="mt-1 text-xs sm:text-sm text-night-400">
               {currentCount} / {collaboratorLimit === -1 ? '∞' : collaboratorLimit} colaboradores usados
               <span className="ml-2 rounded-full bg-warm-100 px-2 py-0.5 text-xs capitalize text-warm-600">{planCode}</span>
             </p>
           </div>
-          <UserPlus className="h-5 w-5 text-warm-400" />
+          <UserPlus className="hidden h-5 w-5 shrink-0 text-warm-400 sm:block" />
         </div>
 
         {atLimit ? (
-          <div className="rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-700">
-            Llegaste al límite de colaboradores de tu plan. <a href="/app/billing" className="font-semibold underline">Actualiza tu plan</a> para agregar más.
+          <div className="rounded-xl bg-amber-50 border border-amber-200 p-3 text-xs sm:p-4 sm:text-sm text-amber-700">
+            Llegaste al límite de colaboradores. <a href="/app/billing" className="font-semibold underline">Actualiza tu plan</a> para agregar más.
           </div>
         ) : (
-          <form onSubmit={handleInvite} className="flex flex-col gap-3 sm:flex-row sm:items-end">
-            <div className="flex-1">
-              <label className="mb-1.5 block text-xs font-semibold text-night-600">Correo electrónico</label>
-              <input
-                type="email"
-                required
-                value={inviteEmail}
-                onChange={(e) => setInviteEmail(e.target.value)}
-                placeholder="colaborador@empresa.com"
-                className="w-full rounded-xl border border-warm-200 bg-warm-50 px-3 py-2.5 text-sm text-night-800 placeholder:text-warm-400 focus:border-primary-400 focus:bg-white focus:outline-none"
-              />
+          <form onSubmit={handleInvite} className="flex flex-col gap-3">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_minmax(140px,_1fr)_auto]">
+              <div>
+                <label className="mb-1.5 block text-xs font-semibold text-night-600">Correo electrónico</label>
+                <input
+                  type="email"
+                  required
+                  value={inviteEmail}
+                  onChange={(e) => setInviteEmail(e.target.value)}
+                  placeholder="colaborador@empresa.com"
+                  className="w-full rounded-xl border border-warm-200 bg-warm-50 px-3 py-2.5 text-sm text-night-800 placeholder:text-warm-400 focus:border-primary-400 focus:bg-white focus:outline-none"
+                />
+              </div>
+              <div>
+                <label className="mb-1.5 block text-xs font-semibold text-night-600">Rol</label>
+                <select
+                  value={inviteRole}
+                  onChange={(e) => setInviteRole(e.target.value as any)}
+                  className="w-full rounded-xl border border-warm-200 bg-warm-50 px-3 py-2.5 text-sm text-night-800 focus:border-primary-400 focus:bg-white focus:outline-none"
+                >
+                  <option value="admin">Admin</option>
+                  <option value="editor">Editor</option>
+                  <option value="viewer">Visualizador</option>
+                </select>
+              </div>
+              <div className="flex items-end sm:pt-0">
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-primary-500 px-4 sm:px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-600 disabled:opacity-60"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span className="hidden sm:inline">Enviar invitación</span>
+                  <span className="sm:hidden">Invitar</span>
+                </button>
+              </div>
             </div>
-            <div className="w-44">
-              <label className="mb-1.5 block text-xs font-semibold text-night-600">Rol</label>
-              <select
-                value={inviteRole}
-                onChange={(e) => setInviteRole(e.target.value as any)}
-                className="w-full rounded-xl border border-warm-200 bg-warm-50 px-3 py-2.5 text-sm text-night-800 focus:border-primary-400 focus:bg-white focus:outline-none"
-              >
-                <option value="admin">Admin</option>
-                <option value="editor">Editor</option>
-                <option value="viewer">Visualizador</option>
-              </select>
-            </div>
-            <button
-              type="submit"
-              disabled={isPending}
-              className="flex items-center gap-2 rounded-xl bg-primary-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-600 disabled:opacity-60"
-            >
-              <Mail className="h-4 w-4" />
-              Enviar invitación
-            </button>
           </form>
         )}
       </div>
 
       {/* Active members */}
       <div className="rounded-2xl border border-warm-200 bg-white overflow-hidden">
-        <div className="border-b border-warm-100 px-6 py-4">
+        <div className="border-b border-warm-100 px-4 sm:px-6 py-4">
           <h2 className="font-display text-lg font-bold text-night-800">Miembros activos</h2>
         </div>
         <ul className="divide-y divide-warm-100">
@@ -166,49 +171,53 @@ export function TeamManager({ team }: TeamManagerProps) {
             const roleMeta = ROLE_META[member.role] ?? ROLE_META['viewer']
             const RoleIcon = roleMeta.icon
             return (
-              <li key={member.userId} className="flex items-center gap-4 px-6 py-4">
-                {/* Avatar */}
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-600">
-                  {member.image ? (
-                    <img src={member.image} alt={member.name ?? ''} className="h-10 w-10 rounded-full object-cover" />
+              <li key={member.userId} className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:gap-4 sm:px-6 sm:py-4">
+                {/* Avatar + Info */}
+                <div className="flex items-center gap-3 sm:gap-4 flex-1">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-600">
+                    {member.image ? (
+                      <img src={member.image} alt={member.name ?? ''} className="h-10 w-10 rounded-full object-cover" />
+                    ) : (
+                      (member.name?.charAt(0) ?? member.email.charAt(0)).toUpperCase()
+                    )}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-semibold text-night-800">{member.name ?? member.email}</p>
+                    <p className="truncate text-xs text-night-400">{member.email}</p>
+                  </div>
+                </div>
+
+                {/* Role + Actions */}
+                <div className="flex items-center gap-2 ml-auto sm:ml-0">
+                  {member.isOwner ? (
+                    <span className={cn('flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold whitespace-nowrap', ROLE_META['owner'].color)}>
+                      <Crown className="h-3 w-3" />
+                      <span className="hidden sm:inline">Propietario</span>
+                      <span className="sm:hidden">Prop.</span>
+                    </span>
                   ) : (
-                    (member.name?.charAt(0) ?? member.email.charAt(0)).toUpperCase()
+                    <>
+                      <select
+                        defaultValue={member.role}
+                        onChange={(e) => handleRoleChange(member.userId, e.target.value)}
+                        disabled={isPending}
+                        className="rounded-lg border border-warm-200 bg-warm-50 px-2 py-1 text-xs font-semibold text-night-700 focus:outline-none"
+                      >
+                        <option value="admin">Admin</option>
+                        <option value="editor">Editor</option>
+                        <option value="viewer">Viz.</option>
+                      </select>
+                      <button
+                        onClick={() => handleRemove(member.userId, member.name)}
+                        disabled={isPending}
+                        className="shrink-0 rounded-lg p-1.5 text-warm-400 transition hover:bg-red-50 hover:text-red-500 disabled:opacity-40"
+                        title="Eliminar miembro"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    </>
                   )}
                 </div>
-                {/* Info */}
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold text-night-800">{member.name ?? member.email}</p>
-                  <p className="truncate text-xs text-night-400">{member.email}</p>
-                </div>
-                {/* Role */}
-                {member.isOwner ? (
-                  <span className={cn('flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-semibold', ROLE_META['owner'].color)}>
-                    <Crown className="h-3 w-3" />
-                    Propietario
-                  </span>
-                ) : (
-                  <select
-                    defaultValue={member.role}
-                    onChange={(e) => handleRoleChange(member.userId, e.target.value)}
-                    disabled={isPending}
-                    className="rounded-lg border border-warm-200 bg-warm-50 px-2 py-1 text-xs font-semibold text-night-700 focus:outline-none"
-                  >
-                    <option value="admin">Admin</option>
-                    <option value="editor">Editor</option>
-                    <option value="viewer">Visualizador</option>
-                  </select>
-                )}
-                {/* Remove */}
-                {!member.isOwner && (
-                  <button
-                    onClick={() => handleRemove(member.userId, member.name)}
-                    disabled={isPending}
-                    className="shrink-0 rounded-lg p-1.5 text-warm-400 transition hover:bg-red-50 hover:text-red-500 disabled:opacity-40"
-                    title="Eliminar miembro"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </button>
-                )}
               </li>
             )
           })}
@@ -218,34 +227,38 @@ export function TeamManager({ team }: TeamManagerProps) {
       {/* Pending invites */}
       {invites.length > 0 && (
         <div className="rounded-2xl border border-warm-200 bg-white overflow-hidden">
-          <div className="border-b border-warm-100 px-6 py-4">
+          <div className="border-b border-warm-100 px-4 sm:px-6 py-4">
             <h2 className="font-display text-lg font-bold text-night-800">Invitaciones pendientes</h2>
           </div>
           <ul className="divide-y divide-warm-100">
             {invites.map((invite) => {
               const roleMeta = ROLE_META[invite.role] ?? ROLE_META['viewer']
               return (
-                <li key={invite.id} className="flex items-center gap-4 px-6 py-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-warm-100">
-                    <Clock className="h-5 w-5 text-warm-400" />
+                <li key={invite.id} className="flex flex-col gap-3 px-4 py-3 sm:flex-row sm:items-center sm:gap-4 sm:px-6 sm:py-4">
+                  <div className="flex items-center gap-3 sm:gap-4 flex-1">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-warm-100">
+                      <Clock className="h-5 w-5 text-warm-400" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="truncate text-sm font-semibold text-night-700">{invite.email}</p>
+                      <p className="text-xs text-night-400">
+                        Expira {new Date(invite.expiresAt).toLocaleDateString('es', { day: 'numeric', month: 'short' })}
+                      </p>
+                    </div>
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-semibold text-night-700">{invite.email}</p>
-                    <p className="text-xs text-night-400">
-                      Expira {new Date(invite.expiresAt).toLocaleDateString('es', { day: 'numeric', month: 'short' })}
-                    </p>
+                  <div className="flex items-center gap-2 ml-auto sm:ml-0">
+                    <span className={cn('rounded-full px-2.5 py-1 text-xs font-semibold whitespace-nowrap', roleMeta.color)}>
+                      {roleMeta.label}
+                    </span>
+                    <button
+                      onClick={() => handleCancelInvite(invite.id)}
+                      disabled={isPending}
+                      className="shrink-0 rounded-lg p-1.5 text-warm-400 transition hover:bg-red-50 hover:text-red-500 disabled:opacity-40"
+                      title="Cancelar invitación"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
                   </div>
-                  <span className={cn('rounded-full px-2.5 py-1 text-xs font-semibold', roleMeta.color)}>
-                    {roleMeta.label}
-                  </span>
-                  <button
-                    onClick={() => handleCancelInvite(invite.id)}
-                    disabled={isPending}
-                    className="shrink-0 rounded-lg p-1.5 text-warm-400 transition hover:bg-red-50 hover:text-red-500 disabled:opacity-40"
-                    title="Cancelar invitación"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
                 </li>
               )
             })}
@@ -254,18 +267,18 @@ export function TeamManager({ team }: TeamManagerProps) {
       )}
 
       {/* Role legend */}
-      <div className="rounded-2xl border border-warm-100 bg-warm-50 p-5">
-        <h3 className="mb-3 text-xs font-bold uppercase tracking-wider text-warm-500">Niveles de acceso</h3>
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+      <div className="rounded-2xl border border-warm-100 bg-warm-50 p-4 sm:p-5">
+        <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-warm-500">Niveles de acceso</h3>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {(['admin', 'editor', 'viewer'] as const).map((role) => {
             const meta = ROLE_META[role]
             const Icon = meta.icon
             return (
-              <div key={role} className="flex items-start gap-2">
-                <span className={cn('mt-0.5 rounded-full p-1', meta.color)}>
+              <div key={role} className="flex items-start gap-3 rounded-lg bg-white p-3 sm:p-4">
+                <span className={cn('mt-0.5 shrink-0 rounded-full p-1', meta.color)}>
                   <Icon className="h-3 w-3" />
                 </span>
-                <div>
+                <div className="min-w-0 flex-1">
                   <p className="text-xs font-semibold text-night-700">{meta.label}</p>
                   <p className="text-xs text-night-400">{meta.description}</p>
                 </div>

@@ -49,6 +49,8 @@ Para reutilizar en testing - EMPEZAR AQUÍ
 |---------|-------------|
 | [QA_FLOW_SUMMARY_2026_05_14.md](./QA_FLOW_SUMMARY_2026_05_14.md) | **⭐ RESUMEN COMPLETO** - QA + Dev flujo completado (empezar aquí para visión general) |
 | [QA_CATALOGS_VERIFICATION_2026_05_14.md](./QA_CATALOGS_VERIFICATION_2026_05_14.md) | **⭐ VERIFICACIÓN** - 15 catálogos verificados en BD + UI testing |
+| [QA_CATALOG_DETAILS_FIX_2026_05_14.md](./QA_CATALOG_DETAILS_FIX_2026_05_14.md) | **🔧 FIX** - Error 500 resuelto, página de detalles funcionando (primera solución) |
+| [QA_CATALOG_DETAILS_PAGE_FIXED_2026_05_15.md](./QA_CATALOG_DETAILS_PAGE_FIXED_2026_05_15.md) | **✅ COMPLETADO** - Página de detalles 100% operativa con QR code y verificación multi-usuario |
 | [QA_IMPLEMENTATION_NOTES_2026_05_14.md](./QA_IMPLEMENTATION_NOTES_2026_05_14.md) | **⭐ DETALLES** - Cambios de código y validación de límites |
 | [QA_FINAL_REPORT.md](./QA_FINAL_REPORT.md) | Reporte final consolidado |
 | [QA_RECOMMENDATIONS.md](./QA_RECOMMENDATIONS.md) | Recomendaciones de mejora |
@@ -89,10 +91,11 @@ Para reutilizar en testing - EMPEZAR AQUÍ
 | Setup PostgreSQL | ✅ | [QA_TESTING_SESSION_2026_05_15.md](./QA_TESTING_SESSION_2026_05_15.md) |
 | Crear Usuarios | ✅ | [QA_USERS_CREATED_2026_05_15.md](./QA_USERS_CREATED_2026_05_15.md) |
 | Asignar Planes | ✅ | [USUARIOS_Y_PLANES_FINAL.md](./USUARIOS_Y_PLANES_FINAL.md) |
-| Login | ⏳ | [QA_FINAL_LOGIN_TEST.md](./QA_FINAL_LOGIN_TEST.md) |
+| Login | ✅ | [QA_FINAL_LOGIN_TEST.md](./QA_FINAL_LOGIN_TEST.md) |
 | Google OAuth | ⏳ | [QA_GOOGLE_AUTH_VERIFICATION.md](./QA_GOOGLE_AUTH_VERIFICATION.md) |
 | Crear Catálogos | ✅ | [QA_CATALOGS_BY_PLAN_2026_05_14.md](./QA_CATALOGS_BY_PLAN_2026_05_14.md) |
-| Validar Límites | ⏳ | [QA_CATALOGS_BY_PLAN_2026_05_14.md](./QA_CATALOGS_BY_PLAN_2026_05_14.md) |
+| Validar Límites | ✅ | [QA_CATALOGS_BY_PLAN_2026_05_14.md](./QA_CATALOGS_BY_PLAN_2026_05_14.md) |
+| Ver Detalles Catálogo | ✅ | [QA_CATALOG_DETAILS_PAGE_FIXED_2026_05_15.md](./QA_CATALOG_DETAILS_PAGE_FIXED_2026_05_15.md) |
 
 ---
 

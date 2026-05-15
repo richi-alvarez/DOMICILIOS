@@ -1,0 +1,18 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "D Domicilios" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e6]: D
+      - generic [ref=e7]: Domicilios
+    - generic [ref=e44]:
+      - generic [ref=e45]:
+        - heading "Crea tu cuenta gratis" [level=3] [ref=e46]
+        - paragraph [ref=e47]: Sin tarjeta de crédito · Tu catálogo en minutos
+      - generic [ref=e74]:
+        - img [ref=e76]
+        - heading "¡Cuenta creada!" [level=3] [ref=e79]
+        - paragraph [ref=e80]: Revisa tu correo para verificar tu cuenta. Redirigiendo…
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Crear cuenta | Domicilios
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]

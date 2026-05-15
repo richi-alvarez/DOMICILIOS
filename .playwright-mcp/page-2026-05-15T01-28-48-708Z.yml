@@ -1,0 +1,87 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e45]:
+    - complementary [ref=e46]:
+      - link "D Domicilios" [ref=e48] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e50]: D
+        - generic [ref=e51]: Domicilios
+      - generic [ref=e52]:
+        - navigation [ref=e53]:
+          - link "Mis catálogos" [ref=e54] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e55]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e60] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e61]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e66] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e67]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e69] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e70]
+          - text: Nuevo catálogo
+      - generic [ref=e72]:
+        - generic [ref=e73]: M
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - paragraph [ref=e76]: María López
+            - generic [ref=e77]: Pro
+          - paragraph [ref=e78]: maria.lopez@test.com
+        - button "Cerrar sesión" [ref=e79]:
+          - img [ref=e80]
+    - main [ref=e83]:
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - heading "Mis catálogos" [level=1] [ref=e87]
+            - paragraph [ref=e88]: 4 catálogos
+          - link "Mejorar plan" [ref=e89] [cursor=pointer]:
+            - /url: /plans
+            - button "Mejorar plan" [ref=e90]:
+              - img
+              - text: Mejorar plan
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - img [ref=e93]
+            - paragraph [ref=e95]:
+              - text: Has alcanzado el límite de
+              - strong [ref=e96]: 3 catálogos
+              - text: del plan Pro.
+          - link "Ver planes →" [ref=e97] [cursor=pointer]:
+            - /url: /plans
+        - generic [ref=e98]:
+          - link "Borrador pasteles /prueba" [ref=e99] [cursor=pointer]:
+            - /url: /app/catalogs/7219e7bb-85b5-4c83-a5af-a486d3e0a273
+            - generic [ref=e100]:
+              - img [ref=e102]
+              - generic [ref=e105]: Borrador
+            - heading "pasteles" [level=3] [ref=e106]
+            - paragraph [ref=e107]: /prueba
+          - link "Borrador Restaurante María López /maria-restaurante" [ref=e108] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4
+            - generic [ref=e109]:
+              - img [ref=e111]
+              - generic [ref=e114]: Borrador
+            - heading "Restaurante María López" [level=3] [ref=e115]
+            - paragraph [ref=e116]: /maria-restaurante
+          - link "Borrador Pastelería María /maria-pasteleria" [ref=e117] [cursor=pointer]:
+            - /url: /app/catalogs/9099476c-fe78-4f64-8807-ca5a7b3fe92c
+            - generic [ref=e118]:
+              - img [ref=e120]
+              - generic [ref=e123]: Borrador
+            - heading "Pastelería María" [level=3] [ref=e124]
+            - paragraph [ref=e125]: /maria-pasteleria
+          - link "Borrador Bebidas y Refrescos María /maria-bebidas" [ref=e126] [cursor=pointer]:
+            - /url: /app/catalogs/093771dd-4089-4f5b-97f1-b34cf46c8564
+            - generic [ref=e127]:
+              - img [ref=e129]
+              - generic [ref=e132]: Borrador
+            - heading "Bebidas y Refrescos María" [level=3] [ref=e133]
+            - paragraph [ref=e134]: /maria-bebidas
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Mis catálogos | Domicilios
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]

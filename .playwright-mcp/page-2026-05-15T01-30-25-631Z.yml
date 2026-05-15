@@ -1,0 +1,6 @@
+- generic [active] [ref=e1]:
+  - paragraph [ref=e49]: Cargando…
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Mis catálogos | Domicilios
+  - button "Open Next.js Dev Tools" [ref=e41] [cursor=pointer]:
+    - img [ref=e42]

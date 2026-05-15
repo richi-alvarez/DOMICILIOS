@@ -1,0 +1,41 @@
+[     120ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[     163ms] [LOG] [Fast Refresh] done in 143ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[     342ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:16383
+[     354ms] [LOG] %c%s%c 
+[JWT CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?22:708
+[     355ms] [LOG] %c%s%c [JWT CALLBACK] Entrada: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?24:709
+[     355ms] [LOG] %c%s%c [JWT CALLBACK] Token final: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: 1a96d908-e389-45d8-86c4-94c303e23fc9, email: juan.rodriguez@test.com, hasId: true} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?25:733
+[     355ms] [LOG] %c%s%c [JWT CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?26:738
+[     355ms] [LOG] %c%s%c 
+[SESSION CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?27:742
+[     355ms] [LOG] %c%s%c [SESSION CALLBACK] Session user antes: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: juan.rodriguez@test.com} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?28:743
+[     356ms] [LOG] %c%s%c [SESSION CALLBACK] Token: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: 1a96d908-e389-45d8-86c4-94c303e23fc9, email: juan.rodriguez@test.com, sub: 1a96d908-e389-45d8-86c4-94c303e23fc9} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?29:747
+[     356ms] [LOG] %c%s%c [SESSION CALLBACK] Session actualizado con usuario ID: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   1a96d908-e389-45d8-86c4-94c303e23fc9 @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?30:754
+[     356ms] [LOG] %c%s%c [SESSION CALLBACK] Session user después: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: juan.rodriguez@test.com, id: 1a96d908-e389-45d8-86c4-94c303e23fc9} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?31:758
+[     356ms] [LOG] %c%s%c [SESSION CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?32:762
+[     510ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[     588ms] [LOG] [Fast Refresh] done in 179ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[     711ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[     774ms] [LOG] [Fast Refresh] done in 124ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[     899ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[    1011ms] [LOG] [Fast Refresh] done in 212ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[    5369ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[    5373ms] [LOG] [Fast Refresh] done in 104ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[    8783ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[    8860ms] [LOG] [Fast Refresh] done in 176ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   18296ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   18321ms] [LOG] [Fast Refresh] done in 125ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   29389ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   29409ms] [LOG] [Fast Refresh] done in 120ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   32652ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   32752ms] [LOG] [Fast Refresh] done in 199ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   37110ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   37202ms] [LOG] [Fast Refresh] done in 157ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   40847ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   40893ms] [LOG] [Fast Refresh] done in 146ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[  110301ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  110410ms] [LOG] [Fast Refresh] done in 187ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[  112996ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[  113095ms] [LOG] [Fast Refresh] done in 176ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891

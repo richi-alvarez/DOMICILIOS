@@ -1,0 +1,145 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - link "D Domicilios" [ref=e5] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e7]: D
+        - generic [ref=e8]: Domicilios
+      - generic [ref=e9]:
+        - navigation [ref=e10]:
+          - link "Mis catálogos" [ref=e11] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e12]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e17] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e18]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e23] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e24]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e26] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e27]
+          - text: Nuevo catálogo
+      - generic [ref=e29]:
+        - generic [ref=e30]: J
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - paragraph [ref=e33]: Juan Rodríguez
+            - generic [ref=e34]: Premium
+          - paragraph [ref=e35]: juan.rodriguez@test.com
+        - button "Cerrar sesión" [ref=e36]:
+          - img [ref=e37]
+    - main [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e44] [cursor=pointer]:
+          - img [ref=e45]
+          - heading "Restaurante María López" [level=1] [ref=e47]
+        - generic [ref=e48]:
+          - generic [ref=e49]:
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - generic [ref=e56]:
+                  - button "Ocultar ▲" [ref=e123]
+                  - button "PNG" [ref=e58]:
+                    - img [ref=e59]
+                    - text: PNG
+                  - button "SVG" [ref=e62]:
+                    - img [ref=e63]
+                    - text: SVG
+                  - button "Imprimir QR" [ref=e66]
+                - generic [ref=e67]:
+                  - generic [ref=e68]: "URL:"
+                  - generic [ref=e69]:
+                    - textbox [ref=e70]: http://localhost:3000/s/maria-restaurante
+                    - button "📋" [ref=e71]
+                  - generic [ref=e72]:
+                    - link "Visitar" [ref=e73] [cursor=pointer]:
+                      - /url: http://localhost:3000/s/maria-restaurante
+                    - button "Editar Diseño" [ref=e74]
+              - generic [ref=e125]:
+                - generic [ref=e126]:
+                  - heading "ESTILO DE PUNTOS" [level=3] [ref=e127]
+                  - generic [ref=e128]:
+                    - button "rounded" [ref=e129]
+                    - button "dots" [ref=e130]
+                    - button "classy" [active] [ref=e131]
+                    - button "classy-rounded" [ref=e132]
+                    - button "square" [ref=e133]
+                    - button "extra-rounded" [ref=e134]
+                - generic [ref=e135]:
+                  - heading "ESTILO DE ESQUINAS" [level=3] [ref=e136]
+                  - generic [ref=e137]:
+                    - button "square" [ref=e138]
+                    - button "dot" [ref=e139]
+                    - button "extra-rounded" [ref=e140]
+                - generic [ref=e141]:
+                  - heading "COLOR" [level=3] [ref=e142]
+                  - generic [ref=e143]:
+                    - button "Cyan" [ref=e144]
+                    - button "Negro" [ref=e145]
+                    - button "Púrpura" [ref=e146]
+                    - button "Verde" [ref=e147]
+                    - button "Rojo" [ref=e148]
+                    - button "Naranja" [ref=e149]
+                - generic [ref=e150]:
+                  - heading "FONDO" [level=3] [ref=e151]
+                  - generic [ref=e152]:
+                    - button "Blanco" [ref=e153]
+                    - button "Transparente" [ref=e154]
+                - generic [ref=e155]:
+                  - heading "TAMAÑO DE DESCARGA" [level=3] [ref=e156]
+                  - generic [ref=e157]:
+                    - button "S 300px" [ref=e158]
+                    - button "M 600px" [ref=e159]
+                    - button "L 1200px" [ref=e160]
+                - generic [ref=e161]:
+                  - heading "LOGO" [level=3] [ref=e162]
+                  - button "Subir logo" [ref=e164]:
+                    - img [ref=e165]
+                    - text: Subir logo
+            - generic [ref=e75]:
+              - heading "Información" [level=2] [ref=e76]
+              - generic [ref=e77]:
+                - generic [ref=e78]:
+                  - term [ref=e79]: "Nombre:"
+                  - definition [ref=e80]: Restaurante María López
+                - generic [ref=e81]:
+                  - term [ref=e82]: "Slug:"
+                  - definition [ref=e83]: /maria-restaurante
+                - generic [ref=e84]:
+                  - term [ref=e85]: "Estado:"
+                  - definition [ref=e86]: Borrador
+                - generic [ref=e87]:
+                  - term [ref=e88]: "Idioma:"
+                  - definition [ref=e89]: ES
+                - generic [ref=e90]:
+                  - term [ref=e91]: "Moneda:"
+                  - definition [ref=e92]: COP
+                - generic [ref=e93]:
+                  - term [ref=e94]: "Canal de pedidos:"
+                  - definition [ref=e95]: WhatsApp
+                - generic [ref=e96]:
+                  - term [ref=e97]: "Fecha de creación:"
+                  - definition [ref=e98]: 14 de mayo de 2026
+                - generic [ref=e99]:
+                  - term [ref=e100]: "Última actualización:"
+                  - definition [ref=e101]: 14 de mayo de 2026
+                - generic [ref=e102]:
+                  - term [ref=e103]: "Email de contacto:"
+                  - definition [ref=e104]: maria.lopez@test.com
+                - generic [ref=e105]:
+                  - term [ref=e106]: "Teléfono:"
+                  - definition [ref=e107]: +57 3009876543
+          - generic [ref=e108]:
+            - heading "SEO y Vista Previa" [level=2] [ref=e109]
+            - button "📋 Logo y SEO" [ref=e110]
+            - generic [ref=e111]:
+              - paragraph [ref=e112]: ¡Conecta tu dominio personalizado aquí!
+              - paragraph [ref=e113]: ej. www.mitienda.com
+  - region "Notifications alt+T"
+  - alert [ref=e42]
+  - button "Open Next.js Dev Tools" [ref=e119] [cursor=pointer]:
+    - img [ref=e120]

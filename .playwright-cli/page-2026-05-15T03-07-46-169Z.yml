@@ -1,0 +1,101 @@
+- generic [active] [ref=e1]:
+  - table [ref=e3]:
+    - rowgroup [ref=e4]:
+      - 'row "( ! ) Fatal error: Cannot declare class App\\Controller\\SecurityCustomDashboardController, because the name is already in use in /var/www/html/src/Controller/SecurityCustomDashboardController.php on line 33" [ref=e5]':
+        - 'columnheader "( ! ) Fatal error: Cannot declare class App\\Controller\\SecurityCustomDashboardController, because the name is already in use in /var/www/html/src/Controller/SecurityCustomDashboardController.php on line 33" [ref=e6]'
+      - row "Call Stack" [ref=e7]:
+        - columnheader "Call Stack" [ref=e8]
+      - row "# Time Memory Function Location" [ref=e9]:
+        - columnheader "#" [ref=e10]
+        - columnheader "Time" [ref=e11]
+        - columnheader "Memory" [ref=e12]
+        - columnheader "Function" [ref=e13]
+        - columnheader "Location" [ref=e14]
+      - 'row "1 0.0041 411152 {main}( ) .../index.php:0" [ref=e15]':
+        - cell "1" [ref=e16]
+        - cell "0.0041" [ref=e17]
+        - cell "411152" [ref=e18]
+        - 'cell "{main}( )" [ref=e19]'
+        - cell ".../index.php:0" [ref=e20]
+      - row [ref=e21]:
+        - cell "2" [ref=e22]
+        - cell "0.1648" [ref=e23]
+        - cell "3422768" [ref=e24]
+        - cell [ref=e25]
+        - cell ".../index.php:37" [ref=e26]
+      - row [ref=e27]:
+        - cell "3" [ref=e28]
+        - cell "0.4798" [ref=e29]
+        - cell "16082888" [ref=e30]
+        - cell [ref=e31]
+        - cell ".../Kernel.php:202" [ref=e32]
+      - row [ref=e33]:
+        - cell "4" [ref=e34]
+        - cell "0.4800" [ref=e35]
+        - cell "16084320" [ref=e36]
+        - cell [ref=e37]
+        - cell ".../HttpKernel.php:75" [ref=e38]
+      - row [ref=e39]:
+        - cell "5" [ref=e40]
+        - cell "2.0619" [ref=e41]
+        - cell "26222392" [ref=e42]
+        - cell [ref=e43]
+        - cell ".../HttpKernel.php:146" [ref=e44]
+      - row "6 2.0621 26222392 Symfony\\Component\\HttpKernel\\Controller\\ContainerControllerResolver->createController( $controller = 'App\\\\Controller\\\\SecurityCustomDashboardController::login' ) .../ControllerResolver.php:86" [ref=e45]:
+        - cell "6" [ref=e46]
+        - cell "2.0621" [ref=e47]
+        - cell "26222392" [ref=e48]
+        - cell "Symfony\\Component\\HttpKernel\\Controller\\ContainerControllerResolver->createController( $controller = 'App\\\\Controller\\\\SecurityCustomDashboardController::login' )" [ref=e49]
+        - cell ".../ControllerResolver.php:86" [ref=e50]
+      - row "7 2.0621 26222392 Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->createController( $controller = 'App\\\\Controller\\\\SecurityCustomDashboardController::login' ) .../ContainerControllerResolver.php:42" [ref=e51]:
+        - cell "7" [ref=e52]
+        - cell "2.0621" [ref=e53]
+        - cell "26222392" [ref=e54]
+        - cell "Symfony\\Component\\HttpKernel\\Controller\\ControllerResolver->createController( $controller = 'App\\\\Controller\\\\SecurityCustomDashboardController::login' )" [ref=e55]
+        - cell ".../ContainerControllerResolver.php:42" [ref=e56]
+      - row "8 2.0622 26222504 Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver->instantiateController( $class = 'App\\\\Controller\\\\SecurityCustomDashboardController' ) .../ControllerResolver.php:120" [ref=e57]:
+        - cell "8" [ref=e58]
+        - cell "2.0622" [ref=e59]
+        - cell "26222504" [ref=e60]
+        - cell "Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver->instantiateController( $class = 'App\\\\Controller\\\\SecurityCustomDashboardController' )" [ref=e61]
+        - cell ".../ControllerResolver.php:120" [ref=e62]
+      - row "9 2.0622 26222504 Symfony\\Component\\HttpKernel\\Controller\\ContainerControllerResolver->instantiateController( $class = 'App\\\\Controller\\\\SecurityCustomDashboardController' ) .../ControllerResolver.php:29" [ref=e63]:
+        - cell "9" [ref=e64]
+        - cell "2.0622" [ref=e65]
+        - cell "26222504" [ref=e66]
+        - cell "Symfony\\Component\\HttpKernel\\Controller\\ContainerControllerResolver->instantiateController( $class = 'App\\\\Controller\\\\SecurityCustomDashboardController' )" [ref=e67]
+        - cell ".../ControllerResolver.php:29" [ref=e68]
+      - row "10 2.0623 26222504 Symfony\\Component\\DependencyInjection\\Container->get( $id = 'App\\\\Controller\\\\SecurityCustomDashboardController', $invalidBehavior = ??? ) .../ContainerControllerResolver.php:53" [ref=e69]:
+        - cell "10" [ref=e70]
+        - cell "2.0623" [ref=e71]
+        - cell "26222504" [ref=e72]
+        - cell "Symfony\\Component\\DependencyInjection\\Container->get( $id = 'App\\\\Controller\\\\SecurityCustomDashboardController', $invalidBehavior = ??? )" [ref=e73]
+        - cell ".../ContainerControllerResolver.php:53" [ref=e74]
+      - row "11 2.0624 26222504 Symfony\\Component\\DependencyInjection\\Container->make( $id = 'App\\\\Controller\\\\SecurityCustomDashboardController', $invalidBehavior = 1 ) .../Container.php:220" [ref=e75]:
+        - cell "11" [ref=e76]
+        - cell "2.0624" [ref=e77]
+        - cell "26222504" [ref=e78]
+        - cell "Symfony\\Component\\DependencyInjection\\Container->make( $id = 'App\\\\Controller\\\\SecurityCustomDashboardController', $invalidBehavior = 1 )" [ref=e79]
+        - cell ".../Container.php:220" [ref=e80]
+      - row "12 2.0624 26222504 ContainerET6xxv6\\App_KernelProdContainer->load( $file = 'getSecurityCustomDashboardControllerService', $lazyLoad = ??? ) .../Container.php:238" [ref=e81]:
+        - cell "12" [ref=e82]
+        - cell "2.0624" [ref=e83]
+        - cell "26222504" [ref=e84]
+        - cell "ContainerET6xxv6\\App_KernelProdContainer->load( $file = 'getSecurityCustomDashboardControllerService', $lazyLoad = ??? )" [ref=e85]
+        - cell ".../Container.php:238" [ref=e86]
+      - row [ref=e87]:
+        - cell "13" [ref=e88]
+        - cell "2.0629" [ref=e89]
+        - cell "26236168" [ref=e90]
+        - cell [ref=e91]
+        - cell ".../App_KernelProdContainer.php:647" [ref=e92]
+      - row "14 2.6249 26765656 include_once( '/var/www/html/src/Controller/SecurityCustomDashboardController.php ) .../getSecurityCustomDashboardControllerService.php:22" [ref=e93]:
+        - cell "14" [ref=e94]
+        - cell "2.6249" [ref=e95]
+        - cell "26765656" [ref=e96]
+        - cell "include_once( '/var/www/html/src/Controller/SecurityCustomDashboardController.php )" [ref=e97]
+        - cell ".../getSecurityCustomDashboardControllerService.php:22" [ref=e98]
+  - generic [ref=e99]:
+    - heading "Oops! An Error Occurred" [level=1] [ref=e100]
+    - heading "The server returned a \"500 Internal Server Error\"." [level=2] [ref=e101]
+    - paragraph [ref=e102]: Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused.

@@ -1,0 +1,152 @@
+[      93ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3001/app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4:0
+[     200ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/node_modules_react-dom_82bb97c6._.js:15309
+[     208ms] Error: ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+
+    at <unknown> (Error: ./app/(app)/app/catalogs/[id]/page.tsx:3:1)
+    at Object.getCompilationErrors (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:725:59)
+    at DevBundlerService.getCompilationError (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/lib/dev-bundler-service.js:39:55)
+    at DevServer.getCompilationError (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/next-dev-server.js:643:42)
+    at DevServer.findPageComponents (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/dev/next-dev-server.js:613:43)
+    at async DevServer.renderErrorToResponseImpl (file:///home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/next/dist/server/base-server.js:2619:26)
+[     213ms] [LOG] [HMR] connected @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11471
+[     215ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[     216ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[     308ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[     309ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[     436ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11886
+[     559ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[     559ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   56490ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   56492ms] [ERROR] ./app/(app)/app/catalogs/[id]/page.tsx:3:1
+Export default doesn't exist in target module
+  1 | 'use client'
+  2 | import { useEffect, useState } from 'react'
+> 3 | import QRCode from 'qrcode.react'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { ArrowLeft, Copy, ExternalLink, Settings } from 'lucide-react'
+  5 | import Link from 'next/link'
+  6 |
+
+The export default was not found in module [project]/node_modules/qrcode.react/lib/esm/index.js [app-ssr] (ecmascript).
+Did you mean to import QRCodeCanvas?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist. @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11193
+[   56605ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11886
+[   56707ms] [LOG] [Fast Refresh] done in 171ms @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11750
+[   56925ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11886
+[   57143ms] [LOG] [Fast Refresh] done in 317ms @ http://localhost:3001/_next/static/chunks/%5Broot-of-the-server%5D__e2c08166._.js:11750
+[   57802ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_2ce9398a._.js:16383
+[   57821ms] [LOG] %c%s%c 
+[JWT CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?22:708
+[   57821ms] [LOG] %c%s%c [JWT CALLBACK] Entrada: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?24:709
+[   57822ms] [LOG] %c%s%c [JWT CALLBACK] Token final: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: a971462d-3364-49fd-946c-253f38e38f49, email: carlos.garcia@test.com, hasId: true} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?25:733
+[   57822ms] [LOG] %c%s%c [JWT CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?26:738
+[   57822ms] [LOG] %c%s%c 
+[SESSION CALLBACK] === INICIO === background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?27:742
+[   57822ms] [LOG] %c%s%c [SESSION CALLBACK] Session user antes: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: carlos.garcia@test.com} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?28:743
+[   57823ms] [LOG] %c%s%c [SESSION CALLBACK] Token: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {id: a971462d-3364-49fd-946c-253f38e38f49, email: carlos.garcia@test.com, sub: a971462d-3364-49fd-946c-253f38e38f49} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?29:747
+[   57823ms] [LOG] %c%s%c [SESSION CALLBACK] Session actualizado con usuario ID: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   a971462d-3364-49fd-946c-253f38e38f49 @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?30:754
+[   57823ms] [LOG] %c%s%c [SESSION CALLBACK] Session user después: background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   {email: carlos.garcia@test.com, id: a971462d-3364-49fd-946c-253f38e38f49} @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?31:758
+[   57823ms] [LOG] %c%s%c [SESSION CALLBACK] === FIN ===
+ background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ rsc://React/Server/file:///home/epayco21/Escritorio/richi-alvarez/domicilios/.next/server/chunks/ssr/%5Broot-of-the-server%5D__7df035db._.js?32:762
+[   58111ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   59275ms] [LOG] [Fast Refresh] done in 1076ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891
+[   59395ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:15027
+[   59428ms] [LOG] [Fast Refresh] done in 133ms @ http://localhost:3001/_next/static/chunks/node_modules_next_dist_client_8f19e6fb._.js:14891

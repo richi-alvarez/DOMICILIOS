@@ -1,6 +1,7 @@
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { AppSidebar } from '@/components/app/app-sidebar'
+import { AppHeader } from '@/components/app/app-header'
 import { getOrgPlan } from '@/lib/billing/limits'
 
 export const dynamic = 'force-dynamic'
@@ -31,15 +32,30 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   const { catalogs, planCode } = await getLayoutData(session.user.id)
 
+  const catalogsData = catalogs as { id: string; name: string; slug: string; status: 'draft' | 'published' | 'archived' }[]
+
   return (
-    <div className="flex h-screen overflow-hidden bg-warm-50">
-      <AppSidebar
-        catalogs={catalogs as { id: string; name: string; slug: string; status: 'draft' | 'published' | 'archived' }[]}
+    <div className="flex flex-col h-screen overflow-hidden bg-warm-50 lg:flex-row">
+      {/* Mobile/Tablet Header */}
+      <AppHeader
+        catalogs={catalogsData}
         userName={session.user?.name ?? undefined}
         userEmail={session.user?.email ?? undefined}
         planCode={planCode}
       />
-      <main className="flex-1 overflow-y-auto">{children}</main>
+
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:flex">
+        <AppSidebar
+          catalogs={catalogsData}
+          userName={session.user?.name ?? undefined}
+          userEmail={session.user?.email ?? undefined}
+          planCode={planCode}
+        />
+      </div>
+
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto w-full">{children}</main>
     </div>
   )
 }

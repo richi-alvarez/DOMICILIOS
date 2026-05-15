@@ -1,0 +1,148 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e45]:
+    - complementary [ref=e46]:
+      - link "D Domicilios" [ref=e48] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e50]: D
+        - generic [ref=e51]: Domicilios
+      - generic [ref=e52]:
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - generic [ref=e137]: Catálogo activo
+            - generic [ref=e138]: Borrador
+          - paragraph [ref=e139]: Restaurante María López
+          - paragraph [ref=e140]: /maria-restaurante
+          - link "Ver todos los catálogos" [ref=e141] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e142]
+            - text: Ver todos los catálogos
+        - navigation [ref=e144]:
+          - link "Detalles" [ref=e145] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4
+            - img [ref=e146]
+            - text: Detalles
+          - link "Productos" [ref=e151] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4/products
+            - img [ref=e152]
+            - text: Productos
+          - link "Categorías" [ref=e156] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4/categories
+            - img [ref=e157]
+            - text: Categorías
+          - link "Diseño" [ref=e162] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4/design
+            - img [ref=e163]
+            - text: Diseño
+          - link "Pedidos" [ref=e169] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4/orders
+            - img [ref=e170]
+            - text: Pedidos
+          - link "Estadísticas" [ref=e174] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4/analytics
+            - img [ref=e175]
+            - text: Estadísticas
+          - link "Reportes" [ref=e176] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4/reports
+            - img [ref=e177]
+            - text: Reportes
+          - link "Configuración" [ref=e180] [cursor=pointer]:
+            - /url: /app/catalogs/299fa7a7-6602-4fb4-ac0b-515c6bfce1f4/settings
+            - img [ref=e181]
+            - text: Configuración
+        - navigation [ref=e53]:
+          - link "Mis catálogos" [ref=e54] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e55]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e60] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e61]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e66] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e67]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e69] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e70]
+          - text: Nuevo catálogo
+      - generic [ref=e72]:
+        - generic [ref=e73]: M
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - paragraph [ref=e76]: María López
+            - generic [ref=e77]: Pro
+          - paragraph [ref=e78]: maria.lopez@test.com
+        - button "Cerrar sesión" [ref=e79]:
+          - img [ref=e80]
+    - main [ref=e83]:
+      - generic [ref=e184]:
+        - generic [ref=e186] [cursor=pointer]:
+          - img [ref=e187]
+          - heading "Restaurante María López" [level=1] [ref=e189]
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - generic [ref=e192]:
+              - img [ref=e194]
+              - generic [ref=e195]:
+                - generic [ref=e196]: "URL:"
+                - generic [ref=e197]:
+                  - textbox [ref=e198]: http://localhost:3000/s/maria-restaurante
+                  - button "Copiar" [ref=e199]:
+                    - img [ref=e200]
+              - generic [ref=e203]:
+                - link "Visitar" [ref=e204] [cursor=pointer]:
+                  - /url: http://localhost:3000/s/maria-restaurante
+                  - img [ref=e205]
+                  - text: Visitar
+                - button "Editar Diseño" [ref=e209]:
+                  - img [ref=e210]
+                  - text: Editar Diseño
+              - generic [ref=e213]:
+                - button "Personalizar" [ref=e214]
+                - button "PNG" [ref=e215]
+                - button "SVG" [ref=e216]
+                - button "Imprimir QR" [ref=e217]
+            - generic [ref=e218]:
+              - heading "Información" [level=2] [ref=e219]
+              - generic [ref=e220]:
+                - generic [ref=e221]:
+                  - term [ref=e222]: "Nombre:"
+                  - definition [ref=e223]: Restaurante María López
+                - generic [ref=e224]:
+                  - term [ref=e225]: "Slug:"
+                  - definition [ref=e226]: /maria-restaurante
+                - generic [ref=e227]:
+                  - term [ref=e228]: "Estado:"
+                  - definition [ref=e229]: Borrador
+                - generic [ref=e230]:
+                  - term [ref=e231]: "Idioma:"
+                  - definition [ref=e232]: ES
+                - generic [ref=e233]:
+                  - term [ref=e234]: "Moneda:"
+                  - definition [ref=e235]: COP
+                - generic [ref=e236]:
+                  - term [ref=e237]: "Canal de pedidos:"
+                  - definition [ref=e238]: WhatsApp
+                - generic [ref=e239]:
+                  - term [ref=e240]: "Fecha de creación:"
+                  - definition [ref=e241]: 14 de mayo de 2026
+                - generic [ref=e242]:
+                  - term [ref=e243]: "Última actualización:"
+                  - definition [ref=e244]: 14 de mayo de 2026
+                - generic [ref=e245]:
+                  - term [ref=e246]: "Email de contacto:"
+                  - definition [ref=e247]: maria.lopez@test.com
+                - generic [ref=e248]:
+                  - term [ref=e249]: "Teléfono:"
+                  - definition [ref=e250]: +57 3009876543
+          - generic [ref=e251]:
+            - heading "SEO y Vista Previa" [level=2] [ref=e252]
+            - button "📋 Logo y SEO" [ref=e253]
+            - generic [ref=e254]:
+              - paragraph [ref=e255]: ¡Conecta tu dominio personalizado aquí!
+              - paragraph [ref=e256]: ej. www.mitienda.com
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Domicilios — Catálogos digitales con pedidos por WhatsApp
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]

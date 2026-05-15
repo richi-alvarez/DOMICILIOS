@@ -1,0 +1,63 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - heading "Symfony Exception" [level=1] [ref=e4]:
+        - img [ref=e5]
+        - text: Symfony Exception
+      - link "Symfony Docs" [ref=e8] [cursor=pointer]:
+        - /url: https://symfony.com/doc/5.4.48/index.html
+        - img [ref=e10]
+        - text: Symfony Docs
+  - generic [ref=e12]:
+    - generic [ref=e14]:
+      - heading "FatalError" [level=2] [ref=e15]:
+        - link "FatalError" [ref=e16] [cursor=pointer]:
+          - /url: "#trace-box-1"
+      - heading "HTTP 500 Internal Server Error" [level=2] [ref=e17]
+    - generic [ref=e19]:
+      - 'heading "Compile Error: Cannot declare class App\\Controller\\SecurityCustomDashboardController, because the name is already in use" [level=1] [ref=e20]'
+      - img [ref=e22]
+  - generic [ref=e25]:
+    - list [ref=e26]:
+      - listitem [ref=e27] [cursor=pointer]: Exception
+      - listitem [ref=e28] [cursor=pointer]: Stack Trace
+    - generic [ref=e32]:
+      - generic [ref=e34] [cursor=pointer]:
+        - img [ref=e36]
+        - heading "Symfony\\Component\\ErrorHandler\\Error\\ FatalError" [level=3] [ref=e38]:
+          - generic [ref=e39]: Symfony\Component\ErrorHandler\Error\
+          - text: FatalError
+      - generic [ref=e41]:
+        - generic [ref=e42] [cursor=pointer]:
+          - img [ref=e44]
+          - generic [ref=e46]:
+            - text: in
+            - link "/var/www/html/src/Controller/SecurityCustomDashboardController.php" [ref=e47]:
+              - /url: ""
+              - text: /var/www/html/src/Controller/
+              - strong [ref=e48]: SecurityCustomDashboardController.php
+            - text: (line 33)
+            - img [ref=e50]
+        - list [ref=e54]:
+          - listitem [ref=e55]:
+            - code [ref=e56]: use App\Entity\Paises;
+          - listitem [ref=e57]:
+            - code [ref=e58]: use App\Controller\Lib\DescryptObject;
+          - listitem [ref=e59]:
+            - code [ref=e60]: use Psr\Log\LoggerInterface;
+          - listitem [ref=e61]:
+            - code [ref=e62]: use App\Controller\Traits\ResponseTrait;
+          - listitem [ref=e63]:
+            - code
+          - listitem [ref=e64]:
+            - code [ref=e65]: class SecurityCustomDashboardController extends AbstractController
+          - listitem [ref=e66]:
+            - code [ref=e67]: "{"
+          - listitem [ref=e68]:
+            - code [ref=e69]: use ResponseTrait;
+          - listitem [ref=e70]:
+            - code [ref=e71]: public $url_media = 'https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com';
+          - listitem [ref=e72]:
+            - code
+          - listitem [ref=e73]:
+            - code [ref=e74]: private $logger;
