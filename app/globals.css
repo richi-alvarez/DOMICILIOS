@@ -136,6 +136,16 @@ h6 {
   letter-spacing: -0.02em;
 }
 
+/* ── Animación de escala personalizada ── */
+@keyframes scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
 /* ── Utilidades custom ── */
 @layer utilities {
   .text-balance {
@@ -156,6 +166,10 @@ h6 {
 
   .ring-primary {
     --tw-ring-color: var(--color-primary-500);
+  }
+
+  .animate-scale {
+    animation: scale 0.6s ease-in-out infinite;
   }
 }
 

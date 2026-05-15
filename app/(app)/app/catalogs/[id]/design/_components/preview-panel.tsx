@@ -297,11 +297,18 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
               lg: 'w-20 h-20 text-3xl',
             }
 
+            const animationMap = {
+              'none': '',
+              'pulse': 'animate-pulse',
+              'bounce': 'animate-bounce',
+              'scale': 'animate-scale',
+            }
+
             return (
               <div key={block.id} className="absolute inset-0">
                 {/* Cart Button */}
                 <div
-                  className={`absolute ${positionMap[block.position]} ${sizeMap[block.size]} rounded-full flex items-center justify-center cursor-pointer group`}
+                  className={`absolute ${positionMap[block.position]} ${sizeMap[block.size]} ${animationMap[block.animation]} rounded-full flex items-center justify-center cursor-pointer group`}
                   style={{
                     backgroundColor: block.useCustomColors ? block.bgColor : theme.primaryColor,
                     color: block.useCustomColors ? block.iconColor : 'white',
