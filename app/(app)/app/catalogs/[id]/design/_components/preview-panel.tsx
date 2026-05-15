@@ -298,20 +298,52 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
             }
 
             return (
-              <div
-                key={block.id}
-                className={`fixed ${positionMap[block.position]} ${sizeMap[block.size]} rounded-full flex items-center justify-center cursor-pointer`}
-                style={{
-                  backgroundColor: block.useCustomColors ? block.bgColor : theme.primaryColor,
-                  color: block.useCustomColors ? block.iconColor : 'white',
-                }}
-              >
-                🛒
-                {block.showItemCount && (
-                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
-                    3
-                  </div>
-                )}
+              <div key={block.id} className="relative">
+                {/* Cart Button */}
+                <div
+                  className={`fixed ${positionMap[block.position]} ${sizeMap[block.size]} rounded-full flex items-center justify-center cursor-pointer group`}
+                  style={{
+                    backgroundColor: block.useCustomColors ? block.bgColor : theme.primaryColor,
+                    color: block.useCustomColors ? block.iconColor : 'white',
+                  }}
+                >
+                  🛒
+                  {block.showItemCount && (
+                    <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
+                      3
+                    </div>
+                  )}
+                  {block.showTotalPrice && (
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                      Total: $59.97
+                    </div>
+                  )}
+
+                  {/* Preview Popup - Always visible in editor for preview purposes */}
+                  {block.showPreviewFirst && (
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white border border-gray-200 rounded-lg shadow-lg p-3 w-48 z-50">
+                      <p className="text-xs font-semibold text-gray-800 mb-2">Resumen del Carrito</p>
+                      <div className="space-y-1 text-xs text-gray-600">
+                        <div className="flex justify-between">
+                          <span>Producto 1</span>
+                          <span>$19.99</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Producto 2</span>
+                          <span>$19.99</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Producto 3</span>
+                          <span>$19.99</span>
+                        </div>
+                        <div className="border-t border-gray-200 pt-1 mt-1 flex justify-between font-semibold text-gray-800">
+                          <span>Total:</span>
+                          <span>$59.97</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             )
           }
