@@ -301,7 +301,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
               <div key={block.id} className="relative">
                 {/* Cart Button */}
                 <div
-                  className={`fixed ${positionMap[block.position]} ${sizeMap[block.size]} rounded-full flex items-center justify-center cursor-pointer group`}
+                  className={`absolute ${positionMap[block.position]} ${sizeMap[block.size]} rounded-full flex items-center justify-center cursor-pointer group`}
                   style={{
                     backgroundColor: block.useCustomColors ? block.bgColor : theme.primaryColor,
                     color: block.useCustomColors ? block.iconColor : 'white',

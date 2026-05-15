@@ -1,0 +1,65 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e45]:
+    - complementary [ref=e47]:
+      - link "D Domicilios" [ref=e49] [cursor=pointer]:
+        - /url: /app
+        - generic [ref=e51]: D
+        - generic [ref=e52]: Domicilios
+      - generic [ref=e53]:
+        - navigation [ref=e54]:
+          - link "Mis catálogos" [ref=e55] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e56]
+            - text: Mis catálogos
+          - link "Equipo" [ref=e61] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e62]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e67] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e68]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e70] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e71]
+          - text: Nuevo catálogo
+      - generic [ref=e73]:
+        - generic [ref=e74]: Q
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - paragraph [ref=e77]: QA Test User
+            - generic [ref=e78]: Gratis
+          - paragraph [ref=e79]: qa.test.user@example.com
+        - button "Cerrar sesión" [ref=e80]:
+          - img [ref=e81]
+    - main [ref=e84]:
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - heading "Mis catálogos" [level=1] [ref=e88]
+            - paragraph [ref=e89]: 1 catálogo
+          - link "Mejorar plan" [ref=e91] [cursor=pointer]:
+            - /url: /plans
+            - button "Mejorar plan" [ref=e92]:
+              - img
+              - text: Mejorar plan
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - img [ref=e95]
+            - paragraph [ref=e97]:
+              - text: Has alcanzado el límite de
+              - strong [ref=e98]: 1 catálogo
+              - text: del plan Gratis.
+          - link "Ver planes →" [ref=e99] [cursor=pointer]:
+            - /url: /plans
+        - link "Borrador Carnes Medellí /carnes-medelli" [ref=e101] [cursor=pointer]:
+          - /url: /app/catalogs/9c3563a5-da51-4622-bf74-c09efff09a39
+          - generic [ref=e102]:
+            - img [ref=e104]
+            - generic [ref=e107]: Borrador
+          - heading "Carnes Medellí" [level=3] [ref=e108]
+          - paragraph [ref=e109]: /carnes-medelli
+  - region "Notifications alt+T"
+  - alert [ref=e34]: Mis catálogos | Domicilios
+  - button "Open Next.js Dev Tools" [ref=e40] [cursor=pointer]:
+    - img [ref=e41]
