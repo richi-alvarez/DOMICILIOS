@@ -58,3 +58,27 @@ export async function saveDesign(catalogId: string, blockList: BlockConfig[]) {
     return { error: 'Error al guardar' }
   }
 }
+
+export async function uploadImage(formData: FormData): Promise<{ url: string } | { error: string }> {
+  try {
+    const file = formData.get('file') as File
+    if (!file) return { error: 'No file provided' }
+
+    // For now, convert to base64 and store in a data URL
+    // In production, use Cloudinary, S3, or similar
+    const bytes = await file.arrayBuffer()
+    const base64 = Buffer.from(bytes).toString('base64')
+    const dataUrl = `data:${file.type};base64,${base64}`
+
+    return { url: dataUrl }
+  } catch (err) {
+    console.error('[uploadImage]', err)
+    return { error: 'Error uploading image' }
+  }
+}
+
+export async function deleteImage(_imageUrl: string): Promise<{ success: true } | { error: string }> {
+  // Since we're using data URLs, deletion isn't needed
+  // In production with cloud storage, implement actual deletion here
+  return { success: true }
+}

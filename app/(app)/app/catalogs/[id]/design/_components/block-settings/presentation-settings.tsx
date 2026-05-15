@@ -1,7 +1,8 @@
 'use client'
 
-import { ChevronDown } from 'lucide-react'
-import { useState } from 'react'
+import { ChevronDown, Loader2 } from 'lucide-react'
+import { useRef, useState } from 'react'
+import { uploadImage } from '@/lib/actions/design'
 
 interface PresentationBlock {
   id: string
@@ -33,6 +34,57 @@ interface PresentationSettingsProps {
 
 export default function PresentationSettings({ block, onChange }: PresentationSettingsProps) {
   const [expandedSection, setExpandedSection] = useState('background')
+  const [uploading, setUploading] = useState(false)
+  const bgFileInputRef = useRef<HTMLInputElement>(null)
+  const presentationFileInputRef = useRef<HTMLInputElement>(null)
+
+  const handleImageUpload = async (file: File, isBgImage: boolean) => {
+    if (!file.type.startsWith('image/')) {
+      alert('Por favor selecciona una imagen válida')
+      return
+    }
+
+    setUploading(true)
+    try {
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const result = await uploadImage(formData)
+      if ('url' in result && result.url) {
+        if (isBgImage) {
+          onChange({ bgImage: result.url })
+        } else {
+          onChange({ presentationImage: result.url })
+        }
+      } else if ('error' in result) {
+        alert(result.error || 'Error al subir la imagen')
+      }
+    } catch (err) {
+      console.error('Upload error:', err)
+      alert('Error al subir la imagen')
+    } finally {
+      setUploading(false)
+      if (isBgImage && bgFileInputRef.current) {
+        bgFileInputRef.current.value = ''
+      } else if (!isBgImage && presentationFileInputRef.current) {
+        presentationFileInputRef.current.value = ''
+      }
+    }
+  }
+
+  const handleBgImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      handleImageUpload(file, true)
+    }
+  }
+
+  const handlePresentationImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      handleImageUpload(file, false)
+    }
+  }
 
   return (
     <div className="space-y-4">
@@ -73,16 +125,36 @@ export default function PresentationSettings({ block, onChange }: PresentationSe
                   />
                 )}
                 <div className="flex gap-2 mt-2">
-                  <button className="flex-1 text-xs px-2 py-1 bg-gray-100 hover:bg-gray-200 rounded">
-                    Cambiar imagen
+                  <button
+                    onClick={() => bgFileInputRef.current?.click()}
+                    disabled={uploading}
+                    className="flex-1 text-xs px-2 py-1 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white rounded flex items-center justify-center gap-1"
+                  >
+                    {uploading ? (
+                      <>
+                        <Loader2 className="w-3 h-3 animate-spin" />
+                        Subiendo...
+                      </>
+                    ) : (
+                      'Subir imagen'
+                    )}
                   </button>
-                  <button className="text-xs px-2 py-1 bg-gray-100 hover:bg-gray-200 rounded">
-                    ✕
-                  </button>
+                  {block.bgImage && (
+                    <button
+                      onClick={() => onChange({ bgImage: null })}
+                      className="text-xs px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded"
+                    >
+                      ✕
+                    </button>
+                  )}
                 </div>
-                <button className="w-full text-xs px-2 py-1 mt-2 bg-gray-100 hover:bg-gray-200 rounded">
-                  📚 Elegir de biblioteca
-                </button>
+                <input
+                  ref={bgFileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleBgImageChange}
+                  className="hidden"
+                />
               </div>
             )}
 
@@ -236,9 +308,43 @@ export default function PresentationSettings({ block, onChange }: PresentationSe
             {/* Presentation Image */}
             <div>
               <label className="text-xs font-medium text-gray-700">Imagen de Presentación (Opcional)</label>
-              <button className="w-full mt-1 text-xs px-2 py-1 bg-gray-100 hover:bg-gray-200 rounded">
-                Seleccionar imagen
-              </button>
+              {block.presentationImage && (
+                <div
+                  className="w-full h-24 rounded mt-1 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${block.presentationImage})` }}
+                />
+              )}
+              <div className="flex gap-2 mt-2">
+                <button
+                  onClick={() => presentationFileInputRef.current?.click()}
+                  disabled={uploading}
+                  className="flex-1 text-xs px-2 py-1 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white rounded flex items-center justify-center gap-1"
+                >
+                  {uploading ? (
+                    <>
+                      <Loader2 className="w-3 h-3 animate-spin" />
+                      Subiendo...
+                    </>
+                  ) : (
+                    'Subir imagen'
+                  )}
+                </button>
+                {block.presentationImage && (
+                  <button
+                    onClick={() => onChange({ presentationImage: null })}
+                    className="text-xs px-2 py-1 bg-red-500 hover:bg-red-600 text-white rounded"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+              <input
+                ref={presentationFileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handlePresentationImageChange}
+                className="hidden"
+              />
             </div>
 
             {/* CTA */}

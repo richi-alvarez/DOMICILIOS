@@ -1,8 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronLeft, Monitor, Smartphone, Globe } from 'lucide-react'
+import { ChevronLeft, Monitor, Smartphone, Globe, Loader2, Check } from 'lucide-react'
 import Link from 'next/link'
+import { saveDesign } from '@/lib/actions/design'
+import type { BlockConfig } from '@/lib/design/blocks'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import GlobalPanel from './_components/global-panel'
 import BlocksPanel from './_components/blocks-panel'
@@ -204,6 +206,8 @@ export default function DesignPage({ params }: { params: { id: string } }) {
   const [showAddModal, setShowAddModal] = useState(false)
   const [showHelpBox, setShowHelpBox] = useState(true)
   const [dragIndex, setDragIndex] = useState<number | null>(null)
+  const [saving, setSaving] = useState(false)
+  const [saved, setSaved] = useState(false)
 
   // Handlers
   const updateBlock = (id: string, partial: Partial<Block>) => {
@@ -306,6 +310,32 @@ export default function DesignPage({ params }: { params: { id: string } }) {
     setTheme({ ...theme, ...partial })
   }
 
+  const handleSaveDesign = async () => {
+    setSaving(true)
+    try {
+      // Convert blocks to the format expected by saveDesign
+      const blockConfigs = blocks.map((block) => ({
+        id: block.id,
+        type: block.type,
+        active: block.visible,
+        config: { ...block },
+      }))
+
+      const result = await saveDesign(params.id, blockConfigs as any)
+      if ('ok' in result && result.ok) {
+        setSaved(true)
+        setTimeout(() => setSaved(false), 2000)
+      } else if ('error' in result) {
+        alert(result.error || 'Error al guardar')
+      }
+    } catch (err) {
+      console.error('Save error:', err)
+      alert('Error al guardar el diseño')
+    } finally {
+      setSaving(false)
+    }
+  }
+
   return (
     <div className="h-screen flex flex-col bg-white">
       {/* Header */}
@@ -335,9 +365,27 @@ export default function DesignPage({ params }: { params: { id: string } }) {
               </button>
             </div>
 
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium">
-              <Globe className="w-4 h-4" />
-              Publicar
+            <button
+              onClick={handleSaveDesign}
+              disabled={saving}
+              className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition"
+            >
+              {saved ? (
+                <>
+                  <Check className="w-4 h-4" />
+                  Guardado
+                </>
+              ) : saving ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Guardando...
+                </>
+              ) : (
+                <>
+                  <Globe className="w-4 h-4" />
+                  Guardar
+                </>
+              )}
             </button>
           </div>
         </div>

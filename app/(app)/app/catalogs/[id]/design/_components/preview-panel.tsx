@@ -74,8 +74,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
                   <div
                     className="absolute inset-0"
                     style={{
-                      backgroundColor: block.overlayType === 'dark' ? 'rgba(0,0,0,' : 'rgba(255,255,255,',
-                      opacity: block.overlayOpacity / 100,
+                      backgroundColor: block.overlayType === 'dark' ? `rgba(0, 0, 0, ${block.overlayOpacity / 100})` : `rgba(255, 255, 255, ${block.overlayOpacity / 100})`,
                     }}
                   />
                 )}
