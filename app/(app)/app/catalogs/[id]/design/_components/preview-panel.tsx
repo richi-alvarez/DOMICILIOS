@@ -55,7 +55,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
       </div>
 
       {/* Content */}
-      <div style={bgStyle} className="w-full min-h-screen">
+      <div style={bgStyle} className="w-full min-h-screen relative">
         {visibleBlocks.map((block) => {
           if (block.type === 'presentation') {
             return (
@@ -298,7 +298,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
             }
 
             return (
-              <div key={block.id} className="relative">
+              <div key={block.id} className="absolute inset-0">
                 {/* Cart Button */}
                 <div
                   className={`absolute ${positionMap[block.position]} ${sizeMap[block.size]} rounded-full flex items-center justify-center cursor-pointer group`}
