@@ -186,10 +186,26 @@ export default function PresentationSettings({ block, onChange }: PresentationSe
                 <input
                   type="text"
                   value={block.bgVideoUrl}
-                  onChange={(e) => onChange({ bgVideoUrl: e.target.value })}
-                  placeholder="https://..."
+                  onChange={(e) => {
+                    let url = e.target.value
+                    // Convertir URL de YouTube watch a formato que funcione
+                    if (url.includes('youtube.com/watch?v=')) {
+                      const videoId = url.split('v=')[1]?.split('&')[0]
+                      if (videoId) {
+                        // Para video element, usar url directo de descarga
+                        // YouTube no permite videos directo. Mostrar advertencia.
+                      }
+                    }
+                    onChange({ bgVideoUrl: url })
+                  }}
+                  placeholder="https://ejemplo.com/video.mp4"
                   className="w-full mt-1 text-xs px-2 py-1 border border-gray-300 rounded"
                 />
+                <p className="text-xs text-gray-500 mt-1">
+                  💡 Usa archivo directo (.mp4). YouTube no funciona directamente.
+                  <br />
+                  Opciones: Tu servidor, Vimeo, o servicio de video.
+                </p>
               </div>
             )}
 

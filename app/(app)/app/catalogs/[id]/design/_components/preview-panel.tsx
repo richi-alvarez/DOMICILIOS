@@ -64,12 +64,67 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
                 className="relative w-full overflow-hidden flex items-center justify-center"
                 style={{
                   backgroundImage: block.bgType === 'image' ? `url(${block.bgImage})` : 'none',
+                  backgroundColor: block.bgType === 'color' ? block.bgColor : 'transparent',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   minHeight: block.sectionSize === 'sm' ? '300px' : block.sectionSize === 'md' ? '400px' : block.sectionSize === 'lg' ? '500px' : '600px',
                   height: block.fullHeight ? '100vh' : 'auto',
                 }}
               >
+                {/* Video Background */}
+                {block.bgType === 'video' && block.bgVideoUrl && (
+                  <>
+                    {/* YouTube Embed */}
+                    {block.bgVideoUrl.includes('youtube.com') || block.bgVideoUrl.includes('youtu.be') ? (
+                      (() => {
+                        let videoId = ''
+                        if (block.bgVideoUrl.includes('watch?v=')) {
+                          videoId = block.bgVideoUrl.split('v=')[1]?.split('&')[0] || ''
+                        } else if (block.bgVideoUrl.includes('youtu.be/')) {
+                          videoId = block.bgVideoUrl.split('youtu.be/')[1]?.split('?')[0] || ''
+                        }
+                        return videoId ? (
+                          <iframe
+                            className="absolute inset-0 w-full h-full"
+                            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&controls=0&playlist=${videoId}`}
+                            allow="autoplay; encrypted-media"
+                            allowFullScreen={false}
+                          />
+                        ) : (
+                          <div className="absolute inset-0 w-full h-full bg-gray-300 flex items-center justify-center text-gray-600">
+                            URL de YouTube inválida
+                          </div>
+                        )
+                      })()
+                    ) : block.bgVideoUrl.includes('vimeo.com') ? (
+                      (() => {
+                        const videoId = block.bgVideoUrl.split('/').pop() || ''
+                        return (
+                          <iframe
+                            className="absolute inset-0 w-full h-full"
+                            src={`https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&muted=1&background=1`}
+                            allow="autoplay; encrypted-media"
+                            allowFullScreen={false}
+                          />
+                        )
+                      })()
+                    ) : (
+                      /* Direct video file */
+                      <video
+                        className="absolute inset-0 w-full h-full object-cover"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                      >
+                        <source src={block.bgVideoUrl} type="video/mp4" />
+                        Tu navegador no soporta videos
+                      </video>
+                    )}
+                  </>
+                )}
+
+                {/* Image Overlay */}
                 {block.bgType === 'image' && (
                   <div
                     className="absolute inset-0"
