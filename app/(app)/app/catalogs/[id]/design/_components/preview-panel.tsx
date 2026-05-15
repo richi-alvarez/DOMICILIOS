@@ -321,22 +321,22 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
 
                   {/* Preview Popup - Always visible in editor for preview purposes */}
                   {block.showPreviewFirst && (
-                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white border border-gray-200 rounded-lg shadow-lg p-3 w-48 z-50">
-                      <p className="text-xs font-semibold text-gray-800 mb-2">Resumen del Carrito</p>
-                      <div className="space-y-1 text-xs text-gray-600">
-                        <div className="flex justify-between">
-                          <span>Producto 1</span>
-                          <span>$19.99</span>
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white border border-gray-300 rounded-lg shadow-lg p-4 w-64 z-50">
+                      <p className="text-xs font-semibold text-gray-900 mb-3">Resumen del Carrito</p>
+                      <div className="space-y-2 text-xs">
+                        <div className="flex justify-between text-gray-700">
+                          <span className="truncate">Producto 1</span>
+                          <span className="ml-2 font-medium text-gray-900">$19.99</span>
                         </div>
-                        <div className="flex justify-between">
-                          <span>Producto 2</span>
-                          <span>$19.99</span>
+                        <div className="flex justify-between text-gray-700">
+                          <span className="truncate">Producto 2</span>
+                          <span className="ml-2 font-medium text-gray-900">$19.99</span>
                         </div>
-                        <div className="flex justify-between">
-                          <span>Producto 3</span>
-                          <span>$19.99</span>
+                        <div className="flex justify-between text-gray-700">
+                          <span className="truncate">Producto 3</span>
+                          <span className="ml-2 font-medium text-gray-900">$19.99</span>
                         </div>
-                        <div className="border-t border-gray-200 pt-1 mt-1 flex justify-between font-semibold text-gray-800">
+                        <div className="border-t border-gray-300 pt-2 mt-2 flex justify-between font-semibold text-gray-900">
                           <span>Total:</span>
                           <span>$59.97</span>
                         </div>
