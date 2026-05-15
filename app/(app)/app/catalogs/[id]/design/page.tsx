@@ -211,7 +211,7 @@ export default function DesignPage({ params }: { params: { id: string } }) {
   const [theme, setTheme] = useState<ThemeState>(THEME_DEFAULTS)
   const [blocks, setBlocks] = useState<Block[]>(DEFAULT_BLOCKS)
   const [expandedId, setExpandedId] = useState<string | null>('1')
-  const [activeTab, setActiveTab] = useState<'blocks' | 'global'>('blocks')
+  const [activeTab, setActiveTab] = useState<'blocks' | 'global' | 'preview'>('blocks')
   const [previewMode, setPreviewMode] = useState<'desktop' | 'mobile'>('desktop')
   const [showAddModal, setShowAddModal] = useState(false)
   const [showHelpBox, setShowHelpBox] = useState(true)
@@ -407,54 +407,86 @@ export default function DesignPage({ params }: { params: { id: string } }) {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Left Panel */}
-        <div className="w-80 border-r border-gray-200 overflow-y-auto bg-gray-50">
-          <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'blocks' | 'global')} className="h-full">
-            <div className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200 px-4 py-3">
-              <TabsList className="w-full grid grid-cols-2">
+      {activeTab === 'preview' ? (
+        // Full-width preview mode
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <div className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200 px-4 py-3">
+            <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'blocks' | 'global' | 'preview')}>
+              <TabsList className="w-40 grid grid-cols-3">
                 <TabsTrigger value="blocks" className="text-xs">
                   Bloques
                 </TabsTrigger>
                 <TabsTrigger value="global" className="text-xs">
                   Global
                 </TabsTrigger>
+                <TabsTrigger value="preview" className="text-xs">
+                  Vista Previa
+                </TabsTrigger>
               </TabsList>
-            </div>
-
-            <TabsContent value="blocks" className="p-4 space-y-4">
-              <BlocksPanel
-                blocks={blocks}
-                expandedId={expandedId}
-                showHelpBox={showHelpBox}
-                onExpandBlock={setExpandedId}
-                onDismissHelp={() => setShowHelpBox(false)}
-                onAddBlock={() => setShowAddModal(true)}
-                onUpdateBlock={updateBlock}
-                onDeleteBlock={deleteBlock}
-                onDuplicateBlock={duplicateBlock}
-                onToggleVisibility={toggleBlockVisibility}
-                onDragStart={(index) => setDragIndex(index)}
-                onDragEnd={(toIndex) => dragIndex !== null && reorderBlocks(dragIndex, toIndex)}
-              />
-            </TabsContent>
-
-            <TabsContent value="global" className="p-4">
-              <GlobalPanel palettes={PALETTES} fonts={FONTS} theme={theme} onUpdateTheme={updateTheme} />
-            </TabsContent>
-          </Tabs>
+            </Tabs>
+          </div>
+          <div className="flex-1 overflow-auto bg-gray-100">
+            <PreviewPanel
+              blocks={blocks}
+              theme={theme}
+              previewMode={previewMode}
+              catalogSlug="test-restaurant"
+            />
+          </div>
         </div>
+      ) : (
+        // Split view for blocks/global
+        <>
+          <div className="w-80 border-r border-gray-200 overflow-y-auto bg-gray-50">
+            <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'blocks' | 'global' | 'preview')} className="h-full">
+              <div className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200 px-4 py-3">
+                <TabsList className="w-full grid grid-cols-3">
+                  <TabsTrigger value="blocks" className="text-xs">
+                    Bloques
+                  </TabsTrigger>
+                  <TabsTrigger value="global" className="text-xs">
+                    Global
+                  </TabsTrigger>
+                  <TabsTrigger value="preview" className="text-xs">
+                    Vista Previa
+                  </TabsTrigger>
+                </TabsList>
+              </div>
 
-        {/* Right Panel - Preview */}
-        <div className="flex-1 overflow-auto bg-gray-100">
-          <PreviewPanel
-            blocks={blocks}
-            theme={theme}
-            previewMode={previewMode}
-            catalogSlug="test-restaurant"
-          />
-        </div>
-      </div>
+              <TabsContent value="blocks" className="p-4 space-y-4">
+                <BlocksPanel
+                  blocks={blocks}
+                  expandedId={expandedId}
+                  showHelpBox={showHelpBox}
+                  onExpandBlock={setExpandedId}
+                  onDismissHelp={() => setShowHelpBox(false)}
+                  onAddBlock={() => setShowAddModal(true)}
+                  onUpdateBlock={updateBlock}
+                  onDeleteBlock={deleteBlock}
+                  onDuplicateBlock={duplicateBlock}
+                  onToggleVisibility={toggleBlockVisibility}
+                  onDragStart={(index) => setDragIndex(index)}
+                  onDragEnd={(toIndex) => dragIndex !== null && reorderBlocks(dragIndex, toIndex)}
+                />
+              </TabsContent>
+
+              <TabsContent value="global" className="p-4">
+                <GlobalPanel palettes={PALETTES} fonts={FONTS} theme={theme} onUpdateTheme={updateTheme} />
+              </TabsContent>
+            </Tabs>
+          </div>
+
+          {/* Right Panel - Preview (only show when not in preview tab) */}
+          <div className="flex-1 overflow-auto bg-gray-100">
+            <PreviewPanel
+              blocks={blocks}
+              theme={theme}
+              previewMode={previewMode}
+              catalogSlug="test-restaurant"
+            />
+          </div>
+        </>
+      )}
 
       {/* Add Block Modal */}
       <AddBlockModal
