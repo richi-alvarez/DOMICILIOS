@@ -23,6 +23,16 @@ interface ThemeState {
   bgColor: string
   bgImage: string | null
   bgVideoUrl: string
+  // Color palettes by type
+  buttonPrimaryColor: string
+  buttonSecondaryColor: string
+  buttonTertiaryColor: string
+  categoryPrimaryColor: string
+  categorySecondaryColor: string
+  categoryTertiaryColor: string
+  cartPrimaryColor: string
+  cartSecondaryColor: string
+  cartTertiaryColor: string
 }
 
 interface BaseBlock {
@@ -95,15 +105,21 @@ interface TextBlock extends BaseBlock {
 type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock
 
 // Paletas predefinidas
-const PALETTES = {
+const BUTTON_PALETTES = {
   Modern: { primary: '#ff6b57', secondary: '#f8f9fa', tertiary: '#212529' },
   Elegant: { primary: '#8b6914', secondary: '#fdf8f0', tertiary: '#3d2b1f' },
   Minimal: { primary: '#000000', secondary: '#ffffff', tertiary: '#333333' },
   Sakura: { primary: '#e8a0b4', secondary: '#fff0f3', tertiary: '#5c2d40' },
+}
+
+const CATEGORY_PALETTES = {
   Matcha: { primary: '#4a7c59', secondary: '#f4f9f0', tertiary: '#1e3a2f' },
   Milano: { primary: '#c0392b', secondary: '#fff8f0', tertiary: '#2c1810' },
   Santorini: { primary: '#0077b6', secondary: '#f0f8ff', tertiary: '#023e8a' },
   Brooklyn: { primary: '#6c757d', secondary: '#f8f9fa', tertiary: '#212529' },
+}
+
+const CART_PALETTES = {
   Alexandra: { primary: '#9b59b6', secondary: '#faf5ff', tertiary: '#4a235a' },
   Coastal: { primary: '#17a589', secondary: '#e8f8f5', tertiary: '#0e6655' },
   Nordic: { primary: '#5dade2', secondary: '#f0f8ff', tertiary: '#1b4f72' },
@@ -111,6 +127,12 @@ const PALETTES = {
   'Tech Noir': { primary: '#00d2ff', secondary: '#0d1117', tertiary: '#c9d1d9' },
   'Dark Elegance': { primary: '#d4af37', secondary: '#1a1a2e', tertiary: '#eaeaea' },
   'Midnight Blue': { primary: '#4fc3f7', secondary: '#0a1628', tertiary: '#e3f2fd' },
+}
+
+const PALETTES = {
+  ...BUTTON_PALETTES,
+  ...CATEGORY_PALETTES,
+  ...CART_PALETTES,
 }
 
 const FONTS = {
@@ -129,6 +151,16 @@ const THEME_DEFAULTS: ThemeState = {
   bgColor: '#ffffff',
   bgImage: null,
   bgVideoUrl: '',
+  // Default palette colors by type
+  buttonPrimaryColor: '#ff6b57',
+  buttonSecondaryColor: '#f8f9fa',
+  buttonTertiaryColor: '#212529',
+  categoryPrimaryColor: '#4a7c59',
+  categorySecondaryColor: '#f4f9f0',
+  categoryTertiaryColor: '#1e3a2f',
+  cartPrimaryColor: '#9b59b6',
+  cartSecondaryColor: '#faf5ff',
+  cartTertiaryColor: '#4a235a',
 }
 
 const DEFAULT_BLOCKS: Block[] = [
@@ -481,7 +513,14 @@ export default function DesignPage({ params }: { params: { id: string } }) {
               </TabsContent>
 
               <TabsContent value="global" className="p-4">
-                <GlobalPanel palettes={PALETTES} fonts={FONTS} theme={theme} onUpdateTheme={updateTheme} />
+                <GlobalPanel
+                  buttonPalettes={BUTTON_PALETTES}
+                  categoryPalettes={CATEGORY_PALETTES}
+                  cartPalettes={CART_PALETTES}
+                  fonts={FONTS}
+                  theme={theme}
+                  onUpdateTheme={updateTheme}
+                />
               </TabsContent>
             </Tabs>
           </div>

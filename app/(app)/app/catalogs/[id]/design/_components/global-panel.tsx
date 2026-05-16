@@ -13,37 +13,58 @@ interface ThemeState {
   bgColor: string
   bgImage: string | null
   bgVideoUrl: string
+  buttonPrimaryColor: string
+  buttonSecondaryColor: string
+  buttonTertiaryColor: string
+  categoryPrimaryColor: string
+  categorySecondaryColor: string
+  categoryTertiaryColor: string
+  cartPrimaryColor: string
+  cartSecondaryColor: string
+  cartTertiaryColor: string
 }
 
 interface GlobalPanelProps {
-  palettes: Record<string, { primary: string; secondary: string; tertiary: string }>
+  buttonPalettes: Record<string, { primary: string; secondary: string; tertiary: string }>
+  categoryPalettes: Record<string, { primary: string; secondary: string; tertiary: string }>
+  cartPalettes: Record<string, { primary: string; secondary: string; tertiary: string }>
   fonts: Record<string, string[]>
   theme: ThemeState
   onUpdateTheme: (partial: Partial<ThemeState>) => void
 }
 
-export default function GlobalPanel({ palettes, fonts, theme, onUpdateTheme }: GlobalPanelProps) {
+export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPalettes, fonts, theme, onUpdateTheme }: GlobalPanelProps) {
   const [showBgUpload, setShowBgUpload] = useState(false)
 
-  return (
-    <div className="space-y-6 pb-6">
-      {/* Color Palettes */}
+  const renderPaletteSection = (
+    title: string,
+    palettes: Record<string, { primary: string; secondary: string; tertiary: string }>,
+    colorType: 'button' | 'category' | 'cart'
+  ) => {
+    const colorMap: Record<string, [string, string, string]> = {
+      button: ['buttonPrimaryColor', 'buttonSecondaryColor', 'buttonTertiaryColor'],
+      category: ['categoryPrimaryColor', 'categorySecondaryColor', 'categoryTertiaryColor'],
+      cart: ['cartPrimaryColor', 'cartSecondaryColor', 'cartTertiaryColor'],
+    }
+
+    const [primaryKey, secondaryKey, tertiaryKey] = colorMap[colorType]
+
+    return (
       <div>
-        <h3 className="text-sm font-semibold mb-3">Paletas de Colores</h3>
+        <h3 className="text-sm font-semibold mb-3">{title}</h3>
         <div className="grid grid-cols-3 gap-2">
           {Object.entries(palettes).map(([name, colors]) => (
             <button
               key={name}
               onClick={() =>
                 onUpdateTheme({
-                  selectedPalette: name,
-                  primaryColor: colors.primary,
-                  secondaryColor: colors.secondary,
-                  tertiaryColor: colors.tertiary,
-                })
+                  [primaryKey]: colors.primary,
+                  [secondaryKey]: colors.secondary,
+                  [tertiaryKey]: colors.tertiary,
+                } as Partial<ThemeState>)
               }
               className={`p-3 rounded-lg border-2 transition ${
-                theme.selectedPalette === name ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
+                theme[primaryKey as keyof ThemeState] === colors.primary ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
               }`}
               title={name}
             >
@@ -57,6 +78,15 @@ export default function GlobalPanel({ palettes, fonts, theme, onUpdateTheme }: G
           ))}
         </div>
       </div>
+    )
+  }
+
+  return (
+    <div className="space-y-6 pb-6">
+      {/* Color Palettes - 3 categories */}
+      {renderPaletteSection('Paleta de Botones (Portada + Agregar al Carrito)', buttonPalettes, 'button')}
+      {renderPaletteSection('Paleta de Categoría', categoryPalettes, 'category')}
+      {renderPaletteSection('Paleta de Carrito de Compras', cartPalettes, 'cart')}
 
       {/* Custom Colors */}
       <div>

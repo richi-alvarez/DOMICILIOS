@@ -18,6 +18,15 @@ interface ThemeState {
   bgColor: string
   bgImage: string | null
   bgVideoUrl: string
+  buttonPrimaryColor: string
+  buttonSecondaryColor: string
+  buttonTertiaryColor: string
+  categoryPrimaryColor: string
+  categorySecondaryColor: string
+  categoryTertiaryColor: string
+  cartPrimaryColor: string
+  cartSecondaryColor: string
+  cartTertiaryColor: string
 }
 
 interface PreviewPanelProps {
@@ -143,7 +152,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
                   {block.showCta && (
                     <button
                       className="px-6 py-2 rounded text-white"
-                      style={{ backgroundColor: theme.primaryColor }}
+                      style={{ backgroundColor: theme.buttonPrimaryColor }}
                     >
                       {block.ctaText}
                     </button>
@@ -176,7 +185,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
                       {/* Category Filter */}
                       {block.showCategoryFilter && (
                         <div className="flex gap-2">
-                          <button className="px-3 py-1 rounded-full text-sm" style={{ backgroundColor: theme.primaryColor, color: 'white' }}>
+                          <button className="px-3 py-1 rounded-full text-sm" style={{ backgroundColor: theme.categoryPrimaryColor, color: 'white' }}>
                             Todos
                           </button>
                           <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
@@ -267,7 +276,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
                               </a>
                             )}
                             {block.enableCart && (
-                              <button className="text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 w-full">
+                              <button className="text-xs text-white px-2 py-1 rounded w-full" style={{ backgroundColor: theme.buttonPrimaryColor }}>
                                 Agregar al carrito
                               </button>
                             )}
@@ -310,7 +319,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
                 <div
                   className={`absolute ${positionMap[block.position]} ${sizeMap[block.size]} ${animationMap[block.animation]} rounded-full flex items-center justify-center cursor-pointer group`}
                   style={{
-                    backgroundColor: block.useCustomColors ? block.bgColor : theme.primaryColor,
+                    backgroundColor: block.useCustomColors ? block.bgColor : theme.cartPrimaryColor,
                   }}
                 >
                   <span style={{ color: block.useCustomColors ? block.iconColor : 'white' }}>
