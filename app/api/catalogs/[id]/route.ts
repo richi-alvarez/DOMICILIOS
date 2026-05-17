@@ -1,10 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { auth } from '@/auth'
+import { logger } from '@/lib/monitoring/logger'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    // 1. Authentication check
+    const session = await auth()
+    if (!session?.user?.id) {
+      return NextResponse.json(
+        { error: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
     const { id } = await params
 
     if (!process.env.DATABASE_URL) {
@@ -28,9 +39,29 @@ export async function GET(
       )
     }
 
-    return NextResponse.json(catalog)
+    // 2. Authorization check - user must own the catalog
+    if (catalog.userId !== session.user.id) {
+      logger.warn('Unauthorized catalog access attempt', {
+        userId: session.user.id,
+        catalogId: id,
+        catalogOwner: catalog.userId,
+      })
+      return NextResponse.json(
+        { error: 'Forbidden' },
+        { status: 403 }
+      )
+    }
+
+    return NextResponse.json({
+      id: catalog.id,
+      name: catalog.name,
+      slug: catalog.slug,
+      description: catalog.description,
+      language: catalog.language,
+      currency: catalog.currency,
+    })
   } catch (error) {
-    console.error('GET /api/catalogs/[id]:', error)
+    logger.error('GET /api/catalogs/[id]', error)
     return NextResponse.json(
       { error: 'Unable to load catalog' },
       { status: 500 }

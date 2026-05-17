@@ -4,11 +4,29 @@ import { auth } from '@/auth'
 import { logger } from '@/lib/monitoring/logger'
 import { db, catalogs } from '@/db'
 import { eq } from 'drizzle-orm'
+import { checkRateLimit, rateLimitConfig } from '@/lib/api/rate-limit'
 
 export const runtime = 'nodejs'
 
 export async function GET(req: NextRequest) {
   try {
+    // 1. Rate limiting
+    const ip = req.ip || 'unknown'
+    const rateLimitResult = await checkRateLimit(ip, rateLimitConfig.api.limit, rateLimitConfig.api.windowMs)
+
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { error: rateLimitConfig.api.message },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rateLimitResult.retryAfter || 60),
+          },
+        }
+      )
+    }
+
+    // 2. Authentication check
     const session = await auth()
 
     if (!session?.user?.id) {
