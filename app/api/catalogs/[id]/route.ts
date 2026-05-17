@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
+import { db, memberships } from '@/db'
+import { eq } from 'drizzle-orm'
 import { logger } from '@/lib/monitoring/logger'
 
 export async function GET(
@@ -39,12 +41,16 @@ export async function GET(
       )
     }
 
-    // 2. Authorization check - user must own the catalog
-    if (catalog.userId !== session.user.id) {
+    // 2. Authorization check - user must be a member of the organization
+    const membership = await db.query.memberships.findFirst({
+      where: eq(memberships.userId, session.user.id)
+    })
+
+    if (!membership || membership.organizationId !== catalog.orgId) {
       logger.warn('Unauthorized catalog access attempt', {
         userId: session.user.id,
         catalogId: id,
-        catalogOwner: catalog.userId,
+        catalogOrgId: catalog.orgId,
       })
       return NextResponse.json(
         { error: 'Forbidden' },

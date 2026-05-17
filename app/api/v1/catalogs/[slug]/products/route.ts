@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
-import { db, catalogs, products } from '@/db'
+import { db, catalogs, products, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
 import { CreateProductSchema } from '@/lib/validators/schemas'
 import { checkRateLimit, rateLimitConfig } from '@/lib/api/rate-limit'
+import { getClientIP } from '@/lib/api/get-client-ip'
 import { logger } from '@/lib/monitoring/logger'
 import { z } from 'zod'
 
@@ -34,12 +35,16 @@ export async function GET(req: NextRequest, { params }: Props) {
       return NextResponse.json({ error: 'Catálogo no encontrado' }, { status: 404 })
     }
 
-    // 2. Authorization check - user must own the catalog
-    if (catalog.userId !== session.user.id) {
+    // 2. Authorization check - user must be a member of the organization
+    const membership = await db.query.memberships.findFirst({
+      where: eq(memberships.userId, session.user.id)
+    })
+
+    if (!membership || membership.organizationId !== catalog.orgId) {
       logger.warn('Unauthorized catalog access attempt', {
         userId: session.user.id,
         catalogSlug: slug,
-        catalogOwner: catalog.userId,
+        catalogOrgId: catalog.orgId,
       })
       return NextResponse.json(
         { error: 'Forbidden' },
@@ -85,7 +90,7 @@ export async function GET(req: NextRequest, { params }: Props) {
 export async function POST(req: NextRequest, { params }: Props) {
   try {
     // 1. Rate limiting
-    const ip = req.ip || 'unknown'
+    const ip = getClientIP(req)
     const rateLimitResult = await checkRateLimit(ip, rateLimitConfig.api.limit, rateLimitConfig.api.windowMs)
 
     if (!rateLimitResult.allowed) {
@@ -119,28 +124,33 @@ export async function POST(req: NextRequest, { params }: Props) {
       return NextResponse.json({ error: 'Catalog not found' }, { status: 404 })
     }
 
-    if (catalog.userId !== session.user.id) {
+    // 4. Authorization check - user must be a member of the organization
+    const userMembership = await db.query.memberships.findFirst({
+      where: eq(memberships.userId, session.user.id)
+    })
+
+    if (!userMembership || userMembership.organizationId !== catalog.orgId) {
       return NextResponse.json(
         { error: 'Forbidden' },
         { status: 403 }
       )
     }
 
-    // 4. Input validation
+    // 5. Input validation
     const body = await req.json()
     const validated = CreateProductSchema.parse(body)
 
-    // 5. Create product
+    // 6. Create product
+    const images = validated.image ? [{ url: validated.image }] : []
     const [newProduct] = await db
       .insert(products)
       .values({
         catalogId: catalog.id,
         name: validated.name,
         description: validated.description || '',
-        price: validated.price,
-        category: validated.category,
+        price: Math.round(validated.price),
         sku: validated.sku || null,
-        image: validated.image || null,
+        imagesJson: images,
         slug: validated.name.toLowerCase().replace(/\s+/g, '-'),
         active: true,
       })

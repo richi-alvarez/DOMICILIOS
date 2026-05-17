@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/auth'
-import { db, catalogs, products, categories } from '@/db'
+import { db, catalogs, products, categories, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
 import { logger } from '@/lib/monitoring/logger'
 
@@ -31,12 +31,16 @@ export async function GET(req: NextRequest, { params }: Props) {
       return NextResponse.json({ error: 'Catálogo no encontrado' }, { status: 404 })
     }
 
-    // 2. Authorization check - user must own the catalog
-    if (catalog.userId !== session.user.id) {
+    // 2. Authorization check - user must be a member of the organization
+    const membership = await db.query.memberships.findFirst({
+      where: eq(memberships.userId, session.user.id)
+    })
+
+    if (!membership || membership.organizationId !== catalog.orgId) {
       logger.warn('Unauthorized catalog access attempt', {
         userId: session.user.id,
         catalogSlug: slug,
-        catalogOwner: catalog.userId,
+        catalogOrgId: catalog.orgId,
       })
       return NextResponse.json(
         { error: 'Forbidden' },

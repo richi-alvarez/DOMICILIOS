@@ -4,6 +4,7 @@ import { db, catalogs, memberships } from '@/db'
 import { eq, count } from 'drizzle-orm'
 import { CreateCatalogSchema } from '@/lib/validators/schemas'
 import { checkRateLimit, rateLimitConfig } from '@/lib/api/rate-limit'
+import { getClientIP } from '@/lib/api/get-client-ip'
 import { getOrgPlan, PLAN_LIMITS } from '@/lib/billing/limits'
 import { logger } from '@/lib/monitoring/logger'
 import { z } from 'zod'
@@ -13,7 +14,7 @@ export const runtime = 'nodejs'
 export async function POST(req: NextRequest) {
   try {
     // 1. Rate limiting
-    const ip = req.ip || 'unknown'
+    const ip = getClientIP(req)
     const rateLimitResult = await checkRateLimit(ip, rateLimitConfig.api.limit, rateLimitConfig.api.windowMs)
 
     if (!rateLimitResult.allowed) {

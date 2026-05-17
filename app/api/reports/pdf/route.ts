@@ -2,16 +2,17 @@ import { NextRequest, NextResponse } from 'next/server'
 import { generatePDFReport } from '@/lib/actions/reports'
 import { auth } from '@/auth'
 import { logger } from '@/lib/monitoring/logger'
-import { db, catalogs } from '@/db'
+import { db, catalogs, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
 import { checkRateLimit, rateLimitConfig } from '@/lib/api/rate-limit'
+import { getClientIP } from '@/lib/api/get-client-ip'
 
 export const runtime = 'nodejs'
 
 export async function GET(req: NextRequest) {
   try {
     // 1. Rate limiting
-    const ip = req.ip || 'unknown'
+    const ip = getClientIP(req)
     const rateLimitResult = await checkRateLimit(ip, rateLimitConfig.api.limit, rateLimitConfig.api.windowMs)
 
     if (!rateLimitResult.allowed) {
@@ -45,7 +46,16 @@ export async function GET(req: NextRequest) {
       where: eq(catalogs.id, catalogId)
     })
 
-    if (!catalog || catalog.userId !== session.user.id) {
+    if (!catalog) {
+      return NextResponse.json({ error: 'Catalog not found' }, { status: 404 })
+    }
+
+    // Check if user is a member of the organization
+    const membership = await db.query.memberships.findFirst({
+      where: eq(memberships.userId, session.user.id)
+    })
+
+    if (!membership || membership.organizationId !== catalog.orgId) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
     }
 

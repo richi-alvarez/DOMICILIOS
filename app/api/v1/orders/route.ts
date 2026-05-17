@@ -5,6 +5,7 @@ import { createOrder } from '@/lib/actions/orders'
 import { logger } from '@/lib/monitoring/logger'
 import { CreateOrderSchema } from '@/lib/validators/schemas'
 import { checkRateLimit, rateLimitConfig } from '@/lib/api/rate-limit'
+import { getClientIP } from '@/lib/api/get-client-ip'
 import { z } from 'zod'
 
 export const runtime = 'nodejs'
@@ -12,7 +13,7 @@ export const runtime = 'nodejs'
 export async function POST(req: NextRequest) {
   try {
     // 1. Rate limiting
-    const ip = req.ip || 'unknown'
+    const ip = getClientIP(req)
     const rateLimitResult = await checkRateLimit(ip, rateLimitConfig.orders.limit, rateLimitConfig.orders.windowMs)
 
     if (!rateLimitResult.allowed) {
