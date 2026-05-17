@@ -18,16 +18,16 @@ const sora = Sora({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Domicilios — Catálogos digitales con pedidos por WhatsApp',
-    template: '%s | Domicilios',
+    default: 'WaStore — Catálogos Inteligentes para Negocios',
+    template: '%s | WaStore',
   },
   description:
-    'Crea tu catálogo o menú digital y recibe pedidos por WhatsApp. Sin comisiones. Para restaurantes, tiendas y negocios de toda Latinoamérica.',
+    'Crea catálogos inteligentes para tu negocio y automatiza ventas por WhatsApp. Commerce conversacional para restaurantes, tiendas y emprendimientos.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'),
   openGraph: {
     type: 'website',
     locale: 'es_CO',
-    siteName: 'Domicilios',
+    siteName: 'WaStore',
   },
   twitter: {
     card: 'summary_large_image',

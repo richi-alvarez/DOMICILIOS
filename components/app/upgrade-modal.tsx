@@ -57,7 +57,7 @@ export function UpgradeModal({ open, onClose, feature, currentPlan, currentLimit
               <>
                 <li className="flex items-center gap-2"><span className="text-lime-600">✓</span> 100 productos</li>
                 <li className="flex items-center gap-2"><span className="text-lime-600">✓</span> 300 pedidos/mes</li>
-                <li className="flex items-center gap-2"><span className="text-lime-600">✓</span> Sin marca Domicilios</li>
+                <li className="flex items-center gap-2"><span className="text-lime-600">✓</span> Sin marca WaStore</li>
               </>
             )}
           </ul>

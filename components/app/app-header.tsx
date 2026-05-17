@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 import {
@@ -72,10 +73,8 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
     <header className="flex h-16 items-center justify-between border-b border-warm-200 bg-white px-4 sticky top-0 z-50 lg:hidden">
       {/* Logo */}
       <Link href="/app" className="flex items-center gap-2">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500">
-          <span className="text-sm font-black text-white">D</span>
-        </div>
-        <span className="font-display font-bold text-night-800">Domicilios</span>
+        <Image src="/wastore-logo.png" alt="WaStore" width={32} height={32} />
+        <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text font-display font-bold text-transparent">WaStore</span>
       </Link>
 
       {/* Right Section: Notifications + User Dropdown + Hamburger */}

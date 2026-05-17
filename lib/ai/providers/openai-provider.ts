@@ -1,0 +1,73 @@
+import OpenAI from 'openai'
+import type { AIProvider, AIGenerationOptions, AIGenerationResponse } from '../types/ai-provider'
+
+export class OpenAIProvider implements AIProvider {
+  name = 'openai'
+
+  isConfigured(): boolean {
+    return !!process.env.OPENAI_API_KEY
+  }
+
+  validateConfig(): boolean {
+    if (!this.isConfigured()) {
+      console.warn('OpenAI API key not configured')
+      return false
+    }
+    return true
+  }
+
+  private getClient(): OpenAI {
+    const apiKey = process.env.OPENAI_API_KEY
+    if (!apiKey) {
+      throw new Error('OPENAI_API_KEY not configured')
+    }
+    return new OpenAI({ apiKey })
+  }
+
+  async generate(options: AIGenerationOptions): Promise<AIGenerationResponse> {
+    try {
+      if (!this.validateConfig()) {
+        return {
+          success: false,
+          error: 'OpenAI provider not configured',
+        }
+      }
+
+      const client = this.getClient()
+      const response = await client.chat.completions.create({
+        model: options.model || 'gpt-3.5-turbo',
+        max_tokens: options.maxTokens || 2048,
+        temperature: options.temperature,
+        system: options.systemPrompt,
+        messages: [
+          {
+            role: 'user',
+            content: options.userMessage,
+          },
+        ],
+      })
+
+      const content = response.choices[0]?.message?.content
+      if (!content) {
+        return {
+          success: false,
+          error: 'Empty response from OpenAI',
+        }
+      }
+
+      return {
+        success: true,
+        content,
+        usage: {
+          inputTokens: response.usage?.prompt_tokens || 0,
+          outputTokens: response.usage?.completion_tokens || 0,
+        },
+      }
+    } catch (error) {
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error from OpenAI',
+      }
+    }
+  }
+}

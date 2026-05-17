@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Política de Privacidad',
-  description: 'Cómo recopilamos, usamos y protegemos tu información personal en Domicilios.',
+  description: 'Cómo recopilamos, usamos y protegemos tu información personal en WaStore.',
 }
 
 export default function PrivacyPage() {
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
 
       <div className="prose prose-slate mt-10 max-w-none">
         <h2>1. Información que recopilamos</h2>
-        <p>Recopilamos la siguiente información cuando usas Domicilios:</p>
+        <p>Recopilamos la siguiente información cuando usas WaStore:</p>
         <ul>
           <li><strong>Información de cuenta:</strong> nombre, correo electrónico, contraseña cifrada.</li>
           <li><strong>Información de negocio:</strong> nombre del catálogo, productos, precios, imágenes.</li>

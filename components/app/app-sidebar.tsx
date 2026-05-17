@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 import {
   LayoutGrid, Package, Palette, ShoppingCart, BarChart2, Settings2, FileText,
-  LogOut, ChevronDown, Plus, Store, Users, CreditCard,
+  LogOut, ChevronDown, Plus, Store, Users, CreditCard, BarChart3,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { PlanCode } from '@/lib/billing/constants'
@@ -27,6 +28,7 @@ interface AppSidebarProps {
 
 const globalNav = [
   { href: '/app', label: 'Mis catálogos', icon: LayoutGrid },
+  { href: '/app/analytics', label: 'Analytics', icon: BarChart3 },
   { href: '/app/team', label: 'Equipo', icon: Users },
   { href: '/app/billing', label: 'Plan y facturación', icon: CreditCard },
 ]
@@ -58,10 +60,14 @@ export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }:
       {/* Logo */}
       <div className="flex h-16 items-center border-b border-warm-200 px-5">
         <Link href="/app" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500">
-            <span className="text-sm font-black text-white">D</span>
-          </div>
-          <span className="font-display font-bold text-night-800">Domicilios</span>
+          <Image
+            src="/wastore-logo.png"
+            alt="WaStore"
+            width={32}
+            height={32}
+            className="h-auto w-auto"
+          />
+          <span className="font-display font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">WaStore</span>
         </Link>
       </div>
 

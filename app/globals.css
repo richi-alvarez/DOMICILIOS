@@ -5,18 +5,18 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Sora", "Inter", ui-sans-serif, sans-serif;
 
-  /* ── Paleta Domicilios ── */
-  /* Primario: coral */
-  --color-primary-50: #fff3f1;
-  --color-primary-100: #ffe4df;
-  --color-primary-200: #ffccc4;
-  --color-primary-300: #ffaa9e;
-  --color-primary-400: #ff8a79;
-  --color-primary-500: #ff6b57;
-  --color-primary-600: #f04535;
-  --color-primary-700: #cc2e20;
-  --color-primary-800: #a8271c;
-  --color-primary-900: #8b251d;
+  /* ── Paleta WaStore ── */
+  /* Primario: cyan-blue */
+  --color-primary-50: #ecf8ff;
+  --color-primary-100: #cff0ff;
+  --color-primary-200: #a3e6ff;
+  --color-primary-300: #06b6d4;
+  --color-primary-400: #0891b2;
+  --color-primary-500: #0e7490;
+  --color-primary-600: #0077b6;
+  --color-primary-700: #0057ff;
+  --color-primary-800: #0047d9;
+  --color-primary-900: #1e40af;
 
   /* Secundario: azul noche */
   --color-night-50: #e8ecf2;
@@ -88,7 +88,7 @@
   --card-foreground: 220 52% 14%;
   --popover: 0 0% 100%;
   --popover-foreground: 220 52% 14%;
-  --primary: 9 100% 67%;
+  --primary: 190 100% 50%;
   --primary-foreground: 0 0% 100%;
   --secondary: 218 60% 13%;
   --secondary-foreground: 0 0% 100%;

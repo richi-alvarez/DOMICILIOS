@@ -422,6 +422,62 @@ export const transactions = pgTable(
   (t) => [index('transactions_org_id_idx').on(t.organizationId)],
 )
 
+// ── Quality History ───────────────────────────────────────────────────
+export const qualityHistory = pgTable(
+  'quality_history',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    catalogId: uuid('catalog_id')
+      .notNull()
+      .references(() => catalogs.id, { onDelete: 'cascade' }),
+    catalogScore: integer('catalog_score').notNull(),
+    completenessScore: integer('completeness_score').notNull(),
+    seoScore: integer('seo_score').notNull(),
+    consistencyScore: integer('consistency_score').notNull(),
+    sellabilityScore: integer('sellability_score').notNull(),
+    strengths: jsonb('strengths').default([]).notNull(),
+    improvements: jsonb('improvements').default([]).notNull(),
+    productAnalysis: jsonb('product_analysis').default([]).notNull(),
+    actionableRecommendations: jsonb('actionable_recommendations').default([]).notNull(),
+    summary: text('summary').notNull(),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+  },
+  (t) => [index('quality_history_catalog_id_idx').on(t.catalogId)],
+)
+
+// ── Quality Alerts ────────────────────────────────────────────────────
+export const qualityAlertsEnum = pgEnum('quality_alert_type', [
+  'score_drop',
+  'low_score',
+  'dimension_drop',
+  'critical_issue',
+])
+
+export const qualityAlerts = pgTable(
+  'quality_alerts',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    catalogId: uuid('catalog_id')
+      .notNull()
+      .references(() => catalogs.id, { onDelete: 'cascade' }),
+    type: qualityAlertsEnum('type').notNull(),
+    severity: varchar('severity', { length: 32 }).default('medium').notNull(), // low, medium, high, critical
+    previousScore: integer('previous_score'),
+    currentScore: integer('current_score'),
+    scoreDrop: integer('score_drop'),
+    affectedDimension: text('affected_dimension'), // completeness, seo, consistency, sellability
+    message: text('message').notNull(),
+    emailSent: boolean('email_sent').default(false).notNull(),
+    dismissed: boolean('dismissed').default(false).notNull(),
+    dismissedAt: timestamp('dismissed_at', { mode: 'date' }),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+  },
+  (t) => [
+    index('quality_alerts_catalog_id_idx').on(t.catalogId),
+    index('quality_alerts_dismissed_idx').on(t.dismissed),
+  ],
+)
+
 // ── Audit log ──────────────────────────────────────────────────────────
 export const auditLog = pgTable('audit_log', {
   id: uuid('id').primaryKey().defaultRandom(),

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Términos de Uso',
-  description: 'Términos y condiciones de uso de la plataforma Domicilios.',
+  description: 'Términos y condiciones de uso de la plataforma WaStore.',
 }
 
 export default function TermsPage() {
@@ -14,14 +14,14 @@ export default function TermsPage() {
       <div className="prose prose-slate mt-10 max-w-none">
         <h2>1. Aceptación de términos</h2>
         <p>
-          Al acceder o usar la plataforma Domicilios (el &ldquo;Servicio&rdquo;), aceptas estar vinculado a estos
+          Al acceder o usar la plataforma WaStore (el &ldquo;Servicio&rdquo;), aceptas estar vinculado a estos
           Términos de Uso. Si no estás de acuerdo con alguno de estos términos, no debes usar el
           Servicio.
         </p>
 
         <h2>2. Descripción del servicio</h2>
         <p>
-          Domicilios es una plataforma SaaS que permite a comerciantes crear catálogos y menús
+          WaStore es una plataforma SaaS que permite a comerciantes crear catálogos y menús
           digitales para recibir pedidos por WhatsApp o correo electrónico. El Servicio incluye
           herramientas de gestión de productos, pedidos, pagos y analítica.
         </p>
@@ -59,7 +59,7 @@ export default function TermsPage() {
 
         <h2>7. Limitación de responsabilidad</h2>
         <p>
-          Domicilios no será responsable por pérdidas indirectas, incidentales o consecuentes
+          WaStore no será responsable por pérdidas indirectas, incidentales o consecuentes
           derivadas del uso o incapacidad de uso del Servicio. Nuestra responsabilidad máxima estará
           limitada al monto pagado por el usuario en los últimos 12 meses.
         </p>

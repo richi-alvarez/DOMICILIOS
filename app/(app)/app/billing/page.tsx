@@ -19,7 +19,7 @@ const PLAN_ORDER: PlanCode[] = ['free', 'basic', 'pro', 'business']
 
 const PLAN_HIGHLIGHTS: Record<PlanCode, string[]> = {
   free: ['1 catálogo', '30 productos', '30 pedidos/mes', 'Dominio domicilios.app/*'],
-  basic: ['1 catálogo', '100 productos', '300 pedidos/mes', 'Sin marca Domicilios'],
+  basic: ['1 catálogo', '100 productos', '300 pedidos/mes', 'Sin marca WaStore'],
   pro: ['3 catálogos', '500 productos', 'Pedidos ilimitados', 'Dominio propio', 'Analítica avanzada', 'IA incluida'],
   business: ['10 catálogos', 'Productos ilimitados', 'Todo lo de Pro', '20 colaboradores', 'Soporte dedicado'],
 }

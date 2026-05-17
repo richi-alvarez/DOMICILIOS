@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Política de Uso Aceptable',
-  description: 'Qué actividades están permitidas y prohibidas en la plataforma Domicilios.',
+  description: 'Qué actividades están permitidas y prohibidas en la plataforma WaStore.',
 }
 
 export default function AupPage() {
@@ -13,7 +13,7 @@ export default function AupPage() {
 
       <div className="prose prose-slate mt-10 max-w-none">
         <p>
-          Esta política define los usos permitidos y prohibidos de la plataforma Domicilios. Al usar
+          Esta política define los usos permitidos y prohibidos de la plataforma WaStore. Al usar
           el Servicio, aceptas cumplir con estas reglas.
         </p>
 

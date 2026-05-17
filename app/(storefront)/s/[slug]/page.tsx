@@ -174,7 +174,7 @@ export default async function StorefrontPage({ params, searchParams }: Props) {
 
       {/* Footer brand */}
       <footer className="pb-6 pt-2 text-center text-xs text-night-300">
-        Creado con <span className="font-semibold text-primary-500">Domicilios</span>
+        Creado con <span className="font-semibold text-primary-500">WaStore</span>
       </footer>
     </div>
   )

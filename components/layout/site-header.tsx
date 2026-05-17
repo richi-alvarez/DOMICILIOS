@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useSession, signOut } from 'next-auth/react'
 import {
@@ -65,11 +66,15 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500">
-            <span className="text-base font-black text-white">D</span>
-          </div>
-          <span className="font-display text-xl font-bold text-night-800">
-            Domicilios
+          <Image
+            src="/wastore-logo.png"
+            alt="WaStore"
+            width={32}
+            height={32}
+            className="h-auto w-auto"
+          />
+          <span className="font-display text-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
+            WaStore
           </span>
         </Link>
 

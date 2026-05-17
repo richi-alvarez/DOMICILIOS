@@ -1,0 +1,325 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "WaStore WaStore" [ref=e6] [cursor=pointer]:
+        - /url: /app
+        - img "WaStore" [ref=e7]
+        - generic [ref=e8]: WaStore
+      - generic [ref=e9]:
+        - navigation [ref=e10]:
+          - link "Mis catálogos" [ref=e11] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e12]
+            - text: Mis catálogos
+          - link "Analytics" [ref=e17] [cursor=pointer]:
+            - /url: /app/analytics
+            - img [ref=e18]
+            - text: Analytics
+          - link "Equipo" [ref=e20] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e21]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e26] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e27]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e29] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e30]
+          - text: Nuevo catálogo
+      - generic [ref=e32]:
+        - generic [ref=e33]: C
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - paragraph [ref=e36]: Carlos García
+            - generic [ref=e37]: Pro
+          - paragraph [ref=e38]: carlos.garcia@test.com
+        - button "Cerrar sesión" [ref=e39]:
+          - img [ref=e40]
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - img [ref=e46]
+          - generic [ref=e48]:
+            - heading "Analytics" [level=1] [ref=e49]
+            - paragraph [ref=e50]: Estadísticas en tiempo real de tus escaneos de menú
+        - generic [ref=e66]:
+          - generic [ref=e67]:
+            - paragraph [ref=e68]: Total de Escaneos
+            - generic [ref=e70]: "42"
+            - generic [ref=e71]:
+              - img [ref=e72]
+              - generic [ref=e75]: +2 hoy
+          - generic [ref=e76]:
+            - paragraph [ref=e77]: Productos Detectados
+            - generic [ref=e78]:
+              - generic [ref=e79]: "1250"
+              - generic [ref=e80]: productos
+          - generic [ref=e81]:
+            - paragraph [ref=e82]: Costo Promedio
+            - generic [ref=e83]:
+              - generic [ref=e84]: $0.0018
+              - generic [ref=e85]: por imagen
+            - generic [ref=e86]:
+              - img [ref=e87]
+              - generic [ref=e90]: "-12% vs semana pasada"
+          - generic [ref=e91]:
+            - paragraph [ref=e92]: Calidad Promedio
+            - generic [ref=e94]: 92/100
+            - generic [ref=e96]: Excelente
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - paragraph [ref=e99]: Tiempo Promedio de Procesamiento
+            - generic [ref=e100]:
+              - generic [ref=e101]: "25.5"
+              - generic [ref=e102]: segundos
+            - paragraph [ref=e103]: Incluye OCR y Claude Vision
+          - generic [ref=e104]:
+            - paragraph [ref=e105]: Costo Total Acumulado
+            - generic [ref=e107]: $0.076
+            - paragraph [ref=e108]: Inversión total en escaneos
+          - generic [ref=e109]:
+            - paragraph [ref=e110]: Últimas 24 Horas
+            - generic [ref=e111]:
+              - generic [ref=e112]: "8"
+              - generic [ref=e113]: escaneos
+            - paragraph [ref=e114]: 245 productos, $0.018 costo
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - heading "Uso de Proveedores" [level=3] [ref=e117]
+            - generic [ref=e118]:
+              - generic [ref=e119]:
+                - heading "Proveedores OCR" [level=4] [ref=e120]
+                - generic [ref=e121]:
+                  - generic [ref=e122]:
+                    - generic [ref=e125]: tesseract
+                    - generic [ref=e126]:
+                      - generic [ref=e129]: "35"
+                      - generic [ref=e130]:
+                        - img [ref=e131]
+                        - text: 94%
+                  - generic [ref=e133]:
+                    - generic [ref=e136]: paddleocr
+                    - generic [ref=e137]:
+                      - generic [ref=e140]: "7"
+                      - generic [ref=e141]:
+                        - img [ref=e142]
+                        - text: 91%
+              - generic [ref=e144]:
+                - heading "Proveedores IA" [level=4] [ref=e145]
+                - generic [ref=e146]:
+                  - generic [ref=e147]:
+                    - generic [ref=e150]: claude
+                    - generic [ref=e151]:
+                      - generic [ref=e154]: "40"
+                      - generic [ref=e155]: $0.3000
+                  - generic [ref=e156]:
+                    - generic [ref=e159]: openai
+                    - generic [ref=e160]:
+                      - generic [ref=e163]: "2"
+                      - generic [ref=e164]: $0.0600
+            - paragraph [ref=e166]: 💡 Está utilizando los proveedores más económicos. Claude Haiku es excelente para visión de menús.
+          - generic [ref=e167]:
+            - heading "Performance" [level=3] [ref=e168]
+            - generic [ref=e169]:
+              - generic [ref=e170]:
+                - paragraph [ref=e171]: Tendencia de Calidad
+                - generic [ref=e172]: Estable
+              - paragraph [ref=e175]: 92% - Excelente desempeño
+            - generic [ref=e176]:
+              - generic [ref=e177]:
+                - paragraph [ref=e178]: Tendencia de Velocidad
+                - generic [ref=e179]: Mejorando
+              - paragraph [ref=e180]: 25.5s promedio
+              - paragraph [ref=e181]: "-15% más rápido que la semana pasada"
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - paragraph [ref=e184]: Costo por Producto
+                - generic [ref=e185]: Óptimo
+              - paragraph [ref=e186]: $0.000061 por producto
+              - paragraph [ref=e187]: Usando proveedores más eficientes
+            - generic [ref=e188]:
+              - paragraph [ref=e190]: Índice de Eficiencia
+              - generic [ref=e191]: 9.2/10
+              - paragraph [ref=e192]: Tu configuración está optimizada
+        - generic [ref=e193]:
+          - generic [ref=e194]:
+            - img [ref=e195]
+            - heading "Recomendaciones" [level=3] [ref=e197]
+          - generic [ref=e198]:
+            - generic [ref=e199]:
+              - img [ref=e200]
+              - paragraph [ref=e202]: Considera usar PaddleOCR más - es más rápido y casi igual de preciso
+            - generic [ref=e203]:
+              - img [ref=e204]
+              - paragraph [ref=e206]: Tu calidad está excelente (92/100) - mantén las imágenes claras
+            - generic [ref=e207]:
+              - img [ref=e208]
+              - paragraph [ref=e210]: Costo promedio muy bajo - estás optimizado
+          - generic [ref=e211]:
+            - paragraph [ref=e212]: Próximos pasos
+            - list [ref=e213]:
+              - listitem [ref=e214]:
+                - generic [ref=e215]: →
+                - generic [ref=e216]: Monitorea la calidad de escaneos regularmente
+              - listitem [ref=e217]:
+                - generic [ref=e218]: →
+                - generic [ref=e219]: Mantén tus menús con buena iluminación y contraste
+              - listitem [ref=e220]:
+                - generic [ref=e221]: →
+                - generic [ref=e222]: Considera usar OCR local (Tesseract/PaddleOCR) para ahorrar costos
+        - generic [ref=e223]:
+          - heading "Visualización de Datos" [level=2] [ref=e224]
+          - generic [ref=e225]:
+            - generic [ref=e226]:
+              - heading "Actividad de Escaneos (Últimos 7 días)" [level=3] [ref=e227]
+              - generic [ref=e229]:
+                - list [ref=e231]:
+                  - listitem [ref=e232]:
+                    - img "Escaneos legend icon" [ref=e233]
+                    - text: Escaneos
+                  - listitem [ref=e235]:
+                    - img "Productos legend icon" [ref=e236]
+                    - text: Productos
+                - application [ref=e238]:
+                  - generic [ref=e299]:
+                    - generic [ref=e300]:
+                      - generic [ref=e302]: Lun
+                      - generic [ref=e304]: Mar
+                      - generic [ref=e306]: Mié
+                      - generic [ref=e308]: Jue
+                      - generic [ref=e310]: Vie
+                      - generic [ref=e312]: Sáb
+                      - generic [ref=e314]: Dom
+                    - generic [ref=e315]:
+                      - generic [ref=e317]: "0"
+                      - generic [ref=e319]: "45"
+                      - generic [ref=e321]: "90"
+                      - generic [ref=e323]: "135"
+                      - generic [ref=e325]: "180"
+            - generic [ref=e326]:
+              - heading "Costo y Calidad (Últimos 7 días)" [level=3] [ref=e327]
+              - generic [ref=e329]:
+                - list [ref=e331]:
+                  - listitem [ref=e332]:
+                    - img "Calidad (/100) legend icon" [ref=e333]
+                    - text: Calidad (/100)
+                  - listitem [ref=e335]:
+                    - img "Costo ($) legend icon" [ref=e336]
+                    - text: Costo ($)
+                - application [ref=e338]:
+                  - generic [ref=e377]:
+                    - generic [ref=e378]:
+                      - generic [ref=e380]: Lun
+                      - generic [ref=e382]: Mar
+                      - generic [ref=e384]: Mié
+                      - generic [ref=e386]: Jue
+                      - generic [ref=e388]: Vie
+                      - generic [ref=e390]: Sáb
+                      - generic [ref=e392]: Dom
+                    - generic [ref=e393]:
+                      - generic [ref=e395]: "0"
+                      - generic [ref=e397]: "0.0035"
+                      - generic [ref=e399]: "0.007"
+                      - generic [ref=e401]: "0.0105"
+                      - generic [ref=e403]: "0.014"
+                    - generic [ref=e404]:
+                      - generic [ref=e406]: "0"
+                      - generic [ref=e408]: "25"
+                      - generic [ref=e410]: "50"
+                      - generic [ref=e412]: "75"
+                      - generic [ref=e414]: "100"
+            - generic [ref=e415]:
+              - heading "Distribución de Costos por Proveedor (Últimos 30 días)" [level=3] [ref=e416]
+              - generic [ref=e417]:
+                - generic [ref=e419]:
+                  - generic [ref=e420]: Claude
+                  - generic [ref=e421]: $0.25 (45%)
+                - generic [ref=e425]:
+                  - generic [ref=e426]: Tesseract
+                  - generic [ref=e427]: $0.00 (0%)
+                - generic [ref=e430]:
+                  - generic [ref=e431]: PaddleOCR
+                  - generic [ref=e432]: $0.05 (9%)
+                - generic [ref=e436]:
+                  - generic [ref=e437]: OpenAI
+                  - generic [ref=e438]: $0.25 (45%)
+              - paragraph [ref=e442]:
+                - text: 💡
+                - strong [ref=e443]: "Insight:"
+                - text: Considera usar PaddleOCR para más escaneos - es 100% gratis y tiene buena precisión.
+        - generic [ref=e444]:
+          - heading "Histórico Detallado" [level=2] [ref=e445]
+          - generic [ref=e446]:
+            - generic [ref=e448]:
+              - heading "Histórico de Escaneos" [level=3] [ref=e449]
+              - button "Descargar CSV" [ref=e450]:
+                - img [ref=e451]
+                - text: Descargar CSV
+            - table [ref=e455]:
+              - rowgroup [ref=e456]:
+                - row "→ Fecha Catálogo Productos Calidad Costo" [ref=e457]:
+                  - columnheader "→" [ref=e458]
+                  - columnheader "Fecha" [ref=e459] [cursor=pointer]:
+                    - text: Fecha
+                    - img [ref=e460]
+                  - columnheader "Catálogo" [ref=e462] [cursor=pointer]
+                  - columnheader "Productos" [ref=e463] [cursor=pointer]
+                  - columnheader "Calidad" [ref=e464] [cursor=pointer]
+                  - columnheader "Costo" [ref=e465] [cursor=pointer]
+              - rowgroup [ref=e466]:
+                - rowgroup [ref=e467]:
+                  - row "+ 2026-05-16 14:32 Panadería Artesanal Pro 42 94 $0.0315" [ref=e468] [cursor=pointer]:
+                    - cell "+" [ref=e469]
+                    - cell "2026-05-16 14:32" [ref=e470]
+                    - cell "Panadería Artesanal Pro" [ref=e471]
+                    - cell "42" [ref=e472]
+                    - cell "94" [ref=e473]:
+                      - generic [ref=e474]: "94"
+                    - cell "$0.0315" [ref=e475]
+                - rowgroup [ref=e476]:
+                  - row "+ 2026-05-16 12:15 Café La Esquina 26 91 $0.0195" [ref=e477] [cursor=pointer]:
+                    - cell "+" [ref=e478]
+                    - cell "2026-05-16 12:15" [ref=e479]
+                    - cell "Café La Esquina" [ref=e480]
+                    - cell "26" [ref=e481]
+                    - cell "91" [ref=e482]:
+                      - generic [ref=e483]: "91"
+                    - cell "$0.0195" [ref=e484]
+                - rowgroup [ref=e485]:
+                  - row "+ 2026-05-15 16:45 Restaurante Central 68 92 $0.0510" [ref=e486] [cursor=pointer]:
+                    - cell "+" [ref=e487]
+                    - cell "2026-05-15 16:45" [ref=e488]
+                    - cell "Restaurante Central" [ref=e489]
+                    - cell "68" [ref=e490]
+                    - cell "92" [ref=e491]:
+                      - generic [ref=e492]: "92"
+                    - cell "$0.0510" [ref=e493]
+                - rowgroup [ref=e494]:
+                  - row "+ 2026-05-15 10:22 Pizzería Milano 33 89 $0.0247" [ref=e495] [cursor=pointer]:
+                    - cell "+" [ref=e496]
+                    - cell "2026-05-15 10:22" [ref=e497]
+                    - cell "Pizzería Milano" [ref=e498]
+                    - cell "33" [ref=e499]
+                    - cell "89" [ref=e500]:
+                      - generic [ref=e501]: "89"
+                    - cell "$0.0247" [ref=e502]
+            - paragraph [ref=e504]: Mostrando 4 registros. Click en una fila para ver detalles.
+        - generic [ref=e505]:
+          - heading "Comparación de Catálogos" [level=2] [ref=e506]
+          - paragraph [ref=e508]: relation "quality_history" does not exist
+        - paragraph [ref=e510]: ℹ️ Datos actualizados cada 30 segundos. Los históricos se guardan por 90 días. Los costos se basan en las tasas actuales de proveedores.
+  - region "Notifications alt+T"
+  - alert [ref=e56]
+  - generic [ref=e61] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e62]:
+      - img [ref=e63]
+    - generic [ref=e511]:
+      - button "Open issues overlay" [ref=e512]:
+        - generic [ref=e513]:
+          - generic [ref=e514]: "0"
+          - generic [ref=e515]: "1"
+        - generic [ref=e516]: Issue
+      - button "Collapse issues badge" [ref=e517]:
+        - img [ref=e518]
+  - generic [ref=e520]: "25"

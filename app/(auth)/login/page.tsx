@@ -10,7 +10,7 @@ export default function LoginPage() {
     <Card>
       <CardHeader className="text-center">
         <CardTitle className="text-2xl">Iniciar Sesión</CardTitle>
-        <CardDescription>Accede a tu panel de Domicilios</CardDescription>
+        <CardDescription>Accede a tu panel de WaStore</CardDescription>
       </CardHeader>
       <CardContent>
         <Suspense>

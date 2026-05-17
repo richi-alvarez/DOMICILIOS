@@ -2,9 +2,9 @@ import { Resend } from 'resend'
 
 // Lazy: no falla en build; falla en runtime si no hay API key
 const resend = new Resend(process.env.RESEND_API_KEY ?? 'placeholder')
-const FROM = process.env.RESEND_FROM_EMAIL ?? 'Domicilios <noreply@domicilios.app>'
+const FROM = process.env.RESEND_FROM_EMAIL ?? 'WaStore <noreply@wastore.app>'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
-const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? 'Domicilios'
+const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? 'WaStore'
 
 function baseTemplate(title: string, body: string): string {
   return `<!DOCTYPE html>
@@ -17,10 +17,8 @@ function baseTemplate(title: string, body: string): string {
 <body style="margin:0;padding:0;background:#FAFAF8;font-family:Inter,ui-sans-serif,system-ui,sans-serif;">
   <div style="max-width:560px;margin:40px auto;background:#fff;border-radius:16px;border:1px solid #E8E8E2;overflow:hidden;">
     <!-- Header -->
-    <div style="background:#0B1F3A;padding:24px 32px;display:flex;align-items:center;gap:12px;">
-      <div style="width:36px;height:36px;background:#FF6B57;border-radius:8px;display:flex;align-items:center;justify-content:center;">
-        <span style="color:#fff;font-weight:900;font-size:18px;">D</span>
-      </div>
+    <div style="background:linear-gradient(to right, #06B6D4, #0057FF);padding:24px 32px;display:flex;align-items:center;gap:12px;">
+      <div style="width:36px;height:36px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;background:linear-gradient(to right, #06B6D4, #0057FF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">W</div>
       <span style="color:#fff;font-size:20px;font-weight:700;">${APP_NAME}</span>
     </div>
     <!-- Body -->
@@ -45,8 +43,8 @@ export async function sendVerificationEmail(email: string, token: string) {
     'Verifica tu correo',
     `<h1 style="margin:0 0 8px;font-size:24px;font-weight:800;color:#0B1F3A;">Verifica tu correo</h1>
     <p style="margin:0 0 24px;color:#5C5C52;line-height:1.6;">Haz clic en el botón para activar tu cuenta en ${APP_NAME}. El enlace expira en 24 horas.</p>
-    <a href="${url}" style="display:inline-block;background:#FF6B57;color:#fff;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;font-size:15px;">Verificar mi correo</a>
-    <p style="margin:20px 0 0;font-size:13px;color:#A8A89E;">O copia este enlace en tu navegador:<br/><span style="color:#FF6B57;word-break:break-all;">${url}</span></p>`,
+    <a href="${url}" style="display:inline-block;background:linear-gradient(to right, #06B6D4, #0057FF);color:#fff;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;font-size:15px;">Verificar mi correo</a>
+    <p style="margin:20px 0 0;font-size:13px;color:#A8A89E;">O copia este enlace en tu navegador:<br/><span style="color:#0057FF;word-break:break-all;">${url}</span></p>`,
   )
   return resend.emails.send({ from: FROM, to: email, subject: `Verifica tu correo en ${APP_NAME}`, html })
 }
@@ -83,7 +81,7 @@ export async function sendWelcomeEmail(email: string, name: string) {
     `<h1 style="margin:0 0 8px;font-size:24px;font-weight:800;color:#0B1F3A;">¡Hola, ${name}! 👋</h1>
     <p style="margin:0 0 24px;color:#5C5C52;line-height:1.6;">Tu cuenta en ${APP_NAME} está lista. Ya puedes crear tu primer catálogo digital y empezar a recibir pedidos por WhatsApp.</p>
     <a href="${APP_URL}/app" style="display:inline-block;background:#FF6B57;color:#fff;font-weight:700;padding:14px 28px;border-radius:10px;text-decoration:none;font-size:15px;">Ir a mi panel →</a>
-    <p style="margin:20px 0 0;font-size:13px;color:#A8A89E;">¿Tienes dudas? Escríbenos a <a href="mailto:hola@domicilios.app" style="color:#FF6B57;">hola@domicilios.app</a></p>`,
+    <p style="margin:20px 0 0;font-size:13px;color:#A8A89E;">¿Tienes dudas? Escríbenos a <a href="mailto:hola@wastore.app" style="color:#0057FF;">hola@wastore.app</a></p>`,
   )
   return resend.emails.send({ from: FROM, to: email, subject: `Bienvenido a ${APP_NAME} 🎉`, html })
 }

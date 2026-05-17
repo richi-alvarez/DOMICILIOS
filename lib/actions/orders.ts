@@ -102,7 +102,7 @@ async function sendOrderNotificationEmail(
     const to = catalog.contactEmail ?? ''
     if (!to) return
     await resend.emails.send({
-      from: 'Domicilios <no-reply@domicilios.app>',
+      from: 'WaStore <no-reply@wastore.app>',
       to,
       subject: `Nuevo pedido #${order.code} — ${catalog.name}`,
       html: `<p>Tienes un nuevo pedido <strong>#${order.code}</strong> de <strong>${customer.name}</strong> (${customer.phone}).</p>

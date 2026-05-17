@@ -49,7 +49,7 @@ export function SiteFooter() {
               <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-500">
                 <span className="text-lg font-black text-white">D</span>
               </div>
-              <span className="font-display text-xl font-bold text-white">Domicilios</span>
+              <span className="font-display text-xl font-bold text-white">WaStore</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-night-100/60">
               Crea tu catálogo digital y recibe pedidos por WhatsApp. Sin comisiones sobre ventas.
@@ -92,7 +92,7 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-night-700 pt-8 sm:flex-row">
           <p className="text-xs text-night-100/40">
-            © {new Date().getFullYear()} Domicilios. Todos los derechos reservados.
+            © {new Date().getFullYear()} WaStore. Todos los derechos reservados.
           </p>
           <p className="text-xs text-night-100/40">
             Hecho con ♥ para comerciantes de Latinoamérica

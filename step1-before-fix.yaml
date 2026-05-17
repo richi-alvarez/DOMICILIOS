@@ -1,0 +1,1188 @@
+- generic:
+  - alert [ref=e1]
+  - generic [active]:
+    - generic [ref=e6] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=e7]:
+        - img [ref=e8]
+      - button "Open issues overlay" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "0"
+          - generic [ref=e15]: "1"
+        - generic [ref=e16]: Issue
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - navigation [ref=e22]:
+            - button "previous" [disabled] [ref=e23]:
+              - img "previous" [ref=e24]
+            - generic [ref=e26]:
+              - generic [ref=e27]: 1/
+              - text: "1"
+            - button "next" [disabled] [ref=e28]:
+              - img "next" [ref=e29]
+          - img
+        - generic [ref=e31]:
+          - link "Next.js 15.3.9 (outdated) Turbopack" [ref=e32] [cursor=pointer]:
+            - /url: https://nextjs.org/docs/messages/version-staleness
+            - img [ref=e33]
+            - generic "An outdated version detected (latest is 16.2.6), upgrade is highly recommended!" [ref=e35]: Next.js 15.3.9 (outdated)
+            - generic [ref=e36]: Turbopack
+          - img
+      - generic [ref=e37]:
+        - dialog "Build Error" [ref=e769]:
+          - generic [ref=e38]:
+            - generic [ref=e39]:
+              - generic [ref=e40]:
+                - generic [ref=e41]:
+                  - generic [ref=e43]: Build Error
+                  - generic [ref=e44]:
+                    - button "Copy Stack Trace" [ref=e45] [cursor=pointer]:
+                      - img [ref=e46]
+                    - button "No related documentation found" [disabled] [ref=e48]:
+                      - img [ref=e49]
+                    - link "Learn more about enabling Node.js inspector for server code with Chrome DevTools" [ref=e51] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/app/building-your-application/configuring/debugging#server-side-code
+                      - img [ref=e52]
+                - paragraph [ref=e61]: Ecmascript file had an error
+              - generic [ref=e63]:
+                - generic [ref=e65]:
+                  - img [ref=e67]
+                  - generic [ref=e71]: ./lib/ai/retry-strategy.ts (29:1)
+                  - button "Open in editor" [ref=e72] [cursor=pointer]:
+                    - img [ref=e74]
+                - generic [ref=e76]:
+                  - generic [ref=e77]: Ecmascript file had an error
+                  - generic [ref=e78]: 27 |
+                  - generic [ref=e79]: "* Intenta con la IA recomendada, y si falla, prueba con otras"
+                  - generic [ref=e80]: 28 |
+                  - generic [ref=e81]: "*/"
+                  - text: ">"
+                  - generic [ref=e82]: 29 |
+                  - text: export class RetryStrategy
+                  - generic [ref=e83]: "{"
+                  - generic [ref=e84]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e85]: 30 |
+                  - text: private
+                  - generic [ref=e86]: attempts
+                  - text: ":"
+                  - generic [ref=e87]: number
+                  - text: = 0
+                  - generic [ref=e88]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e89]: 31 |
+                  - text: private
+                  - generic [ref=e90]: providersUsed
+                  - text: ":"
+                  - generic [ref=e91]: string[]
+                  - text: =
+                  - generic [ref=e92]: "[]"
+                  - generic [ref=e93]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e94]: 32 |
+                  - text: private
+                  - generic [ref=e95]: startTime
+                  - text: ":"
+                  - generic [ref=e96]: number
+                  - text: = 0
+                  - generic [ref=e97]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e98]: 33 |
+                  - generic [ref=e99]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e100]: 34 |
+                  - text: /**
+                  - generic [ref=e101]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e102]: 35 |
+                  - generic [ref=e103]: "* Ejecuta generación con reintentos inteligentes"
+                  - generic [ref=e104]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e105]: 36 |
+                  - generic [ref=e106]: "* Intenta primero con la IA recomendada para la tarea, luego fallbacks"
+                  - generic [ref=e107]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e108]: 37 |
+                  - generic [ref=e109]: "*/"
+                  - generic [ref=e110]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e111]: 38 |
+                  - text: async
+                  - generic [ref=e112]: executeWithRetry(
+                  - generic [ref=e113]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e114]: 39 |
+                  - generic [ref=e115]: task
+                  - text: ": AITask,"
+                  - generic [ref=e116]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e117]: 40 |
+                  - generic [ref=e118]: options
+                  - text: ": AIGenerationOptions,"
+                  - generic [ref=e119]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e120]: 41 |
+                  - generic [ref=e121]: retryOpts
+                  - text: ": RetryOptions ="
+                  - generic [ref=e122]: "{}"
+                  - text: ","
+                  - generic [ref=e123]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e124]: 42 |
+                  - generic [ref=e125]: )
+                  - text: ": Promise<RetryResult>"
+                  - generic [ref=e126]: "{"
+                  - generic [ref=e127]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e128]: 43 |
+                  - text: const
+                  - generic [ref=e129]: maxAttempts
+                  - text: =
+                  - generic [ref=e130]: retryOpts
+                  - text: .
+                  - generic [ref=e131]: maxAttempts
+                  - text: "?? 3"
+                  - generic [ref=e132]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e133]: 44 |
+                  - text: const
+                  - generic [ref=e134]: delayMs
+                  - text: =
+                  - generic [ref=e135]: retryOpts
+                  - text: .
+                  - generic [ref=e136]: delayMs
+                  - text: "?? 500"
+                  - generic [ref=e137]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e138]: 45 |
+                  - text: const
+                  - generic [ref=e139]: backoffMultiplier
+                  - text: =
+                  - generic [ref=e140]: retryOpts
+                  - text: .
+                  - generic [ref=e141]: backoffMultiplier
+                  - text: "?? 2"
+                  - generic [ref=e142]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e143]: 46 |
+                  - text: const
+                  - generic [ref=e144]: verbose
+                  - text: =
+                  - generic [ref=e145]: retryOpts
+                  - text: .
+                  - generic [ref=e146]: verbose
+                  - text: "?? false"
+                  - generic [ref=e147]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e148]: 47 |
+                  - generic [ref=e149]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e150]: 48 |
+                  - text: this.
+                  - generic [ref=e151]: startTime
+                  - text: = Date.now()
+                  - generic [ref=e152]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e153]: 49 |
+                  - text: this.
+                  - generic [ref=e154]: attempts
+                  - text: = 0
+                  - generic [ref=e155]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e156]: 50 |
+                  - text: this.
+                  - generic [ref=e157]: providersUsed
+                  - text: =
+                  - generic [ref=e158]: "[]"
+                  - generic [ref=e159]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e160]: 51 |
+                  - generic [ref=e161]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e162]: 52 |
+                  - generic [ref=e163]: // Obtener recomendaciones para esta tarea
+                  - generic [ref=e164]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e165]: 53 |
+                  - text: const
+                  - generic [ref=e166]: recommendation
+                  - text: =
+                  - generic [ref=e167]: getTaskRecommendation(task)
+                  - generic [ref=e168]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e169]: 54 |
+                  - generic [ref=e170]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e171]: 55 |
+                  - generic [ref=e172]: // Construir orden de intentos
+                  - generic [ref=e173]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e174]: 56 |
+                  - text: const
+                  - generic [ref=e175]: providersToTry
+                  - text: =
+                  - generic [ref=e176]: "["
+                  - generic [ref=e177]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e178]: 57 |
+                  - generic [ref=e179]: recommendation
+                  - text: .primary,
+                  - generic [ref=e180]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e181]: 58 |
+                  - text: ...recommendation.fallbacks,
+                  - generic [ref=e182]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e183]: 59 |
+                  - generic [ref=e184]: "]"
+                  - generic [ref=e185]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e186]: 60 |
+                  - generic [ref=e187]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e188]: 61 |
+                  - text: let
+                  - generic [ref=e189]: lastError
+                  - text: =
+                  - generic [ref=e190]: "'No error recorded'"
+                  - generic [ref=e191]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e192]: 62 |
+                  - text: let
+                  - generic [ref=e193]: lastResponse
+                  - text: ": AIGenerationResponse | null = null"
+                  - generic [ref=e194]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e195]: 63 |
+                  - generic [ref=e196]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e197]: 64 |
+                  - text: for
+                  - generic [ref=e198]: (
+                  - text: const
+                  - generic [ref=e199]: provider
+                  - text: of
+                  - generic [ref=e200]: "providersToTry) {"
+                  - generic [ref=e201]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e202]: 65 |
+                  - text: if
+                  - generic [ref=e203]: (
+                  - text: this.
+                  - generic [ref=e204]: attempts
+                  - text: ">="
+                  - generic [ref=e205]: "maxAttempts) {"
+                  - generic [ref=e206]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e207]: 66 |
+                  - text: if
+                  - generic [ref=e208]: "(verbose) {"
+                  - generic [ref=e209]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e210]: 67 |
+                  - generic [ref=e211]: console
+                  - text: .log(
+                  - generic [ref=e212]: "`[RetryStrategy] Reached max attempts (${maxAttempts})`"
+                  - text: )
+                  - generic [ref=e213]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e214]: 68 |
+                  - generic [ref=e215]: "}"
+                  - generic [ref=e216]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e217]: 69 |
+                  - text: break
+                  - generic [ref=e218]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e219]: 70 |
+                  - generic [ref=e220]: "}"
+                  - generic [ref=e221]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e222]: 71 |
+                  - generic [ref=e223]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e224]: 72 |
+                  - text: this.attempts++
+                  - generic [ref=e225]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e226]: 73 |
+                  - text: this.providersUsed.push(provider)
+                  - generic [ref=e227]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e228]: 74 |
+                  - generic [ref=e229]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e230]: 75 |
+                  - text: if
+                  - generic [ref=e231]: "(verbose) {"
+                  - generic [ref=e232]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e233]: 76 |
+                  - generic [ref=e234]: console
+                  - text: .log(
+                  - generic [ref=e235]: "`[RetryStrategy] Attempt ${this.attempts}/${maxAttempts} with ${provider}`"
+                  - text: )
+                  - generic [ref=e236]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e237]: 77 |
+                  - generic [ref=e238]: "}"
+                  - generic [ref=e239]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e240]: 78 |
+                  - generic [ref=e241]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e242]: 79 |
+                  - text: try
+                  - generic [ref=e243]: "{"
+                  - generic [ref=e244]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e245]: 80 |
+                  - generic [ref=e246]: // Obtener proveedor
+                  - generic [ref=e247]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e248]: 81 |
+                  - text: const
+                  - generic [ref=e249]: aiProvider
+                  - text: = AIProviderFactory.getProvider(provider)
+                  - generic [ref=e250]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e251]: 82 |
+                  - generic [ref=e252]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e253]: 83 |
+                  - generic [ref=e254]: // Validar que esté configurado
+                  - generic [ref=e255]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e256]: 84 |
+                  - text: if
+                  - generic [ref=e257]: (
+                  - text: "!aiProvider."
+                  - generic [ref=e258]: "isConfigured()) {"
+                  - generic [ref=e259]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e260]: 85 |
+                  - text: throw new Error(
+                  - generic [ref=e261]: "`Provider ${provider} not configured`"
+                  - text: )
+                  - generic [ref=e262]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e263]: 86 |
+                  - generic [ref=e264]: "}"
+                  - generic [ref=e265]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e266]: 87 |
+                  - generic [ref=e267]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e268]: 88 |
+                  - generic [ref=e269]: // Obtener modelo recomendado
+                  - generic [ref=e270]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e271]: 89 |
+                  - text: const
+                  - generic [ref=e272]: model
+                  - text: =
+                  - generic [ref=e273]: getRecommendedModel(provider
+                  - text: ","
+                  - generic [ref=e274]: task)
+                  - generic [ref=e275]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e276]: 90 |
+                  - generic [ref=e277]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e278]: 91 |
+                  - generic [ref=e279]: // Ejecutar generación
+                  - generic [ref=e280]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e281]: 92 |
+                  - text: const
+                  - generic [ref=e282]: response
+                  - text: = await
+                  - generic [ref=e283]: aiProvider
+                  - text: ".generate({"
+                  - generic [ref=e284]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e285]: 93 |
+                  - text: ...options,
+                  - generic [ref=e286]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e287]: 94 |
+                  - generic [ref=e288]: model
+                  - text: ":"
+                  - generic [ref=e289]: options
+                  - text: .
+                  - generic [ref=e290]: model
+                  - text: "||"
+                  - generic [ref=e291]: model
+                  - text: ","
+                  - generic [ref=e292]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e293]: 95 |
+                  - generic [ref=e294]: "})"
+                  - generic [ref=e295]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e296]: 96 |
+                  - generic [ref=e297]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e298]: 97 |
+                  - generic [ref=e299]: // Si fue exitoso, retornar
+                  - generic [ref=e300]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e301]: 98 |
+                  - text: if
+                  - generic [ref=e302]: (response
+                  - text: .
+                  - generic [ref=e303]: "success) {"
+                  - generic [ref=e304]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e305]: 99 |
+                  - text: if
+                  - generic [ref=e306]: "(verbose) {"
+                  - generic [ref=e307]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e308]: 100 |
+                  - generic [ref=e309]: console
+                  - text: .log(
+                  - generic [ref=e310]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e311]: 101 |
+                  - generic [ref=e312]: "`[RetryStrategy] Success with ${provider} on attempt ${this.attempts}`"
+                  - text: ","
+                  - generic [ref=e313]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e314]: 102 |
+                  - generic [ref=e315]: )
+                  - generic [ref=e316]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e317]: 103 |
+                  - generic [ref=e318]: "}"
+                  - generic [ref=e319]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e320]: 104 |
+                  - generic [ref=e321]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e322]: 105 |
+                  - text: return
+                  - generic [ref=e323]: "{"
+                  - generic [ref=e324]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e325]: 106 |
+                  - text: ...response,
+                  - generic [ref=e326]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e327]: 107 |
+                  - generic [ref=e328]: attempts
+                  - text: ": this.attempts,"
+                  - generic [ref=e329]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e330]: 108 |
+                  - generic [ref=e331]: providersUsed
+                  - text: ": this.providersUsed,"
+                  - generic [ref=e332]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e333]: 109 |
+                  - generic [ref=e334]: timeMs
+                  - text: ": Date."
+                  - generic [ref=e335]: now()
+                  - text: "- this.startTime,"
+                  - generic [ref=e336]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e337]: 110 |
+                  - generic [ref=e338]: "}"
+                  - generic [ref=e339]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e340]: 111 |
+                  - generic [ref=e341]: "}"
+                  - generic [ref=e342]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e343]: 112 |
+                  - generic [ref=e344]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e345]: 113 |
+                  - generic [ref=e346]: lastResponse
+                  - text: =
+                  - generic [ref=e347]: response
+                  - generic [ref=e348]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e349]: 114 |
+                  - generic [ref=e350]: lastError
+                  - text: =
+                  - generic [ref=e351]: response
+                  - text: .
+                  - generic [ref=e352]: error
+                  - text: "||"
+                  - generic [ref=e353]: "'Unknown error'"
+                  - generic [ref=e354]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e355]: 115 |
+                  - generic [ref=e356]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e357]: 116 |
+                  - text: if
+                  - generic [ref=e358]: "(verbose) {"
+                  - generic [ref=e359]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e360]: 117 |
+                  - generic [ref=e361]: console
+                  - text: .warn(
+                  - generic [ref=e362]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e363]: 118 |
+                  - generic [ref=e364]: "`[RetryStrategy] ${provider} failed: ${lastError}`"
+                  - text: ","
+                  - generic [ref=e365]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e366]: 119 |
+                  - generic [ref=e367]: )
+                  - generic [ref=e368]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e369]: 120 |
+                  - generic [ref=e370]: "}"
+                  - generic [ref=e371]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e372]: 121 |
+                  - generic [ref=e373]: "}"
+                  - text: catch
+                  - generic [ref=e374]: "(error) {"
+                  - generic [ref=e375]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e376]: 122 |
+                  - generic [ref=e377]: lastError
+                  - text: =
+                  - generic [ref=e378]: error
+                  - text: instanceof Error ?
+                  - generic [ref=e379]: error
+                  - text: .
+                  - generic [ref=e380]: message
+                  - text: ": String(error)"
+                  - generic [ref=e381]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e382]: 123 |
+                  - generic [ref=e383]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e384]: 124 |
+                  - text: if
+                  - generic [ref=e385]: "(verbose) {"
+                  - generic [ref=e386]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e387]: 125 |
+                  - generic [ref=e388]: console
+                  - text: .error(
+                  - generic [ref=e389]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e390]: 126 |
+                  - generic [ref=e391]: "`[RetryStrategy] ${provider} error: ${lastError}`"
+                  - text: ","
+                  - generic [ref=e392]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e393]: 127 |
+                  - generic [ref=e394]: )
+                  - generic [ref=e395]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e396]: 128 |
+                  - generic [ref=e397]: "}"
+                  - generic [ref=e398]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e399]: 129 |
+                  - generic [ref=e400]: "}"
+                  - generic [ref=e401]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e402]: 130 |
+                  - generic [ref=e403]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e404]: 131 |
+                  - generic [ref=e405]: // Esperar antes del siguiente intento (con backoff exponencial)
+                  - generic [ref=e406]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e407]: 132 |
+                  - text: if
+                  - generic [ref=e408]: (
+                  - text: this.
+                  - generic [ref=e409]: attempts
+                  - text: <
+                  - generic [ref=e410]: maxAttempts
+                  - text: "&& this."
+                  - generic [ref=e411]: attempts
+                  - text: <
+                  - generic [ref=e412]: providersToTry
+                  - text: .
+                  - generic [ref=e413]: "length) {"
+                  - generic [ref=e414]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e415]: 133 |
+                  - text: const
+                  - generic [ref=e416]: waitTime
+                  - text: =
+                  - generic [ref=e417]: delayMs
+                  - text: "* Math.pow(backoffMultiplier, this."
+                  - generic [ref=e418]: attempts
+                  - text: "- 1)"
+                  - generic [ref=e419]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e420]: 134 |
+                  - generic [ref=e421]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e422]: 135 |
+                  - text: if
+                  - generic [ref=e423]: "(verbose) {"
+                  - generic [ref=e424]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e425]: 136 |
+                  - generic [ref=e426]: console
+                  - text: .log(
+                  - generic [ref=e427]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e428]: 137 |
+                  - generic [ref=e429]: "`[RetryStrategy] Waiting ${waitTime}ms before next attempt...`"
+                  - text: ","
+                  - generic [ref=e430]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e431]: 138 |
+                  - generic [ref=e432]: )
+                  - generic [ref=e433]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e434]: 139 |
+                  - generic [ref=e435]: "}"
+                  - generic [ref=e436]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e437]: 140 |
+                  - generic [ref=e438]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e439]: 141 |
+                  - text: await this.delay(waitTime)
+                  - generic [ref=e440]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e441]: 142 |
+                  - generic [ref=e442]: "}"
+                  - generic [ref=e443]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e444]: 143 |
+                  - generic [ref=e445]: "}"
+                  - generic [ref=e446]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e447]: 144 |
+                  - generic [ref=e448]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e449]: 145 |
+                  - generic [ref=e450]: // Si llegamos aquí, todos los intentos fallaron
+                  - generic [ref=e451]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e452]: 146 |
+                  - text: return
+                  - generic [ref=e453]: "{"
+                  - generic [ref=e454]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e455]: 147 |
+                  - generic [ref=e456]: success
+                  - text: ": false,"
+                  - generic [ref=e457]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e458]: 148 |
+                  - generic [ref=e459]: error
+                  - text: ":"
+                  - generic [ref=e460]: "`All ${this.attempts} attempts failed. Last error: ${lastError}`"
+                  - text: ","
+                  - generic [ref=e461]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e462]: 149 |
+                  - generic [ref=e463]: attempts
+                  - text: ": this.attempts,"
+                  - generic [ref=e464]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e465]: 150 |
+                  - generic [ref=e466]: providersUsed
+                  - text: ": this.providersUsed,"
+                  - generic [ref=e467]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e468]: 151 |
+                  - generic [ref=e469]: lastError
+                  - text: ","
+                  - generic [ref=e470]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e471]: 152 |
+                  - generic [ref=e472]: timeMs
+                  - text: ": Date."
+                  - generic [ref=e473]: now()
+                  - text: "- this.startTime,"
+                  - generic [ref=e474]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e475]: 153 |
+                  - generic [ref=e476]: "}"
+                  - generic [ref=e477]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e478]: 154 |
+                  - generic [ref=e479]: "}"
+                  - generic [ref=e480]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e481]: 155 |
+                  - generic [ref=e482]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e483]: 156 |
+                  - text: /**
+                  - generic [ref=e484]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e485]: 157 |
+                  - generic [ref=e486]: "* Ejecuta con reintentos permitiendo especificar proveedores manualmente"
+                  - generic [ref=e487]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e488]: 158 |
+                  - generic [ref=e489]: "*/"
+                  - generic [ref=e490]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e491]: 159 |
+                  - text: async
+                  - generic [ref=e492]: executeWithCustomProviders(
+                  - generic [ref=e493]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e494]: 160 |
+                  - generic [ref=e495]: providers
+                  - text: ": SupportedProvider[],"
+                  - generic [ref=e496]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e497]: 161 |
+                  - generic [ref=e498]: options
+                  - text: ": AIGenerationOptions,"
+                  - generic [ref=e499]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e500]: 162 |
+                  - generic [ref=e501]: retryOpts
+                  - text: ": RetryOptions ="
+                  - generic [ref=e502]: "{}"
+                  - text: ","
+                  - generic [ref=e503]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e504]: 163 |
+                  - generic [ref=e505]: )
+                  - text: ": Promise<RetryResult>"
+                  - generic [ref=e506]: "{"
+                  - generic [ref=e507]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e508]: 164 |
+                  - text: const
+                  - generic [ref=e509]: maxAttempts
+                  - text: =
+                  - generic [ref=e510]: retryOpts
+                  - text: .
+                  - generic [ref=e511]: maxAttempts
+                  - text: "??"
+                  - generic [ref=e512]: providers
+                  - text: .length
+                  - generic [ref=e513]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e514]: 165 |
+                  - text: const
+                  - generic [ref=e515]: delayMs
+                  - text: =
+                  - generic [ref=e516]: retryOpts
+                  - text: .
+                  - generic [ref=e517]: delayMs
+                  - text: "?? 500"
+                  - generic [ref=e518]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e519]: 166 |
+                  - text: const
+                  - generic [ref=e520]: verbose
+                  - text: =
+                  - generic [ref=e521]: retryOpts
+                  - text: .
+                  - generic [ref=e522]: verbose
+                  - text: "?? false"
+                  - generic [ref=e523]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e524]: 167 |
+                  - generic [ref=e525]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e526]: 168 |
+                  - text: this.
+                  - generic [ref=e527]: startTime
+                  - text: = Date.now()
+                  - generic [ref=e528]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e529]: 169 |
+                  - text: this.
+                  - generic [ref=e530]: attempts
+                  - text: = 0
+                  - generic [ref=e531]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e532]: 170 |
+                  - text: this.
+                  - generic [ref=e533]: providersUsed
+                  - text: =
+                  - generic [ref=e534]: "[]"
+                  - generic [ref=e535]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e536]: 171 |
+                  - generic [ref=e537]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e538]: 172 |
+                  - text: let
+                  - generic [ref=e539]: lastError
+                  - text: =
+                  - generic [ref=e540]: "'No error recorded'"
+                  - generic [ref=e541]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e542]: 173 |
+                  - generic [ref=e543]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e544]: 174 |
+                  - text: for
+                  - generic [ref=e545]: (
+                  - text: const
+                  - generic [ref=e546]: provider
+                  - text: of
+                  - generic [ref=e547]: "providers) {"
+                  - generic [ref=e548]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e549]: 175 |
+                  - text: if
+                  - generic [ref=e550]: (
+                  - text: this.
+                  - generic [ref=e551]: attempts
+                  - text: ">="
+                  - generic [ref=e552]: "maxAttempts) {"
+                  - generic [ref=e553]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e554]: 176 |
+                  - text: break
+                  - generic [ref=e555]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e556]: 177 |
+                  - generic [ref=e557]: "}"
+                  - generic [ref=e558]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e559]: 178 |
+                  - generic [ref=e560]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e561]: 179 |
+                  - text: this.attempts++
+                  - generic [ref=e562]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e563]: 180 |
+                  - text: this.providersUsed.push(provider)
+                  - generic [ref=e564]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e565]: 181 |
+                  - generic [ref=e566]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e567]: 182 |
+                  - text: if
+                  - generic [ref=e568]: "(verbose) {"
+                  - generic [ref=e569]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e570]: 183 |
+                  - generic [ref=e571]: console
+                  - text: .log(
+                  - generic [ref=e572]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e573]: 184 |
+                  - generic [ref=e574]: "`[RetryStrategy] Custom attempt ${this.attempts}/${maxAttempts} with ${provider}`"
+                  - text: ","
+                  - generic [ref=e575]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e576]: 185 |
+                  - generic [ref=e577]: )
+                  - generic [ref=e578]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e579]: 186 |
+                  - generic [ref=e580]: "}"
+                  - generic [ref=e581]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e582]: 187 |
+                  - generic [ref=e583]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e584]: 188 |
+                  - text: try
+                  - generic [ref=e585]: "{"
+                  - generic [ref=e586]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e587]: 189 |
+                  - text: const
+                  - generic [ref=e588]: aiProvider
+                  - text: = AIProviderFactory.getProvider(provider)
+                  - generic [ref=e589]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e590]: 190 |
+                  - generic [ref=e591]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e592]: 191 |
+                  - text: if
+                  - generic [ref=e593]: (
+                  - text: "!aiProvider."
+                  - generic [ref=e594]: "isConfigured()) {"
+                  - generic [ref=e595]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e596]: 192 |
+                  - text: throw new Error(
+                  - generic [ref=e597]: "`Provider ${provider} not configured`"
+                  - text: )
+                  - generic [ref=e598]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e599]: 193 |
+                  - generic [ref=e600]: "}"
+                  - generic [ref=e601]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e602]: 194 |
+                  - generic [ref=e603]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e604]: 195 |
+                  - text: const
+                  - generic [ref=e605]: response
+                  - text: = await
+                  - generic [ref=e606]: aiProvider
+                  - text: .generate(options)
+                  - generic [ref=e607]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e608]: 196 |
+                  - generic [ref=e609]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e610]: 197 |
+                  - text: if
+                  - generic [ref=e611]: (response
+                  - text: .
+                  - generic [ref=e612]: "success) {"
+                  - generic [ref=e613]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e614]: 198 |
+                  - text: if
+                  - generic [ref=e615]: "(verbose) {"
+                  - generic [ref=e616]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e617]: 199 |
+                  - generic [ref=e618]: console
+                  - text: .log(
+                  - generic [ref=e619]: "`[RetryStrategy] Success with ${provider}`"
+                  - text: )
+                  - generic [ref=e620]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e621]: 200 |
+                  - generic [ref=e622]: "}"
+                  - generic [ref=e623]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e624]: 201 |
+                  - generic [ref=e625]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e626]: 202 |
+                  - text: return
+                  - generic [ref=e627]: "{"
+                  - generic [ref=e628]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e629]: 203 |
+                  - text: ...response,
+                  - generic [ref=e630]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e631]: 204 |
+                  - generic [ref=e632]: attempts
+                  - text: ": this.attempts,"
+                  - generic [ref=e633]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e634]: 205 |
+                  - generic [ref=e635]: providersUsed
+                  - text: ": this.providersUsed,"
+                  - generic [ref=e636]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e637]: 206 |
+                  - generic [ref=e638]: timeMs
+                  - text: ": Date."
+                  - generic [ref=e639]: now()
+                  - text: "- this.startTime,"
+                  - generic [ref=e640]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e641]: 207 |
+                  - generic [ref=e642]: "}"
+                  - generic [ref=e643]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e644]: 208 |
+                  - generic [ref=e645]: "}"
+                  - generic [ref=e646]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e647]: 209 |
+                  - generic [ref=e648]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e649]: 210 |
+                  - generic [ref=e650]: lastError
+                  - text: =
+                  - generic [ref=e651]: response
+                  - text: .
+                  - generic [ref=e652]: error
+                  - text: "||"
+                  - generic [ref=e653]: "'Unknown error'"
+                  - generic [ref=e654]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e655]: 211 |
+                  - generic [ref=e656]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e657]: 212 |
+                  - text: if
+                  - generic [ref=e658]: "(verbose) {"
+                  - generic [ref=e659]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e660]: 213 |
+                  - generic [ref=e661]: console
+                  - text: .warn(
+                  - generic [ref=e662]: "`[RetryStrategy] ${provider} failed: ${lastError}`"
+                  - text: )
+                  - generic [ref=e663]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e664]: 214 |
+                  - generic [ref=e665]: "}"
+                  - generic [ref=e666]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e667]: 215 |
+                  - generic [ref=e668]: "}"
+                  - text: catch
+                  - generic [ref=e669]: "(error) {"
+                  - generic [ref=e670]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e671]: 216 |
+                  - generic [ref=e672]: lastError
+                  - text: =
+                  - generic [ref=e673]: error
+                  - text: instanceof Error ?
+                  - generic [ref=e674]: error
+                  - text: .
+                  - generic [ref=e675]: message
+                  - text: ": String(error)"
+                  - generic [ref=e676]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e677]: 217 |
+                  - generic [ref=e678]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e679]: 218 |
+                  - text: if
+                  - generic [ref=e680]: "(verbose) {"
+                  - generic [ref=e681]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e682]: 219 |
+                  - generic [ref=e683]: console
+                  - text: .error(
+                  - generic [ref=e684]: "`[RetryStrategy] ${provider} error: ${lastError}`"
+                  - text: )
+                  - generic [ref=e685]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e686]: 220 |
+                  - generic [ref=e687]: "}"
+                  - generic [ref=e688]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e689]: 221 |
+                  - generic [ref=e690]: "}"
+                  - generic [ref=e691]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e692]: 222 |
+                  - generic [ref=e693]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e694]: 223 |
+                  - text: if
+                  - generic [ref=e695]: (
+                  - text: this.
+                  - generic [ref=e696]: attempts
+                  - text: <
+                  - generic [ref=e697]: maxAttempts
+                  - text: "&& this."
+                  - generic [ref=e698]: attempts
+                  - text: <
+                  - generic [ref=e699]: providers
+                  - text: .
+                  - generic [ref=e700]: "length) {"
+                  - generic [ref=e701]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e702]: 224 |
+                  - text: await this.delay(delayMs)
+                  - generic [ref=e703]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e704]: 225 |
+                  - generic [ref=e705]: "}"
+                  - generic [ref=e706]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e707]: 226 |
+                  - generic [ref=e708]: "}"
+                  - generic [ref=e709]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e710]: 227 |
+                  - generic [ref=e711]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e712]: 228 |
+                  - text: return
+                  - generic [ref=e713]: "{"
+                  - generic [ref=e714]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e715]: 229 |
+                  - generic [ref=e716]: success
+                  - text: ": false,"
+                  - generic [ref=e717]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e718]: 230 |
+                  - generic [ref=e719]: error
+                  - text: ":"
+                  - generic [ref=e720]: "`All ${this.attempts} attempts failed. Last error: ${lastError}`"
+                  - text: ","
+                  - generic [ref=e721]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e722]: 231 |
+                  - generic [ref=e723]: attempts
+                  - text: ": this.attempts,"
+                  - generic [ref=e724]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e725]: 232 |
+                  - generic [ref=e726]: providersUsed
+                  - text: ": this.providersUsed,"
+                  - generic [ref=e727]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e728]: 233 |
+                  - generic [ref=e729]: lastError
+                  - text: ","
+                  - generic [ref=e730]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e731]: 234 |
+                  - generic [ref=e732]: timeMs
+                  - text: ": Date."
+                  - generic [ref=e733]: now()
+                  - text: "- this.startTime,"
+                  - generic [ref=e734]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e735]: 235 |
+                  - generic [ref=e736]: "}"
+                  - generic [ref=e737]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e738]: 236 |
+                  - generic [ref=e739]: "}"
+                  - generic [ref=e740]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e741]: 237 |
+                  - generic [ref=e742]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e743]: 238 |
+                  - text: private
+                  - generic [ref=e744]: delay(ms
+                  - text: ":"
+                  - generic [ref=e745]: number)
+                  - text: ": Promise<void>"
+                  - generic [ref=e746]: "{"
+                  - generic [ref=e747]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e748]: 239 |
+                  - text: return new Promise
+                  - generic [ref=e749]: ((resolve)
+                  - text: =>
+                  - generic [ref=e750]: setTimeout(resolve
+                  - text: ","
+                  - generic [ref=e751]: ms))
+                  - generic [ref=e752]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e753]: 240 |
+                  - generic [ref=e754]: "}"
+                  - generic [ref=e755]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e756]: 241 |
+                  - generic [ref=e757]: "}"
+                  - generic [ref=e758]: "|"
+                  - text: ^^
+                  - generic [ref=e759]: 242 |
+                  - generic [ref=e760]: 243 |
+                  - text: /**
+                  - generic [ref=e761]: 244 |
+                  - generic [ref=e762]: "* Instancia singleton del retry strategy"
+                  - generic [ref=e763]: Only async functions are allowed to be exported in a "use server" file.
+            - generic [ref=e764]:
+              - generic [ref=e765]: "1"
+              - generic [ref=e766]: "2"
+        - contentinfo [ref=e767]:
+          - paragraph [ref=e768]: This error occurred during the build process and can only be dismissed by fixing the error.

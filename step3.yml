@@ -1,0 +1,84 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e44]:
+    - complementary [ref=e46]:
+      - link "WaStore WaStore" [ref=e48] [cursor=pointer]:
+        - /url: /app
+        - img "WaStore" [ref=e49]
+        - generic [ref=e50]: WaStore
+      - generic [ref=e51]:
+        - navigation [ref=e52]:
+          - link "Mis catálogos" [ref=e53] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e54]
+            - text: Mis catálogos
+          - link "Analytics" [ref=e59] [cursor=pointer]:
+            - /url: /app/analytics
+            - img [ref=e60]
+            - text: Analytics
+          - link "Equipo" [ref=e62] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e63]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e68] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e69]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e71] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e72]
+          - text: Nuevo catálogo
+      - generic [ref=e74]:
+        - generic [ref=e75]: C
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: Carlos García
+            - generic [ref=e79]: Pro
+          - paragraph [ref=e80]: carlos.garcia@test.com
+        - button "Cerrar sesión" [ref=e81]:
+          - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - img [ref=e123]
+            - generic [ref=e90]: Enlace único
+          - generic [ref=e92]:
+            - img [ref=e139]
+            - generic [ref=e94]: Tu negocio
+          - generic [ref=e96]:
+            - generic [ref=e97]: "3"
+            - generic [ref=e98]: Pedidos
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]: 📬
+            - heading "¿Dónde recibes pedidos?" [level=1] [ref=e144]
+            - paragraph [ref=e145]: Los clientes enviarán su pedido a este contacto.
+          - generic [ref=e146]:
+            - button "WhatsApp" [ref=e147]:
+              - img [ref=e148]
+              - generic [ref=e150]: WhatsApp
+            - button "Email" [ref=e151]:
+              - img [ref=e152]
+              - generic [ref=e155]: Email
+          - generic [ref=e156]:
+            - text: Número de WhatsApp
+            - generic [ref=e157]:
+              - combobox [ref=e158]:
+                - option "🇨🇴 +57" [selected]
+                - option "🇲🇽 +52"
+                - option "🇦🇷 +54"
+                - option "🇵🇪 +51"
+                - option "🇨🇱 +56"
+                - option "🇧🇷 +55"
+                - option "🇺🇸 +1"
+                - option "🇪🇸 +34"
+              - textbox "3001234567" [ref=e159]
+          - generic [ref=e160]:
+            - button "Atrás" [ref=e161]:
+              - img
+              - text: Atrás
+            - button "Crear catálogo" [ref=e162]
+  - region "Notifications alt+T"
+  - alert [ref=e33]: WaStore — Catálogos Inteligentes para Negocios
+  - button "Open Next.js Dev Tools" [ref=e39] [cursor=pointer]:
+    - img [ref=e40]

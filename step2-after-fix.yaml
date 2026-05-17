@@ -1,0 +1,404 @@
+- generic:
+  - alert [ref=e1]
+  - generic [active]:
+    - generic [ref=e6] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=e7]:
+        - img [ref=e8]
+      - button "Open issues overlay" [ref=e12]:
+        - generic [ref=e13]:
+          - generic [ref=e14]: "0"
+          - generic [ref=e15]: "1"
+        - generic [ref=e16]: Issue
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - navigation [ref=e22]:
+            - button "previous" [disabled] [ref=e23]:
+              - img "previous" [ref=e24]
+            - generic [ref=e26]:
+              - generic [ref=e27]: 1/
+              - text: "1"
+            - button "next" [disabled] [ref=e28]:
+              - img "next" [ref=e29]
+          - img
+        - generic [ref=e31]:
+          - link "Next.js 15.3.9 (outdated) Turbopack" [ref=e32] [cursor=pointer]:
+            - /url: https://nextjs.org/docs/messages/version-staleness
+            - img [ref=e33]
+            - generic "An outdated version detected (latest is 16.2.6), upgrade is highly recommended!" [ref=e35]: Next.js 15.3.9 (outdated)
+            - generic [ref=e36]: Turbopack
+          - img
+      - generic [ref=e37]:
+        - dialog "Build Error" [ref=e38]:
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - generic [ref=e42]:
+                - generic [ref=e43]:
+                  - generic [ref=e45]: Build Error
+                  - generic [ref=e46]:
+                    - button "Copy Stack Trace" [ref=e47] [cursor=pointer]:
+                      - img [ref=e48]
+                    - button "No related documentation found" [disabled] [ref=e50]:
+                      - img [ref=e51]
+                    - link "Learn more about enabling Node.js inspector for server code with Chrome DevTools" [ref=e53] [cursor=pointer]:
+                      - /url: https://nextjs.org/docs/app/building-your-application/configuring/debugging#server-side-code
+                      - img [ref=e54]
+                - paragraph [ref=e63]: Ecmascript file had an error
+              - generic [ref=e65]:
+                - generic [ref=e67]:
+                  - img [ref=e69]
+                  - generic [ref=e73]: ./lib/ai/factory.ts (8:1)
+                  - button "Open in editor" [ref=e74] [cursor=pointer]:
+                    - img [ref=e76]
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Ecmascript file had an error
+                  - generic [ref=e80]: 6 |
+                  - text: import
+                  - generic [ref=e81]: "{"
+                  - text: GeminiProvider
+                  - generic [ref=e82]: "}"
+                  - text: from './providers/gemini-provider'
+                  - generic [ref=e83]: 7 |
+                  - text: ">"
+                  - generic [ref=e84]: 8 |
+                  - text: export class AIProviderFactory
+                  - generic [ref=e85]: "{"
+                  - generic [ref=e86]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e87]: 9 |
+                  - text: private static
+                  - generic [ref=e88]: providers
+                  - text: ": Map<SupportedProvider, AIProvider> = new Map()"
+                  - generic [ref=e89]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e90]: 10 |
+                  - generic [ref=e91]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e92]: 11 |
+                  - text: static
+                  - generic [ref=e93]: "{"
+                  - generic [ref=e94]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e95]: 12 |
+                  - text: this.initializeProviders()
+                  - generic [ref=e96]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e97]: 13 |
+                  - generic [ref=e98]: "}"
+                  - generic [ref=e99]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e100]: 14 |
+                  - generic [ref=e101]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e102]: 15 |
+                  - text: private static
+                  - generic [ref=e103]: initializeProviders()
+                  - text: ": void"
+                  - generic [ref=e104]: "{"
+                  - generic [ref=e105]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e106]: 16 |
+                  - text: this.providers.set('anthropic', new AnthropicProvider())
+                  - generic [ref=e107]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e108]: 17 |
+                  - text: this.providers.set('openai', new OpenAIProvider())
+                  - generic [ref=e109]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e110]: 18 |
+                  - text: this.providers.set('gemini', new GeminiProvider())
+                  - generic [ref=e111]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e112]: 19 |
+                  - generic [ref=e113]: "}"
+                  - generic [ref=e114]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e115]: 20 |
+                  - generic [ref=e116]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e117]: 21 |
+                  - text: /**
+                  - generic [ref=e118]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e119]: 22 |
+                  - generic [ref=e120]: "* Obtiene un proveedor específico por nombre"
+                  - generic [ref=e121]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e122]: 23 |
+                  - generic [ref=e123]: "*/"
+                  - generic [ref=e124]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e125]: 24 |
+                  - text: static
+                  - generic [ref=e126]: getProvider(name
+                  - text: ": SupportedProvider): AIProvider"
+                  - generic [ref=e127]: "{"
+                  - generic [ref=e128]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e129]: 25 |
+                  - text: const
+                  - generic [ref=e130]: provider
+                  - text: = this.providers.get(name)
+                  - generic [ref=e131]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e132]: 26 |
+                  - text: if
+                  - generic [ref=e133]: (
+                  - text: "!"
+                  - generic [ref=e134]: "provider) {"
+                  - generic [ref=e135]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e136]: 27 |
+                  - text: throw new Error(
+                  - generic [ref=e137]: "`Unknown AI provider: ${name}`"
+                  - text: )
+                  - generic [ref=e138]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e139]: 28 |
+                  - generic [ref=e140]: "}"
+                  - generic [ref=e141]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e142]: 29 |
+                  - text: return
+                  - generic [ref=e143]: provider
+                  - generic [ref=e144]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e145]: 30 |
+                  - generic [ref=e146]: "}"
+                  - generic [ref=e147]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e148]: 31 |
+                  - generic [ref=e149]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e150]: 32 |
+                  - text: /**
+                  - generic [ref=e151]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e152]: 33 |
+                  - generic [ref=e153]: "* Obtiene el primer proveedor configurado en orden de preferencia"
+                  - generic [ref=e154]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e155]: 34 |
+                  - generic [ref=e156]: "*/"
+                  - generic [ref=e157]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e158]: 35 |
+                  - text: static
+                  - generic [ref=e159]: getConfiguredProvider(
+                  - generic [ref=e160]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e161]: 36 |
+                  - generic [ref=e162]: preferred
+                  - text: ": SupportedProvider = 'anthropic',"
+                  - generic [ref=e163]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e164]: 37 |
+                  - generic [ref=e165]: fallbacks
+                  - text: ": SupportedProvider"
+                  - generic [ref=e166]: "[]"
+                  - text: =
+                  - generic [ref=e167]: "["
+                  - text: "'openai', 'gemini'],"
+                  - generic [ref=e168]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e169]: 38 |
+                  - generic [ref=e170]: )
+                  - text: ": AIProvider"
+                  - generic [ref=e171]: "{"
+                  - generic [ref=e172]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e173]: 39 |
+                  - text: const
+                  - generic [ref=e174]: providers
+                  - text: =
+                  - generic [ref=e175]: "[preferred"
+                  - text: ", ...fallbacks]"
+                  - generic [ref=e176]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e177]: 40 |
+                  - generic [ref=e178]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e179]: 41 |
+                  - text: for
+                  - generic [ref=e180]: (
+                  - text: const
+                  - generic [ref=e181]: providerName
+                  - text: of
+                  - generic [ref=e182]: "providers) {"
+                  - generic [ref=e183]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e184]: 42 |
+                  - text: const
+                  - generic [ref=e185]: provider
+                  - text: = this.providers.get(providerName)
+                  - generic [ref=e186]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e187]: 43 |
+                  - text: if
+                  - generic [ref=e188]: (provider
+                  - text: "&&"
+                  - generic [ref=e189]: provider
+                  - text: .
+                  - generic [ref=e190]: "isConfigured()) {"
+                  - generic [ref=e191]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e192]: 44 |
+                  - generic [ref=e193]: console
+                  - text: .log(
+                  - generic [ref=e194]: "`[AI] Using provider: ${providerName}`"
+                  - text: )
+                  - generic [ref=e195]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e196]: 45 |
+                  - text: return
+                  - generic [ref=e197]: provider
+                  - generic [ref=e198]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e199]: 46 |
+                  - generic [ref=e200]: "}"
+                  - generic [ref=e201]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e202]: 47 |
+                  - generic [ref=e203]: "}"
+                  - generic [ref=e204]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e205]: 48 |
+                  - generic [ref=e206]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e207]: 49 |
+                  - text: throw new Error(
+                  - generic [ref=e208]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e209]: 50 |
+                  - generic [ref=e210]: "`No AI providers configured. Tried: ${providers.join(', ')}`"
+                  - text: ","
+                  - generic [ref=e211]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e212]: 51 |
+                  - generic [ref=e213]: )
+                  - generic [ref=e214]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e215]: 52 |
+                  - generic [ref=e216]: "}"
+                  - generic [ref=e217]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e218]: 53 |
+                  - generic [ref=e219]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e220]: 54 |
+                  - text: /**
+                  - generic [ref=e221]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e222]: 55 |
+                  - generic [ref=e223]: "* Lista todos los proveedores disponibles"
+                  - generic [ref=e224]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e225]: 56 |
+                  - generic [ref=e226]: "*/"
+                  - generic [ref=e227]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e228]: 57 |
+                  - text: static
+                  - generic [ref=e229]: listProviders()
+                  - text: ": Array<{"
+                  - generic [ref=e230]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e231]: 58 |
+                  - generic [ref=e232]: name
+                  - text: ": SupportedProvider"
+                  - generic [ref=e233]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e234]: 59 |
+                  - generic [ref=e235]: configured
+                  - text: ":"
+                  - generic [ref=e236]: boolean
+                  - generic [ref=e237]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e238]: 60 |
+                  - generic [ref=e239]: provider
+                  - text: ": AIProvider"
+                  - generic [ref=e240]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e241]: 61 |
+                  - generic [ref=e242]: "}"
+                  - text: ">"
+                  - generic [ref=e243]: "{"
+                  - generic [ref=e244]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e245]: 62 |
+                  - text: return Array.from(this.providers.entries()).map(([name,
+                  - generic [ref=e246]: provider])
+                  - text: =>
+                  - generic [ref=e247]: "({"
+                  - generic [ref=e248]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e249]: 63 |
+                  - generic [ref=e250]: name
+                  - text: ","
+                  - generic [ref=e251]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e252]: 64 |
+                  - generic [ref=e253]: configured
+                  - text: ":"
+                  - generic [ref=e254]: provider
+                  - text: .isConfigured(),
+                  - generic [ref=e255]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e256]: 65 |
+                  - generic [ref=e257]: provider
+                  - text: ","
+                  - generic [ref=e258]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e259]: 66 |
+                  - generic [ref=e260]: "}))"
+                  - generic [ref=e261]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e262]: 67 |
+                  - generic [ref=e263]: "}"
+                  - generic [ref=e264]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e265]: 68 |
+                  - generic [ref=e266]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e267]: 69 |
+                  - text: /**
+                  - generic [ref=e268]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e269]: 70 |
+                  - generic [ref=e270]: "* Valida que haya al menos un proveedor configurado"
+                  - generic [ref=e271]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e272]: 71 |
+                  - generic [ref=e273]: "*/"
+                  - generic [ref=e274]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e275]: 72 |
+                  - text: static
+                  - generic [ref=e276]: hasAnyProvider()
+                  - text: ":"
+                  - generic [ref=e277]: "boolean {"
+                  - generic [ref=e278]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e279]: 73 |
+                  - text: return this.listProviders().
+                  - generic [ref=e280]: some((p)
+                  - text: =>
+                  - generic [ref=e281]: p
+                  - text: .configured)
+                  - generic [ref=e282]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e283]: 74 |
+                  - generic [ref=e284]: "}"
+                  - generic [ref=e285]: "|"
+                  - text: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ >
+                  - generic [ref=e286]: 75 |
+                  - generic [ref=e287]: "}"
+                  - generic [ref=e288]: "|"
+                  - text: ^^
+                  - generic [ref=e289]: 76 |
+                  - generic [ref=e290]: Only async functions are allowed to be exported in a "use server" file.
+            - generic [ref=e291]:
+              - generic [ref=e292]: "1"
+              - generic [ref=e293]: "2"
+        - contentinfo [ref=e294]:
+          - paragraph [ref=e295]: This error occurred during the build process and can only be dismissed by fixing the error.

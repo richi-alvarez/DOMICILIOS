@@ -12,6 +12,8 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { cn } from '@/lib/utils'
 import { createCatalog, checkSlugAvailable } from '@/lib/actions/catalogs'
+import { AICatalogGenerator } from '@/app/(app)/app/_components/catalogs/ai-catalog-generator'
+import type { GeneratedCatalogStructure } from '@/lib/actions/catalogs/generate-ai-catalog'
 
 const CURRENCIES = ['COP', 'MXN', 'USD', 'BRL', 'ARS', 'PEN', 'CLP', 'EUR']
 const LANGUAGES = [{ code: 'es', label: 'Español' }, { code: 'en', label: 'English' }, { code: 'pt', label: 'Português' }]
@@ -51,6 +53,7 @@ export default function NewCatalogPage() {
   const [slugOk, setSlugOk] = useState<boolean | null>(null)
   const [checkingSlug, setCheckingSlug] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
+  const [generatedCatalog, setGeneratedCatalog] = useState<GeneratedCatalogStructure | null>(null)
 
   const [formData, setFormData] = useState({
     slug: '', name: '', aiPrompt: '', language: 'es', currency: 'COP',
@@ -292,6 +295,14 @@ export default function NewCatalogPage() {
                 />
               </div>
             )}
+
+            <div className="border-t border-warm-200 pt-6" />
+
+            <AICatalogGenerator
+              businessName={formData.name}
+              businessDescription={formData.aiPrompt}
+              onGenerated={(catalog) => setGeneratedCatalog(catalog)}
+            />
 
             {serverError && (
               <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2.5 text-sm text-red-700">
