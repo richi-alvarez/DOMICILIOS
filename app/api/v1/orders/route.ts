@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db, catalogs, orders } from '@/db'
 import { eq } from 'drizzle-orm'
 import { createOrder } from '@/lib/actions/orders'
+import { logger } from '@/lib/monitoring/logger'
 
 export const runtime = 'nodejs'
 
@@ -10,16 +11,18 @@ export async function POST(req: NextRequest) {
     const body = await req.json()
     const { catalogSlug, customerName, customerEmail, customerPhone, items, deliveryType, deliveryAddress } = body
 
-    // Validar catálogo
+    if (!catalogSlug || !customerName || !customerEmail) {
+      return NextResponse.json({ error: 'Required fields missing' }, { status: 400 })
+    }
+
     const catalog = await db.query.catalogs.findFirst({
       where: eq(catalogs.slug, catalogSlug),
     })
 
     if (!catalog) {
-      return NextResponse.json({ error: 'Catálogo no encontrado' }, { status: 404 })
+      return NextResponse.json({ error: 'Catalog not found' }, { status: 404 })
     }
 
-    // Crear orden
     const result = await createOrder({
       catalogId: catalog.id,
       customer: {
@@ -36,7 +39,7 @@ export async function POST(req: NextRequest) {
     } as any)
 
     if ('error' in result) {
-      return NextResponse.json({ error: result.error }, { status: 400 })
+      return NextResponse.json({ error: 'Unable to create order' }, { status: 400 })
     }
 
     const order = result.order
@@ -47,8 +50,8 @@ export async function POST(req: NextRequest) {
       },
       { status: 201 },
     )
-  } catch (err: any) {
-    console.error('[api/v1/orders]', err)
-    return NextResponse.json({ error: err.message || 'Error interno' }, { status: 500 })
+  } catch (err) {
+    logger.error('Failed to create order via API', err)
+    return NextResponse.json({ error: 'Unable to create order' }, { status: 500 })
   }
 }

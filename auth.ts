@@ -8,6 +8,7 @@ import { db } from '@/db'
 import bcrypt from 'bcryptjs'
 import { eq } from 'drizzle-orm'
 import { users } from '@/db'
+import { logger } from '@/lib/monitoring/logger'
 
 async function getDb() {
   const { db, users, organizations, memberships } = await import('@/db')
@@ -23,7 +24,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
-      allowDangerousEmailAccountLinking: true,
     }),
     Credentials({
       credentials: {
@@ -60,37 +60,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   callbacks: {
     async signIn({ user, account, profile }) {
-      console.log('\n[SIGNIN CALLBACK] === INICIO ===')
-      console.log('[SIGNIN CALLBACK] User:', {
-        id: user?.id,
-        email: user?.email,
-        name: user?.name,
-        image: user?.image,
-      })
-      console.log('[SIGNIN CALLBACK] Account:', {
-        provider: account?.provider,
-        type: account?.type,
-        providerAccountId: account?.providerAccountId,
-      })
-      console.log('[SIGNIN CALLBACK] Profile (Google):', {
-        id: profile?.id,
-        email: profile?.email,
-        name: profile?.name,
-      })
-      console.log('[SIGNIN CALLBACK] === FIN === (permitiendo login)\n')
+      logger.info('User sign in', { provider: account?.provider, hasUserId: !!user?.id })
       return true
     },
 
     async jwt({ token, user, account }) {
-      console.log('\n[JWT CALLBACK] === INICIO ===')
-      console.log('[JWT CALLBACK] Entrada:', { userId: user?.id, provider: account?.provider })
       if (user) {
         token.id = user.id
-        console.log('[JWT] Token actualizado con user.id:', user.id)
       }
       if (account?.provider !== 'credentials' && user?.id && process.env.DATABASE_URL) {
         try {
-          console.log('[JWT] Creando organización para nuevo usuario OAuth:', user.id)
           const { eq } = await import('drizzle-orm')
           const { db, memberships, organizations } = await getDb()
           const existing = await db.query.memberships.findFirst({
@@ -98,43 +77,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           })
           if (!existing) {
             await createDefaultOrg(user.id, user.name ?? 'Mi Negocio', db, organizations, memberships)
-            console.log('[JWT] Organización creada exitosamente')
+            logger.info('Default organization created', { provider: account?.provider })
           }
         } catch (error) {
-          console.log('[JWT] Error creando organización:', error)
+          logger.error('Failed to create default organization', error, { provider: account?.provider })
         }
       }
-      console.log('[JWT CALLBACK] Token final:', {
-        id: token?.id,
-        email: token?.email,
-        hasId: !!token?.id,
-      })
-      console.log('[JWT CALLBACK] === FIN ===\n')
       return token
     },
 
     async session({ session, token }) {
-      console.log('\n[SESSION CALLBACK] === INICIO ===')
-      console.log('[SESSION CALLBACK] Session user antes:', {
-        email: session.user?.email,
-        id: (session.user as any)?.id,
-      })
-      console.log('[SESSION CALLBACK] Token:', {
-        id: token?.id,
-        email: token?.email,
-        sub: token?.sub,
-      })
       if (token?.id) {
         session.user.id = token.id as string
-        console.log('[SESSION CALLBACK] Session actualizado con usuario ID:', token.id)
       } else {
-        console.log('[SESSION CALLBACK] ⚠️  Token no tiene ID!')
+        logger.warn('Session token missing user ID')
       }
-      console.log('[SESSION CALLBACK] Session user después:', {
-        email: session.user?.email,
-        id: (session.user as any)?.id,
-      })
-      console.log('[SESSION CALLBACK] === FIN ===\n')
       return session
     },
   },
@@ -146,15 +103,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   events: {
     async createUser({ user }) {
-      console.log('[EVENT] Nuevo usuario creado:', user.id, user.email)
+      logger.info('New user created', { hasUserId: !!user.id })
       if (user.id && process.env.DATABASE_URL) {
         try {
-          console.log('[EVENT] Creando organización por defecto para:', user.email)
           const { db, organizations, memberships } = await getDb()
           await createDefaultOrg(user.id, user.name ?? 'Mi Negocio', db, organizations, memberships)
-          console.log('[EVENT] Organización creada exitosamente')
+          logger.info('Default organization created for new user')
         } catch (error) {
-          console.log('[EVENT] Error creando organización:', error)
+          logger.error('Failed to create organization for new user', error)
         }
       }
     },
