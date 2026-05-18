@@ -45,6 +45,23 @@ export async function checkRateLimit(
   // First request or window expired
   if (!current || now > current.resetTime) {
     const resetTime = now + windowMs
+
+    // Block if limit is 0
+    if (limit <= 0) {
+      rateLimitStore.set(identifier, { count: 1, resetTime })
+      const retryAfter = Math.ceil(windowMs / 1000)
+      logger.warn('Rate limit exceeded (zero limit)', {
+        identifier,
+        limit,
+        retryAfter,
+      })
+      return {
+        allowed: false,
+        remaining: 0,
+        retryAfter,
+      }
+    }
+
     rateLimitStore.set(identifier, { count: 1, resetTime })
 
     return {

@@ -122,13 +122,23 @@ export function validateQuantity(qty: unknown): boolean {
  */
 export function detectInjectionAttempt(input: string): boolean {
   const injectionPatterns = [
-    /(\bor\b|\band\b).*=.*=/, // SQL injection: or/and
-    /DROP\s+TABLE/i, // SQL: DROP TABLE
-    /DELETE\s+FROM/i, // SQL: DELETE
-    /UNION\s+SELECT/i, // SQL: UNION
-    /script>/i, // XSS: script tags
-    /<iframe/i, // XSS: iframes
-    /javascript:/i, // XSS: javascript protocol
+    // SQL Injection patterns
+    /['"]?\s*(?:or|and)\s+['"]?\d+['"]?\s*=\s*['"]?\d+/i, // OR/AND with number comparisons
+    /['"]?\s*(?:or|and)\s+['"]?\w+['"]?\s*=\s*['"]?\w+/i, // OR/AND with string comparisons
+    /--\s*$/, // SQL comments
+    /;?\s*(?:drop|delete|insert|update|create)\s+/i, // SQL keywords
+    /union\s+select/i, // UNION SELECT
+
+    // XSS patterns
+    /<\s*script/i, // Script tags
+    /on\w+\s*=/i, // Event handlers (onclick, onload, etc.)
+    /<\s*iframe/i, // iframes
+    /javascript:/i, // Javascript protocol
+    /<\s*(?:svg|img)\s+[^>]*on\w+/i, // SVG/IMG with event handlers
+
+    // Prompt injection patterns
+    /\b(?:ignore|forget|disregard)\s+(?:all|my|your|the)\s+(?:previous|prior)/i,
+    /\binstructions?\b.*[\n;]/i,
   ]
 
   return injectionPatterns.some((pattern) => pattern.test(input))
