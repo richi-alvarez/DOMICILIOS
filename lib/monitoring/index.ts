@@ -31,3 +31,7 @@ export type { Alert } from './alerting'
 // Notifications
 export { sendAlertNotifications, getNotificationConfig } from './notifications'
 export type { NotificationConfig, AlertNotificationPayload } from './notifications'
+
+// Thresholds
+export { getThresholds, getThresholdsSync, saveThresholds, resetThresholds, getDefaultThresholds } from './thresholds'
+export type { ThresholdConfig } from './thresholds'

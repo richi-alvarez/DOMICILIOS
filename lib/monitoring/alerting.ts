@@ -8,6 +8,7 @@ import { logger } from './logger'
 import { healthChecker } from './health-check'
 import { metricsPersistence } from './metrics-persistence'
 import { sendAlertNotifications } from './notifications'
+import { getThresholdsSync } from './thresholds'
 
 export interface Alert {
   severity: 'info' | 'warning' | 'critical'
@@ -166,15 +167,17 @@ class AlertManager {
 
       if (!summary) return
 
+      const thresholds = getThresholdsSync()
+
       // Check for high error rate
       const totalMetrics = summary.performanceStats.errors + summary.performanceStats.slowRequests
       if (totalMetrics > 0) {
         const errorRate = (summary.performanceStats.errors / totalMetrics) * 100
-        if (errorRate > ALERT_THRESHOLDS.errorRate) {
+        if (errorRate > thresholds.errorRate) {
           await this.createAlert({
             severity: 'warning',
             title: 'High error rate detected',
-            description: `Error rate: ${errorRate.toFixed(2)}% (threshold: ${ALERT_THRESHOLDS.errorRate}%)`,
+            description: `Error rate: ${errorRate.toFixed(2)}% (threshold: ${thresholds.errorRate}%)`,
             service: 'api',
             metadata: {
               errorRate: parseFloat(errorRate.toFixed(2)),
@@ -185,11 +188,11 @@ class AlertManager {
       }
 
       // Check for slow responses
-      if (summary.performanceStats.avgResponseTime > ALERT_THRESHOLDS.highResponseTime) {
+      if (summary.performanceStats.avgResponseTime > thresholds.highResponseTime) {
         await this.createAlert({
           severity: 'warning',
           title: 'High average response time',
-          description: `Average response time: ${summary.performanceStats.avgResponseTime}ms (threshold: ${ALERT_THRESHOLDS.highResponseTime}ms)`,
+          description: `Average response time: ${summary.performanceStats.avgResponseTime}ms (threshold: ${thresholds.highResponseTime}ms)`,
           service: 'api',
           metadata: {
             avgResponseTime: summary.performanceStats.avgResponseTime,
