@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { db, catalogs } from '@/db'
-import { eq } from 'drizzle-orm'
+import { db, catalogs, organizations, subscriptions, plans, orders } from '@/db'
+import { eq, and, gte, lte } from 'drizzle-orm'
 import { createOrder } from '@/lib/actions/orders'
 import { logger } from '@/lib/monitoring/logger'
 import { CreateOrderSchema } from '@/lib/validators/schemas'
@@ -44,7 +44,49 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // 4. Create order
+    // 4. Check monthly order limit for free users
+    const org = await db.query.organizations.findFirst({
+      where: eq(organizations.id, catalog.orgId),
+      columns: { id: true },
+    })
+
+    if (org) {
+      const subscription = await db.query.subscriptions.findFirst({
+        where: eq(subscriptions.organizationId, org.id),
+        columns: { planId: true },
+      })
+
+      if (subscription) {
+        const plan = await db.query.plans.findFirst({
+          where: eq(plans.id, subscription.planId),
+          columns: { code: true },
+        })
+
+        if (plan?.code === 'free') {
+          const now = new Date()
+          const monthStart = new Date(now.getFullYear(), now.getMonth(), 1)
+          const monthEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59)
+
+          const monthlyOrderCount = await db.query.orders.findMany({
+            where: and(
+              eq(orders.catalogId, catalog.id),
+              gte(orders.createdAt, monthStart),
+              lte(orders.createdAt, monthEnd)
+            ),
+            columns: { id: true },
+          })
+
+          if (monthlyOrderCount.length >= 30) {
+            return NextResponse.json(
+              { error: 'Límite de 30 pedidos/mes alcanzado en el plan gratis. Mejora tu plan para recibir más pedidos.' },
+              { status: 429 }
+            )
+          }
+        }
+      }
+    }
+
+    // 5. Create order
     const result = await createOrder({
       catalogId: catalog.id,
       customer: {
