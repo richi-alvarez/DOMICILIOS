@@ -27,3 +27,7 @@ export type { MetricData } from './metrics-persistence'
 // Alerting
 export { alertManager, ALERT_THRESHOLDS } from './alerting'
 export type { Alert } from './alerting'
+
+// Notifications
+export { sendAlertNotifications, getNotificationConfig } from './notifications'
+export type { NotificationConfig, AlertNotificationPayload } from './notifications'

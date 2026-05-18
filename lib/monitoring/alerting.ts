@@ -7,6 +7,7 @@ import { db, monitoringAlerts } from '@/db'
 import { logger } from './logger'
 import { healthChecker } from './health-check'
 import { metricsPersistence } from './metrics-persistence'
+import { sendAlertNotifications } from './notifications'
 
 export interface Alert {
   severity: 'info' | 'warning' | 'critical'
@@ -51,6 +52,18 @@ class AlertManager {
       })
 
       this.lastAlertTime.set(alertKey, new Date())
+
+      // Send notifications for warning and critical alerts
+      if (alert.severity !== 'info') {
+        void sendAlertNotifications({
+          severity: alert.severity as 'warning' | 'critical',
+          title: alert.title,
+          description: alert.description,
+          service: alert.service,
+          triggeredAt: new Date(),
+          metadata: alert.metadata,
+        })
+      }
 
       logger.warn('Alert created', {
         service: alert.service,
