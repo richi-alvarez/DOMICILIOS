@@ -189,3 +189,19 @@ export async function deleteCatalog(id: string) {
   revalidatePath('/app')
   redirect('/app')
 }
+
+export async function canAccessAIFeatures(): Promise<boolean> {
+  try {
+    const session = await auth()
+    if (!session?.user?.id) return false
+
+    const orgId = await getOrgId(session.user.id)
+    if (!orgId) return false
+
+    const plan = await getOrgPlan(orgId)
+    const limits = PLAN_LIMITS[plan]
+    return limits.aiFeatures
+  } catch {
+    return false
+  }
+}

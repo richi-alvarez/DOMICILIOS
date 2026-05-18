@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
     serverActions: { bodySizeLimit: '4mb' },
   },
   productionBrowserSourceMaps: false,
+  webpack: (config, { isServer }) => {
+    // Mark ioredis as external (don't bundle with client code)
+    if (!isServer) {
+      config.externals.push({
+        'ioredis': 'ioredis',
+        'redis': 'redis',
+      })
+    }
+    return config
+  },
 }
 
 export default nextConfig

@@ -1,17 +1,17 @@
 'use client'
 
-import { useState, useTransition, useCallback } from 'react'
+import { useState, useTransition, useCallback, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { ArrowLeft, ArrowRight, Check, Loader2, Globe, MessageCircle, Mail, AlertCircle } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, Loader2, Globe, MessageCircle, Mail, AlertCircle, Lock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { cn } from '@/lib/utils'
-import { createCatalog, checkSlugAvailable } from '@/lib/actions/catalogs'
+import { createCatalog, checkSlugAvailable, canAccessAIFeatures } from '@/lib/actions/catalogs'
 import { AICatalogGenerator } from '@/app/(app)/app/_components/catalogs/ai-catalog-generator'
 import type { GeneratedCatalogStructure } from '@/lib/actions/catalogs/generate-ai-catalog'
 
@@ -54,6 +54,15 @@ export default function NewCatalogPage() {
   const [checkingSlug, setCheckingSlug] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
   const [generatedCatalog, setGeneratedCatalog] = useState<GeneratedCatalogStructure | null>(null)
+  const [hasAIAccess, setHasAIAccess] = useState(false)
+
+  useEffect(() => {
+    const checkAIAccess = async () => {
+      const canAccess = await canAccessAIFeatures()
+      setHasAIAccess(canAccess)
+    }
+    checkAIAccess()
+  }, [])
 
   const [formData, setFormData] = useState({
     slug: '', name: '', aiPrompt: '', language: 'es', currency: 'COP',
@@ -298,11 +307,33 @@ export default function NewCatalogPage() {
 
             <div className="border-t border-warm-200 pt-6" />
 
-            <AICatalogGenerator
-              businessName={formData.name}
-              businessDescription={formData.aiPrompt}
-              onGenerated={(catalog) => setGeneratedCatalog(catalog)}
-            />
+            {hasAIAccess ? (
+              <AICatalogGenerator
+                businessName={formData.name}
+                businessDescription={formData.aiPrompt}
+                onGenerated={(catalog) => setGeneratedCatalog(catalog)}
+              />
+            ) : (
+              <div className="rounded-lg border-2 border-dashed border-warm-300 bg-warm-50 p-6">
+                <div className="flex items-start gap-4">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-warm-900 flex items-center gap-2">
+                      <Lock className="h-5 w-5" />
+                      Generar catálogo con IA
+                    </h3>
+                    <p className="text-sm text-warm-700 mt-1">
+                      Esta característica está disponible en planes Premium y Business. Actualiza tu plan para acceder a la generación automática de catálogos con IA.
+                    </p>
+                  </div>
+                  <a
+                    href="/app/billing"
+                    className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium text-sm whitespace-nowrap"
+                  >
+                    Actualizar Plan
+                  </a>
+                </div>
+              </div>
+            )}
 
             {serverError && (
               <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2.5 text-sm text-red-700">

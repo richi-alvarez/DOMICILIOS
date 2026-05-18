@@ -86,16 +86,23 @@ export const accounts = pgTable(
     idToken: text('id_token'),
     sessionState: text('session_state'),
   },
-  (t) => [primaryKey({ columns: [t.provider, t.providerAccountId] })],
+  (t) => [
+    primaryKey({ columns: [t.provider, t.providerAccountId] }),
+    index('accounts_user_id_idx').on(t.userId),
+  ],
 )
 
-export const sessions = pgTable('sessions', {
-  sessionToken: text('session_token').primaryKey(),
-  userId: uuid('user_id')
-    .notNull()
-    .references(() => users.id, { onDelete: 'cascade' }),
-  expires: timestamp('expires', { mode: 'date' }).notNull(),
-})
+export const sessions = pgTable(
+  'sessions',
+  {
+    sessionToken: text('session_token').primaryKey(),
+    userId: uuid('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    expires: timestamp('expires', { mode: 'date' }).notNull(),
+  },
+  (t) => [index('sessions_user_id_idx').on(t.userId)]
+)
 
 export const verificationTokens = pgTable(
   'verification_tokens',
@@ -134,7 +141,12 @@ export const memberships = pgTable(
     role: memberRoleEnum('role').default('viewer').notNull(),
     createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
   },
-  (t) => [primaryKey({ columns: [t.userId, t.organizationId] })],
+  (t) => [
+    primaryKey({ columns: [t.userId, t.organizationId] }),
+    index('memberships_user_id_idx').on(t.userId),
+    index('memberships_org_id_idx').on(t.organizationId),
+    index('memberships_user_org_idx').on(t.userId, t.organizationId),
+  ],
 )
 
 // ── Plans & Subscriptions ──────────────────────────────────────────────
@@ -191,7 +203,11 @@ export const catalogs = pgTable(
     createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
     updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow().notNull(),
   },
-  (t) => [index('catalogs_org_id_idx').on(t.orgId), index('catalogs_slug_idx').on(t.slug)],
+  (t) => [
+    index('catalogs_org_id_idx').on(t.orgId),
+    index('catalogs_slug_idx').on(t.slug),
+    index('catalogs_org_status_idx').on(t.orgId, t.status),
+  ],
 )
 
 // ── Categories ─────────────────────────────────────────────────────────
@@ -208,7 +224,11 @@ export const categories = pgTable(
     position: integer('position').default(0).notNull(),
     active: boolean('active').default(true).notNull(),
   },
-  (t) => [index('categories_catalog_id_idx').on(t.catalogId)],
+  (t) => [
+    index('categories_catalog_id_idx').on(t.catalogId),
+    index('categories_parent_id_idx').on(t.parentId),
+    index('categories_active_idx').on(t.active),
+  ],
 )
 
 // ── Products ───────────────────────────────────────────────────────────
@@ -234,7 +254,12 @@ export const products = pgTable(
     createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
     updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow().notNull(),
   },
-  (t) => [index('products_catalog_id_idx').on(t.catalogId)],
+  (t) => [
+    index('products_catalog_id_idx').on(t.catalogId),
+    index('products_category_id_idx').on(t.categoryId),
+    index('products_active_idx').on(t.active),
+    index('products_catalog_active_idx').on(t.catalogId, t.active),
+  ],
 )
 
 // ── Blocks ─────────────────────────────────────────────────────────────
@@ -273,7 +298,13 @@ export const orders = pgTable(
     createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
     updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow().notNull(),
   },
-  (t) => [index('orders_catalog_id_idx').on(t.catalogId), index('orders_code_idx').on(t.code)],
+  (t) => [
+    index('orders_catalog_id_idx').on(t.catalogId),
+    index('orders_code_idx').on(t.code),
+    index('orders_status_idx').on(t.status),
+    index('orders_created_at_idx').on(t.createdAt),
+    index('orders_catalog_status_idx').on(t.catalogId, t.status),
+  ],
 )
 
 // ── Payment methods (per catalog) ──────────────────────────────────────
@@ -304,6 +335,8 @@ export const analyticsEvents = pgTable(
   (t) => [
     index('analytics_catalog_id_idx').on(t.catalogId),
     index('analytics_ts_idx').on(t.ts),
+    index('analytics_type_idx').on(t.type),
+    index('analytics_catalog_ts_idx').on(t.catalogId, t.ts),
   ],
 )
 

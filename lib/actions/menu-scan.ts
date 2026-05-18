@@ -8,17 +8,10 @@ import { z } from 'zod'
 import { slugify } from '@/lib/utils'
 import { MENU_SCAN_SYSTEM_PROMPT } from '@/lib/prompts/menu-scan'
 import { convertPDFToImagesServer } from '@/lib/pdf'
-import { getCachedOCR, cacheOCR } from '@/lib/cache'
 
-// Extrae OCR de imagen (con caché)
+// Extrae OCR de imagen usando Tesseract
 async function extractTextFromImage(base64Image: string, mediaType: string): Promise<string> {
   try {
-    // Verifica caché primero
-    const cached = await getCachedOCR(base64Image, 'spa')
-    if (cached) {
-      return cached
-    }
-
     const { createWorker } = await import('tesseract.js')
     const worker = await createWorker('spa') // Spanish language support
 
@@ -27,10 +20,6 @@ async function extractTextFromImage(base64Image: string, mediaType: string): Pro
       const dataUrl = `data:${mediaType};base64,${base64Image}`
       const result = await worker.recognize(dataUrl)
       const extractedText = result.data.text.substring(0, 3000)
-
-      // Guarda en caché
-      await cacheOCR(base64Image, extractedText, 'spa', 7 * 24 * 60 * 60) // 7 días
-
       return extractedText
     } finally {
       await worker.terminate()

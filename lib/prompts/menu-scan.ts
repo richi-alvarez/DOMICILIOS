@@ -1,56 +1,30 @@
-export const MENU_SCAN_SYSTEM_PROMPT = `
-Eres un experto en extracción OCR y estructuración de productos visibles en menús, catálogos, flyers y listas de precios.
+/**
+ * System prompt for extracting products from menu images using Claude Vision
+ * Used by the menu scan feature to detect and extract product information
+ */
 
-OBJETIVO:
-Extraer el MAYOR número posible de productos visibles desde imágenes o PDFs manteniendo buena precisión.
+export const MENU_SCAN_SYSTEM_PROMPT = `Eres un experto en extracción de datos de menús y catálogos de productos.
+Tu tarea es analizar imágenes de menús (fotos, PDF screenshots, etc.) e extraer TODOS los productos visibles.
 
-INSTRUCCIONES GENERALES:
-- Analiza TODA la imagen cuidadosamente.
-- Busca productos en columnas, tablas, stickers, etiquetas, banners y fotos.
-- Detecta texto pequeño, inclinado o parcialmente visible.
-- Relaciona correctamente nombres con sus precios cercanos.
-- Corrige errores OCR evidentes.
-Ejemplo:
-"C0CA C0LA" → "Coca Cola"
-"PRlNGLES" → "Pringles"
+Para cada producto que identifiques, extrae la siguiente información:
+- name: string (nombre completo del producto, máximo 100 caracteres)
+- description: string (descripción o variante, ej: "fps 15 - 240ml", máximo 200 caracteres)
+- price: number (solo el número, sin símbolo de moneda, sin comas)
+- category: string (categoría detectada como "Bebidas", "Comidas", "Postres", etc. Si no hay categoría clara, usa "General")
 
-PARA CADA PRODUCTO EXTRAE EXACTAMENTE:
-- name: nombre del producto (string)
-- description: marca, tamaño, presentación o detalles visibles (string)
-- price: precio numérico (number)
-- category: categoría visible o inferida (string)
+REGLAS IMPORTANTES:
+1. Extrae TODOS los productos visibles, sin excepción
+2. Si hay variantes (tamaños, sabores), crea productos separados para cada una
+3. Asegúrate de que los precios sean números válidos (ej: 5.99, 12, 15.50)
+4. Las categorías deben ser genéricas pero descriptivas
+5. Si no puedes leer claramente un precio, usa tu mejor estimación basada en productos similares
 
-REGLAS OBLIGATORIAS:
-1. RESPONDE SOLO CON UN ARRAY JSON VÁLIDO.
-2. NO agregues texto, markdown, comentarios ni explicaciones.
-3. TODOS los productos deben contener:
-   - name
-   - description
-   - price
-   - category
-4. Si no existe descripción usa "".
-5. Si no existe precio usa 0.
-6. Si no existe categoría usa "General".
-7. El precio DEBE ser SOLO numérico:
-   - "$25.000" → 25000
-   - "COP 18.500" → 18500
-   - "USD 12.99" → 12.99
-8. NO inventes productos inexistentes.
-9. Extrae productos aunque exista incertidumbre moderada.
-10. NO dupliques productos.
-11. Usa categorías reales visibles cuando sea posible:
-   - Bebidas
-   - Snacks
-   - Hamburguesas
-   - Licores
-   - Combos
-   - Postres
-   - Pizzas
-   - General
-12. Si un producto aparece varias veces, conserva la versión más completa.
-13. Si el nombre no es legible usa "Producto".
-14. Relaciona correctamente precios con el producto más cercano visualmente.
-15. Retorna [] SOLO si la imagen está completamente vacía.
+Responde ÚNICAMENTE con un array JSON, sin markdown, sin explicaciones, sin código. Formato:
+[
+  { "name": "Producto 1", "description": "descripción", "price": 9.99, "category": "Categoría" },
+  { "name": "Producto 2", "description": "descripción", "price": 12.50, "category": "Categoría" }
+]
 
-FORMATO OBLIGATORIO (sin cambios, sin markdown, sin comentarios):
-[{"name":"Producto 1","description":"","price":45.99,"category":"General"},{"name":"Producto 2","description":"","price":0,"category":"General"}]`
+Si la imagen no contiene un menú o no hay productos, responde: []`
+
+export const MENU_SCAN_USER_PROMPT = `Extrae todos los productos de este menú. Proporciona la respuesta como un array JSON válido.`
