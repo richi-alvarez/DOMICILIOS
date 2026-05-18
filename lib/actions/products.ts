@@ -167,3 +167,56 @@ export async function updateProduct(payload: UpdateProductPayload) {
     return { error: 'Error al actualizar el producto' }
   }
 }
+
+export async function deleteProduct(id: string) {
+  const session = await auth()
+  if (!session?.user?.id) {
+    return { error: 'No autenticado' }
+  }
+
+  try {
+    await db.delete(products).where(eq(products.id, id))
+    return { success: true }
+  } catch (error) {
+    console.error('Error deleting product:', error)
+    return { error: 'Error al eliminar el producto' }
+  }
+}
+
+export async function exportProductsToCSV(
+  catalogId: string,
+): Promise<{ csv: string } | { error: string }> {
+  const session = await auth()
+  if (!session?.user?.id) {
+    return { error: 'No autenticado' }
+  }
+
+  try {
+    const productList = await db.query.products.findMany({
+      where: eq(products.catalogId, catalogId),
+    })
+
+    if (productList.length === 0) {
+      return { csv: '' }
+    }
+
+    const headers = ['ID', 'Nombre', 'Descripción', 'Precio', 'Precio Oferta', 'Stock', 'SKU', 'Activo']
+    const rows = productList.map((p) => [
+      p.id,
+      p.name,
+      p.description || '',
+      (p.price / 100).toString(),
+      p.compareAt ? (p.compareAt / 100).toString() : '',
+      p.stock?.toString() || '',
+      p.sku || '',
+      p.active ? 'Sí' : 'No',
+    ])
+
+    const csv = [headers, ...rows].map((row) => row.map((cell) => `"${cell}"`).join(',')).join('\n')
+
+    return { csv }
+  } catch (error) {
+    console.error('Error exporting products:', error)
+    return { error: 'Error al exportar productos' }
+  }
+}
