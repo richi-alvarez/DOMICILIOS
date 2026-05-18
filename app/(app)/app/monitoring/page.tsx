@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { AlertCircle, CheckCircle2, AlertTriangle, Activity, TrendingUp, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { DashboardSkeleton } from '@/components/monitoring/SkeletonLoaders'
 
 interface HealthService {
   service: string
@@ -103,14 +104,7 @@ export default function MonitoringPage() {
       : 'healthy'
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <Activity className="w-12 h-12 text-primary-600 animate-spin mx-auto mb-4" />
-          <p className="text-warm-600">Loading monitoring data...</p>
-        </div>
-      </div>
-    )
+    return <DashboardSkeleton />
   }
 
   return (
