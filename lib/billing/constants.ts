@@ -8,6 +8,7 @@ export interface PlanLimits {
   customDomain: boolean
   analytics: boolean
   aiFeatures: boolean
+  monitoringAccess: boolean
 }
 
 export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
@@ -19,6 +20,7 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     customDomain: false,
     analytics: false,
     aiFeatures: false,
+    monitoringAccess: false,
   },
   pro: {
     catalogs: 3,
@@ -28,6 +30,7 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     customDomain: true,
     analytics: true,
     aiFeatures: false,
+    monitoringAccess: true,
   },
   premium: {
     catalogs: 10,
@@ -37,6 +40,7 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     customDomain: true,
     analytics: true,
     aiFeatures: true,
+    monitoringAccess: true,
   },
   business: {
     catalogs: -1,
@@ -46,6 +50,7 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     customDomain: true,
     analytics: true,
     aiFeatures: true,
+    monitoringAccess: true,
   },
 }
 

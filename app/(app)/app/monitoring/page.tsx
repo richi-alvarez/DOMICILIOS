@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { AlertCircle, CheckCircle2, AlertTriangle, Activity, TrendingUp, Zap } from 'lucide-react'
+import { AlertCircle, CheckCircle2, AlertTriangle, Activity, TrendingUp, Zap, Lock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { DashboardSkeleton } from '@/components/monitoring/SkeletonLoaders'
+import { canAccessMonitoring } from '@/lib/actions/monitoring'
 
 interface HealthService {
   service: string
@@ -28,11 +29,22 @@ export default function MonitoringPage() {
   const [alerts, setAlerts] = useState<Alert[]>([])
   const [loading, setLoading] = useState(true)
   const [refreshing, setRefreshing] = useState(false)
+  const [hasAccess, setHasAccess] = useState<boolean | null>(null)
 
   useEffect(() => {
-    fetchData()
-    const interval = setInterval(fetchData, 30000) // Refresh every 30 seconds
-    return () => clearInterval(interval)
+    const checkAccess = async () => {
+      const access = await canAccessMonitoring()
+      setHasAccess(access)
+      if (access) {
+        fetchData()
+        const interval = setInterval(fetchData, 30000)
+        return () => clearInterval(interval)
+      } else {
+        setLoading(false)
+      }
+    }
+
+    checkAccess()
   }, [])
 
   async function fetchData() {
@@ -103,8 +115,27 @@ export default function MonitoringPage() {
       ? 'degraded'
       : 'healthy'
 
-  if (loading) {
+  if (hasAccess === null || loading) {
     return <DashboardSkeleton />
+  }
+
+  if (!hasAccess) {
+    return (
+      <div className="max-w-7xl mx-auto p-6 flex items-center justify-center min-h-screen">
+        <div className="text-center space-y-4">
+          <Lock className="w-16 h-16 text-warm-400 mx-auto" />
+          <div>
+            <h1 className="text-3xl font-bold text-night-800">Monitoring Locked</h1>
+            <p className="text-warm-600 mt-2">
+              The monitoring dashboard is only available for Pro, Premium, and Business plans.
+            </p>
+          </div>
+          <Button onClick={() => (window.location.href = '/app/settings/billing')} className="mt-4">
+            Upgrade Plan
+          </Button>
+        </div>
+      </div>
+    )
   }
 
   return (
