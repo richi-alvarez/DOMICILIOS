@@ -16,10 +16,18 @@ export async function getAnalyticsOverview() {
 
     if (!membership) return { error: 'Organización no encontrada' }
 
-    const orgCatalogs = await db.query.catalogs.findMany({
-      where: eq(catalogs.orgId, membership.organizationId),
-      columns: { id: true },
-    })
+    return getAnalyticsOverviewData(membership.organizationId)
+  } catch (error: any) {
+    console.error('Error in getAnalyticsOverview:', error)
+    return { error: error.message || 'Error al obtener datos' }
+  }
+}
+
+async function getAnalyticsOverviewData(organizationId: string) {
+  const orgCatalogs = await db.query.catalogs.findMany({
+    where: eq(catalogs.orgId, organizationId),
+    columns: { id: true },
+  })
 
     if (orgCatalogs.length === 0) {
       return {
@@ -92,17 +100,13 @@ export async function getAnalyticsOverview() {
       .sort((a, b) => b.revenue - a.revenue)
       .slice(0, 5)
 
-    return {
-      totalRevenue,
-      orderCount,
-      avgOrderValue,
-      uniqueCustomers,
-      repeatCustomerRate: Math.round(repeatCustomerRate * 100) / 100,
-      topProducts,
-    }
-  } catch (error: any) {
-    console.error('Error in getAnalyticsOverview:', error)
-    return { error: error.message || 'Error al obtener datos' }
+  return {
+    totalRevenue,
+    orderCount,
+    avgOrderValue,
+    uniqueCustomers,
+    repeatCustomerRate: Math.round(repeatCustomerRate * 100) / 100,
+    topProducts,
   }
 }
 
