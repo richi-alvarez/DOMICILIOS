@@ -1,0 +1,69 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "WaStore WaStore" [ref=e6] [cursor=pointer]:
+        - /url: /app
+        - img "WaStore" [ref=e7]
+        - generic [ref=e8]: WaStore
+      - generic [ref=e9]:
+        - navigation [ref=e10]:
+          - link "Mis catálogos" [ref=e11] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e12]
+            - text: Mis catálogos
+          - link "Analytics" [ref=e17] [cursor=pointer]:
+            - /url: /app/analytics
+            - img [ref=e18]
+            - text: Analytics
+          - link "Equipo" [ref=e20] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e21]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e26] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e27]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e29] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e30]
+          - text: Nuevo catálogo
+      - generic [ref=e32]:
+        - generic [ref=e33]: C
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - paragraph [ref=e36]: Carlos García
+            - generic [ref=e37]: Gratis
+          - paragraph [ref=e38]: carlos.garcia@test.com
+        - button "Cerrar sesión" [ref=e39]:
+          - img [ref=e40]
+    - main [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - heading "Mis catálogos" [level=1] [ref=e47]
+            - paragraph [ref=e48]: 1 catálogo
+          - link "Mejorar plan" [ref=e50] [cursor=pointer]:
+            - /url: /plans
+            - button "Mejorar plan" [ref=e51]:
+              - img
+              - text: Mejorar plan
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - img [ref=e54]
+            - paragraph [ref=e56]:
+              - text: Has alcanzado el límite de
+              - strong [ref=e57]: 1 catálogo
+              - text: del plan Gratis.
+          - link "Ver planes →" [ref=e58] [cursor=pointer]:
+            - /url: /plans
+        - link "Borrador Mi Tiendita Carlos /mi-tiendita-carlos" [ref=e60] [cursor=pointer]:
+          - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b
+          - generic [ref=e61]:
+            - img [ref=e63]
+            - generic [ref=e66]: Borrador
+          - heading "Mi Tiendita Carlos" [level=3] [ref=e67]
+          - paragraph [ref=e68]: /mi-tiendita-carlos
+  - region "Notifications alt+T"
+  - alert [ref=e69]
+  - button "Open Next.js Dev Tools" [ref=e75] [cursor=pointer]:
+    - img [ref=e76]

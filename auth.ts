@@ -19,11 +19,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db),
   session: { strategy: 'jwt' },
   secret: process.env.AUTH_SECRET,
+  trustHost: true,
+  skipCSRFCheck: process.env.NODE_ENV === 'development',
 
   providers: [
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
+      allowDangerousEmailAccountLinking: true,
     }),
     Credentials({
       credentials: {
@@ -31,28 +34,60 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          return null
-        }
-
-        const user = await db.query.users.findFirst({
-          where: eq(users.email, credentials.email),
+        logger.info('🔍 Credentials Provider: authorize() called', {
+          emailProvided: !!credentials?.email,
+          passwordProvided: !!credentials?.password,
         })
 
-        if (!user || !user.passwordHash) {
+        if (!credentials?.email || !credentials?.password) {
+          logger.warn('❌ Missing email or password')
           return null
         }
 
-        const passwordMatch = await bcrypt.compare(credentials.password, user.passwordHash)
-        if (!passwordMatch) {
-          return null
-        }
+        try {
+          const user = await db.query.users.findFirst({
+            where: eq(users.email, credentials.email),
+          })
 
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          image: user.image,
+          logger.info('🔍 User lookup result', {
+            userFound: !!user,
+            hasPasswordHash: !!user?.passwordHash,
+            userEmail: user?.email,
+          })
+
+          if (!user || !user.passwordHash) {
+            logger.warn('❌ User not found or no password hash')
+            return null
+          }
+
+          const passwordMatch = await bcrypt.compare(credentials.password, user.passwordHash)
+
+          logger.info('🔍 Password verification', {
+            passwordMatch,
+            userId: user.id,
+          })
+
+          if (!passwordMatch) {
+            logger.warn('❌ Password does not match')
+            return null
+          }
+
+          logger.info('✅ Auth successful', {
+            userId: user.id,
+            userEmail: user.email,
+          })
+
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            image: user.image,
+          }
+        } catch (error) {
+          logger.error('🚨 Auth provider error', {
+            error: error instanceof Error ? error.message : String(error),
+          })
+          return null
         }
       },
     }),
@@ -68,6 +103,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         accountProviderAccountId: account?.providerAccountId,
         profileEmail: (profile as any)?.email,
         profileName: (profile as any)?.name,
+        accountKeys: Object.keys(account || {}),
+        profileKeys: profile ? Object.keys(profile) : [],
         timestamp: new Date().toISOString(),
       })
 

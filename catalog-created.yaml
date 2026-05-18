@@ -1,0 +1,87 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e44]:
+    - complementary [ref=e46]:
+      - link "WaStore WaStore" [ref=e48] [cursor=pointer]:
+        - /url: /app
+        - img "WaStore" [ref=e49]
+        - generic [ref=e50]: WaStore
+      - generic [ref=e51]:
+        - generic [ref=e191]:
+          - generic [ref=e192]:
+            - generic [ref=e193]: Catálogo activo
+            - generic [ref=e194]: Borrador
+          - paragraph [ref=e195]: Mi Tiendita Carlos
+          - paragraph [ref=e196]: /mi-tiendita-carlos
+          - link "Ver todos los catálogos" [ref=e197] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e198]
+            - text: Ver todos los catálogos
+        - navigation [ref=e200]:
+          - link "Detalles" [ref=e201] [cursor=pointer]:
+            - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b
+            - img [ref=e202]
+            - text: Detalles
+          - link "Productos" [ref=e207] [cursor=pointer]:
+            - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b/products
+            - img [ref=e208]
+            - text: Productos
+          - link "Categorías" [ref=e212] [cursor=pointer]:
+            - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b/categories
+            - img [ref=e213]
+            - text: Categorías
+          - link "Diseño" [ref=e218] [cursor=pointer]:
+            - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b/design
+            - img [ref=e219]
+            - text: Diseño
+          - link "Pedidos" [ref=e225] [cursor=pointer]:
+            - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b/orders
+            - img [ref=e226]
+            - text: Pedidos
+          - link "Estadísticas" [ref=e230] [cursor=pointer]:
+            - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b/analytics
+            - img [ref=e231]
+            - text: Estadísticas
+          - link "Reportes" [ref=e232] [cursor=pointer]:
+            - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b/reports
+            - img [ref=e233]
+            - text: Reportes
+          - link "Configuración" [ref=e236] [cursor=pointer]:
+            - /url: /app/catalogs/cc3dda97-0b3a-44a3-b9a0-d1080ec6176b/settings
+            - img [ref=e237]
+            - text: Configuración
+        - navigation [ref=e52]:
+          - link "Mis catálogos" [ref=e53] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e54]
+            - text: Mis catálogos
+          - link "Analytics" [ref=e59] [cursor=pointer]:
+            - /url: /app/analytics
+            - img [ref=e60]
+            - text: Analytics
+          - link "Equipo" [ref=e62] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e63]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e68] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e69]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e71] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e72]
+          - text: Nuevo catálogo
+      - generic [ref=e74]:
+        - generic [ref=e75]: C
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: Carlos García
+            - generic [ref=e79]: Gratis
+          - paragraph [ref=e80]: carlos.garcia@test.com
+        - button "Cerrar sesión" [ref=e81]:
+          - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e240]: Cargando...
+  - region "Notifications alt+T"
+  - alert [ref=e33]: WaStore — Catálogos Inteligentes para Negocios
+  - button "Open Next.js Dev Tools" [ref=e39] [cursor=pointer]:
+    - img [ref=e40]

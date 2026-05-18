@@ -1,0 +1,147 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e44]:
+    - complementary [ref=e46]:
+      - link "WaStore WaStore" [ref=e48] [cursor=pointer]:
+        - /url: /app
+        - img "WaStore" [ref=e49]
+        - generic [ref=e50]: WaStore
+      - generic [ref=e51]:
+        - generic [ref=e191]:
+          - generic [ref=e192]:
+            - generic [ref=e193]: Catálogo activo
+            - generic [ref=e194]: Borrador
+          - paragraph [ref=e195]: Restaurante María Pro
+          - paragraph [ref=e196]: /restaurante-maria-pro
+          - link "Ver todos los catálogos" [ref=e197] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e198]
+            - text: Ver todos los catálogos
+        - navigation [ref=e200]:
+          - link "Detalles" [ref=e201] [cursor=pointer]:
+            - /url: /app/catalogs/d588ab63-1f83-4715-86dc-c74cf72fcd15
+            - img [ref=e202]
+            - text: Detalles
+          - link "Productos" [ref=e207] [cursor=pointer]:
+            - /url: /app/catalogs/d588ab63-1f83-4715-86dc-c74cf72fcd15/products
+            - img [ref=e208]
+            - text: Productos
+          - link "Categorías" [ref=e212] [cursor=pointer]:
+            - /url: /app/catalogs/d588ab63-1f83-4715-86dc-c74cf72fcd15/categories
+            - img [ref=e213]
+            - text: Categorías
+          - link "Diseño" [ref=e218] [cursor=pointer]:
+            - /url: /app/catalogs/d588ab63-1f83-4715-86dc-c74cf72fcd15/design
+            - img [ref=e219]
+            - text: Diseño
+          - link "Pedidos" [ref=e225] [cursor=pointer]:
+            - /url: /app/catalogs/d588ab63-1f83-4715-86dc-c74cf72fcd15/orders
+            - img [ref=e226]
+            - text: Pedidos
+          - link "Estadísticas" [ref=e230] [cursor=pointer]:
+            - /url: /app/catalogs/d588ab63-1f83-4715-86dc-c74cf72fcd15/analytics
+            - img [ref=e231]
+            - text: Estadísticas
+          - link "Reportes" [ref=e232] [cursor=pointer]:
+            - /url: /app/catalogs/d588ab63-1f83-4715-86dc-c74cf72fcd15/reports
+            - img [ref=e233]
+            - text: Reportes
+          - link "Configuración" [ref=e236] [cursor=pointer]:
+            - /url: /app/catalogs/d588ab63-1f83-4715-86dc-c74cf72fcd15/settings
+            - img [ref=e237]
+            - text: Configuración
+        - navigation [ref=e52]:
+          - link "Mis catálogos" [ref=e53] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e54]
+            - text: Mis catálogos
+          - link "Analytics" [ref=e59] [cursor=pointer]:
+            - /url: /app/analytics
+            - img [ref=e60]
+            - text: Analytics
+          - link "Equipo" [ref=e62] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e63]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e68] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e69]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e71] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e72]
+          - text: Nuevo catálogo
+      - generic [ref=e74]:
+        - generic [ref=e75]: M
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: María López
+            - generic [ref=e79]: Pro
+          - paragraph [ref=e80]: maria.lopez@test.com
+        - button "Cerrar sesión" [ref=e81]:
+          - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e240]:
+        - link "Restaurante María Pro" [ref=e242] [cursor=pointer]:
+          - /url: /app/catalogs
+          - img [ref=e243]
+          - heading "Restaurante María Pro" [level=1] [ref=e245]
+        - generic [ref=e246]:
+          - generic [ref=e247]:
+            - generic [ref=e250]:
+              - generic [ref=e254]:
+                - button "Personalizar ▼" [ref=e255]
+                - button "PNG" [ref=e256]:
+                  - img [ref=e257]
+                  - generic [ref=e260]: PNG
+                - button "SVG" [ref=e261]:
+                  - img [ref=e262]
+                  - generic [ref=e265]: SVG
+                - button "Imprimir QR" [ref=e266]:
+                  - generic [ref=e267]: Imprimir QR
+              - generic [ref=e268]:
+                - generic [ref=e269]:
+                  - generic [ref=e270]: "URL:"
+                  - generic [ref=e271]:
+                    - textbox [ref=e272]: http://localhost:3000/s/restaurante-maria-pro
+                    - button "📋" [ref=e273]
+                - generic [ref=e274]:
+                  - link "Visitar" [ref=e275] [cursor=pointer]:
+                    - /url: http://localhost:3000/s/restaurante-maria-pro
+                  - button "Editar Diseño" [ref=e276]
+            - generic [ref=e277]:
+              - heading "Información" [level=2] [ref=e278]
+              - generic [ref=e279]:
+                - generic [ref=e280]:
+                  - term [ref=e281]: "Nombre:"
+                  - definition [ref=e282]: Restaurante María Pro
+                - generic [ref=e283]:
+                  - term [ref=e284]: "Slug:"
+                  - definition [ref=e285]: /restaurante-maria-pro
+                - generic [ref=e286]:
+                  - term [ref=e287]: "Estado:"
+                  - definition [ref=e288]: Borrador
+                - generic [ref=e289]:
+                  - term [ref=e290]: "Idioma:"
+                  - definition [ref=e291]: ES
+                - generic [ref=e292]:
+                  - term [ref=e293]: "Moneda:"
+                  - definition [ref=e294]: COP
+                - generic [ref=e295]:
+                  - term [ref=e296]: "Canal de pedidos:"
+                  - definition [ref=e297]: Email
+                - generic [ref=e298]:
+                  - term [ref=e299]: "Fecha de creación:"
+                  - definition [ref=e300]: Invalid Date
+                - generic [ref=e301]:
+                  - term [ref=e302]: "Última actualización:"
+                  - definition [ref=e303]: Invalid Date
+          - generic [ref=e305]:
+            - heading "SEO y Vista Previa" [level=2] [ref=e306]
+            - button "📋 Logo y SEO" [ref=e307]
+            - generic [ref=e308]:
+              - paragraph [ref=e309]: ¡Conecta tu dominio personalizado!
+              - paragraph [ref=e310]: ej. www.mitienda.com
+  - region "Notifications alt+T"
+  - alert [ref=e33]: WaStore — Catálogos Inteligentes para Negocios
+  - button "Open Next.js Dev Tools" [ref=e39] [cursor=pointer]:
+    - img [ref=e40]

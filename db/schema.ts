@@ -569,3 +569,50 @@ export const monitoringAlerts = pgTable(
     index('monitoring_alerts_service_idx').on(t.service),
   ],
 )
+
+// Phase 14: Advanced Analytics & Reporting Tables
+export const customReports = pgTable(
+  'custom_reports',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    organizationId: uuid('organization_id').notNull().references(() => organizations.id, { onDelete: 'cascade' }),
+    name: varchar('name', { length: 255 }).notNull(),
+    description: text('description'),
+    queryType: varchar('query_type', { length: 50 }).notNull().default('sales'), // 'sales', 'customers', 'products', 'revenue'
+    filters: jsonb('filters').default({}),
+    columns: jsonb('columns').default([]),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+    updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow().notNull(),
+    createdBy: uuid('created_by').notNull().references(() => users.id, { onDelete: 'set null' }),
+    isTemplate: boolean('is_template').default(false),
+    templateName: varchar('template_name', { length: 255 }),
+  },
+  (t) => [
+    index('custom_reports_organization_idx').on(t.organizationId),
+    index('custom_reports_created_by_idx').on(t.createdBy),
+    index('custom_reports_is_template_idx').on(t.isTemplate),
+    index('custom_reports_query_type_idx').on(t.queryType),
+  ],
+)
+
+export const reportExports = pgTable(
+  'report_exports',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    reportId: uuid('report_id').references(() => customReports.id, { onDelete: 'set null' }),
+    organizationId: uuid('organization_id').notNull().references(() => organizations.id, { onDelete: 'cascade' }),
+    exportFormat: varchar('export_format', { length: 10 }).notNull().default('csv'), // 'csv', 'pdf', 'xlsx'
+    fileUrl: varchar('file_url', { length: 500 }),
+    fileSize: integer('file_size'),
+    rowCount: integer('row_count'),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+    createdBy: uuid('created_by').notNull().references(() => users.id, { onDelete: 'set null' }),
+    metadata: jsonb('metadata').default({}),
+  },
+  (t) => [
+    index('report_exports_organization_idx').on(t.organizationId),
+    index('report_exports_report_id_idx').on(t.reportId),
+    index('report_exports_created_at_idx').on(t.createdAt),
+    index('report_exports_format_idx').on(t.exportFormat),
+  ],
+)

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 52, "column": 0}, "map": {"version":3,"sources":["file:///app/app/api/health/route.ts"],"sourcesContent":["export async function GET() {\n  return Response.json(\n    {\n      status: 'ok',\n      timestamp: new Date().toISOString(),\n      uptime: process.uptime(),\n    },\n    { status: 200 }\n  )\n}\n"],"names":[],"mappings":";;;AAAO,eAAe;IACpB,OAAO,SAAS,IAAI,CAClB;QACE,QAAQ;QACR,WAAW,IAAI,OAAO,WAAW;QACjC,QAAQ,QAAQ,MAAM;IACxB,GACA;QAAE,QAAQ;IAAI;AAElB","debugId":null}}]
+}

@@ -39,10 +39,6 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(loginUrl)
   }
 
-  if (isAuthRoute && isLoggedIn) {
-    return NextResponse.redirect(new URL('/app', nextUrl))
-  }
-
   const response = NextResponse.next()
 
   // Security headers

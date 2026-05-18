@@ -1,0 +1,30 @@
+{
+  "browserType": "chromium",
+  "launchArgs": [
+    "--disable-blink-features=AutomationControlled",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--disable-web-resources",
+    "--disable-sync",
+    "--disable-extensions",
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+    "--disable-software-rasterizer",
+    "--disable-default-apps",
+    "--disable-preconnect",
+    "--disable-client-side-phishing-detection",
+    "--disable-component-extensions-with-background-pages",
+    "--disable-default-apps",
+    "--disable-extensions-except",
+    "--disable-background-networking",
+    "--disable-breakpad",
+    "--disable-client-side-phishing-detection",
+    "--disable-component-extensions-with-background-pages",
+    "--disable-component-update",
+    "--disable-popup-blocking",
+    "--disable-prompt-on-repost",
+    "--disable-reading-from-canvas"
+  ],
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 EdgE/125.0.0.0"
+}

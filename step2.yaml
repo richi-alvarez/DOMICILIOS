@@ -1,0 +1,71 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e44]:
+    - complementary [ref=e46]:
+      - link "WaStore WaStore" [ref=e48] [cursor=pointer]:
+        - /url: /app
+        - img "WaStore" [ref=e49]
+        - generic [ref=e50]: WaStore
+      - generic [ref=e51]:
+        - navigation [ref=e52]:
+          - link "Mis catálogos" [ref=e53] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e54]
+            - text: Mis catálogos
+          - link "Analytics" [ref=e59] [cursor=pointer]:
+            - /url: /app/analytics
+            - img [ref=e60]
+            - text: Analytics
+          - link "Equipo" [ref=e62] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e63]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e68] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e69]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e71] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e72]
+          - text: Nuevo catálogo
+      - generic [ref=e74]:
+        - generic [ref=e75]: C
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - paragraph [ref=e78]: Carlos García
+            - generic [ref=e79]: Gratis
+          - paragraph [ref=e80]: carlos.garcia@test.com
+        - button "Cerrar sesión" [ref=e81]:
+          - img [ref=e82]
+    - main [ref=e85]:
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - generic [ref=e91]: ✓
+            - generic [ref=e94]: "2"
+            - generic [ref=e97]: "3"
+          - paragraph [ref=e98]: Paso 2 de 3
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - button "Atrás" [ref=e137]:
+              - img [ref=e138]
+              - text: Atrás
+            - heading "Tu enlace único" [level=1] [ref=e140]
+            - paragraph [ref=e141]: Este será el link público de tu tienda. Una vez creado no se puede cambiar (salvo dominio propio).
+          - generic [ref=e142]:
+            - text: Enlace de tu tienda
+            - generic [ref=e143]:
+              - generic [ref=e144]: domicilios.app/s/
+              - textbox "mi-tienda" [ref=e145]: mi-tiendita-carlos
+              - img [ref=e147]
+            - paragraph [ref=e150]: ¡Disponible! Este enlace es tuyo.
+          - paragraph [ref=e152]:
+            - text: Tu tienda será accesible en
+            - strong [ref=e153]: domicilios.app/s/mi-tiendita-carlos
+            - text: . Con el plan Pro puedes conectar tu propio dominio.
+          - button "Continuar" [ref=e154]:
+            - text: Continuar
+            - img
+  - region "Notifications alt+T"
+  - alert [ref=e33]: Configura tu tienda | WaStore
+  - button "Open Next.js Dev Tools" [ref=e39] [cursor=pointer]:
+    - img [ref=e40]

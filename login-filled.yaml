@@ -26,7 +26,7 @@
           - generic [ref=e25]:
             - textbox "Contraseña" [active] [ref=e26]:
               - /placeholder: Tu contraseña
-              - text: Test@12345
+              - text: Password123!
             - button [ref=e27]:
               - img [ref=e28]
         - button "Iniciar Sesión" [ref=e43]
