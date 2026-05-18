@@ -1,8 +1,26 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { logger } from '@/lib/monitoring/logger'
 
 export function middleware(request: NextRequest) {
   const { nextUrl } = request
+
+  // Log auth-related requests
+  if (nextUrl.pathname.includes('/auth') || nextUrl.pathname === '/login' || nextUrl.pathname === '/signup') {
+    logger.info('🔐 Auth Request in Middleware', {
+      pathname: nextUrl.pathname,
+      method: request.method,
+      hasSessionToken: !!request.cookies.get('authjs.session-token'),
+      hasSecureSessionToken: !!request.cookies.get('__Secure-authjs.session-token'),
+      searchParams: {
+        code: nextUrl.searchParams.get('code') ? '***REDACTED***' : null,
+        state: nextUrl.searchParams.get('state') ? '***REDACTED***' : null,
+        error: nextUrl.searchParams.get('error'),
+        errorDescription: nextUrl.searchParams.get('error_description'),
+      },
+      timestamp: new Date().toISOString(),
+    })
+  }
 
   // Obtener el token JWT desde las cookies
   const token = request.cookies.get('authjs.session-token')?.value ||

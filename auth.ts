@@ -60,37 +60,90 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   callbacks: {
     async signIn({ user, account, profile }) {
-      logger.info('User sign in', { provider: account?.provider, hasUserId: !!user?.id })
+      logger.info('👤 SignIn Callback Triggered', {
+        provider: account?.provider,
+        userId: user?.id,
+        userEmail: user?.email,
+        userName: user?.name,
+        accountProviderAccountId: account?.providerAccountId,
+        profileEmail: (profile as any)?.email,
+        profileName: (profile as any)?.name,
+        timestamp: new Date().toISOString(),
+      })
+
+      if (account?.provider === 'google') {
+        logger.info('🔐 Google OAuth Details', {
+          accessToken: account.access_token ? '***REDACTED***' : null,
+          refreshToken: account.refresh_token ? '***REDACTED***' : null,
+          expiresAt: account.expires_at,
+          tokenType: account.type,
+          scope: account.scope,
+        })
+      }
+
       return true
     },
 
     async jwt({ token, user, account }) {
+      logger.info('🔑 JWT Callback', {
+        hasUser: !!user,
+        hasAccount: !!account,
+        accountProvider: account?.provider,
+        tokenId: token.id,
+        userId: user?.id,
+      })
+
       if (user) {
         token.id = user.id
+        logger.info('✅ Token updated with user ID', { userId: user.id })
       }
+
       if (account?.provider !== 'credentials' && user?.id && process.env.DATABASE_URL) {
         try {
+          logger.info('📊 Creating default organization', {
+            userId: user.id,
+            provider: account?.provider,
+            userName: user.name,
+          })
+
           const { eq } = await import('drizzle-orm')
           const { db, memberships, organizations } = await getDb()
           const existing = await db.query.memberships.findFirst({
             where: eq(memberships.userId, user.id),
           })
+
           if (!existing) {
             await createDefaultOrg(user.id, user.name ?? 'Mi Negocio', db, organizations, memberships)
-            logger.info('Default organization created', { provider: account?.provider })
+            logger.info('✨ Default organization created successfully', { provider: account?.provider })
+          } else {
+            logger.info('ℹ️ Organization already exists', { userId: user.id, provider: account?.provider })
           }
         } catch (error) {
-          logger.error('Failed to create default organization', error, { provider: account?.provider })
+          logger.error('❌ Failed to create default organization', error, {
+            provider: account?.provider,
+            userId: user?.id,
+            errorMessage: error instanceof Error ? error.message : 'Unknown error',
+          })
         }
       }
       return token
     },
 
     async session({ session, token }) {
+      logger.info('📱 Session Callback', {
+        userEmail: session.user.email,
+        tokenHasId: !!token?.id,
+        sessionUserHasId: !!session.user.id,
+      })
+
       if (token?.id) {
         session.user.id = token.id as string
+        logger.info('✅ Session ID set from token', { userId: token.id })
       } else {
-        logger.warn('Session token missing user ID')
+        logger.warn('⚠️ Session token missing user ID', {
+          tokenKeys: Object.keys(token || {}),
+          token: JSON.stringify(token),
+        })
       }
       return session
     },
@@ -103,15 +156,30 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
   events: {
     async createUser({ user }) {
-      logger.info('New user created', { hasUserId: !!user.id })
+      logger.info('👤 New User Created Event', {
+        userId: user.id,
+        userEmail: user.email,
+        userName: user.name,
+        timestamp: new Date().toISOString(),
+      })
+
       if (user.id && process.env.DATABASE_URL) {
         try {
+          logger.info('📊 Creating default organization for new user', { userId: user.id })
           const { db, organizations, memberships } = await getDb()
           await createDefaultOrg(user.id, user.name ?? 'Mi Negocio', db, organizations, memberships)
-          logger.info('Default organization created for new user')
+          logger.info('✨ Default organization created for new user', { userId: user.id })
         } catch (error) {
-          logger.error('Failed to create organization for new user', error)
+          logger.error('❌ Failed to create organization for new user', error, {
+            userId: user.id,
+            errorMessage: error instanceof Error ? error.message : 'Unknown error',
+          })
         }
+      } else {
+        logger.warn('⚠️ Cannot create default org - no DB URL or user ID', {
+          hasUserId: !!user.id,
+          hasDbUrl: !!process.env.DATABASE_URL,
+        })
       }
     },
   },
