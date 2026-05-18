@@ -300,6 +300,6 @@ export async function sendAlertNotifications(
 }
 
 // Exportar config para UI
-export function getNotificationConfig(): NotificationConfig {
+export async function getNotificationConfig(): Promise<NotificationConfig> {
   return getConfig()
 }

@@ -342,3 +342,82 @@ export async function getCustomerAnalytics() {
     return { error: error.message || 'Error al obtener datos' }
   }
 }
+
+export async function getAnalytics(catalogId: string, days: number = 30) {
+  try {
+    const session = await auth()
+    if (!session?.user?.id) return { ok: false, error: 'not_authenticated' }
+
+    const membership = await db.query.memberships.findFirst({
+      where: eq(memberships.userId, session.user.id),
+      columns: { organizationId: true },
+    })
+
+    if (!membership) return { ok: false, error: 'no_organization' }
+
+    const catalog = await db.query.catalogs.findFirst({
+      where: eq(catalogs.id, catalogId),
+      columns: { orgId: true },
+    })
+
+    if (!catalog || catalog.orgId !== membership.organizationId) {
+      return { ok: false, error: 'forbidden' }
+    }
+
+    const startDate = new Date(Date.now() - days * 24 * 60 * 60 * 1000)
+    const catalogOrders = await db.query.orders.findMany({
+      where: and(
+        eq(orders.catalogId, catalogId),
+        eq(orders.status, 'delivered'),
+        gte(orders.createdAt, startDate),
+      ),
+      columns: { createdAt: true, totalsJson: true, itemsJson: true },
+    })
+
+    let totalRevenue = 0
+    const ordersByDay: Record<string, number> = {}
+    const productMap = new Map<string, number>()
+
+    catalogOrders.forEach((order) => {
+      const date = order.createdAt.toISOString().split('T')[0]
+      ordersByDay[date] = (ordersByDay[date] || 0) + 1
+
+      const totals = order.totalsJson as any
+      if (totals?.total) totalRevenue += totals.total
+
+      const items = order.itemsJson as any[]
+      if (Array.isArray(items)) {
+        items.forEach((item) => {
+          const name = item.name || 'Unknown'
+          productMap.set(name, (productMap.get(name) || 0) + (item.qty || 1))
+        })
+      }
+    })
+
+    const orderCount = catalogOrders.length
+    const conversionRate = 0
+
+    const topProducts = Array.from(productMap.entries())
+      .map(([name, qty]) => ({ name, qty }))
+      .sort((a, b) => b.qty - a.qty)
+      .slice(0, 5)
+
+    return {
+      ok: true,
+      pageViews: 0,
+      productViews: 0,
+      orderCount,
+      revenue: totalRevenue,
+      currency: 'COP',
+      conversionRate,
+      ordersByDay: Object.entries(ordersByDay)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([date, count]) => ({ date, count })),
+      topProducts,
+      ordersByStatus: [],
+    }
+  } catch (error: any) {
+    console.error('Error in getAnalytics:', error)
+    return { ok: false, error: 'server_error', message: error.message }
+  }
+}
