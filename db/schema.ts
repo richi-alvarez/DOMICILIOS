@@ -522,3 +522,50 @@ export const auditLog = pgTable('audit_log', {
   meta: jsonb('meta').default({}),
   ts: timestamp('ts', { mode: 'date' }).defaultNow().notNull(),
 })
+
+// ── Monitoring Metrics ────────────────────────────────────────────────
+export const monitoringMetrics = pgTable(
+  'monitoring_metrics',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    type: varchar('type', { length: 50 }).notNull(), // 'performance', 'ai_usage', 'cache', 'database'
+    endpoint: varchar('endpoint', { length: 255 }),
+    method: varchar('method', { length: 10 }),
+    statusCode: integer('status_code'),
+    responseTimeMs: integer('response_time_ms'),
+    timestamp: timestamp('timestamp', { mode: 'date' }).defaultNow().notNull(),
+    userId: uuid('user_id'),
+    metadata: jsonb('metadata').default({}),
+  },
+  (t) => [
+    index('monitoring_metrics_timestamp_idx').on(t.timestamp),
+    index('monitoring_metrics_type_timestamp_idx').on(t.type, t.timestamp),
+    index('monitoring_metrics_endpoint_idx').on(t.endpoint),
+  ],
+)
+
+// ── Monitoring Alerts ─────────────────────────────────────────────────
+export const monitoringAlertsEnum = pgEnum('monitoring_alert_severity', [
+  'info',
+  'warning',
+  'critical',
+])
+
+export const monitoringAlerts = pgTable(
+  'monitoring_alerts',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    severity: monitoringAlertsEnum('severity').notNull(),
+    title: varchar('title', { length: 255 }).notNull(),
+    description: text('description').notNull(),
+    service: varchar('service', { length: 100 }).notNull(), // 'api', 'database', 'cache', 'ai'
+    triggeredAt: timestamp('triggered_at', { mode: 'date' }).defaultNow().notNull(),
+    resolvedAt: timestamp('resolved_at', { mode: 'date' }),
+    metadata: jsonb('metadata').default({}),
+  },
+  (t) => [
+    index('monitoring_alerts_triggered_at_idx').on(t.triggeredAt),
+    index('monitoring_alerts_severity_idx').on(t.severity),
+    index('monitoring_alerts_service_idx').on(t.service),
+  ],
+)
