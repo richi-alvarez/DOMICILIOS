@@ -1,8 +1,10 @@
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
-import { db, memberships, catalogs, orders } from '@/db'
+import { db, memberships, catalogs, orders, subscriptions, plans } from '@/db'
 import { eq, inArray, and } from 'drizzle-orm'
-import { ArrowUp, DollarSign, ShoppingCart, Users } from 'lucide-react'
+import { ArrowUp, DollarSign, ShoppingCart, Users, Lock } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 import { AnalyticsDashboard } from '@/components/AnalyticsDashboard'
 
 export default async function AnalyticsPage() {
@@ -20,6 +22,65 @@ export default async function AnalyticsPage() {
       <div className="flex h-screen items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold">Organización no encontrada</h1>
+        </div>
+      </div>
+    )
+  }
+
+  // Check plan
+  const subscription = await db.query.subscriptions.findFirst({
+    where: eq(subscriptions.organizationId, membership.organizationId),
+    columns: { planId: true },
+  })
+
+  if (!subscription) {
+    return (
+      <div className="px-6 py-8 max-w-2xl">
+        <h1 className="text-2xl font-extrabold text-night-800">Analytics</h1>
+        <p className="mt-1 mb-8 text-sm text-warm-500">Analiza el desempeño de tu negocio en tiempo real</p>
+
+        <div className="rounded-2xl border-2 border-dashed border-warm-300 bg-warm-50 px-8 py-14 text-center">
+          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-warm-200 text-warm-500">
+            <Lock className="h-7 w-7" />
+          </div>
+          <h2 className="text-lg font-extrabold text-night-800">Analytics disponible en Pro y Business</h2>
+          <p className="mt-2 text-sm text-warm-500 max-w-sm mx-auto">
+            Mejora tu plan para acceder a analítica avanzada de tus ventas y desempeño.
+          </p>
+          <Button asChild className="mt-6">
+            <Link href="/app/billing">
+              Mejorar plan
+            </Link>
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  const plan = await db.query.plans.findFirst({
+    where: eq(plans.id, subscription.planId),
+    columns: { code: true },
+  })
+
+  if (!plan || plan.code === 'free') {
+    return (
+      <div className="px-6 py-8 max-w-2xl">
+        <h1 className="text-2xl font-extrabold text-night-800">Analytics</h1>
+        <p className="mt-1 mb-8 text-sm text-warm-500">Analiza el desempeño de tu negocio en tiempo real</p>
+
+        <div className="rounded-2xl border-2 border-dashed border-warm-300 bg-warm-50 px-8 py-14 text-center">
+          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-warm-200 text-warm-500">
+            <Lock className="h-7 w-7" />
+          </div>
+          <h2 className="text-lg font-extrabold text-night-800">Analytics disponible en Pro y Business</h2>
+          <p className="mt-2 text-sm text-warm-500 max-w-sm mx-auto">
+            Mejora tu plan para acceder a analítica avanzada de tus ventas y desempeño.
+          </p>
+          <Button asChild className="mt-6">
+            <Link href="/app/billing">
+              Mejorar plan
+            </Link>
+          </Button>
         </div>
       </div>
     )
@@ -130,8 +191,8 @@ export default async function AnalyticsPage() {
         </div>
       </div>
 
-      {/* Dashboard Component */}
-      <AnalyticsDashboard organizationId={membership.organizationId} />
+      {/* Analytics Dashboard */}
+      <AnalyticsDashboard />
     </div>
   )
 }
