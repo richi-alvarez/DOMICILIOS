@@ -1,7 +1,7 @@
 'use server'
 
 import { auth } from '@/auth'
-import { db, orders, catalogs, memberships } from '@/db'
+import { db, orders, catalogs, memberships, organizations } from '@/db'
 import { eq, inArray, and, gte, lte } from 'drizzle-orm'
 
 export async function getAnalyticsOverview() {
@@ -354,6 +354,15 @@ export async function getAnalytics(catalogId: string, days: number = 30) {
     })
 
     if (!membership) return { ok: false, error: 'no_organization' }
+
+    const org = await db.query.organizations.findFirst({
+      where: eq(organizations.id, membership.organizationId),
+      columns: { plan: true },
+    })
+
+    if (!org || org.plan === 'free') {
+      return { ok: false, error: 'plan_required' }
+    }
 
     const catalog = await db.query.catalogs.findFirst({
       where: eq(catalogs.id, catalogId),
