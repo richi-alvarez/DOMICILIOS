@@ -1,83 +1,55 @@
-import { auth } from '@/auth'
-import { db, memberships, customReports, orders, catalogs, reportExports } from '@/db'
-import { eq, inArray, and, gte, lte } from 'drizzle-orm'
+import { db, customReports, orders, catalogs } from '@/db'
+import { eq, and, inArray, gte, lte } from 'drizzle-orm'
 import { NextRequest, NextResponse } from 'next/server'
-import { z } from 'zod'
 import { logger } from '@/lib/monitoring/logger'
-import { checkRateLimit, rateLimitConfig } from '@/lib/api/rate-limit'
-import { getClientIP } from '@/lib/api/get-client-ip'
-import { sendReportEmail } from '@/lib/email'
 
 export const runtime = 'nodejs'
 
-const emailSchema = z.object({
-  email: z.string().email(),
-  format: z.enum(['csv', 'xlsx', 'pdf']).default('csv'),
-})
-
-export async function POST(
+export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { token: string } }
 ) {
   try {
-    const ip = getClientIP(request)
-    const rateLimitResult = await checkRateLimit(ip, rateLimitConfig.sensitive.limit, rateLimitConfig.sensitive.windowMs)
-
-    if (!rateLimitResult.allowed) {
-      return NextResponse.json(
-        { error: rateLimitConfig.sensitive.message },
-        {
-          status: 429,
-          headers: {
-            'Retry-After': String(rateLimitResult.retryAfter || 60),
-          },
-        }
-      )
-    }
-
-    const session = await auth()
-    if (!session?.user?.id) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-
-    const membership = await db.query.memberships.findFirst({
-      where: eq(memberships.userId, session.user.id),
-      columns: { organizationId: true },
-    })
-
-    if (!membership) {
-      return NextResponse.json(
-        { error: 'Organization not found' },
-        { status: 404 },
-      )
-    }
-
+    // Find report by share token
     const report = await db.query.customReports.findFirst({
-      where: and(
-        eq(customReports.id, params.id),
-        eq(customReports.organizationId, membership.organizationId),
-      ),
+      where: eq(customReports.shareToken, params.token),
     })
 
     if (!report) {
       return NextResponse.json(
-        { error: 'Report not found' },
+        { error: 'Share link not found or expired' },
         { status: 404 },
       )
     }
 
-    const body = await request.json()
-    const validated = emailSchema.parse(body)
+    // Check if token is expired
+    if (
+      report.shareTokenExpiresAt &&
+      new Date(report.shareTokenExpiresAt) < new Date()
+    ) {
+      return NextResponse.json(
+        { error: 'Share link has expired' },
+        { status: 403 },
+      )
+    }
 
-    // Get data based on query type
+    // Check if report is archived
+    if (report.archivedAt) {
+      return NextResponse.json(
+        { error: 'Report has been archived' },
+        { status: 403 },
+      )
+    }
+
+    // Get organization catalogs
     const orgCatalogs = await db.query.catalogs.findMany({
-      where: eq(catalogs.orgId, membership.organizationId),
+      where: eq(catalogs.orgId, report.organizationId),
       columns: { id: true },
     })
 
     if (orgCatalogs.length === 0) {
       return NextResponse.json(
-        { error: 'No catalogs found for organization' },
+        { error: 'No data available' },
         { status: 400 },
       )
     }
@@ -85,6 +57,7 @@ export async function POST(
     const catalogIds = orgCatalogs.map((c) => c.id)
     const filters = report.filters as any
 
+    // Prepare date range
     const startDate = filters?.startDate
       ? new Date(filters.startDate)
       : new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
@@ -92,7 +65,7 @@ export async function POST(
       ? new Date(filters.endDate)
       : new Date()
 
-    // Query data based on report type
+    // Generate CSV based on report type
     let csvData = ''
 
     if (report.queryType === 'sales') {
@@ -105,96 +78,26 @@ export async function POST(
       csvData = await generateOverviewCSV(catalogIds)
     }
 
-    // Generate file based on format
-    let fileBuffer: Buffer
-    let filename: string
+    const fileBuffer = Buffer.from(csvData, 'utf-8')
+    const filename = `${report.name}-${Date.now()}.csv`
 
-    if (validated.format === 'csv') {
-      fileBuffer = Buffer.from(csvData, 'utf-8')
-      filename = `reporte-${report.queryType}-${Date.now()}.csv`
-    } else if (validated.format === 'xlsx') {
-      const XLSX = (await import('xlsx')).default
-      const lines = csvData.trim().split('\n')
-      const headers = lines[0].split(',')
-      const data = lines.slice(1).map((line) => {
-        const values = line.split(',')
-        const obj: any = {}
-        headers.forEach((header, i) => {
-          obj[header] = values[i]
-        })
-        return obj
-      })
-
-      const ws = XLSX.utils.json_to_sheet(data)
-      const wb = XLSX.utils.book_new()
-      XLSX.utils.book_append_sheet(wb, ws, 'Reporte')
-
-      fileBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' }) as Buffer
-      filename = `reporte-${report.queryType}-${Date.now()}.xlsx`
-    } else {
-      const PDFDocument = (await import('pdfkit')).default
-      const doc = new PDFDocument()
-
-      const buffers: Buffer[] = []
-      doc.on('data', (chunk: Buffer) => buffers.push(chunk))
-
-      doc
-        .fontSize(16)
-        .font('Helvetica-Bold')
-        .text(`Reporte: ${report.name}`, 50, 50)
-        .fontSize(10)
-        .font('Helvetica')
-        .text(`Generado: ${new Date().toLocaleDateString()}`, 50, 80)
-        .moveDown()
-        .text(csvData)
-
-      doc.end()
-
-      fileBuffer = await new Promise((resolve) => {
-        doc.on('end', () => {
-          resolve(Buffer.concat(buffers))
-        })
-      })
-      filename = `reporte-${report.queryType}-${Date.now()}.pdf`
-    }
-
-    // Send email with attachment
-    await sendReportEmail(validated.email, report.name, validated.format, fileBuffer, filename)
-
-    // Record export in history
-    const csvLines = csvData.split('\n').filter(line => line.trim())
-    const rowCount = csvLines.length > 0 ? csvLines.length - 1 : 0
-    await db.insert(reportExports).values({
+    logger.info('Report accessed via share link', {
       reportId: report.id,
-      organizationId: membership.organizationId,
-      exportFormat: validated.format,
-      fileSize: fileBuffer.length,
-      rowCount,
-      createdBy: session.user.id,
-      metadata: { deliveryType: 'email', email: validated.email },
+      token: params.token.substring(0, 8) + '...',
     })
 
-    logger.info('Report sent by email', {
-      reportId: params.id,
-      email: validated.email,
-      format: validated.format,
+    return new NextResponse(fileBuffer, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/csv',
+        'Content-Disposition': `attachment; filename="${filename}"`,
+        'Content-Length': fileBuffer.length.toString(),
+      },
     })
-
-    return NextResponse.json({ ok: true, message: 'Email enviado correctamente' })
   } catch (error: any) {
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        {
-          error: 'Validation failed',
-          details: error.errors,
-        },
-        { status: 400 },
-      )
-    }
-
-    logger.error('[Reports Email Error]', error)
+    logger.error('[Reports Share Token Error]', error)
     return NextResponse.json(
-      { error: 'Failed to send report email' },
+      { error: 'Failed to access shared report' },
       { status: 500 },
     )
   }

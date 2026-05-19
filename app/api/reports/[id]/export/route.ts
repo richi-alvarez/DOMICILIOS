@@ -1,5 +1,5 @@
 import { auth } from '@/auth'
-import { db, memberships, customReports, orders, catalogs } from '@/db'
+import { db, memberships, customReports, orders, catalogs, reportExports } from '@/db'
 import { eq, inArray, and, gte, lte } from 'drizzle-orm'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
@@ -172,6 +172,17 @@ export async function POST(
       format: validated.format,
       rowCount,
       fileSize: fileBuffer.length,
+    })
+
+    // Record export in history
+    await db.insert(reportExports).values({
+      reportId: report.id,
+      organizationId: membership.organizationId,
+      exportFormat: validated.format,
+      fileSize: fileBuffer.length,
+      rowCount,
+      createdBy: session.user.id,
+      metadata: { deliveryType: 'download' },
     })
 
     return new NextResponse(fileBuffer, {

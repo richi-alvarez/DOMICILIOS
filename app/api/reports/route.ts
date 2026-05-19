@@ -1,6 +1,6 @@
 import { auth } from '@/auth'
 import { db, memberships, customReports } from '@/db'
-import { eq, and } from 'drizzle-orm'
+import { eq, and, isNull } from 'drizzle-orm'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { logger } from '@/lib/monitoring/logger'
@@ -57,17 +57,26 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // Check if filtering by shared/template reports
+    // Check if filtering by shared/template reports or archived
     const shared = request.nextUrl.searchParams.get('shared') === 'true'
+    const archived = request.nextUrl.searchParams.get('archived') === 'true'
 
     // Get custom reports for organization
     const reports = await db.query.customReports.findMany({
       where: shared
         ? and(
             eq(customReports.organizationId, membership.organizationId),
-            eq(customReports.isTemplate, true)
+            eq(customReports.isTemplate, true),
+            isNull(customReports.archivedAt)
           )
-        : eq(customReports.organizationId, membership.organizationId),
+        : archived
+        ? and(
+            eq(customReports.organizationId, membership.organizationId),
+          )
+        : and(
+            eq(customReports.organizationId, membership.organizationId),
+            isNull(customReports.archivedAt)
+          ),
       columns: {
         id: true,
         name: true,

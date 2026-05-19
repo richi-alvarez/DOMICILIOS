@@ -1,5 +1,5 @@
 import { auth } from '@/auth'
-import { db, memberships, customReports } from '@/db'
+import { db, memberships, customReports, reportSchedules } from '@/db'
 import { eq, and } from 'drizzle-orm'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
@@ -9,17 +9,11 @@ import { getClientIP } from '@/lib/api/get-client-ip'
 
 export const runtime = 'nodejs'
 
-const updateReportSchema = z.object({
-  name: z.string().min(1).max(255).optional(),
-  description: z.string().optional(),
-  filters: z.object({
-    startDate: z.string().optional(),
-    endDate: z.string().optional(),
-    interval: z.enum(['day', 'week', 'month']).optional(),
-  }).optional(),
-  columns: z.array(z.string()).optional(),
-  isTemplate: z.boolean().optional(),
-  archived: z.boolean().optional(),
+const scheduleSchema = z.object({
+  frequency: z.enum(['daily', 'weekly', 'monthly']),
+  recipientEmail: z.string().email(),
+  exportFormat: z.enum(['csv', 'xlsx', 'pdf']).default('csv'),
+  isActive: z.boolean().default(true),
 })
 
 export async function GET(
@@ -73,22 +67,26 @@ export async function GET(
       )
     }
 
-    logger.info('Report retrieved', {
-      reportId: params.id,
-      orgId: membership.organizationId,
+    // Get schedule for this report
+    const schedule = await db.query.reportSchedules.findFirst({
+      where: eq(reportSchedules.reportId, report.id),
     })
 
-    return NextResponse.json(report)
+    if (!schedule) {
+      return NextResponse.json({ schedule: null })
+    }
+
+    return NextResponse.json({ schedule })
   } catch (error: any) {
-    logger.error('[Reports GET Error]', error)
+    logger.error('[Schedule GET Error]', error)
     return NextResponse.json(
-      { error: 'Failed to fetch report' },
+      { error: 'Failed to fetch schedule' },
       { status: 500 },
     )
   }
 }
 
-export async function PATCH(
+export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
@@ -140,32 +138,69 @@ export async function PATCH(
     }
 
     const body = await request.json()
-    const validated = updateReportSchema.parse(body)
+    const validated = scheduleSchema.parse(body)
 
-    const [updatedReport] = await db
-      .update(customReports)
-      .set({
-        name: validated.name ?? report.name,
-        description: validated.description ?? report.description,
-        filters: validated.filters ?? report.filters,
-        columns: validated.columns ?? report.columns,
-        isTemplate: validated.isTemplate ?? report.isTemplate,
-        archivedAt: validated.archived === true
-          ? new Date()
-          : validated.archived === false
-          ? null
-          : report.archivedAt,
-        updatedAt: new Date(),
-      })
-      .where(eq(customReports.id, params.id))
-      .returning()
+    // Calculate next run time based on frequency
+    const now = new Date()
+    let nextRunAt = new Date()
 
-    logger.info('Report updated', {
-      reportId: params.id,
-      orgId: membership.organizationId,
+    if (validated.frequency === 'daily') {
+      nextRunAt.setDate(nextRunAt.getDate() + 1)
+      nextRunAt.setHours(6, 0, 0, 0) // 6 AM
+    } else if (validated.frequency === 'weekly') {
+      nextRunAt.setDate(nextRunAt.getDate() + (8 - nextRunAt.getDay())) // Next Monday
+      nextRunAt.setHours(6, 0, 0, 0)
+    } else if (validated.frequency === 'monthly') {
+      nextRunAt.setMonth(nextRunAt.getMonth() + 1)
+      nextRunAt.setDate(1)
+      nextRunAt.setHours(6, 0, 0, 0)
+    }
+
+    // Check if schedule already exists
+    const existing = await db.query.reportSchedules.findFirst({
+      where: eq(reportSchedules.reportId, report.id),
     })
 
-    return NextResponse.json(updatedReport)
+    let schedule
+
+    if (existing) {
+      // Update existing schedule
+      const [updated] = await db
+        .update(reportSchedules)
+        .set({
+          frequency: validated.frequency,
+          recipientEmail: validated.recipientEmail,
+          exportFormat: validated.exportFormat,
+          isActive: validated.isActive,
+          nextRunAt,
+        })
+        .where(eq(reportSchedules.id, existing.id))
+        .returning()
+      schedule = updated
+    } else {
+      // Create new schedule
+      const [created] = await db
+        .insert(reportSchedules)
+        .values({
+          reportId: report.id,
+          organizationId: membership.organizationId,
+          frequency: validated.frequency,
+          recipientEmail: validated.recipientEmail,
+          exportFormat: validated.exportFormat,
+          isActive: validated.isActive,
+          nextRunAt,
+          createdBy: session.user.id,
+        })
+        .returning()
+      schedule = created
+    }
+
+    logger.info('Report schedule created/updated', {
+      reportId: params.id,
+      frequency: validated.frequency,
+    })
+
+    return NextResponse.json({ schedule })
   } catch (error: any) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -177,9 +212,9 @@ export async function PATCH(
       )
     }
 
-    logger.error('[Reports PATCH Error]', error)
+    logger.error('[Schedule POST Error]', error)
     return NextResponse.json(
-      { error: 'Failed to update report' },
+      { error: 'Failed to create schedule' },
       { status: 500 },
     )
   }
@@ -236,22 +271,18 @@ export async function DELETE(
       )
     }
 
-    // Soft delete: mark as archived
-    await db
-      .update(customReports)
-      .set({ archivedAt: new Date() })
-      .where(eq(customReports.id, params.id))
+    // Delete schedule
+    await db.delete(reportSchedules).where(eq(reportSchedules.reportId, report.id))
 
-    logger.info('Report archived', {
+    logger.info('Report schedule deleted', {
       reportId: params.id,
-      orgId: membership.organizationId,
     })
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: true, message: 'Schedule deleted' })
   } catch (error: any) {
-    logger.error('[Reports DELETE Error]', error)
+    logger.error('[Schedule DELETE Error]', error)
     return NextResponse.json(
-      { error: 'Failed to delete report' },
+      { error: 'Failed to delete schedule' },
       { status: 500 },
     )
   }

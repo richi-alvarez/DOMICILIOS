@@ -586,12 +586,17 @@ export const customReports = pgTable(
     createdBy: uuid('created_by').notNull().references(() => users.id, { onDelete: 'set null' }),
     isTemplate: boolean('is_template').default(false),
     templateName: varchar('template_name', { length: 255 }),
+    archivedAt: timestamp('archived_at', { mode: 'date' }),
+    shareToken: varchar('share_token', { length: 64 }).unique(),
+    shareTokenExpiresAt: timestamp('share_token_expires_at', { mode: 'date' }),
   },
   (t) => [
     index('custom_reports_organization_idx').on(t.organizationId),
     index('custom_reports_created_by_idx').on(t.createdBy),
     index('custom_reports_is_template_idx').on(t.isTemplate),
     index('custom_reports_query_type_idx').on(t.queryType),
+    index('custom_reports_archived_at_idx').on(t.archivedAt),
+    index('custom_reports_share_token_idx').on(t.shareToken),
   ],
 )
 
@@ -614,5 +619,28 @@ export const reportExports = pgTable(
     index('report_exports_report_id_idx').on(t.reportId),
     index('report_exports_created_at_idx').on(t.createdAt),
     index('report_exports_format_idx').on(t.exportFormat),
+  ],
+)
+
+export const reportSchedules = pgTable(
+  'report_schedules',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    reportId: uuid('report_id').notNull().references(() => customReports.id, { onDelete: 'cascade' }),
+    organizationId: uuid('organization_id').notNull().references(() => organizations.id, { onDelete: 'cascade' }),
+    frequency: varchar('frequency', { length: 20 }).notNull(), // 'daily', 'weekly', 'monthly'
+    recipientEmail: varchar('recipient_email', { length: 255 }).notNull(),
+    exportFormat: varchar('export_format', { length: 10 }).notNull().default('csv'), // 'csv', 'xlsx', 'pdf'
+    isActive: boolean('is_active').default(true),
+    nextRunAt: timestamp('next_run_at', { mode: 'date' }).notNull(),
+    lastRunAt: timestamp('last_run_at', { mode: 'date' }),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+    createdBy: uuid('created_by').references(() => users.id, { onDelete: 'set null' }),
+  },
+  (t) => [
+    index('report_schedules_report_id_idx').on(t.reportId),
+    index('report_schedules_org_id_idx').on(t.organizationId),
+    index('report_schedules_next_run_idx').on(t.nextRunAt),
+    index('report_schedules_is_active_idx').on(t.isActive),
   ],
 )
