@@ -1,0 +1,144 @@
+# Descargamos la última versión desde Github(Este enlace es la versión para Linux)
+wget https://github.com/kubernetes/minikube/releases/download/v1.33.0/minikube-linux-amd64
+
+# Le hemos cambiado el nombre al cliente
+mv minikube-linux-amd64 minikube
+
+# Hemos arrancado el cluster con el siguiente comando
+minikube start --driver=docker
+
+# Hemos comprobado que tenemos el cliente kubectl configurado(El cliente kubectl se tiene que instalar a parte)
+kubectl get all
+
+
+
+Instalación de ArgoCD
+ArgoCD tiene varias formas de instalación. La más práctica es usando el manifiesto yaml que ya nos ofrecen desde ArgoCD:
+
+# Creamos namespace donde instalaremos argocd
+kubectl create namespace argocd
+
+# Aplicamos el manifiesto
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+
+
+Por defecto, ArgoCD se instala con todos sus servicios como ClusterIP, lo que implica que no podremos tener acceso desde fuera del cluster. Para ello hemos optado por parchear el servicio que da acceso al ArgoCD vía web(Al usar minikube, también hemos tenido que abrir los puertos del servicio):
+
+# Consultamos todos los servicios y comprobamos que todos los servicios son del tipo ClusterIP
+kubectl get svc -n argocd
+
+# Parcheamos el servicio
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+
+# Consultamos todos los servicios y comprobamos que los cambios han tenido efecto
+kubectl get svc -n argocd
+
+# Abrimos el servicio en el minikube
+.\minikube.exe service argocd-server --url -n argocd
+
+
+Obtención del password de admin de ArgoCD
+
+Para obtener el password del usuario admin por defecto tenemos dos opciones:
+
+# Ejecutando un comando en el pod argocd-server-xxx
+kubectl exec -n argocd argocd-server-579f659dd5-s5cp6 -- argocd admin initial-password -n argocd
+
+# Leyendo el secreto de Kubernetes
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+
+
+
+Interactuando con ArgoCD vía cliente CLI
+Además de usando la web, ArgoCD nos ofrece dos opciones para interactuar con él(En realidad son tres si cuentas la API, que no vamos a ver en este vídeo). Una de ellas es usando la herramienta CLI que podemos descargar o ejecutar desde dentro del pod "argocd-server-xxxx"(Donde la tenemos disponible out-of-the-box):
+
+# Descargar y dar permisos de ejecución al cliente
+wget "https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64" -O argocd && chmod +x argocd
+
+# O nos podemos conectar al Pod de "argocd-server-xxxx"
+kubectl exec -it -n argocd argocd-repo-server-75f6bdd495-jvbv5 -- bash
+
+# Hacer login en un servidor de ArgoCD con el cliente
+argocd login 127.0.0.1:8080 --username admin --password xxxxxx--grpc-web
+
+# Listar todas las aplicaciones de ArgoCD
+argocd app list
+
+
+
+
+
+Interactuar con ArgoCD usando objetos de Kubernetes
+ArgoCD es una aplicación "Kubernetes native" o "Cloud native", que básicamente quiere decir, que guarda su estado(configuración) como objetos de Kubernetes. Esto quiere decir que podemos leer su configuración(Antes lo hemos hecho para leer el password de admin) o actualizarla. Vamos a ver unos ejemplos:
+
+# Creación de usuarios
+apiVersion: v1
+data:
+  accounts.dev1: apiKey, login
+  accounts.dev1.enabled: "true"
+  accounts.dev2: apiKey, login
+  accounts.dev2.enabled: "true"
+  admin.enabled: "true"
+  policy.default: role:readonly
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+---
+# Passwords de usuarios
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: argocd-secret
+  namespace: argocd
+immutable: false
+data:
+  accounts.dev1.password: base64***
+  accounts.dev1.passwordMtime: base64***
+  accounts.dev1.tokens: bnVsbA==
+  accounts.dev2.password: base64***
+  accounts.dev2.passwordMtime: base64***
+  accounts.dev2.tokens: bnVsbA==
+  admin.password: base64***
+  admin.passwordMtime: base64***
+---
+# Creación de proyectos
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: my-project
+  namespace: argocd
+spec:
+  description: My projects
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  destinations:
+  - name: '*'
+    namespace: '*'
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://gitlab.mycompany.com/dev-environment-main.git
+  - https://gitlab.mycompany.com/stg-environment-main.git
+---
+# Configuración de permisos de usuarios
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  namespace: argocd
+data:
+  policy.csv: |
+    p, role:devrole1, applications, get, my-project/*, allow
+    p, role:devrole1, applications, sync, */*, allow
+    p, role:devrole1, projects, get, my-project, allow
+    p, role:devrole1, repositories, get, *, allow
+    g, dev1, role:devrole1
+    g, dev2, role:devrole1
+
+  policy.default: ""
+  scopes: '[groups]'
+---

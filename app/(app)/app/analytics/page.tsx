@@ -192,7 +192,7 @@ export default async function AnalyticsPage() {
       </div>
 
       {/* Analytics Dashboard */}
-      <AnalyticsDashboard />
+      <AnalyticsDashboard organizationId={membership.organizationId} />
     </div>
   )
 }

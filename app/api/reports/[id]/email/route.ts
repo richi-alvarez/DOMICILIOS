@@ -6,10 +6,12 @@ import { z } from 'zod'
 import { logger } from '@/lib/monitoring/logger'
 import { checkRateLimit, rateLimitConfig } from '@/lib/api/rate-limit'
 import { getClientIP } from '@/lib/api/get-client-ip'
+import { sendReportEmail } from '@/lib/email'
 
 export const runtime = 'nodejs'
 
-const exportSchema = z.object({
+const emailSchema = z.object({
+  email: z.string().email(),
   format: z.enum(['csv', 'xlsx', 'pdf']).default('csv'),
 })
 
@@ -65,7 +67,7 @@ export async function POST(
     }
 
     const body = await request.json()
-    const validated = exportSchema.parse(body)
+    const validated = emailSchema.parse(body)
 
     // Get data based on query type
     const orgCatalogs = await db.query.catalogs.findMany({
@@ -83,7 +85,6 @@ export async function POST(
     const catalogIds = orgCatalogs.map((c) => c.id)
     const filters = report.filters as any
 
-    // Prepare date range
     const startDate = filters?.startDate
       ? new Date(filters.startDate)
       : new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
@@ -93,31 +94,24 @@ export async function POST(
 
     // Query data based on report type
     let csvData = ''
-    let rowCount = 0
 
     if (report.queryType === 'sales') {
       csvData = await generateSalesCSV(catalogIds, startDate, endDate)
-      rowCount = csvData.split('\n').length - 2 // Exclude header and last empty line
     } else if (report.queryType === 'customers') {
       csvData = await generateCustomersCSV(catalogIds)
-      rowCount = csvData.split('\n').length - 2
     } else if (report.queryType === 'products') {
       csvData = await generateProductsCSV(catalogIds)
-      rowCount = csvData.split('\n').length - 2
     } else if (report.queryType === 'overview') {
       csvData = await generateOverviewCSV(catalogIds)
-      rowCount = csvData.split('\n').length - 2
     }
 
     // Generate file based on format
     let fileBuffer: Buffer
-    let mimeType: string
     let filename: string
 
     if (validated.format === 'csv') {
       fileBuffer = Buffer.from(csvData, 'utf-8')
-      mimeType = 'text/csv'
-      filename = `report-${report.queryType}-${Date.now()}.csv`
+      filename = `reporte-${report.queryType}-${Date.now()}.csv`
     } else if (validated.format === 'xlsx') {
       const XLSX = (await import('xlsx')).default
       const lines = csvData.trim().split('\n')
@@ -136,10 +130,8 @@ export async function POST(
       XLSX.utils.book_append_sheet(wb, ws, 'Reporte')
 
       fileBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' }) as Buffer
-      mimeType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-      filename = `report-${report.queryType}-${Date.now()}.xlsx`
+      filename = `reporte-${report.queryType}-${Date.now()}.xlsx`
     } else {
-      // PDF
       const PDFDocument = (await import('pdfkit')).default
       const doc = new PDFDocument()
 
@@ -163,25 +155,19 @@ export async function POST(
           resolve(Buffer.concat(buffers))
         })
       })
-      mimeType = 'application/pdf'
-      filename = `report-${report.queryType}-${Date.now()}.pdf`
+      filename = `reporte-${report.queryType}-${Date.now()}.pdf`
     }
 
-    logger.info('Report exported', {
+    // Send email with attachment
+    await sendReportEmail(validated.email, report.name, validated.format, fileBuffer, filename)
+
+    logger.info('Report sent by email', {
       reportId: params.id,
+      email: validated.email,
       format: validated.format,
-      rowCount,
-      fileSize: fileBuffer.length,
     })
 
-    return new NextResponse(fileBuffer, {
-      status: 200,
-      headers: {
-        'Content-Type': mimeType,
-        'Content-Disposition': `attachment; filename="${filename}"`,
-        'Content-Length': fileBuffer.length.toString(),
-      },
-    })
+    return NextResponse.json({ ok: true, message: 'Email enviado correctamente' })
   } catch (error: any) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
@@ -193,9 +179,9 @@ export async function POST(
       )
     }
 
-    logger.error('[Reports Export Error]', error)
+    logger.error('[Reports Email Error]', error)
     return NextResponse.json(
-      { error: 'Failed to export report' },
+      { error: 'Failed to send report email' },
       { status: 500 },
     )
   }

@@ -85,3 +85,31 @@ export async function sendWelcomeEmail(email: string, name: string) {
   )
   return resend.emails.send({ from: FROM, to: email, subject: `Bienvenido a ${APP_NAME} 🎉`, html })
 }
+
+export async function sendReportEmail(
+  email: string,
+  reportName: string,
+  format: 'csv' | 'xlsx' | 'pdf',
+  fileBuffer: Buffer,
+  fileName: string
+) {
+  const html = baseTemplate(
+    'Tu reporte está listo',
+    `<h1 style="margin:0 0 8px;font-size:24px;font-weight:800;color:#0B1F3A;">Tu reporte está listo</h1>
+    <p style="margin:0 0 24px;color:#5C5C52;line-height:1.6;">El reporte <strong>"${reportName}"</strong> se encuentra en el archivo adjunto en formato ${format.toUpperCase()}.</p>
+    <p style="margin:0 0 24px;color:#5C5C52;line-height:1.6;">Puedes descargarlo directamente desde tu correo o acceder a él en tu panel de ${APP_NAME}.</p>
+    <p style="margin:20px 0 0;font-size:13px;color:#A8A89E;">Generado el ${new Date().toLocaleDateString('es-ES')} a las ${new Date().toLocaleTimeString('es-ES')}</p>`,
+  )
+  return resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: `Tu reporte "${reportName}" está listo`,
+    html,
+    attachments: [
+      {
+        content: fileBuffer.toString('base64'),
+        filename: fileName,
+      },
+    ],
+  })
+}

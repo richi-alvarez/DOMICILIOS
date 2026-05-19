@@ -1,9 +1,11 @@
 import { auth } from '@/auth'
 import { db, memberships, customReports } from '@/db'
-import { eq } from 'drizzle-orm'
+import { eq, and } from 'drizzle-orm'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { logger } from '@/lib/monitoring/logger'
+import { checkRateLimit, rateLimitConfig } from '@/lib/api/rate-limit'
+import { getClientIP } from '@/lib/api/get-client-ip'
 
 export const runtime = 'nodejs'
 
@@ -23,6 +25,21 @@ const createReportSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
+    const ip = getClientIP(request)
+    const rateLimitResult = await checkRateLimit(ip, rateLimitConfig.api.limit, rateLimitConfig.api.windowMs)
+
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { error: rateLimitConfig.api.message },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rateLimitResult.retryAfter || 60),
+          },
+        }
+      )
+    }
+
     const session = await auth()
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -40,9 +57,17 @@ export async function GET(request: NextRequest) {
       )
     }
 
+    // Check if filtering by shared/template reports
+    const shared = request.nextUrl.searchParams.get('shared') === 'true'
+
     // Get custom reports for organization
     const reports = await db.query.customReports.findMany({
-      where: eq(customReports.organizationId, membership.organizationId),
+      where: shared
+        ? and(
+            eq(customReports.organizationId, membership.organizationId),
+            eq(customReports.isTemplate, true)
+          )
+        : eq(customReports.organizationId, membership.organizationId),
       columns: {
         id: true,
         name: true,
@@ -72,6 +97,21 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const ip = getClientIP(request)
+    const rateLimitResult = await checkRateLimit(ip, rateLimitConfig.api.limit, rateLimitConfig.api.windowMs)
+
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { error: rateLimitConfig.api.message },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': String(rateLimitResult.retryAfter || 60),
+          },
+        }
+      )
+    }
+
     const session = await auth()
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

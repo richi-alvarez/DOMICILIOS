@@ -6,6 +6,10 @@ import { Button } from '@/components/ui/button'
 import { Download, Calendar, Loader2 } from 'lucide-react'
 import { getSalesData, getCustomerAnalytics, getAnalyticsOverview } from '@/lib/actions/analytics'
 import { toast } from 'sonner'
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@/components/ui/dropdown-menu'
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Mail } from 'lucide-react'
 
 interface AnalyticsDashboardProps {
   organizationId: string
@@ -15,8 +19,14 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
   const [salesData, setSalesData] = useState<any>(null)
   const [customerData, setCustomerData] = useState<any>(null)
   const [overviewData, setOverviewData] = useState<any>(null)
+  const [sharedTemplates, setSharedTemplates] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [exporting, setExporting] = useState(false)
+  const [sendingEmail, setSendingEmail] = useState(false)
+  const [emailModalOpen, setEmailModalOpen] = useState(false)
+  const [emailInput, setEmailInput] = useState('')
+  const [emailFormat, setEmailFormat] = useState<'csv' | 'xlsx' | 'pdf'>('csv')
+  const [tempReportId, setTempReportId] = useState<string>('')
   const [interval, setInterval] = useState<'day' | 'week' | 'month'>('day')
   const [dateRange, setDateRange] = useState({
     startDate: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
@@ -30,7 +40,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
   async function loadData() {
     setLoading(true)
     try {
-      const [sales, customers, overview] = await Promise.all([
+      const [sales, customers, overview, templatesRes] = await Promise.all([
         getSalesData(
           dateRange.startDate.toISOString(),
           dateRange.endDate.toISOString(),
@@ -38,10 +48,12 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
         ),
         getCustomerAnalytics(),
         getAnalyticsOverview(),
+        fetch('/api/reports?shared=true').then(r => r.json()),
       ])
       setSalesData(sales)
       setCustomerData(customers)
       setOverviewData(overview)
+      setSharedTemplates(templatesRes.reports || [])
     } catch (error) {
       toast.error('Error al cargar datos de analytics')
       console.error(error)
@@ -50,26 +62,30 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
     }
   }
 
+  async function createTempReport() {
+    const reportResponse = await fetch('/api/reports', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: `Dashboard Export ${new Date().toLocaleDateString()}`,
+        queryType: 'sales',
+        filters: {
+          startDate: dateRange.startDate.toISOString(),
+          endDate: dateRange.endDate.toISOString(),
+          interval,
+        },
+      }),
+    })
+
+    if (!reportResponse.ok) throw new Error('Failed to create report')
+    return await reportResponse.json()
+  }
+
   async function handleExport(format: 'csv' | 'xlsx' | 'pdf') {
     setExporting(true)
     try {
-      // Create a temporary report and export it
-      const reportResponse = await fetch('/api/reports', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: `Dashboard Export ${new Date().toLocaleDateString()}`,
-          queryType: 'sales',
-          filters: {
-            startDate: dateRange.startDate.toISOString(),
-            endDate: dateRange.endDate.toISOString(),
-            interval,
-          },
-        }),
-      })
-
-      if (!reportResponse.ok) throw new Error('Failed to create report')
-      const report = await reportResponse.json()
+      const report = await createTempReport()
+      setTempReportId(report.id)
 
       // Export the report
       const exportResponse = await fetch(`/api/reports/${report.id}/export`, {
@@ -100,6 +116,34 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
     }
   }
 
+  async function handleSendEmail() {
+    if (!emailInput || !tempReportId) {
+      toast.error('Ingresa un email válido')
+      return
+    }
+
+    setSendingEmail(true)
+    try {
+      const response = await fetch(`/api/reports/${tempReportId}/email`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: emailInput, format: emailFormat }),
+      })
+
+      if (!response.ok) throw new Error('Failed to send email')
+
+      toast.success(`Reporte enviado a ${emailInput}`)
+      setEmailModalOpen(false)
+      setEmailInput('')
+      setEmailFormat('csv')
+    } catch (error) {
+      toast.error('Error al enviar reporte por email')
+      console.error(error)
+    } finally {
+      setSendingEmail(false)
+    }
+  }
+
   const COLORS = ['#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4']
 
   return (
@@ -125,40 +169,129 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
             <Calendar className="h-4 w-4 mr-2" />
             Personalizado
           </Button>
-          <div className="relative group">
-            <Button variant="outline" size="sm" disabled={exporting}>
-              {exporting ? (
-                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-              ) : (
-                <Download className="h-4 w-4 mr-2" />
-              )}
-              Exportar
-            </Button>
-            {!exporting && (
-              <div className="absolute right-0 top-full mt-1 hidden group-hover:block bg-white border rounded shadow-lg z-10">
-                <button
-                  onClick={() => handleExport('csv')}
-                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
-                >
-                  CSV
-                </button>
-                <button
-                  onClick={() => handleExport('xlsx')}
-                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
-                >
-                  Excel (XLSX)
-                </button>
-                <button
-                  onClick={() => handleExport('pdf')}
-                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-50"
-                >
-                  PDF
-                </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" disabled={exporting}>
+                {exporting ? (
+                  <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                ) : (
+                  <Download className="h-4 w-4 mr-2" />
+                )}
+                Exportar
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => handleExport('csv')}>
+                CSV
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport('xlsx')}>
+                Excel (XLSX)
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleExport('pdf')}>
+                PDF
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <Dialog open={emailModalOpen} onOpenChange={setEmailModalOpen}>
+            <DialogTrigger asChild>
+              <Button variant="outline" size="sm" disabled={exporting || !tempReportId}>
+                <Mail className="h-4 w-4 mr-2" />
+                Enviar por email
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Enviar reporte por email</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-4">
+                <div>
+                  <label className="text-sm font-medium">Correo electrónico</label>
+                  <Input
+                    type="email"
+                    placeholder="tu@email.com"
+                    value={emailInput}
+                    onChange={(e) => setEmailInput(e.target.value)}
+                    disabled={sendingEmail}
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium">Formato</label>
+                  <div className="flex gap-2">
+                    {(['csv', 'xlsx', 'pdf'] as const).map((fmt) => (
+                      <button
+                        key={fmt}
+                        onClick={() => setEmailFormat(fmt)}
+                        className={`flex-1 px-3 py-2 rounded border text-sm font-medium transition-all ${
+                          emailFormat === fmt
+                            ? 'border-primary-500 bg-primary-50 text-primary-700'
+                            : 'border-warm-200 hover:border-warm-300'
+                        }`}
+                        disabled={sendingEmail}
+                      >
+                        {fmt.toUpperCase()}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
-            )}
-          </div>
+              <DialogFooter>
+                <Button
+                  variant="outline"
+                  onClick={() => setEmailModalOpen(false)}
+                  disabled={sendingEmail}
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  onClick={handleSendEmail}
+                  disabled={sendingEmail || !emailInput}
+                >
+                  {sendingEmail ? (
+                    <>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Mail className="h-4 w-4 mr-2" />
+                      Enviar
+                    </>
+                  )}
+                </Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
+
+      {/* Shared Templates */}
+      {sharedTemplates && sharedTemplates.length > 0 && (
+        <div className="rounded-lg border border-warm-200 bg-white p-6">
+          <h2 className="text-xl font-bold text-night-800 mb-4">
+            Plantillas del Equipo
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {sharedTemplates.map((template: any) => (
+              <button
+                key={template.id}
+                onClick={() => {
+                  toast.success(`Plantilla "${template.name}" cargada`)
+                }}
+                className="text-left p-4 rounded-lg border border-warm-200 hover:border-primary-500 hover:bg-primary-50 transition-all"
+              >
+                <p className="font-semibold text-night-800">{template.name}</p>
+                {template.description && (
+                  <p className="text-sm text-warm-600 mt-1">{template.description}</p>
+                )}
+                <p className="text-xs text-warm-500 mt-2 capitalize">
+                  Tipo: {template.queryType}
+                </p>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Sales Chart */}
       {salesData?.data && (
