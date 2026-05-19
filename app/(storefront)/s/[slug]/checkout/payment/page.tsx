@@ -38,9 +38,25 @@ export default function PaymentPage({ params, searchParams }: Props) {
     )
   }
 
-  function handleCash() {
+  async function handleCash() {
     setLoadingMethod('cash')
-    router.push(`/s/${slug}/checkout/confirm?code=${code}&id=${orderId}&cid=${cid}`)
+    setError(null)
+    try {
+      const res = await fetch(`/api/v1/orders/${orderId}/payment`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ method: 'cash', status: 'pending' }),
+      })
+      if (!res.ok) {
+        setError('Error al procesar pago. Por favor intenta de nuevo.')
+        setLoadingMethod(null)
+        return
+      }
+      router.push(`/s/${slug}/checkout/confirm?code=${code}&id=${orderId}&cid=${cid}`)
+    } catch (err) {
+      setError('Error al procesar pago. Por favor intenta de nuevo.')
+      setLoadingMethod(null)
+    }
   }
 
   function handleStripe() {

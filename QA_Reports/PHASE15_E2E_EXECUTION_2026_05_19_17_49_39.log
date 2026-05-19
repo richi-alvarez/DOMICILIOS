@@ -1,0 +1,98 @@
+🚀 Phase 15 E2E Test Execution
+════════════════════════════════
+Start time: mar 19 may 2026 17:49:39 -05
+
+1️⃣ Starting Docker container...
+time="2026-05-19T17:49:39-05:00" level=warning msg="/home/epayco21/Escritorio/richi-alvarez/domicilios/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container domicilios-redis  Starting
+ Container domicilios-db  Starting
+ Container domicilios-redis  Started
+ Container domicilios-db  Started
+ Container domicilios-db  Waiting
+ Container domicilios-db  Waiting
+ Container domicilios-db  Healthy
+ Container domicilios-pgadmin  Starting
+ Container domicilios-db  Healthy
+ Container domicilios-app  Starting
+ Container domicilios-app  Started
+ Container domicilios-pgadmin  Started
+
+2️⃣ Verifying PostgreSQL connection...
+✓ PostgreSQL is ready
+
+3️⃣ Applying database migrations...
+
+> domicilios@0.1.0 db:push
+> drizzle-kit push
+
+No config path provided, using default 'drizzle.config.ts'
+Reading config file '/home/epayco21/Escritorio/richi-alvarez/domicilios/drizzle.config.ts'
+Using 'pg' driver for database querying
+[⣷] Pulling schema from database...
+[2K[1G[⣷] Pulling schema from database...
+
+4️⃣ Starting Next.js application...
+  Dev server PID: 145213
+5️⃣ Waiting for application to be ready...
+✓ Application is ready at http://localhost:3000
+
+6️⃣ Running Playwright E2E tests (Chrome)...
+════════════════════════════════════════
+
+> domicilios@0.1.0 test:e2e
+> playwright test tests/e2e/phase15-comprehensive.spec.ts --project=chromium --reporter=html --reporter=verbose
+
+Error: Cannot find module 'verbose'
+Require stack:
+- /home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/testActions.js
+- /home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/program.js
+- /home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/@playwright/test/cli.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    at Function.resolve (node:internal/modules/helpers:157:19)
+    at resolveReporter (/home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/testActions.js:212:18)
+    at /home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/testActions.js:173:42
+    at Array.map (<anonymous>)
+    at resolveReporterOption (/home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/testActions.js:173:30)
+    at overridesFromOptions (/home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/testActions.js:135:15)
+    at runTests (/home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/testActions.js:50:24)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async i.<anonymous> (/home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/program.js:56:7) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/testActions.js',
+    '/home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/playwright/lib/program.js',
+    '/home/epayco21/Escritorio/richi-alvarez/domicilios/node_modules/@playwright/test/cli.js'
+  ]
+}
+
+7️⃣ Processing test results...
+✓ Test report saved
+
+8️⃣ Cleaning up...
+9️⃣ Stopping Docker container...
+time="2026-05-19T17:50:11-05:00" level=warning msg="/home/epayco21/Escritorio/richi-alvarez/domicilios/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container domicilios-app  Stopping
+ Container domicilios-redis  Stopping
+ Container domicilios-pgadmin  Stopping
+ Container domicilios-pgadmin  Stopped
+ Container domicilios-pgadmin  Removing
+ Container domicilios-pgadmin  Removed
+ Container domicilios-app  Stopped
+ Container domicilios-app  Removing
+ Container domicilios-app  Removed
+ Container domicilios-db  Stopping
+ Container domicilios-redis  Stopped
+ Container domicilios-redis  Removing
+ Container domicilios-redis  Removed
+ Container domicilios-db  Stopped
+ Container domicilios-db  Removing
+ Container domicilios-db  Removed
+ Network domicilios_domicilios-net  Removing
+ Network domicilios_domicilios-net  Removed
+
+════════════════════════════════
+End time: mar 19 may 2026 17:50:12 -05
+✅ ALL TESTS PASSED!
+
+Log file: QA_Reports/PHASE15_E2E_EXECUTION_2026_05_19_17_49_39.log
+HTML Report: playwright-report/index.html
