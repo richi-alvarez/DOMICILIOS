@@ -94,10 +94,12 @@ interface TextBlock extends BaseBlock {
 
 type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock
 
-export default async function DesignPage({ params }: { params: { id: string } }) {
+export default async function DesignPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+
   // Load catalog from database
   const catalog = await db.query.catalogs.findFirst({
-    where: eq(catalogs.id, params.id),
+    where: eq(catalogs.id, id),
   })
 
   if (!catalog) {
@@ -105,7 +107,7 @@ export default async function DesignPage({ params }: { params: { id: string } })
   }
 
   // Load blocks from database
-  const dbBlocks = await getBlocksForCatalog(params.id)
+  const dbBlocks = await getBlocksForCatalog(id)
 
   // Convert blocks from DB format to Block type, filtering for valid types
   const initialBlocks: Block[] = dbBlocks
@@ -122,7 +124,7 @@ export default async function DesignPage({ params }: { params: { id: string } })
 
   return (
     <DesignEditor
-      catalogId={params.id}
+      catalogId={id}
       catalogSlug={catalog.slug}
       initialBlocks={initialBlocks}
       initialTheme={initialTheme}

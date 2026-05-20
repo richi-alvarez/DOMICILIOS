@@ -245,6 +245,19 @@ interface DesignEditorProps {
   initialTheme?: Partial<ThemeState>
 }
 
+interface Product {
+  id: string
+  name: string
+  slug: string
+  description: string | null
+  price: number
+  compareAt: number | null
+  stock: number | null
+  categoryId: string | null
+  images: { url: string }[]
+  variants: any[]
+}
+
 export default function DesignEditor({
   catalogId,
   catalogSlug,
@@ -265,6 +278,24 @@ export default function DesignEditor({
   const [dragIndex, setDragIndex] = useState<number | null>(null)
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
+  const [products, setProducts] = useState<Product[]>([])
+
+  // Fetch products on mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(`/api/v1/catalogs/${catalogSlug}/products`)
+        if (response.ok) {
+          const data = await response.json()
+          setProducts(data.data || [])
+        }
+      } catch (err) {
+        console.error('Error fetching products:', err)
+      }
+    }
+
+    fetchProducts()
+  }, [catalogSlug])
 
   // Prevent preview tab on desktop
   useEffect(() => {
@@ -503,6 +534,7 @@ export default function DesignEditor({
               theme={theme}
               previewMode="mobile"
               catalogSlug={catalogSlug}
+              products={products}
             />
           </div>
         </div>
@@ -561,6 +593,7 @@ export default function DesignEditor({
               theme={theme}
               previewMode={previewMode}
               catalogSlug={catalogSlug}
+              products={products}
             />
           </div>
         </div>

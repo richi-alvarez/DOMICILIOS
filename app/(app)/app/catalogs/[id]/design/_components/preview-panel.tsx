@@ -29,14 +29,28 @@ interface ThemeState {
   cartTertiaryColor: string
 }
 
+interface Product {
+  id: string
+  name: string
+  slug: string
+  description: string | null
+  price: number
+  compareAt: number | null
+  stock: number | null
+  categoryId: string | null
+  images: { url: string }[]
+  variants: any[]
+}
+
 interface PreviewPanelProps {
   blocks: Block[]
   theme: ThemeState
   previewMode: 'desktop' | 'mobile'
   catalogSlug: string
+  products?: Product[]
 }
 
-export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }: PreviewPanelProps) {
+export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, products = [] }: PreviewPanelProps) {
   const borderRadiusMap = {
     none: '0px',
     sm: '8px',
@@ -261,29 +275,59 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug }
                   </div>
 
                   <div className={`grid gap-4 ${block.template === 'list' ? 'grid-cols-1' : block.template === 'grid' ? 'grid-cols-3' : 'grid-cols-2'}`}>
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
-                      <div key={i} className="border rounded-lg overflow-hidden flex flex-col">
-                        <div className="bg-gray-200 h-40" />
-                        <div className="p-3 flex flex-col flex-1">
-                          {block.showTitle && <p className="font-semibold text-sm">Producto {i}</p>}
-                          {block.showDescription && <p className="text-xs text-gray-600 mt-1">Descripción del producto</p>}
-                          {block.showPrice && <p className="font-bold text-sm mt-2">$19.99</p>}
+                    {products.length > 0 ? (
+                      products.map((product) => (
+                        <div key={product.id} className="border rounded-lg overflow-hidden flex flex-col">
+                          {product.images && product.images.length > 0 ? (
+                            <img src={product.images[0].url} alt={product.name} className="w-full h-40 object-cover bg-gray-200" />
+                          ) : (
+                            <div className="bg-gray-200 h-40" />
+                          )}
+                          <div className="p-3 flex flex-col flex-1">
+                            {block.showTitle && <p className="font-semibold text-sm">{product.name}</p>}
+                            {block.showDescription && product.description && <p className="text-xs text-gray-600 mt-1">{product.description}</p>}
+                            {block.showPrice && <p className="font-bold text-sm mt-2">${product.price}</p>}
 
-                          <div className="mt-auto flex flex-col gap-2">
-                            {block.showExternalLink && (
-                              <a href="#" className="text-xs text-blue-600 hover:underline">
-                                Ver más →
-                              </a>
-                            )}
-                            {block.enableCart && (
-                              <button className="text-xs text-white px-2 py-1 rounded w-full" style={{ backgroundColor: theme.buttonPrimaryColor }}>
-                                Agregar al carrito
-                              </button>
-                            )}
+                            <div className="mt-auto flex flex-col gap-2">
+                              {block.showExternalLink && (
+                                <a href="#" className="text-xs text-blue-600 hover:underline">
+                                  Ver más →
+                                </a>
+                              )}
+                              {block.enableCart && (
+                                <button className="text-xs text-white px-2 py-1 rounded w-full" style={{ backgroundColor: theme.buttonPrimaryColor }}>
+                                  Agregar al carrito
+                                </button>
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))
+                    ) : (
+                      [1, 2, 3, 4, 5, 6].map((i) => (
+                        <div key={i} className="border rounded-lg overflow-hidden flex flex-col">
+                          <div className="bg-gray-200 h-40" />
+                          <div className="p-3 flex flex-col flex-1">
+                            {block.showTitle && <p className="font-semibold text-sm">Producto {i}</p>}
+                            {block.showDescription && <p className="text-xs text-gray-600 mt-1">Descripción del producto</p>}
+                            {block.showPrice && <p className="font-bold text-sm mt-2">$19.99</p>}
+
+                            <div className="mt-auto flex flex-col gap-2">
+                              {block.showExternalLink && (
+                                <a href="#" className="text-xs text-blue-600 hover:underline">
+                                  Ver más →
+                                </a>
+                              )}
+                              {block.enableCart && (
+                                <button className="text-xs text-white px-2 py-1 rounded w-full" style={{ backgroundColor: theme.buttonPrimaryColor }}>
+                                  Agregar al carrito
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))
+                    )}
                   </div>
                 </div>
               </div>
