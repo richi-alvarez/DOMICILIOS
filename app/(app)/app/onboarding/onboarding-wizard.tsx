@@ -40,6 +40,7 @@ export function OnboardingWizard({ userName }: Props) {
   const [slugStatus, setSlugStatus] = useState<'idle' | 'checking' | 'available' | 'taken' | 'invalid'>('idle')
   const [orderChannel, setOrderChannel] = useState<'whatsapp' | 'email'>('whatsapp')
   const [contactPhone, setContactPhone] = useState('')
+  const [contactCountryCode, setContactCountryCode] = useState('+57')
   const [contactEmail, setContactEmail] = useState('')
   const [error, setError] = useState('')
 
