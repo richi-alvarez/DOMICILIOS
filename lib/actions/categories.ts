@@ -13,27 +13,30 @@ export async function createCategory(catalogId: string, formData: FormData) {
   const name = formData.get('name') as string
   const existing = await db.query.categories.findMany({ where: eq(categories.catalogId, catalogId) })
 
-  await db.insert(categories).values({
+  const [created] = await db.insert(categories).values({
     catalogId,
     name,
     slug: slugify(name),
     position: existing.length,
     active: true,
-  })
+  }).returning()
 
   revalidatePath(`/app/catalogs/${catalogId}/categories`)
+  return created
 }
 
 export async function updateCategory(categoryId: string, catalogId: string, formData: FormData) {
   const session = await auth()
   if (!session?.user?.id) throw new Error('No autenticado')
 
-  await db
+  const [updated] = await db
     .update(categories)
     .set({ name: formData.get('name') as string })
     .where(eq(categories.id, categoryId))
+    .returning()
 
   revalidatePath(`/app/catalogs/${catalogId}/categories`)
+  return updated
 }
 
 export async function deleteCategory(categoryId: string, catalogId: string) {

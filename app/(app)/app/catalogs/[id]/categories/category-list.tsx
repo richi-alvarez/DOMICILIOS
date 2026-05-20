@@ -20,7 +20,10 @@ export function CategoryList({ catalogId, initialCategories }: { catalogId: stri
     const fd = new FormData()
     fd.append('name', newName.trim())
     startTransition(async () => {
-      await createCategory(catalogId, fd)
+      const newCategory = await createCategory(catalogId, fd)
+      if (newCategory) {
+        setCategories([...categories, newCategory])
+      }
       setNewName('')
       setAdding(false)
     })
@@ -31,18 +34,43 @@ export function CategoryList({ catalogId, initialCategories }: { catalogId: stri
     const fd = new FormData()
     fd.append('name', editName.trim())
     startTransition(async () => {
-      await updateCategory(id, catalogId, fd)
+      const updated = await updateCategory(id, catalogId, fd)
+      if (updated) {
+        setCategories(categories.map(cat => cat.id === id ? updated : cat))
+      }
       setEditingId(null)
     })
   }
 
   const handleDelete = (id: string, name: string) => {
     if (!confirm(`¿Eliminar la categoría "${name}"?`)) return
-    startTransition(async () => { await deleteCategory(id, catalogId) })
+    startTransition(async () => {
+      setCategories(categories.filter(cat => cat.id !== id))
+      await deleteCategory(id, catalogId)
+    })
   }
 
-  const handleMoveUp = (id: string) => startTransition(async () => { await moveCategoryUp(id, catalogId) })
-  const handleMoveDown = (id: string) => startTransition(async () => { await moveCategoryDown(id, catalogId) })
+  const handleMoveUp = (id: string) => {
+    const idx = categories.findIndex(c => c.id === id)
+    if (idx <= 0) return
+    const newCategories = [...categories]
+    const temp = newCategories[idx]
+    newCategories[idx] = newCategories[idx - 1]
+    newCategories[idx - 1] = temp
+    setCategories(newCategories)
+    startTransition(async () => { await moveCategoryUp(id, catalogId) })
+  }
+
+  const handleMoveDown = (id: string) => {
+    const idx = categories.findIndex(c => c.id === id)
+    if (idx >= categories.length - 1) return
+    const newCategories = [...categories]
+    const temp = newCategories[idx]
+    newCategories[idx] = newCategories[idx + 1]
+    newCategories[idx + 1] = temp
+    setCategories(newCategories)
+    startTransition(async () => { await moveCategoryDown(id, catalogId) })
+  }
 
   return (
     <div className="space-y-3">

@@ -102,8 +102,12 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex gap-2">
+      <div className="px-4 py-6 mx-0 space-y-2 mb-6">
+        <h2 className="text-2xl font-bold text-night-800">Productos</h2>
+        <p className="text-warm-600 text-sm">Organiza tus productos con herramientas de importación y escaneo de menú.</p>
+      </div>
+      <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 px-4">
+        <div className="flex gap-2 flex-wrap justify-center">
           <Button
             onClick={() => setIsScanModalOpen(true)}
             variant="outline"
@@ -118,6 +122,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
             Importar CSV
           </Button>
         </div>
+        <div className="h-6 w-px bg-warm-200 hidden sm:block" />
         <Link href={`/app/catalogs/${catalogId}/products/new`}>
           <Button size="sm" className="gap-2">
             <Plus className="h-4 w-4" />
