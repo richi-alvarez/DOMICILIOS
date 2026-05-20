@@ -13,9 +13,10 @@ interface CatalogsPageWrapperProps {
   catalogList: any[]
   usage: any | null
   atCatalogLimit: boolean
+  hasAIAccess: boolean
 }
 
-export function CatalogsPageWrapper({ catalogList, usage, atCatalogLimit }: CatalogsPageWrapperProps) {
+export function CatalogsPageWrapper({ catalogList, usage, atCatalogLimit, hasAIAccess }: CatalogsPageWrapperProps) {
   const [isAIModalOpen, setIsAIModalOpen] = useState(false)
 
   return (
@@ -32,7 +33,7 @@ export function CatalogsPageWrapper({ catalogList, usage, atCatalogLimit }: Cata
             </p>
           </div>
           <div className="flex gap-3">
-            {!atCatalogLimit && (
+            {!atCatalogLimit && hasAIAccess && (
               <Button
                 onClick={() => setIsAIModalOpen(true)}
                 variant="outline"
@@ -110,9 +111,11 @@ export function CatalogsPageWrapper({ catalogList, usage, atCatalogLimit }: Cata
                   <Plus className="h-4 w-4" /> Crear catálogo
                 </Link>
               </Button>
-              <Button variant="outline" onClick={() => setIsAIModalOpen(true)}>
-                <Sparkles className="h-4 w-4" /> Con IA
-              </Button>
+              {hasAIAccess && (
+                <Button variant="outline" onClick={() => setIsAIModalOpen(true)}>
+                  <Sparkles className="h-4 w-4" /> Con IA
+                </Button>
+              )}
             </div>
           </div>
         ) : (
@@ -154,13 +157,15 @@ export function CatalogsPageWrapper({ catalogList, usage, atCatalogLimit }: Cata
                   <Plus className="mb-2 h-8 w-8" />
                   <span className="text-sm font-medium">Nuevo catálogo</span>
                 </Link>
-                <button
-                  onClick={() => setIsAIModalOpen(true)}
-                  className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-primary-200 p-5 text-primary-400 transition-colors hover:border-primary-400 hover:text-primary-500 hover:bg-primary-50 min-h-[160px]"
-                >
-                  <Sparkles className="mb-2 h-8 w-8" />
-                  <span className="text-sm font-medium">Con IA</span>
-                </button>
+                {hasAIAccess && (
+                  <button
+                    onClick={() => setIsAIModalOpen(true)}
+                    className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-primary-200 p-5 text-primary-400 transition-colors hover:border-primary-400 hover:text-primary-500 hover:bg-primary-50 min-h-[160px]"
+                  >
+                    <Sparkles className="mb-2 h-8 w-8" />
+                    <span className="text-sm font-medium">Con IA</span>
+                  </button>
+                )}
               </div>
             )}
           </div>

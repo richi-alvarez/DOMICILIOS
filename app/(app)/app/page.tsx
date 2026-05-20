@@ -4,6 +4,7 @@ import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { getOrgUsage } from '@/lib/actions/billing'
 import { isAtLimit } from '@/lib/billing/limits'
+import { canAccessAIFeatures } from '@/lib/actions/catalogs'
 import { CatalogsPageWrapper } from '@/components/app/catalogs-page-wrapper'
 
 export const metadata: Metadata = { title: 'Mis catálogos' }
@@ -23,9 +24,10 @@ export default async function AppDashboardPage() {
   const session = await auth()
   if (!session?.user?.id) redirect('/login')
 
-  const [catalogList, usage] = await Promise.all([
+  const [catalogList, usage, hasAIAccess] = await Promise.all([
     getCatalogs(session.user.id),
     getOrgUsage(),
+    canAccessAIFeatures(),
   ])
 
   // First-time user: redirect to onboarding
@@ -40,6 +42,7 @@ export default async function AppDashboardPage() {
       catalogList={catalogList}
       usage={usage}
       atCatalogLimit={atCatalogLimit}
+      hasAIAccess={hasAIAccess}
     />
   )
 }
