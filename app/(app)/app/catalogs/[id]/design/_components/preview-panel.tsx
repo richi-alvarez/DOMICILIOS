@@ -2,11 +2,14 @@
 
 import CarouselPreview from './carousel-preview'
 import BenefitsPreview from './benefits-preview'
+import SocialProofPreview from './socialproof-preview'
+import CTAReinforcementPreview from './cta-reinforcement-preview'
+import FooterPreview from './footer-preview'
 
 interface Block {
   id: string
   visible: boolean
-  type: 'presentation' | 'catalog' | 'cart' | 'text' | 'carousel' | 'benefits'
+  type: 'presentation' | 'catalog' | 'cart' | 'text' | 'carousel' | 'benefits' | 'socialproof' | 'cta-reinforcement' | 'footer'
   [key: string]: any
 }
 
@@ -483,6 +486,85 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                   iconColor={block.iconColor}
                   iconSize={block.iconSize}
                   padding={block.padding}
+                />
+              </div>
+            )
+          }
+
+          if (block.type === 'socialproof') {
+            return (
+              <div key={block.id}>
+                <SocialProofPreview
+                  title={block.title}
+                  subtitle={block.subtitle}
+                  items={block.items || []}
+                  layout={block.layout}
+                  columns={block.columns}
+                  bgColor={block.bgColor}
+                  textColor={block.textColor}
+                  ratingColor={block.ratingColor}
+                  showRating={block.showRating}
+                  showAvatar={block.showAvatar}
+                  showRole={block.showRole}
+                  padding={block.padding}
+                />
+              </div>
+            )
+          }
+
+          if (block.type === 'cta-reinforcement') {
+            return (
+              <div key={block.id}>
+                <CTAReinforcementPreview
+                  title={block.title}
+                  subtitle={block.subtitle}
+                  buttonText={block.buttonText}
+                  buttonAction={block.buttonAction}
+                  buttonUrl={block.buttonUrl}
+                  buttonPhone={block.buttonPhone}
+                  buttonEmail={block.buttonEmail}
+                  scrollTarget={block.scrollTarget}
+                  buttonColor={block.buttonColor}
+                  textColor={block.textColor}
+                  bgColor={block.bgColor}
+                  fontSize={block.fontSize}
+                  buttonSize={block.buttonSize}
+                  alignment={block.alignment}
+                  padding={block.padding}
+                  showBorder={block.showBorder}
+                  borderColor={block.borderColor}
+                  borderWidth={block.borderWidth}
+                />
+              </div>
+            )
+          }
+
+          if (block.type === 'footer') {
+            return (
+              <div key={block.id}>
+                <FooterPreview
+                  companyName={block.companyName}
+                  companyDescription={block.companyDescription}
+                  address={block.address}
+                  phone={block.phone}
+                  email={block.email}
+                  website={block.website}
+                  socialLinks={block.socialLinks || []}
+                  copyrightText={block.copyrightText}
+                  bgColor={block.bgColor}
+                  textColor={block.textColor}
+                  accentColor={block.accentColor}
+                  layout={block.layout}
+                  showSocialLinks={block.showSocialLinks}
+                  showDescription={block.showDescription}
+                  showAddress={block.showAddress}
+                  showPhone={block.showPhone}
+                  showEmail={block.showEmail}
+                  showWebsite={block.showWebsite}
+                  showCopyright={block.showCopyright}
+                  showCompanyInfo={block.showCompanyInfo}
+                  showContactInfo={block.showContactInfo}
+                  alignment={block.alignment}
                 />
               </div>
             )

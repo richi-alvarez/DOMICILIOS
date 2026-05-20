@@ -116,12 +116,12 @@ export default async function DesignPage({ params }: { params: Promise<{ id: str
 
   // Convert blocks from DB format to Block type, filtering for valid types
   const initialBlocks: Block[] = dbBlocks
-    .filter((block) => ['presentation', 'catalog', 'cart', 'text'].includes(block.type))
+    .filter((block) => ['presentation', 'catalog', 'cart', 'text', 'carousel', 'benefits', 'socialproof', 'cta-reinforcement', 'footer'].includes(block.type))
     .map((block) => (({
       id: block.id,
       visible: block.active,
       ...block.config,
-      type: block.type as 'presentation' | 'catalog' | 'cart' | 'text',
+      type: block.type as 'presentation' | 'catalog' | 'cart' | 'text' | 'carousel' | 'benefits' | 'socialproof' | 'cta-reinforcement' | 'footer',
     } as unknown) as Block))
 
   // Load theme from database
