@@ -185,6 +185,23 @@ export async function deleteCatalog(id: string) {
   const session = await auth()
   if (!session?.user?.id) throw new Error('No autenticado')
 
+  const orgId = await getOrgId(session.user.id)
+  if (!orgId) throw new Error('No se encontró organización')
+
+  const plan = await getOrgPlan(orgId)
+  const limits = PLAN_LIMITS[plan]
+
+  // Solo Pro/Premium pueden eliminar catálogos
+  if (!limits.canDeleteCatalogs) {
+    throw new Error('Solo usuarios con plan Pro o Premium pueden eliminar catálogos')
+  }
+
+  // Verificar que el catálogo pertenece a la organización
+  const catalog = await db.query.catalogs.findFirst({ where: eq(catalogs.id, id) })
+  if (!catalog || catalog.orgId !== orgId) {
+    throw new Error('Catálogo no encontrado')
+  }
+
   await db.delete(catalogs).where(eq(catalogs.id, id))
   revalidatePath('/app')
   redirect('/app')

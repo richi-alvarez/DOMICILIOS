@@ -6,6 +6,8 @@ import { db, catalogs, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
 import { DeliverySettingsForm } from './delivery-settings-form'
 import { SettingsTabs } from '@/components/app/settings-tabs'
+import { DeleteCatalogModal } from './_components/delete-catalog-modal'
+import { getOrgPlan, PLAN_LIMITS } from '@/lib/billing/limits'
 
 export const metadata: Metadata = { title: 'Configuración de Entregas' }
 
@@ -26,12 +28,23 @@ export default async function SettingsPage({ params }: Props) {
 
   let catalog: any = null
   let dbError = false
+  let canDeleteCatalog = false
 
   try {
     const session = await auth()
     if (!session?.user?.id) notFound()
     catalog = await getCatalog(id, session.user.id)
     if (!catalog) notFound()
+
+    // Check if user can delete catalogs based on plan
+    const membership = await db.query.memberships.findFirst({
+      where: eq(memberships.userId, session.user.id),
+    })
+    if (membership) {
+      const plan = await getOrgPlan(membership.organizationId)
+      const limits = PLAN_LIMITS[plan]
+      canDeleteCatalog = limits.canDeleteCatalogs
+    }
   } catch {
     dbError = true
   }
@@ -76,6 +89,29 @@ export default async function SettingsPage({ params }: Props) {
           businessHours: hours,
         }}
       />
+
+      {/* Danger Zone */}
+      <div className="mt-12 pt-8 border-t border-red-200">
+        <h2 className="text-lg font-semibold text-red-900 mb-4">Zona de Peligro</h2>
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+          <div className="flex items-start justify-between">
+            <div>
+              <h3 className="font-semibold text-red-900">Eliminar catálogo</h3>
+              <p className="text-sm text-red-700 mt-1">
+                Esta acción eliminará el catálogo y todos sus datos de forma permanente e irreversible.
+              </p>
+            </div>
+            {canDeleteCatalog ? (
+              <DeleteCatalogModal catalogId={id} catalogName={catalog.name} />
+            ) : (
+              <div className="text-sm text-red-600">
+                <p className="font-medium">No disponible en tu plan</p>
+                <p className="text-xs text-red-500 mt-1">Requiere plan Pro o superior</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
