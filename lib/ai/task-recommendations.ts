@@ -23,7 +23,7 @@ export const TASK_RECOMMENDATIONS: Record<AITask, TaskRecommendation> = {
     // Generar estructura de catálogos: velocidad es crítica
     primary: 'gemini',
     fallbacks: ['openai', 'anthropic'],
-    reason: 'Gemini Flash es 3x más rápido y costo es 10x menor',
+    reason: 'Gemini Flash es 3x más rápido y costo es 10x menor. Si falla, intenta OpenAI, luego Anthropic',
     requiresVision: false,
   },
 

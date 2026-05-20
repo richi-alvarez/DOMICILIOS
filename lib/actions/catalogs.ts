@@ -138,7 +138,10 @@ export async function createCatalogReturn(data: {
   contactCountryCode?: string
   currency?: string
   language?: string
-}): Promise<{ id: string } | { error: string }> {
+  useAI?: boolean
+  businessType?: string
+  businessDescription?: string
+}): Promise<{ id: string; aiGenerated?: boolean } | { error: string }> {
   const session = await auth()
   if (!session?.user?.id) return { error: 'No autenticado' }
   if (!process.env.DATABASE_URL) return { error: 'Sin base de datos' }
@@ -172,8 +175,26 @@ export async function createCatalogReturn(data: {
       .returning({ id: catalogs.id })
 
     if (!catalog) return { error: 'Error al crear catálogo' }
+
+    // Generate with AI if requested
+    if (data.useAI && data.businessType && data.businessDescription) {
+      const { generateAICatalogWithDesign } = await import('./catalogs/generate-ai-catalog-design')
+      const aiResult = await generateAICatalogWithDesign(catalog.id, {
+        businessName: data.name,
+        businessType: data.businessType,
+        businessDescription: data.businessDescription,
+        currency: data.currency || 'COP',
+      })
+
+      if (!aiResult.success) {
+        console.error('[createCatalogReturn] AI generation failed:', aiResult.error)
+        // Don't fail - return the catalog even if AI generation fails
+        // User can retry or continue manually
+      }
+    }
+
     revalidatePath('/app')
-    return { id: catalog.id }
+    return { id: catalog.id, aiGenerated: data.useAI }
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : 'Error'
     if (msg.includes('unique') || msg.includes('duplicate')) return { error: 'Ese enlace ya está en uso' }

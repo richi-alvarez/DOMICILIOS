@@ -1,0 +1,42 @@
+
+> domicilios@0.1.0 dev
+> next dev --turbopack
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /home/epayco21/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /home/epayco21/Escritorio/richi-alvarez/domicilios/package-lock.json
+
+ ⚠ Port 3000 is in use by an unknown process, using available port 3001 instead.
+   ▲ Next.js 15.5.18 (Turbopack)
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.1.104:3001
+   - Environments: .env.local, .env
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+[Error: EACCES: permission denied, open '/home/epayco21/Escritorio/richi-alvarez/domicilios/.next/cache/.rscinfo'] {
+  errno: -13,
+  code: 'EACCES',
+  syscall: 'open',
+  path: '/home/epayco21/Escritorio/richi-alvarez/domicilios/.next/cache/.rscinfo'
+}
+node:events:497
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EACCES: permission denied, open '/home/epayco21/Escritorio/richi-alvarez/domicilios/.next/trace'
+Emitted 'error' event on WriteStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:170:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  errno: -13,
+  code: 'EACCES',
+  syscall: 'open',
+  path: '/home/epayco21/Escritorio/richi-alvarez/domicilios/.next/trace'
+}
+
+Node.js v22.22.0

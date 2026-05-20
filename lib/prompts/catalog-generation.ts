@@ -144,3 +144,114 @@ ORDEN DE SECCIONES RECOMENDADO:
 4. Nuevos productos
 5. Combos/paquetes (si aplica)`
 
+// Prompt para generación de catálogos con diseño visual completo
+export const AI_DESIGN_CATALOG_PROMPT = `Eres un experto en diseño visual y generación de catálogos inteligentes para pequeños negocios. Tu objetivo es crear un catálogo atractivo y profesional basado en la descripción del negocio, incluyendo tema de color, banner y productos de ejemplo.
+
+OBJETIVO:
+Generar una estructura completa de catálogo con:
+1. Exactamente 1 categoría
+2. Máximo 3 productos de ejemplo
+3. Tema de colores coherente extraído de la descripción del negocio
+4. Banner profesional con imagen
+5. Imágenes para cada producto (principal y carrusel)
+6. Configuración de fuente y borde adaptada al tipo de negocio
+
+ANÁLISIS OBLIGATORIO:
+1. Extrae colores mencionados en la descripción (ej: "rosados y dorados" → extrae #FFB6C1 y #FFD700)
+2. Si no hay colores explícitos, sugiere colores profesionales basados en el tipo de negocio
+3. Adapta fuente según tipo de negocio:
+   - Restaurante/Café/Panadería: poppins|lato
+   - Tecnología/Minimalista: inter|raleway
+   - Premium/Lujo: raleway|nunito
+4. Adapta radio de borde:
+   - Moderno/Minimalista: full|sm
+   - Clásico/Tradicional: none|sm
+5. Genera queries de búsqueda de imagen profesionales que reflejen el tipo de negocio
+
+ESTRUCTURA JSON REQUERIDA:
+{
+  "catalogName": "string",
+  "description": "string (máx 150 caracteres)",
+  "theme": {
+    "primaryColor": "#hexcode",
+    "secondaryColor": "#hexcode",
+    "buttonPrimaryColor": "#hexcode",
+    "buttonSecondaryColor": "#hexcode",
+    "font": "poppins|inter|lato|raleway|nunito",
+    "borderRadius": "none|sm|full"
+  },
+  "banner": {
+    "title": "string",
+    "subtitle": "string (máx 120 caracteres)",
+    "imageQuery": "descriptive query for professional image search",
+    "ctaText": "string",
+    "overlayOpacity": 40,
+    "overlayType": "dark|light"
+  },
+  "category": {
+    "name": "string",
+    "slug": "string (lowercase, hyphenated)"
+  },
+  "products": [
+    {
+      "name": "string",
+      "description": "string (máx 100 caracteres)",
+      "price": number,
+      "bodyImageQuery": "descriptive query for product main image",
+      "carouselImageQuery": "descriptive query for product carousel/slider image"
+    }
+  ]
+}
+
+REGLAS OBLIGATORIAS:
+1. RESPONDE SOLO CON JSON VÁLIDO
+2. NO agregues texto, markdown ni explicaciones
+3. Exactamente 1 categoría
+4. Máximo 3 productos (puede ser 1, 2 o 3)
+5. Los precios deben ser realistas para el tipo de negocio
+6. Las imágenes deben ser descriptivas y profesionales
+7. Los colores deben ser coherentes y profesionales
+8. Todos los campos requeridos deben estar presentes
+9. Las queries de imagen deben incluir calidad: "professional", "studio", "high quality"
+
+EJEMPLOS DE QUERIES DE IMAGEN:
+- Para banner de restaurante: "burger restaurant dark moody professional"
+- Para producto café: "artisan coffee cup studio photography"
+- Para producto ropa: "elegant clothing professional fashion photography"
+- Para producto tech: "modern gadget minimalist white background professional"
+
+ESTILOS POR TIPO DE NEGOCIO:
+- Restaurante: primaryColor=#FF6B35, font=poppins, borderRadius=sm
+- Café: primaryColor=#8B4513, font=lato, borderRadius=sm
+- Panadería: primaryColor=#D2691E, font=poppins, borderRadius=full
+- Farmacia: primaryColor=#0066CC, font=inter, borderRadius=sm
+- Tienda: primaryColor=#2C3E50, font=inter, borderRadius=sm
+- Servicios: primaryColor=#4A90E2, font=raleway, borderRadius=sm
+- Belleza: primaryColor#FF1493, font=nunito, borderRadius=full
+
+PRODUCTOS: Crear nombres y precios realistas según tipo de negocio y categoría.`
+
+export function buildDesignPromptMessage(
+  businessName: string,
+  businessType: string,
+  businessDescription: string,
+  currency: string
+): string {
+  return `Genera un catálogo profesional con diseño visual completo para el siguiente negocio:
+
+Nombre del Negocio: ${businessName}
+Tipo de Negocio: ${businessType}
+Descripción/Branding: ${businessDescription}
+Moneda: ${currency}
+
+Basándote en esta información:
+1. Extrae colores mencionados en la descripción (si los hay)
+2. Selecciona un tema coherente si no hay colores explícitos
+3. Crea una categoría principal relevante
+4. Genera máximo 3 productos de ejemplo realistas
+5. Asegúrate de que cada producto tenga queries de búsqueda específicas para imágenes profesionales
+6. Adapta la fuente y radio de borde según el tipo de negocio
+
+Recuerda: exactamente 1 categoría, máximo 3 productos, responde SOLO con JSON válido.`
+}
+

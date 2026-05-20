@@ -115,8 +115,9 @@ export function CatalogWizard({ userName }: Props) {
         contactCountryCode: orderChannel === 'whatsapp' ? contactCountryCode : '+57',
         currency,
         language: 'es',
+        useAI: useAI && !!generatedCatalog,
         businessType,
-        catalog: generatedCatalog,
+        businessDescription,
       })
 
       if ('error' in result) {

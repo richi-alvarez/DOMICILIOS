@@ -82,3 +82,31 @@ export async function deleteImage(_imageUrl: string): Promise<{ success: true } 
   // In production with cloud storage, implement actual deletion here
   return { success: true }
 }
+
+export async function saveTheme(catalogId: string, themeJson: Record<string, unknown>) {
+  const session = await auth()
+  if (!session?.user?.id) return { error: 'No autenticado' }
+
+  if (!process.env.DATABASE_URL) return { error: 'Sin base de datos' }
+
+  try {
+    // Verify user has access to this catalog
+    const catalog = await db.query.catalogs.findFirst({ where: eq(catalogs.id, catalogId) })
+    if (!catalog) return { error: 'Catálogo no encontrado' }
+
+    await db
+      .update(catalogs)
+      .set({
+        themeJson,
+        updatedAt: new Date(),
+      })
+      .where(eq(catalogs.id, catalogId))
+
+    revalidatePath(`/app/catalogs/${catalogId}/design`)
+    revalidatePath(`/s/${catalog.slug}`)
+    return { ok: true }
+  } catch (err) {
+    console.error('[saveTheme]', err)
+    return { error: 'Error al guardar tema' }
+  }
+}
