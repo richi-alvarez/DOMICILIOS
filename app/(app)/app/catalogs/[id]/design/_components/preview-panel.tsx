@@ -42,15 +42,21 @@ interface Product {
   variants: any[]
 }
 
+interface Category {
+  id: string
+  name: string
+}
+
 interface PreviewPanelProps {
   blocks: Block[]
   theme: ThemeState
   previewMode: 'desktop' | 'mobile'
   catalogSlug: string
   products?: Product[]
+  categories?: Category[]
 }
 
-export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, products = [] }: PreviewPanelProps) {
+export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, products = [], categories = [] }: PreviewPanelProps) {
   const borderRadiusMap = {
     none: '0px',
     sm: '8px',
@@ -198,16 +204,26 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                     <div className="flex gap-4 items-center flex-wrap">
                       {/* Category Filter */}
                       {block.showCategoryFilter && (
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 flex-wrap">
                           <button className="px-3 py-1 rounded-full text-sm" style={{ backgroundColor: theme.categoryPrimaryColor, color: 'white' }}>
                             Todos
                           </button>
-                          <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
-                            Categoría 1
-                          </button>
-                          <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
-                            Categoría 2
-                          </button>
+                          {categories.length > 0 ? (
+                            categories.map((cat) => (
+                              <button key={cat.id} className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                                {cat.name}
+                              </button>
+                            ))
+                          ) : (
+                            <>
+                              <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                                Categoría 1
+                              </button>
+                              <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                                Categoría 2
+                              </button>
+                            </>
+                          )}
                         </div>
                       )}
 

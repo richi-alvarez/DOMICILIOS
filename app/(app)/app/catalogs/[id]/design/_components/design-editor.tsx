@@ -238,11 +238,17 @@ const BLOCK_META: Record<string, { icon: string; label: string; color: string }>
   text: { icon: '📝', label: 'Texto', color: 'yellow' },
 }
 
+interface Category {
+  id: string
+  name: string
+}
+
 interface DesignEditorProps {
   catalogId: string
   catalogSlug: string
   initialBlocks?: Block[]
   initialTheme?: Partial<ThemeState>
+  categories?: Category[]
 }
 
 interface Product {
@@ -263,6 +269,7 @@ export default function DesignEditor({
   catalogSlug,
   initialBlocks,
   initialTheme,
+  categories = [],
 }: DesignEditorProps) {
   const [theme, setTheme] = useState<ThemeState>(
     initialTheme ? { ...THEME_DEFAULTS, ...initialTheme } : THEME_DEFAULTS
@@ -535,6 +542,7 @@ export default function DesignEditor({
               previewMode="mobile"
               catalogSlug={catalogSlug}
               products={products}
+              categories={categories}
             />
           </div>
         </div>
@@ -594,6 +602,7 @@ export default function DesignEditor({
               previewMode={previewMode}
               catalogSlug={catalogSlug}
               products={products}
+              categories={categories}
             />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { db, catalogs } from '@/db'
+import { db, catalogs, categories } from '@/db'
 import { eq } from 'drizzle-orm'
 import { getBlocksForCatalog } from '@/lib/actions/design'
 import DesignEditor from './_components/design-editor'
@@ -106,6 +106,11 @@ export default async function DesignPage({ params }: { params: Promise<{ id: str
     return <div>Catálogo no encontrado</div>
   }
 
+  // Load categories from database
+  const catalogCategories = await db.query.categories.findMany({
+    where: eq(categories.catalogId, id),
+  })
+
   // Load blocks from database
   const dbBlocks = await getBlocksForCatalog(id)
 
@@ -128,6 +133,7 @@ export default async function DesignPage({ params }: { params: Promise<{ id: str
       catalogSlug={catalog.slug}
       initialBlocks={initialBlocks}
       initialTheme={initialTheme}
+      categories={catalogCategories}
     />
   )
 }
