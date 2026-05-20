@@ -102,7 +102,46 @@ interface TextBlock extends BaseBlock {
   fontSize: 'sm' | 'md' | 'lg'
 }
 
-type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock
+interface CarouselItem {
+  id: string
+  image: string
+  title: string
+  description: string
+  link?: string
+}
+
+interface CarouselBlock extends BaseBlock {
+  type: 'carousel'
+  items: CarouselItem[]
+  autoplay: boolean
+  autoplaySpeed: number
+  showDots: boolean
+  showArrows: boolean
+  height: 'sm' | 'md' | 'lg' | 'xl'
+  transition: 'slide' | 'fade'
+}
+
+interface BenefitItem {
+  id: string
+  icon: string
+  title: string
+  description: string
+}
+
+interface BenefitsBlock extends BaseBlock {
+  type: 'benefits'
+  title: string
+  subtitle: string
+  columns: 1 | 2 | 3 | 4
+  items: BenefitItem[]
+  bgColor: string
+  textColor: string
+  iconColor: string
+  iconSize: 'sm' | 'md' | 'lg'
+  padding: 'sm' | 'md' | 'lg' | 'xl'
+}
+
+type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock | CarouselBlock | BenefitsBlock
 
 // Paletas predefinidas
 const BUTTON_PALETTES = {
@@ -236,6 +275,8 @@ const BLOCK_META: Record<string, { icon: string; label: string; color: string }>
   catalog: { icon: '📦', label: 'Catálogo de Productos', color: 'orange' },
   cart: { icon: '🛒', label: 'Bolsón de Carrito', color: 'red' },
   text: { icon: '📝', label: 'Texto', color: 'yellow' },
+  carousel: { icon: '🎠', label: 'Carrusel', color: 'blue' },
+  benefits: { icon: '⭐', label: 'Beneficios y Características', color: 'green' },
 }
 
 interface Category {
@@ -382,6 +423,68 @@ export default function DesignEditor({
         useCustomColors: false,
         bgColor: '#ff6b57',
         iconColor: '#ffffff',
+      }
+    } else if (type === 'carousel') {
+      newBlock = {
+        id: baseId,
+        visible: true,
+        type: 'carousel',
+        items: [
+          {
+            id: 'item-1',
+            image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&h=400&fit=crop',
+            title: 'Slide 1',
+            description: 'Descripción del primer slide',
+            link: '',
+          },
+          {
+            id: 'item-2',
+            image: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=800&h=400&fit=crop',
+            title: 'Slide 2',
+            description: 'Descripción del segundo slide',
+            link: '',
+          },
+        ],
+        autoplay: true,
+        autoplaySpeed: 5,
+        showDots: true,
+        showArrows: true,
+        height: 'md',
+        transition: 'slide',
+      }
+    } else if (type === 'benefits') {
+      newBlock = {
+        id: baseId,
+        visible: true,
+        type: 'benefits',
+        title: 'Beneficios y Características',
+        subtitle: 'Descubre lo que nos hace especiales',
+        columns: 3,
+        items: [
+          {
+            id: `benefit-1`,
+            icon: '✨',
+            title: 'Beneficio 1',
+            description: 'Descripción del beneficio',
+          },
+          {
+            id: `benefit-2`,
+            icon: '🚀',
+            title: 'Beneficio 2',
+            description: 'Descripción del beneficio',
+          },
+          {
+            id: `benefit-3`,
+            icon: '💎',
+            title: 'Beneficio 3',
+            description: 'Descripción del beneficio',
+          },
+        ],
+        bgColor: '#ffffff',
+        textColor: '#000000',
+        iconColor: '#ff6b57',
+        iconSize: 'md',
+        padding: 'lg',
       }
     } else {
       newBlock = {

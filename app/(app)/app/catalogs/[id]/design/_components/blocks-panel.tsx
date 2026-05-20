@@ -5,6 +5,8 @@ import PresentationSettings from './block-settings/presentation-settings'
 import CatalogSettings from './block-settings/catalog-settings'
 import CartSettings from './block-settings/cart-settings'
 import TextSettings from './block-settings/text-settings'
+import CarouselSettings from './block-settings/carousel-settings'
+import BenefitsSettings from './block-settings/benefits-settings'
 
 interface BaseBlock {
   id: string
@@ -73,13 +75,54 @@ interface TextBlock extends BaseBlock {
   fontSize: 'sm' | 'md' | 'lg'
 }
 
-type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock
+interface CarouselItem {
+  id: string
+  image: string
+  title: string
+  description: string
+  link?: string
+}
+
+interface CarouselBlock extends BaseBlock {
+  type: 'carousel'
+  items: CarouselItem[]
+  autoplay: boolean
+  autoplaySpeed: number
+  showDots: boolean
+  showArrows: boolean
+  height: 'sm' | 'md' | 'lg' | 'xl'
+  transition: 'slide' | 'fade'
+}
+
+interface BenefitItem {
+  id: string
+  icon: string
+  title: string
+  description: string
+}
+
+interface BenefitsBlock extends BaseBlock {
+  type: 'benefits'
+  title: string
+  subtitle: string
+  columns: 1 | 2 | 3 | 4
+  items: BenefitItem[]
+  bgColor: string
+  textColor: string
+  iconColor: string
+  iconSize: 'sm' | 'md' | 'lg'
+  padding: 'sm' | 'md' | 'lg' | 'xl'
+}
+
+type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock | CarouselBlock | BenefitsBlock
 
 const BLOCK_META: Record<string, { icon: string; label: string }> = {
   presentation: { icon: '🎯', label: 'Sección de Presentación' },
   catalog: { icon: '📦', label: 'Catálogo de Productos' },
   cart: { icon: '🛒', label: 'Bolsón de Carrito' },
   text: { icon: '📝', label: 'Texto' },
+  carousel: { icon: '🎠', label: 'Carrusel' },
+  benefits: { icon: '⭐', label: 'Beneficios y Características' },
 }
 
 interface BlocksPanelProps {
@@ -250,6 +293,18 @@ export default function BlocksPanel({
                 {block.type === 'text' && (
                   <TextSettings
                     block={block as TextBlock}
+                    onChange={(partial) => onUpdateBlock(block.id, partial)}
+                  />
+                )}
+                {block.type === 'carousel' && (
+                  <CarouselSettings
+                    block={block as CarouselBlock}
+                    onChange={(partial) => onUpdateBlock(block.id, partial)}
+                  />
+                )}
+                {block.type === 'benefits' && (
+                  <BenefitsSettings
+                    block={block as BenefitsBlock}
                     onChange={(partial) => onUpdateBlock(block.id, partial)}
                   />
                 )}

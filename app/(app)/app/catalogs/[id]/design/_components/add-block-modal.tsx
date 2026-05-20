@@ -5,6 +5,8 @@ import { X } from 'lucide-react'
 const BLOCK_CATEGORIES = {
   Presentación: [
     { type: 'presentation', label: 'Sección Hero', description: 'Banner con título y CTA', icon: '🎯', plan: 'BASIC' },
+    { type: 'carousel', label: 'Carrusel', description: 'Slider rotativo con imágenes y texto', icon: '🎠', plan: 'BASIC' },
+    { type: 'benefits', label: 'Beneficios y Características', description: 'Lista de características con iconos', icon: '⭐', plan: 'BASIC' },
   ],
   Contenido: [
     { type: 'text', label: 'Texto', description: 'Bloque de texto editable', icon: '📝', plan: 'BASIC' },
@@ -18,7 +20,7 @@ const BLOCK_CATEGORIES = {
 interface AddBlockModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  onAddBlock: (type: 'presentation' | 'catalog' | 'cart' | 'text') => void
+  onAddBlock: (type: 'presentation' | 'catalog' | 'cart' | 'text' | 'carousel' | 'benefits') => void
 }
 
 export default function AddBlockModal({ open, onOpenChange, onAddBlock }: AddBlockModalProps) {

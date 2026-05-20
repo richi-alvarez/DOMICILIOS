@@ -1,9 +1,12 @@
 'use client'
 
+import CarouselPreview from './carousel-preview'
+import BenefitsPreview from './benefits-preview'
+
 interface Block {
   id: string
   visible: boolean
-  type: 'presentation' | 'catalog' | 'cart' | 'text'
+  type: 'presentation' | 'catalog' | 'cart' | 'text' | 'carousel' | 'benefits'
   [key: string]: any
 }
 
@@ -447,6 +450,40 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                 >
                   {block.content || 'Tu contenido de texto aparecerá aquí...'}
                 </div>
+              </div>
+            )
+          }
+
+          if (block.type === 'carousel') {
+            return (
+              <div key={block.id} className="bg-white">
+                <CarouselPreview
+                  items={block.items || []}
+                  autoplay={block.autoplay}
+                  autoplaySpeed={block.autoplaySpeed}
+                  showDots={block.showDots}
+                  showArrows={block.showArrows}
+                  height={block.height}
+                  transition={block.transition}
+                />
+              </div>
+            )
+          }
+
+          if (block.type === 'benefits') {
+            return (
+              <div key={block.id}>
+                <BenefitsPreview
+                  title={block.title}
+                  subtitle={block.subtitle}
+                  items={block.items || []}
+                  columns={block.columns}
+                  bgColor={block.bgColor}
+                  textColor={block.textColor}
+                  iconColor={block.iconColor}
+                  iconSize={block.iconSize}
+                  padding={block.padding}
+                />
               </div>
             )
           }
