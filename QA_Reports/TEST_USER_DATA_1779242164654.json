@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-05-20T01:56:04.654Z",
+  "testUser": {
+    "email": "test-user-1779242164428@example.com",
+    "password": "TestPass123!@#",
+    "name": "Test Usuario"
+  },
+  "catalog": {
+    "name": "Catálogo Test 1779242164428",
+    "id": "NOT_CREATED",
+    "description": "Descripción del catálogo de prueba"
+  },
+  "products": [
+    {
+      "name": "Producto 1",
+      "price": "29.99",
+      "quantity": 10
+    },
+    {
+      "name": "Producto 2",
+      "price": "49.99",
+      "quantity": 5
+    }
+  ],
+  "testResults": {
+    "signup": "PASS",
+    "login": "PASS",
+    "catalogCreation": "FAIL",
+    "productAddition": "PASS",
+    "publicView": "PASS",
+    "orderCreation": "PASS"
+  }
+}
