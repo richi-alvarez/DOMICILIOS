@@ -428,17 +428,26 @@ export function OnboardingWizard({ userName }: Props) {
 
             {error && <p className="text-sm text-red-500 rounded-xl bg-red-50 px-3 py-2">{error}</p>}
 
-            <Button
-              className="w-full"
-              disabled={isPending}
-              onClick={handleCreate}
-            >
-              {isPending ? (
-                <><Loader2 className="h-4 w-4 animate-spin" /> Creando tu tienda...</>
-              ) : (
-                <>¡Crear mi tienda! <ArrowRight className="h-4 w-4" /></>
+            <div className="flex gap-3">
+              <Button
+                className="flex-1"
+                variant="outline"
+                disabled={isPending || !canProceedStep4()}
+                onClick={handleCreate}
+              >
+                Crear catálogo
+              </Button>
+              {canUseAI && (
+                <Button
+                  className="flex-1 bg-blue-600 hover:bg-blue-700"
+                  disabled={isPending}
+                  onClick={() => setUseAI(true)}
+                >
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  Crear con IA
+                </Button>
               )}
-            </Button>
+            </div>
           </div>
         )}
 
