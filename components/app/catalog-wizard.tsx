@@ -20,11 +20,10 @@ const BUSINESS_TYPES = [
 ]
 
 interface Props {
-  userName?: string
-  isOnboarding?: boolean
+  userName: string
 }
 
-export function CatalogWizard({ userName, isOnboarding = false }: Props) {
+export function CatalogWizard({ userName }: Props) {
   const router = useRouter()
   const [step, setStep] = useState(1)
   const [isPending, startTransition] = useTransition()
@@ -88,10 +87,7 @@ export function CatalogWizard({ userName, isOnboarding = false }: Props) {
   }, [slug])
 
   function canProceedStep1() {
-    if (isOnboarding) {
-      return businessName.trim().length >= 2 && businessType !== ''
-    }
-    return businessName.trim().length >= 2
+    return businessName.trim().length >= 2 && businessType !== ''
   }
 
   function canProceedStep2() {
@@ -165,18 +161,11 @@ export function CatalogWizard({ userName, isOnboarding = false }: Props) {
         {step === 1 && (
           <div className="space-y-6">
             <div>
-              {isOnboarding && (
-                <h1 className="text-2xl font-extrabold text-night-800">
-                  ¡Bienvenido, {firstName}!
-                </h1>
-              )}
-              {!isOnboarding && (
-                <h1 className="text-2xl font-extrabold text-night-800">
-                  Nombre del negocio
-                </h1>
-              )}
+              <h1 className="text-2xl font-extrabold text-night-800">
+                ¡Bienvenido, {firstName}!
+              </h1>
               <p className="mt-1 text-sm text-warm-500">
-                {isOnboarding ? 'Cuéntanos sobre tu negocio para personalizar tu experiencia.' : '¿Cuál es el nombre de tu negocio?'}
+                Cuéntanos sobre tu negocio para personalizar tu experiencia.
               </p>
             </div>
 
@@ -191,29 +180,27 @@ export function CatalogWizard({ userName, isOnboarding = false }: Props) {
               />
             </div>
 
-            {isOnboarding && (
-              <div className="space-y-2">
-                <Label className="font-semibold text-night-700">Tipo de negocio *</Label>
-                <div className="grid grid-cols-2 gap-2">
-                  {BUSINESS_TYPES.map((type) => (
-                    <button
-                      key={type.value}
-                      onClick={() => setBusinessType(type.value)}
-                      className={cn(
-                        'flex flex-col items-start gap-1 rounded-xl border-2 p-3 text-left transition-all',
-                        businessType === type.value
-                          ? 'border-primary-500 bg-primary-50'
-                          : 'border-warm-200 hover:border-warm-300',
-                      )}
-                    >
-                      <type.icon className={cn('h-5 w-5', businessType === type.value ? 'text-primary-500' : 'text-warm-400')} />
-                      <span className="text-sm font-semibold text-night-800">{type.label}</span>
-                      <span className="text-xs text-warm-500">{type.desc}</span>
-                    </button>
-                  ))}
-                </div>
+            <div className="space-y-2">
+              <Label className="font-semibold text-night-700">Tipo de negocio *</Label>
+              <div className="grid grid-cols-2 gap-2">
+                {BUSINESS_TYPES.map((type) => (
+                  <button
+                    key={type.value}
+                    onClick={() => setBusinessType(type.value)}
+                    className={cn(
+                      'flex flex-col items-start gap-1 rounded-xl border-2 p-3 text-left transition-all',
+                      businessType === type.value
+                        ? 'border-primary-500 bg-primary-50'
+                        : 'border-warm-200 hover:border-warm-300',
+                    )}
+                  >
+                    <type.icon className={cn('h-5 w-5', businessType === type.value ? 'text-primary-500' : 'text-warm-400')} />
+                    <span className="text-sm font-semibold text-night-800">{type.label}</span>
+                    <span className="text-xs text-warm-500">{type.desc}</span>
+                  </button>
+                ))}
               </div>
-            )}
+            </div>
 
             <Button
               className="w-full"

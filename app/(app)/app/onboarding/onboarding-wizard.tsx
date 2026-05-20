@@ -5,5 +5,5 @@ interface Props {
 }
 
 export function OnboardingWizard({ userName }: Props) {
-  return <CatalogWizard userName={userName} isOnboarding={true} />
+  return <CatalogWizard userName={userName} />
 }
