@@ -122,21 +122,21 @@ export function OnboardingWizard({ userName }: Props) {
       if ('error' in result) {
         setError(result.error)
       } else {
-        const nextStep = useAI ? 6 : 5
-        setStep(nextStep)
+        // Mostrar pantalla de done por 1.8s antes de redirigir
+        setStep(useAI ? 100 : 99) // Valores especiales para pantalla de done
         setTimeout(() => router.push(`/app/catalogs/${result.id}`), 1800)
       }
     })
   }
 
   const firstName = userName.split(' ')[0] || 'usuario'
-  const totalSteps = 5
-  const progressSteps = [1, 2, 3, 4, 5]
+  const totalSteps = 4
+  const progressSteps = [1, 2, 3, 4]
 
   return (
     <div className="w-full max-w-lg">
       {/* Progress */}
-      {step < 6 && (
+      {step <= 4 && (
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-3">
             {progressSteps.map((s) => (
@@ -149,7 +149,7 @@ export function OnboardingWizard({ userName }: Props) {
                 )}>
                   {step > s ? '✓' : s}
                 </div>
-                {s < 5 && <div className={cn('h-0.5 flex-1 w-12 rounded-full transition-all', step > s ? 'bg-lime-400' : 'bg-warm-200')} />}
+                {s < 4 && <div className={cn('h-0.5 flex-1 w-12 rounded-full transition-all', step > s ? 'bg-lime-400' : 'bg-warm-200')} />}
               </div>
             ))}
           </div>
@@ -554,7 +554,7 @@ export function OnboardingWizard({ userName }: Props) {
         )}
 
         {/* Done: Manual flow */}
-        {step === 5 && !useAI && (
+        {step === 99 && (
           <div className="flex flex-col items-center gap-4 py-6 text-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-lime-100">
               <CheckCircle2 className="h-9 w-9 text-lime-600" />
@@ -570,7 +570,7 @@ export function OnboardingWizard({ userName }: Props) {
         )}
 
         {/* Done: AI flow */}
-        {step === 6 && useAI && (
+        {step === 100 && (
           <div className="flex flex-col items-center gap-4 py-6 text-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-lime-100">
               <CheckCircle2 className="h-9 w-9 text-lime-600" />
