@@ -36,6 +36,8 @@ export function OnboardingWizard({ userName }: Props) {
   // Form state
   const [businessName, setBusinessName] = useState('')
   const [businessType, setBusinessType] = useState('')
+  const [businessDescription, setBusinessDescription] = useState('')
+  const [currency, setCurrency] = useState('COP')
   const [slug, setSlug] = useState('')
   const [slugStatus, setSlugStatus] = useState<'idle' | 'checking' | 'available' | 'taken' | 'invalid'>('idle')
   const [orderChannel, setOrderChannel] = useState<'whatsapp' | 'email'>('whatsapp')
@@ -92,24 +94,35 @@ export function OnboardingWizard({ userName }: Props) {
     return slugStatus === 'available'
   }
 
+  function canProceedStep3() {
+    return businessDescription.trim().length >= 20 && currency
+  }
+
+  function canProceedStep4() {
+    if (orderChannel === 'whatsapp') return contactPhone.length >= 10
+    return contactEmail.includes('@')
+  }
+
   function handleCreate() {
     setError('')
     startTransition(async () => {
       const result = await createCatalogReturn({
         name: businessName,
         slug,
-        description: `${BUSINESS_TYPES.find(t => t.value === businessType)?.label} digital`,
+        description: businessDescription,
         orderChannel,
         contactPhone: orderChannel === 'whatsapp' ? contactPhone : undefined,
-        contactCountryCode: '+57',
-        currency: 'COP',
+        contactCountryCode: orderChannel === 'whatsapp' ? contactCountryCode : '+57',
+        currency,
         language: 'es',
+        businessType,
+        catalog: generatedCatalog,
       })
 
       if ('error' in result) {
         setError(result.error)
       } else {
-        const nextStep = useAI ? 5 : 4
+        const nextStep = useAI ? 6 : 5
         setStep(nextStep)
         setTimeout(() => router.push(`/app/catalogs/${result.id}`), 1800)
       }
@@ -117,13 +130,13 @@ export function OnboardingWizard({ userName }: Props) {
   }
 
   const firstName = userName.split(' ')[0] || 'usuario'
-  const totalSteps = useAI ? 4 : 4
-  const progressSteps = [1, 2, 3, 4]
+  const totalSteps = 5
+  const progressSteps = [1, 2, 3, 4, 5]
 
   return (
     <div className="w-full max-w-lg">
       {/* Progress */}
-      {step < 5 && (
+      {step < 6 && (
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-3">
             {progressSteps.map((s) => (
@@ -136,7 +149,7 @@ export function OnboardingWizard({ userName }: Props) {
                 )}>
                   {step > s ? '✓' : s}
                 </div>
-                {s < 4 && <div className={cn('h-0.5 flex-1 w-12 rounded-full transition-all', step > s ? 'bg-lime-400' : 'bg-warm-200')} />}
+                {s < 5 && <div className={cn('h-0.5 flex-1 w-12 rounded-full transition-all', step > s ? 'bg-lime-400' : 'bg-warm-200')} />}
               </div>
             ))}
           </div>
@@ -258,11 +271,65 @@ export function OnboardingWizard({ userName }: Props) {
           </div>
         )}
 
-        {/* Step 3: Canal de pedidos */}
-        {step === 3 && !useAI && (
+        {/* Step 3: Moneda y Descripción del negocio */}
+        {step === 3 && (
           <div className="space-y-6">
             <div>
               <button onClick={() => setStep(2)} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
+                <ArrowLeft className="h-3.5 w-3.5" /> Atrás
+              </button>
+              <h1 className="text-2xl font-extrabold text-night-800">Más detalles de tu negocio</h1>
+              <p className="mt-1 text-sm text-warm-500">
+                Esta información ayudará a la IA a generar un catálogo más personalizado.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label className="font-semibold text-night-700">Moneda *</Label>
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="w-full rounded-lg border border-warm-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+              >
+                <option value="COP">COP - Peso Colombiano</option>
+                <option value="USD">USD - Dólar Estadounidense</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="BRL">BRL - Real Brasileño</option>
+                <option value="MXN">MXN - Peso Mexicano</option>
+                <option value="ARS">ARS - Peso Argentino</option>
+                <option value="CLP">CLP - Peso Chileno</option>
+                <option value="PEN">PEN - Sol Peruano</option>
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <Label className="font-semibold text-night-700">¿De qué se trata tu negocio? *</Label>
+              <p className="text-xs text-warm-500 mb-2">Cuéntanos más detalles para que la IA genere un catálogo personalizado.</p>
+              <textarea
+                value={businessDescription}
+                onChange={(e) => setBusinessDescription(e.target.value.slice(0, 500))}
+                placeholder="Ej. Soy una pastelería artesanal que vende tortas personalizadas, cupcakes y postres para eventos. Usamos colores rosados y dorados, con un estilo elegante y femenino."
+                className="w-full rounded-lg border border-warm-200 px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary-500"
+                rows={4}
+              />
+              <p className="text-xs text-warm-400">{businessDescription.length}/500</p>
+            </div>
+
+            <Button
+              className="w-full"
+              disabled={!canProceedStep3()}
+              onClick={() => setStep(4)}
+            >
+              Continuar <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        )}
+
+        {/* Step 4: Canal de pedidos */}
+        {step === 4 && !useAI && (
+          <div className="space-y-6">
+            <div>
+              <button onClick={() => setStep(3)} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
                 <ArrowLeft className="h-3.5 w-3.5" /> Atrás
               </button>
               <h1 className="text-2xl font-extrabold text-night-800">¿Cómo recibirás pedidos?</h1>
@@ -333,8 +400,8 @@ export function OnboardingWizard({ userName }: Props) {
                 <div className="flex gap-2">
                   <CountryCodeSelect
                     value={contactCountryCode}
-                    onChange={() => {}}
-                    disabled={true}
+                    onChange={setContactCountryCode}
+                    disabled={false}
                   />
                   <Input
                     value={contactPhone}
@@ -375,8 +442,8 @@ export function OnboardingWizard({ userName }: Props) {
           </div>
         )}
 
-        {/* Step 3: AI Generator */}
-        {step === 3 && useAI && !generatedCatalog && (
+        {/* Step 4: AI Generator */}
+        {step === 4 && useAI && !generatedCatalog && (
           <div className="space-y-6">
             <div>
               <button onClick={() => { setUseAI(false); setGeneratedCatalog(null) }} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
@@ -390,21 +457,21 @@ export function OnboardingWizard({ userName }: Props) {
 
             <AICatalogGenerator
               businessName={businessName}
-              businessDescription={`${BUSINESS_TYPES.find(t => t.value === businessType)?.label} digital`}
+              businessDescription={businessDescription}
               businessType={businessType}
               onGenerated={(catalog) => {
                 setGeneratedCatalog(catalog)
-                setStep(4)
+                setStep(5)
               }}
             />
           </div>
         )}
 
-        {/* Step 4: AI Review */}
-        {step === 4 && useAI && generatedCatalog && (
+        {/* Step 5: AI Review */}
+        {step === 5 && useAI && generatedCatalog && (
           <div className="space-y-6">
             <div>
-              <button onClick={() => { setGeneratedCatalog(null); setStep(3) }} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
+              <button onClick={() => { setGeneratedCatalog(null); setStep(4) }} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
                 <ArrowLeft className="h-3.5 w-3.5" /> Atrás
               </button>
               <h1 className="text-2xl font-extrabold text-night-800">Configura los detalles</h1>
@@ -444,8 +511,8 @@ export function OnboardingWizard({ userName }: Props) {
                 <div className="flex gap-2">
                   <CountryCodeSelect
                     value={contactCountryCode}
-                    onChange={() => {}}
-                    disabled={true}
+                    onChange={setContactCountryCode}
+                    disabled={false}
                   />
                   <Input
                     value={contactPhone}
@@ -487,7 +554,7 @@ export function OnboardingWizard({ userName }: Props) {
         )}
 
         {/* Done: Manual flow */}
-        {step === 4 && !useAI && (
+        {step === 5 && !useAI && (
           <div className="flex flex-col items-center gap-4 py-6 text-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-lime-100">
               <CheckCircle2 className="h-9 w-9 text-lime-600" />
@@ -503,7 +570,7 @@ export function OnboardingWizard({ userName }: Props) {
         )}
 
         {/* Done: AI flow */}
-        {step === 5 && useAI && (
+        {step === 6 && useAI && (
           <div className="flex flex-col items-center gap-4 py-6 text-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-lime-100">
               <CheckCircle2 className="h-9 w-9 text-lime-600" />
