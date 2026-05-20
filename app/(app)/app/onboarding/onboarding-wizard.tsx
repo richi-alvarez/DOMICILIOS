@@ -2,12 +2,14 @@
 
 import { useState, useTransition, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowRight, ArrowLeft, Loader2, CheckCircle2, Store, Utensils, ShoppingBag, Briefcase, MessageCircle, Mail } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Loader2, CheckCircle2, Store, Utensils, ShoppingBag, Briefcase, MessageCircle, Mail, Sparkles } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { checkSlugAvailable, createCatalogReturn } from '@/lib/actions/catalogs'
+import { checkSlugAvailable, createCatalogReturn, canAccessAIFeatures } from '@/lib/actions/catalogs'
 import { cn } from '@/lib/utils'
+import { AICatalogGenerator } from '@/components/app/ai-catalog-generator'
+import type { GeneratedCatalogStructure } from '@/lib/actions/catalogs/generate-ai-catalog'
 
 const BUSINESS_TYPES = [
   { value: 'restaurant', label: 'Restaurante', icon: Utensils, desc: 'Menú digital, pedidos por WhatsApp' },
@@ -25,6 +27,11 @@ export function OnboardingWizard({ userName }: Props) {
   const [step, setStep] = useState(1)
   const [isPending, startTransition] = useTransition()
 
+  // AI feature access
+  const [canUseAI, setCanUseAI] = useState(false)
+  const [useAI, setUseAI] = useState(false)
+  const [generatedCatalog, setGeneratedCatalog] = useState<GeneratedCatalogStructure | null>(null)
+
   // Form state
   const [businessName, setBusinessName] = useState('')
   const [businessType, setBusinessType] = useState('')
@@ -34,6 +41,15 @@ export function OnboardingWizard({ userName }: Props) {
   const [contactPhone, setContactPhone] = useState('')
   const [contactEmail, setContactEmail] = useState('')
   const [error, setError] = useState('')
+
+  // Check AI access on mount
+  useEffect(() => {
+    const checkAI = async () => {
+      const hasAccess = await canAccessAIFeatures()
+      setCanUseAI(hasAccess)
+    }
+    checkAI()
+  }, [])
 
   // Derivar slug del nombre del negocio
   useEffect(() => {
@@ -91,21 +107,24 @@ export function OnboardingWizard({ userName }: Props) {
       if ('error' in result) {
         setError(result.error)
       } else {
-        setStep(4)
+        const nextStep = useAI ? 5 : 4
+        setStep(nextStep)
         setTimeout(() => router.push(`/app/catalogs/${result.id}`), 1800)
       }
     })
   }
 
   const firstName = userName.split(' ')[0] || 'usuario'
+  const totalSteps = useAI ? 4 : 4
+  const progressSteps = [1, 2, 3, 4]
 
   return (
     <div className="w-full max-w-lg">
       {/* Progress */}
-      {step < 4 && (
+      {step < 5 && (
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-3">
-            {[1, 2, 3].map((s) => (
+            {progressSteps.map((s) => (
               <div key={s} className="flex items-center gap-2">
                 <div className={cn(
                   'flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold transition-all',
@@ -115,11 +134,11 @@ export function OnboardingWizard({ userName }: Props) {
                 )}>
                   {step > s ? '✓' : s}
                 </div>
-                {s < 3 && <div className={cn('h-0.5 flex-1 w-12 rounded-full transition-all', step > s ? 'bg-lime-400' : 'bg-warm-200')} />}
+                {s < 4 && <div className={cn('h-0.5 flex-1 w-12 rounded-full transition-all', step > s ? 'bg-lime-400' : 'bg-warm-200')} />}
               </div>
             ))}
           </div>
-          <p className="text-xs text-warm-400">Paso {step} de 3</p>
+          <p className="text-xs text-warm-400">Paso {step} de {totalSteps}</p>
         </div>
       )}
 
@@ -238,7 +257,7 @@ export function OnboardingWizard({ userName }: Props) {
         )}
 
         {/* Step 3: Canal de pedidos */}
-        {step === 3 && (
+        {step === 3 && !useAI && (
           <div className="space-y-6">
             <div>
               <button onClick={() => setStep(2)} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
@@ -247,6 +266,139 @@ export function OnboardingWizard({ userName }: Props) {
               <h1 className="text-2xl font-extrabold text-night-800">¿Cómo recibirás pedidos?</h1>
               <p className="mt-1 text-sm text-warm-500">
                 Puedes cambiar esto después en la configuración.
+              </p>
+            </div>
+
+            {canUseAI && (
+              <button
+                onClick={() => setUseAI(true)}
+                className="w-full rounded-xl border-2 border-dashed border-primary-300 bg-primary-50 p-4 text-left transition-all hover:border-primary-400 hover:bg-primary-100"
+              >
+                <div className="flex items-start gap-3">
+                  <Sparkles className="h-5 w-5 text-primary-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-primary-900">Crear con IA</p>
+                    <p className="text-sm text-primary-700 mt-1">
+                      Déjale a la IA generar la estructura óptima para tu catálogo
+                    </p>
+                  </div>
+                </div>
+              </button>
+            )}
+
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-warm-200" />
+              </div>
+              <div className="relative flex justify-center text-xs">
+                <span className="bg-white px-2 text-warm-500">O configura manualmente</span>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={() => setOrderChannel('whatsapp')}
+                className={cn(
+                  'flex flex-col items-center gap-2 rounded-xl border-2 py-5 px-3 transition-all',
+                  orderChannel === 'whatsapp' ? 'border-primary-500 bg-primary-50' : 'border-warm-200 hover:border-warm-300',
+                )}
+              >
+                <MessageCircle className={cn('h-8 w-8', orderChannel === 'whatsapp' ? 'text-primary-500' : 'text-warm-400')} />
+                <span className="font-bold text-night-800">WhatsApp</span>
+                <span className="text-xs text-warm-500 text-center">Los clientes te escriben directamente</span>
+              </button>
+              <button
+                onClick={() => setOrderChannel('email')}
+                className={cn(
+                  'flex flex-col items-center gap-2 rounded-xl border-2 py-5 px-3 transition-all',
+                  orderChannel === 'email' ? 'border-primary-500 bg-primary-50' : 'border-warm-200 hover:border-warm-300',
+                )}
+              >
+                <Mail className={cn('h-8 w-8', orderChannel === 'email' ? 'text-primary-500' : 'text-warm-400')} />
+                <span className="font-bold text-night-800">Email</span>
+                <span className="text-xs text-warm-500 text-center">Recibe pedidos por correo</span>
+              </button>
+            </div>
+
+            {orderChannel === 'whatsapp' && (
+              <div className="space-y-2">
+                <Label className="font-semibold text-night-700">Número de WhatsApp</Label>
+                <div className="flex gap-2">
+                  <Input value="+57" readOnly className="w-16 text-center font-mono text-sm" />
+                  <Input
+                    value={contactPhone}
+                    onChange={(e) => setContactPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
+                    placeholder="3001234567"
+                    className="flex-1 font-mono"
+                  />
+                </div>
+                <p className="text-xs text-warm-400">Los pedidos llegarán a este número. Puedes cambiarlo después.</p>
+              </div>
+            )}
+
+            {orderChannel === 'email' && (
+              <div className="space-y-2">
+                <Label className="font-semibold text-night-700">Email para pedidos</Label>
+                <Input
+                  type="email"
+                  value={contactEmail}
+                  onChange={(e) => setContactEmail(e.target.value)}
+                  placeholder="pedidos@tunegocio.com"
+                />
+              </div>
+            )}
+
+            {error && <p className="text-sm text-red-500 rounded-xl bg-red-50 px-3 py-2">{error}</p>}
+
+            <Button
+              className="w-full"
+              disabled={isPending}
+              onClick={handleCreate}
+            >
+              {isPending ? (
+                <><Loader2 className="h-4 w-4 animate-spin" /> Creando tu tienda...</>
+              ) : (
+                <>¡Crear mi tienda! <ArrowRight className="h-4 w-4" /></>
+              )}
+            </Button>
+          </div>
+        )}
+
+        {/* Step 3: AI Generator */}
+        {step === 3 && useAI && !generatedCatalog && (
+          <div className="space-y-6">
+            <div>
+              <button onClick={() => { setUseAI(false); setGeneratedCatalog(null) }} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
+                <ArrowLeft className="h-3.5 w-3.5" /> Atrás
+              </button>
+              <h1 className="text-2xl font-extrabold text-night-800">Genera tu catálogo con IA</h1>
+              <p className="mt-1 text-sm text-warm-500">
+                La IA analizará tu información y generará una estructura óptima para tu catálogo.
+              </p>
+            </div>
+
+            <AICatalogGenerator
+              businessName={businessName}
+              businessDescription={`${BUSINESS_TYPES.find(t => t.value === businessType)?.label} digital`}
+              businessType={businessType}
+              onGenerated={(catalog) => {
+                setGeneratedCatalog(catalog)
+                setStep(4)
+              }}
+            />
+          </div>
+        )}
+
+        {/* Step 4: AI Review */}
+        {step === 4 && useAI && generatedCatalog && (
+          <div className="space-y-6">
+            <div>
+              <button onClick={() => { setGeneratedCatalog(null); setStep(3) }} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
+                <ArrowLeft className="h-3.5 w-3.5" /> Atrás
+              </button>
+              <h1 className="text-2xl font-extrabold text-night-800">Configura los detalles</h1>
+              <p className="mt-1 text-sm text-warm-500">
+                Selecciona cómo recibirás los pedidos.
               </p>
             </div>
 
@@ -319,8 +471,8 @@ export function OnboardingWizard({ userName }: Props) {
           </div>
         )}
 
-        {/* Step 4: Done */}
-        {step === 4 && (
+        {/* Done: Manual flow */}
+        {step === 4 && !useAI && (
           <div className="flex flex-col items-center gap-4 py-6 text-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-lime-100">
               <CheckCircle2 className="h-9 w-9 text-lime-600" />
@@ -329,6 +481,22 @@ export function OnboardingWizard({ userName }: Props) {
               <h1 className="text-2xl font-extrabold text-night-800">¡Tienda creada!</h1>
               <p className="mt-2 text-sm text-warm-500">
                 <strong>{businessName}</strong> está lista. Redirigiendo al panel...
+              </p>
+            </div>
+            <Loader2 className="h-5 w-5 animate-spin text-primary-500" />
+          </div>
+        )}
+
+        {/* Done: AI flow */}
+        {step === 5 && useAI && (
+          <div className="flex flex-col items-center gap-4 py-6 text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-lime-100">
+              <CheckCircle2 className="h-9 w-9 text-lime-600" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-extrabold text-night-800">¡Tienda creada!</h1>
+              <p className="mt-2 text-sm text-warm-500">
+                <strong>{businessName}</strong> está lista con estructura generada por IA. Redirigiendo al panel...
               </p>
             </div>
             <Loader2 className="h-5 w-5 animate-spin text-primary-500" />
