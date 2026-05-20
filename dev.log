@@ -1,2 +1,992 @@
-sudo: The "no new privileges" flag is set, which prevents sudo from running as root.
-sudo: If sudo is running in a container, you may need to adjust the container configuration to disable the flag.
+
+> domicilios@0.1.0 dev
+> next dev --turbopack
+
+ ⚠ Invalid next.config.ts options detected: 
+ ⚠     Unrecognized key(s) in object: 'turbopack' at "experimental"
+ ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /home/epayco21/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /home/epayco21/Escritorio/richi-alvarez/domicilios/package-lock.json
+
+   ▲ Next.js 15.5.18 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.104:3000
+   - Environments: .env.local
+   - Experiments (use with caution):
+     ⨯ turbopack
+     · serverActions
+
+ ✓ Starting...
+ ✓ Compiled middleware in 154ms
+ ✓ Ready in 1158ms
+ ○ Compiling / ...
+ ✓ Compiled / in 3.2s
+ GET / 200 in 4059ms
+ GET / 200 in 358ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:06.679Z',
+  level: 'info',
+  message: '🔐 Auth Request in Middleware',
+  context: {
+  pathname: '/api/auth/session',
+  method: 'GET',
+  hasSessionToken: true,
+  hasSecureSessionToken: false,
+  searchParams: { code: null, state: null, error: null, errorDescription: null },
+  timestamp: '2026-05-20T18:45:06.679Z'
+},
+  environment: 'development'
+}
+ ○ Compiling /api/auth/[...nextauth] ...
+ ✓ Compiled /api/auth/[...nextauth] in 919ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:08.710Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:08.712Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:08.712Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/auth/session 200 in 2030ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:08.725Z',
+  level: 'info',
+  message: '🔐 Auth Request in Middleware',
+  context: {
+  pathname: '/api/auth/session',
+  method: 'GET',
+  hasSessionToken: true,
+  hasSecureSessionToken: false,
+  searchParams: { code: null, state: null, error: null, errorDescription: null },
+  timestamp: '2026-05-20T18:45:08.725Z'
+},
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:09.010Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:09.011Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:09.011Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/auth/session 200 in 286ms
+ ○ Compiling /app ...
+ ✓ Compiled /app in 1444ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.765Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.766Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.767Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.768Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.768Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.768Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.831Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.832Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.832Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.833Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.833Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:13.833Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /app 200 in 2018ms
+ ○ Compiling /app/catalogs/[id] ...
+ ✓ Compiled /app/catalogs/[id] in 636ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8 200 in 1227ms
+ ✓ Compiled /api/catalogs/[id] in 293ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:18.382Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:18.383Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:18.383Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8 200 in 1276ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:18.716Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:18.716Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:18.716Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8 200 in 312ms
+ ✓ Compiled /_not-found/page in 271ms
+ GET /app/catalogs 404 in 384ms
+ GET /app/catalogs 404 in 132ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:24.050Z',
+  level: 'info',
+  message: '🔐 Auth Request in Middleware',
+  context: {
+  pathname: '/api/auth/session',
+  method: 'GET',
+  hasSessionToken: true,
+  hasSecureSessionToken: false,
+  searchParams: { code: null, state: null, error: null, errorDescription: null },
+  timestamp: '2026-05-20T18:45:24.050Z'
+},
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:24.370Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:24.370Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:24.370Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/auth/session 200 in 317ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:24.380Z',
+  level: 'info',
+  message: '🔐 Auth Request in Middleware',
+  context: {
+  pathname: '/api/auth/session',
+  method: 'GET',
+  hasSessionToken: true,
+  hasSecureSessionToken: false,
+  searchParams: { code: null, state: null, error: null, errorDescription: null },
+  timestamp: '2026-05-20T18:45:24.380Z'
+},
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:24.642Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:24.642Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:24.643Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/auth/session 200 in 261ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.495Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.496Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.496Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.497Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.498Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.498Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.528Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.528Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.528Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.529Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.530Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.530Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /app 200 in 512ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:29.909Z',
+  level: 'info',
+  message: '🔐 Auth Request in Middleware',
+  context: {
+  pathname: '/api/auth/session',
+  method: 'GET',
+  hasSessionToken: true,
+  hasSecureSessionToken: false,
+  searchParams: { code: null, state: null, error: null, errorDescription: null },
+  timestamp: '2026-05-20T18:45:29.909Z'
+},
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:30.223Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:30.224Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:30.224Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/auth/session 200 in 312ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:30.233Z',
+  level: 'info',
+  message: '🔐 Auth Request in Middleware',
+  context: {
+  pathname: '/api/auth/session',
+  method: 'GET',
+  hasSessionToken: true,
+  hasSecureSessionToken: false,
+  searchParams: { code: null, state: null, error: null, errorDescription: null },
+  timestamp: '2026-05-20T18:45:30.233Z'
+},
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:30.497Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:30.497Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:30.497Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/auth/session 200 in 261ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8 200 in 106ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:34.930Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:34.930Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:34.930Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8 200 in 327ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:35.231Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:35.231Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:35.231Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ GET /api/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8 200 in 286ms
+ ○ Compiling /app/catalogs/[id]/products ...
+ ✓ Compiled /app/catalogs/[id]/products in 1530ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products 200 in 2296ms
+ ○ Compiling /app/catalogs/[id]/products/[productId] ...
+ ✓ Compiled /app/catalogs/[id]/products/[productId] in 561ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 1202ms
+[INFO] {
+  timestamp: '2026-05-20T18:45:50.947Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:50.948Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:50.948Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:51.008Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:51.008Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:45:51.009Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ POST /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 187ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products 200 in 133ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 138ms
+[INFO] {
+  timestamp: '2026-05-20T18:46:06.822Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:06.823Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:06.823Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:06.889Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:06.889Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:06.889Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ POST /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 220ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products 200 in 128ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 126ms
+[INFO] {
+  timestamp: '2026-05-20T18:46:25.771Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:25.771Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:25.771Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:25.834Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:25.834Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:25.835Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ POST /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 247ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products 200 in 135ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 140ms
+[INFO] {
+  timestamp: '2026-05-20T18:46:54.280Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:54.280Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:54.281Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:54.368Z',
+  level: 'info',
+  message: '🔑 JWT Callback',
+  context: {
+    hasUser: false,
+    hasAccount: false,
+    accountProvider: undefined,
+    tokenId: '4be1c84a-461c-4475-a916-41d495f54315',
+    userId: undefined
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:54.368Z',
+  level: 'info',
+  message: '📱 Session Callback',
+  context: {
+    userEmail: 'pro@example.com',
+    tokenHasId: true,
+    sessionUserHasId: false
+  },
+  environment: 'development'
+}
+[INFO] {
+  timestamp: '2026-05-20T18:46:54.368Z',
+  level: 'info',
+  message: '✅ Session ID set from token',
+  context: { userId: '4be1c84a-461c-4475-a916-41d495f54315' },
+  environment: 'development'
+}
+ POST /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 232ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products 200 in 136ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products/5c4ee780-c62d-41d8-89e2-490bcd749b4f 200 in 165ms
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/products 200 in 140ms
+ ○ Compiling /app/catalogs/[id]/design ...
+ ✓ Compiled /app/catalogs/[id]/design in 512ms
+Error: Route "/app/catalogs/[id]/design" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at DesignPage (app/(app)/app/catalogs/[id]/design/page.tsx:100:35)
+   98 |   // Load catalog from database
+   99 |   const catalog = await db.query.catalogs.findFirst({
+> 100 |     where: eq(catalogs.id, params.id),
+      |                                   ^
+  101 |   })
+  102 |
+  103 |   if (!catalog) {
+Error: Route "/app/catalogs/[id]/design" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at DesignPage (app/(app)/app/catalogs/[id]/design/page.tsx:108:53)
+  106 |
+  107 |   // Load blocks from database
+> 108 |   const dbBlocks = await getBlocksForCatalog(params.id)
+      |                                                     ^
+  109 |
+  110 |   // Convert blocks from DB format to Block type, filtering for valid types
+  111 |   const initialBlocks: Block[] = dbBlocks
+Error: Route "/app/catalogs/[id]/design" used `params.id`. `params` should be awaited before using its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+    at DesignPage (app/(app)/app/catalogs/[id]/design/page.tsx:125:25)
+  123 |   return (
+  124 |     <DesignEditor
+> 125 |       catalogId={params.id}
+      |                         ^
+  126 |       catalogSlug={catalog.slug}
+  127 |       initialBlocks={initialBlocks}
+  128 |       initialTheme={initialTheme}
+ GET /app/catalogs/778539b8-470a-4a26-8fad-65e6ed78ebb8/design 200 in 1176ms

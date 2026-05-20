@@ -7,7 +7,7 @@ import { ChevronLeft, Upload, Wand2, Plus, X, Zap, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { createProduct, updateProduct } from '@/lib/actions/products'
-import type { CreateProductPayload } from '@/lib/actions/products'
+import type { CreateProductPayload, UpdateProductPayload } from '@/lib/actions/products'
 
 interface ProductFormProps {
   catalogId: string
@@ -113,22 +113,33 @@ export function ProductForm({
     setError(null)
 
     try {
+      // Helper to handle optional string fields
+      const stringOrNull = (value: string | null | undefined) =>
+        value && typeof value === 'string' && value.trim() ? value.trim() : null
+
+      // Helper to handle optional numeric fields
+      const numberOrNull = (value: any) => {
+        if (value === null || value === undefined || value === '') return null
+        const num = typeof value === 'string' ? parseFloat(value) : value
+        return isNaN(num) ? null : num
+      }
+
       const payload: CreateProductPayload = {
         catalogId,
         name: formData.name,
-        description: formData.description,
+        description: stringOrNull(formData.description),
         price: formData.price,
-        compareAt: formData.compareAt ? parseFloat(formData.compareAt as string) : undefined,
-        stock: formData.stock,
-        categoryId: formData.categoryId,
+        compareAt: numberOrNull(formData.compareAt),
+        stock: numberOrNull(formData.stock),
+        categoryId: stringOrNull(formData.categoryId),
         active: formData.isActive,
         image: formData.image as string | undefined,
         isCartProduct: formData.isCartProduct,
-        tags: formData.tags,
+        tags: formData.tags && formData.tags.length > 0 ? formData.tags : null,
       }
 
       const result = isEditing
-        ? await updateProduct({ ...payload, id: product!.id } as any)
+        ? await updateProduct({ ...payload, id: product!.id } as UpdateProductPayload)
         : await createProduct(payload)
 
       if (result.error) {

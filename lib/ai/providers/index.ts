@@ -15,7 +15,7 @@ type AIProviderType = 'claude' | 'openai'
 /**
  * Configuración global de IA
  */
-let aiProviderCache: Map<AIProviderType, VisionAIProvider> = new Map()
+const aiProviderCache: Map<AIProviderType, VisionAIProvider> = new Map()
 
 /**
  * Obtiene una instancia de proveedor IA

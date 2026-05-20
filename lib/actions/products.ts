@@ -10,15 +10,45 @@ import { slugify } from '@/lib/utils'
 const createProductSchema = z.object({
   catalogId: z.string().uuid(),
   name: z.string().min(1, 'El nombre es requerido'),
-  description: z.string().optional(),
+  description: z.union([
+    z.string().transform(v => v && v.trim() ? v : undefined),
+    z.null().transform(() => undefined),
+    z.undefined(),
+  ]).optional(),
   price: z.number().min(0),
-  compareAt: z.number().optional(),
-  stock: z.number().int().optional(),
-  categoryId: z.string().uuid().optional(),
-  sku: z.string().optional(),
+  compareAt: z.union([
+    z.number().min(0),
+    z.literal('').transform(() => undefined),
+    z.null().transform(() => undefined),
+    z.undefined(),
+  ]).optional(),
+  stock: z.union([
+    z.number().int().min(0),
+    z.null().transform(() => undefined),
+    z.undefined(),
+  ]).optional(),
+  categoryId: z.union([
+    z.string().uuid(),
+    z.literal('').transform(() => undefined),
+    z.null().transform(() => undefined),
+    z.undefined(),
+  ]).optional(),
+  sku: z.union([
+    z.string().transform(v => v && v.trim() ? v : undefined),
+    z.null().transform(() => undefined),
+    z.undefined(),
+  ]).optional(),
   active: z.boolean().default(true),
-  tags: z.array(z.string()).optional(),
-  image: z.string().optional(),
+  tags: z.union([
+    z.array(z.string()),
+    z.null().transform(() => undefined),
+    z.undefined(),
+  ]).optional(),
+  image: z.union([
+    z.string(),
+    z.null().transform(() => undefined),
+    z.undefined(),
+  ]).optional(),
   isCartProduct: z.boolean().default(true),
 })
 
@@ -108,7 +138,20 @@ export async function createProduct(payload: CreateProductPayload) {
       .returning()
 
     revalidatePath(`/app/catalogs/${catalogId}/products`)
-    return { product: { id: product.id, name: product.name } }
+    return {
+      product: {
+        id: product.id,
+        name: product.name,
+        description: product.description ?? undefined,
+        price: product.price / 100,
+        compareAt: product.compareAt ? product.compareAt / 100 : undefined,
+        stock: product.stock ?? undefined,
+        sku: product.sku ?? undefined,
+        categoryId: product.categoryId ?? undefined,
+        active: product.active,
+        tags: [],
+      }
+    }
   } catch (error) {
     console.error('Error creating product:', error)
     return { error: 'Error al crear el producto' }
@@ -144,7 +187,7 @@ export async function updateProduct(payload: UpdateProductPayload) {
   }
 
   try {
-    await db
+    const [updatedProduct] = await db
       .update(products)
       .set({
         name,
@@ -159,9 +202,23 @@ export async function updateProduct(payload: UpdateProductPayload) {
         active,
       })
       .where(eq(products.id, id))
+      .returning()
 
     revalidatePath(`/app/catalogs/${catalogId}/products`)
-    return { product: { id: existingProduct.id, name } }
+    return {
+      product: {
+        id: updatedProduct.id,
+        name: updatedProduct.name,
+        description: updatedProduct.description ?? undefined,
+        price: updatedProduct.price / 100,
+        compareAt: updatedProduct.compareAt ? updatedProduct.compareAt / 100 : undefined,
+        stock: updatedProduct.stock ?? undefined,
+        sku: updatedProduct.sku ?? undefined,
+        categoryId: updatedProduct.categoryId ?? undefined,
+        active: updatedProduct.active,
+        tags: [],
+      }
+    }
   } catch (error) {
     console.error('Error updating product:', error)
     return { error: 'Error al actualizar el producto' }

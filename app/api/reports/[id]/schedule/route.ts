@@ -142,7 +142,7 @@ export async function POST(
 
     // Calculate next run time based on frequency
     const now = new Date()
-    let nextRunAt = new Date()
+    const nextRunAt = new Date()
 
     if (validated.frequency === 'daily') {
       nextRunAt.setDate(nextRunAt.getDate() + 1)

@@ -1,12 +1,15 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { Search, Plus, Download, Upload, ChevronDown, ChevronUp, Zap } from 'lucide-react'
+import { useState, useEffect, useRef, useTransition } from 'react'
+import { Search, Plus, Download, Upload, ChevronDown, ChevronUp, Zap, Loader2, X, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Label } from '@/components/ui/label'
 import { formatMoney } from '@/lib/utils'
 import Link from 'next/link'
-import { deleteProduct, exportProductsToCSV } from '@/lib/actions/products'
+import { deleteProduct, exportProductsToCSV, createProduct } from '@/lib/actions/products'
 import { ScanMenuModal } from './scan-menu-modal'
 
 interface Product {
@@ -36,6 +39,7 @@ interface ProductsListProps {
 }
 
 export function ProductsList({ products, categories, catalogId, currency }: ProductsListProps) {
+  const [productList, setProductList] = useState(products)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('')
   const [expandedCategories, setExpandedCategories] = useState(true)
@@ -44,6 +48,9 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
   const [isExporting, setIsExporting] = useState(false)
   const [isScanModalOpen, setIsScanModalOpen] = useState(false)
   const [isActionsOpen, setIsActionsOpen] = useState(false)
+  const [isAddingProduct, setIsAddingProduct] = useState(false)
+  const [isPending, startTransition] = useTransition()
+  const [formData, setFormData] = useState({ name: '', description: '', price: '', compareAt: '', stock: '', sku: '', categoryId: '' })
   const actionsRef = useRef<HTMLDivElement>(null)
   const itemsPerPage = 15
 
@@ -78,7 +85,28 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
     }
   }
 
-  const filteredProducts = products.filter((product) => {
+  const handleCreateProduct = () => {
+    if (!formData.name.trim() || !formData.price) return
+    startTransition(async () => {
+      const result = await createProduct({
+        catalogId,
+        name: formData.name,
+        description: formData.description || undefined,
+        price: parseFloat(formData.price),
+        compareAt: formData.compareAt ? parseFloat(formData.compareAt) : undefined,
+        stock: formData.stock ? parseInt(formData.stock) : undefined,
+        categoryId: formData.categoryId || undefined,
+        sku: formData.sku || undefined,
+      })
+      if ('product' in result && result.product) {
+        setProductList([...productList, result.product])
+        setFormData({ name: '', description: '', price: '', compareAt: '', stock: '', sku: '', categoryId: '' })
+        setIsAddingProduct(false)
+      }
+    })
+  }
+
+  const filteredProducts = productList.filter((product) => {
     const matchesSearch =
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.sku?.toLowerCase().includes(searchTerm.toLowerCase())
@@ -123,12 +151,10 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
           </Button>
         </div>
         <div className="h-6 w-px bg-warm-200 hidden sm:block" />
-        <Link href={`/app/catalogs/${catalogId}/products/new`}>
-          <Button size="sm" className="gap-2">
-            <Plus className="h-4 w-4" />
-            Crear nuevo
-          </Button>
-        </Link>
+        <Button size="sm" className="gap-2" onClick={() => setIsAddingProduct(true)}>
+          <Plus className="h-4 w-4" />
+          Crear nuevo
+        </Button>
       </div>
 
       <div className="flex items-center gap-3">
@@ -339,6 +365,112 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                 disabled={currentPage === totalPages}
               >
                 Siguiente
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isAddingProduct && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="w-full max-w-md rounded-xl bg-white shadow-lg">
+            <div className="border-b border-warm-200 px-6 py-4">
+              <h2 className="text-lg font-bold text-night-800">Nuevo producto</h2>
+            </div>
+            <div className="space-y-4 px-6 py-4 max-h-[70vh] overflow-y-auto">
+              <div>
+                <Label htmlFor="name">Nombre *</Label>
+                <Input
+                  id="name"
+                  placeholder="Nombre del producto"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  autoFocus
+                />
+              </div>
+              <div>
+                <Label htmlFor="description">Descripción</Label>
+                <Textarea
+                  id="description"
+                  placeholder="Descripción del producto"
+                  value={formData.description}
+                  onChange={(e) => setFormData({...formData, description: e.target.value})}
+                  rows={3}
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label htmlFor="price">Precio *</Label>
+                  <Input
+                    id="price"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                    value={formData.price}
+                    onChange={(e) => setFormData({...formData, price: e.target.value})}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="compareAt">Precio anterior</Label>
+                  <Input
+                    id="compareAt"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    placeholder="0"
+                    value={formData.compareAt}
+                    onChange={(e) => setFormData({...formData, compareAt: e.target.value})}
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label htmlFor="stock">Stock (vacío = ilimitado)</Label>
+                  <Input
+                    id="stock"
+                    type="number"
+                    min="0"
+                    placeholder="∞"
+                    value={formData.stock}
+                    onChange={(e) => setFormData({...formData, stock: e.target.value})}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="sku">SKU</Label>
+                  <Input
+                    id="sku"
+                    placeholder="ABC-001"
+                    value={formData.sku}
+                    onChange={(e) => setFormData({...formData, sku: e.target.value})}
+                  />
+                </div>
+              </div>
+              {categories.length > 0 && (
+                <div>
+                  <Label htmlFor="categoryId">Categoría</Label>
+                  <select
+                    id="categoryId"
+                    value={formData.categoryId}
+                    onChange={(e) => setFormData({...formData, categoryId: e.target.value})}
+                    className="w-full rounded-md border border-warm-200 bg-white py-2 pl-3 pr-8 text-sm text-night-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  >
+                    <option value="">Sin categoría</option>
+                    {categories.map((c) => (
+                      <option key={c.id} value={c.id}>{c.name}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+            <div className="border-t border-warm-200 flex justify-end gap-3 px-6 py-4">
+              <Button variant="outline" onClick={() => setIsAddingProduct(false)}>Cancelar</Button>
+              <Button
+                onClick={handleCreateProduct}
+                disabled={!formData.name.trim() || !formData.price || isPending}
+              >
+                {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
+                Crear producto
               </Button>
             </div>
           </div>

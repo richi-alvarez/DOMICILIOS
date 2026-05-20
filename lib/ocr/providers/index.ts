@@ -15,7 +15,7 @@ type OCRProviderType = 'tesseract' | 'paddleocr'
 /**
  * Configuración global de OCR
  */
-let ocrProviderCache: Map<OCRProviderType, OCRProvider> = new Map()
+const ocrProviderCache: Map<OCRProviderType, OCRProvider> = new Map()
 
 /**
  * Obtiene una instancia de proveedor OCR

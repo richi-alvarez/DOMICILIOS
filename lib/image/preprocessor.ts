@@ -100,9 +100,9 @@ function preprocessImageCanvas(
 
       // Aplica transformaciones pixel a pixel
       for (let i = 0; i < data.length; i += 4) {
-        let r = data[i]
-        let g = data[i + 1]
-        let b = data[i + 2]
+        const r = data[i]
+        const g = data[i + 1]
+        const b = data[i + 2]
 
         // Grayscale
         if (options.grayscale) {

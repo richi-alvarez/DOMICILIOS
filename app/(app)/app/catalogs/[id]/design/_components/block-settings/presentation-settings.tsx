@@ -187,7 +187,7 @@ export default function PresentationSettings({ block, onChange }: PresentationSe
                   type="text"
                   value={block.bgVideoUrl}
                   onChange={(e) => {
-                    let url = e.target.value
+                    const url = e.target.value
                     // Convertir URL de YouTube watch a formato que funcione
                     if (url.includes('youtube.com/watch?v=')) {
                       const videoId = url.split('v=')[1]?.split('&')[0]

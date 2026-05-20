@@ -160,7 +160,7 @@ export async function POST(request: NextRequest) {
         })
 
         // Calculate next run time
-        let nextRunAt = new Date()
+        const nextRunAt = new Date()
         if (schedule.frequency === 'daily') {
           nextRunAt.setDate(nextRunAt.getDate() + 1)
           nextRunAt.setHours(6, 0, 0, 0)
