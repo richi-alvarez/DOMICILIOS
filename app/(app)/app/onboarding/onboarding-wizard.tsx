@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label'
 import { checkSlugAvailable, createCatalogReturn, canAccessAIFeatures } from '@/lib/actions/catalogs'
 import { cn } from '@/lib/utils'
 import { AICatalogGenerator } from '@/components/app/ai-catalog-generator'
+import { CountryCodeSelect } from '@/components/app/country-code-select'
 import type { GeneratedCatalogStructure } from '@/lib/actions/catalogs/generate-ai-catalog'
 
 const BUSINESS_TYPES = [
@@ -270,20 +271,25 @@ export function OnboardingWizard({ userName }: Props) {
             </div>
 
             {canUseAI && (
-              <button
-                onClick={() => setUseAI(true)}
-                className="w-full rounded-xl border-2 border-dashed border-primary-300 bg-primary-50 p-4 text-left transition-all hover:border-primary-400 hover:bg-primary-100"
-              >
+              <div className="rounded-2xl border-0 bg-blue-50 p-6 space-y-4">
                 <div className="flex items-start gap-3">
-                  <Sparkles className="h-5 w-5 text-primary-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="font-semibold text-primary-900">Crear con IA</p>
-                    <p className="text-sm text-primary-700 mt-1">
-                      Déjale a la IA generar la estructura óptima para tu catálogo
+                  <Sparkles className="h-6 w-6 text-blue-600 mt-0 flex-shrink-0" />
+                  <div className="flex-1">
+                    <h3 className="font-bold text-lg text-blue-900">Generar catálogo con IA</h3>
+                    <p className="text-sm text-blue-700 mt-2 leading-relaxed">
+                      Analiza tu negocio y genera automáticamente la estructura óptima del catálogo, incluyendo secciones, productos destacados y recomendaciones de diseño.
                     </p>
                   </div>
                 </div>
-              </button>
+                <div className="flex justify-end">
+                  <Button
+                    onClick={() => setUseAI(true)}
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+                  >
+                    Generar Ahora
+                  </Button>
+                </div>
+              </div>
             )}
 
             <div className="relative">
@@ -324,7 +330,11 @@ export function OnboardingWizard({ userName }: Props) {
               <div className="space-y-2">
                 <Label className="font-semibold text-night-700">Número de WhatsApp</Label>
                 <div className="flex gap-2">
-                  <Input value="+57" readOnly className="w-16 text-center font-mono text-sm" />
+                  <CountryCodeSelect
+                    value={contactCountryCode}
+                    onChange={() => {}}
+                    disabled={true}
+                  />
                   <Input
                     value={contactPhone}
                     onChange={(e) => setContactPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
@@ -431,7 +441,11 @@ export function OnboardingWizard({ userName }: Props) {
               <div className="space-y-2">
                 <Label className="font-semibold text-night-700">Número de WhatsApp</Label>
                 <div className="flex gap-2">
-                  <Input value="+57" readOnly className="w-16 text-center font-mono text-sm" />
+                  <CountryCodeSelect
+                    value={contactCountryCode}
+                    onChange={() => {}}
+                    disabled={true}
+                  />
                   <Input
                     value={contactPhone}
                     onChange={(e) => setContactPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
