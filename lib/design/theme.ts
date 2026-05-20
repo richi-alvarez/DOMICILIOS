@@ -21,15 +21,15 @@ export type FontValue = (typeof FONT_OPTIONS)[number]['value']
 export type RadiusValue = (typeof RADIUS_OPTIONS)[number]['value']
 
 export const themeSchema = z.object({
-  primaryColor: z.string().default('#FF6B57'),
-  primaryTextColor: z.string().default('#ffffff'),
-  bgColor: z.string().default('#FAFAF8'),
-  headerBg: z.string().default('#ffffff'),
+  primaryColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Invalid hex color').default('#FF6B57'),
+  primaryTextColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Invalid hex color').default('#ffffff'),
+  bgColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Invalid hex color').default('#FAFAF8'),
+  headerBg: z.string().regex(/^#[0-9A-Fa-f]{6}$/, 'Invalid hex color').default('#ffffff'),
   headingFont: z.string().default('sora'),
   bodyFont: z.string().default('inter'),
   borderRadius: z.string().default('md'),
-  logoUrl: z.string().default(''),
-  coverImageUrl: z.string().default(''),
+  logoUrl: z.string().url('Invalid URL').default(''),
+  coverImageUrl: z.string().url('Invalid URL').default(''),
   customDomain: z.string().default(''),
 })
 
