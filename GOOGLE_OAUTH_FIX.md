@@ -30,7 +30,7 @@ Busca el Cliente OAuth con Client ID: `1038474471943-64n4tpt6a0pn2sctt6oq971qqs9
 **Verificar:**
 - ✓ Type: "Web application"
 - ✓ Authorized redirect URIs contiene EXACTAMENTE:
-  - `https://schemes-friday-confidential-she.trycloudflare.com/api/auth/callback/google`
+  - `http://localhost:3000/api/auth/callback/google`
   - `http://localhost:3000/api/auth/callback/google`
   - `http://localhost:3001/api/auth/callback/google`
 

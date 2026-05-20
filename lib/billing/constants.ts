@@ -9,6 +9,7 @@ export interface PlanLimits {
   analytics: boolean
   aiFeatures: boolean
   monitoringAccess: boolean
+  canDeleteCatalogs: boolean
 }
 
 export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
@@ -21,6 +22,7 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     analytics: false,
     aiFeatures: false,
     monitoringAccess: false,
+    canDeleteCatalogs: false,
   },
   pro: {
     catalogs: 3,
@@ -29,8 +31,9 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     collaborators: 5,
     customDomain: true,
     analytics: true,
-    aiFeatures: false,
+    aiFeatures: true,
     monitoringAccess: true,
+    canDeleteCatalogs: true,
   },
   premium: {
     catalogs: 10,
@@ -41,6 +44,7 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     analytics: true,
     aiFeatures: true,
     monitoringAccess: true,
+    canDeleteCatalogs: true,
   },
   business: {
     catalogs: -1,
@@ -51,6 +55,7 @@ export const PLAN_LIMITS: Record<PlanCode, PlanLimits> = {
     analytics: true,
     aiFeatures: true,
     monitoringAccess: true,
+    canDeleteCatalogs: true,
   },
 }
 

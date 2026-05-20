@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { LoginForm } from './login-form'
 
@@ -13,9 +12,7 @@ export default function LoginPage() {
         <CardDescription>Accede a tu panel de WaStore</CardDescription>
       </CardHeader>
       <CardContent>
-        <Suspense>
-          <LoginForm />
-        </Suspense>
+        <LoginForm />
       </CardContent>
     </Card>
   )

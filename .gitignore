@@ -29,4 +29,11 @@ Makefile
 .make*
 .playwright-cli
 .playwright-mcp
+playwright-report
 .monitoring-thresholds.jsonargocd
+__tests__
+.next-broken
+.next-build-failed
+.next.*
+test-results
+QA_Reports
