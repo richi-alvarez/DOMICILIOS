@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useCallback } from 'react'
 import CarouselPreview from './carousel-preview'
 import BenefitsPreview from './benefits-preview'
 import SocialProofPreview from './socialproof-preview'
@@ -63,6 +64,12 @@ interface PreviewPanelProps {
 }
 
 export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, products = [], categories = [] }: PreviewPanelProps) {
+  const [cartItems, setCartItems] = useState<Set<string>>(new Set())
+
+  const handleAddToCart = useCallback((productId: string) => {
+    setCartItems(prev => new Set(prev).add(productId))
+  }, [])
+
   const borderRadiusMap = {
     none: '0px',
     sm: '8px',
@@ -329,8 +336,12 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 </a>
                               )}
                               {block.enableCart && (
-                                <button className={`text-xs text-white px-2 py-1 w-full ${borderRadiusClass[theme.borderRadius]}`} style={{ backgroundColor: theme.buttonPrimaryColor }}>
-                                  Agregar al carrito
+                                <button
+                                  onClick={() => handleAddToCart(product.id)}
+                                  className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(product.id) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
+                                  style={{ backgroundColor: theme.buttonPrimaryColor }}
+                                >
+                                  {cartItems.has(product.id) ? '✓ Agregado' : 'Agregar al carrito'}
                                 </button>
                               )}
                             </div>
@@ -353,8 +364,12 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 </a>
                               )}
                               {block.enableCart && (
-                                <button className={`text-xs text-white px-2 py-1 w-full ${borderRadiusClass[theme.borderRadius]}`} style={{ backgroundColor: theme.buttonPrimaryColor }}>
-                                  Agregar al carrito
+                                <button
+                                  onClick={() => handleAddToCart(`mock-${i}`)}
+                                  className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(`mock-${i}`) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
+                                  style={{ backgroundColor: theme.buttonPrimaryColor }}
+                                >
+                                  {cartItems.has(`mock-${i}`) ? '✓ Agregado' : 'Agregar al carrito'}
                                 </button>
                               )}
                             </div>
