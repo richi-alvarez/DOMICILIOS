@@ -1,0 +1,89 @@
+- generic [ref=e1]:
+  - generic [ref=e17]:
+    - complementary [ref=e19]:
+      - link "WaStore WaStore" [ref=e21] [cursor=pointer]:
+        - /url: /app
+        - img "WaStore" [ref=e22]
+        - generic [ref=e23]: WaStore
+      - generic [ref=e24]:
+        - navigation [ref=e25]:
+          - link "Mis catálogos" [ref=e26] [cursor=pointer]:
+            - /url: /app
+            - img [ref=e27]
+            - text: Mis catálogos
+          - link "Analytics" [ref=e32] [cursor=pointer]:
+            - /url: /app/analytics
+            - img [ref=e33]
+            - text: Analytics
+          - link "Equipo" [ref=e35] [cursor=pointer]:
+            - /url: /app/team
+            - img [ref=e36]
+            - text: Equipo
+          - link "Plan y facturación" [ref=e41] [cursor=pointer]:
+            - /url: /app/billing
+            - img [ref=e42]
+            - text: Plan y facturación
+        - link "Nuevo catálogo" [ref=e44] [cursor=pointer]:
+          - /url: /app/catalogs/new
+          - img [ref=e45]
+          - text: Nuevo catálogo
+      - generic [ref=e47]:
+        - generic [ref=e48]: Q
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - paragraph [ref=e51]: QA Footer
+            - generic [ref=e52]: Gratis
+          - paragraph [ref=e53]: qa-footer-test-final@example.com
+        - button "Cerrar sesión" [ref=e54]:
+          - img [ref=e55]
+    - main [ref=e58]:
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e64]: "1"
+            - generic [ref=e67]: "2"
+            - generic [ref=e70]: "3"
+            - generic [ref=e73]: "4"
+          - paragraph [ref=e74]: Paso 1 de 4
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - heading "¡Bienvenido, QA!" [level=1] [ref=e78]
+            - paragraph [ref=e79]: Cuéntanos sobre tu negocio para personalizar tu experiencia.
+          - generic [ref=e80]:
+            - text: Nombre del negocio *
+            - 'textbox "Ej: Hamburguesas La Cumbre" [ref=e81]': QA Footer Block Store
+          - generic [ref=e82]:
+            - text: Tipo de negocio *
+            - generic [ref=e83]:
+              - button "Restaurante Menú digital, pedidos por WhatsApp" [ref=e84]:
+                - img [ref=e85]
+                - generic [ref=e88]: Restaurante
+                - generic [ref=e89]: Menú digital, pedidos por WhatsApp
+              - button "Tienda Catálogo de productos" [active] [ref=e90]:
+                - img [ref=e91]
+                - generic [ref=e94]: Tienda
+                - generic [ref=e95]: Catálogo de productos
+              - button "Servicios Portafolio de servicios" [ref=e96]:
+                - img [ref=e97]
+                - generic [ref=e100]: Servicios
+                - generic [ref=e101]: Portafolio de servicios
+              - button "Otro Cualquier tipo de negocio" [ref=e102]:
+                - img [ref=e103]
+                - generic [ref=e108]: Otro
+                - generic [ref=e109]: Cualquier tipo de negocio
+          - button "Continuar" [ref=e119]:
+            - text: Continuar
+            - img
+  - region "Notifications alt+T"
+  - generic [ref=e11] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e12]:
+      - img [ref=e13]
+    - generic [ref=e110]:
+      - button "Open issues overlay" [ref=e111]:
+        - generic [ref=e112]:
+          - generic [ref=e113]: "0"
+          - generic [ref=e114]: "1"
+        - generic [ref=e115]: Issue
+      - button "Collapse issues badge" [ref=e116]:
+        - img [ref=e117]
+  - alert [ref=e16]

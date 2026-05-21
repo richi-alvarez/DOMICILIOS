@@ -7,20 +7,25 @@ const BLOCK_CATEGORIES = {
     { type: 'presentation', label: 'Sección Hero', description: 'Banner con título y CTA', icon: '🎯', plan: 'BASIC' },
     { type: 'carousel', label: 'Carrusel', description: 'Slider rotativo con imágenes y texto', icon: '🎠', plan: 'BASIC' },
     { type: 'benefits', label: 'Beneficios y Características', description: 'Lista de características con iconos', icon: '⭐', plan: 'BASIC' },
+    { type: 'socialproof', label: 'Prueba Social', description: 'Testimonios con calificaciones y avatares', icon: '💬', plan: 'BASIC' },
   ],
   Contenido: [
     { type: 'text', label: 'Texto', description: 'Bloque de texto editable', icon: '📝', plan: 'BASIC' },
+    { type: 'cta-reinforcement', label: 'CTA de Refuerzo', description: 'Botón de llamado a acción al final', icon: '🎬', plan: 'BASIC' },
   ],
   'E-Commerce': [
     { type: 'catalog', label: 'Catálogo de Productos', description: 'Muestra tus productos', icon: '📦', plan: 'BASIC' },
     { type: 'cart', label: 'Bolsón de Carrito', description: 'Botón flotante del carrito', icon: '🛒', plan: 'BASIC' },
+  ],
+  Institucional: [
+    { type: 'footer', label: 'Pie de Página', description: 'Información de empresa y contacto', icon: '🏛️', plan: 'BASIC' },
   ],
 }
 
 interface AddBlockModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  onAddBlock: (type: 'presentation' | 'catalog' | 'cart' | 'text' | 'carousel' | 'benefits') => void
+  onAddBlock: (type: 'presentation' | 'catalog' | 'cart' | 'text' | 'carousel' | 'benefits' | 'socialproof' | 'cta-reinforcement' | 'footer') => void
 }
 
 export default function AddBlockModal({ open, onOpenChange, onAddBlock }: AddBlockModalProps) {

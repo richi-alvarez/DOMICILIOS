@@ -11,6 +11,7 @@ const BLOCK_ORDER: BlockType[] = [
   'banner',
   'cta',
   'social',
+  'footer',
 ]
 
 interface Props {

@@ -141,7 +141,87 @@ interface BenefitsBlock extends BaseBlock {
   padding: 'sm' | 'md' | 'lg' | 'xl'
 }
 
-type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock | CarouselBlock | BenefitsBlock
+interface TestimonialItem {
+  id: string
+  name: string
+  role: string
+  company: string
+  text: string
+  rating: number
+  avatar?: string
+}
+
+interface SocialProofBlock extends BaseBlock {
+  type: 'socialproof'
+  title: string
+  subtitle: string
+  layout: 'carousel' | 'grid' | 'list'
+  items: TestimonialItem[]
+  columns: 1 | 2 | 3
+  showRating: boolean
+  showAvatar: boolean
+  showRole: boolean
+  bgColor: string
+  textColor: string
+  ratingColor: string
+  padding: 'sm' | 'md' | 'lg' | 'xl'
+}
+
+interface CTAReinforcementBlock extends BaseBlock {
+  type: 'cta-reinforcement'
+  title: string
+  subtitle: string
+  buttonText: string
+  buttonAction: 'url' | 'phone' | 'email' | 'scroll'
+  buttonUrl: string
+  buttonPhone: string
+  buttonEmail: string
+  scrollTarget: string
+  buttonColor: string
+  textColor: string
+  bgColor: string
+  fontSize: 'sm' | 'md' | 'lg'
+  buttonSize: 'sm' | 'md' | 'lg'
+  alignment: 'left' | 'center' | 'right'
+  padding: 'sm' | 'md' | 'lg' | 'xl'
+  showBorder: boolean
+  borderColor: string
+  borderWidth: 'none' | 'thin' | 'medium' | 'thick'
+}
+
+interface SocialLink {
+  id: string
+  name: string
+  url: string
+}
+
+interface FooterBlock extends BaseBlock {
+  type: 'footer'
+  companyName: string
+  companyDescription: string
+  address: string
+  phone: string
+  email: string
+  website: string
+  socialLinks: SocialLink[]
+  copyrightText: string
+  bgColor: string
+  textColor: string
+  accentColor: string
+  layout: 'minimal' | 'standard' | 'full'
+  showSocialLinks: boolean
+  showDescription: boolean
+  showAddress: boolean
+  showPhone: boolean
+  showEmail: boolean
+  showWebsite: boolean
+  showCopyright: boolean
+  showCompanyInfo: boolean
+  showContactInfo: boolean
+  alignment: 'left' | 'center'
+}
+
+type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock | CarouselBlock | BenefitsBlock | SocialProofBlock | CTAReinforcementBlock | FooterBlock
 
 // Paletas predefinidas
 const BUTTON_PALETTES = {
@@ -277,6 +357,9 @@ const BLOCK_META: Record<string, { icon: string; label: string; color: string }>
   text: { icon: '📝', label: 'Texto', color: 'yellow' },
   carousel: { icon: '🎠', label: 'Carrusel', color: 'blue' },
   benefits: { icon: '⭐', label: 'Beneficios y Características', color: 'green' },
+  socialproof: { icon: '💬', label: 'Prueba Social', color: 'indigo' },
+  'cta-reinforcement': { icon: '🎬', label: 'CTA de Refuerzo', color: 'pink' },
+  footer: { icon: '🏛️', label: 'Pie de Página', color: 'slate' },
 }
 
 interface Category {
@@ -485,6 +568,108 @@ export default function DesignEditor({
         iconColor: '#ff6b57',
         iconSize: 'md',
         padding: 'lg',
+      }
+    } else if (type === 'socialproof') {
+      newBlock = {
+        id: baseId,
+        visible: true,
+        type: 'socialproof',
+        title: 'Lo que dicen nuestros clientes',
+        subtitle: 'Testimonios reales de clientes satisfechos',
+        layout: 'grid',
+        columns: 3,
+        items: [
+          {
+            id: `testimonial-1`,
+            name: 'Juan Pérez',
+            role: 'CEO',
+            company: 'Tech Solutions',
+            text: 'Excelente servicio, muy recomendado. Superó nuestras expectativas.',
+            rating: 5,
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Juan',
+          },
+          {
+            id: `testimonial-2`,
+            name: 'María García',
+            role: 'Emprendedora',
+            company: 'StartUp Latina',
+            text: 'El mejor equipo con el que hemos trabajado. Profesionales y atentos.',
+            rating: 5,
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Maria',
+          },
+          {
+            id: `testimonial-3`,
+            name: 'Carlos López',
+            role: 'Gerente de Proyectos',
+            company: 'Constructora Global',
+            text: 'Impresionante calidad. Definitivamente volveríamos a trabajar.',
+            rating: 4,
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Carlos',
+          },
+        ],
+        showRating: true,
+        showAvatar: true,
+        showRole: true,
+        bgColor: '#f9fafb',
+        textColor: '#000000',
+        ratingColor: '#fbbf24',
+        padding: 'lg',
+      }
+    } else if (type === 'cta-reinforcement') {
+      newBlock = {
+        id: baseId,
+        visible: true,
+        type: 'cta-reinforcement',
+        title: '¿Listo para comenzar?',
+        subtitle: 'Toma acción ahora y únete a nuestros clientes satisfechos',
+        buttonText: 'Comprar Ahora',
+        buttonAction: 'url',
+        buttonUrl: '#',
+        buttonPhone: '',
+        buttonEmail: '',
+        scrollTarget: '',
+        buttonColor: '#ff6b57',
+        textColor: '#000000',
+        bgColor: '#ffffff',
+        fontSize: 'md',
+        buttonSize: 'md',
+        alignment: 'center',
+        padding: 'lg',
+        showBorder: false,
+        borderColor: '#000000',
+        borderWidth: 'none',
+      }
+    } else if (type === 'footer') {
+      newBlock = {
+        id: baseId,
+        visible: true,
+        type: 'footer',
+        companyName: 'Mi Empresa',
+        companyDescription: 'Descripción breve de tu empresa aquí',
+        address: 'Calle 123 #45, Bogotá, Colombia',
+        phone: '+57 1 123 4567',
+        email: 'contacto@empresa.com',
+        website: 'https://www.empresa.com',
+        socialLinks: [
+          { id: 'social-1', name: 'Facebook', url: 'https://facebook.com' },
+          { id: 'social-2', name: 'Instagram', url: 'https://instagram.com' },
+          { id: 'social-3', name: 'LinkedIn', url: 'https://linkedin.com' },
+        ],
+        copyrightText: '© 2026 Mi Empresa. Todos los derechos reservados.',
+        bgColor: '#1f2937',
+        textColor: '#ffffff',
+        accentColor: '#ff6b57',
+        layout: 'standard',
+        showSocialLinks: true,
+        showDescription: true,
+        showAddress: true,
+        showPhone: true,
+        showEmail: true,
+        showWebsite: true,
+        showCopyright: true,
+        showCompanyInfo: true,
+        showContactInfo: true,
+        alignment: 'left',
       }
     } else {
       newBlock = {

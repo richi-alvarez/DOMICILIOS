@@ -1,12 +1,15 @@
 'use client'
 
-import { ChevronDown, Copy, Eye, EyeOff, Trash2, Plus } from 'lucide-react'
+import { Copy, Eye, EyeOff, Trash2, Plus } from 'lucide-react'
 import PresentationSettings from './block-settings/presentation-settings'
 import CatalogSettings from './block-settings/catalog-settings'
 import CartSettings from './block-settings/cart-settings'
 import TextSettings from './block-settings/text-settings'
 import CarouselSettings from './block-settings/carousel-settings'
 import BenefitsSettings from './block-settings/benefits-settings'
+import SocialProofSettings from './block-settings/socialproof-settings'
+import CTAReinforcementSettings from './block-settings/cta-reinforcement-settings'
+import FooterSettings from './block-settings/footer-settings'
 
 interface BaseBlock {
   id: string
@@ -114,7 +117,87 @@ interface BenefitsBlock extends BaseBlock {
   padding: 'sm' | 'md' | 'lg' | 'xl'
 }
 
-type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock | CarouselBlock | BenefitsBlock
+interface TestimonialItem {
+  id: string
+  name: string
+  role: string
+  company: string
+  text: string
+  rating: number
+  avatar?: string
+}
+
+interface SocialProofBlock extends BaseBlock {
+  type: 'socialproof'
+  title: string
+  subtitle: string
+  layout: 'carousel' | 'grid' | 'list'
+  items: TestimonialItem[]
+  columns: 1 | 2 | 3
+  showRating: boolean
+  showAvatar: boolean
+  showRole: boolean
+  bgColor: string
+  textColor: string
+  ratingColor: string
+  padding: 'sm' | 'md' | 'lg' | 'xl'
+}
+
+interface CTAReinforcementBlock extends BaseBlock {
+  type: 'cta-reinforcement'
+  title: string
+  subtitle: string
+  buttonText: string
+  buttonAction: 'url' | 'phone' | 'email' | 'scroll'
+  buttonUrl: string
+  buttonPhone: string
+  buttonEmail: string
+  scrollTarget: string
+  buttonColor: string
+  textColor: string
+  bgColor: string
+  fontSize: 'sm' | 'md' | 'lg'
+  buttonSize: 'sm' | 'md' | 'lg'
+  alignment: 'left' | 'center' | 'right'
+  padding: 'sm' | 'md' | 'lg' | 'xl'
+  showBorder: boolean
+  borderColor: string
+  borderWidth: 'none' | 'thin' | 'medium' | 'thick'
+}
+
+interface SocialLink {
+  id: string
+  name: string
+  url: string
+}
+
+interface FooterBlock extends BaseBlock {
+  type: 'footer'
+  companyName: string
+  companyDescription: string
+  address: string
+  phone: string
+  email: string
+  website: string
+  socialLinks: SocialLink[]
+  copyrightText: string
+  bgColor: string
+  textColor: string
+  accentColor: string
+  layout: 'minimal' | 'standard' | 'full'
+  showSocialLinks: boolean
+  showDescription: boolean
+  showAddress: boolean
+  showPhone: boolean
+  showEmail: boolean
+  showWebsite: boolean
+  showCopyright: boolean
+  showCompanyInfo: boolean
+  showContactInfo: boolean
+  alignment: 'left' | 'center'
+}
+
+type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock | CarouselBlock | BenefitsBlock | SocialProofBlock | CTAReinforcementBlock | FooterBlock
 
 const BLOCK_META: Record<string, { icon: string; label: string }> = {
   presentation: { icon: '🎯', label: 'Sección de Presentación' },
@@ -123,6 +206,9 @@ const BLOCK_META: Record<string, { icon: string; label: string }> = {
   text: { icon: '📝', label: 'Texto' },
   carousel: { icon: '🎠', label: 'Carrusel' },
   benefits: { icon: '⭐', label: 'Beneficios y Características' },
+  socialproof: { icon: '💬', label: 'Prueba Social' },
+  'cta-reinforcement': { icon: '🎬', label: 'CTA de Refuerzo' },
+  footer: { icon: '🏛️', label: 'Pie de Página' },
 }
 
 interface BlocksPanelProps {
@@ -305,6 +391,24 @@ export default function BlocksPanel({
                 {block.type === 'benefits' && (
                   <BenefitsSettings
                     block={block as BenefitsBlock}
+                    onChange={(partial) => onUpdateBlock(block.id, partial)}
+                  />
+                )}
+                {block.type === 'socialproof' && (
+                  <SocialProofSettings
+                    block={block as SocialProofBlock}
+                    onChange={(partial) => onUpdateBlock(block.id, partial)}
+                  />
+                )}
+                {block.type === 'cta-reinforcement' && (
+                  <CTAReinforcementSettings
+                    block={block as CTAReinforcementBlock}
+                    onChange={(partial) => onUpdateBlock(block.id, partial)}
+                  />
+                )}
+                {block.type === 'footer' && (
+                  <FooterSettings
+                    block={block as FooterBlock}
                     onChange={(partial) => onUpdateBlock(block.id, partial)}
                   />
                 )}
