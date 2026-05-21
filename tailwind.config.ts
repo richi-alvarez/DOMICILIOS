@@ -8,6 +8,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ['var(--font-poppins)', 'system-ui', 'sans-serif'],
+        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        lato: ['var(--font-lato)', 'system-ui', 'sans-serif'],
+        raleway: ['var(--font-raleway)', 'system-ui', 'sans-serif'],
+        nunito: ['var(--font-nunito)', 'system-ui', 'sans-serif'],
+        manrope: ['var(--font-manrope)', 'system-ui', 'sans-serif'],
+        dmSans: ['var(--font-dmSans)', 'system-ui', 'sans-serif'],
+        arial: ['Arial', 'system-ui', 'sans-serif'],
+        helvetica: ['Helvetica', 'system-ui', 'sans-serif'],
+        georgia: ['Georgia', 'system-ui', 'serif'],
+        timesNewRoman: ['Times New Roman', 'system-ui', 'serif'],
+        playfairDisplay: ['var(--font-playfairDisplay)', 'system-ui', 'serif'],
+        cormorantGaramond: ['var(--font-cormorantGaramond)', 'system-ui', 'serif'],
+        cinzel: ['var(--font-cinzel)', 'system-ui', 'serif'],
+        tenorSans: ['system-ui', 'serif'],
+      },
       animation: {
         scale: 'scale 0.6s ease-in-out infinite',
       },

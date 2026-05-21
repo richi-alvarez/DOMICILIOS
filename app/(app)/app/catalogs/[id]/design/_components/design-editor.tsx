@@ -33,6 +33,9 @@ interface ThemeState {
   cartPrimaryColor: string
   cartSecondaryColor: string
   cartTertiaryColor: string
+  buttonCustomMode: boolean
+  categoryCustomMode: boolean
+  cartCustomMode: boolean
 }
 
 interface BaseBlock {
@@ -279,6 +282,9 @@ const THEME_DEFAULTS: ThemeState = {
   cartPrimaryColor: '#9b59b6',
   cartSecondaryColor: '#faf5ff',
   cartTertiaryColor: '#4a235a',
+  buttonCustomMode: false,
+  categoryCustomMode: false,
+  cartCustomMode: false,
 }
 
 const DEFAULT_BLOCKS: Block[] = [

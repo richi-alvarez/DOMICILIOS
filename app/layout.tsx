@@ -1,5 +1,17 @@
 import type { Metadata } from 'next'
-import { Inter, Sora } from 'next/font/google'
+import {
+  Inter,
+  Sora,
+  Poppins,
+  Lato,
+  Raleway,
+  Nunito,
+  Manrope,
+  DM_Sans,
+  Playfair_Display,
+  Cormorant_Garamond,
+  Cinzel,
+} from 'next/font/google'
 import { Providers } from '@/components/shared/providers'
 import './globals.css'
 
@@ -13,6 +25,69 @@ const sora = Sora({
   subsets: ['latin'],
   variable: '--font-sora',
   weight: ['400', '600', '700', '800'],
+  display: 'swap',
+})
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  variable: '--font-poppins',
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+})
+
+const lato = Lato({
+  subsets: ['latin'],
+  variable: '--font-lato',
+  weight: ['400', '700', '900'],
+  display: 'swap',
+})
+
+const raleway = Raleway({
+  subsets: ['latin'],
+  variable: '--font-raleway',
+  weight: ['400', '600', '700', '800'],
+  display: 'swap',
+})
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-nunito',
+  weight: ['400', '600', '700', '800'],
+  display: 'swap',
+})
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  weight: ['400', '600', '700', '800'],
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dmSans',
+  weight: ['400', '500', '700'],
+  display: 'swap',
+})
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfairDisplay',
+  weight: ['400', '700', '900'],
+  display: 'swap',
+})
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorantGaramond',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  variable: '--font-cinzel',
+  weight: ['400', '700', '900'],
   display: 'swap',
 })
 
@@ -43,7 +118,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning className={`${inter.variable} ${sora.variable}`}>
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${inter.variable} ${sora.variable} ${poppins.variable} ${lato.variable} ${raleway.variable} ${nunito.variable} ${manrope.variable} ${dmSans.variable} ${playfairDisplay.variable} ${cormorantGaramond.variable} ${cinzel.variable}`}
+    >
       <body className="min-h-screen antialiased">
         <Providers session={null}>{children}</Providers>
       </body>

@@ -69,6 +69,12 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
     full: '9999px',
   }
 
+  const borderRadiusClass = {
+    none: '',
+    sm: 'rounded-lg',
+    full: 'rounded-full',
+  }
+
   const bgStyle = {
     backgroundColor: theme.bgType === 'color' ? theme.bgColor : 'white',
     backgroundImage: theme.bgType === 'image' ? `url(${theme.bgImage})` : 'none',
@@ -177,7 +183,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                   </p>
                   {block.showCta && (
                     <button
-                      className="px-6 py-2 rounded text-white"
+                      className={`px-6 py-2 text-white ${borderRadiusClass[theme.borderRadius]}`}
                       style={{ backgroundColor: theme.buttonPrimaryColor }}
                     >
                       {block.ctaText}
@@ -211,21 +217,21 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                       {/* Category Filter */}
                       {block.showCategoryFilter && (
                         <div className="flex gap-2 flex-wrap">
-                          <button className="px-3 py-1 rounded-full text-sm" style={{ backgroundColor: theme.categoryPrimaryColor, color: 'white' }}>
+                          <button className={`px-3 py-1 text-sm ${borderRadiusClass[theme.borderRadius]}`} style={{ backgroundColor: theme.categoryPrimaryColor, color: 'white' }}>
                             Todos
                           </button>
                           {categories.length > 0 ? (
                             categories.map((cat) => (
-                              <button key={cat.id} className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                              <button key={cat.id} className={`px-3 py-1 text-sm bg-gray-100 ${borderRadiusClass[theme.borderRadius]}`}>
                                 {cat.name}
                               </button>
                             ))
                           ) : (
                             <>
-                              <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                              <button className={`px-3 py-1 text-sm bg-gray-100 ${borderRadiusClass[theme.borderRadius]}`}>
                                 Categoría 1
                               </button>
-                              <button className="px-3 py-1 rounded-full text-sm bg-gray-100">
+                              <button className={`px-3 py-1 text-sm bg-gray-100 ${borderRadiusClass[theme.borderRadius]}`}>
                                 Categoría 2
                               </button>
                             </>
@@ -299,7 +305,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                   <div className={`grid gap-4 ${block.template === 'list' ? 'grid-cols-1' : block.template === 'grid' ? 'grid-cols-3' : 'grid-cols-2'}`}>
                     {products.length > 0 ? (
                       products.map((product) => (
-                        <div key={product.id} className="border rounded-lg overflow-hidden flex flex-col">
+                        <div key={product.id} className={`border overflow-hidden flex flex-col ${borderRadiusClass[theme.borderRadius]}`}>
                           {product.images && product.images.length > 0 ? (
                             <img src={product.images[0].url} alt={product.name} className="w-full h-40 object-cover bg-gray-200" />
                           ) : (
@@ -317,7 +323,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 </a>
                               )}
                               {block.enableCart && (
-                                <button className="text-xs text-white px-2 py-1 rounded w-full" style={{ backgroundColor: theme.buttonPrimaryColor }}>
+                                <button className={`text-xs text-white px-2 py-1 w-full ${borderRadiusClass[theme.borderRadius]}`} style={{ backgroundColor: theme.buttonPrimaryColor }}>
                                   Agregar al carrito
                                 </button>
                               )}
@@ -327,7 +333,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                       ))
                     ) : (
                       [1, 2, 3, 4, 5, 6].map((i) => (
-                        <div key={i} className="border rounded-lg overflow-hidden flex flex-col">
+                        <div key={i} className={`border overflow-hidden flex flex-col ${borderRadiusClass[theme.borderRadius]}`}>
                           <div className="bg-gray-200 h-40" />
                           <div className="p-3 flex flex-col flex-1">
                             {block.showTitle && <p className="font-semibold text-sm">Producto {i}</p>}
@@ -341,7 +347,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 </a>
                               )}
                               {block.enableCart && (
-                                <button className="text-xs text-white px-2 py-1 rounded w-full" style={{ backgroundColor: theme.buttonPrimaryColor }}>
+                                <button className={`text-xs text-white px-2 py-1 w-full ${borderRadiusClass[theme.borderRadius]}`} style={{ backgroundColor: theme.buttonPrimaryColor }}>
                                   Agregar al carrito
                                 </button>
                               )}
@@ -409,7 +415,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
 
                   {/* Preview Popup - Always visible in editor for preview purposes */}
                   {block.showPreviewFirst && (
-                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white border border-gray-300 rounded-lg shadow-lg p-4 w-80 z-50">
+                    <div className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white border border-gray-300 shadow-lg p-4 w-80 z-50 ${borderRadiusClass[theme.borderRadius]}`}>
                       <p className="text-xs font-semibold text-gray-900 mb-3">Resumen del Carrito</p>
                       <div className="space-y-2 text-xs">
                         <div className="grid grid-cols-2 gap-2 text-gray-700">
