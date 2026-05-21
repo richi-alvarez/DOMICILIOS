@@ -75,6 +75,12 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
     full: 'rounded-full',
   }
 
+  const textAlignClass = {
+    left: 'text-left',
+    center: 'text-center',
+    right: 'text-right',
+  }
+
   const bgStyle = {
     backgroundColor: theme.bgType === 'color' ? theme.bgColor : 'white',
     backgroundImage: theme.bgType === 'image' ? `url(${theme.bgImage})` : 'none',
@@ -174,7 +180,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                     }}
                   />
                 )}
-                <div className="relative z-10 text-center px-4">
+                <div className={`relative z-10 px-4 ${textAlignClass[block.textAlign] || 'text-center'}`}>
                   <h1 className="text-4xl font-bold mb-2" style={{ color: block.textColor }}>
                     {block.title}
                   </h1>
