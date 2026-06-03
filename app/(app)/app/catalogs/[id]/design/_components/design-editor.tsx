@@ -424,7 +424,13 @@ export default function DesignEditor({
         const response = await fetch(`/api/v1/catalogs/${catalogSlug}/products`)
         if (response.ok) {
           const data = await response.json()
-          setProducts(data.data || [])
+          // La API v1 devuelve precios en centavos; el preview muestra unidades enteras.
+          const normalized = (data.data || []).map((p: Product) => ({
+            ...p,
+            price: p.price / 100,
+            compareAt: p.compareAt != null ? p.compareAt / 100 : p.compareAt,
+          }))
+          setProducts(normalized)
         }
       } catch (err) {
         console.error('Error fetching products:', err)

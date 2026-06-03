@@ -8,6 +8,7 @@ interface DeliveryInfo {
   type: 'pickup' | 'delivery'
   address?: string
   zone?: string
+  notes?: string
   fee: number
 }
 

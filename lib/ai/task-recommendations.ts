@@ -20,10 +20,11 @@ interface TaskRecommendation {
  */
 export const TASK_RECOMMENDATIONS: Record<AITask, TaskRecommendation> = {
   'catalog-generation': {
-    // Generar estructura de catálogos: velocidad es crítica
-    primary: 'gemini',
-    fallbacks: ['openai', 'anthropic'],
-    reason: 'Gemini Flash es 3x más rápido y costo es 10x menor. Si falla, intenta OpenAI, luego Anthropic',
+    // Generar estructura de catálogos: velocidad es crítica.
+    // OpenRouter primero porque da acceso a múltiples modelos con una sola clave.
+    primary: 'openrouter',
+    fallbacks: ['gemini', 'openai', 'anthropic'],
+    reason: 'OpenRouter da acceso a múltiples modelos con una sola clave. Fallback a Gemini/OpenAI/Anthropic',
     requiresVision: false,
   },
 
@@ -87,6 +88,15 @@ export const RECOMMENDED_MODELS: Record<SupportedProvider, Record<AITask, string
     'image-analysis': 'gemini-2.0-flash',
     'content-generation': 'gemini-1.5-pro',
   },
+
+  // Defaults para OpenRouter. En la práctica los sobreescribe OPENROUTER_MODEL.
+  openrouter: {
+    'catalog-generation': 'openai/gpt-4o-mini',
+    'menu-extraction': 'openai/gpt-4o',
+    'product-extraction': 'openai/gpt-4o',
+    'image-analysis': 'openai/gpt-4o',
+    'content-generation': 'anthropic/claude-3.5-sonnet',
+  },
 }
 
 /**
@@ -104,6 +114,11 @@ export const PROVIDER_COSTS: Record<SupportedProvider, { input: number; output: 
   gemini: {
     input: 0.075,
     output: 0.3,
+  },
+  // Aproximado; depende del modelo concreto elegido en OpenRouter.
+  openrouter: {
+    input: 0.15,
+    output: 0.6,
   },
 }
 

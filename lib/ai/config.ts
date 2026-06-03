@@ -9,7 +9,7 @@ export class AIConfig {
    */
   static getPreferredProvider(): SupportedProvider {
     const env = process.env.AI_PROVIDER as SupportedProvider | undefined
-    if (env && ['anthropic', 'openai', 'gemini'].includes(env)) {
+    if (env && ['anthropic', 'openai', 'gemini', 'openrouter'].includes(env)) {
       return env
     }
     return 'anthropic'
@@ -21,7 +21,7 @@ export class AIConfig {
   static getFallbackProviders(): SupportedProvider[] {
     const env = process.env.AI_FALLBACK_PROVIDERS
     if (env) {
-      return env.split(',').filter((p) => ['anthropic', 'openai', 'gemini'].includes(p.trim())) as SupportedProvider[]
+      return env.split(',').filter((p) => ['anthropic', 'openai', 'gemini', 'openrouter'].includes(p.trim())) as SupportedProvider[]
     }
     return ['openai', 'gemini']
   }

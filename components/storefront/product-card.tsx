@@ -29,7 +29,10 @@ export function ProductCard({ product, currency, catalogSlug }: Props) {
   const qty = cartItem?.qty ?? 0
 
   const images = Array.isArray(product.imagesJson) ? product.imagesJson : []
-  const firstImage = images[0] as string | undefined
+  // Las imágenes pueden venir como string (URL) o como objeto { url, alt }.
+  const rawFirstImage = images[0] as string | { url?: string } | undefined
+  const firstImage =
+    typeof rawFirstImage === 'string' ? rawFirstImage : rawFirstImage?.url
 
   const outOfStock = product.stock !== null && product.stock <= 0
 

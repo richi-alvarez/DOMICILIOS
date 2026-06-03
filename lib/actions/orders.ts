@@ -24,6 +24,7 @@ const createOrderSchema = z.object({
     type: z.enum(['pickup', 'delivery']),
     address: z.string().optional(),
     zone: z.string().optional(),
+    notes: z.string().optional(),
     fee: z.number().default(0),
   }),
   customer: z.object({
@@ -94,19 +95,24 @@ async function sendOrderNotificationEmail(
   order: { id: string; code: string },
   items: { name: string; qty: number; price: number }[],
   customer: { name: string; phone: string },
-  delivery: { type: string },
+  delivery: { type: string; address?: string; notes?: string },
 ) {
   try {
     const { Resend } = await import('resend')
     const resend = new Resend(process.env.RESEND_API_KEY)
     const to = catalog.contactEmail ?? ''
     if (!to) return
+    const deliveryLine =
+      delivery.type === 'pickup'
+        ? 'Recoger en tienda'
+        : `A domicilio${delivery.address ? ` — ${delivery.address}` : ''}`
     await resend.emails.send({
       from: 'WaStore <no-reply@wastore.app>',
       to,
       subject: `Nuevo pedido #${order.code} — ${catalog.name}`,
       html: `<p>Tienes un nuevo pedido <strong>#${order.code}</strong> de <strong>${customer.name}</strong> (${customer.phone}).</p>
-<p>Entrega: ${delivery.type === 'pickup' ? 'Recoger en tienda' : 'A domicilio'}</p>
+<p>Entrega: ${deliveryLine}</p>
+${delivery.type === 'delivery' && delivery.notes ? `<p>Indicaciones: ${delivery.notes}</p>` : ''}
 <ul>${items.map((i) => `<li>x${i.qty} ${i.name}</li>`).join('')}</ul>
 <p>Revisa el panel de pedidos para gestionar este pedido.</p>`,
     })

@@ -14,6 +14,7 @@ import { HeroBlock } from '@/components/storefront/blocks/hero-block'
 import { BannerBlock } from '@/components/storefront/blocks/banner-block'
 import { CtaBlock } from '@/components/storefront/blocks/cta-block'
 import { SocialBlock } from '@/components/storefront/blocks/social-block'
+import { StorefrontDesignBlocks } from '@/components/storefront/storefront-design-blocks'
 import { Store } from 'lucide-react'
 import type { BlockConfig } from '@/lib/design/blocks'
 import { themeSchema, THEME_DEFAULTS } from '@/lib/design/theme'
@@ -77,11 +78,37 @@ export default async function StorefrontPage({ params, searchParams }: Props) {
   const parsed = themeSchema.safeParse(catalog.themeJson ?? {})
   const theme = parsed.success ? parsed.data : THEME_DEFAULTS
 
+  // Bloques del editor de diseño nuevo (presentation/carousel/benefits/…).
+  // Si el catálogo los usa, renderizamos esos bloques en orden en vez del layout legacy.
+  const DESIGN_BLOCK_TYPES = new Set([
+    'presentation',
+    'catalog',
+    'carousel',
+    'benefits',
+    'socialproof',
+    'cta-reinforcement',
+    'footer',
+    'text',
+  ])
+  const designBlocks = pageBlocks.filter((b) => DESIGN_BLOCK_TYPES.has(b.type))
+  const hasDesignBlocks = designBlocks.length > 0
+
   return (
     <div className="min-h-screen pb-24" style={{ background: 'var(--sf-bg, #FAFAF8)', fontFamily: 'var(--sf-body-font)' }}>
       <TrackEvent catalogId={catalog.id} type="page_view" />
       <StorefrontHeader catalogName={catalog.name} catalogSlug={slug} logoUrl={theme.logoUrl || undefined} />
 
+      {hasDesignBlocks ? (
+        <StorefrontDesignBlocks
+          blocks={designBlocks.map((b) => ({ id: b.id, type: b.type, config: b.config as Record<string, any> }))}
+          products={products}
+          categories={cats}
+          catalogSlug={slug}
+          currency={catalog.currency}
+          activeCategorySlug={cat}
+        />
+      ) : (
+      <>
       {/* Blocks: announcement goes first */}
       {pageBlocks
         .filter((b) => b.type === 'announcement')
@@ -168,6 +195,8 @@ export default async function StorefrontPage({ params, searchParams }: Props) {
 
       {/* CTA + Social blocks */}
       {pageBlocks.filter((b) => b.type === 'cta' || b.type === 'social').map((b) => renderBlock(b, slug))}
+      </>
+      )}
 
       {/* Cart FAB */}
       <CartFab slug={slug} currency={catalog.currency} />

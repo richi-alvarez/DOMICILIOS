@@ -38,8 +38,13 @@ export class OpenAIProvider implements AIProvider {
         model: options.model || 'gpt-3.5-turbo',
         max_tokens: options.maxTokens || 2048,
         temperature: options.temperature,
-        system: options.systemPrompt,
+        // La API de chat de OpenAI no acepta `system` como parámetro; el system
+        // prompt debe ir como un mensaje con role 'system' al inicio.
         messages: [
+          {
+            role: 'system',
+            content: options.systemPrompt,
+          },
           {
             role: 'user',
             content: options.userMessage,

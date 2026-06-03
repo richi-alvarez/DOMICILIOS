@@ -1,31 +1,22 @@
 'use client'
 
-import { use, useState, useTransition } from 'react'
+import { use } from 'react'
 import { useRouter } from 'next/navigation'
 import { User, Phone, MapPin, Store, ShoppingCart } from 'lucide-react'
 import { CheckoutHeader } from '@/components/storefront/checkout-header'
-import { useCartState, useCart } from '@/components/storefront/cart-context'
+import { useCartState } from '@/components/storefront/cart-context'
 import { calcTotals } from '@/lib/cart/totals'
 import { formatMoney } from '@/lib/utils'
-import { createOrder } from '@/lib/actions/orders'
 
 interface Props {
   params: Promise<{ slug: string }>
-  // catalogId is needed for createOrder — we fetch it from the cart context
 }
-
-// We need the catalogId. Pass it via a data attribute or fetch it from the API.
-// For simplicity, we store catalogId in the cart items (added at product card level).
-// Since we don't have it there, we fetch from API.
 
 export default function SummaryPage({ params }: Props) {
   const { slug } = use(params)
   const router = useRouter()
-  const store = useCart()
   const { items, delivery, customer } = useCartState()
   const totals = calcTotals(items, delivery?.fee ?? 0)
-  const [isPending, startTransition] = useTransition()
-  const [error, setError] = useState<string | null>(null)
 
   if (!customer || items.length === 0) {
     return (
@@ -42,47 +33,10 @@ export default function SummaryPage({ params }: Props) {
     )
   }
 
-  function handleCreateOrder() {
-    startTransition(async () => {
-      setError(null)
-      // fetch catalogId
-      let catalogId: string
-      try {
-        const res = await fetch(`/api/storefront/${slug}`)
-        const data = await res.json()
-        catalogId = data.catalog?.id
-        if (!catalogId) throw new Error('Catálogo no encontrado')
-      } catch {
-        setError('No se pudo conectar con el servidor. Intenta de nuevo.')
-        return
-      }
-
-      const result = await createOrder({
-        catalogId,
-        items: items.map((i) => ({
-          productId: i.productId,
-          name: i.name,
-          price: i.price,
-          qty: i.qty,
-          variantLabel: i.variantLabel,
-        })),
-        delivery: {
-          type: delivery!.type,
-          address: delivery!.address,
-          zone: delivery!.zone,
-          fee: delivery!.fee,
-        },
-        customer: customer!,
-      })
-
-      if ('error' in result) {
-        setError(result.error ?? 'Error desconocido')
-        return
-      }
-
-      store.getState().clear()
-      router.push(`/s/${slug}/checkout/payment?orderId=${result.order!.id}&code=${result.order!.code}&cid=${catalogId}`)
-    })
+  // El pedido NO se crea aquí: solo avanzamos al pago con el carrito intacto.
+  // Así el usuario puede volver atrás a editar y el pedido se crea al final.
+  function handleContinue() {
+    router.push(`/s/${slug}/checkout/payment`)
   }
 
   return (
@@ -132,6 +86,11 @@ export default function SummaryPage({ params }: Props) {
                 </>
               )}
             </div>
+            {delivery?.type === 'delivery' && delivery?.notes && (
+              <p className="mt-2 text-sm text-night-500">
+                <span className="font-medium text-night-600">Indicaciones:</span> {delivery.notes}
+              </p>
+            )}
           </div>
 
           {/* Items */}
@@ -185,29 +144,15 @@ export default function SummaryPage({ params }: Props) {
         </div>
       </div>
 
-      {error && (
-        <div className="mx-auto max-w-2xl px-4">
-          <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">{error}</p>
-        </div>
-      )}
-
       {/* Sticky CTA */}
       <div className="fixed bottom-0 left-0 right-0 border-t border-warm-100 bg-white px-4 py-4">
         <div className="mx-auto max-w-2xl">
           <button
             type="button"
-            onClick={handleCreateOrder}
-            disabled={isPending}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary-500 py-3.5 font-semibold text-white transition hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-60 active:scale-[0.98]"
+            onClick={handleContinue}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary-500 py-3.5 font-semibold text-white transition hover:bg-primary-600 active:scale-[0.98]"
           >
-            {isPending ? (
-              <>
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                Creando pedido…
-              </>
-            ) : (
-              'Crear Pedido →'
-            )}
+            Continuar al pago →
           </button>
         </div>
       </div>

@@ -72,7 +72,13 @@ export default function ProductPage({ params }: Props) {
     )
   }
 
-  const images = Array.isArray(product.imagesJson) ? (product.imagesJson as string[]) : []
+  // Las imágenes pueden venir como string (URL) o como objeto { url, alt }.
+  const rawImages = Array.isArray(product.imagesJson)
+    ? (product.imagesJson as Array<string | { url?: string }>)
+    : []
+  const images = rawImages
+    .map((img) => (typeof img === 'string' ? img : img?.url))
+    .filter((url): url is string => !!url)
   const outOfStock = product.stock !== null && product.stock <= 0
 
   function increment() {

@@ -30,7 +30,7 @@ export default async function OrderPage({ params }: Props) {
   const customer = order.customerJson as { name?: string; phone?: string }
   const items = order.itemsJson as { name: string; qty: number; price: number; variantLabel?: string }[]
   const totals = order.totalsJson as { subtotal: number; shipping: number; discount: number; total: number; currency: string }
-  const delivery = order.deliveryJson as { type: string; address?: string }
+  const delivery = order.deliveryJson as { type: string; address?: string; notes?: string }
 
   return (
     <div className="min-h-screen bg-warm-50">
@@ -84,6 +84,11 @@ export default async function OrderPage({ params }: Props) {
                 </>
               )}
             </div>
+            {delivery.type === 'delivery' && delivery.notes && (
+              <p className="mt-2 text-sm text-night-500">
+                <span className="font-medium text-night-600">Indicaciones:</span> {delivery.notes}
+              </p>
+            )}
           </div>
 
           {/* Items */}

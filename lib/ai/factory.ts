@@ -2,6 +2,7 @@ import type { AIProvider, SupportedProvider } from './types/ai-provider'
 import { AnthropicProvider } from './providers/anthropic-provider'
 import { OpenAIProvider } from './providers/openai-provider'
 import { GeminiProvider } from './providers/gemini-provider'
+import { OpenRouterProvider } from './providers/openrouter-provider'
 
 export class AIProviderFactory {
   private static providers: Map<SupportedProvider, AIProvider> = new Map()
@@ -14,6 +15,7 @@ export class AIProviderFactory {
     this.providers.set('anthropic', new AnthropicProvider())
     this.providers.set('openai', new OpenAIProvider())
     this.providers.set('gemini', new GeminiProvider())
+    this.providers.set('openrouter', new OpenRouterProvider())
   }
 
   /**

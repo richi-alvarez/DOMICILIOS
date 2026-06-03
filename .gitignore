@@ -37,3 +37,4 @@ __tests__
 .next.*
 test-results
 QA_Reports
+public/catalogs/*

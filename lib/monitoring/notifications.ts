@@ -27,7 +27,7 @@ interface NotificationResult {
 }
 
 // Configuración
-const resend = new Resend(process.env.RESEND_API_KEY ?? 'placeholder')
+const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder')
 const FROM = process.env.RESEND_FROM_EMAIL ?? 'WaStore <noreply@wastore.app>'
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? 'WaStore'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'

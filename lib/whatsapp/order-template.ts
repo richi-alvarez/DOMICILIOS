@@ -11,7 +11,7 @@ interface OrderData {
   code: string
   createdAt: Date
   customer: { name: string; phone: string }
-  delivery: { type: 'pickup' | 'delivery'; address?: string }
+  delivery: { type: 'pickup' | 'delivery'; address?: string; notes?: string }
   items: OrderItem[]
   subtotal: number
   shipping: number
@@ -42,6 +42,9 @@ export function buildWhatsAppUrl(order: OrderData, catalog: CatalogContact) {
     order.delivery.type === 'pickup'
       ? `El pedido se recogerá en tienda`
       : `📍 Dirección: ${order.delivery.address ?? ''}`,
+    order.delivery.type === 'delivery' && order.delivery.notes
+      ? `📝 Indicaciones: ${order.delivery.notes}`
+      : null,
     ``,
     `📝 Pedido`,
     ``,

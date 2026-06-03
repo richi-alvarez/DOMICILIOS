@@ -4,57 +4,88 @@ import { use, useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { CreditCard, Banknote, Loader2, ShieldCheck } from 'lucide-react'
 import { CheckoutHeader } from '@/components/storefront/checkout-header'
-import { useCartState } from '@/components/storefront/cart-context'
+import { useCartState, useCart } from '@/components/storefront/cart-context'
 import { calcTotals } from '@/lib/cart/totals'
 import { formatMoney } from '@/lib/utils'
+import { createOrder } from '@/lib/actions/orders'
 import { createStripeCheckoutSession } from '@/lib/actions/payments'
 
 interface Props {
   params: Promise<{ slug: string }>
-  searchParams: Promise<{ orderId?: string; code?: string; cid?: string }>
 }
 
-export default function PaymentPage({ params, searchParams }: Props) {
+export default function PaymentPage({ params }: Props) {
   const { slug } = use(params)
-  const { orderId, code, cid } = use(searchParams)
   const router = useRouter()
-  const { items, delivery } = useCartState()
+  const store = useCart()
+  const { items, delivery, customer } = useCartState()
   const totals = calcTotals(items, delivery?.fee ?? 0)
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
   const [loadingMethod, setLoadingMethod] = useState<'stripe' | 'cash' | null>(null)
 
-  if (!orderId || !code || !cid) {
+  // El pedido aún no existe: se crea al elegir el método de pago. Si el carrito
+  // está incompleto (p.ej. el usuario recargó), volvemos al inicio del checkout.
+  if (!customer || !delivery || items.length === 0) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-warm-50 px-4 text-center">
-        <p className="text-night-500">Datos de pedido faltantes. Regresa e intenta de nuevo.</p>
+        <p className="text-night-500">Datos del pedido incompletos. Regresa y completa el checkout.</p>
         <button
-          onClick={() => router.back()}
+          onClick={() => router.push(`/s/${slug}/cart`)}
           className="rounded-full bg-primary-500 px-5 py-2 text-sm font-semibold text-white"
         >
-          Volver
+          Ir al carrito
         </button>
       </div>
     )
+  }
+
+  // Crea el pedido a partir del carrito actual. Devuelve {id, code, catalogId}.
+  async function createPendingOrder() {
+    const res = await fetch(`/api/storefront/${slug}`)
+    const data = await res.json()
+    const catalogId: string | undefined = data.catalog?.id
+    if (!catalogId) throw new Error('No se pudo conectar con el servidor. Intenta de nuevo.')
+
+    const result = await createOrder({
+      catalogId,
+      items: items.map((i) => ({
+        productId: i.productId,
+        name: i.name,
+        price: i.price,
+        qty: i.qty,
+        variantLabel: i.variantLabel,
+      })),
+      delivery: {
+        type: delivery!.type,
+        address: delivery!.address,
+        zone: delivery!.zone,
+        notes: delivery!.notes,
+        fee: delivery!.fee,
+      },
+      customer: customer!,
+    })
+
+    if ('error' in result) {
+      throw new Error(result.error ?? 'Error al crear el pedido')
+    }
+    return { id: result.order!.id, code: result.order!.code, catalogId }
   }
 
   async function handleCash() {
     setLoadingMethod('cash')
     setError(null)
     try {
-      const res = await fetch(`/api/v1/orders/${orderId}/payment`, {
+      const { id, code, catalogId } = await createPendingOrder()
+      await fetch(`/api/v1/orders/${id}/payment`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ method: 'cash', status: 'pending' }),
       })
-      if (!res.ok) {
-        setError('Error al procesar pago. Por favor intenta de nuevo.')
-        setLoadingMethod(null)
-        return
-      }
-      router.push(`/s/${slug}/checkout/confirm?code=${code}&id=${orderId}&cid=${cid}`)
+      store.getState().clear()
+      router.push(`/s/${slug}/checkout/confirm?code=${code}&id=${id}&cid=${catalogId}`)
     } catch (err) {
-      setError('Error al procesar pago. Por favor intenta de nuevo.')
+      setError(err instanceof Error ? err.message : 'Error al procesar el pago. Intenta de nuevo.')
       setLoadingMethod(null)
     }
   }
@@ -63,14 +94,21 @@ export default function PaymentPage({ params, searchParams }: Props) {
     setLoadingMethod('stripe')
     startTransition(async () => {
       setError(null)
-      const result = await createStripeCheckoutSession(orderId!, slug)
-      if (result.error) {
-        setError(result.error)
+      try {
+        const { id } = await createPendingOrder()
+        const result = await createStripeCheckoutSession(id, slug)
+        if (result.error) {
+          setError(result.error)
+          setLoadingMethod(null)
+          return
+        }
+        if (result.url) {
+          store.getState().clear()
+          window.location.href = result.url
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error al procesar el pago. Intenta de nuevo.')
         setLoadingMethod(null)
-        return
-      }
-      if (result.url) {
-        window.location.href = result.url
       }
     })
   }
@@ -103,7 +141,7 @@ export default function PaymentPage({ params, searchParams }: Props) {
         {/* Pay with card (Stripe) */}
         <button
           onClick={handleStripe}
-          disabled={isPending}
+          disabled={isPending || loadingMethod !== null}
           className="w-full flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm border-2 border-transparent transition hover:border-primary-300 hover:shadow-md disabled:opacity-60 text-left"
         >
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-50">
@@ -126,7 +164,7 @@ export default function PaymentPage({ params, searchParams }: Props) {
         {/* Pay cash / on delivery */}
         <button
           onClick={handleCash}
-          disabled={isPending}
+          disabled={isPending || loadingMethod !== null}
           className="w-full flex items-center gap-4 rounded-2xl bg-white p-5 shadow-sm border-2 border-transparent transition hover:border-warm-300 hover:shadow-md disabled:opacity-60 text-left"
         >
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-warm-100">

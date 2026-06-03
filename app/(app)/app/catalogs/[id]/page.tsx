@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { QRCustomizer } from './_components/qr-customizer'
+import { PublishButton } from './publish-button'
 
 interface Catalog {
   id: string
@@ -48,8 +49,11 @@ export default function CatalogDetailPage({ params }: { params: Promise<{ id: st
   const publicUrl = `${appUrl}/s/${catalog.slug}`
   const isPublished = catalog.status === 'published'
 
-  const formatDate = (date: Date) => {
-    return new Date(date).toLocaleDateString('es-ES', {
+  const formatDate = (date?: Date | string | null) => {
+    if (!date) return '—'
+    const parsed = new Date(date)
+    if (isNaN(parsed.getTime())) return '—'
+    return parsed.toLocaleDateString('es-ES', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -59,11 +63,12 @@ export default function CatalogDetailPage({ params }: { params: Promise<{ id: st
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Header */}
-      <div className="border-b bg-white p-4 sm:p-6 sticky top-0 z-10">
-        <Link href="/app/catalogs" className="inline-flex items-center gap-3 cursor-pointer hover:text-blue-600 transition">
-          <ArrowLeft className="w-5 h-5" />
+      <div className="border-b bg-white p-4 sm:p-6 sticky top-0 z-10 flex items-center justify-between gap-3">
+        <Link href="/app/catalogs" className="inline-flex items-center gap-3 cursor-pointer hover:text-blue-600 transition min-w-0">
+          <ArrowLeft className="w-5 h-5 shrink-0" />
           <h1 className="text-lg sm:text-xl font-semibold truncate">{catalog.name}</h1>
         </Link>
+        <PublishButton catalogId={catalog.id} status={isPublished ? 'published' : 'draft'} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 p-4 sm:p-6 max-w-7xl mx-auto">

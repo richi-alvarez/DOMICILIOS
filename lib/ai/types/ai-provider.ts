@@ -28,7 +28,7 @@ export interface AIProvider {
   validateConfig(): boolean
 }
 
-export type SupportedProvider = 'anthropic' | 'openai' | 'gemini'
+export type SupportedProvider = 'anthropic' | 'openai' | 'gemini' | 'openrouter'
 
 export const PROVIDER_MODELS: Record<SupportedProvider, string[]> = {
   anthropic: [
@@ -45,5 +45,12 @@ export const PROVIDER_MODELS: Record<SupportedProvider, string[]> = {
     'gemini-2.0-flash',
     'gemini-1.5-pro',
     'gemini-1.5-flash',
+  ],
+  // OpenRouter usa nombres con prefijo de proveedor. El modelo concreto se
+  // controla con la variable de entorno OPENROUTER_MODEL.
+  openrouter: [
+    'openai/gpt-4o-mini',
+    'anthropic/claude-3.5-sonnet',
+    'meta-llama/llama-3.1-8b-instruct',
   ],
 }

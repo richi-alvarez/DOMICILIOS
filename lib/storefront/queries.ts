@@ -47,6 +47,36 @@ export type StorefrontProduct = {
   position: number
 }
 
+// Los precios se almacenan en centavos (price * 100). El storefront trabaja en
+// unidades enteras de la moneda, así que dividimos al leer (igual que la API admin).
+function toStorefrontProduct(row: {
+  id: string
+  name: string
+  slug: string
+  description: string | null
+  price: number
+  compareAt: number | null
+  stock: number | null
+  imagesJson: unknown
+  categoryId: string | null
+  active: boolean
+  position: number
+}): StorefrontProduct {
+  return {
+    id: row.id,
+    name: row.name,
+    slug: row.slug,
+    description: row.description,
+    price: row.price / 100,
+    compareAt: row.compareAt != null ? row.compareAt / 100 : null,
+    stock: row.stock,
+    imagesJson: row.imagesJson,
+    categoryId: row.categoryId,
+    active: row.active,
+    position: row.position,
+  }
+}
+
 export async function getCatalogBySlug(slug: string): Promise<StorefrontCatalog | null> {
   if (isDemo(slug)) return { ...DEMO_CATALOG, slug }
   try {
@@ -94,7 +124,7 @@ export async function listCatalogProducts(
       where,
       orderBy: (t, { asc }) => [asc(t.position), asc(t.name)],
     })
-    return rows
+    return rows.map(toStorefrontProduct)
   } catch {
     return []
   }
@@ -115,7 +145,7 @@ export async function getProductBySlug(
         eq(products.active, true),
       ),
     })
-    return row ?? null
+    return row ? toStorefrontProduct(row) : null
   } catch {
     return null
   }

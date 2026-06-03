@@ -65,6 +65,13 @@ export async function GET(
       description: catalog.description,
       language: catalog.language,
       currency: catalog.currency,
+      status: catalog.status,
+      orderChannel: catalog.orderChannel,
+      contactEmail: catalog.contactEmail,
+      contactPhone: catalog.contactPhone,
+      createdAt: catalog.createdAt,
+      updatedAt: catalog.updatedAt,
+      publishedAt: catalog.publishedAt,
     })
   } catch (error) {
     logger.error('GET /api/catalogs/[id]', error)

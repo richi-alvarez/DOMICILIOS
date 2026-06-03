@@ -21,14 +21,16 @@ export default function DeliveryPage({ params }: Props) {
 
   const [type, setType] = useState<'pickup' | 'delivery'>(delivery.type)
   const [address, setAddress] = useState(delivery.address ?? '')
-  const [notes, setNotes] = useState('')
+  const [notes, setNotes] = useState(delivery.notes ?? '')
 
   const canContinue = type === 'pickup' || (type === 'delivery' && address.trim().length >= 5)
 
   function handleContinue() {
+    const trimmedNotes = notes.trim()
     store.getState().setDelivery({
       type,
       address: type === 'delivery' ? address : undefined,
+      notes: type === 'delivery' && trimmedNotes ? trimmedNotes : undefined,
       fee: type === 'delivery' ? 0 : 0, // configurable in future phases
     })
     router.push(`/s/${slug}/checkout/contact`)

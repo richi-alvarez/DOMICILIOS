@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useCallback } from 'react'
-import CarouselPreview from './carousel-preview'
-import BenefitsPreview from './benefits-preview'
-import SocialProofPreview from './socialproof-preview'
-import CTAReinforcementPreview from './cta-reinforcement-preview'
-import FooterPreview from './footer-preview'
+import CarouselPreview from '@/components/blocks/carousel-preview'
+import BenefitsPreview from '@/components/blocks/benefits-preview'
+import SocialProofPreview from '@/components/blocks/socialproof-preview'
+import CTAReinforcementPreview from '@/components/blocks/cta-reinforcement-preview'
+import FooterPreview from '@/components/blocks/footer-preview'
 
 interface Block {
   id: string
@@ -388,7 +388,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                           <div className="p-3 flex flex-col flex-1">
                             {block.showTitle && <p className="font-semibold text-sm">{product.name}</p>}
                             {block.showDescription && product.description && <p className="text-xs text-gray-600 mt-1">{product.description}</p>}
-                            {block.showPrice && <p className="font-bold text-sm mt-2">${product.price}</p>}
+                            {block.showPrice && <p className="font-bold text-sm mt-2">${product.price.toLocaleString('es-CO')}</p>}
 
                             <div className="mt-auto flex flex-col gap-2">
                               {block.showExternalLink && (
@@ -634,7 +634,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                   )}
                   {cartBlock.showTotalPrice && (
                     <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-                      Total: ${cartTotal.toFixed(2)}
+                      Total: ${cartTotal.toLocaleString('es-CO')}
                     </div>
                   )}
 
@@ -648,12 +648,12 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                             {cartProducts.map((product) => (
                               <div key={product.id} className="grid grid-cols-2 gap-2 text-gray-700">
                                 <span className="truncate">{product.name}</span>
-                                <span className="text-right font-medium text-gray-900">${product.price.toFixed(2)}</span>
+                                <span className="text-right font-medium text-gray-900">${product.price.toLocaleString('es-CO')}</span>
                               </div>
                             ))}
                             <div className="border-t border-gray-300 pt-2 mt-2 grid grid-cols-2 gap-2 font-semibold text-gray-900">
                               <span>Total:</span>
-                              <span className="text-right">${cartTotal.toFixed(2)}</span>
+                              <span className="text-right">${cartTotal.toLocaleString('es-CO')}</span>
                             </div>
                           </>
                         ) : (

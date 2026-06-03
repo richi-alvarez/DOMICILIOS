@@ -8,6 +8,10 @@ import { retryStrategy } from '@/lib/ai/retry-strategy'
 import { buildDesignPromptMessage, AI_DESIGN_CATALOG_PROMPT } from '@/lib/prompts/catalog-generation'
 import { revalidatePath } from 'next/cache'
 
+// Imagen usada cuando la descarga desde Unsplash falla. La descarga de
+// imágenes es opcional: nunca debe impedir la creación del catálogo.
+const PLACEHOLDER_IMAGE = '/placeholder-product.svg'
+
 interface AIGeneratedCatalogDesign {
   catalogName: string
   description: string
@@ -108,39 +112,31 @@ export async function generateAICatalogWithDesign(
       return { error: 'La IA debe generar entre 1 y 3 productos' }
     }
 
-    // Download images in parallel
-    let bannerUrl: string
-    const productImages: Array<{ bodyUrl: string; carouselUrl: string }> = []
-
-    try {
-      bannerUrl = await downloadAndSaveImage(
-        generated.banner.imageQuery,
-        catalogId,
-        'banner'
-      )
-
-      const imageDownloads = generated.products.map(async (product) => {
-        const bodyUrl = await downloadAndSaveImage(
-          product.bodyImageQuery,
-          catalogId,
-          `producto_body_${product.name.toLowerCase().replace(/\s+/g, '-')}`
+    // Descarga de imágenes: best-effort. Si Unsplash falla (clave ausente,
+    // 503, timeout…) usamos un placeholder y continuamos creando el catálogo.
+    // Las imágenes son opcionales y no deben bloquear la generación.
+    const safeDownload = async (query: string, filename: string): Promise<string> => {
+      try {
+        return await downloadAndSaveImage(query, catalogId, filename)
+      } catch (error) {
+        console.warn(
+          `[generateAICatalogWithDesign] Imagen "${filename}" no descargada, usando placeholder:`,
+          error instanceof Error ? error.message : error,
         )
-
-        const carouselUrl = await downloadAndSaveImage(
-          product.carouselImageQuery,
-          catalogId,
-          `producto_carrusel_${product.name.toLowerCase().replace(/\s+/g, '-')}`
-        )
-
-        return { bodyUrl, carouselUrl }
-      })
-
-      const downloadedImages = await Promise.all(imageDownloads)
-      productImages.push(...downloadedImages)
-    } catch (error) {
-      console.error('[generateAICatalogWithDesign] Image download error:', error)
-      return { error: 'Error descargando imágenes para el catálogo' }
+        return PLACEHOLDER_IMAGE
+      }
     }
+
+    const bannerUrl = await safeDownload(generated.banner.imageQuery, 'banner')
+
+    const productImages: Array<{ bodyUrl: string; carouselUrl: string }> = await Promise.all(
+      generated.products.map(async (product) => {
+        const baseName = product.name.toLowerCase().replace(/\s+/g, '-')
+        const bodyUrl = await safeDownload(product.bodyImageQuery, `producto_body_${baseName}`)
+        const carouselUrl = await safeDownload(product.carouselImageQuery, `producto_carrusel_${baseName}`)
+        return { bodyUrl, carouselUrl }
+      }),
+    )
 
     // Create category
     const categoryId = crypto.randomUUID?.() || Date.now().toString()
