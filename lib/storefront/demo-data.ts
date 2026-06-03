@@ -12,6 +12,7 @@ export const DEMO_CATALOG: StorefrontCatalog = {
   contactCountryCode: '+57',
   contactEmail: null,
   themeJson: {} as Record<string, unknown>,
+  settingsJson: {} as Record<string, unknown>,
   publishedAt: new Date(),
 }
 

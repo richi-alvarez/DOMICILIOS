@@ -23,6 +23,7 @@ export type StorefrontCatalog = {
   contactCountryCode: string | null
   contactEmail: string | null
   themeJson: Record<string, unknown>
+  settingsJson: Record<string, unknown>
   publishedAt: Date | null
 }
 
@@ -84,7 +85,11 @@ export async function getCatalogBySlug(slug: string): Promise<StorefrontCatalog 
       where: and(eq(catalogs.slug, slug), eq(catalogs.status, 'published')),
     })
     if (!row) return null
-    return { ...row, themeJson: (row.themeJson ?? {}) as Record<string, unknown> }
+    return {
+      ...row,
+      themeJson: (row.themeJson ?? {}) as Record<string, unknown>,
+      settingsJson: (row.settingsJson ?? {}) as Record<string, unknown>,
+    }
   } catch {
     return null
   }

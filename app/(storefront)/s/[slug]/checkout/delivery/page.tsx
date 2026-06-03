@@ -1,6 +1,6 @@
 'use client'
 
-import { use, useState } from 'react'
+import { use, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Store, Bike, ChevronRight } from 'lucide-react'
 import { CheckoutHeader } from '@/components/storefront/checkout-header'
@@ -17,13 +17,32 @@ export default function DeliveryPage({ params }: Props) {
   const router = useRouter()
   const store = useCart()
   const { items, delivery } = useCartState()
-  const totals = calcTotals(items, delivery.fee)
 
   const [type, setType] = useState<'pickup' | 'delivery'>(delivery.type)
   const [address, setAddress] = useState(delivery.address ?? '')
   const [notes, setNotes] = useState(delivery.notes ?? '')
+  // Configuración de envío del comerciante (definida en Ajustes del catálogo).
+  const [shippingFee, setShippingFee] = useState(0)
+  const [minOrder, setMinOrder] = useState(0)
 
-  const canContinue = type === 'pickup' || (type === 'delivery' && address.trim().length >= 5)
+  useEffect(() => {
+    fetch(`/api/storefront/${slug}`)
+      .then((r) => r.json())
+      .then((d) => {
+        setShippingFee(Number(d.catalog?.delivery?.fee ?? 0))
+        setMinOrder(Number(d.catalog?.delivery?.minOrder ?? 0))
+      })
+      .catch(() => {})
+  }, [slug])
+
+  // El envío solo aplica a domicilio. El pickup siempre es gratis.
+  const effectiveFee = type === 'delivery' ? shippingFee : 0
+  const totals = calcTotals(items, effectiveFee)
+  // Pedido mínimo para domicilio: si el subtotal no lo alcanza, no se puede continuar.
+  const belowMinOrder = type === 'delivery' && minOrder > 0 && totals.subtotal < minOrder
+
+  const canContinue =
+    type === 'pickup' || (type === 'delivery' && address.trim().length >= 5 && !belowMinOrder)
 
   function handleContinue() {
     const trimmedNotes = notes.trim()
@@ -31,7 +50,7 @@ export default function DeliveryPage({ params }: Props) {
       type,
       address: type === 'delivery' ? address : undefined,
       notes: type === 'delivery' && trimmedNotes ? trimmedNotes : undefined,
-      fee: type === 'delivery' ? 0 : 0, // configurable in future phases
+      fee: effectiveFee,
     })
     router.push(`/s/${slug}/checkout/contact`)
   }
@@ -144,6 +163,11 @@ export default function DeliveryPage({ params }: Props) {
                   className="w-full rounded-xl border border-warm-200 px-4 py-2.5 text-sm text-night-800 placeholder-night-300 focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-400"
                 />
               </div>
+              {belowMinOrder && (
+                <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-700">
+                  El pedido mínimo para domicilio es {formatMoney(minOrder)}. Agrega más productos para continuar.
+                </p>
+              )}
             </div>
           )}
         </div>
@@ -159,11 +183,15 @@ export default function DeliveryPage({ params }: Props) {
               </div>
               <div className="flex justify-between">
                 <span>Envío</span>
-                <span className="text-lime-600">{type === 'pickup' ? 'Gratis' : 'A definir'}</span>
+                {effectiveFee > 0 ? (
+                  <span>{formatMoney(effectiveFee)}</span>
+                ) : (
+                  <span className="text-lime-600">Gratis</span>
+                )}
               </div>
               <div className="flex justify-between border-t border-warm-100 pt-2 font-bold text-night-900">
                 <span>Total</span>
-                <span>{formatMoney(totals.subtotal)}</span>
+                <span>{formatMoney(totals.total)}</span>
               </div>
             </div>
           </div>
