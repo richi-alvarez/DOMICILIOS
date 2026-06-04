@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useTransition } from 'react'
-import { Bot, User, Send, MessageCircle, RefreshCw } from 'lucide-react'
+import { Bot, User, Send, MessageCircle, RefreshCw, Trash2 } from 'lucide-react'
 import { Switch } from '@/components/ui/switch'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -10,6 +10,7 @@ import {
   setModeAction,
   sendManualReplyAction,
   listConversationsAction,
+  deleteConversationAction,
 } from '@/lib/actions/whatsapp'
 
 interface Conversation {
@@ -109,6 +110,27 @@ export function WhatsappClient({ catalogId, initialConversations }: Props) {
     })
   }
 
+  function deleteConversation() {
+    if (!active) return
+    if (!confirm(`¿Eliminar la conversación con ${active.customerName || active.customerPhone}? Se borrará también de la base de datos.`)) {
+      return
+    }
+    const convId = active.id
+    startTransition(async () => {
+      const res = await deleteConversationAction(convId).catch(() => ({ error: 'No se pudo eliminar' }))
+      if ((res as any)?.error) {
+        setError((res as any).error)
+        return
+      }
+      setConversations((prev) => {
+        const next = prev.filter((c) => c.id !== convId)
+        setActiveId(next[0]?.id ?? null)
+        return next
+      })
+      setMessages([])
+    })
+  }
+
   function send() {
     if (!active || !draft.trim()) return
     const body = draft.trim()
@@ -173,11 +195,22 @@ export function WhatsappClient({ catalogId, initialConversations }: Props) {
                 </p>
                 <p className="text-xs text-warm-400">+{active.customerPhone}</p>
               </div>
-              <label className="flex items-center gap-2 text-xs font-medium text-night-600">
-                <User className="h-4 w-4" /> Humano
-                <Switch checked={active.mode === 'ai'} onCheckedChange={toggleMode} />
-                IA <Bot className="h-4 w-4" />
-              </label>
+              <div className="flex items-center gap-4">
+                <label className="flex items-center gap-2 text-xs font-medium text-night-600">
+                  <User className="h-4 w-4" /> Humano
+                  <Switch checked={active.mode === 'ai'} onCheckedChange={toggleMode} />
+                  IA <Bot className="h-4 w-4" />
+                </label>
+                <button
+                  type="button"
+                  onClick={deleteConversation}
+                  disabled={isPending}
+                  title="Eliminar conversación"
+                  className="rounded-lg p-2 text-warm-400 transition hover:bg-red-50 hover:text-red-600 disabled:opacity-50"
+                >
+                  <Trash2 className="h-4 w-4" />
+                </button>
+              </div>
             </div>
 
             <div ref={scrollRef} className="flex-1 space-y-2 overflow-y-auto bg-warm-50 p-4">

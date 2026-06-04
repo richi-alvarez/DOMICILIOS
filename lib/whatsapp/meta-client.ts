@@ -12,6 +12,16 @@ export function isMetaConfigured(): boolean {
   return !!(process.env.META_ACCESS_TOKEN && process.env.META_PHONE_NUMBER_ID)
 }
 
+/**
+ * Si está activado, en modo Humano se reenvía el chat al WhatsApp de la tienda
+ * y la tienda puede responder desde su propio número (además del panel).
+ * Si está desactivado, el modo Humano se responde SOLO desde el panel admin.
+ * Controlado por WHATSAPP_STORE_REPLY (true|1|yes|on).
+ */
+export function isStoreReplyEnabled(): boolean {
+  return ['true', '1', 'yes', 'on'].includes((process.env.WHATSAPP_STORE_REPLY || '').toLowerCase())
+}
+
 /** Normaliza a E.164 sin '+' ni separadores (lo que espera la Cloud API en `to`). */
 export function normalizePhone(phone: string): string {
   return (phone || '').replace(/[^\d]/g, '')

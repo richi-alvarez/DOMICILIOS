@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyMetaSignature, getVerifyToken, sendWhatsAppText } from '@/lib/whatsapp/meta-client'
+import {
+  verifyMetaSignature,
+  getVerifyToken,
+  sendWhatsAppText,
+  isStoreReplyEnabled,
+} from '@/lib/whatsapp/meta-client'
 import {
   resolveOrderForPhone,
   upsertConversation,
   appendMessage,
   getMessages,
+  getStoreCatalogIds,
+  getLatestHumanConversationForCatalogs,
 } from '@/lib/whatsapp/conversations'
 import { db, catalogs, whatsappMessages } from '@/db'
 import { eq } from 'drizzle-orm'
@@ -85,6 +92,17 @@ async function handleInboundMessage(input: {
   })
   if (already) return
 
+  // ¿El mensaje viene del WhatsApp de una TIENDA? (el admin respondiendo).
+  // Se intercepta siempre para no crear una conversación con el número de la tienda;
+  // solo se rutea al cliente si la opción WHATSAPP_STORE_REPLY está activada.
+  const storeCatalogIds = await getStoreCatalogIds(input.fromPhone)
+  if (storeCatalogIds.length > 0) {
+    if (isStoreReplyEnabled()) {
+      await handleStoreAdminReply(storeCatalogIds, input.body, input.fromPhone)
+    }
+    return
+  }
+
   // Resolver el comercio por el pedido más reciente del teléfono
   const order = await resolveOrderForPhone(input.fromPhone)
 
@@ -109,18 +127,22 @@ async function handleInboundMessage(input: {
     ? await db.query.catalogs.findFirst({ where: eq(catalogs.id, conv.catalogId) })
     : null
 
-  // Si la conversación está asociada a un pedido, notificar a la tienda
-  if (catalog?.contactPhone) {
-    const cc = (catalog.contactCountryCode || '+57').replace('+', '')
-    const storePhone = `${cc}${catalog.contactPhone}`.replace(/[^\d]/g, '')
-    await sendWhatsAppText(
-      storePhone,
-      `💬 Mensaje del cliente${conv.customerName ? ` ${conv.customerName}` : ''} (pedido #${order?.code ?? '—'}):\n"${input.body}"`,
-    ).catch(() => {})
+  // Modo HUMANO: reflejar el chat en el WhatsApp de la tienda para que el admin
+  // pueda responder desde su propio número (si WHATSAPP_STORE_REPLY está activo).
+  // No auto-responder; el panel admin siempre puede responder.
+  if (conv.mode !== 'ai') {
+    if (isStoreReplyEnabled() && catalog?.contactPhone) {
+      const cc = (catalog.contactCountryCode || '+57').replace('+', '')
+      const storePhone = `${cc}${catalog.contactPhone}`.replace(/[^\d]/g, '')
+      await sendWhatsAppText(
+        storePhone,
+        `💬 *${conv.customerName || conv.customerPhone}*${
+          order?.code ? ` (pedido #${order.code})` : ''
+        } escribió:\n"${input.body}"\n\nResponde a este chat para contestarle.`,
+      ).catch(() => {})
+    }
+    return
   }
-
-  // Modo Humano: no auto-responder (el agente responde desde el dashboard)
-  if (conv.mode !== 'ai') return
 
   // Modo IA: generar respuesta con el LLM
   const { generateWhatsAppReply } = await import('@/lib/whatsapp/reply')
@@ -156,4 +178,23 @@ async function handleInboundMessage(input: {
       status: sent.success ? 'sent' : 'failed',
     })
   }
+}
+
+/**
+ * El admin de la tienda respondió desde su WhatsApp. Se rutea a la conversación
+ * humana más reciente del comercio y se reenvía el texto al cliente.
+ * (Con un solo número de plataforma, se asume la conversación humana más reciente.)
+ */
+async function handleStoreAdminReply(catalogIds: string[], body: string, fromPhone: string) {
+  const conv = await getLatestHumanConversationForCatalogs(catalogIds, fromPhone)
+  if (!conv) return
+  const sent = await sendWhatsAppText(conv.customerPhone, body)
+  await appendMessage({
+    conversationId: conv.id,
+    direction: 'outbound',
+    sender: 'agent',
+    body,
+    waMessageId: sent.messageId,
+    status: sent.success ? 'sent' : 'failed',
+  })
 }

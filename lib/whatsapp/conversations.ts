@@ -1,5 +1,5 @@
-import { db, whatsappConversations, whatsappMessages, orders } from '@/db'
-import { eq, desc, and } from 'drizzle-orm'
+import { db, whatsappConversations, whatsappMessages, orders, catalogs } from '@/db'
+import { eq, desc, and, isNotNull, inArray } from 'drizzle-orm'
 import { normalizePhone } from './meta-client'
 
 type Direction = 'inbound' | 'outbound'
@@ -136,4 +136,38 @@ export async function setMode(conversationId: string, mode: Mode) {
     .update(whatsappConversations)
     .set({ mode, updatedAt: new Date() })
     .where(eq(whatsappConversations.id, conversationId))
+}
+
+export async function deleteConversation(conversationId: string) {
+  // Los mensajes se borran en cascada (FK onDelete cascade).
+  await db.delete(whatsappConversations).where(eq(whatsappConversations.id, conversationId))
+}
+
+/** IDs de catálogos cuyo WhatsApp de tienda coincide con el teléfono dado. */
+export async function getStoreCatalogIds(phone: string): Promise<string[]> {
+  const rows = await db.query.catalogs.findMany({
+    where: isNotNull(catalogs.contactPhone),
+    columns: { id: true, contactPhone: true, contactCountryCode: true },
+  })
+  return rows
+    .filter((c) => phoneMatches(`${(c.contactCountryCode || '').replace('+', '')}${c.contactPhone || ''}`, phone))
+    .map((c) => c.id)
+}
+
+/** Conversación humana más reciente entre varios comercios (para rutear la respuesta del admin). */
+export async function getLatestHumanConversationForCatalogs(
+  catalogIds: string[],
+  excludePhone?: string,
+) {
+  if (catalogIds.length === 0) return null
+  const rows = await db.query.whatsappConversations.findMany({
+    where: and(
+      inArray(whatsappConversations.catalogId, catalogIds),
+      eq(whatsappConversations.mode, 'human'),
+    ),
+    orderBy: (t) => [desc(t.lastMessageAt)],
+    limit: 5,
+  })
+  const exclude = excludePhone ? normalizePhone(excludePhone) : null
+  return rows.find((c) => !exclude || c.customerPhone !== exclude) ?? null
 }

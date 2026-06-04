@@ -9,6 +9,7 @@ import {
   getConversation,
   appendMessage,
   setMode,
+  deleteConversation,
 } from '@/lib/whatsapp/conversations'
 import { sendWhatsAppText } from '@/lib/whatsapp/meta-client'
 
@@ -45,6 +46,12 @@ export async function getMessagesAction(conversationId: string) {
 export async function setModeAction(conversationId: string, mode: 'ai' | 'human') {
   await getOwnedConversation(conversationId)
   await setMode(conversationId, mode)
+  return { ok: true }
+}
+
+export async function deleteConversationAction(conversationId: string) {
+  await getOwnedConversation(conversationId)
+  await deleteConversation(conversationId)
   return { ok: true }
 }
 
