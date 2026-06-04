@@ -5,7 +5,7 @@ import { auth } from '@/auth'
 import { db, catalogs, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
 import { listConversations } from '@/lib/whatsapp/conversations'
-import { isMetaConfigured } from '@/lib/whatsapp/meta-client'
+import { isMetaConfigured, isStoreReplyEnabled } from '@/lib/whatsapp/meta-client'
 import { SettingsTabs } from '@/components/app/settings-tabs'
 import { getSettingsTabs } from '../settings-tabs-config'
 import { WhatsappClient } from './whatsapp-client'
@@ -55,11 +55,13 @@ export default async function WhatsappSettingsPage({ params }: Props) {
 
       <WhatsappClient
         catalogId={id}
+        storeReplyFeatureEnabled={metaConfigured && isStoreReplyEnabled()}
         initialConversations={conversations.map((c) => ({
           id: c.id,
           customerPhone: c.customerPhone,
           customerName: c.customerName,
           mode: c.mode,
+          storeReplyEnabled: c.storeReplyEnabled,
           lastMessageText: c.lastMessageText,
           lastMessageAt: c.lastMessageAt ? c.lastMessageAt.toISOString() : null,
         }))}

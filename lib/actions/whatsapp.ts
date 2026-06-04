@@ -9,8 +9,10 @@ import {
   getConversation,
   appendMessage,
   setMode,
+  setStoreReply,
   deleteConversation,
 } from '@/lib/whatsapp/conversations'
+import { isStoreReplyEnabled } from '@/lib/whatsapp/meta-client'
 import { sendWhatsAppText } from '@/lib/whatsapp/meta-client'
 
 async function getOwnedCatalog(catalogId: string) {
@@ -46,6 +48,13 @@ export async function getMessagesAction(conversationId: string) {
 export async function setModeAction(conversationId: string, mode: 'ai' | 'human') {
   await getOwnedConversation(conversationId)
   await setMode(conversationId, mode)
+  return { ok: true }
+}
+
+export async function setStoreReplyAction(conversationId: string, enabled: boolean) {
+  if (!isStoreReplyEnabled()) return { error: 'La opción global WHATSAPP_STORE_REPLY está deshabilitada' }
+  await getOwnedConversation(conversationId)
+  await setStoreReply(conversationId, enabled)
   return { ok: true }
 }
 

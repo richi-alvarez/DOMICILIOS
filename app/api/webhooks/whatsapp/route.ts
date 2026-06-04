@@ -131,7 +131,7 @@ async function handleInboundMessage(input: {
   // pueda responder desde su propio número (si WHATSAPP_STORE_REPLY está activo).
   // No auto-responder; el panel admin siempre puede responder.
   if (conv.mode !== 'ai') {
-    if (isStoreReplyEnabled() && catalog?.contactPhone) {
+    if (isStoreReplyEnabled() && conv.storeReplyEnabled && catalog?.contactPhone) {
       const cc = (catalog.contactCountryCode || '+57').replace('+', '')
       const storePhone = `${cc}${catalog.contactPhone}`.replace(/[^\d]/g, '')
       await sendWhatsAppText(

@@ -138,6 +138,13 @@ export async function setMode(conversationId: string, mode: Mode) {
     .where(eq(whatsappConversations.id, conversationId))
 }
 
+export async function setStoreReply(conversationId: string, enabled: boolean) {
+  await db
+    .update(whatsappConversations)
+    .set({ storeReplyEnabled: enabled, updatedAt: new Date() })
+    .where(eq(whatsappConversations.id, conversationId))
+}
+
 export async function deleteConversation(conversationId: string) {
   // Los mensajes se borran en cascada (FK onDelete cascade).
   await db.delete(whatsappConversations).where(eq(whatsappConversations.id, conversationId))
@@ -164,6 +171,7 @@ export async function getLatestHumanConversationForCatalogs(
     where: and(
       inArray(whatsappConversations.catalogId, catalogIds),
       eq(whatsappConversations.mode, 'human'),
+      eq(whatsappConversations.storeReplyEnabled, true),
     ),
     orderBy: (t) => [desc(t.lastMessageAt)],
     limit: 5,

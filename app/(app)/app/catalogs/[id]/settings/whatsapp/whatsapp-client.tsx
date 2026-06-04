@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState, useTransition } from 'react'
-import { Bot, User, Send, MessageCircle, RefreshCw, Trash2 } from 'lucide-react'
+import { Bot, User, Send, MessageCircle, RefreshCw, Trash2, Store } from 'lucide-react'
 import { Switch } from '@/components/ui/switch'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -11,6 +11,7 @@ import {
   sendManualReplyAction,
   listConversationsAction,
   deleteConversationAction,
+  setStoreReplyAction,
 } from '@/lib/actions/whatsapp'
 
 interface Conversation {
@@ -18,6 +19,7 @@ interface Conversation {
   customerPhone: string
   customerName: string | null
   mode: 'ai' | 'human'
+  storeReplyEnabled: boolean
   lastMessageText: string | null
   lastMessageAt: string | null
 }
@@ -33,6 +35,7 @@ interface Message {
 
 interface Props {
   catalogId: string
+  storeReplyFeatureEnabled: boolean
   initialConversations: Conversation[]
 }
 
@@ -43,7 +46,7 @@ function timeLabel(d?: string | Date | null) {
   return date.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' })
 }
 
-export function WhatsappClient({ catalogId, initialConversations }: Props) {
+export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialConversations }: Props) {
   const [conversations, setConversations] = useState<Conversation[]>(initialConversations)
   const [activeId, setActiveId] = useState<string | null>(initialConversations[0]?.id ?? null)
   const [messages, setMessages] = useState<Message[]>([])
@@ -72,6 +75,7 @@ export function WhatsappClient({ catalogId, initialConversations }: Props) {
           customerPhone: c.customerPhone,
           customerName: c.customerName,
           mode: c.mode,
+          storeReplyEnabled: c.storeReplyEnabled,
           lastMessageText: c.lastMessageText,
           lastMessageAt: c.lastMessageAt ? new Date(c.lastMessageAt).toISOString() : null,
         })),
@@ -107,6 +111,14 @@ export function WhatsappClient({ catalogId, initialConversations }: Props) {
     setConversations((prev) => prev.map((c) => (c.id === active.id ? { ...c, mode } : c)))
     startTransition(async () => {
       await setModeAction(active.id, mode).catch(() => {})
+    })
+  }
+
+  function toggleStoreReply(checked: boolean) {
+    if (!active) return
+    setConversations((prev) => prev.map((c) => (c.id === active.id ? { ...c, storeReplyEnabled: checked } : c)))
+    startTransition(async () => {
+      await setStoreReplyAction(active.id, checked).catch(() => {})
     })
   }
 
@@ -212,6 +224,18 @@ export function WhatsappClient({ catalogId, initialConversations }: Props) {
                 </button>
               </div>
             </div>
+
+            {/* Opción (solo si WHATSAPP_STORE_REPLY global está activo y el chat está en Humano):
+                permitir que la tienda responda desde su propio WhatsApp para esta conversación. */}
+            {storeReplyFeatureEnabled && active.mode === 'human' && (
+              <div className="flex items-center justify-between border-b border-warm-100 bg-warm-50/60 px-4 py-2">
+                <span className="flex items-center gap-2 text-xs text-night-600">
+                  <Store className="h-4 w-4 text-night-400" />
+                  Responder desde el WhatsApp de la tienda
+                </span>
+                <Switch checked={active.storeReplyEnabled} onCheckedChange={toggleStoreReply} />
+              </div>
+            )}
 
             <div ref={scrollRef} className="flex-1 space-y-2 overflow-y-auto bg-warm-50 p-4">
               {messages.map((m) => {

@@ -660,6 +660,9 @@ export const whatsappConversations = pgTable(
     customerPhone: text('customer_phone').notNull(), // E.164 sin '+'
     customerName: text('customer_name'),
     mode: whatsappModeEnum('mode').default('ai').notNull(),
+    // En modo Humano (y si WHATSAPP_STORE_REPLY está activo): si true, el chat se
+    // refleja en el WhatsApp de la tienda y la tienda puede responder desde su número.
+    storeReplyEnabled: boolean('store_reply_enabled').default(true).notNull(),
     lastMessageAt: timestamp('last_message_at', { mode: 'date' }),
     lastMessageText: text('last_message_text'),
     createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
