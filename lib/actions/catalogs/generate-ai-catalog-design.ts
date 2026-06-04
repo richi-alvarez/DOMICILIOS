@@ -6,6 +6,7 @@ import { eq } from 'drizzle-orm'
 import { downloadAndSaveImage } from '@/lib/utils/image-downloader'
 import { retryStrategy } from '@/lib/ai/retry-strategy'
 import { buildDesignPromptMessage, AI_DESIGN_CATALOG_PROMPT } from '@/lib/prompts/catalog-generation'
+import { parseAIJson } from '@/lib/ai/parse-json'
 import { revalidatePath } from 'next/cache'
 
 // Imagen usada cuando la descarga desde Unsplash falla. La descarga de
@@ -97,7 +98,7 @@ export async function generateAICatalogWithDesign(
     // Parse JSON response
     let generated: AIGeneratedCatalogDesign
     try {
-      generated = JSON.parse(response.content)
+      generated = parseAIJson<AIGeneratedCatalogDesign>(response.content)
     } catch (e) {
       console.error('[generateAICatalogWithDesign] JSON Parse Error:', e)
       return { error: 'Error al procesar respuesta de la IA' }

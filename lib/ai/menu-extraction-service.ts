@@ -1,7 +1,7 @@
 import { retryStrategy } from './retry-strategy'
 import { PromptsService } from './prompts-service'
 import { AIProviderFactory } from './factory'
-import { getRecommendedModel } from './task-recommendations'
+import { getRecommendedModel, getTaskRecommendation } from './task-recommendations'
 import type { SupportedProvider } from './types/ai-provider'
 
 export interface ExtractedProduct {
@@ -50,10 +50,11 @@ export class MenuExtractionService {
     const startTime = Date.now()
 
     try {
-      // Definir orden de proveedores
+      // Definir orden de proveedores según task-recommendations.ts (no según .env)
+      const rec = getTaskRecommendation('menu-extraction')
       const recommendedOrder: SupportedProvider[] = options.customProvider
         ? [options.customProvider]
-        : ['anthropic', 'gemini', 'openai']
+        : [rec.primary, ...rec.fallbacks]
 
       let lastError = 'No error recorded'
       let lastAttempt = 0

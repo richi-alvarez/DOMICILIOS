@@ -5,6 +5,7 @@ import { db, catalogs, products } from '@/db'
 import { eq } from 'drizzle-orm'
 import { CatalogGenerationService } from '@/lib/ai/catalog-generation-service'
 import type { SupportedProvider } from '@/lib/ai/types/ai-provider'
+import { parseAIJson } from '@/lib/ai/parse-json'
 
 export interface GeneratedCatalogStructure {
   businessType: string
@@ -66,7 +67,7 @@ export async function generateCatalogWithAI(
     // Parsear JSON
     let generated: GeneratedCatalogStructure
     try {
-      generated = JSON.parse(response.content)
+      generated = parseAIJson<GeneratedCatalogStructure>(response.content)
     } catch (e) {
       console.error('[Catalog Generator] JSON Parse Error:', e)
       return { error: 'Error al procesar respuesta de la IA' }
@@ -150,7 +151,7 @@ Responde SOLO con JSON válido.
 
     let suggestions
     try {
-      suggestions = JSON.parse(response.content)
+      suggestions = parseAIJson(response.content)
     } catch (e) {
       return { error: 'Error procesando sugerencias' }
     }

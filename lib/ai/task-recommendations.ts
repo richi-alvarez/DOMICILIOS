@@ -18,45 +18,41 @@ interface TaskRecommendation {
  * Recomendaciones inteligentes de IA por tipo de tarea
  * Considera: costo, velocidad, calidad y capacidades especiales
  */
+// Orden de proveedores unificado para todas las tareas:
+// OpenRouter → OpenAI → Gemini → Anthropic (definido por el usuario).
+const DEFAULT_PROVIDER_ORDER = {
+  primary: 'openrouter' as SupportedProvider,
+  fallbacks: ['openai', 'gemini', 'anthropic'] as SupportedProvider[],
+}
+
 export const TASK_RECOMMENDATIONS: Record<AITask, TaskRecommendation> = {
   'catalog-generation': {
-    // Generar estructura de catálogos: velocidad es crítica.
-    // OpenRouter primero porque da acceso a múltiples modelos con una sola clave.
-    primary: 'openrouter',
-    fallbacks: ['gemini', 'openai', 'anthropic'],
-    reason: 'OpenRouter da acceso a múltiples modelos con una sola clave. Fallback a Gemini/OpenAI/Anthropic',
+    ...DEFAULT_PROVIDER_ORDER,
+    reason: 'Orden unificado: OpenRouter → OpenAI → Gemini → Anthropic',
     requiresVision: false,
   },
 
   'menu-extraction': {
-    // Extraer productos de menús: requiere visión y comprensión
-    primary: 'anthropic',
-    fallbacks: ['gemini', 'openai'],
-    reason: 'Claude tiene mejor OCR y comprensión de diseños complejos',
+    ...DEFAULT_PROVIDER_ORDER,
+    reason: 'Orden unificado: OpenRouter → OpenAI → Gemini → Anthropic',
     requiresVision: true,
   },
 
   'product-extraction': {
-    // Extraer productos de imágenes: requiere visión aguda
-    primary: 'gemini',
-    fallbacks: ['anthropic', 'openai'],
-    reason: 'Gemini es mejor en visión, más rápido y barato',
+    ...DEFAULT_PROVIDER_ORDER,
+    reason: 'Orden unificado: OpenRouter → OpenAI → Gemini → Anthropic',
     requiresVision: true,
   },
 
   'image-analysis': {
-    // Análisis general de imágenes: balance calidad/velocidad
-    primary: 'gemini',
-    fallbacks: ['anthropic', 'openai'],
-    reason: 'Gemini 2.0 Flash es superior en análisis visual',
+    ...DEFAULT_PROVIDER_ORDER,
+    reason: 'Orden unificado: OpenRouter → OpenAI → Gemini → Anthropic',
     requiresVision: true,
   },
 
   'content-generation': {
-    // Generación de contenido: calidad es crítica
-    primary: 'anthropic',
-    fallbacks: ['openai', 'gemini'],
-    reason: 'Claude produce texto más coherente y creativo',
+    ...DEFAULT_PROVIDER_ORDER,
+    reason: 'Orden unificado: OpenRouter → OpenAI → Gemini → Anthropic',
     requiresVision: false,
   },
 }
@@ -74,7 +70,7 @@ export const RECOMMENDED_MODELS: Record<SupportedProvider, Record<AITask, string
   },
 
   openai: {
-    'catalog-generation': 'gpt-3.5-turbo',
+    'catalog-generation': 'gpt-4o-mini',
     'menu-extraction': 'gpt-4-turbo',
     'product-extraction': 'gpt-4-turbo',
     'image-analysis': 'gpt-4-turbo',
@@ -82,11 +78,12 @@ export const RECOMMENDED_MODELS: Record<SupportedProvider, Record<AITask, string
   },
 
   gemini: {
-    'catalog-generation': 'gemini-2.0-flash',
-    'menu-extraction': 'gemini-2.0-flash',
-    'product-extraction': 'gemini-2.0-flash',
-    'image-analysis': 'gemini-2.0-flash',
-    'content-generation': 'gemini-1.5-pro',
+    // gemini-2.0-flash quedó obsoleto en el SDK (404). gemini-2.5-flash es el actual.
+    'catalog-generation': 'gemini-2.5-flash',
+    'menu-extraction': 'gemini-2.5-flash',
+    'product-extraction': 'gemini-2.5-flash',
+    'image-analysis': 'gemini-2.5-flash',
+    'content-generation': 'gemini-2.5-flash',
   },
 
   // Defaults para OpenRouter. En la práctica los sobreescribe OPENROUTER_MODEL.
