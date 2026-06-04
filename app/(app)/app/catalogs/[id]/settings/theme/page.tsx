@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { auth } from '@/auth'
 import { SettingsTabs } from '@/components/app/settings-tabs'
+import { getSettingsTabs } from '../settings-tabs-config'
 import { ThemeEditor } from '@/components/design-editor/theme-editor'
 import { THEME_DEFAULTS, themeSchema } from '@/lib/design/theme'
 
@@ -54,13 +55,7 @@ export default async function ThemePage({ params }: { params: Promise<{ id: stri
 
   return (
     <div className="px-6 py-8">
-      <SettingsTabs
-        tabs={[
-          { href: `/app/catalogs/${id}/settings`, label: 'Entregas' },
-          { href: `/app/catalogs/${id}/settings/theme`, label: 'Tema visual' },
-          { href: `/app/catalogs/${id}/settings/payments`, label: 'Pagos' },
-        ]}
-      />
+      <SettingsTabs tabs={getSettingsTabs(id)} />
       <ThemeEditor
         catalogId={id}
         catalogSlug={catalog.slug}

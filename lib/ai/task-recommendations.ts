@@ -6,6 +6,7 @@ export type AITask =
   | 'product-extraction'
   | 'content-generation'
   | 'image-analysis'
+  | 'whatsapp-reply'
 
 interface TaskRecommendation {
   primary: SupportedProvider
@@ -55,6 +56,12 @@ export const TASK_RECOMMENDATIONS: Record<AITask, TaskRecommendation> = {
     reason: 'Orden unificado: OpenRouter → OpenAI → Gemini → Anthropic',
     requiresVision: false,
   },
+
+  'whatsapp-reply': {
+    ...DEFAULT_PROVIDER_ORDER,
+    reason: 'Respuesta conversacional de WhatsApp. Orden unificado.',
+    requiresVision: false,
+  },
 }
 
 /**
@@ -67,6 +74,7 @@ export const RECOMMENDED_MODELS: Record<SupportedProvider, Record<AITask, string
     'product-extraction': 'claude-opus-4-7-20250219',
     'image-analysis': 'claude-opus-4-7-20250219',
     'content-generation': 'claude-sonnet-4-6-20250514',
+    'whatsapp-reply': 'claude-haiku-4-5-20251001',
   },
 
   openai: {
@@ -75,6 +83,7 @@ export const RECOMMENDED_MODELS: Record<SupportedProvider, Record<AITask, string
     'product-extraction': 'gpt-4-turbo',
     'image-analysis': 'gpt-4-turbo',
     'content-generation': 'gpt-4',
+    'whatsapp-reply': 'gpt-4o-mini',
   },
 
   gemini: {
@@ -84,6 +93,7 @@ export const RECOMMENDED_MODELS: Record<SupportedProvider, Record<AITask, string
     'product-extraction': 'gemini-2.5-flash',
     'image-analysis': 'gemini-2.5-flash',
     'content-generation': 'gemini-2.5-flash',
+    'whatsapp-reply': 'gemini-2.5-flash',
   },
 
   // Defaults para OpenRouter. En la práctica los sobreescribe OPENROUTER_MODEL.
@@ -93,6 +103,7 @@ export const RECOMMENDED_MODELS: Record<SupportedProvider, Record<AITask, string
     'product-extraction': 'openai/gpt-4o',
     'image-analysis': 'openai/gpt-4o',
     'content-generation': 'anthropic/claude-3.5-sonnet',
+    'whatsapp-reply': 'openai/gpt-4o-mini',
   },
 }
 

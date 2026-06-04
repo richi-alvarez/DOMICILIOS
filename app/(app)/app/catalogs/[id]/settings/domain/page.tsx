@@ -6,6 +6,7 @@ import { db, catalogs, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
 import { DomainEditor } from '@/components/app/domain-editor'
 import { SettingsTabs } from '@/components/app/settings-tabs'
+import { getSettingsTabs } from '../settings-tabs-config'
 
 export const metadata: Metadata = { title: 'Dominio personalizado' }
 
@@ -45,11 +46,7 @@ export default async function DomainPage({ params }: Props) {
     )
   }
 
-  const tabs = [
-    { href: `/app/catalogs/${id}/settings`, label: 'Entregas' },
-    { href: `/app/catalogs/${id}/settings/theme`, label: 'Tema visual' },
-    { href: `/app/catalogs/${id}/settings/domain`, label: 'Dominio' },
-  ]
+  const tabs = getSettingsTabs(id)
 
   return (
     <div className="px-6 py-8 max-w-3xl">

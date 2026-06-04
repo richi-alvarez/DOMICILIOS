@@ -48,6 +48,9 @@ export const paymentStatusEnum = pgEnum('payment_status', [
 ])
 export const orderChannelEnum = pgEnum('order_channel', ['whatsapp', 'email'])
 export const deliveryTypeEnum = pgEnum('delivery_type', ['pickup', 'delivery', 'dine_in'])
+export const whatsappModeEnum = pgEnum('whatsapp_mode', ['ai', 'human'])
+export const whatsappDirectionEnum = pgEnum('whatsapp_direction', ['inbound', 'outbound'])
+export const whatsappSenderEnum = pgEnum('whatsapp_sender', ['customer', 'bot', 'agent', 'system'])
 export const paymentProviderEnum = pgEnum('payment_provider', [
   'stripe',
   'mercadopago',
@@ -642,5 +645,50 @@ export const reportSchedules = pgTable(
     index('report_schedules_org_id_idx').on(t.organizationId),
     index('report_schedules_next_run_idx').on(t.nextRunAt),
     index('report_schedules_is_active_idx').on(t.isActive),
+  ],
+)
+
+// ── WhatsApp (Meta Cloud API) ──────────────────────────────────────────
+// Conversaciones por teléfono de cliente, asociadas al comercio (catálogo)
+// vía el pedido. Toggle IA/Humano por conversación.
+export const whatsappConversations = pgTable(
+  'whatsapp_conversations',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    catalogId: uuid('catalog_id').references(() => catalogs.id, { onDelete: 'set null' }),
+    orderId: uuid('order_id').references(() => orders.id, { onDelete: 'set null' }),
+    customerPhone: text('customer_phone').notNull(), // E.164 sin '+'
+    customerName: text('customer_name'),
+    mode: whatsappModeEnum('mode').default('ai').notNull(),
+    lastMessageAt: timestamp('last_message_at', { mode: 'date' }),
+    lastMessageText: text('last_message_text'),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+    updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow().notNull(),
+  },
+  (t) => [
+    index('wa_conversations_phone_idx').on(t.customerPhone),
+    index('wa_conversations_catalog_idx').on(t.catalogId),
+    index('wa_conversations_last_msg_idx').on(t.lastMessageAt),
+  ],
+)
+
+export const whatsappMessages = pgTable(
+  'whatsapp_messages',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    conversationId: uuid('conversation_id')
+      .notNull()
+      .references(() => whatsappConversations.id, { onDelete: 'cascade' }),
+    waMessageId: text('wa_message_id'), // id de Meta, para idempotencia
+    direction: whatsappDirectionEnum('direction').notNull(),
+    sender: whatsappSenderEnum('sender').notNull(),
+    body: text('body').notNull().default(''),
+    status: text('status'), // sent | delivered | read | failed
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+  },
+  (t) => [
+    index('wa_messages_conversation_idx').on(t.conversationId),
+    index('wa_messages_wa_id_idx').on(t.waMessageId),
+    index('wa_messages_created_at_idx').on(t.createdAt),
   ],
 )

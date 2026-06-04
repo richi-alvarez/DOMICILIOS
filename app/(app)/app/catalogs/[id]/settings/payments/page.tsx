@@ -5,6 +5,7 @@ import { auth } from '@/auth'
 import { db, catalogs, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
 import { SettingsTabs } from '@/components/app/settings-tabs'
+import { getSettingsTabs } from '../settings-tabs-config'
 import { getPaymentMethods } from '@/lib/actions/payments'
 import { PaymentsForm } from './payments-form'
 
@@ -51,13 +52,7 @@ export default async function PaymentsSettingsPage({ params }: Props) {
 
   return (
     <div className="px-6 py-8">
-      <SettingsTabs
-        tabs={[
-          { href: `/app/catalogs/${id}/settings`, label: 'Entregas' },
-          { href: `/app/catalogs/${id}/settings/theme`, label: 'Tema visual' },
-          { href: `/app/catalogs/${id}/settings/payments`, label: 'Pagos' },
-        ]}
-      />
+      <SettingsTabs tabs={getSettingsTabs(id)} />
       <h1 className="mb-1 font-display text-2xl font-bold text-night-900">Pagos</h1>
       <p className="mb-8 text-sm text-night-400">
         Conecta Stripe para aceptar pagos con tarjeta directamente en tu catálogo.

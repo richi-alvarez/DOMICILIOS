@@ -6,6 +6,7 @@ import { db, catalogs, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
 import { DeliverySettingsForm } from './delivery-settings-form'
 import { SettingsTabs } from '@/components/app/settings-tabs'
+import { getSettingsTabs } from './settings-tabs-config'
 import { DeleteCatalogModal } from './_components/delete-catalog-modal'
 import { getOrgPlan, PLAN_LIMITS } from '@/lib/billing/limits'
 
@@ -64,13 +65,7 @@ export default async function SettingsPage({ params }: Props) {
 
   return (
     <div className="px-6 py-8">
-      <SettingsTabs
-        tabs={[
-          { href: `/app/catalogs/${id}/settings`, label: 'Entregas' },
-          { href: `/app/catalogs/${id}/settings/theme`, label: 'Tema visual' },
-          { href: `/app/catalogs/${id}/settings/domain`, label: 'Dominio' },
-        ]}
-      />
+      <SettingsTabs tabs={getSettingsTabs(id)} />
       <h1 className="mb-1 font-display text-2xl font-bold text-night-900">Entregas</h1>
       <p className="mb-8 text-sm text-night-400">Canal de pedidos, tipos de entrega y horarios de atención.</p>
 

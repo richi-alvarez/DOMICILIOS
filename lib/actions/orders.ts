@@ -86,6 +86,10 @@ export async function createOrder(payload: CreateOrderPayload) {
     sendOrderNotificationEmail(catalog, order, items, customer, delivery).catch(() => {})
   }
 
+  // Notify via WhatsApp Cloud API (fire-and-forget): "pedido creado" a la tienda
+  // y "pedido recibido" al cliente. La plataforma (META_PHONE_NUMBER_ID) es el emisor.
+  sendOrderWhatsAppNotifications(catalog, order, items, customer, delivery, totals).catch(() => {})
+
   revalidatePath(`/app/catalogs/${catalogId}/orders`)
   return { order: { id: order.id, code: order.code } }
 }
@@ -116,6 +120,70 @@ ${delivery.type === 'delivery' && delivery.notes ? `<p>Indicaciones: ${delivery.
 <ul>${items.map((i) => `<li>x${i.qty} ${i.name}</li>`).join('')}</ul>
 <p>Revisa el panel de pedidos para gestionar este pedido.</p>`,
     })
+  } catch {}
+}
+
+async function sendOrderWhatsAppNotifications(
+  catalog: {
+    id: string
+    name: string
+    currency: string
+    contactPhone: string | null
+    contactCountryCode: string | null
+  },
+  order: { id: string; code: string; status: string },
+  items: { name: string; qty: number; price: number; variantLabel?: string }[],
+  customer: { name: string; phone: string },
+  delivery: { type: 'pickup' | 'delivery'; address?: string; notes?: string },
+  totals: { subtotal: number; shipping: number; discount: number; total: number },
+) {
+  try {
+    const { isMetaConfigured, sendWhatsAppText, normalizePhone } = await import('@/lib/whatsapp/meta-client')
+    if (!isMetaConfigured()) return
+
+    const { buildOrderCreatedForStore, buildOrderReceivedForCustomer } = await import(
+      '@/lib/whatsapp/order-messages'
+    )
+
+    const cc = (catalog.contactCountryCode || '+57').replace('+', '')
+    const msgData = {
+      code: order.code,
+      storeName: catalog.name,
+      currency: catalog.currency,
+      items,
+      totals,
+      customer,
+      delivery,
+    }
+
+    // 1) "Pedido creado" → WhatsApp de la tienda
+    if (catalog.contactPhone) {
+      const storePhone = normalizePhone(`${cc}${catalog.contactPhone}`)
+      await sendWhatsAppText(storePhone, buildOrderCreatedForStore(msgData))
+    }
+
+    // 2) "Pedido recibido" → WhatsApp del cliente. Su teléfono suele venir local;
+    //    anteponemos el código de país de la tienda como heurística.
+    const customerDigits = normalizePhone(customer.phone)
+    const customerPhone = customerDigits.length <= 10 ? normalizePhone(`${cc}${customerDigits}`) : customerDigits
+    await sendWhatsAppText(customerPhone, buildOrderReceivedForCustomer(msgData))
+
+    // 3) Registrar la conversación del cliente (asociada al comercio + pedido)
+    const { upsertConversation, appendMessage } = await import('@/lib/whatsapp/conversations')
+    const conv = await upsertConversation({
+      customerPhone,
+      catalogId: catalog.id,
+      orderId: order.id,
+      customerName: customer.name,
+    })
+    if (conv) {
+      await appendMessage({
+        conversationId: conv.id,
+        direction: 'outbound',
+        sender: 'system',
+        body: buildOrderReceivedForCustomer(msgData),
+      })
+    }
   } catch {}
 }
 
