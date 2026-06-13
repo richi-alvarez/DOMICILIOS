@@ -53,6 +53,7 @@ interface CatalogBlock extends BaseBlock {
   showDescription: boolean
   showExternalLink: boolean
   enableCart: boolean
+  buttonType?: 'cart' | 'appointment'
 }
 
 interface CartBlock extends BaseBlock {
@@ -202,7 +203,7 @@ type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock | Carousel
 const BLOCK_META: Record<string, { icon: string; label: string }> = {
   presentation: { icon: '🎯', label: 'Sección de Presentación' },
   catalog: { icon: '📦', label: 'Catálogo de Productos' },
-  cart: { icon: '🛒', label: 'Bolsón de Carrito' },
+  cart: { icon: '🛒', label: 'Botón de carrito de compras' },
   text: { icon: '📝', label: 'Texto' },
   carousel: { icon: '🎠', label: 'Carrusel' },
   benefits: { icon: '⭐', label: 'Beneficios y Características' },
@@ -240,6 +241,16 @@ export default function BlocksPanel({
   onDragStart,
   onDragEnd,
 }: BlocksPanelProps) {
+  // Modo citas: si el bloque de catálogo usa "Agendar cita", el botón flotante
+  // pasa a ser "Botón de citas" con ícono de calendario.
+  const appointmentMode = blocks.some(
+    (b) => b.type === 'catalog' && (b as CatalogBlock).buttonType === 'appointment',
+  )
+  const metaFor = (block: Block) =>
+    block.type === 'cart' && appointmentMode
+      ? { icon: '📅', label: 'Botón de citas' }
+      : BLOCK_META[block.type]
+
   return (
     <div className="space-y-4">
       {showHelpBox && (
@@ -285,9 +296,9 @@ export default function BlocksPanel({
               className="flex items-center gap-2 p-3 bg-white border border-gray-200 rounded-lg hover:border-gray-300 cursor-move transition"
             >
               <span className="text-gray-400 text-lg">⠿</span>
-              <span className="text-lg">{BLOCK_META[block.type].icon}</span>
+              <span className="text-lg">{metaFor(block).icon}</span>
               <div className="flex-1">
-                <p className="text-sm font-medium">{BLOCK_META[block.type].label}</p>
+                <p className="text-sm font-medium">{metaFor(block).label}</p>
               </div>
 
               <button

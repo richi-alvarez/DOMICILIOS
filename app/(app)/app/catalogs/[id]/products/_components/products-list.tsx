@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useTransition } from 'react'
-import { Search, Plus, Download, Upload, ChevronDown, ChevronUp, Zap, Loader2, X, Check } from 'lucide-react'
+import { Search, Plus, Download, Upload, ChevronDown, ChevronUp, Zap, Loader2, X, Check, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -9,7 +9,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { formatMoney } from '@/lib/utils'
 import Link from 'next/link'
-import { deleteProduct, exportProductsToCSV, createProduct } from '@/lib/actions/products'
+import { deleteProduct, deleteProducts, exportProductsToCSV, createProduct } from '@/lib/actions/products'
 import { ScanMenuModal } from './scan-menu-modal'
 
 interface Product {
@@ -49,6 +49,8 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
   const [isScanModalOpen, setIsScanModalOpen] = useState(false)
   const [isActionsOpen, setIsActionsOpen] = useState(false)
   const [isAddingProduct, setIsAddingProduct] = useState(false)
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
+  const [isDeleting, setIsDeleting] = useState(false)
   const [isPending, startTransition] = useTransition()
   const [formData, setFormData] = useState({ name: '', description: '', price: '', compareAt: '', stock: '', sku: '', categoryId: '' })
   const actionsRef = useRef<HTMLDivElement>(null)
@@ -128,6 +130,54 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
   const startIdx = (currentPage - 1) * itemsPerPage
   const paginatedProducts = sortedProducts.slice(startIdx, startIdx + itemsPerPage)
 
+  // Selección múltiple (sobre TODOS los productos filtrados, no solo la página).
+  const allFilteredSelected =
+    sortedProducts.length > 0 && sortedProducts.every((p) => selectedIds.has(p.id))
+  const selectedCount = selectedIds.size
+
+  const toggleSelect = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      return next
+    })
+  }
+
+  const toggleSelectAll = () => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev)
+      if (sortedProducts.length > 0 && sortedProducts.every((p) => next.has(p.id))) {
+        sortedProducts.forEach((p) => next.delete(p.id)) // deseleccionar todos
+      } else {
+        sortedProducts.forEach((p) => next.add(p.id)) // seleccionar todos
+      }
+      return next
+    })
+  }
+
+  const handleDeleteSelected = async () => {
+    if (selectedIds.size === 0) return
+    const count = selectedIds.size
+    if (
+      !confirm(
+        `¿Eliminar ${count} producto${count !== 1 ? 's' : ''}? Esta acción no se puede deshacer.`,
+      )
+    )
+      return
+    setIsDeleting(true)
+    setIsActionsOpen(false)
+    try {
+      const result = await deleteProducts(catalogId, Array.from(selectedIds))
+      if ('success' in result && result.success) {
+        setProductList((prev) => prev.filter((p) => !selectedIds.has(p.id)))
+        setSelectedIds(new Set())
+      }
+    } finally {
+      setIsDeleting(false)
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="px-4 py-6 mx-0 space-y-2 mb-6">
@@ -200,8 +250,17 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
               >
                 {isExporting ? 'Exportando...' : 'Exportar a CSV'}
               </button>
-              <button type="button" className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50" disabled>
-                Eliminar
+              <button
+                type="button"
+                onClick={handleDeleteSelected}
+                disabled={selectedCount === 0 || isDeleting}
+                className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 disabled:opacity-50 disabled:hover:bg-transparent"
+              >
+                {isDeleting
+                  ? 'Eliminando...'
+                  : selectedCount > 0
+                    ? `Eliminar (${selectedCount})`
+                    : 'Eliminar'}
               </button>
             </div>
           )}
@@ -245,6 +304,34 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
         )}
       </div>
 
+      {selectedCount > 0 && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-medium text-red-700">
+              {selectedCount} producto{selectedCount !== 1 ? 's' : ''} seleccionado
+              {selectedCount !== 1 ? 's' : ''}
+            </span>
+            <button
+              type="button"
+              onClick={() => setSelectedIds(new Set())}
+              className="text-xs text-warm-500 underline hover:text-warm-700"
+            >
+              Limpiar selección
+            </button>
+          </div>
+          <Button
+            variant="destructive"
+            size="sm"
+            className="gap-2"
+            onClick={handleDeleteSelected}
+            disabled={isDeleting}
+          >
+            {isDeleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
+            {isDeleting ? 'Eliminando...' : `Eliminar ${selectedCount}`}
+          </Button>
+        </div>
+      )}
+
       {paginatedProducts.length === 0 ? (
         <div className="rounded-lg border border-dashed border-warm-200 bg-white py-12 text-center">
           <p className="text-warm-500">No hay productos que coincidan con tu búsqueda</p>
@@ -255,7 +342,13 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
             <thead className="border-b border-warm-100 bg-warm-50">
               <tr>
                 <th className="w-10 px-4 py-3">
-                  <input type="checkbox" className="rounded" />
+                  <input
+                    type="checkbox"
+                    className="rounded cursor-pointer"
+                    checked={allFilteredSelected}
+                    onChange={toggleSelectAll}
+                    title="Seleccionar todos"
+                  />
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-warm-400">
                   Producto
@@ -284,7 +377,12 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                 return (
                   <tr key={product.id} className="hover:bg-warm-50 transition-colors group">
                     <td className="px-4 py-3">
-                      <input type="checkbox" className="rounded" />
+                      <input
+                        type="checkbox"
+                        className="rounded cursor-pointer"
+                        checked={selectedIds.has(product.id)}
+                        onChange={() => toggleSelect(product.id)}
+                      />
                     </td>
                     <td className="px-4 py-3">
                       <div>

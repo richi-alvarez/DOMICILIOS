@@ -3,9 +3,9 @@ import { Resend } from 'resend'
 // Lazy: no falla en build; falla en runtime si no hay API key.
 // Usamos || (no ??) para que un RESEND_API_KEY vacío también caiga al placeholder.
 const resend = new Resend(process.env.RESEND_API_KEY || 'placeholder')
-const FROM = process.env.RESEND_FROM_EMAIL ?? 'WaStore <noreply@wastore.app>'
+const FROM = process.env.RESEND_FROM_EMAIL ?? 'WaCommerce <noreply@wastore.app>'
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
-const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? 'WaStore'
+const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME ?? 'WaCommerce'
 
 function baseTemplate(title: string, body: string): string {
   return `<!DOCTYPE html>

@@ -2,7 +2,13 @@ import { retryStrategy } from './retry-strategy'
 import { PromptsService } from './prompts-service'
 import { AIProviderFactory } from './factory'
 import { getRecommendedModel, getTaskRecommendation } from './task-recommendations'
+import { parseAIJson } from './parse-json'
 import type { SupportedProvider } from './types/ai-provider'
+
+export interface ProductColor {
+  name: string
+  hex: string
+}
 
 export interface ExtractedProduct {
   name: string
@@ -10,6 +16,12 @@ export interface ExtractedProduct {
   price: number
   category: string
   confidence?: number
+  /** Caja de la foto del producto: [x0, y0, x1, y1] en fracciones 0..1. */
+  box?: [number, number, number, number]
+  /** Colores detectados (solo si el producto muestra opciones de color). */
+  colors?: ProductColor[]
+  /** Tallas detectadas (solo si el producto muestra tallas). */
+  sizes?: string[]
 }
 
 export interface MenuExtractionResult {
@@ -23,6 +35,57 @@ export interface MenuExtractionResult {
   attempts?: number
   providersUsed?: string[]
   timeMs?: number
+}
+
+/**
+ * Normaliza la caja devuelta por el modelo a [x0,y0,x1,y1] en fracciones 0..1.
+ * Tolera escala 0..1000 (estilo Gemini) y descarta cajas inválidas.
+ */
+function normalizeBox(raw: unknown): [number, number, number, number] | undefined {
+  if (!Array.isArray(raw) || raw.length !== 4) return undefined
+  let nums = raw.map((n) => Number(n))
+  if (nums.some((n) => !isFinite(n))) return undefined
+
+  // Si parece estar en escala 0..1000 (o píxeles grandes), normaliza dividiendo.
+  if (nums.some((n) => n > 1.5)) {
+    const scale = Math.max(...nums)
+    if (scale > 0) nums = nums.map((n) => n / scale)
+  }
+
+  let [x0, y0, x1, y1] = nums
+  // Asegura orden correcto y recorta a [0,1].
+  if (x1 < x0) [x0, x1] = [x1, x0]
+  if (y1 < y0) [y0, y1] = [y1, y0]
+  x0 = Math.max(0, Math.min(1, x0))
+  y0 = Math.max(0, Math.min(1, y0))
+  x1 = Math.max(0, Math.min(1, x1))
+  y1 = Math.max(0, Math.min(1, y1))
+
+  // Descarta cajas degeneradas (muy pequeñas).
+  if (x1 - x0 < 0.02 || y1 - y0 < 0.02) return undefined
+  return [x0, y0, x1, y1]
+}
+
+/** Normaliza el array de colores devuelto por el modelo. undefined si no hay. */
+function normalizeColors(raw: unknown): { name: string; hex: string }[] | undefined {
+  if (!Array.isArray(raw) || raw.length === 0) return undefined
+  const out: { name: string; hex: string }[] = []
+  for (const c of raw) {
+    const name = c?.name ? String(c.name).trim() : ''
+    let hex = c?.hex ? String(c.hex).trim() : ''
+    if (hex && !hex.startsWith('#')) hex = `#${hex}`
+    // Valida hex tipo #RGB o #RRGGBB; si no, usa gris neutro pero conserva el nombre.
+    if (!/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(hex)) hex = '#cccccc'
+    if (name || hex) out.push({ name: name || 'Color', hex })
+  }
+  return out.length ? out : undefined
+}
+
+/** Normaliza el array de tallas. undefined si no hay. */
+function normalizeSizes(raw: unknown): string[] | undefined {
+  if (!Array.isArray(raw) || raw.length === 0) return undefined
+  const out = raw.map((s) => String(s).trim()).filter((s) => s.length > 0)
+  return out.length ? Array.from(new Set(out)) : undefined
 }
 
 export interface MenuExtractionOptions {
@@ -48,8 +111,29 @@ export class MenuExtractionService {
     options: MenuExtractionOptions = {},
   ): Promise<MenuExtractionResult> {
     const startTime = Date.now()
+    const normalizedType = imageType.startsWith('image/') ? imageType : `image/${imageType}`
 
     try {
+      // Vía PREFERENTE: detección nativa de Gemini (box_2d). Da cajas ajustadas
+      // SOLO al envase (texto/precio excluidos), imposible de lograr con el modo
+      // chat. Si falla o no está GEMINI_API_KEY, se cae al multi-proveedor.
+      if (!options.customProvider) {
+        const native = await this.extractWithGeminiNative(imageData, normalizedType, options.verbose)
+        if (native && native.length) {
+          return {
+            success: true,
+            products: native,
+            totalProducts: native.length,
+            categories: [...new Set(native.map((p) => p.category))],
+            confidence: 0.9,
+            provider: 'gemini',
+            attempts: 1,
+            providersUsed: ['gemini-native'],
+            timeMs: Date.now() - startTime,
+          }
+        }
+      }
+
       // Definir orden de proveedores según task-recommendations.ts (no según .env)
       const rec = getTaskRecommendation('menu-extraction')
       const recommendedOrder: SupportedProvider[] = options.customProvider
@@ -78,16 +162,22 @@ export class MenuExtractionService {
           // Construir mensaje con imagen
           const systemPrompt = PromptsService.getMenuExtractionSystemPrompt()
           const userMessage = PromptsService.getMenuExtractionUserMessage(
-            'imagen de menú',
+            'imagen de catálogo/menú',
           )
 
-          // Para proveedores que soportan vision, se debe manejar de forma específica
-          // Este es un patrón base que debe ser extendido por cada proveedor
+          // La imagen se envía como contenido multimodal; cada proveedor la
+          // adapta a su formato (image_url / inlineData / image block).
           const response = await aiProvider.generate({
             systemPrompt,
             userMessage,
             model: getRecommendedModel(provider, 'menu-extraction'),
             maxTokens: 4096,
+            imageBase64: imageData,
+            imageType: normalizedType as
+              | 'image/jpeg'
+              | 'image/png'
+              | 'image/webp'
+              | 'image/gif',
           })
 
           if (!response.success) {
@@ -160,6 +250,106 @@ export class MenuExtractionService {
   }
 
   /**
+   * Extracción con la API NATIVA de Gemini (generateContent). Usa la capacidad
+   * de detección de objetos (box_2d) que devuelve cajas ceñidas SOLO al envase,
+   * por producto, junto con sus datos. Devuelve null si no hay clave o falla
+   * (para que el llamador caiga al multi-proveedor). El box_2d viene como
+   * [ymin, xmin, ymax, xmax] en 0..1000 y se convierte a [x0,y0,x1,y1] 0..1.
+   */
+  static async extractWithGeminiNative(
+    imageBase64: string,
+    mimeType: string,
+    verbose = false,
+  ): Promise<ExtractedProduct[] | null> {
+    const key = process.env.GEMINI_API_KEY
+    if (!key) return null
+    const model = process.env.GEMINI_VISION_MODEL || 'gemini-2.5-flash-lite'
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`
+    const body = {
+      contents: [
+        {
+          role: 'user',
+          parts: [
+            { text: PromptsService.getMenuExtractionDetectionPrompt() },
+            { inlineData: { mimeType, data: imageBase64 } },
+          ],
+        },
+      ],
+      generationConfig: { temperature: 0, maxOutputTokens: 8192 },
+    }
+
+    try {
+      let data: any = null
+      for (let attempt = 0; attempt < 4; attempt++) {
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        })
+        data = await res.json().catch(() => null)
+        if (data?.error?.code === 503) {
+          // Modelo sobrecargado: reintenta con backoff.
+          await this.delay(3000)
+          continue
+        }
+        break
+      }
+
+      if (data?.error) {
+        if (verbose) console.warn('[MenuExtraction] Gemini native error:', data.error.message)
+        return null
+      }
+
+      const text: string | undefined = data?.candidates?.[0]?.content?.parts?.[0]?.text
+      if (!text) return null
+
+      // Extracción robusta del array JSON (puede venir con fences/markdown).
+      const start = text.indexOf('[')
+      const end = text.lastIndexOf(']')
+      if (start < 0 || end < 0) return null
+      const arr = JSON.parse(text.slice(start, end + 1))
+      if (!Array.isArray(arr)) return null
+
+      const products: ExtractedProduct[] = []
+      for (const p of arr) {
+        const name = p?.name ? String(p.name).trim() : ''
+        if (!name) continue
+
+        let price = 0
+        if (typeof p.price === 'number') price = p.price
+        else if (p.price != null) {
+          const mm = String(p.price).match(/\d+\.?\d*/)
+          if (mm) price = parseFloat(mm[0])
+        }
+
+        // box_2d [ymin,xmin,ymax,xmax] 0..1000 → [x0,y0,x1,y1] fracciones 0..1
+        let box: [number, number, number, number] | undefined
+        const b = p.box_2d || p.box
+        if (Array.isArray(b) && b.length === 4) {
+          const [ymin, xmin, ymax, xmax] = b.map(Number)
+          box = normalizeBox([xmin / 1000, ymin / 1000, xmax / 1000, ymax / 1000])
+        }
+
+        products.push({
+          name,
+          description: p.description ? String(p.description).trim() : '',
+          price: isNaN(price) ? 0 : price,
+          category: p.category ? String(p.category).trim() : 'General',
+          box,
+          colors: normalizeColors(p.colors),
+          sizes: normalizeSizes(p.sizes),
+        })
+      }
+
+      if (verbose) console.log(`[MenuExtraction] Gemini native: ${products.length} productos`)
+      return products.length ? products : null
+    } catch (err) {
+      if (verbose) console.error('[MenuExtraction] Gemini native failed:', err)
+      return null
+    }
+  }
+
+  /**
    * Parsea la respuesta JSON de extracción
    */
   private static parseExtractionResponse(content: string): {
@@ -169,19 +359,40 @@ export class MenuExtractionService {
     confidence: number
   } {
     try {
-      const parsed = JSON.parse(content)
+      // parseAIJson limpia fences markdown y extrae el primer bloque JSON.
+      const parsed = parseAIJson<any>(content)
+      // Acepta tanto un array suelto [...] como el objeto { products: [...] }.
+      const rawList: any[] = Array.isArray(parsed) ? parsed : parsed?.products || []
+
+      const products: ExtractedProduct[] = rawList.map((p: any) => {
+        let price = 0
+        if (typeof p.price === 'number') {
+          price = p.price
+        } else if (p.price != null) {
+          const match = String(p.price).match(/\d+\.?\d*/)
+          if (match) price = parseFloat(match[0])
+        }
+        return {
+          name: p.name ? String(p.name).trim() : '',
+          description: p.description ? String(p.description).trim() : '',
+          price: isNaN(price) ? 0 : price,
+          category: p.category ? String(p.category).trim() : 'General',
+          confidence: p.confidence,
+          box: normalizeBox(p.box),
+          colors: normalizeColors(p.colors),
+          sizes: normalizeSizes(p.sizes),
+        }
+      })
+
+      const categories = Array.isArray(parsed?.categories)
+        ? parsed.categories
+        : [...new Set(products.map((p) => p.category))]
 
       return {
-        products: (parsed.products || []).map((p: any) => ({
-          name: p.name || '',
-          description: p.description || '',
-          price: typeof p.price === 'number' ? p.price : 0,
-          category: p.category || 'General',
-          confidence: p.confidence,
-        })),
-        totalProducts: parsed.totalProducts || 0,
-        categories: parsed.categories || [],
-        confidence: typeof parsed.confidence === 'number' ? parsed.confidence : 0.5,
+        products,
+        totalProducts: products.length,
+        categories,
+        confidence: typeof parsed?.confidence === 'number' ? parsed.confidence : 0.9,
       }
     } catch (error) {
       console.error('[MenuExtraction] Failed to parse response:', error)

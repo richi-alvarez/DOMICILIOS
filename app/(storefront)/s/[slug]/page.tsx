@@ -93,10 +93,31 @@ export default async function StorefrontPage({ params, searchParams }: Props) {
   const designBlocks = pageBlocks.filter((b) => DESIGN_BLOCK_TYPES.has(b.type))
   const hasDesignBlocks = designBlocks.length > 0
 
+  // Posición del carrito flotante configurada en el editor de diseño (bloque cart).
+  const cartBlock = pageBlocks.find((b) => b.type === 'cart')
+  const cartPosition = (cartBlock?.config as Record<string, unknown> | undefined)?.position as
+    | 'top-left'
+    | 'top-right'
+    | 'center-left'
+    | 'center-right'
+    | 'bottom-left'
+    | 'bottom-right'
+    | undefined
+
+  // Modo citas: si el bloque de catálogo usa "Agendar cita", el botón flotante
+  // muestra ícono de calendario y rotula "Ver citas".
+  const catalogBlockCfg = pageBlocks.find((b) => b.type === 'catalog')?.config as
+    | Record<string, unknown>
+    | undefined
+  const cartMode = catalogBlockCfg?.buttonType === 'appointment' ? 'appointment' : 'cart'
+
   return (
     <div className="min-h-screen pb-24" style={{ background: 'var(--sf-bg, #FAFAF8)', fontFamily: 'var(--sf-body-font)' }}>
       <TrackEvent catalogId={catalog.id} type="page_view" />
       <StorefrontHeader catalogName={catalog.name} catalogSlug={slug} logoUrl={theme.logoUrl || undefined} />
+
+      {/* El CTA "Agendar →" se quitó: en catálogos de citas el agendamiento ocurre
+          como paso posterior al carrito (Carrito → Continuar → Agendar). */}
 
       {hasDesignBlocks ? (
         <StorefrontDesignBlocks
@@ -199,11 +220,11 @@ export default async function StorefrontPage({ params, searchParams }: Props) {
       )}
 
       {/* Cart FAB */}
-      <CartFab slug={slug} currency={catalog.currency} />
+      <CartFab slug={slug} currency={catalog.currency} position={cartPosition} mode={cartMode} />
 
       {/* Footer brand */}
       <footer className="pb-6 pt-2 text-center text-xs text-night-300">
-        Creado con <span className="font-semibold text-primary-500">WaStore</span>
+        Creado con <span className="font-semibold text-primary-500">WaCommerce</span>
       </footer>
     </div>
   )

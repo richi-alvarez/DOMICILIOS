@@ -30,7 +30,8 @@ Makefile
 .playwright-cli
 .playwright-mcp
 playwright-report
-.monitoring-thresholds.jsonargocd
+.monitoring-thresholds.json
+argocd
 __tests__
 .next-broken
 .next-build-failed
@@ -38,3 +39,13 @@ __tests__
 test-results
 QA_Reports
 public/catalogs/*
+
+# Logs y scripts one-off de depuración (no versionar)
+*.log
+oauth-error-output.log
+argo.txt.
+full_navigation.js
+navigate_home.js
+open_visible.mjs
+show_design_*.js
+FINAL_SUMMARY_*.txt

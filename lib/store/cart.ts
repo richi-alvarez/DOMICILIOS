@@ -25,8 +25,8 @@ interface CartStore {
   customer: CustomerInfo | null
 
   addItem: (item: Omit<CartItem, 'qty'>) => void
-  removeItem: (productId: string) => void
-  updateQty: (productId: string, qty: number) => void
+  removeItem: (productId: string, variantLabel?: string) => void
+  updateQty: (productId: string, qty: number, variantLabel?: string) => void
   setDelivery: (d: DeliveryInfo) => void
   setCustomer: (c: CustomerInfo) => void
   clear: () => void
@@ -45,30 +45,36 @@ export function createCartStore(slug: string) {
 
         addItem(item) {
           const { items } = get()
-          const existing = items.find((i) => i.productId === item.productId)
+          // La identidad de una línea es producto + variante (color/talla), así
+          // dos variantes del mismo producto son líneas separadas.
+          const sameLine = (i: CartItem) =>
+            i.productId === item.productId && (i.variantLabel ?? '') === (item.variantLabel ?? '')
+          const existing = items.find(sameLine)
           if (existing) {
-            set({
-              items: items.map((i) =>
-                i.productId === item.productId ? { ...i, qty: i.qty + 1 } : i,
-              ),
-            })
+            set({ items: items.map((i) => (sameLine(i) ? { ...i, qty: i.qty + 1 } : i)) })
           } else {
             set({ items: [...items, { ...item, qty: 1 }] })
           }
         },
 
-        removeItem(productId) {
-          set({ items: get().items.filter((i) => i.productId !== productId) })
+        removeItem(productId, variantLabel) {
+          set({
+            items: get().items.filter(
+              (i) => !(i.productId === productId && (i.variantLabel ?? '') === (variantLabel ?? '')),
+            ),
+          })
         },
 
-        updateQty(productId, qty) {
+        updateQty(productId, qty, variantLabel) {
           if (qty <= 0) {
-            get().removeItem(productId)
+            get().removeItem(productId, variantLabel)
             return
           }
           set({
             items: get().items.map((i) =>
-              i.productId === productId ? { ...i, qty } : i,
+              i.productId === productId && (i.variantLabel ?? '') === (variantLabel ?? '')
+                ? { ...i, qty }
+                : i,
             ),
           })
         },

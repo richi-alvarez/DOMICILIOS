@@ -40,11 +40,22 @@ export class GeminiProvider implements AIProvider {
         systemInstruction: options.systemPrompt,
       })
 
+      // Parts multimodales: texto + imagen (inlineData) si llega imagen.
+      const parts: Array<Record<string, unknown>> = [{ text: options.userMessage }]
+      if (options.imageBase64) {
+        parts.push({
+          inlineData: {
+            mimeType: options.imageType || 'image/jpeg',
+            data: options.imageBase64,
+          },
+        })
+      }
+
       const response = await model.generateContent({
         contents: [
           {
             role: 'user',
-            parts: [{ text: options.userMessage }],
+            parts: parts as any,
           },
         ],
         generationConfig: {

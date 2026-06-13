@@ -79,10 +79,12 @@ export const RECOMMENDED_MODELS: Record<SupportedProvider, Record<AITask, string
 
   openai: {
     'catalog-generation': 'gpt-4o-mini',
-    'menu-extraction': 'gpt-4-turbo',
-    'product-extraction': 'gpt-4-turbo',
-    'image-analysis': 'gpt-4-turbo',
-    'content-generation': 'gpt-4',
+    // gpt-4-turbo (vision) quedó deprecado; gpt-4o-mini tiene visión, es barato
+    // y está validado para extracción de catálogos/flyers.
+    'menu-extraction': 'gpt-4o-mini',
+    'product-extraction': 'gpt-4o-mini',
+    'image-analysis': 'gpt-4o-mini',
+    'content-generation': 'gpt-4o-mini',
     'whatsapp-reply': 'gpt-4o-mini',
   },
 

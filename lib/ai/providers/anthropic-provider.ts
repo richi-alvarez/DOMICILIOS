@@ -34,6 +34,25 @@ export class AnthropicProvider implements AIProvider {
       }
 
       const client = this.getClient()
+      // Contenido multimodal (imagen + texto) si llega imagen.
+      const userContent: Anthropic.MessageParam['content'] = options.imageBase64
+        ? [
+            {
+              type: 'image',
+              source: {
+                type: 'base64',
+                media_type: (options.imageType || 'image/jpeg') as
+                  | 'image/jpeg'
+                  | 'image/png'
+                  | 'image/webp'
+                  | 'image/gif',
+                data: options.imageBase64,
+              },
+            },
+            { type: 'text', text: options.userMessage },
+          ]
+        : options.userMessage
+
       const response = await client.messages.create({
         model: options.model || 'claude-haiku-4-5-20251001',
         max_tokens: options.maxTokens || 2048,
@@ -42,7 +61,7 @@ export class AnthropicProvider implements AIProvider {
         messages: [
           {
             role: 'user',
-            content: options.userMessage,
+            content: userContent,
           },
         ],
       })

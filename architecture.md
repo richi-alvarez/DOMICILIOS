@@ -1,4 +1,4 @@
-# Architecture — Clon estilo "Marea Alcalina" (nombre provisional: **Domicilios**)
+# Architecture — Plataforma SaaS de catálogos (marca: **WaCommerce**)
 
 > Plataforma SaaS para crear catálogos / menús digitales con pedidos por WhatsApp.
 > Inspirada en la idea de negocio de mareaalcalina.com, pero con **marca, textos,
@@ -52,7 +52,7 @@ Módulos núcleo del SaaS:
 
 ## 2. Identidad visual propuesta (cambiar si quieres)
 
-- **Nombre working**: `Domicilios` (cambiable).
+- **Nombre**: `WaCommerce` (marca definitiva).
 - **Paleta sugerida**: primario coral `#FF6B57`, secundario azul noche `#0B1F3A`,
   acento verde lima `#9BE14A`, neutros cálidos. (Diferente del turquesa/cyan
   original.)
@@ -915,8 +915,7 @@ crear el proyecto Next.js, paleta, layout y 404.
 
 Decisiones que necesito confirmar antes:
 
-1. ¿Nombre final? (propuesto: **Domicilios** — otra opción: Vitrina, Pedilo,
-   Catalogo.app, lo que prefieras).
+1. ¿Nombre final? — **Resuelto: WaCommerce**.
 2. ¿Paleta propuesta ok o cambiamos?
 3. ¿Stack Next.js + Supabase + Stripe ok?
 4. ¿País / idioma de arranque? (propuesto: español — Colombia por defecto,

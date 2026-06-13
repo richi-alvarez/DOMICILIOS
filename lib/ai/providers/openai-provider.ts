@@ -34,6 +34,20 @@ export class OpenAIProvider implements AIProvider {
       }
 
       const client = this.getClient()
+      // Si llega imagen, el mensaje del usuario es multimodal (texto + imagen).
+      const userContent: OpenAI.Chat.ChatCompletionUserMessageParam['content'] = options.imageBase64
+        ? [
+            { type: 'text', text: options.userMessage },
+            {
+              type: 'image_url',
+              image_url: {
+                url: `data:${options.imageType || 'image/jpeg'};base64,${options.imageBase64}`,
+                detail: 'high',
+              },
+            },
+          ]
+        : options.userMessage
+
       const response = await client.chat.completions.create({
         model: options.model || 'gpt-3.5-turbo',
         max_tokens: options.maxTokens || 2048,
@@ -47,7 +61,7 @@ export class OpenAIProvider implements AIProvider {
           },
           {
             role: 'user',
-            content: options.userMessage,
+            content: userContent,
           },
         ],
       })

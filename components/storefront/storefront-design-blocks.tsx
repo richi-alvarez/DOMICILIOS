@@ -241,7 +241,13 @@ export function StorefrontDesignBlocks({
                     }`}
                   >
                     {products.map((p) => (
-                      <ProductCard key={p.id} product={p} currency={currency} catalogSlug={catalogSlug} />
+                      <ProductCard
+                        key={p.id}
+                        product={p}
+                        currency={currency}
+                        catalogSlug={catalogSlug}
+                        buttonType={c.buttonType === 'appointment' ? 'appointment' : 'cart'}
+                      />
                     ))}
                   </div>
                 )}

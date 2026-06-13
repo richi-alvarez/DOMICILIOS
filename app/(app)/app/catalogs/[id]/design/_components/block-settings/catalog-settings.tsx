@@ -21,6 +21,7 @@ interface CatalogBlock {
   showDescription: boolean
   showExternalLink: boolean
   enableCart: boolean
+  buttonType: 'cart' | 'appointment'
 }
 
 interface CatalogSettingsProps {
@@ -228,6 +229,44 @@ export default function CatalogSettings({ block, onChange }: CatalogSettingsProp
               />
               <span className="text-xs font-medium">Habilitar Agregar al Carrito</span>
             </label>
+          </div>
+        )}
+      </div>
+
+      {/* Tipo de botón */}
+      <div className="border border-gray-200 rounded-lg">
+        <button
+          onClick={() => setExpandedSection(expandedSection === 'buttonType' ? '' : 'buttonType')}
+          className="w-full flex items-center justify-between p-3 hover:bg-gray-50"
+        >
+          <h4 className="font-semibold text-sm">Tipo de botón</h4>
+          <ChevronDown className={`w-4 h-4 transition ${expandedSection === 'buttonType' ? 'rotate-180' : ''}`} />
+        </button>
+
+        {expandedSection === 'buttonType' && (
+          <div className="px-3 pb-3 border-t border-gray-200 pt-3 space-y-2">
+            <p className="text-xs text-gray-500">
+              Elige la acción del botón en cada producto.
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { value: 'cart', label: 'Agregar al carrito', icon: '🛒' },
+                { value: 'appointment', label: 'Agendar cita', icon: '📅' },
+              ].map((opt) => (
+                <button
+                  key={opt.value}
+                  onClick={() => onChange({ buttonType: opt.value as 'cart' | 'appointment' })}
+                  className={`p-3 rounded-lg border-2 transition text-center ${
+                    (block.buttonType ?? 'cart') === opt.value
+                      ? 'border-blue-500 bg-blue-50'
+                      : 'border-gray-200 hover:border-gray-300'
+                  }`}
+                >
+                  <div className="text-2xl mb-1">{opt.icon}</div>
+                  <p className="text-xs font-medium">{opt.label}</p>
+                </button>
+              ))}
+            </div>
           </div>
         )}
       </div>

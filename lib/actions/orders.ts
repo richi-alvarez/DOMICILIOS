@@ -111,7 +111,7 @@ async function sendOrderNotificationEmail(
         ? 'Recoger en tienda'
         : `A domicilio${delivery.address ? ` — ${delivery.address}` : ''}`
     await resend.emails.send({
-      from: 'WaStore <no-reply@wastore.app>',
+      from: 'WaCommerce <no-reply@wastore.app>',
       to,
       subject: `Nuevo pedido #${order.code} — ${catalog.name}`,
       html: `<p>Tienes un nuevo pedido <strong>#${order.code}</strong> de <strong>${customer.name}</strong> (${customer.phone}).</p>
@@ -138,12 +138,24 @@ async function sendOrderWhatsAppNotifications(
   totals: { subtotal: number; shipping: number; discount: number; total: number },
 ) {
   try {
-    const { isMetaConfigured, sendWhatsAppText, normalizePhone } = await import('@/lib/whatsapp/meta-client')
+    const {
+      isMetaConfigured,
+      sendWhatsAppText,
+      sendWhatsAppTemplate,
+      normalizePhone,
+      ORDER_TEMPLATE_NAME,
+      ORDER_TEMPLATE_LANG,
+      STORE_TEMPLATE_NAME,
+      STORE_TEMPLATE_LANG,
+    } = await import('@/lib/whatsapp/meta-client')
     if (!isMetaConfigured()) return
 
-    const { buildOrderCreatedForStore, buildOrderReceivedForCustomer } = await import(
-      '@/lib/whatsapp/order-messages'
-    )
+    const {
+      buildOrderCreatedForStore,
+      buildOrderReceivedForCustomer,
+      buildOrderReceivedTemplateParams,
+      buildOrderCreatedTemplateParams,
+    } = await import('@/lib/whatsapp/order-messages')
 
     const cc = (catalog.contactCountryCode || '+57').replace('+', '')
     const msgData = {
@@ -156,17 +168,38 @@ async function sendOrderWhatsAppNotifications(
       delivery,
     }
 
-    // 1) "Pedido creado" → WhatsApp de la tienda
+    // 1) "Pedido creado" → WhatsApp de la tienda. Plantilla primero (se entrega sin
+    //    ventana de 24h); si falla, texto libre (solo dentro de la ventana).
     if (catalog.contactPhone) {
       const storePhone = normalizePhone(`${cc}${catalog.contactPhone}`)
-      await sendWhatsAppText(storePhone, buildOrderCreatedForStore(msgData))
+      const storeSent = await sendWhatsAppTemplate(
+        storePhone,
+        STORE_TEMPLATE_NAME,
+        STORE_TEMPLATE_LANG,
+        buildOrderCreatedTemplateParams(msgData),
+      )
+      if (!storeSent.success) {
+        await sendWhatsAppText(storePhone, buildOrderCreatedForStore(msgData))
+      }
     }
 
     // 2) "Pedido recibido" → WhatsApp del cliente. Su teléfono suele venir local;
     //    anteponemos el código de país de la tienda como heurística.
     const customerDigits = normalizePhone(customer.phone)
     const customerPhone = customerDigits.length <= 10 ? normalizePhone(`${cc}${customerDigits}`) : customerDigits
-    await sendWhatsAppText(customerPhone, buildOrderReceivedForCustomer(msgData))
+
+    //    Se intenta primero por PLANTILLA: se entrega aunque el cliente nunca haya
+    //    escrito a la tienda (sin ventana de 24h). Si la plantilla aún no está
+    //    aprobada o falla, se cae a texto libre (solo llega dentro de la ventana).
+    let sent = await sendWhatsAppTemplate(
+      customerPhone,
+      ORDER_TEMPLATE_NAME,
+      ORDER_TEMPLATE_LANG,
+      buildOrderReceivedTemplateParams(msgData),
+    )
+    if (!sent.success) {
+      sent = await sendWhatsAppText(customerPhone, buildOrderReceivedForCustomer(msgData))
+    }
 
     // 3) Registrar la conversación del cliente (asociada al comercio + pedido)
     const { upsertConversation, appendMessage } = await import('@/lib/whatsapp/conversations')
@@ -182,6 +215,8 @@ async function sendOrderWhatsAppNotifications(
         direction: 'outbound',
         sender: 'system',
         body: buildOrderReceivedForCustomer(msgData),
+        waMessageId: sent.messageId,
+        status: sent.success ? 'sent' : 'failed',
       })
     }
   } catch {}

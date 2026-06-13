@@ -26,7 +26,20 @@ interface ProductFormProps {
     tags?: string[]
     active: boolean
     image?: string
+    variants?: {
+      colors?: { name: string; hex: string; image?: string }[]
+      // Compat: las tallas pueden venir como strings (antiguas) u objetos.
+      sizes?: (string | { name: string; image?: string })[]
+    }
   }
+}
+
+type ColorVariant = { name: string; hex: string; image?: string }
+type SizeVariant = { name: string; image?: string }
+
+// Normaliza tallas que pueden venir como string[] (datos viejos/escáner) u objetos.
+function normalizeSizes(raw?: (string | { name: string; image?: string })[]): SizeVariant[] {
+  return (raw ?? []).map((s) => (typeof s === 'string' ? { name: s } : { name: s.name, image: s.image }))
 }
 
 export function ProductForm({
@@ -57,9 +70,50 @@ export function ProductForm({
   const [success, setSuccess] = useState(false)
 
   const [tagInput, setTagInput] = useState('')
-  const [optionGroups, setOptionGroups] = useState<Array<{ id: string; name: string; options: Array<{ name: string; price: number }> }>>([])
   const [showAIMenu, setShowAIMenu] = useState(false)
   const [dragActive, setDragActive] = useState(false)
+
+  // ── Variantes (color / talla) ──────────────────────────────────────────
+  const MAX_IMAGES = 5
+  const [colorsEnabled, setColorsEnabled] = useState(!!product?.variants?.colors?.length)
+  const [colors, setColors] = useState<ColorVariant[]>(product?.variants?.colors ?? [])
+  const [sizesEnabled, setSizesEnabled] = useState(!!product?.variants?.sizes?.length)
+  const [sizes, setSizes] = useState<SizeVariant[]>(normalizeSizes(product?.variants?.sizes))
+
+  const addColor = () =>
+    setColors((prev) => [...prev, { name: '', hex: '#3b82f6' }])
+  const removeColor = (idx: number) =>
+    setColors((prev) => prev.filter((_, i) => i !== idx))
+  const updateColor = (idx: number, field: keyof ColorVariant, value: string) =>
+    setColors((prev) => prev.map((c, i) => (i === idx ? { ...c, [field]: value } : c)))
+  const removeColorImage = (idx: number) =>
+    setColors((prev) => prev.map((c, i) => (i === idx ? { ...c, image: undefined } : c)))
+
+  const handleColorImage = (idx: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.currentTarget.files?.[0]
+    e.currentTarget.value = ''
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = (ev) =>
+      setColors((prev) => prev.map((c, i) => (i === idx ? { ...c, image: ev.target?.result as string } : c)))
+    reader.readAsDataURL(file)
+  }
+
+  const addSize = () => setSizes((prev) => [...prev, { name: '' }])
+  const removeSize = (idx: number) => setSizes((prev) => prev.filter((_, i) => i !== idx))
+  const updateSizeName = (idx: number, value: string) =>
+    setSizes((prev) => prev.map((s, i) => (i === idx ? { ...s, name: value } : s)))
+  const removeSizeImage = (idx: number) =>
+    setSizes((prev) => prev.map((s, i) => (i === idx ? { ...s, image: undefined } : s)))
+  const handleSizeImage = (idx: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.currentTarget.files?.[0]
+    e.currentTarget.value = ''
+    if (!file) return
+    const reader = new FileReader()
+    reader.onload = (ev) =>
+      setSizes((prev) => prev.map((s, i) => (i === idx ? { ...s, image: ev.target?.result as string } : s)))
+    reader.readAsDataURL(file)
+  }
 
   // Tag handling
   const addTag = (tag: string) => {
@@ -124,6 +178,17 @@ export function ProductForm({
         return isNaN(num) ? null : num
       }
 
+      // Variantes: solo se envían las habilitadas y con contenido.
+      const cleanColors = colors.filter((c) => c.name.trim())
+      const cleanSizes = sizes.filter((s) => s.name.trim())
+      const variants =
+        (colorsEnabled && cleanColors.length) || (sizesEnabled && cleanSizes.length)
+          ? {
+              ...(colorsEnabled && cleanColors.length ? { colors: cleanColors } : {}),
+              ...(sizesEnabled && cleanSizes.length ? { sizes: cleanSizes } : {}),
+            }
+          : null
+
       const payload: CreateProductPayload = {
         catalogId,
         name: formData.name,
@@ -136,6 +201,7 @@ export function ProductForm({
         image: formData.image as string | undefined,
         isCartProduct: formData.isCartProduct,
         tags: formData.tags && formData.tags.length > 0 ? formData.tags : null,
+        variants,
       }
 
       const result = isEditing
@@ -170,6 +236,12 @@ export function ProductForm({
       reader.readAsDataURL(files[0])
     }
   }
+
+  // Total de imágenes (principal + por color + por talla) para el tope de MAX_IMAGES.
+  const imageCount =
+    (formData.image ? 1 : 0) +
+    colors.filter((c) => c.image).length +
+    sizes.filter((s) => s.image).length
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8 px-6 py-8">
@@ -217,13 +289,12 @@ export function ProductForm({
             <>
               <Upload className="mb-3 h-8 w-8 text-warm-300" />
               <p className="text-sm">
-                <button
-                  type="button"
-                  onClick={() => document.getElementById('file-input')?.click()}
-                  className="font-medium text-primary-600 hover:underline"
+                <label
+                  htmlFor="file-input"
+                  className="cursor-pointer font-medium text-primary-600 hover:underline"
                 >
                   Subir archivo
-                </button>
+                </label>
                 {' '}o arrastra y suelta
               </p>
               <p className="mt-1 text-xs text-warm-400">PNG, JPG, GIF hasta 8MB</p>
@@ -416,23 +487,161 @@ export function ProductForm({
           />
         </div>
 
-        {/* Additional Options */}
-        <div className="space-y-3 border-t border-warm-200 pt-6">
-          <h3 className="font-bold text-night-800">Opciones adicionales del producto</h3>
-          <Button variant="outline" size="sm" className="gap-2 w-full md:w-auto">
-            <Plus className="h-4 w-4" />
-            Agregar categoría de opciones
-          </Button>
-          {optionGroups.length > 0 && (
-            <div className="space-y-4">
-              {optionGroups.map((group) => (
-                <div key={group.id} className="rounded-lg border border-warm-200 p-4">
-                  <h4 className="font-medium text-night-800 mb-3">{group.name}</h4>
-                  {/* Options would go here */}
-                </div>
-              ))}
-            </div>
-          )}
+        {/* Variantes (color / talla) */}
+        <div className="space-y-4 border-t border-warm-200 pt-6">
+          <div className="flex items-center justify-between">
+            <h3 className="font-bold text-night-800">Variantes</h3>
+            <span className="text-xs text-warm-400">
+              Imágenes {imageCount}/{MAX_IMAGES}
+            </span>
+          </div>
+
+          {/* Colores */}
+          <div className="space-y-3 rounded-lg border border-warm-200 p-4">
+            <label className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                checked={colorsEnabled}
+                onChange={(e) => setColorsEnabled(e.target.checked)}
+                className="rounded"
+              />
+              <span className="text-sm font-medium text-night-800">Habilitar colores</span>
+            </label>
+            {colorsEnabled && (
+              <div className="space-y-3">
+                {colors.map((c, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <input
+                      type="color"
+                      value={c.hex}
+                      onChange={(e) => updateColor(idx, 'hex', e.target.value)}
+                      className="h-9 w-10 shrink-0 cursor-pointer rounded border border-warm-200"
+                      title="Elegir color"
+                    />
+                    <input
+                      type="text"
+                      value={c.name}
+                      onChange={(e) => updateColor(idx, 'name', e.target.value)}
+                      placeholder="Nombre (ej. Azul)"
+                      className="min-w-0 flex-1 rounded-lg border border-warm-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+                    />
+                    {c.image ? (
+                      <div className="relative shrink-0">
+                        <img src={c.image} alt={c.name} className="h-9 w-9 rounded border border-warm-200 object-cover" />
+                        <button
+                          type="button"
+                          onClick={() => removeColorImage(idx)}
+                          className="absolute -right-1.5 -top-1.5 rounded-full bg-red-500 p-0.5 text-white"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ) : (
+                      <label
+                        title={imageCount >= MAX_IMAGES ? `Máximo ${MAX_IMAGES} imágenes` : 'Subir imagen de este color'}
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded border border-dashed border-warm-300 ${
+                          imageCount >= MAX_IMAGES ? 'cursor-not-allowed opacity-40' : 'cursor-pointer hover:border-primary-400'
+                        }`}
+                      >
+                        <Upload className="h-4 w-4 text-warm-400" />
+                        <input
+                          type="file"
+                          accept="image/*"
+                          disabled={imageCount >= MAX_IMAGES}
+                          onChange={(e) => handleColorImage(idx, e)}
+                          className="hidden"
+                        />
+                      </label>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => removeColor(idx)}
+                      className="shrink-0 text-night-300 hover:text-red-500"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                ))}
+                <Button type="button" variant="outline" size="sm" className="gap-2" onClick={addColor}>
+                  <Plus className="h-4 w-4" />
+                  Agregar color
+                </Button>
+              </div>
+            )}
+          </div>
+
+          {/* Tallas */}
+          <div className="space-y-3 rounded-lg border border-warm-200 p-4">
+            <label className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                checked={sizesEnabled}
+                onChange={(e) => setSizesEnabled(e.target.checked)}
+                className="rounded"
+              />
+              <span className="text-sm font-medium text-night-800">Habilitar tallas</span>
+            </label>
+            {sizesEnabled && (
+              <div className="space-y-3">
+                {sizes.map((s, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={s.name}
+                      onChange={(e) => updateSizeName(idx, e.target.value)}
+                      placeholder="Talla (ej. S, M, 40)"
+                      className="min-w-0 flex-1 rounded-lg border border-warm-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+                    />
+                    {s.image ? (
+                      <div className="relative shrink-0">
+                        <img src={s.image} alt={s.name} className="h-9 w-9 rounded border border-warm-200 object-cover" />
+                        <button
+                          type="button"
+                          onClick={() => removeSizeImage(idx)}
+                          className="absolute -right-1.5 -top-1.5 rounded-full bg-red-500 p-0.5 text-white"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ) : (
+                      <label
+                        title={imageCount >= MAX_IMAGES ? `Máximo ${MAX_IMAGES} imágenes` : 'Subir imagen de esta talla'}
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded border border-dashed border-warm-300 ${
+                          imageCount >= MAX_IMAGES ? 'cursor-not-allowed opacity-40' : 'cursor-pointer hover:border-primary-400'
+                        }`}
+                      >
+                        <Upload className="h-4 w-4 text-warm-400" />
+                        <input
+                          type="file"
+                          accept="image/*"
+                          disabled={imageCount >= MAX_IMAGES}
+                          onChange={(e) => handleSizeImage(idx, e)}
+                          className="hidden"
+                        />
+                      </label>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => removeSize(idx)}
+                      className="shrink-0 text-night-300 hover:text-red-500"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                ))}
+                <Button type="button" variant="outline" size="sm" className="gap-2" onClick={addSize}>
+                  <Plus className="h-4 w-4" />
+                  Agregar talla
+                </Button>
+              </div>
+            )}
+          </div>
+
+          <p className="text-xs text-warm-400">
+            Las muestras de color y las tallas aparecerán en la tienda para que el cliente elija.
+            La imagen de un color o talla se mostrará al seleccionarlo. Máximo {MAX_IMAGES} imágenes en
+            total (principal + colores + tallas).
+          </p>
         </div>
       </div>
 

@@ -15,7 +15,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<Params
   if (!product) return NextResponse.json({ error: 'Not found' }, { status: 404 })
 
   return NextResponse.json({
-    catalog: { id: catalog.id, name: catalog.name, currency: catalog.currency },
+    catalog: {
+      id: catalog.id,
+      name: catalog.name,
+      currency: catalog.currency,
+      type: catalog.type ?? 'products',
+      ctaLabel: ((catalog.settingsJson ?? {}) as Record<string, unknown>).ctaLabel as string | undefined,
+    },
     product,
   })
 }

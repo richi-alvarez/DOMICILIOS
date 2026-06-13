@@ -1,260 +1,159 @@
 'use server'
 
-import { db, catalogs, products, categories, memberships } from '@/db'
-import { eq } from 'drizzle-orm'
+import { db, catalogs, memberships, aiPromptGuides } from '@/db'
+import { and, count, eq } from 'drizzle-orm'
 import { auth } from '@/auth'
-import { CATALOG_GENERATION_SYSTEM_PROMPT } from '@/lib/prompts/catalog-generation'
+import { revalidatePath } from 'next/cache'
+import { DEFAULT_BOOKING } from '@/lib/booking/config'
+import { getOrgPlan, PLAN_LIMITS } from '@/lib/billing/limits'
 
-interface GeneratedProduct {
-  name: string
-  description: string
-  price: number
-  category: string
+// Tipos de negocio orientados a servicios con agenda → catálogo en modo "citas".
+// El resto (restaurante, cafetería, tienda) usa el modo "productos" (carrito).
+const APPOINTMENT_BUSINESS_TYPES = new Set(['barbershop', 'salon', 'other'])
+
+function catalogTypeFor(businessType: string): 'products' | 'appointments' {
+  return APPOINTMENT_BUSINESS_TYPES.has(businessType) ? 'appointments' : 'products'
 }
 
-interface GeneratedCatalogData {
-  catalogName: string
-  description: string
-  categories: Array<{
-    name: string
-    description: string
-  }>
-  products: GeneratedProduct[]
+// Etiqueta legible que se pasa a la IA como tipo de negocio.
+const BUSINESS_TYPE_LABELS: Record<string, string> = {
+  restaurant: 'Restaurante (menú de comida y bebidas)',
+  cafe: 'Cafetería (café y postres)',
+  store: 'Tienda (catálogo de productos)',
+  barbershop: 'Barbería (servicios de corte y afeitado)',
+  salon: 'Salón especializado y cuidado (servicios de belleza y cuidado personal)',
+  other: 'Negocio',
 }
 
-export async function generateCatalogWithAI(businessType: string): Promise<GeneratedCatalogData> {
-  try {
-    // Importación dinámica para evitar problemas de bundling
-    const { default: Anthropic } = await import('@anthropic-ai/sdk')
-    const client = new Anthropic()
+const SLUG_REGEX = /^[a-z0-9][a-z0-9-]{1,28}[a-z0-9]$/
 
-    // Crear prompt específico para el tipo de negocio
-    const userPrompt = `Genera un catálogo profesional para un negocio de tipo: "${businessType}"
-
-Características requeridas:
-- Nombre atractivo y profesional
-- Descripción breve (máx 150 caracteres)
-- 1-2 categorías principales relevantes
-- 8-12 productos variados con precios realistas
-- Descripciones vendedoras y concisas
-
-Responde SOLO con JSON válido.`
-
-    const response = await client.messages.create({
-      model: 'claude-opus-4-7',
-      max_tokens: 2048,
-      system: CATALOG_GENERATION_SYSTEM_PROMPT,
-      messages: [
-        {
-          role: 'user',
-          content: userPrompt,
-        },
-      ],
-    })
-
-    // Extraer respuesta de texto
-    const textContent = response.content.find((block) => block.type === 'text')
-    if (!textContent || textContent.type !== 'text') {
-      throw new Error('No text content in response from Claude')
-    }
-
-    // Parsear JSON respuesta
-    const jsonText = textContent.text.trim()
-    let generatedData: GeneratedCatalogData
-
-    try {
-      // Intentar extraer JSON si Claude lo envolvió en markdown
-      let cleanedText = jsonText
-      if (jsonText.includes('```json')) {
-        cleanedText = jsonText.split('```json')[1].split('```')[0].trim()
-      } else if (jsonText.includes('```')) {
-        cleanedText = jsonText.split('```')[1].split('```')[0].trim()
-      }
-
-      generatedData = JSON.parse(cleanedText)
-    } catch (parseError) {
-      console.error('Failed to parse Claude response:', jsonText.substring(0, 300))
-      throw new Error('Invalid JSON response from Claude')
-    }
-
-    // Validar estructura mínima
-    if (!generatedData.catalogName || !generatedData.description || !generatedData.products) {
-      throw new Error('Generated data missing required fields')
-    }
-
-    // Asegurar que todos los productos tengan categoría
-    if (generatedData.products.length > 0 && !generatedData.products[0].category) {
-      // Si no hay categoría, asignar la primera categoría disponible
-      const firstCategory = generatedData.categories?.[0]?.name || businessType
-      generatedData.products = generatedData.products.map((p) => ({
-        ...p,
-        category: p.category || firstCategory,
-      }))
-    }
-
-    return generatedData
-  } catch (error) {
-    console.error('[Catalog Generation] Error:', error)
-    // Fallback a datos por defecto si Claude falla
-    return generateCatalogFallback(businessType)
-  }
+/**
+ * Devuelve el prompt de ejemplo (guía) para un tipo de negocio, o null si no hay.
+ * Usado por el botón de ayuda del modal "Crear con IA".
+ */
+export async function getPromptGuide(businessType: string): Promise<string | null> {
+  const guide = await db.query.aiPromptGuides.findFirst({
+    where: and(eq(aiPromptGuides.businessType, businessType), eq(aiPromptGuides.active, true)),
+  })
+  return guide?.prompt ?? null
 }
 
-// Fallback con datos por defecto cuando falla la API
-function generateCatalogFallback(businessType: string): GeneratedCatalogData {
-  const fallbacks: Record<string, GeneratedCatalogData> = {
-    restaurant: {
-      catalogName: 'Menú Restaurante',
-      description: 'Catálogo digital de nuestro menú completo con platos deliciosos',
-      categories: [{ name: 'Comidas', description: 'Platos principales' }],
-      products: [
-        {
-          name: 'Hamburguesa Clásica',
-          description: 'Pan tostado, carne de res 200g, lechuga, tomate y salsa especial',
-          price: 25000,
-          category: 'Comidas',
-        },
-        {
-          name: 'Pizza Margherita',
-          description: 'Pizza de masa delgada con tomate, mozzarella y albahaca fresca',
-          price: 32000,
-          category: 'Comidas',
-        },
-      ],
-    },
-    cafe: {
-      catalogName: 'Cafetería Artesanal',
-      description: 'Nuestro menú de bebidas y postres artesanales',
-      categories: [{ name: 'Bebidas', description: 'Bebidas variadas' }],
-      products: [
-        {
-          name: 'Café Espresso',
-          description: 'Espresso preparado con granos seleccionados',
-          price: 8000,
-          category: 'Bebidas',
-        },
-        {
-          name: 'Cappuccino',
-          description: 'Cappuccino cremoso con arte latte personalizado',
-          price: 12000,
-          category: 'Bebidas',
-        },
-      ],
-    },
-    store: {
-      catalogName: 'Tienda de Ropa',
-      description: 'Colección exclusiva de ropa casual y deportiva',
-      categories: [{ name: 'Vestuario', description: 'Prendas de vestir' }],
-      products: [
-        {
-          name: 'Camiseta Premium',
-          description: 'Camiseta 100% algodón, disponible en varios colores',
-          price: 45000,
-          category: 'Vestuario',
-        },
-        {
-          name: 'Pantalón Deportivo',
-          description: 'Pantalón cómodo para entrenamientos y uso casual',
-          price: 65000,
-          category: 'Vestuario',
-        },
-      ],
-    },
-  }
-
-  return fallbacks[businessType] || fallbacks.store
+/** ¿Está libre este enlace único? (mismo chequeo que el wizard "Nuevo catálogo"). */
+export async function isSlugAvailable(slug: string): Promise<boolean> {
+  const existing = await db.query.catalogs.findFirst({ where: eq(catalogs.slug, slug) })
+  return !existing
 }
 
-export async function createCatalogFromAI(businessType: string) {
+/**
+ * Crea un catálogo desde el modal "Crear con IA".
+ *
+ * Recoge los mismos datos que el wizard "Nuevo catálogo" (nombre, tipo, enlace
+ * único y moneda) más la descripción, y reusa la MISMA lógica inteligente:
+ * crea el catálogo y delega la generación (tema, banner, categoría, productos,
+ * bloques de diseño) en `generateAICatalogWithDesign` (multi-proveedor).
+ *
+ * El modo del catálogo se decide por el tipo de negocio: barbería, salón y otros
+ * (servicios con agenda) → modo "citas"; restaurante, cafetería y tienda →
+ * modo "productos" (carrito).
+ */
+export async function createCatalogFromAI(input: {
+  businessType: string
+  businessName: string
+  slug: string
+  currency?: string
+  description?: string
+}) {
   try {
     const session = await auth()
     if (!session?.user?.id) {
       throw new Error('No autorizado')
     }
 
-    // Obtener organización del usuario
     const membership = await db.query.memberships.findFirst({
       where: eq(memberships.userId, session.user.id),
     })
-
     if (!membership) {
       throw new Error('Usuario sin organización')
     }
+    const orgId = membership.organizationId
 
-    // Generar datos con IA real
-    const generatedData = await generateCatalogWithAI(businessType)
+    // Validaciones (mismas reglas que el wizard).
+    const businessName = input.businessName.trim()
+    if (businessName.length < 2) throw new Error('El nombre del negocio es muy corto')
+    const slug = input.slug.trim().toLowerCase()
+    if (!SLUG_REGEX.test(slug)) {
+      throw new Error('Enlace inválido (3-30 caracteres: letras, números y guiones)')
+    }
 
-    // Crear catálogo
-    const slug = generatedData.catalogName
-      .toLowerCase()
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '')
+    // Límite de catálogos del plan.
+    const plan = await getOrgPlan(orgId)
+    const limits = PLAN_LIMITS[plan]
+    const catalogCount = await db
+      .select({ count: count() })
+      .from(catalogs)
+      .where(eq(catalogs.orgId, orgId))
+      .then((r) => r[0]?.count ?? 0)
+    if (limits.catalogs !== -1 && catalogCount >= limits.catalogs) {
+      throw new Error(`Límite de ${limits.catalogs} catálogo(s) alcanzado en tu plan ${plan}`)
+    }
 
-    const catalogResult = await db.insert(catalogs).values({
-      orgId: membership.organizationId,
-      name: generatedData.catalogName,
-      slug,
-      status: 'draft',
-      language: 'es',
-      currency: 'COP',
-      orderChannel: 'whatsapp',
-      metadata: {
-        coverTitle: generatedData.catalogName,
-        coverDescription: generatedData.description,
-        theme: 'primary',
-        blocks: ['catalog'],
-      },
-    }).returning()
+    // Enlace único disponible.
+    if (!(await isSlugAvailable(slug))) {
+      throw new Error('Ese enlace ya está en uso. Elige otro.')
+    }
 
-    const catalogId = catalogResult[0]?.id
+    const catalogType = catalogTypeFor(input.businessType)
+    const businessLabel = BUSINESS_TYPE_LABELS[input.businessType] || input.businessType
+    const businessDescription = input.description?.trim() || businessLabel
+    const currency = input.currency || 'COP'
 
-    if (!catalogId) {
+    // En modo citas: CTA "Agendar" + configuración de agenda por defecto.
+    const settingsJson: Record<string, unknown> =
+      catalogType === 'appointments'
+        ? { ctaLabel: 'Agendar', booking: DEFAULT_BOOKING }
+        : { ctaLabel: 'Agregar al carrito' }
+
+    const [catalog] = await db
+      .insert(catalogs)
+      .values({
+        orgId,
+        name: businessName,
+        slug,
+        description: input.description?.trim() || null,
+        status: 'draft',
+        type: catalogType,
+        language: 'es',
+        currency,
+        orderChannel: 'whatsapp',
+        settingsJson,
+      })
+      .returning({ id: catalogs.id })
+
+    if (!catalog) {
       throw new Error('Error al crear el catálogo')
     }
 
-    // Crear categorías y mapear productos
-    const categoryMap = new Map<string, string>()
+    // Generación inteligente (misma lógica que el wizard). Best-effort: si la IA
+    // falla, se devuelve el catálogo igualmente para que el usuario continúe.
+    const { generateAICatalogWithDesign } = await import('./catalogs/generate-ai-catalog-design')
+    const aiResult = await generateAICatalogWithDesign(catalog.id, {
+      businessName,
+      businessType: businessLabel,
+      businessDescription,
+      currency,
+    })
 
-    for (const categoryData of generatedData.categories) {
-      const categoryResult = await db.insert(categories).values({
-        catalogId,
-        name: categoryData.name,
-        slug: categoryData.name.toLowerCase().replace(/\s+/g, '-'),
-        description: categoryData.description,
-      }).returning()
-
-      const categoryId = categoryResult[0]?.id
-      if (categoryId) {
-        categoryMap.set(categoryData.name, categoryId)
-      }
+    if ('error' in aiResult) {
+      console.error('[createCatalogFromAI] Generación IA falló:', aiResult.error)
     }
 
-    // Crear productos
-    for (const product of generatedData.products) {
-      const categoryId = categoryMap.get(product.category) ||
-                         Array.from(categoryMap.values())[0]
-
-      if (categoryId) {
-        await db.insert(products).values({
-          catalogId,
-          categoryId,
-          name: product.name,
-          description: product.description,
-          price: product.price,
-          currency: 'COP',
-          status: 'active',
-          metadata: {
-            image: null,
-            sku: null,
-          },
-        })
-      }
-    }
+    revalidatePath('/app')
 
     return {
       success: true,
-      catalogId,
-      catalogName: generatedData.catalogName,
+      catalogId: catalog.id,
+      catalogName: businessName,
+      type: catalogType,
     }
   } catch (error) {
     console.error('Error creating catalog with AI:', error)

@@ -12,10 +12,28 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params
   const catalog = await getCatalogBySlug(slug)
   const theme = themeSchema.safeParse(catalog?.themeJson ?? {})
+  const data = theme.success ? theme.data : undefined
+
+  const title = data?.seoTitle?.trim() || catalog?.name || slug
+  const description = data?.seoDescription?.trim() || catalog?.description || undefined
+  const logoUrl = data?.logoUrl || undefined
+
   return {
-    title: catalog?.name ?? slug,
-    description: catalog?.description ?? undefined,
-    icons: { icon: theme.success && theme.data.logoUrl ? theme.data.logoUrl : undefined },
+    title,
+    description,
+    icons: { icon: logoUrl },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      images: logoUrl ? [{ url: logoUrl }] : undefined,
+    },
+    twitter: {
+      card: 'summary',
+      title,
+      description,
+      images: logoUrl ? [logoUrl] : undefined,
+    },
   }
 }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { use } from 'react'
+import { use, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Trash2, ShoppingCart, ArrowLeft } from 'lucide-react'
 import { formatMoney } from '@/lib/utils'
@@ -17,6 +17,19 @@ export default function CartPage({ params }: Props) {
   const store = useCart()
   const { items, delivery } = useCartState()
   const totals = calcTotals(items, delivery.fee)
+
+  // Catálogos de citas: tras el carrito se va a "Agendar" en vez de "Entrega".
+  const [isAppointments, setIsAppointments] = useState(false)
+  useEffect(() => {
+    fetch(`/api/storefront/${slug}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => setIsAppointments(data?.catalog?.type === 'appointments'))
+      .catch(() => {})
+  }, [slug])
+
+  const continueHref = isAppointments
+    ? `/s/${slug}/agendar?from=cart`
+    : `/s/${slug}/checkout/delivery`
 
   if (items.length === 0) {
     return (
@@ -62,7 +75,7 @@ export default function CartPage({ params }: Props) {
         <div className="flex-1 space-y-3">
           {items.map((item) => (
             <div
-              key={item.productId}
+              key={`${item.productId}|${item.variantLabel ?? ''}`}
               className="flex items-center gap-3 rounded-2xl bg-white p-4 shadow-sm"
             >
               {item.image ? (
@@ -89,15 +102,15 @@ export default function CartPage({ params }: Props) {
               <div className="flex flex-col items-end gap-2">
                 <button
                   type="button"
-                  onClick={() => store.getState().removeItem(item.productId)}
+                  onClick={() => store.getState().removeItem(item.productId, item.variantLabel)}
                   className="text-night-300 hover:text-red-500"
                 >
                   <Trash2 className="h-4 w-4" />
                 </button>
                 <QuantityStepper
                   qty={item.qty}
-                  onIncrement={() => store.getState().updateQty(item.productId, item.qty + 1)}
-                  onDecrement={() => store.getState().updateQty(item.productId, item.qty - 1)}
+                  onIncrement={() => store.getState().updateQty(item.productId, item.qty + 1, item.variantLabel)}
+                  onDecrement={() => store.getState().updateQty(item.productId, item.qty - 1, item.variantLabel)}
                   size="sm"
                 />
               </div>
@@ -120,7 +133,7 @@ export default function CartPage({ params }: Props) {
               </div>
             </div>
             <Link
-              href={`/s/${slug}/checkout/delivery`}
+              href={continueHref}
               className="mt-5 flex w-full items-center justify-center rounded-xl bg-primary-500 py-3.5 font-semibold text-white transition hover:bg-primary-600 active:scale-[0.98]"
             >
               Continuar →

@@ -1,6 +1,6 @@
 'use client'
 
-import { ShoppingCart, ImageOff } from 'lucide-react'
+import { CalendarPlus, ShoppingCart, ImageOff } from 'lucide-react'
 import Link from 'next/link'
 import { formatMoney } from '@/lib/utils'
 import { QuantityStepper } from './quantity-stepper'
@@ -17,12 +17,18 @@ interface Props {
     compareAt: number | null
     stock: number | null
     imagesJson: unknown
+    variantsJson?: {
+      colors?: { name: string; hex: string; image?: string }[]
+      sizes?: (string | { name: string; image?: string })[]
+    }
   }
   currency: string
   catalogSlug: string
+  /** 'cart' (Agregar al carrito) | 'appointment' (Agendar cita). Default: 'cart'. */
+  buttonType?: 'cart' | 'appointment'
 }
 
-export function ProductCard({ product, currency, catalogSlug }: Props) {
+export function ProductCard({ product, currency, catalogSlug, buttonType = 'cart' }: Props) {
   const store = useCart()
   const { items } = useCartState()
   const cartItem = items.find((i) => i.productId === product.id)
@@ -35,6 +41,10 @@ export function ProductCard({ product, currency, catalogSlug }: Props) {
     typeof rawFirstImage === 'string' ? rawFirstImage : rawFirstImage?.url
 
   const outOfStock = product.stock !== null && product.stock <= 0
+  // Productos con color/talla: la selección se hace en el detalle, no en la card.
+  const colors = product.variantsJson?.colors ?? []
+  const hasVariants =
+    colors.length > 0 || (product.variantsJson?.sizes?.length ?? 0) > 0
 
   function increment() {
     store.getState().addItem({
@@ -88,6 +98,22 @@ export function ProductCard({ product, currency, catalogSlug }: Props) {
           <p className="line-clamp-2 text-sm text-night-500">{product.description}</p>
         )}
 
+        {colors.length > 0 && (
+          <div className="mt-1 flex items-center gap-1">
+            {colors.slice(0, 6).map((c) => (
+              <span
+                key={c.name}
+                title={c.name}
+                className="h-3.5 w-3.5 rounded-full border border-warm-200"
+                style={{ backgroundColor: c.hex }}
+              />
+            ))}
+            {colors.length > 6 && (
+              <span className="text-xs text-night-400">+{colors.length - 6}</span>
+            )}
+          </div>
+        )}
+
         <div className="mt-auto flex items-center justify-between pt-3">
           <div className="flex flex-col">
             <span className="text-lg font-bold text-night-900">
@@ -104,14 +130,31 @@ export function ProductCard({ product, currency, catalogSlug }: Props) {
             <span className="rounded-full bg-warm-100 px-3 py-1 text-xs text-night-400">
               Agotado
             </span>
+          ) : hasVariants ? (
+            <Link
+              href={`/s/${catalogSlug}/p/${product.slug}`}
+              className="flex items-center gap-1.5 rounded-full bg-primary-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-primary-600 active:scale-95"
+            >
+              <ShoppingCart className="h-4 w-4" />
+              Elegir opciones
+            </Link>
           ) : qty === 0 ? (
             <button
               type="button"
               onClick={increment}
               className="flex items-center gap-1.5 rounded-full bg-primary-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-primary-600 active:scale-95"
             >
-              <ShoppingCart className="h-4 w-4" />
-              Agregar
+              {buttonType === 'appointment' ? (
+                <>
+                  <CalendarPlus className="h-4 w-4" />
+                  Agendar
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="h-4 w-4" />
+                  Agregar
+                </>
+              )}
             </button>
           ) : (
             <QuantityStepper

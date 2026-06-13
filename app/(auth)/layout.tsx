@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { APP_NAME, APP_LOGO } from '@/lib/brand'
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,13 +8,13 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className="mb-8">
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/wastore-logo.png"
-            alt="WaStore"
+            src={APP_LOGO}
+            alt={APP_NAME}
             width={45}
             height={45}
             className="h-auto w-auto"
           />
-          <span className="font-display text-2xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">WaStore</span>
+          <span className="font-display text-2xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">{APP_NAME}</span>
         </Link>
       </div>
       <div className="w-full max-w-md">{children}</div>

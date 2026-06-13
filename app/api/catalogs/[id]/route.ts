@@ -69,6 +69,7 @@ export async function GET(
       orderChannel: catalog.orderChannel,
       contactEmail: catalog.contactEmail,
       contactPhone: catalog.contactPhone,
+      themeJson: catalog.themeJson ?? {},
       createdAt: catalog.createdAt,
       updatedAt: catalog.updatedAt,
       publishedAt: catalog.publishedAt,

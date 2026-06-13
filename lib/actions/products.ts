@@ -50,6 +50,29 @@ const createProductSchema = z.object({
     z.undefined(),
   ]).optional(),
   isCartProduct: z.boolean().default(true),
+  // Variantes manuales: colores (con imagen opcional) y/o tallas.
+  variants: z
+    .object({
+      colors: z
+        .array(
+          z.object({
+            name: z.string().min(1),
+            hex: z.string().min(1),
+            image: z.string().optional(),
+          }),
+        )
+        .optional(),
+      sizes: z
+        .array(
+          z.object({
+            name: z.string().min(1),
+            image: z.string().optional(),
+          }),
+        )
+        .optional(),
+    })
+    .nullable()
+    .optional(),
 })
 
 const updateProductSchema = createProductSchema.extend({
@@ -58,6 +81,48 @@ const updateProductSchema = createProductSchema.extend({
 
 export type CreateProductPayload = z.infer<typeof createProductSchema>
 export type UpdateProductPayload = z.infer<typeof updateProductSchema>
+
+type VariantsInput =
+  | {
+      colors?: { name: string; hex: string; image?: string }[]
+      sizes?: { name: string; image?: string }[]
+    }
+  | null
+  | undefined
+
+/**
+ * Construye el variantsJson a guardar a partir del payload del formulario.
+ * Filtra colores/tallas vacíos y respeta un máximo de 5 imágenes en total
+ * (imagen principal + imágenes por color + por talla). Devuelve [] si no hay.
+ */
+function buildVariantsJson(variants: VariantsInput, mainImage: string | null) {
+  if (!variants) return []
+  const colors = (variants.colors ?? []).filter((c) => c.name?.trim())
+  const sizes = (variants.sizes ?? []).filter((s) => s.name?.trim())
+
+  let imageBudget = 5 - (mainImage ? 1 : 0)
+  const takeImage = (img?: string) => {
+    if (img && imageBudget > 0) {
+      imageBudget--
+      return img
+    }
+    return undefined
+  }
+
+  const cappedColors = colors.map((c) => {
+    const image = takeImage(c.image)
+    return image ? { name: c.name.trim(), hex: c.hex, image } : { name: c.name.trim(), hex: c.hex }
+  })
+  const cappedSizes = sizes.map((s) => {
+    const image = takeImage(s.image)
+    return image ? { name: s.name.trim(), image } : { name: s.name.trim() }
+  })
+
+  const out: { colors?: typeof cappedColors; sizes?: typeof cappedSizes } = {}
+  if (cappedColors.length) out.colors = cappedColors
+  if (cappedSizes.length) out.sizes = cappedSizes
+  return Object.keys(out).length ? out : []
+}
 
 export async function createProduct(payload: CreateProductPayload) {
   const session = await auth()
@@ -70,7 +135,7 @@ export async function createProduct(payload: CreateProductPayload) {
     return { error: parsed.error.errors[0].message }
   }
 
-  const { catalogId, name, description, price, compareAt, stock, categoryId, sku, active, image } = parsed.data
+  const { catalogId, name, description, price, compareAt, stock, categoryId, sku, active, image, variants } = parsed.data
 
   const catalog = await db.query.catalogs.findFirst({
     where: eq(catalogs.id, catalogId),
@@ -132,6 +197,7 @@ export async function createProduct(payload: CreateProductPayload) {
         categoryId: categoryId || null,
         sku: sku || null,
         imagesJson: imageUrl ? [{ url: imageUrl, alt: name }] : [],
+        variantsJson: buildVariantsJson(variants, imageUrl),
         active,
         position: 0,
       })
@@ -169,7 +235,7 @@ export async function updateProduct(payload: UpdateProductPayload) {
     return { error: parsed.error.errors[0].message }
   }
 
-  const { id, catalogId, name, description, price, compareAt, stock, categoryId, sku, active, image } = parsed.data
+  const { id, catalogId, name, description, price, compareAt, stock, categoryId, sku, active, image, variants } = parsed.data
 
   const existingProduct = await db.query.products.findFirst({
     where: eq(products.id, id),
@@ -199,6 +265,7 @@ export async function updateProduct(payload: UpdateProductPayload) {
         categoryId: categoryId || null,
         sku: sku || null,
         imagesJson: imageUrl ? [{ url: imageUrl, alt: name }] : [],
+        variantsJson: buildVariantsJson(variants, imageUrl),
         active,
       })
       .where(eq(products.id, id))
@@ -237,6 +304,33 @@ export async function deleteProduct(id: string) {
   } catch (error) {
     console.error('Error deleting product:', error)
     return { error: 'Error al eliminar el producto' }
+  }
+}
+
+/**
+ * Elimina varios productos a la vez (borrado en bloque). Verifica que todos
+ * pertenezcan al catálogo indicado antes de borrar, en una sola query.
+ */
+export async function deleteProducts(catalogId: string, ids: string[]) {
+  const session = await auth()
+  if (!session?.user?.id) {
+    return { error: 'No autenticado' }
+  }
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return { error: 'No hay productos seleccionados' }
+  }
+
+  try {
+    const deleted = await db
+      .delete(products)
+      .where(and(eq(products.catalogId, catalogId), inArray(products.id, ids)))
+      .returning({ id: products.id })
+
+    revalidatePath(`/app/catalogs/${catalogId}/products`)
+    return { success: true, count: deleted.length }
+  } catch (error) {
+    console.error('Error deleting products:', error)
+    return { error: 'Error al eliminar los productos' }
   }
 }
 

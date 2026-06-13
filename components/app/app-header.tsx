@@ -12,6 +12,7 @@ import {
 import { cn } from '@/lib/utils'
 import type { PlanCode } from '@/lib/billing/constants'
 import { PLAN_NAMES, PLAN_COLORS } from '@/lib/billing/constants'
+import { APP_NAME, APP_LOGO } from '@/lib/brand'
 
 interface CatalogNav {
   id: string
@@ -73,8 +74,8 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
     <header className="flex h-16 items-center justify-between border-b border-warm-200 bg-white px-4 sticky top-0 z-50 lg:hidden">
       {/* Logo */}
       <Link href="/app" className="flex items-center gap-2">
-        <Image src="/wastore-logo.png" alt="WaStore" width={32} height={32} />
-        <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text font-display font-bold text-transparent">WaStore</span>
+        <Image src={APP_LOGO} alt={APP_NAME} width={32} height={32} />
+        <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text font-display font-bold text-transparent">{APP_NAME}</span>
       </Link>
 
       {/* Right Section: Notifications + User Dropdown + Hamburger */}

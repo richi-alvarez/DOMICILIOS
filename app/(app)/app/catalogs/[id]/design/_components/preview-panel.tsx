@@ -116,6 +116,11 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
   const visibleBlocks = blocks.filter((b) => b.visible)
   const cartBlock = visibleBlocks.find((b) => b.type === 'cart')
   const contentBlocks = visibleBlocks.filter((b) => b.type !== 'cart')
+  // Modo citas: el bloque de catálogo usa "Agendar cita" → el botón flotante
+  // muestra el ícono de calendario en vez del carrito.
+  const appointmentMode = visibleBlocks.some(
+    (b) => b.type === 'catalog' && b.buttonType === 'appointment',
+  )
 
   const previewContent = (
     <div className="w-full">
@@ -396,7 +401,15 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                   Ver más →
                                 </a>
                               )}
-                              {block.enableCart && (
+                              {block.buttonType === 'appointment' ? (
+                                <button
+                                  onClick={() => handleAddToCart(product.id)}
+                                  className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(product.id) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
+                                  style={{ backgroundColor: theme.buttonPrimaryColor }}
+                                >
+                                  {cartItems.has(product.id) ? '✓ Agendada' : '📅 Agendar cita'}
+                                </button>
+                              ) : block.enableCart ? (
                                 <button
                                   onClick={() => handleAddToCart(product.id)}
                                   className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(product.id) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
@@ -404,7 +417,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 >
                                   {cartItems.has(product.id) ? '✓ Agregado' : 'Agregar al carrito'}
                                 </button>
-                              )}
+                              ) : null}
                             </div>
                           </div>
                         </div>
@@ -424,7 +437,15 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                   Ver más →
                                 </a>
                               )}
-                              {block.enableCart && (
+                              {block.buttonType === 'appointment' ? (
+                                <button
+                                  onClick={() => handleAddToCart(`mock-${i}`)}
+                                  className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(`mock-${i}`) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
+                                  style={{ backgroundColor: theme.buttonPrimaryColor }}
+                                >
+                                  {cartItems.has(`mock-${i}`) ? '✓ Agendada' : '📅 Agendar cita'}
+                                </button>
+                              ) : block.enableCart ? (
                                 <button
                                   onClick={() => handleAddToCart(`mock-${i}`)}
                                   className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(`mock-${i}`) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
@@ -432,7 +453,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 >
                                   {cartItems.has(`mock-${i}`) ? '✓ Agregado' : 'Agregar al carrito'}
                                 </button>
-                              )}
+                              ) : null}
                             </div>
                           </div>
                         </div>
@@ -581,107 +602,116 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
           return null
         })}
 
-        {/* Cart - Rendered outside of content blocks to prevent scroll issues */}
-        {cartBlock && (
-          (() => {
-            const positionMap: Record<string, string> = {
-              'bottom-right': 'bottom-4 right-4',
-              'bottom-left': 'bottom-4 left-4',
-              'top-right': 'top-4 right-4',
-              'top-left': 'top-4 left-4',
-              'center-right': 'top-1/2 right-4 -translate-y-1/2',
-              'center-left': 'top-1/2 left-4 -translate-y-1/2',
-            }
-
-            const sizeMap = {
-              sm: 'w-12 h-12 text-lg',
-              md: 'w-16 h-16 text-2xl',
-              lg: 'w-20 h-20 text-3xl',
-            }
-
-            const animationMap = {
-              'none': '',
-              'pulse': 'animate-pulse',
-              'bounce': 'animate-bounce',
-              'scale': 'animate-scale',
-            }
-
-            const cartProductIds = Array.from(cartItems)
-            const cartProducts = products.filter(p => cartProductIds.includes(p.id))
-            const cartTotal = cartProducts.reduce((sum, p) => sum + p.price, 0)
-
-            return (
-              <div key={cartBlock.id} className="fixed pointer-events-none z-10" style={{ inset: 0 }}>
-                {/* Cart Button */}
-                <div
-                  className={`fixed ${positionMap[cartBlock.position]} ${sizeMap[cartBlock.size]} ${animationMap[cartBlock.animation]} rounded-full flex items-center justify-center cursor-pointer group pointer-events-auto`}
-                  style={{
-                    backgroundColor: cartBlock.useCustomColors ? cartBlock.bgColor : theme.cartPrimaryColor,
-                  }}
-                >
-                  <span style={{ color: cartBlock.useCustomColors ? cartBlock.iconColor : 'white' }}>
-                    🛒
-                  </span>
-                  {cartBlock.showItemCount && (
-                    <div
-                      className="absolute -top-2 -right-2 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center"
-                      style={{
-                        backgroundColor: cartBlock.useCustomColors ? cartBlock.iconColor : '#ef4444',
-                      }}
-                    >
-                      {cartItems.size}
-                    </div>
-                  )}
-                  {cartBlock.showTotalPrice && (
-                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
-                      Total: ${cartTotal.toLocaleString('es-CO')}
-                    </div>
-                  )}
-
-                  {/* Preview Popup */}
-                  {cartBlock.showPreviewFirst && (
-                    <div className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white border border-gray-300 shadow-lg p-4 w-80 z-50 ${borderRadiusClass[cartBlock.borderRadius] || 'rounded-lg'}`}>
-                      <p className="text-xs font-semibold text-gray-900 mb-3">Resumen del Carrito</p>
-                      <div className="space-y-2 text-xs">
-                        {cartProducts.length > 0 ? (
-                          <>
-                            {cartProducts.map((product) => (
-                              <div key={product.id} className="grid grid-cols-2 gap-2 text-gray-700">
-                                <span className="truncate">{product.name}</span>
-                                <span className="text-right font-medium text-gray-900">${product.price.toLocaleString('es-CO')}</span>
-                              </div>
-                            ))}
-                            <div className="border-t border-gray-300 pt-2 mt-2 grid grid-cols-2 gap-2 font-semibold text-gray-900">
-                              <span>Total:</span>
-                              <span className="text-right">${cartTotal.toLocaleString('es-CO')}</span>
-                            </div>
-                          </>
-                        ) : (
-                          <div className="text-gray-500 py-4 text-center">
-                            El carrito está vacío
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )
-          })()
-        )}
+        {/* El carrito flotante se renderiza fuera de previewContent (ver cartFab),
+            como hermano del contenedor con scroll, para quedar fijo dentro del
+            marco de la tienda (desktop y móvil) sin desplazarse al hacer scroll. */}
       </div>
     </div>
   )
+
+  const cartFab = cartBlock
+    ? (() => {
+        const positionMap: Record<string, string> = {
+          'bottom-right': 'bottom-4 right-4',
+          'bottom-left': 'bottom-4 left-4',
+          'top-right': 'top-4 right-4',
+          'top-left': 'top-4 left-4',
+          'center-right': 'top-1/2 right-4 -translate-y-1/2',
+          'center-left': 'top-1/2 left-4 -translate-y-1/2',
+        }
+
+        const sizeMap = {
+          sm: 'w-12 h-12 text-lg',
+          md: 'w-16 h-16 text-2xl',
+          lg: 'w-20 h-20 text-3xl',
+        }
+
+        const animationMap = {
+          'none': '',
+          'pulse': 'animate-pulse',
+          'bounce': 'animate-bounce',
+          'scale': 'animate-scale',
+        }
+
+        const cartProductIds = Array.from(cartItems)
+        const cartProducts = products.filter(p => cartProductIds.includes(p.id))
+        const cartTotal = cartProducts.reduce((sum, p) => sum + p.price, 0)
+
+        return (
+          <div className="absolute inset-0 pointer-events-none z-10">
+            {/* Cart Button */}
+            <div
+              className={`absolute ${positionMap[cartBlock.position]} ${sizeMap[cartBlock.size]} ${animationMap[cartBlock.animation]} rounded-full flex items-center justify-center cursor-pointer group pointer-events-auto`}
+              style={{
+                backgroundColor: cartBlock.useCustomColors ? cartBlock.bgColor : theme.cartPrimaryColor,
+              }}
+            >
+              <span style={{ color: cartBlock.useCustomColors ? cartBlock.iconColor : 'white' }}>
+                {appointmentMode ? '📅' : '🛒'}
+              </span>
+              {cartBlock.showItemCount && (
+                <div
+                  className="absolute -top-2 -right-2 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center"
+                  style={{
+                    backgroundColor: cartBlock.useCustomColors ? cartBlock.iconColor : '#ef4444',
+                  }}
+                >
+                  {cartItems.size}
+                </div>
+              )}
+              {cartBlock.showTotalPrice && (
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                  Total: ${cartTotal.toLocaleString('es-CO')}
+                </div>
+              )}
+
+              {/* Preview Popup */}
+              {cartBlock.showPreviewFirst && (
+                <div className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-white border border-gray-300 shadow-lg p-4 w-80 z-50 ${borderRadiusClass[cartBlock.borderRadius] || 'rounded-lg'}`}>
+                  <p className="text-xs font-semibold text-gray-900 mb-3">Resumen del Carrito</p>
+                  <div className="space-y-2 text-xs">
+                    {cartProducts.length > 0 ? (
+                      <>
+                        {cartProducts.map((product) => (
+                          <div key={product.id} className="grid grid-cols-2 gap-2 text-gray-700">
+                            <span className="truncate">{product.name}</span>
+                            <span className="text-right font-medium text-gray-900">${product.price.toLocaleString('es-CO')}</span>
+                          </div>
+                        ))}
+                        <div className="border-t border-gray-300 pt-2 mt-2 grid grid-cols-2 gap-2 font-semibold text-gray-900">
+                          <span>Total:</span>
+                          <span className="text-right">${cartTotal.toLocaleString('es-CO')}</span>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="text-gray-500 py-4 text-center">
+                        El carrito está vacío
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        )
+      })()
+    : null
 
   if (previewMode === 'mobile') {
     return (
       <div className="flex items-center justify-center h-full bg-gray-100 p-4">
         <div className="relative bg-black rounded-[40px] border-[10px] border-gray-800 shadow-2xl overflow-hidden" style={{ width: '390px', height: '844px' }}>
           <div className="absolute inset-0 overflow-y-auto">{previewContent}</div>
+          {cartFab}
         </div>
       </div>
     )
   }
 
-  return <div className="overflow-y-auto h-full">{previewContent}</div>
+  return (
+    <div className="relative h-full">
+      <div className="overflow-y-auto h-full">{previewContent}</div>
+      {cartFab}
+    </div>
+  )
 }

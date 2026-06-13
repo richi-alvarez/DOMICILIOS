@@ -6,29 +6,7 @@ import { revalidatePath } from 'next/cache'
 import { auth } from '@/auth'
 import { z } from 'zod'
 import { slugify } from '@/lib/utils'
-import { MENU_SCAN_SYSTEM_PROMPT } from '@/lib/prompts/menu-scan'
 import { convertPDFToImagesServer } from '@/lib/pdf'
-
-// Extrae OCR de imagen usando Tesseract
-async function extractTextFromImage(base64Image: string, mediaType: string): Promise<string> {
-  try {
-    const { createWorker } = await import('tesseract.js')
-    const worker = await createWorker('spa') // Spanish language support
-
-    try {
-      // Convert base64 to Data URL for Tesseract
-      const dataUrl = `data:${mediaType};base64,${base64Image}`
-      const result = await worker.recognize(dataUrl)
-      const extractedText = result.data.text.substring(0, 3000)
-      return extractedText
-    } finally {
-      await worker.terminate()
-    }
-  } catch (err) {
-    console.error('[OCR] extraction failed:', err)
-    return '' // Return empty string if OCR fails, continue with image-only analysis
-  }
-}
 
 // Procesa un PDF convirtiendo a imágenes
 async function processPDFFile(pdfBuffer: Buffer): Promise<string[]> {
@@ -51,6 +29,84 @@ interface DetectedProduct {
   description?: string
   price: number
   category: string
+  /** URL pública de la imagen recortada del producto (si se detectó su foto). */
+  image?: string
+  /** Colores detectados (solo productos con opciones de color). */
+  colors?: { name: string; hex: string }[]
+  /** Tallas detectadas (solo productos con tallas). */
+  sizes?: string[]
+}
+
+/**
+ * Recorta la foto de un producto desde la imagen escaneada usando su bounding
+ * box (fracciones 0..1) y la guarda en public/catalogs/{catalogId}. Devuelve la
+ * URL pública o null si no se pudo recortar. Best-effort: nunca lanza.
+ */
+async function cropProductImage(
+  imageBase64: string,
+  box: [number, number, number, number],
+  catalogId: string,
+  filenameBase: string,
+): Promise<string | null> {
+  try {
+    const sharp = (await import('sharp')).default
+    const { mkdir, writeFile } = await import('fs/promises')
+    const path = await import('path')
+
+    const input = Buffer.from(imageBase64, 'base64')
+    const meta = await sharp(input).metadata()
+    const W = meta.width ?? 0
+    const H = meta.height ?? 0
+    if (!W || !H) return null
+
+    // Tamaño fijo y uniforme para TODAS las imágenes recortadas.
+    const OUT_SIZE = 600
+    // Margen alrededor del producto (fracción de cada lado) para que no quede
+    // pegado al borde y no se corte el envase.
+    const PAD = 0.04
+
+    let [x0, y0, x1, y1] = box
+    // Aplica margen y recorta a [0,1].
+    const bw = x1 - x0
+    const bh = y1 - y0
+    x0 = Math.max(0, x0 - bw * PAD)
+    y0 = Math.max(0, y0 - bh * PAD)
+    x1 = Math.min(1, x1 + bw * PAD)
+    y1 = Math.min(1, y1 + bh * PAD)
+
+    let left = Math.round(x0 * W)
+    let top = Math.round(y0 * H)
+    let width = Math.round((x1 - x0) * W)
+    let height = Math.round((y1 - y0) * H)
+
+    // Clamp dentro de los límites de la imagen.
+    left = Math.max(0, Math.min(left, W - 1))
+    top = Math.max(0, Math.min(top, H - 1))
+    width = Math.max(1, Math.min(width, W - left))
+    height = Math.max(1, Math.min(height, H - top))
+    if (width < 8 || height < 8) return null
+
+    // Recorta SOLO el producto y lo centra en un lienzo cuadrado blanco del mismo
+    // tamaño (fit:'contain' = sin deformar). Así todas las imágenes quedan iguales.
+    const out = await sharp(input)
+      .extract({ left, top, width, height })
+      .resize(OUT_SIZE, OUT_SIZE, {
+        fit: 'contain',
+        background: { r: 255, g: 255, b: 255, alpha: 1 },
+      })
+      .flatten({ background: { r: 255, g: 255, b: 255 } })
+      .jpeg({ quality: 85 })
+      .toBuffer()
+
+    const dir = path.join(process.cwd(), 'public', 'catalogs', catalogId)
+    await mkdir(dir, { recursive: true })
+    const filename = `scan_${filenameBase}.jpg`
+    await writeFile(path.join(dir, filename), out)
+    return `/catalogs/${catalogId}/${filename}`
+  } catch (err) {
+    console.error('[Scanner] crop failed:', err)
+    return null
+  }
 }
 
 export async function scanMenuImages(
@@ -63,6 +119,9 @@ export async function scanMenuImages(
 
   try {
     const files = formData.getAll('files') as File[]
+    // catalogId es opcional: si llega, se recortan y guardan las fotos de los
+    // productos desde la imagen; si no, la extracción funciona igual sin imagen.
+    const catalogId = (formData.get('catalogId') as string | null) || null
 
     if (files.length === 0) {
       return { error: 'No se subieron archivos' }
@@ -81,9 +140,10 @@ export async function scanMenuImages(
       }
     }
 
-    // Import Anthropic dynamically to avoid client-side bundling issues
-    const { default: Anthropic } = await import('@anthropic-ai/sdk')
-    const client = new Anthropic()
+    // Extracción multi-proveedor con fallback (OpenRouter → OpenAI → Gemini →
+    // Anthropic), definido en task-recommendations.ts. El proveedor que primero
+    // esté configurado y responda gana; si falla, pasa al siguiente.
+    const { MenuExtractionService } = await import('@/lib/ai/menu-extraction-service')
     const allProducts: DetectedProduct[] = []
 
     // Recolecta todas las imágenes a procesar (incluyendo desde PDFs)
@@ -126,117 +186,50 @@ export async function scanMenuImages(
       }
     }
 
-    // Procesa cada imagen con Claude Vision
+    // Procesa cada imagen con el servicio multi-proveedor (visión + fallback)
+    let imgIdx = 0
     for (const image of imagesToProcess) {
       try {
-        // Extract text using OCR preprocessing
-        console.log(`[OCR] Extracting text from ${image.fileName}...`)
-        const extractedText = await extractTextFromImage(image.base64, `image/${image.mediaType.split('/')[1]}`)
-        console.log(`[OCR] Extracted ${extractedText.length} characters of text`)
+        const result = await MenuExtractionService.extractFromImage(
+          image.base64,
+          image.mediaType,
+          { verbose: true },
+        )
 
-        // Build user message with both image and OCR text
-        const userContent: Array<any> = [
-          {
-            type: 'image',
-            source: {
-              type: 'base64',
-              media_type: image.mediaType,
-              data: image.base64,
-            },
-          },
-        ]
-
-        // Add OCR text if extraction was successful
-        let userPrompt = 'Extrae todos los productos visibles en esta imagen. Retorna un JSON array válido.'
-        if (extractedText.trim().length > 0) {
-          userPrompt = `OCR extracted text:\n${extractedText}\n\nUsa el texto extraído por OCR y la imagen para extraer TODOS los productos. Estructura: JSON array con name, description, price (número), category.`
-        }
-
-        userContent.push({
-          type: 'text',
-          text: userPrompt,
-        })
-
-        // Call Claude Vision API with OCR-enhanced context
-        const response = await client.messages.create({
-          model: 'claude-opus-4-7',
-          max_tokens: 4096,
-          system: MENU_SCAN_SYSTEM_PROMPT,
-          messages: [
-            {
-              role: 'user',
-              content: userContent,
-            },
-          ],
-        })
-
-        // Extract text response
-        const textContent = response.content.find((block) => block.type === 'text')
-        if (!textContent || textContent.type !== 'text') {
-          console.error('No text content in response from Claude')
+        if (!result.success) {
+          console.error(`[Scanner] ${image.fileName}: ${result.error}`)
           continue
         }
 
-        // Parse JSON response
-        const jsonText = textContent.text.trim()
-        let fileProducts: DetectedProduct[]
+        for (const product of result.products) {
+          const name = product.name ? String(product.name).trim() : ''
+          if (name.length === 0) continue // sin nombre válido → saltar
 
-        try {
-          // Try to extract JSON if Claude wrapped it in markdown
-          let cleanedText = jsonText
-          if (jsonText.includes('```json')) {
-            cleanedText = jsonText.split('```json')[1].split('```')[0].trim()
-          } else if (jsonText.includes('```')) {
-            cleanedText = jsonText.split('```')[1].split('```')[0].trim()
+          // Si hay catálogo y el modelo devolvió la caja, recorta la foto real.
+          let imageUrl: string | undefined
+          if (catalogId && product.box) {
+            const url = await cropProductImage(
+              image.base64,
+              product.box,
+              catalogId,
+              `${Date.now()}_${imgIdx++}`,
+            )
+            if (url) imageUrl = url
           }
 
-          fileProducts = JSON.parse(cleanedText)
-        } catch (parseError) {
-          console.error('Failed to parse Claude response as JSON:', jsonText.substring(0, 300))
-          console.error('Parse error:', parseError)
-          continue
-        }
-
-        // Validate each product - VERY lenient, accept almost anything
-        if (Array.isArray(fileProducts)) {
-          for (const product of fileProducts) {
-            try {
-              // Extract and clean name
-              const name = product.name ? String(product.name).trim() : 'Producto'
-              if (name.length === 0 || name === 'Producto') {
-                continue // Skip if no valid name
-              }
-
-              // Parse price - very lenient
-              let price = 0
-              if (product.price !== undefined && product.price !== null) {
-                if (typeof product.price === 'number') {
-                  price = product.price
-                } else {
-                  const priceStr = String(product.price)
-                  const match = priceStr.match(/\d+\.?\d*/)
-                  if (match) {
-                    price = parseFloat(match[0])
-                  }
-                }
-              }
-              // Accept price even if 0
-
-              allProducts.push({
-                name: name,
-                description: product.description ? String(product.description).trim() : '',
-                price: isNaN(price) ? 0 : price,
-                category: product.category ? String(product.category).trim() : 'General',
-              })
-            } catch (err) {
-              // Skip malformed products
-              continue
-            }
-          }
+          allProducts.push({
+            name,
+            description: product.description ? String(product.description).trim() : '',
+            price: isNaN(product.price) ? 0 : product.price,
+            category: product.category ? String(product.category).trim() : 'General',
+            image: imageUrl,
+            colors: product.colors,
+            sizes: product.sizes,
+          })
         }
       } catch (imageError) {
         console.error(`[Scanner] Error processing image ${image.fileName}:`, imageError)
-        // Continue with next image
+        // Continúa con la siguiente imagen
         continue
       }
     }
@@ -336,6 +329,18 @@ export async function addProductsFromScan(
           }
         }
 
+        // Variantes: solo se guardan si el escáner detectó colores y/o tallas.
+        const hasColors = Array.isArray(product.colors) && product.colors.length > 0
+        const hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0
+        const variantsJson =
+          hasColors || hasSizes
+            ? {
+                ...(hasColors ? { colors: product.colors } : {}),
+                // Tallas en formato canónico {name} (el escáner las detecta como strings).
+                ...(hasSizes ? { sizes: product.sizes!.map((s) => ({ name: s })) } : {}),
+              }
+            : []
+
         await db.insert(products).values({
           catalogId,
           name: product.name,
@@ -343,6 +348,8 @@ export async function addProductsFromScan(
           description: product.description || null,
           price: Math.round(product.price * 100),
           categoryId,
+          imagesJson: product.image ? [{ url: product.image, alt: product.name }] : [],
+          variantsJson,
           active: true,
           position: 0,
         })

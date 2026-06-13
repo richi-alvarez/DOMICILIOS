@@ -31,6 +31,14 @@ export const subscriptionStatusEnum = pgEnum('subscription_status', [
   'incomplete',
 ])
 export const catalogStatusEnum = pgEnum('catalog_status', ['draft', 'published', 'archived'])
+// Modo del catálogo: vende productos (carrito) o agenda servicios (citas).
+export const catalogTypeEnum = pgEnum('catalog_type', ['products', 'appointments'])
+export const appointmentStatusEnum = pgEnum('appointment_status', [
+  'pending',
+  'confirmed',
+  'cancelled',
+  'completed',
+])
 export const orderStatusEnum = pgEnum('order_status', [
   'draft',
   'pending_send',
@@ -81,13 +89,16 @@ export const accounts = pgTable(
     type: text('type').notNull(),
     provider: text('provider').notNull(),
     providerAccountId: text('provider_account_id').notNull(),
-    refreshToken: text('refresh_token'),
-    accessToken: text('access_token'),
-    expiresAt: integer('expires_at'),
-    tokenType: text('token_type'),
+    // Estas propiedades usan snake_case a propósito: el objeto `account` de
+    // Auth.js entrega los tokens con esas claves, y el DrizzleAdapter inserta
+    // por nombre de propiedad. Si fueran camelCase, los tokens no se guardarían.
+    refresh_token: text('refresh_token'),
+    access_token: text('access_token'),
+    expires_at: integer('expires_at'),
+    token_type: text('token_type'),
     scope: text('scope'),
-    idToken: text('id_token'),
-    sessionState: text('session_state'),
+    id_token: text('id_token'),
+    session_state: text('session_state'),
   },
   (t) => [
     primaryKey({ columns: [t.provider, t.providerAccountId] }),
@@ -192,6 +203,7 @@ export const catalogs = pgTable(
     name: text('name').notNull(),
     description: text('description'),
     status: catalogStatusEnum('status').default('draft').notNull(),
+    type: catalogTypeEnum('type').default('products').notNull(),
     domain: text('domain'),
     themeJson: jsonb('theme_json').default({}),
     settingsJson: jsonb('settings_json').default({}),
@@ -307,6 +319,33 @@ export const orders = pgTable(
     index('orders_status_idx').on(t.status),
     index('orders_created_at_idx').on(t.createdAt),
     index('orders_catalog_status_idx').on(t.catalogId, t.status),
+  ],
+)
+
+// ── Appointments (modo citas) ──────────────────────────────────────────
+export const appointments = pgTable(
+  'appointments',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    code: varchar('code', { length: 32 }).notNull(),
+    catalogId: uuid('catalog_id')
+      .notNull()
+      .references(() => catalogs.id, { onDelete: 'cascade' }),
+    customerJson: jsonb('customer_json').default({}), // { name, phone, email? }
+    service: text('service').notNull(),
+    startAt: timestamp('start_at', { mode: 'date' }).notNull(),
+    endAt: timestamp('end_at', { mode: 'date' }).notNull(),
+    status: appointmentStatusEnum('status').default('pending').notNull(),
+    googleEventId: text('google_event_id'),
+    notes: text('notes'),
+    createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+    updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow().notNull(),
+  },
+  (t) => [
+    index('appointments_catalog_id_idx').on(t.catalogId),
+    index('appointments_start_at_idx').on(t.startAt),
+    index('appointments_status_idx').on(t.status),
+    index('appointments_catalog_start_idx').on(t.catalogId, t.startAt),
   ],
 )
 
@@ -695,3 +734,15 @@ export const whatsappMessages = pgTable(
     index('wa_messages_created_at_idx').on(t.createdAt),
   ],
 )
+
+// ── Guías de prompt para el generador de catálogos con IA ──────────────
+// Texto de ejemplo (máx 500 chars) que el usuario puede insertar como ayuda
+// en el step de descripción. Una guía por tipo de negocio (business_type).
+export const aiPromptGuides = pgTable('ai_prompt_guides', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  businessType: varchar('business_type', { length: 32 }).notNull().unique(),
+  prompt: varchar('prompt', { length: 500 }).notNull(),
+  active: boolean('active').default(true).notNull(),
+  createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
+  updatedAt: timestamp('updated_at', { mode: 'date' }).defaultNow().notNull(),
+})

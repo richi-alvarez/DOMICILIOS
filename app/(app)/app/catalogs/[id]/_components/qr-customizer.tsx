@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import QRCodeStyling, { FileExtension } from 'qr-code-styling'
 import { Download, Upload } from 'lucide-react'
 
@@ -40,9 +41,10 @@ const CORNERS_TYPES = [
 interface QRCustomizerProps {
   publicUrl: string
   catalogSlug: string
+  catalogId: string
 }
 
-export function QRCustomizer({ publicUrl, catalogSlug }: QRCustomizerProps) {
+export function QRCustomizer({ publicUrl, catalogSlug, catalogId }: QRCustomizerProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [config, setConfig] = useState<QRConfig>({
     dotsType: 'rounded',
@@ -320,9 +322,12 @@ export function QRCustomizer({ publicUrl, catalogSlug }: QRCustomizerProps) {
               >
                 Visitar
               </a>
-              <button className="flex-1 border border-gray-300 hover:bg-gray-50 font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition text-sm">
+              <Link
+                href={`/app/catalogs/${catalogId}/design`}
+                className="flex-1 border border-gray-300 hover:bg-gray-50 font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition text-sm"
+              >
                 Editar Diseño
-              </button>
+              </Link>
             </div>
           </div>
         </div>

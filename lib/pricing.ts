@@ -93,7 +93,7 @@ export const PLANS: Plan[] = [
       'Pagos integrados (1 método)',
       'QR personalizable',
       'Soporte por email',
-      'Sin marca WaStore',
+      'Sin marca WaCommerce',
     ],
   },
   {
@@ -318,7 +318,7 @@ export const FEATURE_GROUPS: FeatureGroup[] = [
   {
     group: 'Marca y Dominio',
     rows: [
-      { label: 'Quitar marca WaStore', free: false, basic: true, pro: true, business: true },
+      { label: 'Quitar marca WaCommerce', free: false, basic: true, pro: true, business: true },
       { label: 'Dominio personalizado', free: false, basic: false, pro: true, business: true },
       { label: 'SSL automático', free: true, basic: true, pro: true, business: true },
       { label: 'OG image personalizada', free: false, basic: false, pro: true, business: true },

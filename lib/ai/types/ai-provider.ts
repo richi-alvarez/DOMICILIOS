@@ -9,6 +9,10 @@ export interface AIGenerationOptions {
   temperature?: number
   systemPrompt: string
   userMessage: string
+  /** Imagen opcional (base64 sin prefijo data:) para tareas de visión. */
+  imageBase64?: string
+  /** Tipo MIME de la imagen (default image/jpeg). */
+  imageType?: 'image/jpeg' | 'image/png' | 'image/webp' | 'image/gif'
 }
 
 export interface AIGenerationResponse {

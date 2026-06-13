@@ -52,13 +52,27 @@ export class OpenRouterProvider implements AIProvider {
       // OPENROUTER_MODEL tiene prioridad; si no, el modelo recomendado; si no, el default.
       const model = process.env.OPENROUTER_MODEL || options.model || OpenRouterProvider.DEFAULT_MODEL
 
+      // Mensaje multimodal si llega imagen (formato compatible OpenAI).
+      const userContent: OpenAI.Chat.ChatCompletionUserMessageParam['content'] = options.imageBase64
+        ? [
+            { type: 'text', text: options.userMessage },
+            {
+              type: 'image_url',
+              image_url: {
+                url: `data:${options.imageType || 'image/jpeg'};base64,${options.imageBase64}`,
+                detail: 'high',
+              },
+            },
+          ]
+        : options.userMessage
+
       const response = await client.chat.completions.create({
         model,
         max_tokens: options.maxTokens || 2048,
         temperature: options.temperature,
         messages: [
           { role: 'system', content: options.systemPrompt },
-          { role: 'user', content: options.userMessage },
+          { role: 'user', content: userContent },
         ],
       })
 

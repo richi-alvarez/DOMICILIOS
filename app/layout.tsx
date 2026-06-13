@@ -13,6 +13,7 @@ import {
   Cinzel,
 } from 'next/font/google'
 import { Providers } from '@/components/shared/providers'
+import { APP_NAME } from '@/lib/brand'
 import './globals.css'
 
 const inter = Inter({
@@ -93,8 +94,8 @@ const cinzel = Cinzel({
 
 export const metadata: Metadata = {
   title: {
-    default: 'WaStore — Catálogos Inteligentes para Negocios',
-    template: '%s | WaStore',
+    default: `${APP_NAME} — Catálogos Inteligentes para Negocios`,
+    template: `%s | ${APP_NAME}`,
   },
   description:
     'Crea catálogos inteligentes para tu negocio y automatiza ventas por WhatsApp. Commerce conversacional para restaurantes, tiendas y emprendimientos.',
@@ -102,7 +103,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_CO',
-    siteName: 'WaStore',
+    siteName: APP_NAME,
   },
   twitter: {
     card: 'summary_large_image',

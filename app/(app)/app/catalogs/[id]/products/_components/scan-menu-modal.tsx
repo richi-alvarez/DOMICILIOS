@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import React from 'react'
-import { X, Camera, FileText, Zap, Check, AlertCircle, Loader2, Trash2 } from 'lucide-react'
+import { X, Camera, FileText, Zap, Check, AlertCircle, Loader2, Trash2, Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
@@ -20,6 +20,9 @@ interface DetectedProduct {
   description: string
   price: number
   category: string
+  image?: string
+  colors?: { name: string; hex: string }[]
+  sizes?: string[]
   selected: boolean
 }
 
@@ -45,9 +48,6 @@ export function ScanMenuModal({
   const [detectedProducts, setDetectedProducts] = useState<DetectedProduct[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const cameraInputRef = React.useRef<HTMLInputElement>(null)
-  const fileInputRef = React.useRef<HTMLInputElement>(null)
-  const additionalInputRef = React.useRef<HTMLInputElement>(null)
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault()
@@ -74,11 +74,24 @@ export function ScanMenuModal({
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = e.currentTarget.files
-    if (selectedFiles) {
+    if (selectedFiles && selectedFiles.length > 0) {
       const newFiles = Array.from(selectedFiles)
       setFiles((prev) => [...prev, ...newFiles])
       setState('loaded')
     }
+    // Limpia el input para permitir volver a elegir el MISMO archivo.
+    e.currentTarget.value = ''
+  }
+
+  // Cierra el modal reseteando todo el estado (evita reabrir en un estado viejo).
+  const handleClose = () => {
+    setState('initial')
+    setFiles([])
+    setDetectedProducts([])
+    setError(null)
+    setProcessingProgress({})
+    setIsLoading(false)
+    onClose()
   }
 
   const removeFile = (index: number) => {
@@ -104,6 +117,8 @@ export function ScanMenuModal({
       files.forEach((file) => {
         formData.append('files', file)
       })
+      // Necesario para recortar y guardar las fotos de los productos.
+      formData.append('catalogId', catalogId)
 
       const result = await scanMenuImages(formData)
 
@@ -172,6 +187,37 @@ export function ScanMenuModal({
     setDetectedProducts((prev) => prev.filter((_, i) => i !== index))
   }
 
+  // ── Edición de variantes (colores / tallas) por producto ──────────────
+  const updateColor = (pi: number, ci: number, field: 'name' | 'hex', value: string) =>
+    setDetectedProducts((prev) =>
+      prev.map((p, i) =>
+        i === pi
+          ? { ...p, colors: (p.colors ?? []).map((c, j) => (j === ci ? { ...c, [field]: value } : c)) }
+          : p,
+      ),
+    )
+  const addColor = (pi: number) =>
+    setDetectedProducts((prev) =>
+      prev.map((p, i) => (i === pi ? { ...p, colors: [...(p.colors ?? []), { name: 'Color', hex: '#cccccc' }] } : p)),
+    )
+  const removeColor = (pi: number, ci: number) =>
+    setDetectedProducts((prev) =>
+      prev.map((p, i) => (i === pi ? { ...p, colors: (p.colors ?? []).filter((_, j) => j !== ci) } : p)),
+    )
+  const addSize = (pi: number, value: string) => {
+    const v = value.trim()
+    if (!v) return
+    setDetectedProducts((prev) =>
+      prev.map((p, i) =>
+        i === pi ? { ...p, sizes: (p.sizes ?? []).includes(v) ? p.sizes : [...(p.sizes ?? []), v] } : p,
+      ),
+    )
+  }
+  const removeSize = (pi: number, size: string) =>
+    setDetectedProducts((prev) =>
+      prev.map((p, i) => (i === pi ? { ...p, sizes: (p.sizes ?? []).filter((s) => s !== size) } : p)),
+    )
+
   const handleAddProduct = () => {
     setDetectedProducts((prev) => [
       ...prev,
@@ -214,7 +260,7 @@ export function ScanMenuModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="relative w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl max-h-[90vh] overflow-y-auto">
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute right-4 top-4 rounded-lg p-1 hover:bg-warm-100"
         >
           <X className="h-5 w-5 text-warm-400" />
@@ -248,42 +294,33 @@ export function ScanMenuModal({
               </p>
 
               <div className="mt-4 flex gap-2 justify-center">
-                <Button
-                  type="button"
-                  size="sm"
-                  className="gap-2"
-                  onClick={() => cameraInputRef.current?.click()}
-                >
-                  <Camera className="h-4 w-4" />
-                  Tomar foto
+                <Button asChild size="sm" className="gap-2 cursor-pointer">
+                  <label>
+                    <Camera className="h-4 w-4" />
+                    Tomar foto
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png"
+                      capture="environment"
+                      onChange={handleFileSelect}
+                      className="hidden"
+                    />
+                  </label>
                 </Button>
-                <input
-                  ref={cameraInputRef}
-                  type="file"
-                  accept="image/jpeg,image/png"
-                  capture="environment"
-                  onChange={handleFileSelect}
-                  className="hidden"
-                />
 
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="sm"
-                  className="gap-2"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  <FileText className="h-4 w-4" />
-                  Elegir archivo
+                <Button asChild variant="outline" size="sm" className="gap-2 cursor-pointer">
+                  <label>
+                    <FileText className="h-4 w-4" />
+                    Elegir archivo
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/png,application/pdf"
+                      multiple
+                      onChange={handleFileSelect}
+                      className="hidden"
+                    />
+                  </label>
                 </Button>
-                <input
-                  ref={fileInputRef}
-                  type="file"
-                  accept="image/jpeg,image/png,application/pdf"
-                  multiple
-                  onChange={handleFileSelect}
-                  className="hidden"
-                />
               </div>
             </div>
 
@@ -292,7 +329,7 @@ export function ScanMenuModal({
               <span>Tus imágenes se procesan de forma segura y no se almacenan</span>
             </div>
 
-            <Button variant="outline" onClick={onClose} className="w-full">
+            <Button variant="outline" onClick={handleClose} className="w-full">
               Cancelar
             </Button>
           </div>
@@ -328,20 +365,16 @@ export function ScanMenuModal({
                 </div>
               ))}
 
-              <div
-                onClick={() => additionalInputRef.current?.click()}
-                className="aspect-square rounded-lg border-2 border-dashed border-warm-200 flex items-center justify-center cursor-pointer hover:border-primary-400 hover:bg-primary-50 transition-colors"
-              >
+              <label className="aspect-square rounded-lg border-2 border-dashed border-warm-200 flex items-center justify-center cursor-pointer hover:border-primary-400 hover:bg-primary-50 transition-colors">
                 <span className="text-2xl text-warm-300">+</span>
-              </div>
-              <input
-                ref={additionalInputRef}
-                type="file"
-                accept="image/jpeg,image/png,application/pdf"
-                multiple
-                onChange={handleFileSelect}
-                className="hidden"
-              />
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,application/pdf"
+                  multiple
+                  onChange={handleFileSelect}
+                  className="hidden"
+                />
+              </label>
             </div>
 
             <p className="text-sm text-warm-500">
@@ -366,7 +399,7 @@ export function ScanMenuModal({
               )}
             </Button>
 
-            <Button variant="outline" onClick={onClose} className="w-full">
+            <Button variant="outline" onClick={handleClose} className="w-full">
               Cancelar
             </Button>
           </div>
@@ -438,7 +471,7 @@ export function ScanMenuModal({
                 Revisar productos
                 <Zap className="h-4 w-4" />
               </Button>
-              <Button variant="outline" onClick={onClose} className="w-full">
+              <Button variant="outline" onClick={handleClose} className="w-full">
                 Cancelar
               </Button>
             </div>
@@ -503,12 +536,96 @@ export function ScanMenuModal({
                               />
                             </td>
                             <td className="px-4 py-3">
-                              <Input
-                                value={product.name}
-                                onChange={(e) => handleUpdateProduct(index, 'name', e.target.value)}
-                                placeholder="Nombre del producto"
-                                className="text-sm"
-                              />
+                              <div className="flex items-center gap-2">
+                                {product.image ? (
+                                  // eslint-disable-next-line @next/next/no-img-element
+                                  <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    className="h-10 w-10 flex-shrink-0 rounded object-cover border border-warm-200"
+                                  />
+                                ) : (
+                                  <div className="h-10 w-10 flex-shrink-0 rounded bg-warm-100 flex items-center justify-center text-warm-300">
+                                    <Camera className="h-4 w-4" />
+                                  </div>
+                                )}
+                                <div className="flex-1 space-y-1.5">
+                                  <Input
+                                    value={product.name}
+                                    onChange={(e) => handleUpdateProduct(index, 'name', e.target.value)}
+                                    placeholder="Nombre del producto"
+                                    className="text-sm"
+                                  />
+
+                                  {/* Colores editables */}
+                                  <div className="flex flex-wrap items-center gap-1.5">
+                                    {(product.colors ?? []).map((c, ci) => (
+                                      <span
+                                        key={ci}
+                                        className="inline-flex items-center gap-1 rounded-full border border-warm-200 bg-white py-0.5 pl-0.5 pr-1.5"
+                                      >
+                                        <input
+                                          type="color"
+                                          value={/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(c.hex) ? c.hex : '#cccccc'}
+                                          onChange={(e) => updateColor(index, ci, 'hex', e.target.value)}
+                                          className="h-4 w-4 cursor-pointer rounded-full border-0 bg-transparent p-0"
+                                          title="Color"
+                                        />
+                                        <input
+                                          value={c.name}
+                                          onChange={(e) => updateColor(index, ci, 'name', e.target.value)}
+                                          className="w-14 bg-transparent text-[11px] text-warm-700 focus:outline-none"
+                                          placeholder="color"
+                                        />
+                                        <button
+                                          type="button"
+                                          onClick={() => removeColor(index, ci)}
+                                          className="text-warm-300 hover:text-red-500"
+                                        >
+                                          <X className="h-3 w-3" />
+                                        </button>
+                                      </span>
+                                    ))}
+                                    <button
+                                      type="button"
+                                      onClick={() => addColor(index)}
+                                      className="inline-flex items-center gap-0.5 rounded-full border border-dashed border-warm-300 px-1.5 py-0.5 text-[11px] text-warm-500 hover:border-primary-400 hover:text-primary-600"
+                                    >
+                                      <Plus className="h-3 w-3" /> color
+                                    </button>
+                                  </div>
+
+                                  {/* Tallas editables */}
+                                  <div className="flex flex-wrap items-center gap-1">
+                                    {(product.sizes ?? []).map((s) => (
+                                      <span
+                                        key={s}
+                                        className="inline-flex items-center gap-0.5 rounded bg-warm-100 px-1.5 py-0.5 text-[10px] font-medium text-warm-600"
+                                      >
+                                        {s}
+                                        <button
+                                          type="button"
+                                          onClick={() => removeSize(index, s)}
+                                          className="text-warm-400 hover:text-red-500"
+                                        >
+                                          <X className="h-2.5 w-2.5" />
+                                        </button>
+                                      </span>
+                                    ))}
+                                    <input
+                                      onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                          e.preventDefault()
+                                          addSize(index, e.currentTarget.value)
+                                          e.currentTarget.value = ''
+                                        }
+                                      }}
+                                      className="w-16 rounded border border-dashed border-warm-300 px-1.5 py-0.5 text-[10px] focus:border-primary-400 focus:outline-none"
+                                      placeholder="+ talla"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
                             </td>
                             <td className="px-4 py-3">
                               <Input
@@ -587,7 +704,7 @@ export function ScanMenuModal({
               </Button>
               <Button
                 variant="outline"
-                onClick={onClose}
+                onClick={handleClose}
                 className="flex-1"
               >
                 Cancelar
@@ -627,7 +744,7 @@ export function ScanMenuModal({
                 Intentar de nuevo
               </Button>
             )}
-            <Button variant="outline" onClick={onClose} className="w-full">
+            <Button variant="outline" onClick={handleClose} className="w-full">
               Cancelar
             </Button>
           </div>

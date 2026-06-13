@@ -7,7 +7,7 @@ import { DrizzleAdapter } from '@auth/drizzle-adapter'
 import { db } from '@/db'
 import bcrypt from 'bcryptjs'
 import { eq } from 'drizzle-orm'
-import { users } from '@/db'
+import { users, accounts, sessions, verificationTokens } from '@/db'
 import { logger } from '@/lib/monitoring/logger'
 
 async function getDb() {
@@ -16,7 +16,12 @@ async function getDb() {
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: DrizzleAdapter(db),
+  adapter: DrizzleAdapter(db, {
+    usersTable: users,
+    accountsTable: accounts,
+    sessionsTable: sessions,
+    verificationTokensTable: verificationTokens,
+  }),
   session: { strategy: 'jwt' },
   secret: process.env.AUTH_SECRET,
   trustHost: true,
@@ -26,6 +31,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
+      // Permite vincular el login de Google a un usuario ya registrado con el
+      // mismo email (p. ej. quien se registró con email/contraseña). Seguro
+      // porque Google entrega emails verificados.
+      allowDangerousEmailAccountLinking: true,
+      // Pide acceso a Google Calendar (modo Citas) y refresh token offline.
+      authorization: {
+        params: {
+          scope:
+            'openid email profile https://www.googleapis.com/auth/calendar.events',
+          access_type: 'offline',
+          prompt: 'consent',
+        },
+      },
     }),
     Credentials({
       credentials: {

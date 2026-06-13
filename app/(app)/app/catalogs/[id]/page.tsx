@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { QRCustomizer } from './_components/qr-customizer'
+import { LogoSeoModal } from './_components/logo-seo-modal'
 import { PublishButton } from './publish-button'
 
 interface Catalog {
@@ -15,6 +16,7 @@ interface Catalog {
   orderChannel: string
   contactEmail?: string
   contactPhone?: string
+  themeJson?: Record<string, unknown>
   createdAt: Date
   updatedAt: Date
   publishedAt?: Date | null
@@ -24,6 +26,7 @@ export default function CatalogDetailPage({ params }: { params: Promise<{ id: st
   const [catalog, setCatalog] = useState<Catalog | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [showLogoSeo, setShowLogoSeo] = useState(false)
   const [appUrl] = useState(() => process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3001')
 
   useEffect(() => {
@@ -75,7 +78,7 @@ export default function CatalogDetailPage({ params }: { params: Promise<{ id: st
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           {/* QR Customizer Section */}
-          <QRCustomizer publicUrl={publicUrl} catalogSlug={catalog.slug} />
+          <QRCustomizer publicUrl={publicUrl} catalogSlug={catalog.slug} catalogId={catalog.id} />
 
           {/* Information Section */}
           <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200">
@@ -133,7 +136,10 @@ export default function CatalogDetailPage({ params }: { params: Promise<{ id: st
         <div className="hidden lg:block">
           <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200 h-fit sticky top-24">
             <h2 className="text-lg font-bold mb-4">SEO y Vista Previa</h2>
-            <button className="w-full border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition text-sm font-medium">
+            <button
+              onClick={() => setShowLogoSeo(true)}
+              className="w-full border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:bg-gray-50 transition text-sm font-medium"
+            >
               📋 Logo y SEO
             </button>
 
@@ -148,6 +154,22 @@ export default function CatalogDetailPage({ params }: { params: Promise<{ id: st
           </div>
         </div>
       </div>
+
+      {showLogoSeo && (
+        <LogoSeoModal
+          catalogId={catalog.id}
+          catalogName={catalog.name}
+          initialTheme={catalog.themeJson ?? {}}
+          onClose={() => setShowLogoSeo(false)}
+          onSaved={() => {
+            // Refrescar los datos del catálogo (logo/SEO recién guardados).
+            fetch(`/api/catalogs/${catalog.id}`)
+              .then((r) => (r.ok ? r.json() : null))
+              .then((data) => data && setCatalog(data))
+              .catch(() => {})
+          }}
+        />
+      )}
     </div>
   )
 }

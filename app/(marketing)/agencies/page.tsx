@@ -53,7 +53,7 @@ const AGENCY_FAQ = [
     a: 'Tú defines tu precio. Nosotros te cobramos el plan de agencia y tú cobras lo que quieras a cada cliente. Sin interferencia.',
   },
   {
-    q: '¿Puedo ocultar la marca WaStore?',
+    q: '¿Puedo ocultar la marca WaCommerce?',
     a: 'Sí. En los planes Professional y Agency Growth puedes usar tu propio logo, dominio y colores en el storefront y emails transaccionales.',
   },
   {

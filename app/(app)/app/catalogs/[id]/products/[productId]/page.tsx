@@ -30,6 +30,17 @@ export default async function EditProductPage({
     return <div className="p-6 text-center text-warm-500">Producto no encontrado</div>
   }
 
+  // Imagen principal: primer elemento de imagesJson (string o {url}).
+  const rawImages = Array.isArray(product.imagesJson) ? product.imagesJson : []
+  const firstImg = rawImages[0] as string | { url?: string } | undefined
+  const image = typeof firstImg === 'string' ? firstImg : firstImg?.url
+  // Variantes existentes (objeto {colors,sizes} o [] si no hay).
+  const v = product.variantsJson
+  const variants =
+    v && !Array.isArray(v) && typeof v === 'object'
+      ? (v as { colors?: { name: string; hex: string; image?: string }[]; sizes?: string[] })
+      : undefined
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
       <ProductForm
@@ -47,6 +58,8 @@ export default async function EditProductPage({
           sku: product.sku ?? undefined,
           categoryId: product.categoryId ?? undefined,
           active: product.active,
+          image,
+          variants,
         }}
       />
     </div>

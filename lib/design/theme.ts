@@ -31,6 +31,9 @@ export const themeSchema = z.object({
   logoUrl: z.string().url('Invalid URL').default(''),
   coverImageUrl: z.string().url('Invalid URL').default(''),
   customDomain: z.string().default(''),
+  // SEO (metadatos para buscadores y al compartir el enlace).
+  seoTitle: z.string().default(''),
+  seoDescription: z.string().default(''),
 })
 
 export type ThemeConfig = z.infer<typeof themeSchema>
@@ -46,6 +49,8 @@ export const THEME_DEFAULTS: ThemeConfig = {
   logoUrl: '',
   coverImageUrl: '',
   customDomain: '',
+  seoTitle: '',
+  seoDescription: '',
 }
 
 export function getFontFamily(value: string): string {

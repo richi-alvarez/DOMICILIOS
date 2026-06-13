@@ -6,11 +6,12 @@ import { usePathname } from 'next/navigation'
 import { signOut } from 'next-auth/react'
 import {
   LayoutGrid, Package, Palette, ShoppingCart, BarChart2, Settings2, FileText,
-  LogOut, ChevronDown, Plus, Store, Users, CreditCard, BarChart3,
+  LogOut, ChevronDown, Plus, Store, Users, CreditCard, BarChart3, CalendarDays,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { PlanCode } from '@/lib/billing/constants'
 import { PLAN_NAMES, PLAN_COLORS } from '@/lib/billing/constants'
+import { APP_NAME, APP_LOGO } from '@/lib/brand'
 
 interface CatalogNav {
   id: string
@@ -40,6 +41,7 @@ function getCatalogNav(id: string) {
     { href: `/app/catalogs/${id}/categories`, label: 'Categorías', icon: LayoutGrid },
     { href: `/app/catalogs/${id}/design`, label: 'Diseño', icon: Palette },
     { href: `/app/catalogs/${id}/orders`, label: 'Pedidos', icon: ShoppingCart },
+    { href: `/app/catalogs/${id}/citas`, label: 'Citas', icon: CalendarDays },
     { href: `/app/catalogs/${id}/analytics`, label: 'Estadísticas', icon: BarChart2 },
     { href: `/app/catalogs/${id}/reports`, label: 'Reportes', icon: FileText },
     { href: `/app/catalogs/${id}/settings`, label: 'Configuración', icon: Settings2 },
@@ -61,13 +63,13 @@ export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }:
       <div className="flex h-16 items-center border-b border-warm-200 px-5">
         <Link href="/app" className="flex items-center gap-2">
           <Image
-            src="/wastore-logo.png"
-            alt="WaStore"
+            src={APP_LOGO}
+            alt={APP_NAME}
             width={32}
             height={32}
             className="h-auto w-auto"
           />
-          <span className="font-display font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">WaStore</span>
+          <span className="font-display font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">{APP_NAME}</span>
         </Link>
       </div>
 

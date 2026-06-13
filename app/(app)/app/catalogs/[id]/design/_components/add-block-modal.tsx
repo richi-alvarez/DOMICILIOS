@@ -15,7 +15,7 @@ const BLOCK_CATEGORIES = {
   ],
   'E-Commerce': [
     { type: 'catalog', label: 'Catálogo de Productos', description: 'Muestra tus productos', icon: '📦', plan: 'BASIC' },
-    { type: 'cart', label: 'Bolsón de Carrito', description: 'Botón flotante del carrito', icon: '🛒', plan: 'BASIC' },
+    { type: 'cart', label: 'Botón de carrito de compras', description: 'Botón flotante del carrito', icon: '🛒', plan: 'BASIC' },
   ],
   Institucional: [
     { type: 'footer', label: 'Pie de Página', description: 'Información de empresa y contacto', icon: '🏛️', plan: 'BASIC' },

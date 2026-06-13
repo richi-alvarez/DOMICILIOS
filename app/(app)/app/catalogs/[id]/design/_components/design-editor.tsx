@@ -80,6 +80,7 @@ interface CatalogBlock extends BaseBlock {
   showDescription: boolean
   showExternalLink: boolean
   enableCart: boolean
+  buttonType: 'cart' | 'appointment'
 }
 
 interface CartBlock extends BaseBlock {
@@ -328,6 +329,7 @@ const DEFAULT_BLOCKS: Block[] = [
     showDescription: false,
     showExternalLink: false,
     enableCart: true,
+    buttonType: 'cart',
   },
   {
     id: '3',
@@ -359,7 +361,7 @@ const DEFAULT_BLOCKS: Block[] = [
 const BLOCK_META: Record<string, { icon: string; label: string; color: string }> = {
   presentation: { icon: '🎯', label: 'Sección de Presentación', color: 'purple' },
   catalog: { icon: '📦', label: 'Catálogo de Productos', color: 'orange' },
-  cart: { icon: '🛒', label: 'Bolsón de Carrito', color: 'red' },
+  cart: { icon: '🛒', label: 'Botón de carrito de compras', color: 'red' },
   text: { icon: '📝', label: 'Texto', color: 'yellow' },
   carousel: { icon: '🎠', label: 'Carrusel', color: 'blue' },
   benefits: { icon: '⭐', label: 'Beneficios y Características', color: 'green' },
@@ -503,6 +505,7 @@ export default function DesignEditor({
         showDescription: false,
         showExternalLink: false,
         enableCart: true,
+        buttonType: 'cart',
       }
     } else if (type === 'cart') {
       newBlock = {

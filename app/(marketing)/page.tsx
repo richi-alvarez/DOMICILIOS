@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'WaStore — Catálogos Inteligentes para Negocios',
+  title: 'WaCommerce — Catálogos Inteligentes para Negocios',
 }
 
 const FEATURES_CHECKLIST = [
@@ -231,7 +231,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <h2 className="text-4xl font-extrabold text-night-800">Lo que dicen nuestros usuarios</h2>
-            <p className="mt-3 text-warm-500">Miles de negocios ya automatizan sus ventas con WaStore.</p>
+            <p className="mt-3 text-warm-500">Miles de negocios ya automatizan sus ventas con WaCommerce.</p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             {TESTIMONIALS.map((t) => (

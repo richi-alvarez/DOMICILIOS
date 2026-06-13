@@ -16,6 +16,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
     catalog: {
       id: catalog.id,
       name: catalog.name,
+      type: catalog.type,
       currency: catalog.currency,
       orderChannel: catalog.orderChannel,
       contactPhone: catalog.contactPhone,

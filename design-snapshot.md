@@ -1,0 +1,25 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e4]:
+      - link "WaCommerce WaCommerce" [ref=e6] [cursor=pointer]:
+        - /url: /app
+        - img "WaCommerce" [ref=e7]
+        - generic [ref=e8]: WaCommerce
+      - generic [ref=e9]:
+        - generic [ref=e10]
+        - navigation [ref=e19]
+        - navigation [ref=e63]
+        - link "Nuevo catálogo" [ref=e82] [cursor=pointer]:
+          - /url: /app/catalogs/new
+      - generic [ref=e85]:
+        - generic [ref=e86]: R
+        - generic [ref=e87]
+        - button "Cerrar sesión" [ref=e92]
+    - main [ref=e96]:
+      - generic [ref=e97]:
+        - generic [ref=e99]
+        - generic [ref=e116]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e269] [cursor=pointer]:
+    - img [ref=e270]
+  - alert [ref=e242]

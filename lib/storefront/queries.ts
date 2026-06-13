@@ -16,6 +16,7 @@ export type StorefrontCatalog = {
   slug: string
   name: string
   description: string | null
+  type?: 'products' | 'appointments'
   currency: string
   language: string
   orderChannel: 'whatsapp' | 'email'
@@ -34,6 +35,12 @@ export type StorefrontCategory = {
   position: number
 }
 
+export type ProductVariants = {
+  colors?: { name: string; hex: string; image?: string }[]
+  // Compat: las tallas pueden venir como strings (datos viejos) u objetos.
+  sizes?: (string | { name: string; image?: string })[]
+}
+
 export type StorefrontProduct = {
   id: string
   name: string
@@ -43,6 +50,7 @@ export type StorefrontProduct = {
   compareAt: number | null
   stock: number | null
   imagesJson: unknown
+  variantsJson?: ProductVariants
   categoryId: string | null
   active: boolean
   position: number
@@ -59,10 +67,15 @@ function toStorefrontProduct(row: {
   compareAt: number | null
   stock: number | null
   imagesJson: unknown
+  variantsJson?: unknown
   categoryId: string | null
   active: boolean
   position: number
 }): StorefrontProduct {
+  // variantsJson puede venir como [] (sin variantes) o { colors, sizes }.
+  const v = row.variantsJson
+  const variantsJson: ProductVariants =
+    v && !Array.isArray(v) && typeof v === 'object' ? (v as ProductVariants) : {}
   return {
     id: row.id,
     name: row.name,
@@ -72,6 +85,7 @@ function toStorefrontProduct(row: {
     compareAt: row.compareAt != null ? row.compareAt / 100 : null,
     stock: row.stock,
     imagesJson: row.imagesJson,
+    variantsJson,
     categoryId: row.categoryId,
     active: row.active,
     position: row.position,

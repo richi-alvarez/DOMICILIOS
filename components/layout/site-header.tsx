@@ -22,6 +22,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { APP_NAME, APP_LOGO } from '@/lib/brand'
 
 const tools = [
   { href: '/tools/whatsapp-link-generator', label: 'Generador Link WhatsApp', icon: MessageCircle },
@@ -67,14 +68,14 @@ export function SiteHeader() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/wastore-logo.png"
-            alt="WaStore"
+            src={APP_LOGO}
+            alt={APP_NAME}
             width={32}
             height={32}
             className="h-auto w-auto"
           />
           <span className="font-display text-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">
-            WaStore
+            {APP_NAME}
           </span>
         </Link>
 
