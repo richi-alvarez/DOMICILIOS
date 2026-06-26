@@ -133,6 +133,48 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           tokenType: account.type,
           scope: account.scope,
         })
+
+        // El DrizzleAdapter solo vincula (inserta) la cuenta en el PRIMER login.
+        // En re-logins la fila ya existe y NextAuth NO actualiza los tokens, así
+        // que un access/refresh token expirado se queda para siempre y Google
+        // Calendar (modo Citas) deja de funcionar. Persistimos aquí los tokens
+        // frescos sobre la cuenta existente. Si aún no existe (primer login), el
+        // UPDATE no afecta filas y el adapter la inserta después con estos mismos
+        // valores. Solo se incluye refresh_token si Google lo devolvió (lo hace
+        // con access_type=offline + prompt=consent).
+        if (account.providerAccountId && process.env.DATABASE_URL) {
+          try {
+            const updates: Record<string, unknown> = {}
+            if (account.access_token) updates.access_token = account.access_token
+            if (account.refresh_token) updates.refresh_token = account.refresh_token
+            if (typeof account.expires_at === 'number') updates.expires_at = account.expires_at
+            if (account.scope) updates.scope = account.scope
+            if (account.token_type) updates.token_type = account.token_type
+            if (account.id_token) updates.id_token = account.id_token
+
+            if (Object.keys(updates).length > 0) {
+              const { and } = await import('drizzle-orm')
+              await db
+                .update(accounts)
+                .set(updates)
+                .where(
+                  and(
+                    eq(accounts.provider, 'google'),
+                    eq(accounts.providerAccountId, account.providerAccountId),
+                  ),
+                )
+              logger.info('🔄 Google tokens refreshed in DB', {
+                providerAccountId: account.providerAccountId,
+                hasRefreshToken: !!account.refresh_token,
+                scope: account.scope,
+              })
+            }
+          } catch (error) {
+            logger.error('❌ Failed to persist Google tokens', error, {
+              providerAccountId: account.providerAccountId,
+            })
+          }
+        }
       }
 
       return true
