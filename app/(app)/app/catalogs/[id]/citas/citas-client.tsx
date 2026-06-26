@@ -18,6 +18,13 @@ const MONTHS = [
   'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
 ]
 
+// Las horas de las citas se guardan en UTC. Al ser este un componente cliente
+// con SSR, formatear sin zona horaria usaba la TZ del servidor (UTC) en el
+// render del servidor y la del navegador al hidratar → la hora "saltaba" (p. ej.
+// 03:00 p. m. → 10:00 a. m.). Fijamos la TZ del negocio (Colombia, coherente con
+// es-CO/COP) para que servidor y cliente muestren siempre la misma hora local.
+const APP_TZ = 'America/Bogota'
+
 function ymd(d: Date) {
   return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`
 }
@@ -169,7 +176,7 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
               <div className="space-y-1">
                 {dayAppts.map((a) => {
                   const meta = STATUS_META[a.status]
-                  const t = new Date(a.startAt).toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' })
+                  const t = new Date(a.startAt).toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', timeZone: APP_TZ })
                   return (
                     <button
                       key={a.id}
@@ -229,6 +236,7 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
                   month: 'long',
                   hour: '2-digit',
                   minute: '2-digit',
+                  timeZone: APP_TZ,
                 })}
               </div>
               <div className="flex items-center gap-2 text-night-700">
