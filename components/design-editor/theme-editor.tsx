@@ -19,11 +19,16 @@ interface Props {
   catalogId: string
   catalogSlug: string
   initial: ThemeConfig
+  /** Modo compacto cuando se embebe en el panel Global del editor de diseño. */
+  embedded?: boolean
+  /** En modo embebido, notifica los cambios al editor para guardarlos con el
+   *  botón "Guardar" superior (el ThemeEditor no tiene su propio botón). */
+  onChange?: (theme: ThemeConfig) => void
 }
 
 function Section({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-warm-200 bg-white p-6">
+    <div className="rounded-2xl border border-warm-200 bg-white p-4 sm:p-5">
       <h2 className="mb-0.5 font-bold text-night-800">{title}</h2>
       {description && <p className="mb-5 text-sm text-warm-500">{description}</p>}
       <div className="mt-4 space-y-4">{children}</div>
@@ -44,8 +49,8 @@ function Field({ label, hint, children }: { label: string; hint?: string; childr
 function ColorField({ label, hint, value, onChange }: { label: string; hint?: string; value: string; onChange: (v: string) => void }) {
   return (
     <Field label={label} hint={hint}>
-      <div className="flex items-center gap-3">
-        <label className="relative cursor-pointer">
+      <div className="flex items-center gap-2.5">
+        <label className="relative shrink-0 cursor-pointer">
           <input
             type="color"
             value={value}
@@ -53,30 +58,34 @@ function ColorField({ label, hint, value, onChange }: { label: string; hint?: st
             className="sr-only"
           />
           <div
-            className="h-10 w-10 rounded-xl border-2 border-warm-200 shadow-sm transition-transform hover:scale-105"
+            className="h-10 w-10 rounded-full border-2 border-warm-200 shadow-sm transition-transform hover:scale-105"
             style={{ background: value }}
           />
         </label>
         <Input
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="w-32 font-mono text-sm"
+          className="min-w-0 flex-1 font-mono text-sm uppercase"
           maxLength={7}
         />
-        <span className="text-sm text-warm-400">{value}</span>
       </div>
     </Field>
   )
 }
 
-export function ThemeEditor({ catalogId, catalogSlug, initial }: Props) {
+export function ThemeEditor({ catalogId, catalogSlug, initial, embedded = false, onChange }: Props) {
   const [theme, setTheme] = useState<ThemeConfig>({ ...THEME_DEFAULTS, ...initial })
   const [dirty, setDirty] = useState(false)
   const [saved, setSaved] = useState(false)
   const [isPending, startTransition] = useTransition()
 
   function patch(partial: Partial<ThemeConfig>) {
-    setTheme((prev) => ({ ...prev, ...partial }))
+    setTheme((prev) => {
+      const next = { ...prev, ...partial }
+      // En embebido, el editor de diseño guarda con su botón "Guardar".
+      onChange?.(next)
+      return next
+    })
     setDirty(true)
     setSaved(false)
   }
@@ -95,36 +104,42 @@ export function ThemeEditor({ catalogId, catalogSlug, initial }: Props) {
     })
   }
 
+  const SaveButton = (
+    <Button onClick={handleSave} disabled={isPending || !dirty} className={embedded ? 'w-full' : ''}>
+      {isPending ? (
+        <><Loader2 className="h-4 w-4 animate-spin" /> Guardando...</>
+      ) : saved ? (
+        <><CheckCircle2 className="h-4 w-4" /> Guardado</>
+      ) : (
+        <><Save className="h-4 w-4" /> Guardar tema</>
+      )}
+    </Button>
+  )
+
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-extrabold text-night-800">Tema visual</h1>
-          <p className="mt-0.5 text-sm text-warm-500">
-            Personaliza colores, tipografía y branding de tu tienda.
-            {dirty && <span className="ml-2 font-medium text-amber-500">· Sin guardar</span>}
-          </p>
+    <div className={embedded ? 'space-y-4' : 'space-y-6'}>
+      {/* Header (solo en modo página completa; embebido usa el botón superior) */}
+      {!embedded && (
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-extrabold text-night-800">Tema visual</h1>
+            <p className="mt-0.5 text-sm text-warm-500">
+              Personaliza colores, tipografía y branding de tu tienda.
+              {dirty && <span className="ml-2 font-medium text-amber-500">· Sin guardar</span>}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Link
+              href={`/s/${catalogSlug}`}
+              target="_blank"
+              className="flex items-center gap-1.5 rounded-xl border border-warm-200 bg-white px-3 py-1.5 text-sm font-medium text-night-700 hover:bg-warm-50 transition-colors"
+            >
+              <ExternalLink className="h-3.5 w-3.5" /> Ver tienda
+            </Link>
+            {SaveButton}
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <Link
-            href={`/s/${catalogSlug}`}
-            target="_blank"
-            className="flex items-center gap-1.5 rounded-xl border border-warm-200 bg-white px-3 py-1.5 text-sm font-medium text-night-700 hover:bg-warm-50 transition-colors"
-          >
-            <ExternalLink className="h-3.5 w-3.5" /> Ver tienda
-          </Link>
-          <Button onClick={handleSave} disabled={isPending || !dirty}>
-            {isPending ? (
-              <><Loader2 className="h-4 w-4 animate-spin" /> Guardando...</>
-            ) : saved ? (
-              <><CheckCircle2 className="h-4 w-4" /> Guardado</>
-            ) : (
-              <><Save className="h-4 w-4" /> Guardar</>
-            )}
-          </Button>
-        </div>
-      </div>
+      )}
 
       {/* Live preview strip */}
       <div className="overflow-hidden rounded-2xl border-2 border-dashed border-warm-200">
@@ -159,7 +174,7 @@ export function ThemeEditor({ catalogId, catalogSlug, initial }: Props) {
 
       {/* Colors */}
       <Section title="Colores" description="Define la paleta principal de tu tienda.">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className={embedded ? 'grid grid-cols-1 gap-4' : 'grid grid-cols-1 gap-6 sm:grid-cols-2'}>
           <ColorField
             label="Color primario"
             hint="Botones, badges, acentos"
@@ -187,11 +202,13 @@ export function ThemeEditor({ catalogId, catalogSlug, initial }: Props) {
         </div>
       </Section>
 
-      {/* Typography */}
+      {/* Tipografía: en modo embebido se usa el componente "Fuente Tipográfica"
+          del panel Global (ya se refleja en el preview). */}
+      {!embedded && (
       <Section title="Tipografía" description="Elige las fuentes para tu tienda.">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className={embedded ? 'grid grid-cols-1 gap-4' : 'grid grid-cols-1 gap-6 sm:grid-cols-2'}>
           <Field label="Fuente de títulos">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            <div className={embedded ? 'grid grid-cols-2 gap-2' : 'grid grid-cols-2 gap-2 sm:grid-cols-3'}>
               {FONT_OPTIONS.map((f) => (
                 <button
                   key={f.value}
@@ -209,7 +226,7 @@ export function ThemeEditor({ catalogId, catalogSlug, initial }: Props) {
             </div>
           </Field>
           <Field label="Fuente del cuerpo">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            <div className={embedded ? 'grid grid-cols-2 gap-2' : 'grid grid-cols-2 gap-2 sm:grid-cols-3'}>
               {FONT_OPTIONS.map((f) => (
                 <button
                   key={f.value}
@@ -228,8 +245,11 @@ export function ThemeEditor({ catalogId, catalogSlug, initial }: Props) {
           </Field>
         </div>
       </Section>
+      )}
 
-      {/* Shape */}
+      {/* Forma: en modo embebido se usa el componente "Esquinas" del panel Global
+          (ya se refleja en el preview). */}
+      {!embedded && (
       <Section title="Forma de los elementos" description="Radio de bordes en tarjetas y botones.">
         <Field label="Radio de bordes">
           <div className="flex gap-3 flex-wrap">
@@ -253,6 +273,7 @@ export function ThemeEditor({ catalogId, catalogSlug, initial }: Props) {
           </div>
         </Field>
       </Section>
+      )}
 
       {/* Branding */}
       <Section title="Marca" description="Logo e imagen de portada de tu tienda.">
@@ -293,19 +314,6 @@ export function ThemeEditor({ catalogId, catalogSlug, initial }: Props) {
         </Field>
       </Section>
 
-      {/* Domain */}
-      <Section title="Dominio personalizado" description="Vincula tu propio dominio al storefront (requiere configuración DNS).">
-        <Field label="Dominio" hint="Ejemplo: tienda.tudominio.com — la configuración DNS se activa en plan Pro">
-          <Input
-            value={theme.customDomain}
-            onChange={(e) => patch({ customDomain: e.target.value })}
-            placeholder="tienda.tudominio.com"
-          />
-        </Field>
-        <div className="rounded-xl bg-blue-50 border border-blue-100 px-4 py-3 text-sm text-blue-700">
-          El dominio personalizado está disponible en el plan Pro. Al guardarlo se registra para asignación futura.
-        </div>
-      </Section>
     </div>
   )
 }

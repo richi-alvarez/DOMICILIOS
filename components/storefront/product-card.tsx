@@ -90,12 +90,14 @@ export function ProductCard({ product, currency, catalogSlug, buttonType = 'cart
 
       <div className="flex flex-1 flex-col gap-1.5 p-4">
         <Link href={`/s/${catalogSlug}/p/${product.slug}`}>
-          <h3 className="line-clamp-2 font-semibold text-night-800 hover:text-primary-600">
+          <h3 className="line-clamp-2 font-semibold" style={{ color: 'var(--sf-product-name)' }}>
             {product.name}
           </h3>
         </Link>
         {product.description && (
-          <p className="line-clamp-2 text-sm text-night-500">{product.description}</p>
+          <p className="line-clamp-2 text-sm opacity-80" style={{ color: 'var(--sf-product-name)' }}>
+            {product.description}
+          </p>
         )}
 
         {colors.length > 0 && (
@@ -116,7 +118,7 @@ export function ProductCard({ product, currency, catalogSlug, buttonType = 'cart
 
         <div className="mt-auto flex items-center justify-between pt-3">
           <div className="flex flex-col">
-            <span className="text-lg font-bold text-night-900">
+            <span className="text-lg font-bold" style={{ color: 'var(--sf-product-price)' }}>
               {formatMoney(product.price, currency)}
             </span>
             {product.compareAt && product.compareAt > product.price && (
@@ -133,7 +135,8 @@ export function ProductCard({ product, currency, catalogSlug, buttonType = 'cart
           ) : hasVariants ? (
             <Link
               href={`/s/${catalogSlug}/p/${product.slug}`}
-              className="flex items-center gap-1.5 rounded-full bg-primary-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-primary-600 active:scale-95"
+              className="flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold transition hover:opacity-90 active:scale-95"
+              style={{ background: 'var(--sf-button-bg)', color: 'var(--sf-button-text)' }}
             >
               <ShoppingCart className="h-4 w-4" />
               Elegir opciones
@@ -142,7 +145,8 @@ export function ProductCard({ product, currency, catalogSlug, buttonType = 'cart
             <button
               type="button"
               onClick={increment}
-              className="flex items-center gap-1.5 rounded-full bg-primary-500 px-3 py-2 text-sm font-semibold text-white transition hover:bg-primary-600 active:scale-95"
+              className="flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold transition hover:opacity-90 active:scale-95"
+              style={{ background: 'var(--sf-button-bg)', color: 'var(--sf-button-text)' }}
             >
               {buttonType === 'appointment' ? (
                 <>

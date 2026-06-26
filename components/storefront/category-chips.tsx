@@ -13,14 +13,23 @@ interface Props {
 export function CategoryChips({ categories, catalogSlug, activeCategorySlug }: Props) {
   if (categories.length === 0) return null
 
+  // El chip activo usa la paleta de categoría del editor de diseño; los inactivos
+  // mantienen el estilo neutro por defecto.
+  const activeStyle = {
+    background: 'var(--sf-category-bg)',
+    borderColor: 'var(--sf-category-bg)',
+    color: 'var(--sf-category-text)',
+  }
+
   return (
     <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
       <Link
         href={`/s/${catalogSlug}`}
+        style={!activeCategorySlug ? activeStyle : undefined}
         className={cn(
           'flex shrink-0 items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition',
           !activeCategorySlug
-            ? 'border-primary-500 bg-primary-500 text-white'
+            ? ''
             : 'border-warm-200 bg-white text-night-600 hover:border-primary-300 hover:text-primary-600',
         )}
       >
@@ -31,10 +40,11 @@ export function CategoryChips({ categories, catalogSlug, activeCategorySlug }: P
         <Link
           key={cat.id}
           href={`/s/${catalogSlug}?cat=${cat.slug}`}
+          style={activeCategorySlug === cat.slug ? activeStyle : undefined}
           className={cn(
             'shrink-0 rounded-full border px-4 py-1.5 text-sm font-medium transition',
             activeCategorySlug === cat.slug
-              ? 'border-primary-500 bg-primary-500 text-white'
+              ? ''
               : 'border-warm-200 bg-white text-night-600 hover:border-primary-300 hover:text-primary-600',
           )}
         >

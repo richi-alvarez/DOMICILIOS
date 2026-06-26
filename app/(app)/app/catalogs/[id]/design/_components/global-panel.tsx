@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { ThemeEditor } from '@/components/design-editor/theme-editor'
+import type { ThemeConfig } from '@/lib/design/theme'
 
 interface ThemeState {
   selectedPalette: string | null
@@ -18,6 +19,14 @@ interface ThemeState {
   cartPrimaryColor: string
   cartSecondaryColor: string
   cartTertiaryColor: string
+  buttonTextColor: string
+  categoryTextColor: string
+  cartTextColor: string
+  cartCountColor: string
+  cartTotalColor: string
+  productNameColor: string
+  productPriceColor: string
+  filterTextColor: string
   buttonCustomMode: boolean
   categoryCustomMode: boolean
   cartCustomMode: boolean
@@ -30,9 +39,13 @@ interface GlobalPanelProps {
   fonts: Record<string, string[]>
   theme: ThemeState
   onUpdateTheme: (partial: Partial<ThemeState>) => void
+  catalogId: string
+  catalogSlug: string
+  themeSettings: ThemeConfig
+  onUpdateThemeSettings: (next: ThemeConfig) => void
 }
 
-export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPalettes, fonts, theme, onUpdateTheme }: GlobalPanelProps) {
+export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPalettes, fonts, theme, onUpdateTheme, catalogId, catalogSlug, themeSettings, onUpdateThemeSettings }: GlobalPanelProps) {
   const renderPaletteSection = (
     title: string,
     palettes: Record<string, { primary: string; secondary: string; tertiary: string }>,
@@ -118,15 +131,93 @@ export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPale
     )
   }
 
+  // Campo de color con el mismo estilo de la sección "Colores": label en
+  // negrita + hint gris + selector circular + input hex.
+  const colorField = (label: string, hint: string, key: keyof ThemeState) => (
+    <div className="space-y-1.5">
+      <div>
+        <label className="block text-sm font-semibold text-gray-900">{label}</label>
+        {hint && <p className="text-xs text-gray-400">{hint}</p>}
+      </div>
+      <div className="flex items-center gap-3">
+        <label className="relative shrink-0 cursor-pointer">
+          <input
+            type="color"
+            value={theme[key] as string}
+            onChange={(e) => onUpdateTheme({ [key]: e.target.value } as Partial<ThemeState>)}
+            className="sr-only"
+          />
+          <div
+            className="h-10 w-10 rounded-full border-2 border-gray-200 shadow-sm transition-transform hover:scale-105"
+            style={{ background: theme[key] as string }}
+          />
+        </label>
+        <input
+          type="text"
+          value={theme[key] as string}
+          onChange={(e) => onUpdateTheme({ [key]: e.target.value } as Partial<ThemeState>)}
+          maxLength={7}
+          className="min-w-0 flex-1 rounded-lg border-2 border-gray-200 px-3 py-2 font-mono text-sm uppercase focus:border-blue-400 focus:outline-none"
+        />
+      </div>
+    </div>
+  )
+
+  // Sección de paleta simplificada: lista de campos de color (label + hint + key).
+  const renderColorSection = (
+    title: string,
+    fields: { label: string; hint: string; key: keyof ThemeState }[],
+  ) => (
+    <div className="rounded-2xl border border-warm-200 bg-white p-4 sm:p-5">
+      <h3 className="mb-1 text-base font-bold text-gray-900">{title}</h3>
+      <div className="mt-4 space-y-4">
+        {fields.map((f) => (
+          <div key={f.key as string}>{colorField(f.label, f.hint, f.key)}</div>
+        ))}
+      </div>
+    </div>
+  )
+
   return (
     <div className="space-y-6 pb-6">
-      {/* Color Palettes - 3 categories */}
-      {renderPaletteSection('Paleta de Botones (Portada + Agregar al Carrito)', buttonPalettes, 'button')}
-      {renderPaletteSection('Paleta de Categoría', categoryPalettes, 'category')}
-      {renderPaletteSection('Paleta de Carrito de Compras', cartPalettes, 'cart')}
+      {/* Tema visual (movido desde Configuración): preview del header, colores y
+          marca. La tipografía y la forma usan los componentes de abajo (que ya se
+          reflejan en el preview). El guardado lo hace el botón "Guardar" superior. */}
+      <ThemeEditor
+        catalogId={catalogId}
+        catalogSlug={catalogSlug}
+        initial={themeSettings}
+        onChange={onUpdateThemeSettings}
+        embedded
+      />
 
-      {/* Font Selection */}
-      <div>
+      <div className="border-t border-gray-200 pt-2" />
+
+      {/* Paletas simplificadas: color del elemento + color del texto (estilo Colores) */}
+      {renderColorSection('Paleta de Botones (Portada + Agregar al Carrito)', [
+        { label: 'Color primario', hint: 'Fondo del botón', key: 'buttonPrimaryColor' },
+        { label: 'Texto sobre primario', hint: 'Color del texto del botón', key: 'buttonTextColor' },
+      ])}
+      {renderColorSection('Paleta de Categoría', [
+        { label: 'Color primario', hint: 'Fondo del filtro de categoría', key: 'categoryPrimaryColor' },
+        { label: 'Texto sobre primario', hint: 'Color del texto del filtro', key: 'categoryTextColor' },
+      ])}
+      {renderColorSection('Paleta de Carrito de Compras', [
+        { label: 'Color primario', hint: 'Fondo del botón del carrito', key: 'cartPrimaryColor' },
+        { label: 'Texto sobre primario', hint: 'Color del ícono', key: 'cartTextColor' },
+        { label: 'Cantidad de productos', hint: 'Fondo del contador de items', key: 'cartCountColor' },
+        { label: 'Total', hint: 'Fondo del total', key: 'cartTotalColor' },
+      ])}
+      {renderColorSection('Paleta de Productos', [
+        { label: 'Nombre y descripción', hint: 'Color del texto del producto', key: 'productNameColor' },
+        { label: 'Precio', hint: 'Color del precio', key: 'productPriceColor' },
+      ])}
+      {renderColorSection('Paleta de Filtros y Búsqueda', [
+        { label: 'Texto de filtros y búsqueda', hint: 'Color del texto de búsqueda y filtros', key: 'filterTextColor' },
+      ])}
+
+      {/* Font Selection (diseño de tarjetas con vista previa de la fuente) */}
+      <div className="rounded-2xl border border-warm-200 bg-white p-4 sm:p-5">
         <h3 className="text-sm font-semibold mb-3">Fuente Tipográfica</h3>
         {Object.entries(fonts).map(([category, fontList]) => (
           <div key={category} className="mb-4">
@@ -136,16 +227,16 @@ export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPale
                 <button
                   key={font}
                   onClick={() => onUpdateTheme({ font })}
-                  className={`p-2 rounded-lg border-2 transition text-left text-center ${
+                  className={`flex flex-col items-start gap-1 rounded-xl border-2 px-3 py-2.5 transition-all ${
                     theme.font === font
                       ? 'border-blue-500 bg-blue-50'
                       : 'border-gray-200 hover:border-gray-300 bg-white'
                   }`}
                 >
-                  <p className="text-xs text-gray-600 mb-1">{font}</p>
-                  <p className="text-xs" style={{ fontFamily: font }}>
-                    Aa
-                  </p>
+                  <span className="text-[10px] text-gray-500">{font}</span>
+                  <span className="text-lg leading-none text-gray-900" style={{ fontFamily: font }}>
+                    Ag
+                  </span>
                 </button>
               ))}
             </div>
@@ -153,25 +244,29 @@ export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPale
         ))}
       </div>
 
-      {/* Border Radius */}
-      <div>
+      {/* Border Radius (diseño con vista previa del radio: el div con borde) */}
+      <div className="rounded-2xl border border-warm-200 bg-white p-4 sm:p-5">
         <h3 className="text-sm font-semibold mb-3">Esquinas</h3>
         <div className="grid grid-cols-3 gap-2">
           {[
-            { value: 'none', label: 'Rectas' },
-            { value: 'sm', label: 'Suave' },
-            { value: 'full', label: 'Redondas' },
-          ].map(({ value, label }) => (
+            { value: 'none', label: 'Rectas', css: '0px' },
+            { value: 'sm', label: 'Suave', css: '8px' },
+            { value: 'full', label: 'Redondas', css: '9999px' },
+          ].map(({ value, label, css }) => (
             <button
               key={value}
               onClick={() => onUpdateTheme({ borderRadius: value as 'none' | 'sm' | 'full' })}
-              className={`py-2 px-3 rounded transition text-xs font-medium ${
+              className={`flex flex-col items-center gap-2 rounded-xl border-2 px-3 py-3 transition-all ${
                 theme.borderRadius === value
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'border-blue-500 bg-blue-50'
+                  : 'border-gray-200 hover:border-gray-300'
               }`}
             >
-              {label}
+              <div
+                className="h-8 w-8 border-2 border-gray-800 bg-gray-100"
+                style={{ borderRadius: css }}
+              />
+              <span className="text-xs font-medium text-gray-700">{label}</span>
             </button>
           ))}
         </div>

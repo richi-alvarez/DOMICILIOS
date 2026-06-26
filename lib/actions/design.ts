@@ -94,10 +94,14 @@ export async function saveTheme(catalogId: string, themeJson: Record<string, unk
     const catalog = await db.query.catalogs.findFirst({ where: eq(catalogs.id, catalogId) })
     if (!catalog) return { error: 'Catálogo no encontrado' }
 
+    // Fusionar con el themeJson existente para no pisar los campos del Tema
+    // (colores/tipografía/marca de themeSchema) que comparten la misma columna.
+    const existing = (catalog.themeJson ?? {}) as Record<string, unknown>
+
     await db
       .update(catalogs)
       .set({
-        themeJson,
+        themeJson: { ...existing, ...themeJson },
         updatedAt: new Date(),
       })
       .where(eq(catalogs.id, catalogId))

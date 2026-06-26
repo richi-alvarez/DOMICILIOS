@@ -28,8 +28,10 @@ export const themeSchema = z.object({
   headingFont: z.string().default('sora'),
   bodyFont: z.string().default('inter'),
   borderRadius: z.string().default('md'),
-  logoUrl: z.string().url('Invalid URL').default(''),
-  coverImageUrl: z.string().url('Invalid URL').default(''),
+  // Permitir cadena vacía (sin logo/portada) además de una URL válida; con solo
+  // .url() el valor '' rompía la validación y el guardado del tema fallaba.
+  logoUrl: z.string().url('Invalid URL').or(z.literal('')).default(''),
+  coverImageUrl: z.string().url('Invalid URL').or(z.literal('')).default(''),
   customDomain: z.string().default(''),
   // SEO (metadatos para buscadores y al compartir el enlace).
   seoTitle: z.string().default(''),
@@ -71,6 +73,57 @@ export function buildThemeCss(theme: ThemeConfig): string {
       --sf-heading-font: ${getFontFamily(theme.headingFont)};
       --sf-body-font: ${getFontFamily(theme.bodyFont)};
       --sf-radius: ${getRadiusCss(theme.borderRadius)};
+    }
+  `.trim()
+}
+
+// Paleta del editor de diseño (botones, categoría, carrito, producto, filtros).
+// Se guarda en `catalogs.themeJson` junto al tema; aquí la leemos para que la
+// tienda pública refleje los mismos colores que el preview del editor.
+export const PALETTE_DEFAULTS = {
+  buttonPrimaryColor: '#ff6b57',
+  buttonTextColor: '#ffffff',
+  categoryPrimaryColor: '#4a7c59',
+  categoryTextColor: '#ffffff',
+  cartPrimaryColor: '#9b59b6',
+  cartTextColor: '#ffffff',
+  cartCountColor: '#ef4444',
+  cartTotalColor: '#1f2937',
+  productNameColor: '#1f2937',
+  productPriceColor: '#111827',
+  filterTextColor: '#4b5563',
+} as const
+
+const paletteSchema = z.object({
+  buttonPrimaryColor: z.string().default(PALETTE_DEFAULTS.buttonPrimaryColor),
+  buttonTextColor: z.string().default(PALETTE_DEFAULTS.buttonTextColor),
+  categoryPrimaryColor: z.string().default(PALETTE_DEFAULTS.categoryPrimaryColor),
+  categoryTextColor: z.string().default(PALETTE_DEFAULTS.categoryTextColor),
+  cartPrimaryColor: z.string().default(PALETTE_DEFAULTS.cartPrimaryColor),
+  cartTextColor: z.string().default(PALETTE_DEFAULTS.cartTextColor),
+  cartCountColor: z.string().default(PALETTE_DEFAULTS.cartCountColor),
+  cartTotalColor: z.string().default(PALETTE_DEFAULTS.cartTotalColor),
+  productNameColor: z.string().default(PALETTE_DEFAULTS.productNameColor),
+  productPriceColor: z.string().default(PALETTE_DEFAULTS.productPriceColor),
+  filterTextColor: z.string().default(PALETTE_DEFAULTS.filterTextColor),
+})
+
+export function buildPaletteCss(themeJson: unknown): string {
+  const parsed = paletteSchema.safeParse(themeJson ?? {})
+  const p = parsed.success ? parsed.data : PALETTE_DEFAULTS
+  return `
+    :root {
+      --sf-button-bg: ${p.buttonPrimaryColor};
+      --sf-button-text: ${p.buttonTextColor};
+      --sf-category-bg: ${p.categoryPrimaryColor};
+      --sf-category-text: ${p.categoryTextColor};
+      --sf-cart-bg: ${p.cartPrimaryColor};
+      --sf-cart-text: ${p.cartTextColor};
+      --sf-cart-count: ${p.cartCountColor};
+      --sf-cart-total: ${p.cartTotalColor};
+      --sf-product-name: ${p.productNameColor};
+      --sf-product-price: ${p.productPriceColor};
+      --sf-filter-text: ${p.filterTextColor};
     }
   `.trim()
 }

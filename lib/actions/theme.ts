@@ -21,8 +21,12 @@ export async function saveTheme(catalogId: string, data: ThemeConfig) {
 
     const { customDomain, ...themeData } = parsed.data
 
+    // Fusionar con el themeJson existente para no pisar campos del editor de
+    // diseño (paletas de botón/categoría/carrito, etc.) que comparten la columna.
+    const existing = (catalog.themeJson ?? {}) as Record<string, unknown>
+
     await db.update(catalogs).set({
-      themeJson: themeData,
+      themeJson: { ...existing, ...themeData },
       domain: customDomain || null,
       updatedAt: new Date(),
     }).where(eq(catalogs.id, catalogId))

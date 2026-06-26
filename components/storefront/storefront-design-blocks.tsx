@@ -85,7 +85,8 @@ export function StorefrontDesignBlocks({
                   {c.showCta && c.ctaText && (
                     <a
                       href="#productos"
-                      className="inline-block px-6 py-2 rounded-lg bg-primary-600 text-white font-medium transition hover:opacity-90"
+                      className="inline-block px-6 py-2 rounded-lg font-medium transition hover:opacity-90"
+                      style={{ background: 'var(--sf-button-bg)', color: 'var(--sf-button-text)' }}
                     >
                       {c.ctaText}
                     </a>

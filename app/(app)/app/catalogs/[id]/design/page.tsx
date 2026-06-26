@@ -1,6 +1,7 @@
 import { db, catalogs, categories } from '@/db'
 import { eq } from 'drizzle-orm'
 import { getBlocksForCatalog } from '@/lib/actions/design'
+import { THEME_DEFAULTS, themeSchema } from '@/lib/design/theme'
 import DesignEditor from './_components/design-editor'
 
 interface ThemeState {
@@ -23,6 +24,14 @@ interface ThemeState {
   cartPrimaryColor: string
   cartSecondaryColor: string
   cartTertiaryColor: string
+  buttonTextColor: string
+  categoryTextColor: string
+  cartTextColor: string
+  cartCountColor: string
+  cartTotalColor: string
+  productNameColor: string
+  productPriceColor: string
+  filterTextColor: string
 }
 
 interface BaseBlock {
@@ -127,12 +136,20 @@ export default async function DesignPage({ params }: { params: Promise<{ id: str
   // Load theme from database
   const initialTheme: Partial<ThemeState> = catalog.themeJson as any
 
+  // Tema visual (themeSchema): colores/tipografía/forma/marca para el panel Global.
+  const parsedTheme = themeSchema.safeParse(catalog.themeJson ?? {})
+  const initialThemeSettings = {
+    ...(parsedTheme.success ? parsedTheme.data : THEME_DEFAULTS),
+    customDomain: catalog.domain ?? '',
+  }
+
   return (
     <DesignEditor
       catalogId={id}
       catalogSlug={catalog.slug}
       initialBlocks={initialBlocks}
       initialTheme={initialTheme}
+      initialThemeSettings={initialThemeSettings}
       categories={catalogCategories}
     />
   )

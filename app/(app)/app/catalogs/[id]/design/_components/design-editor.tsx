@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ChevronLeft, Monitor, Smartphone, Globe, Loader2, Check } from 'lucide-react'
 import Link from 'next/link'
 import { saveDesign } from '@/lib/actions/design'
 import { saveTheme } from '@/lib/actions/design'
+import { saveTheme as saveThemeSettings } from '@/lib/actions/theme'
 import type { BlockConfig } from '@/lib/design/blocks'
+import { THEME_DEFAULTS as THEME_SETTINGS_DEFAULTS, type ThemeConfig } from '@/lib/design/theme'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import GlobalPanel from './global-panel'
 import BlocksPanel from './blocks-panel'
@@ -33,6 +35,14 @@ interface ThemeState {
   cartPrimaryColor: string
   cartSecondaryColor: string
   cartTertiaryColor: string
+  buttonTextColor: string
+  categoryTextColor: string
+  cartTextColor: string
+  cartCountColor: string
+  cartTotalColor: string
+  productNameColor: string
+  productPriceColor: string
+  filterTextColor: string
   buttonCustomMode: boolean
   categoryCustomMode: boolean
   cartCustomMode: boolean
@@ -80,7 +90,7 @@ interface CatalogBlock extends BaseBlock {
   showDescription: boolean
   showExternalLink: boolean
   enableCart: boolean
-  buttonType: 'cart' | 'appointment'
+  buttonType?: 'cart' | 'appointment'
 }
 
 interface CartBlock extends BaseBlock {
@@ -283,6 +293,14 @@ const THEME_DEFAULTS: ThemeState = {
   cartPrimaryColor: '#9b59b6',
   cartSecondaryColor: '#faf5ff',
   cartTertiaryColor: '#4a235a',
+  buttonTextColor: '#ffffff',
+  categoryTextColor: '#ffffff',
+  cartTextColor: '#ffffff',
+  cartCountColor: '#ef4444',
+  cartTotalColor: '#1f2937',
+  productNameColor: '#1f2937',
+  productPriceColor: '#111827',
+  filterTextColor: '#4b5563',
   buttonCustomMode: false,
   categoryCustomMode: false,
   cartCustomMode: false,
@@ -380,6 +398,7 @@ interface DesignEditorProps {
   catalogSlug: string
   initialBlocks?: Block[]
   initialTheme?: Partial<ThemeState>
+  initialThemeSettings?: ThemeConfig
   categories?: Category[]
 }
 
@@ -401,6 +420,7 @@ export default function DesignEditor({
   catalogSlug,
   initialBlocks,
   initialTheme,
+  initialThemeSettings = THEME_SETTINGS_DEFAULTS,
   categories = [],
 }: DesignEditorProps) {
   const [theme, setTheme] = useState<ThemeState>(
@@ -418,6 +438,27 @@ export default function DesignEditor({
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
   const [products, setProducts] = useState<Product[]>([])
+
+  // Tema (themeSchema): colores/marca movidos al panel Global. Se edita aquí y se
+  // guarda con el botón "Guardar" superior (no tiene su propio botón).
+  const [themeSettings, setThemeSettings] = useState<ThemeConfig>(initialThemeSettings)
+  // Sincroniza las claves compartidas con el estado del editor (ThemeState) para
+  // que ambos sistemas no se pisen al guardar (primaryColor, bgColor).
+  const updateThemeSettings = (next: ThemeConfig) => {
+    setThemeSettings(next)
+    setTheme((t) => ({ ...t, primaryColor: next.primaryColor, bgColor: next.bgColor }))
+  }
+
+  // Indicador "Sin guardar": se activa ante cualquier cambio de bloques o tema.
+  const [dirty, setDirty] = useState(false)
+  const skipFirstDirty = useRef(true)
+  useEffect(() => {
+    if (skipFirstDirty.current) {
+      skipFirstDirty.current = false
+      return
+    }
+    setDirty(true)
+  }, [blocks, theme, themeSettings])
 
   // Fetch products on mount
   useEffect(() => {
@@ -734,7 +775,12 @@ export default function DesignEditor({
   }
 
   const updateTheme = (partial: Partial<ThemeState>) => {
-    setTheme({ ...theme, ...partial })
+    setTheme((t) => ({ ...t, ...partial }))
+    // borderRadius existe en ambos sistemas (preview = ThemeState, storefront =
+    // themeSchema). Lo sincronizamos para que no se pisen al guardar.
+    if (partial.borderRadius !== undefined) {
+      setThemeSettings((ts) => ({ ...ts, borderRadius: partial.borderRadius as string }))
+    }
   }
 
   const handleSaveDesign = async () => {
@@ -747,18 +793,30 @@ export default function DesignEditor({
         config: { ...block },
       }))
 
+      // Los dos guardados de tema escriben en la misma columna (themeJson), así
+      // que van en secuencia para que el segundo fusione sobre el primero y no
+      // se pisen. saveDesign (bloques) sí puede ir en paralelo.
       const [designResult, themeResult] = await Promise.all([
         saveDesign(catalogId, blockConfigs as any),
         saveTheme(catalogId, theme as unknown as Record<string, unknown>),
       ])
+      const themeSettingsResult = await saveThemeSettings(catalogId, themeSettings)
 
-      if (('ok' in designResult && designResult.ok) || ('ok' in themeResult && themeResult.ok)) {
+      const ok =
+        ('ok' in designResult && designResult.ok) ||
+        ('ok' in themeResult && themeResult.ok) ||
+        ('ok' in themeSettingsResult && themeSettingsResult.ok)
+
+      if (ok) {
+        setDirty(false)
         setSaved(true)
         setTimeout(() => setSaved(false), 2000)
       } else if ('error' in designResult) {
         alert(designResult.error || 'Error al guardar')
       } else if ('error' in themeResult) {
         alert(themeResult.error || 'Error al guardar tema')
+      } else if ('error' in themeSettingsResult) {
+        alert(themeSettingsResult.error || 'Error al guardar tema')
       }
     } catch (err) {
       console.error('Save error:', err)
@@ -797,28 +855,33 @@ export default function DesignEditor({
               </button>
             </div>
 
-            <button
-              onClick={handleSaveDesign}
-              disabled={saving}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition"
-            >
-              {saved ? (
-                <>
-                  <Check className="w-4 h-4" />
-                  Guardado
-                </>
-              ) : saving ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                  Guardando...
-                </>
-              ) : (
-                <>
-                  <Globe className="w-4 h-4" />
-                  Guardar
-                </>
+            <div className="flex items-center gap-2">
+              {dirty && !saving && !saved && (
+                <span className="text-xs font-medium text-amber-500">Sin guardar</span>
               )}
-            </button>
+              <button
+                onClick={handleSaveDesign}
+                disabled={saving}
+                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-medium transition"
+              >
+                {saved ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    Guardado
+                  </>
+                ) : saving ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Guardando...
+                  </>
+                ) : (
+                  <>
+                    <Globe className="w-4 h-4" />
+                    Guardar
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -892,6 +955,10 @@ export default function DesignEditor({
                   fonts={FONTS}
                   theme={theme}
                   onUpdateTheme={updateTheme}
+                  catalogId={catalogId}
+                  catalogSlug={catalogSlug}
+                  themeSettings={themeSettings}
+                  onUpdateThemeSettings={updateThemeSettings}
                 />
               </TabsContent>
             </Tabs>

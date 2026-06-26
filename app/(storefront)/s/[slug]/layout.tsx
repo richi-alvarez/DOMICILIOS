@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { getCatalogBySlug } from '@/lib/storefront/queries'
 import { CartProvider } from '@/components/storefront/cart-context'
-import { THEME_DEFAULTS, themeSchema, buildThemeCss, getGoogleFontsUrl } from '@/lib/design/theme'
+import { THEME_DEFAULTS, themeSchema, buildThemeCss, buildPaletteCss, getGoogleFontsUrl } from '@/lib/design/theme'
 
 interface Props {
   children: React.ReactNode
@@ -46,6 +46,9 @@ export default async function StorefrontLayout({ children, params }: Props) {
   const parsed = themeSchema.safeParse(catalog.themeJson ?? {})
   const theme = parsed.success ? parsed.data : THEME_DEFAULTS
   const themeCss = buildThemeCss(theme)
+  // Paleta del editor de diseño (botones/categoría/carrito/producto/filtros),
+  // leída del themeJson crudo: convive con el tema en la misma columna.
+  const paletteCss = buildPaletteCss(catalog.themeJson)
   const googleFontsUrl = getGoogleFontsUrl(theme.headingFont, theme.bodyFont)
 
   return (
@@ -53,7 +56,7 @@ export default async function StorefrontLayout({ children, params }: Props) {
       {googleFontsUrl && (
         <link rel="stylesheet" href={googleFontsUrl} />
       )}
-      <style dangerouslySetInnerHTML={{ __html: themeCss }} />
+      <style dangerouslySetInnerHTML={{ __html: `${themeCss}\n${paletteCss}` }} />
       {children}
     </CartProvider>
   )

@@ -56,8 +56,8 @@ export function CartFab({ slug, currency, position = 'bottom-right', mode = 'car
         href={`/s/${slug}/cart`}
         className="flex items-center gap-3 rounded-full px-5 py-3 shadow-xl transition active:scale-95"
         style={{
-          background: 'var(--sf-primary, #FF6B57)',
-          color: 'var(--sf-primary-text, #ffffff)',
+          background: 'var(--sf-cart-bg, #FF6B57)',
+          color: 'var(--sf-cart-text, #ffffff)',
         }}
       >
         <span className="relative">
@@ -66,13 +66,14 @@ export function CartFab({ slug, currency, position = 'bottom-right', mode = 'car
           ) : (
             <ShoppingCart className="h-5 w-5" />
           )}
-          <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full bg-white text-[10px] font-bold"
-            style={{ color: 'var(--sf-primary, #FF6B57)' }}>
+          <span className="absolute -right-2 -top-2 flex h-4 w-4 items-center justify-center rounded-full text-[10px] font-bold text-white"
+            style={{ background: 'var(--sf-cart-count, #ef4444)' }}>
             {count}
           </span>
         </span>
         <span className="text-sm font-semibold">{mode === 'appointment' ? 'Ver citas' : 'Ver carrito'}</span>
-        <span className="ml-1 text-sm font-bold opacity-80">
+        <span className="ml-1 rounded-full px-2 py-0.5 text-xs font-bold text-white"
+          style={{ background: 'var(--sf-cart-total, #1f2937)' }}>
           {formatMoney(subtotal, currency)}
         </span>
       </Link>

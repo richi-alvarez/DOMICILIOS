@@ -34,6 +34,14 @@ interface ThemeState {
   cartPrimaryColor: string
   cartSecondaryColor: string
   cartTertiaryColor: string
+  buttonTextColor: string
+  categoryTextColor: string
+  cartTextColor: string
+  cartCountColor: string
+  cartTotalColor: string
+  productNameColor: string
+  productPriceColor: string
+  filterTextColor: string
 }
 
 interface Product {
@@ -246,7 +254,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                         }
                       }}
                       className={`px-6 py-2 text-white cursor-pointer transition-all hover:opacity-90 ${borderRadiusClass[theme.borderRadius]}`}
-                      style={{ backgroundColor: theme.buttonPrimaryColor }}
+                      style={{ backgroundColor: theme.buttonPrimaryColor, color: theme.buttonTextColor }}
                     >
                       {block.ctaText}
                     </button>
@@ -258,10 +266,10 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
 
           if (block.type === 'catalog') {
             return (
-              <div key={block.id} id="productos" className="bg-white px-4 py-8">
+              <div key={block.id} id="productos" className="px-4 py-8">
                 <div className="max-w-6xl mx-auto">
                   {/* Filters and Search Section */}
-                  <div className="mb-6 space-y-4">
+                  <div className="mb-6 space-y-4" style={{ color: theme.filterTextColor }}>
                     {/* Search Bar */}
                     {block.showSearch && (
                       <div className="flex">
@@ -269,6 +277,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                           type="text"
                           placeholder="🔍 Buscar productos..."
                           className="flex-1 px-4 py-2 border border-gray-300 rounded-lg text-sm"
+                          style={{ color: theme.filterTextColor }}
                           disabled
                         />
                       </div>
@@ -282,7 +291,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                           <button
                             onClick={() => handleSelectCategory(null)}
                             className={`px-3 py-1 text-sm transition-all ${borderRadiusClass[theme.borderRadius]} ${selectedCategory === null ? 'opacity-100 scale-100' : 'opacity-70'}`}
-                            style={{ backgroundColor: selectedCategory === null ? theme.categoryPrimaryColor : '#e5e7eb', color: selectedCategory === null ? 'white' : '#4b5563' }}
+                            style={{ backgroundColor: selectedCategory === null ? theme.categoryPrimaryColor : '#e5e7eb', color: selectedCategory === null ? theme.categoryTextColor : '#4b5563' }}
                           >
                             Todos
                           </button>
@@ -292,7 +301,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 key={cat.id}
                                 onClick={() => handleSelectCategory(cat.id)}
                                 className={`px-3 py-1 text-sm transition-all ${borderRadiusClass[theme.borderRadius]} ${selectedCategory === cat.id ? 'opacity-100 scale-100' : 'opacity-70'}`}
-                                style={{ backgroundColor: selectedCategory === cat.id ? theme.categoryPrimaryColor : '#e5e7eb', color: selectedCategory === cat.id ? 'white' : '#4b5563' }}
+                                style={{ backgroundColor: selectedCategory === cat.id ? theme.categoryPrimaryColor : '#e5e7eb', color: selectedCategory === cat.id ? theme.categoryTextColor : '#4b5563' }}
                               >
                                 {cat.name}
                               </button>
@@ -302,14 +311,14 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                               <button
                                 onClick={() => handleSelectCategory('cat1')}
                                 className={`px-3 py-1 text-sm transition-all ${borderRadiusClass[theme.borderRadius]} ${selectedCategory === 'cat1' ? 'opacity-100 scale-100' : 'opacity-70'}`}
-                                style={{ backgroundColor: selectedCategory === 'cat1' ? theme.categoryPrimaryColor : '#e5e7eb', color: selectedCategory === 'cat1' ? 'white' : '#4b5563' }}
+                                style={{ backgroundColor: selectedCategory === 'cat1' ? theme.categoryPrimaryColor : '#e5e7eb', color: selectedCategory === 'cat1' ? theme.categoryTextColor : '#4b5563' }}
                               >
                                 Categoría 1
                               </button>
                               <button
                                 onClick={() => handleSelectCategory('cat2')}
                                 className={`px-3 py-1 text-sm transition-all ${borderRadiusClass[theme.borderRadius]} ${selectedCategory === 'cat2' ? 'opacity-100 scale-100' : 'opacity-70'}`}
-                                style={{ backgroundColor: selectedCategory === 'cat2' ? theme.categoryPrimaryColor : '#e5e7eb', color: selectedCategory === 'cat2' ? 'white' : '#4b5563' }}
+                                style={{ backgroundColor: selectedCategory === 'cat2' ? theme.categoryPrimaryColor : '#e5e7eb', color: selectedCategory === 'cat2' ? theme.categoryTextColor : '#4b5563' }}
                               >
                                 Categoría 2
                               </button>
@@ -320,7 +329,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
 
                       {/* Sort Filter */}
                       {block.showSortFilter && (
-                        <select className="px-3 py-1 rounded border border-gray-300 text-sm bg-white" disabled>
+                        <select className="px-3 py-1 rounded border border-gray-300 text-sm bg-white" style={{ color: theme.filterTextColor }} disabled>
                           <option>Ordenar por: Relevancia</option>
                           <option>Precio (menor a mayor)</option>
                           <option>Precio (mayor a menor)</option>
@@ -349,7 +358,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
 
                       {/* Rating Filter */}
                       {block.showRatingFilter && (
-                        <select className="px-3 py-1 rounded border border-gray-300 text-sm bg-white" disabled>
+                        <select className="px-3 py-1 rounded border border-gray-300 text-sm bg-white" style={{ color: theme.filterTextColor }} disabled>
                           <option>Calificación: Todas</option>
                           <option>⭐⭐⭐⭐⭐ (5 estrellas)</option>
                           <option>⭐⭐⭐⭐ (4+ estrellas)</option>
@@ -391,9 +400,9 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                             <div className="bg-gray-200 h-40" />
                           )}
                           <div className="p-3 flex flex-col flex-1">
-                            {block.showTitle && <p className="font-semibold text-sm">{product.name}</p>}
-                            {block.showDescription && product.description && <p className="text-xs text-gray-600 mt-1">{product.description}</p>}
-                            {block.showPrice && <p className="font-bold text-sm mt-2">${product.price.toLocaleString('es-CO')}</p>}
+                            {block.showTitle && <p className="font-semibold text-sm" style={{ color: theme.productNameColor }}>{product.name}</p>}
+                            {block.showDescription && product.description && <p className="text-xs mt-1" style={{ color: theme.productNameColor }}>{product.description}</p>}
+                            {block.showPrice && <p className="font-bold text-sm mt-2" style={{ color: theme.productPriceColor }}>${product.price.toLocaleString('es-CO')}</p>}
 
                             <div className="mt-auto flex flex-col gap-2">
                               {block.showExternalLink && (
@@ -405,7 +414,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 <button
                                   onClick={() => handleAddToCart(product.id)}
                                   className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(product.id) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
-                                  style={{ backgroundColor: theme.buttonPrimaryColor }}
+                                  style={{ backgroundColor: theme.buttonPrimaryColor, color: theme.buttonTextColor }}
                                 >
                                   {cartItems.has(product.id) ? '✓ Agendada' : '📅 Agendar cita'}
                                 </button>
@@ -413,7 +422,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 <button
                                   onClick={() => handleAddToCart(product.id)}
                                   className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(product.id) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
-                                  style={{ backgroundColor: theme.buttonPrimaryColor }}
+                                  style={{ backgroundColor: theme.buttonPrimaryColor, color: theme.buttonTextColor }}
                                 >
                                   {cartItems.has(product.id) ? '✓ Agregado' : 'Agregar al carrito'}
                                 </button>
@@ -427,9 +436,9 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                         <div key={i} className={`border overflow-hidden flex flex-col ${borderRadiusClass[theme.borderRadius]}`}>
                           <div className="bg-gray-200 h-40" />
                           <div className="p-3 flex flex-col flex-1">
-                            {block.showTitle && <p className="font-semibold text-sm">Producto {i}</p>}
-                            {block.showDescription && <p className="text-xs text-gray-600 mt-1">Descripción del producto</p>}
-                            {block.showPrice && <p className="font-bold text-sm mt-2">$19.99</p>}
+                            {block.showTitle && <p className="font-semibold text-sm" style={{ color: theme.productNameColor }}>Producto {i}</p>}
+                            {block.showDescription && <p className="text-xs mt-1" style={{ color: theme.productNameColor }}>Descripción del producto</p>}
+                            {block.showPrice && <p className="font-bold text-sm mt-2" style={{ color: theme.productPriceColor }}>$19.99</p>}
 
                             <div className="mt-auto flex flex-col gap-2">
                               {block.showExternalLink && (
@@ -441,7 +450,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 <button
                                   onClick={() => handleAddToCart(`mock-${i}`)}
                                   className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(`mock-${i}`) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
-                                  style={{ backgroundColor: theme.buttonPrimaryColor }}
+                                  style={{ backgroundColor: theme.buttonPrimaryColor, color: theme.buttonTextColor }}
                                 >
                                   {cartItems.has(`mock-${i}`) ? '✓ Agendada' : '📅 Agendar cita'}
                                 </button>
@@ -449,7 +458,7 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
                                 <button
                                   onClick={() => handleAddToCart(`mock-${i}`)}
                                   className={`text-xs text-white px-2 py-1 w-full cursor-pointer transition-all ${borderRadiusClass[theme.borderRadius]} ${cartItems.has(`mock-${i}`) ? 'opacity-75 scale-95' : 'hover:opacity-90'}`}
-                                  style={{ backgroundColor: theme.buttonPrimaryColor }}
+                                  style={{ backgroundColor: theme.buttonPrimaryColor, color: theme.buttonTextColor }}
                                 >
                                   {cartItems.has(`mock-${i}`) ? '✓ Agregado' : 'Agregar al carrito'}
                                 </button>
@@ -643,24 +652,27 @@ export default function PreviewPanel({ blocks, theme, previewMode, catalogSlug, 
             <div
               className={`absolute ${positionMap[cartBlock.position]} ${sizeMap[cartBlock.size]} ${animationMap[cartBlock.animation]} rounded-full flex items-center justify-center cursor-pointer group pointer-events-auto`}
               style={{
-                backgroundColor: cartBlock.useCustomColors ? cartBlock.bgColor : theme.cartPrimaryColor,
+                backgroundColor: theme.cartPrimaryColor,
               }}
             >
-              <span style={{ color: cartBlock.useCustomColors ? cartBlock.iconColor : 'white' }}>
+              <span style={{ color: theme.cartTextColor }}>
                 {appointmentMode ? '📅' : '🛒'}
               </span>
               {cartBlock.showItemCount && (
                 <div
                   className="absolute -top-2 -right-2 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center"
                   style={{
-                    backgroundColor: cartBlock.useCustomColors ? cartBlock.iconColor : '#ef4444',
+                    backgroundColor: theme.cartCountColor,
                   }}
                 >
                   {cartItems.size}
                 </div>
               )}
               {cartBlock.showTotalPrice && (
-                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                <div
+                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+                  style={{ backgroundColor: theme.cartTotalColor }}
+                >
                   Total: ${cartTotal.toLocaleString('es-CO')}
                 </div>
               )}
