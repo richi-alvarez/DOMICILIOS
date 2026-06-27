@@ -11,19 +11,23 @@ import { cn } from '@/lib/utils'
 import { AICatalogGenerator } from '@/components/app/ai-catalog-generator'
 import { CountryCodeSelect } from '@/components/app/country-code-select'
 import type { GeneratedCatalogStructure } from '@/lib/actions/catalogs/generate-ai-catalog'
+import { useI18n } from '@/lib/i18n/context'
 
 const BUSINESS_TYPES = [
-  { value: 'restaurant', label: 'Restaurante', icon: Utensils, desc: 'Menú digital, pedidos por WhatsApp' },
-  { value: 'store', label: 'Tienda', icon: ShoppingBag, desc: 'Catálogo de productos' },
-  { value: 'service', label: 'Servicios', icon: Briefcase, desc: 'Portafolio de servicios' },
-  { value: 'other', label: 'Otro', icon: Store, desc: 'Cualquier tipo de negocio' },
+  { value: 'restaurant', icon: Utensils },
+  { value: 'store', icon: ShoppingBag },
+  { value: 'service', icon: Briefcase },
+  { value: 'other', icon: Store },
 ]
+
+const CURRENCY_CODES = ['COP', 'USD', 'EUR', 'BRL', 'MXN', 'ARS', 'CLP', 'PEN']
 
 interface Props {
   userName: string
 }
 
 export function CatalogWizard({ userName }: Props) {
+  const { t } = useI18n()
   const router = useRouter()
   const [step, setStep] = useState(1)
   const [isPending, startTransition] = useTransition()
@@ -153,7 +157,7 @@ export function CatalogWizard({ userName }: Props) {
               </div>
             ))}
           </div>
-          <p className="text-xs text-warm-400">Paso {step} de {totalSteps}</p>
+          <p className="text-xs text-warm-400">{t('wizard.stepCounter').replace('{step}', String(step)).replace('{total}', String(totalSteps))}</p>
         </div>
       )}
 
@@ -163,26 +167,26 @@ export function CatalogWizard({ userName }: Props) {
           <div className="space-y-6">
             <div>
               <h1 className="text-2xl font-extrabold text-night-800">
-                ¡Bienvenido, {firstName}!
+                {t('wizard.step1.welcome').replace('{name}', firstName)}
               </h1>
               <p className="mt-1 text-sm text-warm-500">
-                Cuéntanos sobre tu negocio para personalizar tu experiencia.
+                {t('wizard.step1.subtitle')}
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label className="font-semibold text-night-700">Nombre del negocio *</Label>
+              <Label className="font-semibold text-night-700">{t('wizard.step1.nameLabel')}</Label>
               <Input
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
-                placeholder="Ej: Hamburguesas La Cumbre"
+                placeholder={t('wizard.step1.namePlaceholder')}
                 autoFocus
                 maxLength={64}
               />
             </div>
 
             <div className="space-y-2">
-              <Label className="font-semibold text-night-700">Tipo de negocio *</Label>
+              <Label className="font-semibold text-night-700">{t('wizard.step1.typeLabel')}</Label>
               <div className="grid grid-cols-2 gap-2">
                 {BUSINESS_TYPES.map((type) => (
                   <button
@@ -196,8 +200,8 @@ export function CatalogWizard({ userName }: Props) {
                     )}
                   >
                     <type.icon className={cn('h-5 w-5', businessType === type.value ? 'text-primary-500' : 'text-warm-400')} />
-                    <span className="text-sm font-semibold text-night-800">{type.label}</span>
-                    <span className="text-xs text-warm-500">{type.desc}</span>
+                    <span className="text-sm font-semibold text-night-800">{t(`wizard.businessTypes.${type.value}.label`)}</span>
+                    <span className="text-xs text-warm-500">{t(`wizard.businessTypes.${type.value}.desc`)}</span>
                   </button>
                 ))}
               </div>
@@ -208,7 +212,7 @@ export function CatalogWizard({ userName }: Props) {
               disabled={!canProceedStep1()}
               onClick={() => setStep(2)}
             >
-              Continuar <ArrowRight className="h-4 w-4" />
+              {t('wizard.continue')} <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
         )}
@@ -218,16 +222,16 @@ export function CatalogWizard({ userName }: Props) {
           <div className="space-y-6">
             <div>
               <button onClick={() => setStep(1)} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
-                <ArrowLeft className="h-3.5 w-3.5" /> Atrás
+                <ArrowLeft className="h-3.5 w-3.5" /> {t('wizard.back')}
               </button>
-              <h1 className="text-2xl font-extrabold text-night-800">Tu enlace único</h1>
+              <h1 className="text-2xl font-extrabold text-night-800">{t('wizard.step2.title')}</h1>
               <p className="mt-1 text-sm text-warm-500">
-                Este será el link público de tu tienda. Una vez creado no se puede cambiar (salvo dominio propio).
+                {t('wizard.step2.subtitle')}
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label className="font-semibold text-night-700">Enlace de tu tienda</Label>
+              <Label className="font-semibold text-night-700">{t('wizard.step2.linkLabel')}</Label>
               <div className={cn(
                 'flex items-center gap-1 rounded-xl border-2 px-3 py-2 transition-all',
                 slugStatus === 'available' ? 'border-lime-400 bg-lime-50' :
@@ -240,7 +244,7 @@ export function CatalogWizard({ userName }: Props) {
                   value={slug}
                   onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 30))}
                   className="min-w-0 flex-1 bg-transparent font-mono text-sm font-medium text-night-800 outline-none"
-                  placeholder="mi-tienda"
+                  placeholder={t('wizard.step2.slugPlaceholder')}
                 />
                 <span className="ml-2 flex-shrink-0">
                   {slugStatus === 'checking' && <Loader2 className="h-4 w-4 animate-spin text-warm-400" />}
@@ -248,16 +252,16 @@ export function CatalogWizard({ userName }: Props) {
                   {(slugStatus === 'taken' || slugStatus === 'invalid') && <span className="text-xs text-red-500">✗</span>}
                 </span>
               </div>
-              {slugStatus === 'taken' && <p className="text-xs text-red-500">Ese enlace ya está en uso. Prueba otro.</p>}
-              {slugStatus === 'invalid' && <p className="text-xs text-red-500">Mínimo 3 caracteres, solo letras, números y guiones.</p>}
-              {slugStatus === 'available' && <p className="text-xs text-lime-600">¡Disponible! Este enlace es tuyo.</p>}
+              {slugStatus === 'taken' && <p className="text-xs text-red-500">{t('wizard.step2.taken')}</p>}
+              {slugStatus === 'invalid' && <p className="text-xs text-red-500">{t('wizard.step2.invalid')}</p>}
+              {slugStatus === 'available' && <p className="text-xs text-lime-600">{t('wizard.step2.available')}</p>}
             </div>
 
             <div className="rounded-xl bg-warm-50 border border-warm-200 px-4 py-3">
               <p className="text-xs text-warm-600">
-                Tu tienda será accesible en{' '}
-                <strong className="text-night-700">domicilios.app/s/{slug || '...'}</strong>.
-                Con el plan Pro puedes conectar tu propio dominio.
+                {t('wizard.step2.accessiblePrefix')}
+                <strong className="text-night-700">domicilios.app/s/{slug || '...'}</strong>
+                {t('wizard.step2.accessibleSuffix')}
               </p>
             </div>
 
@@ -266,7 +270,7 @@ export function CatalogWizard({ userName }: Props) {
               disabled={!canProceedStep2()}
               onClick={() => setStep(3)}
             >
-              Continuar <ArrowRight className="h-4 w-4" />
+              {t('wizard.continue')} <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
         )}
@@ -276,39 +280,34 @@ export function CatalogWizard({ userName }: Props) {
           <div className="space-y-6">
             <div>
               <button onClick={() => setStep(2)} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
-                <ArrowLeft className="h-3.5 w-3.5" /> Atrás
+                <ArrowLeft className="h-3.5 w-3.5" /> {t('wizard.back')}
               </button>
-              <h1 className="text-2xl font-extrabold text-night-800">Más detalles de tu negocio</h1>
+              <h1 className="text-2xl font-extrabold text-night-800">{t('wizard.step3.title')}</h1>
               <p className="mt-1 text-sm text-warm-500">
-                Esta información ayudará a la IA a generar un catálogo más personalizado.
+                {t('wizard.step3.subtitle')}
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label className="font-semibold text-night-700">Moneda *</Label>
+              <Label className="font-semibold text-night-700">{t('wizard.step3.currencyLabel')}</Label>
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
                 className="w-full rounded-lg border border-warm-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
               >
-                <option value="COP">COP - Peso Colombiano</option>
-                <option value="USD">USD - Dólar Estadounidense</option>
-                <option value="EUR">EUR - Euro</option>
-                <option value="BRL">BRL - Real Brasileño</option>
-                <option value="MXN">MXN - Peso Mexicano</option>
-                <option value="ARS">ARS - Peso Argentino</option>
-                <option value="CLP">CLP - Peso Chileno</option>
-                <option value="PEN">PEN - Sol Peruano</option>
+                {CURRENCY_CODES.map((code) => (
+                  <option key={code} value={code}>{t(`wizard.currencies.${code}`)}</option>
+                ))}
               </select>
             </div>
 
             <div className="space-y-2">
-              <Label className="font-semibold text-night-700">¿De qué se trata tu negocio? *</Label>
-              <p className="text-xs text-warm-500 mb-2">Cuéntanos más detalles para que la IA genere un catálogo personalizado.</p>
+              <Label className="font-semibold text-night-700">{t('wizard.step3.descLabel')}</Label>
+              <p className="text-xs text-warm-500 mb-2">{t('wizard.step3.descHint')}</p>
               <textarea
                 value={businessDescription}
                 onChange={(e) => setBusinessDescription(e.target.value.slice(0, 500))}
-                placeholder="Ej. Soy una pastelería artesanal que vende tortas personalizadas, cupcakes y postres para eventos. Usamos colores rosados y dorados, con un estilo elegante y femenino."
+                placeholder={t('wizard.step3.descPlaceholder')}
                 className="w-full rounded-lg border border-warm-200 px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary-500"
                 rows={4}
               />
@@ -320,7 +319,7 @@ export function CatalogWizard({ userName }: Props) {
               disabled={!canProceedStep3()}
               onClick={() => setStep(4)}
             >
-              Continuar <ArrowRight className="h-4 w-4" />
+              {t('wizard.continue')} <ArrowRight className="h-4 w-4" />
             </Button>
           </div>
         )}
@@ -330,11 +329,11 @@ export function CatalogWizard({ userName }: Props) {
           <div className="space-y-6">
             <div>
               <button onClick={() => setStep(3)} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
-                <ArrowLeft className="h-3.5 w-3.5" /> Atrás
+                <ArrowLeft className="h-3.5 w-3.5" /> {t('wizard.back')}
               </button>
-              <h1 className="text-2xl font-extrabold text-night-800">¿Cómo recibirás pedidos?</h1>
+              <h1 className="text-2xl font-extrabold text-night-800">{t('wizard.step4.title')}</h1>
               <p className="mt-1 text-sm text-warm-500">
-                Puedes cambiar esto después en la configuración.
+                {t('wizard.step4.subtitle')}
               </p>
             </div>
 
@@ -343,9 +342,9 @@ export function CatalogWizard({ userName }: Props) {
                 <div className="flex items-start gap-3">
                   <Sparkles className="h-6 w-6 text-blue-600 mt-0 flex-shrink-0" />
                   <div className="flex-1">
-                    <h3 className="font-bold text-lg text-blue-900">Generar catálogo con IA</h3>
+                    <h3 className="font-bold text-lg text-blue-900">{t('wizard.step4.aiBoxTitle')}</h3>
                     <p className="text-sm text-blue-700 mt-2 leading-relaxed">
-                      Analiza tu negocio y genera automáticamente la estructura óptima del catálogo, incluyendo secciones, productos destacados y recomendaciones de diseño.
+                      {t('wizard.step4.aiBoxDesc')}
                     </p>
                   </div>
                 </div>
@@ -354,7 +353,7 @@ export function CatalogWizard({ userName }: Props) {
                     onClick={() => setUseAI(true)}
                     className="bg-blue-600 hover:bg-blue-700 text-white font-semibold"
                   >
-                    Generar Ahora
+                    {t('wizard.step4.aiGenerateNow')}
                   </Button>
                 </div>
               </div>
@@ -365,7 +364,7 @@ export function CatalogWizard({ userName }: Props) {
                 <div className="w-full border-t border-warm-200" />
               </div>
               <div className="relative flex justify-center text-xs">
-                <span className="bg-white px-2 text-warm-500">O configura manualmente</span>
+                <span className="bg-white px-2 text-warm-500">{t('wizard.step4.orManual')}</span>
               </div>
             </div>
 
@@ -378,8 +377,8 @@ export function CatalogWizard({ userName }: Props) {
                 )}
               >
                 <MessageCircle className={cn('h-8 w-8', orderChannel === 'whatsapp' ? 'text-primary-500' : 'text-warm-400')} />
-                <span className="font-bold text-night-800">WhatsApp</span>
-                <span className="text-xs text-warm-500 text-center">Los clientes te escriben directamente</span>
+                <span className="font-bold text-night-800">{t('wizard.step4.whatsapp')}</span>
+                <span className="text-xs text-warm-500 text-center">{t('wizard.step4.whatsappDesc')}</span>
               </button>
               <button
                 onClick={() => setOrderChannel('email')}
@@ -389,14 +388,14 @@ export function CatalogWizard({ userName }: Props) {
                 )}
               >
                 <Mail className={cn('h-8 w-8', orderChannel === 'email' ? 'text-primary-500' : 'text-warm-400')} />
-                <span className="font-bold text-night-800">Email</span>
-                <span className="text-xs text-warm-500 text-center">Recibe pedidos por correo</span>
+                <span className="font-bold text-night-800">{t('wizard.step4.email')}</span>
+                <span className="text-xs text-warm-500 text-center">{t('wizard.step4.emailDesc')}</span>
               </button>
             </div>
 
             {orderChannel === 'whatsapp' && (
               <div className="space-y-2">
-                <Label className="font-semibold text-night-700">Número de WhatsApp</Label>
+                <Label className="font-semibold text-night-700">{t('wizard.step4.whatsappLabel')}</Label>
                 <div className="flex gap-2">
                   <CountryCodeSelect
                     value={contactCountryCode}
@@ -410,18 +409,18 @@ export function CatalogWizard({ userName }: Props) {
                     className="flex-1 font-mono"
                   />
                 </div>
-                <p className="text-xs text-warm-400">Los pedidos llegarán a este número. Puedes cambiarlo después.</p>
+                <p className="text-xs text-warm-400">{t('wizard.step4.whatsappHint')}</p>
               </div>
             )}
 
             {orderChannel === 'email' && (
               <div className="space-y-2">
-                <Label className="font-semibold text-night-700">Email para pedidos</Label>
+                <Label className="font-semibold text-night-700">{t('wizard.step4.emailLabel')}</Label>
                 <Input
                   type="email"
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
-                  placeholder="pedidos@tunegocio.com"
+                  placeholder={t('wizard.step4.emailPlaceholder')}
                 />
               </div>
             )}
@@ -435,7 +434,7 @@ export function CatalogWizard({ userName }: Props) {
                 disabled={isPending || !canProceedStep4()}
                 onClick={handleCreate}
               >
-                Crear catálogo
+                {t('wizard.step4.create')}
               </Button>
               {canUseAI && (
                 <Button
@@ -444,7 +443,7 @@ export function CatalogWizard({ userName }: Props) {
                   onClick={() => setUseAI(true)}
                 >
                   <Sparkles className="h-4 w-4 mr-2" />
-                  Crear con IA
+                  {t('wizard.step4.createAI')}
                 </Button>
               )}
             </div>
@@ -456,11 +455,11 @@ export function CatalogWizard({ userName }: Props) {
           <div className="space-y-6">
             <div>
               <button onClick={() => { setUseAI(false); setGeneratedCatalog(null) }} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
-                <ArrowLeft className="h-3.5 w-3.5" /> Atrás
+                <ArrowLeft className="h-3.5 w-3.5" /> {t('wizard.back')}
               </button>
-              <h1 className="text-2xl font-extrabold text-night-800">Genera tu catálogo con IA</h1>
+              <h1 className="text-2xl font-extrabold text-night-800">{t('wizard.aiGen.title')}</h1>
               <p className="mt-1 text-sm text-warm-500">
-                La IA analizará tu información y generará una estructura óptima para tu catálogo.
+                {t('wizard.aiGen.subtitle')}
               </p>
             </div>
 
@@ -481,11 +480,11 @@ export function CatalogWizard({ userName }: Props) {
           <div className="space-y-6">
             <div>
               <button onClick={() => { setGeneratedCatalog(null); setStep(4) }} className="mb-4 flex items-center gap-1.5 text-xs text-warm-500 hover:text-night-700">
-                <ArrowLeft className="h-3.5 w-3.5" /> Atrás
+                <ArrowLeft className="h-3.5 w-3.5" /> {t('wizard.back')}
               </button>
-              <h1 className="text-2xl font-extrabold text-night-800">Configura los detalles</h1>
+              <h1 className="text-2xl font-extrabold text-night-800">{t('wizard.aiReview.title')}</h1>
               <p className="mt-1 text-sm text-warm-500">
-                Selecciona cómo recibirás los pedidos.
+                {t('wizard.aiReview.subtitle')}
               </p>
             </div>
 
@@ -498,8 +497,8 @@ export function CatalogWizard({ userName }: Props) {
                 )}
               >
                 <MessageCircle className={cn('h-8 w-8', orderChannel === 'whatsapp' ? 'text-primary-500' : 'text-warm-400')} />
-                <span className="font-bold text-night-800">WhatsApp</span>
-                <span className="text-xs text-warm-500 text-center">Los clientes te escriben directamente</span>
+                <span className="font-bold text-night-800">{t('wizard.step4.whatsapp')}</span>
+                <span className="text-xs text-warm-500 text-center">{t('wizard.step4.whatsappDesc')}</span>
               </button>
               <button
                 onClick={() => setOrderChannel('email')}
@@ -509,14 +508,14 @@ export function CatalogWizard({ userName }: Props) {
                 )}
               >
                 <Mail className={cn('h-8 w-8', orderChannel === 'email' ? 'text-primary-500' : 'text-warm-400')} />
-                <span className="font-bold text-night-800">Email</span>
-                <span className="text-xs text-warm-500 text-center">Recibe pedidos por correo</span>
+                <span className="font-bold text-night-800">{t('wizard.step4.email')}</span>
+                <span className="text-xs text-warm-500 text-center">{t('wizard.step4.emailDesc')}</span>
               </button>
             </div>
 
             {orderChannel === 'whatsapp' && (
               <div className="space-y-2">
-                <Label className="font-semibold text-night-700">Número de WhatsApp</Label>
+                <Label className="font-semibold text-night-700">{t('wizard.step4.whatsappLabel')}</Label>
                 <div className="flex gap-2">
                   <CountryCodeSelect
                     value={contactCountryCode}
@@ -530,18 +529,18 @@ export function CatalogWizard({ userName }: Props) {
                     className="flex-1 font-mono"
                   />
                 </div>
-                <p className="text-xs text-warm-400">Los pedidos llegarán a este número. Puedes cambiarlo después.</p>
+                <p className="text-xs text-warm-400">{t('wizard.step4.whatsappHint')}</p>
               </div>
             )}
 
             {orderChannel === 'email' && (
               <div className="space-y-2">
-                <Label className="font-semibold text-night-700">Email para pedidos</Label>
+                <Label className="font-semibold text-night-700">{t('wizard.step4.emailLabel')}</Label>
                 <Input
                   type="email"
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
-                  placeholder="pedidos@tunegocio.com"
+                  placeholder={t('wizard.step4.emailPlaceholder')}
                 />
               </div>
             )}
@@ -554,9 +553,9 @@ export function CatalogWizard({ userName }: Props) {
               onClick={handleCreate}
             >
               {isPending ? (
-                <><Loader2 className="h-4 w-4 animate-spin" /> Creando tu tienda...</>
+                <><Loader2 className="h-4 w-4 animate-spin" /> {t('wizard.aiReview.creating')}</>
               ) : (
-                <>¡Crear mi tienda! <ArrowRight className="h-4 w-4" /></>
+                <>{t('wizard.aiReview.createStore')} <ArrowRight className="h-4 w-4" /></>
               )}
             </Button>
           </div>
@@ -569,9 +568,9 @@ export function CatalogWizard({ userName }: Props) {
               <CheckCircle2 className="h-9 w-9 text-lime-600" />
             </div>
             <div>
-              <h1 className="text-2xl font-extrabold text-night-800">¡Tienda creada!</h1>
+              <h1 className="text-2xl font-extrabold text-night-800">{t('wizard.done.title')}</h1>
               <p className="mt-2 text-sm text-warm-500">
-                <strong>{businessName}</strong> está lista. Redirigiendo al panel...
+                <strong>{businessName}</strong>{t('wizard.done.suffix')}
               </p>
             </div>
             <Loader2 className="h-5 w-5 animate-spin text-primary-500" />
@@ -585,9 +584,9 @@ export function CatalogWizard({ userName }: Props) {
               <CheckCircle2 className="h-9 w-9 text-lime-600" />
             </div>
             <div>
-              <h1 className="text-2xl font-extrabold text-night-800">¡Tienda creada!</h1>
+              <h1 className="text-2xl font-extrabold text-night-800">{t('wizard.done.title')}</h1>
               <p className="mt-2 text-sm text-warm-500">
-                <strong>{businessName}</strong> está lista con estructura generada por IA. Redirigiendo al panel...
+                <strong>{businessName}</strong>{t('wizard.done.suffixAI')}
               </p>
             </div>
             <Loader2 className="h-5 w-5 animate-spin text-primary-500" />

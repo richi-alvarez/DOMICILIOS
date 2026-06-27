@@ -109,6 +109,87 @@
     "withAI": "Con IA",
     "viewStore": "Ver tienda pública"
   },
+  "wizard": {
+    "metaTitle": "Configura tu tienda",
+    "stepCounter": "Paso {step} de {total}",
+    "back": "Atrás",
+    "continue": "Continuar",
+    "businessTypes": {
+      "restaurant": { "label": "Restaurante", "desc": "Menú digital, pedidos por WhatsApp" },
+      "store": { "label": "Tienda", "desc": "Catálogo de productos" },
+      "service": { "label": "Servicios", "desc": "Portafolio de servicios" },
+      "other": { "label": "Otro", "desc": "Cualquier tipo de negocio" }
+    },
+    "step1": {
+      "welcome": "¡Bienvenido, {name}!",
+      "subtitle": "Cuéntanos sobre tu negocio para personalizar tu experiencia.",
+      "nameLabel": "Nombre del negocio *",
+      "namePlaceholder": "Ej: Hamburguesas La Cumbre",
+      "typeLabel": "Tipo de negocio *"
+    },
+    "step2": {
+      "title": "Tu enlace único",
+      "subtitle": "Este será el link público de tu tienda. Una vez creado no se puede cambiar (salvo dominio propio).",
+      "linkLabel": "Enlace de tu tienda",
+      "slugPlaceholder": "mi-tienda",
+      "taken": "Ese enlace ya está en uso. Prueba otro.",
+      "invalid": "Mínimo 3 caracteres, solo letras, números y guiones.",
+      "available": "¡Disponible! Este enlace es tuyo.",
+      "accessiblePrefix": "Tu tienda será accesible en ",
+      "accessibleSuffix": ". Con el plan Pro puedes conectar tu propio dominio."
+    },
+    "step3": {
+      "title": "Más detalles de tu negocio",
+      "subtitle": "Esta información ayudará a la IA a generar un catálogo más personalizado.",
+      "currencyLabel": "Moneda *",
+      "descLabel": "¿De qué se trata tu negocio? *",
+      "descHint": "Cuéntanos más detalles para que la IA genere un catálogo personalizado.",
+      "descPlaceholder": "Ej. Soy una pastelería artesanal que vende tortas personalizadas, cupcakes y postres para eventos. Usamos colores rosados y dorados, con un estilo elegante y femenino."
+    },
+    "currencies": {
+      "COP": "COP - Peso Colombiano",
+      "USD": "USD - Dólar Estadounidense",
+      "EUR": "EUR - Euro",
+      "BRL": "BRL - Real Brasileño",
+      "MXN": "MXN - Peso Mexicano",
+      "ARS": "ARS - Peso Argentino",
+      "CLP": "CLP - Peso Chileno",
+      "PEN": "PEN - Sol Peruano"
+    },
+    "step4": {
+      "title": "¿Cómo recibirás pedidos?",
+      "subtitle": "Puedes cambiar esto después en la configuración.",
+      "aiBoxTitle": "Generar catálogo con IA",
+      "aiBoxDesc": "Analiza tu negocio y genera automáticamente la estructura óptima del catálogo, incluyendo secciones, productos destacados y recomendaciones de diseño.",
+      "aiGenerateNow": "Generar Ahora",
+      "orManual": "O configura manualmente",
+      "whatsapp": "WhatsApp",
+      "whatsappDesc": "Los clientes te escriben directamente",
+      "email": "Email",
+      "emailDesc": "Recibe pedidos por correo",
+      "whatsappLabel": "Número de WhatsApp",
+      "whatsappHint": "Los pedidos llegarán a este número. Puedes cambiarlo después.",
+      "emailLabel": "Email para pedidos",
+      "emailPlaceholder": "pedidos@tunegocio.com",
+      "create": "Crear catálogo",
+      "createAI": "Crear con IA"
+    },
+    "aiGen": {
+      "title": "Genera tu catálogo con IA",
+      "subtitle": "La IA analizará tu información y generará una estructura óptima para tu catálogo."
+    },
+    "aiReview": {
+      "title": "Configura los detalles",
+      "subtitle": "Selecciona cómo recibirás los pedidos.",
+      "creating": "Creando tu tienda...",
+      "createStore": "¡Crear mi tienda!"
+    },
+    "done": {
+      "title": "¡Tienda creada!",
+      "suffix": " está lista. Redirigiendo al panel...",
+      "suffixAI": " está lista con estructura generada por IA. Redirigiendo al panel..."
+    }
+  },
   "landing": {
     "meta": {
       "title": "WaCommerce — Catálogos Inteligentes para Negocios"

@@ -109,6 +109,87 @@
     "withAI": "With AI",
     "viewStore": "View public store"
   },
+  "wizard": {
+    "metaTitle": "Set up your store",
+    "stepCounter": "Step {step} of {total}",
+    "back": "Back",
+    "continue": "Continue",
+    "businessTypes": {
+      "restaurant": { "label": "Restaurant", "desc": "Digital menu, WhatsApp orders" },
+      "store": { "label": "Store", "desc": "Product catalog" },
+      "service": { "label": "Services", "desc": "Service portfolio" },
+      "other": { "label": "Other", "desc": "Any kind of business" }
+    },
+    "step1": {
+      "welcome": "Welcome, {name}!",
+      "subtitle": "Tell us about your business to personalize your experience.",
+      "nameLabel": "Business name *",
+      "namePlaceholder": "E.g. La Cumbre Burgers",
+      "typeLabel": "Business type *"
+    },
+    "step2": {
+      "title": "Your unique link",
+      "subtitle": "This will be your store's public link. Once created it can't be changed (except with a custom domain).",
+      "linkLabel": "Your store link",
+      "slugPlaceholder": "my-store",
+      "taken": "That link is already in use. Try another.",
+      "invalid": "At least 3 characters, only letters, numbers and hyphens.",
+      "available": "Available! This link is yours.",
+      "accessiblePrefix": "Your store will be accessible at ",
+      "accessibleSuffix": ". With the Pro plan you can connect your own domain."
+    },
+    "step3": {
+      "title": "More about your business",
+      "subtitle": "This information will help AI generate a more personalized catalog.",
+      "currencyLabel": "Currency *",
+      "descLabel": "What is your business about? *",
+      "descHint": "Tell us more details so AI can generate a personalized catalog.",
+      "descPlaceholder": "E.g. I'm an artisan bakery selling custom cakes, cupcakes and desserts for events. We use pink and gold colors, with an elegant and feminine style."
+    },
+    "currencies": {
+      "COP": "COP - Colombian Peso",
+      "USD": "USD - US Dollar",
+      "EUR": "EUR - Euro",
+      "BRL": "BRL - Brazilian Real",
+      "MXN": "MXN - Mexican Peso",
+      "ARS": "ARS - Argentine Peso",
+      "CLP": "CLP - Chilean Peso",
+      "PEN": "PEN - Peruvian Sol"
+    },
+    "step4": {
+      "title": "How will you receive orders?",
+      "subtitle": "You can change this later in settings.",
+      "aiBoxTitle": "Generate catalog with AI",
+      "aiBoxDesc": "It analyzes your business and automatically generates the optimal catalog structure, including sections, featured products and design recommendations.",
+      "aiGenerateNow": "Generate now",
+      "orManual": "Or set it up manually",
+      "whatsapp": "WhatsApp",
+      "whatsappDesc": "Customers message you directly",
+      "email": "Email",
+      "emailDesc": "Receive orders by email",
+      "whatsappLabel": "WhatsApp number",
+      "whatsappHint": "Orders will arrive at this number. You can change it later.",
+      "emailLabel": "Email for orders",
+      "emailPlaceholder": "orders@yourbusiness.com",
+      "create": "Create catalog",
+      "createAI": "Create with AI"
+    },
+    "aiGen": {
+      "title": "Generate your catalog with AI",
+      "subtitle": "AI will analyze your information and generate an optimal structure for your catalog."
+    },
+    "aiReview": {
+      "title": "Set up the details",
+      "subtitle": "Choose how you'll receive orders.",
+      "creating": "Creating your store...",
+      "createStore": "Create my store!"
+    },
+    "done": {
+      "title": "Store created!",
+      "suffix": " is ready. Redirecting to the dashboard...",
+      "suffixAI": " is ready with an AI-generated structure. Redirecting to the dashboard..."
+    }
+  },
   "landing": {
     "meta": {
       "title": "WaCommerce — Smart Catalogs for Businesses"
