@@ -10,10 +10,10 @@ import { cn } from '@/lib/utils'
 import {
   PLANS,
   CURRENCIES,
-  FEATURE_GROUPS,
   formatPrice,
   type Currency,
   type FeatureValue,
+  type FeatureGroup,
 } from '@/lib/pricing'
 import { useI18n } from '@/lib/i18n/context'
 
@@ -27,10 +27,12 @@ function FeatureCellValue({ value }: { value: FeatureValue }) {
 }
 
 export function PricingClient() {
-  const { t } = useI18n()
+  const { t, tRaw } = useI18n()
   const [interval, setInterval] = useState<'monthly' | 'annual'>('monthly')
   const [currency, setCurrency] = useState<Currency>('COP')
   const [showComparison, setShowComparison] = useState(false)
+
+  const featureGroups = (tRaw('pricing.featureGroups') as FeatureGroup[]) ?? []
 
   return (
     <div>
@@ -74,7 +76,7 @@ export function PricingClient() {
           >
             {CURRENCIES.map((c) => (
               <option key={c.code} value={c.code}>
-                {c.label}
+                {t(`pricing.currencies.${c.code}`)}
               </option>
             ))}
           </select>
@@ -100,10 +102,10 @@ export function PricingClient() {
                   : 'border-warm-200 bg-white shadow-card hover:shadow-elevated',
               )}
             >
-              {plan.badge && (
+              {plan.highlight && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <Badge variant="default" className="shadow-sm">
-                    {plan.badge}
+                    {t(`pricing.plans.${plan.code}.badge`)}
                   </Badge>
                 </div>
               )}
@@ -115,7 +117,7 @@ export function PricingClient() {
                     plan.highlight ? 'text-white' : 'text-night-800',
                   )}
                 >
-                  {plan.name}
+                  {t(`pricing.plans.${plan.code}.name`)}
                 </h3>
                 <p
                   className={cn(
@@ -123,7 +125,7 @@ export function PricingClient() {
                     plan.highlight ? 'text-night-100/60' : 'text-warm-500',
                   )}
                 >
-                  {plan.tagline}
+                  {t(`pricing.plans.${plan.code}.tagline`)}
                 </p>
 
                 <div className="mt-4 flex items-end gap-1">
@@ -159,7 +161,7 @@ export function PricingClient() {
               </div>
 
               <ul className="mb-8 flex-1 space-y-2.5">
-                {plan.features.map((f) => (
+                {((tRaw(`pricing.plans.${plan.code}.features`) as string[]) ?? []).map((f) => (
                   <li
                     key={f}
                     className={cn(
@@ -250,13 +252,13 @@ export function PricingClient() {
                         p.highlight ? 'text-primary-500' : 'text-night-800',
                       )}
                     >
-                      {p.name}
+                      {t(`pricing.plans.${p.code}.name`)}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {FEATURE_GROUPS.map((group) => (
+                {featureGroups.map((group) => (
                   <React.Fragment key={group.group}>
                     <tr className="bg-warm-50">
                       <td

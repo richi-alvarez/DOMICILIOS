@@ -97,8 +97,11 @@ Se quitó `next-intl` (estaba 100% huérfano) y en su lugar se montó un **i18n 
 **selector ES|EN** (`components/i18n/language-switcher.tsx`) en los **tres headers**
 (marketing/app/storefront) y se tradujeron sus textos. Verificado E2E (toggle, cookie,
 persistencia en recarga vía SSR).
-**Pendiente (incremental):** traducir el resto de la app (hero, dashboards, tienda, emails)
-y, si hiciera falta SEO multi-idioma, evaluar routing por locale.
+**Público 100% traducido (ES/EN):** landing, los tres headers, login/signup, banner de
+cookies, /plans y /agencies — incluyendo los datos de `lib/pricing.ts` (planes, features,
+tabla comparativa y monedas), que se movieron a `messages` y se leen con `tRaw`.
+**Pendiente (incremental):** dashboard del comercio (/app), flujo de tienda (storefront) y
+emails/WhatsApp. Si hiciera falta SEO multi-idioma, evaluar routing por locale.
 
 ## 🟡 P7 — Producción / observabilidad (Fase 17)
 Sin Sentry; monitoreo casero. Falta doc de operación.

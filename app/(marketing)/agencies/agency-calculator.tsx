@@ -100,7 +100,7 @@ export function AgencyCalculator() {
             >
               {CURRENCIES.map((c) => (
                 <option key={c.code} value={c.code}>
-                  {c.label}
+                  {t(`pricing.currencies.${c.code}`)}
                 </option>
               ))}
             </select>

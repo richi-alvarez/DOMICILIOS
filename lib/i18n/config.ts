@@ -19,11 +19,16 @@ export function isLocale(value: unknown): value is Locale {
   return typeof value === 'string' && (LOCALES as readonly string[]).includes(value)
 }
 
-/** Resuelve una clave "a.b.c" dentro del objeto de mensajes; devuelve la clave si no existe. */
-export function resolveMessage(messages: Record<string, unknown>, key: string): string {
-  const value = key.split('.').reduce<unknown>((acc, part) => {
+/** Devuelve el valor crudo (string/array/objeto) en la clave "a.b.c", o undefined. */
+export function resolveRawMessage(messages: Record<string, unknown>, key: string): unknown {
+  return key.split('.').reduce<unknown>((acc, part) => {
     if (acc && typeof acc === 'object') return (acc as Record<string, unknown>)[part]
     return undefined
   }, messages)
+}
+
+/** Resuelve una clave "a.b.c" a string; devuelve la clave si no existe. */
+export function resolveMessage(messages: Record<string, unknown>, key: string): string {
+  const value = resolveRawMessage(messages, key)
   return typeof value === 'string' ? value : key
 }

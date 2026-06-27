@@ -16,26 +16,15 @@ export type PlanCode = 'free' | 'basic' | 'pro' | 'business'
 
 export interface Plan {
   code: PlanCode
-  name: string
-  tagline: string
   highlight?: boolean
-  badge?: string
   prices: Record<Currency, { monthly: number; annual: number }>
-  limits: {
-    products: number | 'unlimited'
-    catalogs: number | 'unlimited'
-    orders: string
-    collaborators: number | 'unlimited'
-    storage: string
-  }
-  features: string[]
 }
 
+// Solo datos numéricos/estructura. El texto (nombre, tagline, badge, features)
+// se localiza en messages/{es,en}.json bajo `pricing.plans.<code>`.
 export const PLANS: Plan[] = [
   {
     code: 'free',
-    name: 'Gratis',
-    tagline: 'Para empezar sin riesgo',
     prices: {
       USD: { monthly: 0, annual: 0 },
       COP: { monthly: 0, annual: 0 },
@@ -47,27 +36,9 @@ export const PLANS: Plan[] = [
       EUR: { monthly: 0, annual: 0 },
       PEN: { monthly: 0, annual: 0 },
     },
-    limits: {
-      products: 30,
-      catalogs: 1,
-      orders: '30/mes',
-      collaborators: 1,
-      storage: '100 MB',
-    },
-    features: [
-      '30 productos',
-      '1 catálogo',
-      '30 pedidos/mes',
-      'Dominio domicilios.app/tu-tienda',
-      'Pedidos por WhatsApp',
-      'Editor de bloques básico',
-      'Analítica básica',
-    ],
   },
   {
     code: 'basic',
-    name: 'Basic',
-    tagline: 'Para negocios que arrancan',
     prices: {
       USD: { monthly: 9, annual: 6 },
       COP: { monthly: 39900, annual: 26900 },
@@ -79,29 +50,10 @@ export const PLANS: Plan[] = [
       EUR: { monthly: 9, annual: 6 },
       PEN: { monthly: 35, annual: 23 },
     },
-    limits: {
-      products: 100,
-      catalogs: 1,
-      orders: '300/mes',
-      collaborators: 2,
-      storage: '1 GB',
-    },
-    features: [
-      '100 productos',
-      '1 catálogo',
-      '300 pedidos/mes',
-      'Pagos integrados (1 método)',
-      'QR personalizable',
-      'Soporte por email',
-      'Sin marca WaCommerce',
-    ],
   },
   {
     code: 'pro',
-    name: 'Pro',
-    tagline: 'El más popular para crecer',
     highlight: true,
-    badge: 'Más popular',
     prices: {
       USD: { monthly: 19, annual: 13 },
       COP: { monthly: 79900, annual: 53900 },
@@ -113,29 +65,9 @@ export const PLANS: Plan[] = [
       EUR: { monthly: 18, annual: 12 },
       PEN: { monthly: 72, annual: 48 },
     },
-    limits: {
-      products: 500,
-      catalogs: 3,
-      orders: 'unlimited',
-      collaborators: 5,
-      storage: '5 GB',
-    },
-    features: [
-      '500 productos',
-      '3 catálogos',
-      'Pedidos ilimitados',
-      'Todos los métodos de pago',
-      'Dominio propio',
-      'Bloques premium',
-      'IA: descripciones y catálogo',
-      'Analítica avanzada',
-      'Soporte prioritario',
-    ],
   },
   {
     code: 'business',
-    name: 'Business',
-    tagline: 'Para marcas y equipos grandes',
     prices: {
       USD: { monthly: 39, annual: 27 },
       COP: { monthly: 159900, annual: 107900 },
@@ -147,24 +79,6 @@ export const PLANS: Plan[] = [
       EUR: { monthly: 36, annual: 24 },
       PEN: { monthly: 149, annual: 99 },
     },
-    limits: {
-      products: 'unlimited',
-      catalogs: 10,
-      orders: 'unlimited',
-      collaborators: 'unlimited',
-      storage: '20 GB',
-    },
-    features: [
-      'Productos ilimitados',
-      '10 catálogos',
-      'Pedidos ilimitados',
-      'Colaboradores ilimitados',
-      'White-label completo',
-      'Reconocimiento de imágenes con IA',
-      'API de pedidos',
-      'Gestor de inventario',
-      'Soporte 24/7',
-    ],
   },
 ]
 
@@ -270,76 +184,4 @@ export interface FeatureGroup {
   rows: FeatureRow[]
 }
 
-export const FEATURE_GROUPS: FeatureGroup[] = [
-  {
-    group: 'Bloques y Diseño',
-    rows: [
-      { label: 'Bloques disponibles', free: '5 básicos', basic: '10 bloques', pro: '20+ bloques', business: 'Todos' },
-      { label: 'Editor drag-and-drop', free: true, basic: true, pro: true, business: true },
-      { label: 'Previsualización en tiempo real', free: true, basic: true, pro: true, business: true },
-      { label: 'Bloques premium (countdown, mapa, video)', free: false, basic: false, pro: true, business: true },
-      { label: 'HTML embed personalizado', free: false, basic: false, pro: true, business: true },
-    ],
-  },
-  {
-    group: 'Productos',
-    rows: [
-      { label: 'Número de productos', free: '30', basic: '100', pro: '500', business: 'Ilimitados' },
-      { label: 'Imágenes por producto', free: '1', basic: '3', pro: '10', business: 'Ilimitadas' },
-      { label: 'Variantes de productos', free: false, basic: true, pro: true, business: true },
-      { label: 'Control de stock', free: false, basic: true, pro: true, business: true },
-      { label: 'SKU y código de barras', free: false, basic: false, pro: true, business: true },
-      { label: 'Reconocimiento de imágenes IA', free: false, basic: false, pro: false, business: true },
-    ],
-  },
-  {
-    group: 'Catálogos',
-    rows: [
-      { label: 'Número de catálogos', free: '1', basic: '1', pro: '3', business: '10' },
-      { label: 'Catálogo QR descargable', free: true, basic: true, pro: true, business: true },
-      { label: 'Dominio propio (CNAME)', free: false, basic: false, pro: true, business: true },
-      { label: 'Múltiples idiomas', free: false, basic: false, pro: true, business: true },
-      { label: 'Multi-moneda en checkout', free: false, basic: true, pro: true, business: true },
-    ],
-  },
-  {
-    group: 'Pedidos y Pagos',
-    rows: [
-      { label: 'Pedidos por mes', free: '30', basic: '300', pro: 'Ilimitados', business: 'Ilimitados' },
-      { label: 'Pedidos por WhatsApp', free: true, basic: true, pro: true, business: true },
-      { label: 'Pedidos por email', free: true, basic: true, pro: true, business: true },
-      { label: 'Métodos de pago integrados', free: '0', basic: '1', pro: 'Todos', business: 'Todos' },
-      { label: 'Stripe / MercadoPago / PayPal', free: false, basic: 'Uno', pro: true, business: true },
-      { label: 'Comisiones sobre ventas', free: '0%', basic: '0%', pro: '0%', business: '0%' },
-      { label: 'Descuentos y cupones', free: false, basic: false, pro: true, business: true },
-      { label: 'Ticket de impresión (80mm)', free: false, basic: false, pro: true, business: true },
-    ],
-  },
-  {
-    group: 'Marca y Dominio',
-    rows: [
-      { label: 'Quitar marca WaCommerce', free: false, basic: true, pro: true, business: true },
-      { label: 'Dominio personalizado', free: false, basic: false, pro: true, business: true },
-      { label: 'SSL automático', free: true, basic: true, pro: true, business: true },
-      { label: 'OG image personalizada', free: false, basic: false, pro: true, business: true },
-      { label: 'White-label completo (emails y storefront)', free: false, basic: false, pro: false, business: true },
-    ],
-  },
-  {
-    group: 'Idioma y Colaboración',
-    rows: [
-      { label: 'Idioma del catálogo', free: '1', basic: '1', pro: 'es/en/pt', business: 'es/en/pt/fr' },
-      { label: 'Colaboradores (miembros del equipo)', free: '1', basic: '2', pro: '5', business: 'Ilimitados' },
-      { label: 'Roles y permisos', free: false, basic: false, pro: true, business: true },
-    ],
-  },
-  {
-    group: 'Funciones para Agencias',
-    rows: [
-      { label: 'Panel multi-cliente', free: false, basic: false, pro: false, business: 'Agency' },
-      { label: 'Plantillas reutilizables', free: false, basic: false, pro: false, business: 'Agency' },
-      { label: 'Actualización masiva CSV', free: false, basic: false, pro: false, business: 'Agency' },
-      { label: 'Facturación consolidada', free: false, basic: false, pro: false, business: 'Agency' },
-    ],
-  },
-]
+// FEATURE_GROUPS se localiza en messages/{es,en}.json bajo pricing.featureGroups.

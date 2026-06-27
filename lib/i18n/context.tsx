@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useMemo, useState } from 'react
 import { useRouter } from 'next/navigation'
 import esMessages from '@/messages/es.json'
 import enMessages from '@/messages/en.json'
-import { DEFAULT_LOCALE, LOCALE_COOKIE, resolveMessage, type Locale } from './config'
+import { DEFAULT_LOCALE, LOCALE_COOKIE, resolveMessage, resolveRawMessage, type Locale } from './config'
 
 const MESSAGES: Record<Locale, Record<string, unknown>> = {
   es: esMessages,
@@ -15,6 +15,8 @@ interface I18nContextValue {
   locale: Locale
   /** Traduce por clave con notación de puntos, p. ej. t('siteHeader.nav.home'). */
   t: (key: string) => string
+  /** Devuelve el valor crudo (array/objeto/string) para listas/tablas localizadas. */
+  tRaw: (key: string) => unknown
   setLocale: (locale: Locale) => void
 }
 
@@ -43,8 +45,9 @@ export function I18nProvider({
   )
 
   const t = useCallback((key: string) => resolveMessage(MESSAGES[locale], key), [locale])
+  const tRaw = useCallback((key: string) => resolveRawMessage(MESSAGES[locale], key), [locale])
 
-  const value = useMemo(() => ({ locale, t, setLocale }), [locale, t, setLocale])
+  const value = useMemo(() => ({ locale, t, tRaw, setLocale }), [locale, t, tRaw, setLocale])
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }

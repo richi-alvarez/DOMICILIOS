@@ -428,5 +428,114 @@
     },
     "ctaStart": "Start free trial",
     "ctaDemo": "Book a demo"
+  },
+  "pricing": {
+    "currencies": {
+      "USD": "USD — Dollar",
+      "COP": "COP — Colombian Peso",
+      "MXN": "MXN — Mexican Peso",
+      "BRL": "BRL — Brazilian Real",
+      "CAD": "CAD — Canadian Dollar",
+      "CLP": "CLP — Chilean Peso",
+      "CRC": "CRC — Costa Rican Colón",
+      "EUR": "EUR — Euro",
+      "PEN": "PEN — Peruvian Sol"
+    },
+    "plans": {
+      "free": {
+        "name": "Free",
+        "tagline": "To start risk-free",
+        "features": ["30 products", "1 catalog", "30 orders/mo", "domicilios.app/your-store domain", "WhatsApp orders", "Basic block editor", "Basic analytics"]
+      },
+      "basic": {
+        "name": "Basic",
+        "tagline": "For businesses getting started",
+        "features": ["100 products", "1 catalog", "300 orders/mo", "Integrated payments (1 method)", "Customizable QR", "Email support", "No WaCommerce branding"]
+      },
+      "pro": {
+        "name": "Pro",
+        "tagline": "Most popular for growing",
+        "badge": "Most popular",
+        "features": ["500 products", "3 catalogs", "Unlimited orders", "All payment methods", "Custom domain", "Premium blocks", "AI: descriptions & catalog", "Advanced analytics", "Priority support"]
+      },
+      "business": {
+        "name": "Business",
+        "tagline": "For brands and large teams",
+        "features": ["Unlimited products", "10 catalogs", "Unlimited orders", "Unlimited collaborators", "Full white-label", "AI image recognition", "Orders API", "Inventory manager", "24/7 support"]
+      }
+    },
+    "featureGroups": [
+      {
+        "group": "Blocks & Design",
+        "rows": [
+          { "label": "Available blocks", "free": "5 basic", "basic": "10 blocks", "pro": "20+ blocks", "business": "All" },
+          { "label": "Drag-and-drop editor", "free": true, "basic": true, "pro": true, "business": true },
+          { "label": "Real-time preview", "free": true, "basic": true, "pro": true, "business": true },
+          { "label": "Premium blocks (countdown, map, video)", "free": false, "basic": false, "pro": true, "business": true },
+          { "label": "Custom HTML embed", "free": false, "basic": false, "pro": true, "business": true }
+        ]
+      },
+      {
+        "group": "Products",
+        "rows": [
+          { "label": "Number of products", "free": "30", "basic": "100", "pro": "500", "business": "Unlimited" },
+          { "label": "Images per product", "free": "1", "basic": "3", "pro": "10", "business": "Unlimited" },
+          { "label": "Product variants", "free": false, "basic": true, "pro": true, "business": true },
+          { "label": "Stock control", "free": false, "basic": true, "pro": true, "business": true },
+          { "label": "SKU & barcode", "free": false, "basic": false, "pro": true, "business": true },
+          { "label": "AI image recognition", "free": false, "basic": false, "pro": false, "business": true }
+        ]
+      },
+      {
+        "group": "Catalogs",
+        "rows": [
+          { "label": "Number of catalogs", "free": "1", "basic": "1", "pro": "3", "business": "10" },
+          { "label": "Downloadable QR catalog", "free": true, "basic": true, "pro": true, "business": true },
+          { "label": "Custom domain (CNAME)", "free": false, "basic": false, "pro": true, "business": true },
+          { "label": "Multiple languages", "free": false, "basic": false, "pro": true, "business": true },
+          { "label": "Multi-currency checkout", "free": false, "basic": true, "pro": true, "business": true }
+        ]
+      },
+      {
+        "group": "Orders & Payments",
+        "rows": [
+          { "label": "Orders per month", "free": "30", "basic": "300", "pro": "Unlimited", "business": "Unlimited" },
+          { "label": "WhatsApp orders", "free": true, "basic": true, "pro": true, "business": true },
+          { "label": "Email orders", "free": true, "basic": true, "pro": true, "business": true },
+          { "label": "Integrated payment methods", "free": "0", "basic": "1", "pro": "All", "business": "All" },
+          { "label": "Stripe / MercadoPago / PayPal", "free": false, "basic": "One", "pro": true, "business": true },
+          { "label": "Sales commissions", "free": "0%", "basic": "0%", "pro": "0%", "business": "0%" },
+          { "label": "Discounts & coupons", "free": false, "basic": false, "pro": true, "business": true },
+          { "label": "Print receipt (80mm)", "free": false, "basic": false, "pro": true, "business": true }
+        ]
+      },
+      {
+        "group": "Brand & Domain",
+        "rows": [
+          { "label": "Remove WaCommerce branding", "free": false, "basic": true, "pro": true, "business": true },
+          { "label": "Custom domain", "free": false, "basic": false, "pro": true, "business": true },
+          { "label": "Automatic SSL", "free": true, "basic": true, "pro": true, "business": true },
+          { "label": "Custom OG image", "free": false, "basic": false, "pro": true, "business": true },
+          { "label": "Full white-label (emails & storefront)", "free": false, "basic": false, "pro": false, "business": true }
+        ]
+      },
+      {
+        "group": "Language & Collaboration",
+        "rows": [
+          { "label": "Catalog language", "free": "1", "basic": "1", "pro": "es/en/pt", "business": "es/en/pt/fr" },
+          { "label": "Collaborators (team members)", "free": "1", "basic": "2", "pro": "5", "business": "Unlimited" },
+          { "label": "Roles & permissions", "free": false, "basic": false, "pro": true, "business": true }
+        ]
+      },
+      {
+        "group": "Agency Features",
+        "rows": [
+          { "label": "Multi-client dashboard", "free": false, "basic": false, "pro": false, "business": "Agency" },
+          { "label": "Reusable templates", "free": false, "basic": false, "pro": false, "business": "Agency" },
+          { "label": "Bulk CSV update", "free": false, "basic": false, "pro": false, "business": "Agency" },
+          { "label": "Consolidated billing", "free": false, "basic": false, "pro": false, "business": "Agency" }
+        ]
+      }
+    ]
   }
 }
