@@ -237,5 +237,196 @@
       "successTitle": "¡Cuenta creada!",
       "successDesc": "Revisa tu correo para verificar tu cuenta. Redirigiendo…"
     }
+  },
+  "plans": {
+    "meta": {
+      "title": "Planes y Precios",
+      "description": "Compara planes Gratis, Basic, Pro y Business. Sin comisiones sobre ventas. Elige el plan ideal para tu negocio."
+    },
+    "hero": {
+      "title": "Planes sin comisiones sobre ventas",
+      "subtitle": "Empieza gratis. Crece cuando estés listo. Sin sorpresas en la factura."
+    },
+    "monthly": "Mensual",
+    "annual": "Anual",
+    "freeMonths": "3 meses gratis",
+    "perMonth": "/mes",
+    "free": "Gratis",
+    "save": {
+      "prefix": "Ahorras ",
+      "suffix": "% · facturado anualmente"
+    },
+    "cta": {
+      "free": "Empezar gratis",
+      "paid": "Probar 14 días gratis"
+    },
+    "agency": {
+      "kicker": "Para agencias y multi-marca",
+      "title": "¿Gestionas catálogos de varios clientes?",
+      "desc": "Planes especiales desde 5 hasta 300 catálogos. Un solo panel, facturación consolidada.",
+      "viewPlans": "Ver planes de agencia",
+      "demo": "Agendar demo"
+    },
+    "comparison": {
+      "show": "Ver comparativa completa de planes",
+      "hide": "Ocultar comparativa de planes",
+      "feature": "Funcionalidad"
+    },
+    "faqTitle": "Preguntas frecuentes",
+    "faq": {
+      "changePlan": {
+        "q": "¿Puedo cambiar de plan en cualquier momento?",
+        "a": "Sí. Puedes hacer upgrade o downgrade cuando quieras. El cambio aplica al inicio del siguiente período de facturación."
+      },
+      "commissions": {
+        "q": "¿Hay comisiones sobre mis ventas?",
+        "a": "No cobramos ninguna comisión sobre tus ventas. Pagas solo tu suscripción y las tasas de tu pasarela de pago (Stripe, MercadoPago, etc.)."
+      },
+      "freeLimit": {
+        "q": "¿Qué pasa si supero el límite de pedidos en el plan Gratis?",
+        "a": "Tu catálogo seguirá activo, pero los nuevos pedidos quedarán en cola. Te notificamos para que puedas hacer upgrade sin perder pedidos."
+      },
+      "tryPro": {
+        "q": "¿Puedo probar el plan Pro antes de pagar?",
+        "a": "Todos los planes de pago incluyen 14 días de prueba gratuita sin tarjeta de crédito."
+      },
+      "annual": {
+        "q": "¿Cómo funciona el pago anual?",
+        "a": "El pago anual se cobra en un solo cobro al inicio del año. Ahorras hasta un 33% respecto al precio mensual."
+      },
+      "cancel": {
+        "q": "¿Puedo cancelar en cualquier momento?",
+        "a": "Sí. Si cancelas, tu plan sigue activo hasta el final del período pagado. No hay penalizaciones."
+      }
+    }
+  },
+  "agencies": {
+    "meta": {
+      "title": "Para Agencias — Gestiona múltiples catálogos",
+      "description": "Crea y gestiona múltiples catálogos digitales desde un solo panel. Sin comisiones. Ideal para agencias de marketing, distribuidores y cadenas."
+    },
+    "hero": {
+      "badge": "Sin comisiones sobre ventas de tus clientes",
+      "titleA": "Crea y gestiona múltiples catálogos",
+      "titleB": "desde un solo panel",
+      "subtitle": "La herramienta que necesitan las agencias de marketing, distribuidores y cadenas para digitalizar a sus clientes y generar ingresos recurrentes.",
+      "ctaStart": "Empezar gratis",
+      "ctaDemo": "Agendar una demo"
+    },
+    "banner": "SIN COMISIONES SOBRE VENTAS — Pagas solo tu suscripción, sin importar cuánto vendan tus clientes",
+    "growth": {
+      "title": "Planes de crecimiento",
+      "subtitle": "Desde 5 hasta 300 catálogos. Escala tu agencia sin saltos bruscos."
+    },
+    "cases": {
+      "title": "Casos de uso reales",
+      "subtitle": "Para cualquier modelo de negocio multi-catálogo.",
+      "restaurants": {
+        "title": "Agencia con restaurantes",
+        "desc": "Gestiona el catálogo de 20 restaurantes desde un panel. Actualiza precios de temporada en segundos."
+      },
+      "brand": {
+        "title": "Marca con varias líneas",
+        "desc": "Mujer, hombre, niños: cada línea con su catálogo propio y el mismo panel de administración."
+      },
+      "b2b": {
+        "title": "Distribuidor B2B",
+        "desc": "Cada cliente tiene su catálogo personalizado con precios diferenciados por segmento."
+      },
+      "multibranch": {
+        "title": "Restaurante multi-sucursal",
+        "desc": "Menús distintos por sucursal, pedidos centralizados y reportes unificados."
+      }
+    },
+    "benefits": {
+      "title": "Beneficios para tu agencia",
+      "multiCatalog": {
+        "title": "Gestión multi-catálogo",
+        "desc": "Un solo panel para todos tus clientes. Cambia de cuenta con un clic."
+      },
+      "recurring": {
+        "title": "Ingresos recurrentes",
+        "desc": "Cobra una mensualidad a cada cliente por gestionar su catálogo."
+      },
+      "noCommissions": {
+        "title": "Sin comisiones",
+        "desc": "Ni nosotros ni tú cobramos comisiones sobre las ventas de tus clientes."
+      },
+      "roles": {
+        "title": "Roles y colaboradores",
+        "desc": "Asigna accesos distintos a tu equipo y a los dueños de cada negocio."
+      },
+      "bulk": {
+        "title": "Actualización masiva",
+        "desc": "Sube un CSV y actualiza productos en todos los catálogos al mismo tiempo."
+      },
+      "whitelabel": {
+        "title": "White-label",
+        "desc": "Tus clientes ven tu marca, no la nuestra. Emails y storefront personalizados."
+      }
+    },
+    "video": {
+      "title": "¿Cómo funciona?",
+      "subtitle": "Mira cómo una agencia gestiona 20 catálogos en minutos.",
+      "comingSoon": "Demo disponible próximamente"
+    },
+    "faqTitle": "Preguntas frecuentes de agencias",
+    "faq": {
+      "try": {
+        "q": "¿Puedo probar el plan de agencia antes de pagar?",
+        "a": "Sí. Tienes 14 días de prueba con hasta 5 catálogos activos sin tarjeta de crédito."
+      },
+      "billing": {
+        "q": "¿Cómo cobro a mis clientes?",
+        "a": "Tú defines tu precio. Nosotros te cobramos el plan de agencia y tú cobras lo que quieras a cada cliente. Sin interferencia."
+      },
+      "whitelabel": {
+        "q": "¿Puedo ocultar la marca WaCommerce?",
+        "a": "Sí. En los planes Professional y Agency Growth puedes usar tu propio logo, dominio y colores en el storefront y emails transaccionales."
+      },
+      "extra": {
+        "q": "¿Qué pasa si necesito más catálogos del plan?",
+        "a": "Puedes agregar catálogos extra con un precio unitario reducido. También puedes hacer upgrade de plan en cualquier momento."
+      },
+      "owner": {
+        "q": "¿Puedo darle acceso al dueño del negocio?",
+        "a": "Sí. Existe el rol \"client_owner\" que permite al dueño ver pedidos y analítica, sin poder cambiar la configuración del catálogo."
+      }
+    },
+    "ctaDemo": {
+      "title": "¿Listo para escalar tu agencia?",
+      "subtitle": "Agenda una demo de 30 minutos y te mostramos cómo funciona para tu caso específico.",
+      "start": "Empezar prueba gratis",
+      "contact": "Contactar ventas",
+      "note": "Sin tarjeta de crédito · Respuesta en menos de 24 horas"
+    }
+  },
+  "agencyCalc": {
+    "title": "Calcula tu inversión",
+    "subtitle": "Ajusta según el número de catálogos que gestionas.",
+    "catalogs": "Catálogos",
+    "billing": "Facturación",
+    "monthly": "Mensual",
+    "annualDiscount": "Anual (−33%)",
+    "currency": "Moneda",
+    "planPrefix": "Plan ",
+    "perMonth": "mes",
+    "perYear": "año",
+    "perCatalog": "por catálogo / mes",
+    "savePrefix": "Ahorras ",
+    "saveSuffix": " al año",
+    "perMonthShort": "/mes",
+    "tierFromPrefix": "Desde ",
+    "tierFromSuffix": " catálogos",
+    "features": {
+      "catalogsIncludedSuffix": "catálogos incluidos",
+      "panel": "Panel multi-cliente unificado",
+      "billing": "Facturación consolidada",
+      "whitelabel": "White-label completo",
+      "noCommissions": "Sin comisiones sobre ventas",
+      "support": "Soporte prioritario"
+    },
+    "ctaStart": "Empezar prueba gratis",
+    "ctaDemo": "Agendar demo"
   }
 }

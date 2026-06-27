@@ -13,10 +13,12 @@ import {
   calcAgencyPrice,
   type Currency,
 } from '@/lib/pricing'
+import { useI18n } from '@/lib/i18n/context'
 
 const CATALOG_MARKS = [5, 10, 20, 50, 100, 200, 300]
 
 export function AgencyCalculator() {
+  const { t } = useI18n()
   const [catalogCount, setCatalogCount] = useState(5)
   const [interval, setInterval] = useState<'monthly' | 'annual'>('monthly')
   const [currency, setCurrency] = useState<Currency>('COP')
@@ -39,13 +41,13 @@ export function AgencyCalculator() {
       <div className="grid gap-10 lg:grid-cols-2">
         {/* Left: controls */}
         <div>
-          <h3 className="text-2xl font-extrabold text-night-800">Calcula tu inversión</h3>
-          <p className="mt-2 text-warm-500">Ajusta según el número de catálogos que gestionas.</p>
+          <h3 className="text-2xl font-extrabold text-night-800">{t('agencyCalc.title')}</h3>
+          <p className="mt-2 text-warm-500">{t('agencyCalc.subtitle')}</p>
 
           {/* Catalog slider */}
           <div className="mt-8">
             <div className="mb-2 flex items-baseline justify-between">
-              <label className="text-sm font-semibold text-night-700">Catálogos</label>
+              <label className="text-sm font-semibold text-night-700">{t('agencyCalc.catalogs')}</label>
               <span className="font-display text-3xl font-extrabold text-primary-500">
                 {catalogCount}
               </span>
@@ -69,7 +71,7 @@ export function AgencyCalculator() {
 
           {/* Interval toggle */}
           <div className="mt-8">
-            <label className="mb-2 block text-sm font-semibold text-night-700">Facturación</label>
+            <label className="mb-2 block text-sm font-semibold text-night-700">{t('agencyCalc.billing')}</label>
             <div className="flex rounded-xl bg-warm-100 p-1">
               {(['monthly', 'annual'] as const).map((int) => (
                 <button
@@ -82,7 +84,7 @@ export function AgencyCalculator() {
                       : 'text-warm-500 hover:text-night-700',
                   )}
                 >
-                  {int === 'monthly' ? 'Mensual' : 'Anual (−33%)'}
+                  {int === 'monthly' ? t('agencyCalc.monthly') : t('agencyCalc.annualDiscount')}
                 </button>
               ))}
             </div>
@@ -90,7 +92,7 @@ export function AgencyCalculator() {
 
           {/* Currency */}
           <div className="mt-6">
-            <label className="mb-2 block text-sm font-semibold text-night-700">Moneda</label>
+            <label className="mb-2 block text-sm font-semibold text-night-700">{t('agencyCalc.currency')}</label>
             <select
               value={currency}
               onChange={(e) => setCurrency(e.target.value as Currency)}
@@ -108,18 +110,18 @@ export function AgencyCalculator() {
         {/* Right: result */}
         <div className="flex flex-col justify-center rounded-2xl bg-night-800 p-8 text-white">
           <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-night-100/50">
-            Plan {activeTier.name}
+            {t('agencyCalc.planPrefix')}{activeTier.name}
           </div>
           <div className="font-display text-5xl font-extrabold">
             {formatPrice(price, currency)}
           </div>
           <div className="mt-1 text-night-100/60">
-            / {interval === 'monthly' ? 'mes' : 'año'}
+            / {interval === 'monthly' ? t('agencyCalc.perMonth') : t('agencyCalc.perYear')}
           </div>
 
           <div className="mt-4 rounded-xl bg-night-700 px-4 py-3">
             <span className="text-sm text-night-100/70">
-              {formatPrice(pricePerCatalog, currency)} por catálogo / mes
+              {formatPrice(pricePerCatalog, currency)} {t('agencyCalc.perCatalog')}
             </span>
           </div>
 
@@ -127,19 +129,19 @@ export function AgencyCalculator() {
             <div className="mt-3 flex items-center gap-2 text-lime-400">
               <Check className="h-4 w-4" />
               <span className="text-sm font-semibold">
-                Ahorras {formatPrice(calcAgencyPrice(catalogCount, activeTier, currency, 'monthly') * 12 - price, currency)} al año
+                {t('agencyCalc.savePrefix')}{formatPrice(calcAgencyPrice(catalogCount, activeTier, currency, 'monthly') * 12 - price, currency)}{t('agencyCalc.saveSuffix')}
               </span>
             </div>
           )}
 
           <ul className="mt-6 space-y-2">
             {[
-              `${catalogCount} catálogos incluidos`,
-              'Panel multi-cliente unificado',
-              'Facturación consolidada',
-              'White-label completo',
-              'Sin comisiones sobre ventas',
-              'Soporte prioritario',
+              `${catalogCount} ${t('agencyCalc.features.catalogsIncludedSuffix')}`,
+              t('agencyCalc.features.panel'),
+              t('agencyCalc.features.billing'),
+              t('agencyCalc.features.whitelabel'),
+              t('agencyCalc.features.noCommissions'),
+              t('agencyCalc.features.support'),
             ].map((f) => (
               <li key={f} className="flex items-center gap-2 text-sm text-night-100/80">
                 <Check className="h-3.5 w-3.5 shrink-0 text-lime-400" />
@@ -150,14 +152,14 @@ export function AgencyCalculator() {
 
           <div className="mt-8 flex flex-col gap-3">
             <Button asChild variant="lime" size="lg" className="w-full">
-              <Link href="/signup">Empezar prueba gratis</Link>
+              <Link href="/signup">{t('agencyCalc.ctaStart')}</Link>
             </Button>
             <Button
               asChild
               size="lg"
               className="w-full border border-night-600 bg-transparent text-white hover:bg-night-700"
             >
-              <Link href="#demo">Agendar demo</Link>
+              <Link href="#demo">{t('agencyCalc.ctaDemo')}</Link>
             </Button>
           </div>
         </div>
@@ -177,10 +179,10 @@ export function AgencyCalculator() {
           >
             <div className="font-bold text-night-800">{tier.name}</div>
             <div className="mt-1 text-sm text-warm-500">
-              Desde {tier.baseCatalogs} catálogos
+              {t('agencyCalc.tierFromPrefix')}{tier.baseCatalogs}{t('agencyCalc.tierFromSuffix')}
             </div>
             <div className="mt-2 text-lg font-bold text-primary-500">
-              {formatPrice(tier.basePrice[currency].monthly, currency)}/mes
+              {formatPrice(tier.basePrice[currency].monthly, currency)}{t('agencyCalc.perMonthShort')}
             </div>
           </div>
         ))}

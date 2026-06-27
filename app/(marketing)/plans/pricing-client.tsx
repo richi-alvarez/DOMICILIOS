@@ -15,33 +15,9 @@ import {
   type Currency,
   type FeatureValue,
 } from '@/lib/pricing'
+import { useI18n } from '@/lib/i18n/context'
 
-const FAQ = [
-  {
-    q: '¿Puedo cambiar de plan en cualquier momento?',
-    a: 'Sí. Puedes hacer upgrade o downgrade cuando quieras. El cambio aplica al inicio del siguiente período de facturación.',
-  },
-  {
-    q: '¿Hay comisiones sobre mis ventas?',
-    a: 'No cobramos ninguna comisión sobre tus ventas. Pagas solo tu suscripción y las tasas de tu pasarela de pago (Stripe, MercadoPago, etc.).',
-  },
-  {
-    q: '¿Qué pasa si supero el límite de pedidos en el plan Gratis?',
-    a: 'Tu catálogo seguirá activo, pero los nuevos pedidos quedarán en cola. Te notificamos para que puedas hacer upgrade sin perder pedidos.',
-  },
-  {
-    q: '¿Puedo probar el plan Pro antes de pagar?',
-    a: 'Todos los planes de pago incluyen 14 días de prueba gratuita sin tarjeta de crédito.',
-  },
-  {
-    q: '¿Cómo funciona el pago anual?',
-    a: 'El pago anual se cobra en un solo cobro al inicio del año. Ahorras hasta un 33% respecto al precio mensual.',
-  },
-  {
-    q: '¿Puedo cancelar en cualquier momento?',
-    a: 'Sí. Si cancelas, tu plan sigue activo hasta el final del período pagado. No hay penalizaciones.',
-  },
-]
+const FAQ_KEYS = ['changePlan', 'commissions', 'freeLimit', 'tryPro', 'annual', 'cancel']
 
 function FeatureCellValue({ value }: { value: FeatureValue }) {
   if (value === true) return <Check className="mx-auto h-4 w-4 text-lime-500" />
@@ -51,6 +27,7 @@ function FeatureCellValue({ value }: { value: FeatureValue }) {
 }
 
 export function PricingClient() {
+  const { t } = useI18n()
   const [interval, setInterval] = useState<'monthly' | 'annual'>('monthly')
   const [currency, setCurrency] = useState<Currency>('COP')
   const [showComparison, setShowComparison] = useState(false)
@@ -70,7 +47,7 @@ export function PricingClient() {
                 : 'text-warm-500 hover:text-night-700',
             )}
           >
-            Mensual
+            {t('plans.monthly')}
           </button>
           <button
             onClick={() => setInterval('annual')}
@@ -81,9 +58,9 @@ export function PricingClient() {
                 : 'text-warm-500 hover:text-night-700',
             )}
           >
-            Anual
+            {t('plans.annual')}
             <span className="rounded-full bg-lime-400 px-2 py-0.5 text-[10px] font-bold text-night-800">
-              3 meses gratis
+              {t('plans.freeMonths')}
             </span>
           </button>
         </div>
@@ -156,7 +133,7 @@ export function PricingClient() {
                       plan.highlight ? 'text-white' : 'text-night-800',
                     )}
                   >
-                    {price === 0 ? 'Gratis' : formatPrice(price, currency)}
+                    {price === 0 ? t('plans.free') : formatPrice(price, currency)}
                   </span>
                   {price > 0 && (
                     <span
@@ -165,7 +142,7 @@ export function PricingClient() {
                         plan.highlight ? 'text-night-100/50' : 'text-warm-400',
                       )}
                     >
-                      /mes
+                      {t('plans.perMonth')}
                     </span>
                   )}
                 </div>
@@ -176,7 +153,7 @@ export function PricingClient() {
                       plan.highlight ? 'text-lime-400' : 'text-lime-600',
                     )}
                   >
-                    Ahorras {saving}% · facturado anualmente
+                    {t('plans.save.prefix')}{saving}{t('plans.save.suffix')}
                   </p>
                 )}
               </div>
@@ -207,7 +184,7 @@ export function PricingClient() {
                 className="w-full"
               >
                 <Link href="/signup">
-                  {plan.code === 'free' ? 'Empezar gratis' : 'Probar 14 días gratis'}
+                  {plan.code === 'free' ? t('plans.cta.free') : t('plans.cta.paid')}
                 </Link>
               </Button>
             </div>
@@ -220,21 +197,21 @@ export function PricingClient() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-primary-500">
-              Para agencias y multi-marca
+              {t('plans.agency.kicker')}
             </p>
             <h3 className="mt-1 text-xl font-bold text-night-800">
-              ¿Gestionas catálogos de varios clientes?
+              {t('plans.agency.title')}
             </h3>
             <p className="mt-1 text-sm text-warm-500">
-              Planes especiales desde 5 hasta 300 catálogos. Un solo panel, facturación consolidada.
+              {t('plans.agency.desc')}
             </p>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row">
             <Button asChild variant="default">
-              <Link href="/agencies">Ver planes de agencia</Link>
+              <Link href="/agencies">{t('plans.agency.viewPlans')}</Link>
             </Button>
             <Button asChild variant="outline">
-              <Link href="/agencies#demo">Agendar demo</Link>
+              <Link href="/agencies#demo">{t('plans.agency.demo')}</Link>
             </Button>
           </div>
         </div>
@@ -248,11 +225,11 @@ export function PricingClient() {
         >
           {showComparison ? (
             <>
-              <ChevronUp className="h-4 w-4" /> Ocultar comparativa de planes
+              <ChevronUp className="h-4 w-4" /> {t('plans.comparison.hide')}
             </>
           ) : (
             <>
-              <ChevronDown className="h-4 w-4" /> Ver comparativa completa de planes
+              <ChevronDown className="h-4 w-4" /> {t('plans.comparison.show')}
             </>
           )}
         </button>
@@ -263,7 +240,7 @@ export function PricingClient() {
               <thead>
                 <tr className="border-b border-warm-200 bg-warm-50">
                   <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-warm-400">
-                    Funcionalidad
+                    {t('plans.comparison.feature')}
                   </th>
                   {PLANS.map((p) => (
                     <th
@@ -320,13 +297,13 @@ export function PricingClient() {
       {/* FAQ */}
       <div className="mx-auto mt-20 max-w-3xl">
         <h2 className="mb-8 text-center text-3xl font-extrabold text-night-800">
-          Preguntas frecuentes
+          {t('plans.faqTitle')}
         </h2>
         <Accordion type="single" collapsible className="divide-y divide-warm-200">
-          {FAQ.map((item, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border-0">
-              <AccordionTrigger className="text-base">{item.q}</AccordionTrigger>
-              <AccordionContent className="text-base leading-relaxed">{item.a}</AccordionContent>
+          {FAQ_KEYS.map((k, i) => (
+            <AccordionItem key={k} value={`item-${i}`} className="border-0">
+              <AccordionTrigger className="text-base">{t(`plans.faq.${k}.q`)}</AccordionTrigger>
+              <AccordionContent className="text-base leading-relaxed">{t(`plans.faq.${k}.a`)}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>

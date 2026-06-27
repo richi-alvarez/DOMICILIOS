@@ -237,5 +237,196 @@
       "successTitle": "Account created!",
       "successDesc": "Check your email to verify your account. Redirecting…"
     }
+  },
+  "plans": {
+    "meta": {
+      "title": "Plans & Pricing",
+      "description": "Compare Free, Basic, Pro and Business plans. No commissions on sales. Choose the ideal plan for your business."
+    },
+    "hero": {
+      "title": "Plans with no commissions on sales",
+      "subtitle": "Start free. Grow when you're ready. No surprises on your bill."
+    },
+    "monthly": "Monthly",
+    "annual": "Annual",
+    "freeMonths": "3 months free",
+    "perMonth": "/mo",
+    "free": "Free",
+    "save": {
+      "prefix": "Save ",
+      "suffix": "% · billed annually"
+    },
+    "cta": {
+      "free": "Start free",
+      "paid": "Try 14 days free"
+    },
+    "agency": {
+      "kicker": "For agencies and multi-brand",
+      "title": "Do you manage catalogs for several clients?",
+      "desc": "Special plans from 5 to 300 catalogs. A single dashboard, consolidated billing.",
+      "viewPlans": "View agency plans",
+      "demo": "Book a demo"
+    },
+    "comparison": {
+      "show": "See full plan comparison",
+      "hide": "Hide plan comparison",
+      "feature": "Feature"
+    },
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "changePlan": {
+        "q": "Can I change plans at any time?",
+        "a": "Yes. You can upgrade or downgrade whenever you want. The change applies at the start of the next billing period."
+      },
+      "commissions": {
+        "q": "Are there commissions on my sales?",
+        "a": "We charge no commission on your sales. You only pay your subscription and your payment gateway fees (Stripe, MercadoPago, etc.)."
+      },
+      "freeLimit": {
+        "q": "What happens if I exceed the order limit on the Free plan?",
+        "a": "Your catalog stays active, but new orders are queued. We notify you so you can upgrade without losing orders."
+      },
+      "tryPro": {
+        "q": "Can I try the Pro plan before paying?",
+        "a": "All paid plans include a 14-day free trial with no credit card."
+      },
+      "annual": {
+        "q": "How does annual billing work?",
+        "a": "Annual billing is charged once at the start of the year. You save up to 33% compared to the monthly price."
+      },
+      "cancel": {
+        "q": "Can I cancel at any time?",
+        "a": "Yes. If you cancel, your plan stays active until the end of the paid period. No penalties."
+      }
+    }
+  },
+  "agencies": {
+    "meta": {
+      "title": "For Agencies — Manage multiple catalogs",
+      "description": "Create and manage multiple digital catalogs from a single dashboard. No commissions. Ideal for marketing agencies, distributors and chains."
+    },
+    "hero": {
+      "badge": "No commissions on your clients' sales",
+      "titleA": "Create and manage multiple catalogs",
+      "titleB": "from a single dashboard",
+      "subtitle": "The tool that marketing agencies, distributors and chains need to digitize their clients and generate recurring revenue.",
+      "ctaStart": "Start free",
+      "ctaDemo": "Book a demo"
+    },
+    "banner": "NO COMMISSIONS ON SALES — You only pay your subscription, no matter how much your clients sell",
+    "growth": {
+      "title": "Growth plans",
+      "subtitle": "From 5 to 300 catalogs. Scale your agency without sharp jumps."
+    },
+    "cases": {
+      "title": "Real use cases",
+      "subtitle": "For any multi-catalog business model.",
+      "restaurants": {
+        "title": "Agency with restaurants",
+        "desc": "Manage the catalog of 20 restaurants from one dashboard. Update seasonal prices in seconds."
+      },
+      "brand": {
+        "title": "Brand with several lines",
+        "desc": "Women, men, kids: each line with its own catalog and the same admin dashboard."
+      },
+      "b2b": {
+        "title": "B2B distributor",
+        "desc": "Each client has a custom catalog with differentiated pricing per segment."
+      },
+      "multibranch": {
+        "title": "Multi-location restaurant",
+        "desc": "Different menus per location, centralized orders and unified reports."
+      }
+    },
+    "benefits": {
+      "title": "Benefits for your agency",
+      "multiCatalog": {
+        "title": "Multi-catalog management",
+        "desc": "A single dashboard for all your clients. Switch accounts with one click."
+      },
+      "recurring": {
+        "title": "Recurring revenue",
+        "desc": "Charge each client a monthly fee for managing their catalog."
+      },
+      "noCommissions": {
+        "title": "No commissions",
+        "desc": "Neither we nor you charge commissions on your clients' sales."
+      },
+      "roles": {
+        "title": "Roles and collaborators",
+        "desc": "Assign different access to your team and to each business owner."
+      },
+      "bulk": {
+        "title": "Bulk updates",
+        "desc": "Upload a CSV and update products across all catalogs at once."
+      },
+      "whitelabel": {
+        "title": "White-label",
+        "desc": "Your clients see your brand, not ours. Custom emails and storefront."
+      }
+    },
+    "video": {
+      "title": "How does it work?",
+      "subtitle": "See how an agency manages 20 catalogs in minutes.",
+      "comingSoon": "Demo coming soon"
+    },
+    "faqTitle": "Agency frequently asked questions",
+    "faq": {
+      "try": {
+        "q": "Can I try the agency plan before paying?",
+        "a": "Yes. You get a 14-day trial with up to 5 active catalogs and no credit card."
+      },
+      "billing": {
+        "q": "How do I bill my clients?",
+        "a": "You set your price. We charge you the agency plan and you charge each client whatever you want. No interference."
+      },
+      "whitelabel": {
+        "q": "Can I hide the WaCommerce brand?",
+        "a": "Yes. On the Professional and Agency Growth plans you can use your own logo, domain and colors on the storefront and transactional emails."
+      },
+      "extra": {
+        "q": "What if I need more catalogs than the plan?",
+        "a": "You can add extra catalogs at a reduced unit price. You can also upgrade your plan at any time."
+      },
+      "owner": {
+        "q": "Can I give access to the business owner?",
+        "a": "Yes. There's a \"client_owner\" role that lets the owner see orders and analytics, without being able to change the catalog settings."
+      }
+    },
+    "ctaDemo": {
+      "title": "Ready to scale your agency?",
+      "subtitle": "Book a 30-minute demo and we'll show you how it works for your specific case.",
+      "start": "Start free trial",
+      "contact": "Contact sales",
+      "note": "No credit card · Reply in under 24 hours"
+    }
+  },
+  "agencyCalc": {
+    "title": "Calculate your investment",
+    "subtitle": "Adjust based on the number of catalogs you manage.",
+    "catalogs": "Catalogs",
+    "billing": "Billing",
+    "monthly": "Monthly",
+    "annualDiscount": "Annual (−33%)",
+    "currency": "Currency",
+    "planPrefix": "Plan ",
+    "perMonth": "mo",
+    "perYear": "yr",
+    "perCatalog": "per catalog / mo",
+    "savePrefix": "Save ",
+    "saveSuffix": " per year",
+    "perMonthShort": "/mo",
+    "tierFromPrefix": "From ",
+    "tierFromSuffix": " catalogs",
+    "features": {
+      "catalogsIncludedSuffix": "catalogs included",
+      "panel": "Unified multi-client dashboard",
+      "billing": "Consolidated billing",
+      "whitelabel": "Full white-label",
+      "noCommissions": "No commissions on sales",
+      "support": "Priority support"
+    },
+    "ctaStart": "Start free trial",
+    "ctaDemo": "Book a demo"
   }
 }

@@ -1,23 +1,27 @@
 import type { Metadata } from 'next'
+import { getT } from '@/lib/i18n/server'
 import { PricingClient } from './pricing-client'
 
-export const metadata: Metadata = {
-  title: 'Planes y Precios',
-  description:
-    'Compara planes Gratis, Basic, Pro y Business. Sin comisiones sobre ventas. Elige el plan ideal para tu negocio.',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT()
+  return {
+    title: t('plans.meta.title'),
+    description: t('plans.meta.description'),
+  }
 }
 
-export default function PlansPage() {
+export default async function PlansPage() {
+  const t = await getT()
   return (
     <div className="min-h-screen">
       {/* Hero */}
       <section className="gradient-hero px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-balance text-5xl font-extrabold text-night-800">
-            Planes sin comisiones sobre ventas
+            {t('plans.hero.title')}
           </h1>
           <p className="mt-4 text-lg text-warm-600">
-            Empieza gratis. Crece cuando estés listo. Sin sorpresas en la factura.
+            {t('plans.hero.subtitle')}
           </p>
         </div>
       </section>
