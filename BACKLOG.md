@@ -90,9 +90,12 @@ Modo agencia: panel multi-cliente, switcher, facturación consolidada, white-lab
 (`agency_owner`/`operator`/`client_owner`), plantillas reusables. Bloque grande; solo si
 hay demanda B2B.
 
-## 🟡 P6 — i18n (Fase 15)
-`next-intl` instalado pero **sin traducciones ni routing por locale**. O se implementa o se
-quita. Multi-moneda ya funciona.
+## ✅ P6 — i18n (Fase 15) — DESCARTADO (2026-06-27)
+`next-intl` estaba instalado pero **100% sin usar** (sin config, mensajes ni routing por
+locale). Producto mono-mercado (Colombia, es-CO, COP) sin demanda de otro idioma;
+multi-moneda ya cubre la necesidad LatAm. Se **eliminó la dependencia huérfana** en vez de
+implementar i18n completo. Si en el futuro hay mercado multi-idioma, se reabre como feature
+nueva (routing por locale + extracción de strings + traducción).
 
 ## 🟡 P7 — Producción / observabilidad (Fase 17)
 Sin Sentry; monitoreo casero. Falta doc de operación.
