@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils'
 import type { PlanCode } from '@/lib/billing/constants'
 import { PLAN_NAMES, PLAN_COLORS } from '@/lib/billing/constants'
 import { APP_NAME, APP_LOGO } from '@/lib/brand'
+import { useI18n } from '@/lib/i18n/context'
 
 interface CatalogNav {
   id: string
@@ -28,27 +29,28 @@ interface AppSidebarProps {
 }
 
 const globalNav = [
-  { href: '/app', label: 'Mis catálogos', icon: LayoutGrid },
-  { href: '/app/analytics', label: 'Analytics', icon: BarChart3 },
-  { href: '/app/team', label: 'Equipo', icon: Users },
-  { href: '/app/billing', label: 'Plan y facturación', icon: CreditCard },
+  { href: '/app', key: 'catalogs', icon: LayoutGrid },
+  { href: '/app/analytics', key: 'analytics', icon: BarChart3 },
+  { href: '/app/team', key: 'team', icon: Users },
+  { href: '/app/billing', key: 'billing', icon: CreditCard },
 ]
 
 function getCatalogNav(id: string) {
   return [
-    { href: `/app/catalogs/${id}`, label: 'Detalles', icon: Store, exact: true },
-    { href: `/app/catalogs/${id}/products`, label: 'Productos', icon: Package },
-    { href: `/app/catalogs/${id}/categories`, label: 'Categorías', icon: LayoutGrid },
-    { href: `/app/catalogs/${id}/design`, label: 'Diseño', icon: Palette },
-    { href: `/app/catalogs/${id}/orders`, label: 'Pedidos', icon: ShoppingCart },
-    { href: `/app/catalogs/${id}/citas`, label: 'Citas', icon: CalendarDays },
-    { href: `/app/catalogs/${id}/analytics`, label: 'Estadísticas', icon: BarChart2 },
-    { href: `/app/catalogs/${id}/reports`, label: 'Reportes', icon: FileText },
-    { href: `/app/catalogs/${id}/settings`, label: 'Configuración', icon: Settings2 },
+    { href: `/app/catalogs/${id}`, key: 'details', icon: Store, exact: true },
+    { href: `/app/catalogs/${id}/products`, key: 'products', icon: Package },
+    { href: `/app/catalogs/${id}/categories`, key: 'categories', icon: LayoutGrid },
+    { href: `/app/catalogs/${id}/design`, key: 'design', icon: Palette },
+    { href: `/app/catalogs/${id}/orders`, key: 'orders', icon: ShoppingCart },
+    { href: `/app/catalogs/${id}/citas`, key: 'appointments', icon: CalendarDays },
+    { href: `/app/catalogs/${id}/analytics`, key: 'analytics', icon: BarChart2 },
+    { href: `/app/catalogs/${id}/reports`, key: 'reports', icon: FileText },
+    { href: `/app/catalogs/${id}/settings`, key: 'settings', icon: Settings2 },
   ]
 }
 
 export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }: AppSidebarProps) {
+  const { t } = useI18n()
   const pathname = usePathname()
   // Detectar catálogo activo desde la URL: /app/catalogs/[id]/...
   const catalogMatch = pathname.match(/\/app\/catalogs\/([^/]+)/)
@@ -80,21 +82,21 @@ export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }:
             {/* Catalog switcher */}
             <div className="mb-2 rounded-xl border border-warm-200 bg-warm-50 p-3">
               <div className="mb-1 flex items-center justify-between">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-warm-400">Catálogo activo</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-warm-400">{t('appHeader.activeCatalog')}</span>
                 <span className={cn(
                   'rounded-full px-2 py-0.5 text-[10px] font-bold',
                   activeCatalog.status === 'published'
                     ? 'bg-lime-100 text-lime-700'
                     : 'bg-warm-200 text-warm-600',
                 )}>
-                  {activeCatalog.status === 'published' ? 'Publicado' : 'Borrador'}
+                  {activeCatalog.status === 'published' ? t('appHeader.published') : t('appHeader.draft')}
                 </span>
               </div>
               <p className="font-semibold text-sm text-night-800 truncate">{activeCatalog.name}</p>
               <p className="text-xs text-warm-400">/{activeCatalog.slug}</p>
               <Link href="/app" className="mt-2 flex items-center gap-1 text-xs text-primary-500 hover:underline">
                 <ChevronDown className="h-3 w-3 rotate-90" />
-                Ver todos los catálogos
+                {t('appHeader.viewAllCatalogs')}
               </Link>
             </div>
 
@@ -116,7 +118,7 @@ export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }:
                     )}
                   >
                     <item.icon className="h-4 w-4" />
-                    {item.label}
+                    {t(`appHeader.catalogNav.${item.key}`)}
                   </Link>
                 )
               })}
@@ -142,7 +144,7 @@ export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }:
                 )}
               >
                 <item.icon className="h-4 w-4" />
-                {item.label}
+                {t(`appHeader.global.${item.key}`)}
               </Link>
             )
           })}
@@ -154,7 +156,7 @@ export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }:
           className="mt-3 flex items-center gap-2 rounded-lg border-2 border-dashed border-warm-200 px-3 py-2 text-sm font-medium text-warm-400 transition-colors hover:border-primary-300 hover:text-primary-500"
         >
           <Plus className="h-4 w-4" />
-          Nuevo catálogo
+          {t('appHeader.newCatalog')}
         </Link>
       </div>
 
@@ -166,7 +168,7 @@ export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }:
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
-              <p className="truncate text-sm font-medium text-night-800">{userName ?? 'Usuario'}</p>
+              <p className="truncate text-sm font-medium text-night-800">{userName ?? t('appHeader.userFallback')}</p>
               <span className={cn('rounded-full px-1.5 py-0.5 text-[10px] font-bold', PLAN_COLORS[planCode])}>
                 {PLAN_NAMES[planCode]}
               </span>
@@ -176,7 +178,7 @@ export function AppSidebar({ catalogs, userName, userEmail, planCode = 'free' }:
           <button
             onClick={() => signOut({ callbackUrl: '/login' })}
             className="shrink-0 rounded-lg p-1.5 text-warm-400 hover:bg-warm-100 hover:text-red-500"
-            title="Cerrar sesión"
+            title={t('appHeader.logout')}
           >
             <LogOut className="h-4 w-4" />
           </button>

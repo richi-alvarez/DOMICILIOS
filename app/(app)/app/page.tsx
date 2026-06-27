@@ -6,8 +6,12 @@ import { getOrgUsage } from '@/lib/actions/billing'
 import { isAtLimit } from '@/lib/billing/limits'
 import { canAccessAIFeatures } from '@/lib/actions/catalogs'
 import { CatalogsPageWrapper } from '@/components/app/catalogs-page-wrapper'
+import { getT } from '@/lib/i18n/server'
 
-export const metadata: Metadata = { title: 'Mis catálogos' }
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT()
+  return { title: t('appHeader.global.catalogs') }
+}
 
 async function getCatalogs(userId: string) {
   if (!process.env.DATABASE_URL) return []

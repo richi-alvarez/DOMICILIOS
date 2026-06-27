@@ -68,8 +68,10 @@
     "draft": "Draft",
     "newCatalog": "New catalog",
     "userFallback": "User",
+    "viewAllCatalogs": "View all catalogs",
     "global": {
       "catalogs": "My catalogs",
+      "analytics": "Analytics",
       "team": "Team",
       "billing": "Plan & billing"
     },
@@ -79,6 +81,7 @@
       "categories": "Categories",
       "design": "Design",
       "orders": "Orders",
+      "appointments": "Appointments",
       "analytics": "Analytics",
       "reports": "Reports",
       "settings": "Settings"
@@ -87,6 +90,24 @@
   "storefrontHeader": {
     "search": "Search",
     "cart": "Cart"
+  },
+  "catalogsPage": {
+    "subtitleEmpty": "Create your first digital catalog",
+    "countSingular": "catalog",
+    "countPlural": "catalogs",
+    "createWithAI": "Create with AI",
+    "upgradePlan": "Upgrade plan",
+    "limitPrefix": "You've reached the limit of ",
+    "limitSuffix": " on the {plan} plan.",
+    "viewPlansArrow": "View plans →",
+    "currentPlan": "Current plan",
+    "catalogsLabel": "Catalogs",
+    "upgradeArrow": "Upgrade plan →",
+    "emptyTitle": "Create your first catalog",
+    "emptyDesc": "Publish your store in minutes. Add products, customize the design and share the link.",
+    "emptyCreate": "Create catalog",
+    "withAI": "With AI",
+    "viewStore": "View public store"
   },
   "landing": {
     "meta": {

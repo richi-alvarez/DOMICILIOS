@@ -68,8 +68,10 @@
     "draft": "Borrador",
     "newCatalog": "Nuevo catálogo",
     "userFallback": "Usuario",
+    "viewAllCatalogs": "Ver todos los catálogos",
     "global": {
       "catalogs": "Mis catálogos",
+      "analytics": "Analytics",
       "team": "Equipo",
       "billing": "Plan y facturación"
     },
@@ -79,6 +81,7 @@
       "categories": "Categorías",
       "design": "Diseño",
       "orders": "Pedidos",
+      "appointments": "Citas",
       "analytics": "Estadísticas",
       "reports": "Reportes",
       "settings": "Configuración"
@@ -87,6 +90,24 @@
   "storefrontHeader": {
     "search": "Buscar",
     "cart": "Carrito"
+  },
+  "catalogsPage": {
+    "subtitleEmpty": "Crea tu primer catálogo digital",
+    "countSingular": "catálogo",
+    "countPlural": "catálogos",
+    "createWithAI": "Crear con IA",
+    "upgradePlan": "Mejorar plan",
+    "limitPrefix": "Has alcanzado el límite de ",
+    "limitSuffix": " del plan {plan}.",
+    "viewPlansArrow": "Ver planes →",
+    "currentPlan": "Plan actual",
+    "catalogsLabel": "Catálogos",
+    "upgradeArrow": "Mejorar plan →",
+    "emptyTitle": "Crea tu primer catálogo",
+    "emptyDesc": "Publica tu tienda en minutos. Agrega productos, personaliza el diseño y comparte el enlace.",
+    "emptyCreate": "Crear catálogo",
+    "withAI": "Con IA",
+    "viewStore": "Ver tienda pública"
   },
   "landing": {
     "meta": {
