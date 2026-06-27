@@ -1,0 +1,91 @@
+{
+  "lang": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "siteHeader": {
+    "nav": {
+      "home": "Home",
+      "plans": "Pricing",
+      "agencies": "Agencies",
+      "resources": "Resources"
+    },
+    "sections": {
+      "tools": "Free tools",
+      "guides": "Guides by industry",
+      "comparisons": "Comparisons & guides",
+      "blog": "Blog"
+    },
+    "blog": {
+      "title": "Tips to sell more",
+      "desc": "Strategies, success stories and platform news.",
+      "cta": "Go to the blog →"
+    },
+    "tools": {
+      "whatsapp": "WhatsApp Link Generator",
+      "description": "AI Descriptions",
+      "margin": "Profit Margin Calculator",
+      "names": "Business Name Generator",
+      "qr": "Menu QR Code Generator",
+      "bio": "Bio Generator"
+    },
+    "guides": {
+      "ropa": "Sell clothing online",
+      "comida": "Sell food for delivery",
+      "pasteles": "Sell cakes via WhatsApp",
+      "cosmeticos": "Sell cosmetics",
+      "cafe": "Catalog for cafés",
+      "all": "View all guides →"
+    },
+    "comparisons": {
+      "qr": "Digital QR menu + WhatsApp",
+      "platform": "Best WhatsApp platform",
+      "free": "Free online store",
+      "all": "View all →"
+    },
+    "cta": {
+      "login": "Log in",
+      "signup": "Sign up free",
+      "panel": "My Dashboard",
+      "logout": "Log out"
+    },
+    "mobile": {
+      "tools": "Free tools",
+      "guides": "Guides by industry",
+      "openMenu": "Open menu"
+    }
+  },
+  "appHeader": {
+    "notifications": "Notifications",
+    "user": "User",
+    "menu": "Menu",
+    "currentPlan": "Current plan:",
+    "profile": "Profile",
+    "logout": "Sign out",
+    "activeCatalog": "Active catalog",
+    "published": "Published",
+    "draft": "Draft",
+    "newCatalog": "New catalog",
+    "userFallback": "User",
+    "global": {
+      "catalogs": "My catalogs",
+      "team": "Team",
+      "billing": "Plan & billing"
+    },
+    "catalogNav": {
+      "details": "Details",
+      "products": "Products",
+      "categories": "Categories",
+      "design": "Design",
+      "orders": "Orders",
+      "analytics": "Analytics",
+      "reports": "Reports",
+      "settings": "Settings"
+    }
+  },
+  "storefrontHeader": {
+    "search": "Search",
+    "cart": "Cart"
+  }
+}

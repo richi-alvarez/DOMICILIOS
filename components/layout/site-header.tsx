@@ -23,43 +23,46 @@ import {
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { APP_NAME, APP_LOGO } from '@/lib/brand'
+import { useI18n } from '@/lib/i18n/context'
+import { LanguageSwitcher } from '@/components/i18n/language-switcher'
 
 const tools = [
-  { href: '/tools/whatsapp-link-generator', label: 'Generador Link WhatsApp', icon: MessageCircle },
-  { href: '/tools/product-description-generator', label: 'Descripciones con IA', icon: Zap },
-  { href: '/tools/profit-margin-calculator', label: 'Calculadora de Margen', icon: Calculator },
-  { href: '/tools/business-name-generator', label: 'Nombres de Negocio', icon: Zap },
-  { href: '/tools/qr-code-menu-generator', label: 'Generador QR de Menú', icon: QrCode },
-  { href: '/tools/biography-generator', label: 'Generador de Biografías', icon: User2 },
+  { href: '/tools/whatsapp-link-generator', key: 'whatsapp', icon: MessageCircle },
+  { href: '/tools/product-description-generator', key: 'description', icon: Zap },
+  { href: '/tools/profit-margin-calculator', key: 'margin', icon: Calculator },
+  { href: '/tools/business-name-generator', key: 'names', icon: Zap },
+  { href: '/tools/qr-code-menu-generator', key: 'qr', icon: QrCode },
+  { href: '/tools/biography-generator', key: 'bio', icon: User2 },
 ]
 
 const guides = [
-  { href: '/como-vender/ropa', label: 'Vender ropa online' },
-  { href: '/como-vender/comida', label: 'Vender comida a domicilio' },
-  { href: '/como-vender/pasteles', label: 'Vender pasteles por WhatsApp' },
-  { href: '/como-vender/cosmeticos', label: 'Vender cosméticos' },
-  { href: '/como-vender/cafe', label: 'Catálogo para cafés' },
-  { href: '/como-vender', label: 'Ver todas las guías →' },
+  { href: '/como-vender/ropa', key: 'ropa' },
+  { href: '/como-vender/comida', key: 'comida' },
+  { href: '/como-vender/pasteles', key: 'pasteles' },
+  { href: '/como-vender/cosmeticos', key: 'cosmeticos' },
+  { href: '/como-vender/cafe', key: 'cafe' },
+  { href: '/como-vender', key: 'all' },
 ]
 
 const comparisons = [
-  { href: '/guides/catalogo-digital-whatsapp', label: 'Menú digital QR + WhatsApp' },
-  { href: '/guides/mejor-plataforma-whatsapp', label: 'Mejor plataforma WhatsApp' },
-  { href: '/guides/tienda-online-gratis', label: 'Tienda en línea gratis' },
-  { href: '/guides', label: 'Ver todas →' },
+  { href: '/guides/catalogo-digital-whatsapp', key: 'qr' },
+  { href: '/guides/mejor-plataforma-whatsapp', key: 'platform' },
+  { href: '/guides/tienda-online-gratis', key: 'free' },
+  { href: '/guides', key: 'all' },
 ]
 
 export function SiteHeader() {
   const pathname = usePathname()
   const { data: session, status } = useSession()
+  const { t } = useI18n()
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [resourcesOpen, setResourcesOpen] = React.useState(false)
   const [userMenuOpen, setUserMenuOpen] = React.useState(false)
 
   const navLinks = [
-    { href: '/', label: 'Inicio' },
-    { href: '/plans', label: 'Planes' },
-    { href: '/agencies', label: 'Agencias' },
+    { href: '/', key: 'home' },
+    { href: '/plans', key: 'plans' },
+    { href: '/agencies', key: 'agencies' },
   ]
 
   return (
@@ -90,7 +93,7 @@ export function SiteHeader() {
                 pathname === link.href ? 'text-primary-500' : 'text-night-700',
               )}
             >
-              {link.label}
+              {t(`siteHeader.nav.${link.key}`)}
             </Link>
           ))}
 
@@ -106,7 +109,7 @@ export function SiteHeader() {
                 resourcesOpen ? 'text-primary-500' : 'text-night-700',
               )}
             >
-              Recursos
+              {t('siteHeader.nav.resources')}
               <ChevronDown
                 className={cn('h-4 w-4 transition-transform', resourcesOpen && 'rotate-180')}
               />
@@ -119,17 +122,17 @@ export function SiteHeader() {
                   <div>
                     <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-warm-400">
                       <Wrench className="h-3.5 w-3.5" />
-                      Herramientas gratuitas
+                      {t('siteHeader.sections.tools')}
                     </div>
                     <ul className="space-y-1">
-                      {tools.map((t) => (
-                        <li key={t.href}>
+                      {tools.map((tool) => (
+                        <li key={tool.href}>
                           <Link
-                            href={t.href}
+                            href={tool.href}
                             className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-night-700 hover:bg-primary-50 hover:text-primary-600"
                           >
-                            <t.icon className="h-3.5 w-3.5 text-primary-400" />
-                            {t.label}
+                            <tool.icon className="h-3.5 w-3.5 text-primary-400" />
+                            {t(`siteHeader.tools.${tool.key}`)}
                           </Link>
                         </li>
                       ))}
@@ -140,7 +143,7 @@ export function SiteHeader() {
                   <div>
                     <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-warm-400">
                       <BookOpen className="h-3.5 w-3.5" />
-                      Guías por industria
+                      {t('siteHeader.sections.guides')}
                     </div>
                     <ul className="space-y-1">
                       {guides.map((g) => (
@@ -149,7 +152,7 @@ export function SiteHeader() {
                             href={g.href}
                             className="block rounded-md px-2 py-1.5 text-sm text-night-700 hover:bg-primary-50 hover:text-primary-600"
                           >
-                            {g.label}
+                            {t(`siteHeader.guides.${g.key}`)}
                           </Link>
                         </li>
                       ))}
@@ -160,7 +163,7 @@ export function SiteHeader() {
                   <div>
                     <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-warm-400">
                       <BarChart2 className="h-3.5 w-3.5" />
-                      Comparativas y guías
+                      {t('siteHeader.sections.comparisons')}
                     </div>
                     <ul className="space-y-1">
                       {comparisons.map((c) => (
@@ -169,7 +172,7 @@ export function SiteHeader() {
                             href={c.href}
                             className="block rounded-md px-2 py-1.5 text-sm text-night-700 hover:bg-primary-50 hover:text-primary-600"
                           >
-                            {c.label}
+                            {t(`siteHeader.comparisons.${c.key}`)}
                           </Link>
                         </li>
                       ))}
@@ -180,18 +183,18 @@ export function SiteHeader() {
                   <div>
                     <div className="mb-3 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-warm-400">
                       <Newspaper className="h-3.5 w-3.5" />
-                      Blog
+                      {t('siteHeader.sections.blog')}
                     </div>
                     <div className="rounded-xl bg-gradient-to-br from-primary-50 to-lime-50 p-4">
-                      <p className="text-sm font-medium text-night-800">Consejos para vender más</p>
+                      <p className="text-sm font-medium text-night-800">{t('siteHeader.blog.title')}</p>
                       <p className="mt-1 text-xs text-warm-500">
-                        Estrategias, casos de éxito y novedades de la plataforma.
+                        {t('siteHeader.blog.desc')}
                       </p>
                       <Link
                         href="/blog"
                         className="mt-3 inline-flex items-center text-xs font-semibold text-primary-500 hover:underline"
                       >
-                        Ir al blog →
+                        {t('siteHeader.blog.cta')}
                       </Link>
                     </div>
                   </div>
@@ -203,6 +206,7 @@ export function SiteHeader() {
 
         {/* CTAs desktop */}
         <div className="hidden items-center gap-3 lg:flex">
+          <LanguageSwitcher />
           {status === 'authenticated' && session?.user ? (
             <div className="relative">
               <button
@@ -238,7 +242,7 @@ export function SiteHeader() {
                     onClick={() => setUserMenuOpen(false)}
                     className="block w-full px-4 py-2.5 text-left text-sm text-night-700 hover:bg-warm-50 transition-colors"
                   >
-                    Mi Panel
+                    {t('siteHeader.cta.panel')}
                   </Link>
                   <button
                     onClick={() => {
@@ -248,7 +252,7 @@ export function SiteHeader() {
                     className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-warm-600 hover:bg-warm-50 transition-colors border-t border-warm-200"
                   >
                     <LogOut className="h-4 w-4" />
-                    Cerrar sesión
+                    {t('siteHeader.cta.logout')}
                   </button>
                 </div>
               )}
@@ -259,10 +263,10 @@ export function SiteHeader() {
                 href="/login"
                 className="text-sm font-medium text-night-700 hover:text-primary-500 transition-colors"
               >
-                Iniciar Sesión
+                {t('siteHeader.cta.login')}
               </Link>
               <Button asChild size="md">
-                <Link href="/signup">Registrarme gratis</Link>
+                <Link href="/signup">{t('siteHeader.cta.signup')}</Link>
               </Button>
             </>
           )}
@@ -272,7 +276,7 @@ export function SiteHeader() {
         <button
           className="rounded-md p-2 text-night-700 hover:bg-warm-100 lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Abrir menú"
+          aria-label={t('siteHeader.mobile.openMenu')}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -294,7 +298,7 @@ export function SiteHeader() {
                     : 'text-night-700 hover:bg-warm-100',
                 )}
               >
-                {link.label}
+                {t(`siteHeader.nav.${link.key}`)}
               </Link>
             ))}
             <Link
@@ -302,15 +306,18 @@ export function SiteHeader() {
               onClick={() => setMobileOpen(false)}
               className="rounded-md px-3 py-2.5 text-sm font-medium text-night-700 hover:bg-warm-100"
             >
-              Herramientas gratuitas
+              {t('siteHeader.mobile.tools')}
             </Link>
             <Link
               href="/como-vender"
               onClick={() => setMobileOpen(false)}
               className="rounded-md px-3 py-2.5 text-sm font-medium text-night-700 hover:bg-warm-100"
             >
-              Guías por industria
+              {t('siteHeader.mobile.guides')}
             </Link>
+            <div className="px-3 pt-2">
+              <LanguageSwitcher />
+            </div>
           </nav>
           <div className="mt-4 border-t border-warm-200 pt-4">
             {status === 'authenticated' && session?.user ? (
@@ -325,7 +332,7 @@ export function SiteHeader() {
                 </div>
                 <Button asChild className="w-full">
                   <Link href="/app" onClick={() => setMobileOpen(false)}>
-                    Mi Panel
+                    {t('siteHeader.cta.panel')}
                   </Link>
                 </Button>
                 <Button
@@ -337,19 +344,19 @@ export function SiteHeader() {
                   className="w-full"
                 >
                   <LogOut className="h-4 w-4 mr-2" />
-                  Cerrar sesión
+                  {t('siteHeader.cta.logout')}
                 </Button>
               </div>
             ) : (
               <div className="flex flex-col gap-2">
                 <Button asChild variant="outline" className="w-full">
                   <Link href="/login" onClick={() => setMobileOpen(false)}>
-                    Iniciar Sesión
+                    {t('siteHeader.cta.login')}
                   </Link>
                 </Button>
                 <Button asChild className="w-full">
                   <Link href="/signup" onClick={() => setMobileOpen(false)}>
-                    Registrarme gratis
+                    {t('siteHeader.cta.signup')}
                   </Link>
                 </Button>
               </div>

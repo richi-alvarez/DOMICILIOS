@@ -13,6 +13,8 @@ import { cn } from '@/lib/utils'
 import type { PlanCode } from '@/lib/billing/constants'
 import { PLAN_NAMES, PLAN_COLORS } from '@/lib/billing/constants'
 import { APP_NAME, APP_LOGO } from '@/lib/brand'
+import { useI18n } from '@/lib/i18n/context'
+import { LanguageSwitcher } from '@/components/i18n/language-switcher'
 
 interface CatalogNav {
   id: string
@@ -29,26 +31,27 @@ interface AppHeaderProps {
 }
 
 const globalNav = [
-  { href: '/app', label: 'Mis catálogos', icon: LayoutGrid },
-  { href: '/app/team', label: 'Equipo', icon: Users },
-  { href: '/app/billing', label: 'Plan y facturación', icon: CreditCard },
+  { href: '/app', key: 'catalogs', icon: LayoutGrid },
+  { href: '/app/team', key: 'team', icon: Users },
+  { href: '/app/billing', key: 'billing', icon: CreditCard },
 ]
 
 function getCatalogNav(id: string) {
   return [
-    { href: `/app/catalogs/${id}`, label: 'Detalles', icon: Store, exact: true },
-    { href: `/app/catalogs/${id}/products`, label: 'Productos', icon: Package },
-    { href: `/app/catalogs/${id}/categories`, label: 'Categorías', icon: LayoutGrid },
-    { href: `/app/catalogs/${id}/design`, label: 'Diseño', icon: Palette },
-    { href: `/app/catalogs/${id}/orders`, label: 'Pedidos', icon: ShoppingCart },
-    { href: `/app/catalogs/${id}/analytics`, label: 'Estadísticas', icon: BarChart2 },
-    { href: `/app/catalogs/${id}/reports`, label: 'Reportes', icon: FileText },
-    { href: `/app/catalogs/${id}/settings`, label: 'Configuración', icon: Settings2 },
+    { href: `/app/catalogs/${id}`, key: 'details', icon: Store, exact: true },
+    { href: `/app/catalogs/${id}/products`, key: 'products', icon: Package },
+    { href: `/app/catalogs/${id}/categories`, key: 'categories', icon: LayoutGrid },
+    { href: `/app/catalogs/${id}/design`, key: 'design', icon: Palette },
+    { href: `/app/catalogs/${id}/orders`, key: 'orders', icon: ShoppingCart },
+    { href: `/app/catalogs/${id}/analytics`, key: 'analytics', icon: BarChart2 },
+    { href: `/app/catalogs/${id}/reports`, key: 'reports', icon: FileText },
+    { href: `/app/catalogs/${id}/settings`, key: 'settings', icon: Settings2 },
   ]
 }
 
 export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: AppHeaderProps) {
   const pathname = usePathname()
+  const { t } = useI18n()
   const [isOpen, setIsOpen] = useState(false)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
   const userDropdownRef = useRef<HTMLDivElement>(null)
@@ -78,10 +81,11 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
         <span className="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text font-display font-bold text-transparent">{APP_NAME}</span>
       </Link>
 
-      {/* Right Section: Notifications + User Dropdown + Hamburger */}
+      {/* Right Section: Language + Notifications + User Dropdown + Hamburger */}
       <div className="flex items-center gap-3">
+        <LanguageSwitcher />
         {/* Notifications Placeholder */}
-        <button className="relative rounded-lg p-2 hover:bg-warm-100 transition-colors" title="Notificaciones">
+        <button className="relative rounded-lg p-2 hover:bg-warm-100 transition-colors" title={t('appHeader.notifications')}>
           <div className="h-5 w-5 rounded-full bg-primary-500 flex items-center justify-center">
             <span className="text-xs font-bold text-white">1</span>
           </div>
@@ -92,7 +96,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
           <button
             onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
             className="flex items-center gap-2 rounded-lg p-2 hover:bg-warm-100 transition-colors"
-            title="Usuario"
+            title={t('appHeader.user')}
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-xs font-bold text-primary-600">
               {userName?.charAt(0).toUpperCase() ?? 'U'}
@@ -109,7 +113,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
                     {userName?.charAt(0).toUpperCase() ?? 'U'}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-semibold text-night-800">{userName ?? 'Usuario'}</p>
+                    <p className="truncate text-sm font-semibold text-night-800">{userName ?? t('appHeader.userFallback')}</p>
                     <p className="truncate text-xs text-warm-400">{userEmail}</p>
                   </div>
                 </div>
@@ -117,7 +121,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
 
               {/* Plan Badge */}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-night-600">Plan actual:</span>
+                <span className="text-xs font-semibold text-night-600">{t('appHeader.currentPlan')}</span>
                 <span className={cn('rounded-full px-2.5 py-1 text-xs font-bold', PLAN_COLORS[planCode])}>
                   {PLAN_NAMES[planCode]}
                 </span>
@@ -131,7 +135,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
                   className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-night-600 hover:bg-warm-100 hover:text-primary-600 transition-colors"
                 >
                   <CreditCard className="h-4 w-4" />
-                  Perfil
+                  {t('appHeader.profile')}
                 </Link>
                 <button
                   onClick={() => {
@@ -141,7 +145,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
                   className="w-full flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-red-600 hover:bg-red-50 transition-colors"
                 >
                   <LogOut className="h-4 w-4" />
-                  Finalizar sesión
+                  {t('appHeader.logout')}
                 </button>
               </nav>
             </div>
@@ -152,7 +156,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="rounded-lg p-2 hover:bg-warm-100 transition-colors"
-          title="Menú"
+          title={t('appHeader.menu')}
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -166,14 +170,14 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
             <>
               <div className="mb-3 rounded-lg border border-warm-200 bg-warm-50 p-3">
                 <div className="mb-1 flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-warm-400">Catálogo activo</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-warm-400">{t('appHeader.activeCatalog')}</span>
                   <span className={cn(
                     'rounded-full px-2 py-0.5 text-[10px] font-bold',
                     activeCatalog.status === 'published'
                       ? 'bg-lime-100 text-lime-700'
                       : 'bg-warm-200 text-warm-600',
                   )}>
-                    {activeCatalog.status === 'published' ? 'Publicado' : 'Borrador'}
+                    {activeCatalog.status === 'published' ? t('appHeader.published') : t('appHeader.draft')}
                   </span>
                 </div>
                 <p className="font-semibold text-sm text-night-800 truncate">{activeCatalog.name}</p>
@@ -198,7 +202,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
                       )}
                     >
                       <item.icon className="h-4 w-4" />
-                      {item.label}
+                      {t(`appHeader.catalogNav.${item.key}`)}
                     </Link>
                   )
                 })}
@@ -223,7 +227,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
                   )}
                 >
                   <item.icon className="h-4 w-4" />
-                  {item.label}
+                  {t(`appHeader.global.${item.key}`)}
                 </Link>
               )
             })}
@@ -236,7 +240,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
             className="flex items-center gap-2 rounded-lg border-2 border-dashed border-warm-200 px-3 py-2 text-sm font-medium text-warm-400 transition-colors hover:border-primary-300 hover:text-primary-500"
           >
             <Plus className="h-4 w-4" />
-            Nuevo catálogo
+            {t('appHeader.newCatalog')}
           </Link>
 
           {/* User section */}
@@ -246,7 +250,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
                 {userName?.charAt(0).toUpperCase() ?? 'U'}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium text-night-800">{userName ?? 'Usuario'}</p>
+                <p className="truncate text-sm font-medium text-night-800">{userName ?? t('appHeader.userFallback')}</p>
                 <p className="truncate text-xs text-warm-400">{userEmail}</p>
               </div>
             </div>
@@ -257,7 +261,7 @@ export function AppHeader({ catalogs, userName, userEmail, planCode = 'free' }: 
               <button
                 onClick={() => signOut({ callbackUrl: '/login' })}
                 className="ml-auto shrink-0 rounded-lg p-1.5 text-warm-400 hover:bg-warm-100 hover:text-red-500 transition-colors"
-                title="Cerrar sesión"
+                title={t('appHeader.logout')}
               >
                 <LogOut className="h-4 w-4" />
               </button>

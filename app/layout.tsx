@@ -14,6 +14,7 @@ import {
 } from 'next/font/google'
 import { Providers } from '@/components/shared/providers'
 import { APP_NAME } from '@/lib/brand'
+import { getLocale } from '@/lib/i18n/server'
 import './globals.css'
 
 const inter = Inter({
@@ -117,15 +118,16 @@ export const metadata: Metadata = {
   ],
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const locale = await getLocale()
   return (
     <html
-      lang="es"
+      lang={locale}
       suppressHydrationWarning
       className={`${inter.variable} ${sora.variable} ${poppins.variable} ${lato.variable} ${raleway.variable} ${nunito.variable} ${manrope.variable} ${dmSans.variable} ${playfairDisplay.variable} ${cormorantGaramond.variable} ${cinzel.variable}`}
     >
       <body className="min-h-screen antialiased">
-        <Providers session={null}>{children}</Providers>
+        <Providers initialLocale={locale}>{children}</Providers>
       </body>
     </html>
   )

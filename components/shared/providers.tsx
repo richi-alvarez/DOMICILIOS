@@ -2,11 +2,21 @@
 
 import { SessionProvider } from 'next-auth/react'
 import { Toaster } from 'sonner'
+import { I18nProvider } from '@/lib/i18n/context'
+import type { Locale } from '@/lib/i18n/config'
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  initialLocale,
+}: {
+  children: React.ReactNode
+  initialLocale?: Locale
+}) {
   return (
     <SessionProvider>
-      {children}
+      <I18nProvider initialLocale={initialLocale}>
+        {children}
+      </I18nProvider>
       <Toaster
         position="bottom-right"
         toastOptions={{

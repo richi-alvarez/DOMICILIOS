@@ -1,0 +1,91 @@
+{
+  "lang": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "siteHeader": {
+    "nav": {
+      "home": "Inicio",
+      "plans": "Planes",
+      "agencies": "Agencias",
+      "resources": "Recursos"
+    },
+    "sections": {
+      "tools": "Herramientas gratuitas",
+      "guides": "Guías por industria",
+      "comparisons": "Comparativas y guías",
+      "blog": "Blog"
+    },
+    "blog": {
+      "title": "Consejos para vender más",
+      "desc": "Estrategias, casos de éxito y novedades de la plataforma.",
+      "cta": "Ir al blog →"
+    },
+    "tools": {
+      "whatsapp": "Generador Link WhatsApp",
+      "description": "Descripciones con IA",
+      "margin": "Calculadora de Margen",
+      "names": "Nombres de Negocio",
+      "qr": "Generador QR de Menú",
+      "bio": "Generador de Biografías"
+    },
+    "guides": {
+      "ropa": "Vender ropa online",
+      "comida": "Vender comida a domicilio",
+      "pasteles": "Vender pasteles por WhatsApp",
+      "cosmeticos": "Vender cosméticos",
+      "cafe": "Catálogo para cafés",
+      "all": "Ver todas las guías →"
+    },
+    "comparisons": {
+      "qr": "Menú digital QR + WhatsApp",
+      "platform": "Mejor plataforma WhatsApp",
+      "free": "Tienda en línea gratis",
+      "all": "Ver todas →"
+    },
+    "cta": {
+      "login": "Iniciar Sesión",
+      "signup": "Registrarme gratis",
+      "panel": "Mi Panel",
+      "logout": "Cerrar sesión"
+    },
+    "mobile": {
+      "tools": "Herramientas gratuitas",
+      "guides": "Guías por industria",
+      "openMenu": "Abrir menú"
+    }
+  },
+  "appHeader": {
+    "notifications": "Notificaciones",
+    "user": "Usuario",
+    "menu": "Menú",
+    "currentPlan": "Plan actual:",
+    "profile": "Perfil",
+    "logout": "Finalizar sesión",
+    "activeCatalog": "Catálogo activo",
+    "published": "Publicado",
+    "draft": "Borrador",
+    "newCatalog": "Nuevo catálogo",
+    "userFallback": "Usuario",
+    "global": {
+      "catalogs": "Mis catálogos",
+      "team": "Equipo",
+      "billing": "Plan y facturación"
+    },
+    "catalogNav": {
+      "details": "Detalles",
+      "products": "Productos",
+      "categories": "Categorías",
+      "design": "Diseño",
+      "orders": "Pedidos",
+      "analytics": "Estadísticas",
+      "reports": "Reportes",
+      "settings": "Configuración"
+    }
+  },
+  "storefrontHeader": {
+    "search": "Buscar",
+    "cart": "Carrito"
+  }
+}

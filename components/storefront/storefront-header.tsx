@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { ShoppingCart, Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useCartState } from './cart-context'
+import { useI18n } from '@/lib/i18n/context'
+import { LanguageSwitcher } from '@/components/i18n/language-switcher'
 
 interface Props {
   catalogName: string
@@ -14,6 +16,7 @@ interface Props {
 
 export function StorefrontHeader({ catalogName, catalogSlug, logoUrl, showSearch = true }: Props) {
   const { items } = useCartState()
+  const { t } = useI18n()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -45,11 +48,12 @@ export function StorefrontHeader({ catalogName, catalogSlug, logoUrl, showSearch
           )}
         </Link>
         <div className="flex items-center gap-2">
+          <LanguageSwitcher />
           {showSearch && (
             <button
               type="button"
               className="rounded-full p-2 text-night-500 hover:bg-black/5 hover:text-night-800"
-              aria-label="Buscar"
+              aria-label={t('storefrontHeader.search')}
             >
               <Search className="h-5 w-5" />
             </button>
@@ -57,7 +61,7 @@ export function StorefrontHeader({ catalogName, catalogSlug, logoUrl, showSearch
           <Link
             href={`/s/${catalogSlug}/cart`}
             className="relative rounded-full p-2 text-night-700 hover:bg-black/5 hover:text-night-900"
-            aria-label="Carrito"
+            aria-label={t('storefrontHeader.cart')}
           >
             <ShoppingCart className="h-5 w-5" />
             {count > 0 && (

@@ -90,12 +90,15 @@ Modo agencia: panel multi-cliente, switcher, facturación consolidada, white-lab
 (`agency_owner`/`operator`/`client_owner`), plantillas reusables. Bloque grande; solo si
 hay demanda B2B.
 
-## ✅ P6 — i18n (Fase 15) — DESCARTADO (2026-06-27)
-`next-intl` estaba instalado pero **100% sin usar** (sin config, mensajes ni routing por
-locale). Producto mono-mercado (Colombia, es-CO, COP) sin demanda de otro idioma;
-multi-moneda ya cubre la necesidad LatAm. Se **eliminó la dependencia huérfana** en vez de
-implementar i18n completo. Si en el futuro hay mercado multi-idioma, se reabre como feature
-nueva (routing por locale + extracción de strings + traducción).
+## 🟡 P6 — i18n (Fase 15) — BASE + SELECTOR (2026-06-27)
+Se quitó `next-intl` (estaba 100% huérfano) y en su lugar se montó un **i18n ligero propio**
+(sin routing por locale): idioma en cookie `NEXT_LOCALE` + Context cliente (`lib/i18n/`) +
+`<html lang>` en el root layout + mensajes en `messages/{es,en}.json`. Se agregó un
+**selector ES|EN** (`components/i18n/language-switcher.tsx`) en los **tres headers**
+(marketing/app/storefront) y se tradujeron sus textos. Verificado E2E (toggle, cookie,
+persistencia en recarga vía SSR).
+**Pendiente (incremental):** traducir el resto de la app (hero, dashboards, tienda, emails)
+y, si hiciera falta SEO multi-idioma, evaluar routing por locale.
 
 ## 🟡 P7 — Producción / observabilidad (Fase 17)
 Sin Sentry; monitoreo casero. Falta doc de operación.
