@@ -87,5 +87,109 @@
   "storefrontHeader": {
     "search": "Buscar",
     "cart": "Carrito"
+  },
+  "landing": {
+    "meta": {
+      "title": "WaCommerce — Catálogos Inteligentes para Negocios"
+    },
+    "badge": "Gratis para empezar · Sin tarjeta de crédito",
+    "hero": {
+      "titleA": "Tu catálogo digital,",
+      "titleB": "pedidos por WhatsApp",
+      "subtitle": "Crea tu tienda en minutos con IA. Gestiona productos, recibe pedidos y cobra — todo desde un solo panel. Sin comisiones sobre tus ventas.",
+      "ctaPrimary": "Crear catálogo gratis",
+      "ctaSecondary": "Ver planes"
+    },
+    "checklist": {
+      "noCommissions": "Sin comisiones sobre tus ventas",
+      "whatsapp": "Pedidos por WhatsApp o email",
+      "ai": "Catálogo generado con IA",
+      "dashboard": "Panel de pedidos en tiempo real",
+      "payments": "Pagos integrados (Stripe, MercadoPago)",
+      "domain": "Dominio propio opcional"
+    },
+    "verticalsTitle": "Para todo tipo de negocio",
+    "verticals": {
+      "restaurants": "Restaurantes",
+      "fashion": "Ropa y moda",
+      "bakeries": "Pastelerías",
+      "cosmetics": "Cosméticos",
+      "cafes": "Cafés",
+      "jewelry": "Joyería",
+      "shoes": "Zapatos",
+      "natural": "Productos naturales"
+    },
+    "how": {
+      "title": "Tu tienda en 4 pasos",
+      "subtitle": "Sin complicaciones. Sin código. Sin agencia de diseño.",
+      "cta": "Empezar ahora — es gratis",
+      "register": {
+        "title": "Registra tu negocio",
+        "desc": "Crea tu cuenta gratis, elige el nombre de tu tienda y describe tu negocio."
+      },
+      "ai": {
+        "title": "La IA construye tu catálogo",
+        "desc": "En segundos tendrás categorías, productos, precios y diseño listos para publicar."
+      },
+      "customize": {
+        "title": "Personaliza y publica",
+        "desc": "Ajusta colores, bloques y fotos. Publica con un clic y comparte el enlace o QR."
+      },
+      "orders": {
+        "title": "Recibe pedidos por WhatsApp",
+        "desc": "Tu cliente agrega al carrito y el pedido llega a tu WhatsApp con todos los detalles."
+      }
+    },
+    "features": {
+      "title": "Todo lo que necesita tu negocio",
+      "subtitle": "Una plataforma completa para vender online, sin complicaciones.",
+      "compare": "Ver comparativa completa de planes →",
+      "ai": {
+        "title": "Catálogo generado con IA",
+        "desc": "Describe tu negocio y la IA crea categorías, productos y copys automáticamente."
+      },
+      "blocks": {
+        "title": "Editor de bloques",
+        "desc": "Diseña tu tienda con bloques drag-and-drop. Hero, galería, testimonios y más."
+      },
+      "whatsapp": {
+        "title": "Pedidos por WhatsApp",
+        "desc": "El carrito genera un mensaje prellenado. Tu cliente lo envía con un clic."
+      },
+      "payments": {
+        "title": "Pagos integrados",
+        "desc": "Acepta Stripe, MercadoPago, PayPal o transferencia manual. Sin comisiones."
+      },
+      "analytics": {
+        "title": "Analítica y pedidos",
+        "desc": "Dashboard con visitas, conversiones y gestión de pedidos en tiempo real."
+      },
+      "domain": {
+        "title": "Dominio propio",
+        "desc": "Conecta tu dominio personalizado y oculta nuestra marca en planes Pro+."
+      }
+    },
+    "testimonials": {
+      "title": "Lo que dicen nuestros usuarios",
+      "subtitle": "Miles de negocios ya automatizan sus ventas con WaCommerce.",
+      "sandra": {
+        "role": "Dueña de Pasteles SM · Bogotá, Colombia",
+        "text": "Antes mandaba fotos por WhatsApp y perdía pedidos. Ahora tengo mi catálogo, mis clientes lo comparten entre ellos y recibo 3x más pedidos."
+      },
+      "carlos": {
+        "role": "Distribuidora Reyes · Guadalajara, México",
+        "text": "Tengo 150 productos de importación. El catálogo se ve súper profesional y mis clientes ya no me preguntan por precio, simplemente piden."
+      },
+      "valentina": {
+        "role": "Agencia Vitrina Digital · Medellín, Colombia",
+        "text": "Manejo 12 clientes desde un solo panel. El plan de agencia me da todo lo que necesito y no cobro comisiones, así que mis clientes están felices."
+      }
+    },
+    "finalCta": {
+      "title": "Empieza a vender hoy, gratis",
+      "subtitle": "Sin tarjeta de crédito. Tu catálogo en minutos con ayuda de la IA.",
+      "ctaPrimary": "Crear mi catálogo gratis",
+      "ctaSecondary": "Ver todos los planes"
+    }
   }
 }

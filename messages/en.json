@@ -87,5 +87,109 @@
   "storefrontHeader": {
     "search": "Search",
     "cart": "Cart"
+  },
+  "landing": {
+    "meta": {
+      "title": "WaCommerce — Smart Catalogs for Businesses"
+    },
+    "badge": "Free to start · No credit card",
+    "hero": {
+      "titleA": "Your digital catalog,",
+      "titleB": "orders via WhatsApp",
+      "subtitle": "Build your store in minutes with AI. Manage products, receive orders and get paid — all from a single dashboard. No commissions on your sales.",
+      "ctaPrimary": "Create free catalog",
+      "ctaSecondary": "View pricing"
+    },
+    "checklist": {
+      "noCommissions": "No commissions on your sales",
+      "whatsapp": "Orders via WhatsApp or email",
+      "ai": "AI-generated catalog",
+      "dashboard": "Real-time orders dashboard",
+      "payments": "Integrated payments (Stripe, MercadoPago)",
+      "domain": "Optional custom domain"
+    },
+    "verticalsTitle": "For every kind of business",
+    "verticals": {
+      "restaurants": "Restaurants",
+      "fashion": "Clothing & fashion",
+      "bakeries": "Bakeries",
+      "cosmetics": "Cosmetics",
+      "cafes": "Cafés",
+      "jewelry": "Jewelry",
+      "shoes": "Shoes",
+      "natural": "Natural products"
+    },
+    "how": {
+      "title": "Your store in 4 steps",
+      "subtitle": "No hassle. No code. No design agency.",
+      "cta": "Get started now — it's free",
+      "register": {
+        "title": "Register your business",
+        "desc": "Create your free account, choose your store name and describe your business."
+      },
+      "ai": {
+        "title": "AI builds your catalog",
+        "desc": "In seconds you'll have categories, products, prices and design ready to publish."
+      },
+      "customize": {
+        "title": "Customize and publish",
+        "desc": "Adjust colors, blocks and photos. Publish in one click and share the link or QR."
+      },
+      "orders": {
+        "title": "Receive orders via WhatsApp",
+        "desc": "Your customer adds to cart and the order reaches your WhatsApp with every detail."
+      }
+    },
+    "features": {
+      "title": "Everything your business needs",
+      "subtitle": "A complete platform to sell online, without the hassle.",
+      "compare": "See full plan comparison →",
+      "ai": {
+        "title": "AI-generated catalog",
+        "desc": "Describe your business and AI creates categories, products and copy automatically."
+      },
+      "blocks": {
+        "title": "Block editor",
+        "desc": "Design your store with drag-and-drop blocks. Hero, gallery, testimonials and more."
+      },
+      "whatsapp": {
+        "title": "Orders via WhatsApp",
+        "desc": "The cart generates a pre-filled message. Your customer sends it with one click."
+      },
+      "payments": {
+        "title": "Integrated payments",
+        "desc": "Accept Stripe, MercadoPago, PayPal or manual transfer. No commissions."
+      },
+      "analytics": {
+        "title": "Analytics & orders",
+        "desc": "Dashboard with visits, conversions and real-time order management."
+      },
+      "domain": {
+        "title": "Custom domain",
+        "desc": "Connect your own domain and hide our brand on Pro+ plans."
+      }
+    },
+    "testimonials": {
+      "title": "What our users say",
+      "subtitle": "Thousands of businesses already automate their sales with WaCommerce.",
+      "sandra": {
+        "role": "Owner of Pasteles SM · Bogotá, Colombia",
+        "text": "I used to send photos over WhatsApp and lose orders. Now I have my catalog, my customers share it with each other and I get 3x more orders."
+      },
+      "carlos": {
+        "role": "Distribuidora Reyes · Guadalajara, Mexico",
+        "text": "I have 150 imported products. The catalog looks super professional and my customers no longer ask about price, they just order."
+      },
+      "valentina": {
+        "role": "Vitrina Digital Agency · Medellín, Colombia",
+        "text": "I manage 12 clients from a single dashboard. The agency plan gives me everything I need and I charge no commissions, so my clients are happy."
+      }
+    },
+    "finalCta": {
+      "title": "Start selling today, for free",
+      "subtitle": "No credit card. Your catalog in minutes with AI's help.",
+      "ctaPrimary": "Create my free catalog",
+      "ctaSecondary": "View all plans"
+    }
   }
 }

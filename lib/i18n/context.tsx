@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useMemo, useState } from 'react
 import { useRouter } from 'next/navigation'
 import esMessages from '@/messages/es.json'
 import enMessages from '@/messages/en.json'
-import { DEFAULT_LOCALE, LOCALE_COOKIE, type Locale } from './config'
+import { DEFAULT_LOCALE, LOCALE_COOKIE, resolveMessage, type Locale } from './config'
 
 const MESSAGES: Record<Locale, Record<string, unknown>> = {
   es: esMessages,
@@ -19,15 +19,6 @@ interface I18nContextValue {
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null)
-
-/** Resuelve una clave "a.b.c" dentro del objeto de mensajes; devuelve la clave si no existe. */
-function resolve(messages: Record<string, unknown>, key: string): string {
-  const value = key.split('.').reduce<unknown>((acc, part) => {
-    if (acc && typeof acc === 'object') return (acc as Record<string, unknown>)[part]
-    return undefined
-  }, messages)
-  return typeof value === 'string' ? value : key
-}
 
 export function I18nProvider({
   initialLocale = DEFAULT_LOCALE,
@@ -51,7 +42,7 @@ export function I18nProvider({
     [router],
   )
 
-  const t = useCallback((key: string) => resolve(MESSAGES[locale], key), [locale])
+  const t = useCallback((key: string) => resolveMessage(MESSAGES[locale], key), [locale])
 
   const value = useMemo(() => ({ locale, t, setLocale }), [locale, t, setLocale])
 
