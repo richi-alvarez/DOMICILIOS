@@ -12,8 +12,10 @@ import { Label } from '@/components/ui/label'
 import { signUpSchema, type SignUpInput } from '@/lib/validations/auth'
 import { signUpWithCredentials } from '@/lib/actions/auth'
 import { signIn } from 'next-auth/react'
+import { useI18n } from '@/lib/i18n/context'
 
 function GoogleButton() {
+  const { t } = useI18n()
   const [loading, setLoading] = useState(false)
   return (
     <Button
@@ -36,12 +38,13 @@ function GoogleButton() {
           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
         </svg>
       )}
-      Continuar con Google
+      {t('auth.google')}
     </Button>
   )
 }
 
 export function SignUpForm() {
+  const { t } = useI18n()
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [showPassword, setShowPassword] = useState(false)
@@ -83,8 +86,8 @@ export function SignUpForm() {
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-lime-100">
           <CheckCircle2 className="h-7 w-7 text-lime-600" />
         </div>
-        <h3 className="text-lg font-bold text-night-800">¡Cuenta creada!</h3>
-        <p className="text-sm text-warm-500">Revisa tu correo para verificar tu cuenta. Redirigiendo…</p>
+        <h3 className="text-lg font-bold text-night-800">{t('auth.signup.successTitle')}</h3>
+        <p className="text-sm text-warm-500">{t('auth.signup.successDesc')}</p>
       </div>
     )
   }
@@ -95,7 +98,7 @@ export function SignUpForm() {
 
       <div className="flex items-center gap-3">
         <div className="h-px flex-1 bg-warm-200" />
-        <span className="text-xs text-warm-400">O continúa con email</span>
+        <span className="text-xs text-warm-400">{t('auth.orEmail')}</span>
         <div className="h-px flex-1 bg-warm-200" />
       </div>
 
@@ -108,11 +111,11 @@ export function SignUpForm() {
 
       {/* Nombre */}
       <div className="space-y-1.5">
-        <Label htmlFor="name">Nombre completo</Label>
+        <Label htmlFor="name">{t('auth.name')}</Label>
         <Input
           id="name"
           type="text"
-          placeholder="Tu nombre"
+          placeholder={t('auth.namePlaceholder')}
           autoComplete="name"
           {...register('name')}
           aria-invalid={!!errors.name}
@@ -122,11 +125,11 @@ export function SignUpForm() {
 
       {/* Email */}
       <div className="space-y-1.5">
-        <Label htmlFor="email">Correo electrónico</Label>
+        <Label htmlFor="email">{t('auth.email')}</Label>
         <Input
           id="email"
           type="email"
-          placeholder="tu@correo.com"
+          placeholder={t('auth.emailPlaceholder')}
           autoComplete="email"
           {...register('email')}
           aria-invalid={!!errors.email}
@@ -136,12 +139,12 @@ export function SignUpForm() {
 
       {/* Password */}
       <div className="space-y-1.5">
-        <Label htmlFor="password">Contraseña</Label>
+        <Label htmlFor="password">{t('auth.password')}</Label>
         <div className="relative">
           <Input
             id="password"
             type={showPassword ? 'text' : 'password'}
-            placeholder="Mínimo 8 caracteres"
+            placeholder={t('auth.signup.passwordPlaceholder')}
             autoComplete="new-password"
             {...register('password')}
             aria-invalid={!!errors.password}
@@ -167,23 +170,23 @@ export function SignUpForm() {
           className="mt-0.5 h-4 w-4 accent-primary-500"
         />
         <span>
-          Acepto los{' '}
-          <Link href="/terms" className="text-primary-500 hover:underline">Términos de uso</Link>
-          {' '}y la{' '}
-          <Link href="/privacy" className="text-primary-500 hover:underline">Política de privacidad</Link>
+          {t('auth.signup.termsPrefix')}{' '}
+          <Link href="/terms" className="text-primary-500 hover:underline">{t('auth.signup.termsLink')}</Link>
+          {' '}{t('auth.signup.termsAnd')}{' '}
+          <Link href="/privacy" className="text-primary-500 hover:underline">{t('auth.signup.privacyLink')}</Link>
         </span>
       </label>
       {errors.terms && <p className="text-xs text-red-600">{errors.terms.message}</p>}
 
       <Button type="submit" className="w-full" disabled={!isValid || isPending}>
         {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
-        Registrarme
+        {t('auth.signup.submit')}
       </Button>
 
       <p className="text-center text-sm text-warm-500">
-        ¿Ya tienes cuenta?{' '}
+        {t('auth.signup.haveAccount')}{' '}
         <Link href="/login" className="font-medium text-primary-500 hover:underline">
-          Iniciar Sesión
+          {t('auth.signup.login')}
         </Link>
       </p>
     </form>

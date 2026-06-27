@@ -191,5 +191,51 @@
       "ctaPrimary": "Crear mi catálogo gratis",
       "ctaSecondary": "Ver todos los planes"
     }
+  },
+  "cookieBanner": {
+    "text": "Usamos cookies esenciales para el funcionamiento del sitio y analítica propia para mejorar la plataforma. No usamos cookies de publicidad.",
+    "privacyLink": "Política de privacidad",
+    "accept": "Aceptar",
+    "essentialsOnly": "Solo esenciales",
+    "close": "Cerrar"
+  },
+  "auth": {
+    "google": "Continuar con Google",
+    "orEmail": "O continúa con email",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.com",
+    "password": "Contraseña",
+    "name": "Nombre completo",
+    "namePlaceholder": "Tu nombre",
+    "errors": {
+      "invalidCredentials": "Correo o contraseña incorrectos",
+      "oauthNotLinked": "Este correo ya tiene una cuenta con contraseña. Inicia sesión con email.",
+      "generic": "Error al iniciar sesión. Intenta de nuevo."
+    },
+    "login": {
+      "metaTitle": "Iniciar Sesión",
+      "title": "Iniciar Sesión",
+      "subtitle": "Accede a tu panel de WaCommerce",
+      "passwordPlaceholder": "Tu contraseña",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "submit": "Iniciar Sesión",
+      "noAccount": "¿No tienes cuenta?",
+      "createAccount": "Crear cuenta gratis"
+    },
+    "signup": {
+      "metaTitle": "Crear cuenta",
+      "title": "Crea tu cuenta gratis",
+      "subtitle": "Sin tarjeta de crédito · Tu catálogo en minutos",
+      "passwordPlaceholder": "Mínimo 8 caracteres",
+      "termsPrefix": "Acepto los",
+      "termsLink": "Términos de uso",
+      "termsAnd": "y la",
+      "privacyLink": "Política de privacidad",
+      "submit": "Registrarme",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "login": "Iniciar Sesión",
+      "successTitle": "¡Cuenta creada!",
+      "successDesc": "Revisa tu correo para verificar tu cuenta. Redirigiendo…"
+    }
   }
 }

@@ -191,5 +191,51 @@
       "ctaPrimary": "Create my free catalog",
       "ctaSecondary": "View all plans"
     }
+  },
+  "cookieBanner": {
+    "text": "We use essential cookies for the site to work and first-party analytics to improve the platform. We don't use advertising cookies.",
+    "privacyLink": "Privacy Policy",
+    "accept": "Accept",
+    "essentialsOnly": "Essentials only",
+    "close": "Close"
+  },
+  "auth": {
+    "google": "Continue with Google",
+    "orEmail": "Or continue with email",
+    "email": "Email",
+    "emailPlaceholder": "you@email.com",
+    "password": "Password",
+    "name": "Full name",
+    "namePlaceholder": "Your name",
+    "errors": {
+      "invalidCredentials": "Incorrect email or password",
+      "oauthNotLinked": "This email already has a password account. Sign in with email.",
+      "generic": "Sign-in error. Please try again."
+    },
+    "login": {
+      "metaTitle": "Log in",
+      "title": "Log in",
+      "subtitle": "Access your WaCommerce dashboard",
+      "passwordPlaceholder": "Your password",
+      "forgot": "Forgot your password?",
+      "submit": "Log in",
+      "noAccount": "Don't have an account?",
+      "createAccount": "Create free account"
+    },
+    "signup": {
+      "metaTitle": "Sign up",
+      "title": "Create your free account",
+      "subtitle": "No credit card · Your catalog in minutes",
+      "passwordPlaceholder": "At least 8 characters",
+      "termsPrefix": "I accept the",
+      "termsLink": "Terms of Use",
+      "termsAnd": "and the",
+      "privacyLink": "Privacy Policy",
+      "submit": "Sign up",
+      "haveAccount": "Already have an account?",
+      "login": "Log in",
+      "successTitle": "Account created!",
+      "successDesc": "Check your email to verify your account. Redirecting…"
+    }
   }
 }

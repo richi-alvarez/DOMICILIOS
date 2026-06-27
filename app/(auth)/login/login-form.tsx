@@ -11,8 +11,10 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { loginSchema, type LoginInput } from '@/lib/validations/auth'
 import { signIn } from 'next-auth/react'
+import { useI18n } from '@/lib/i18n/context'
 
 function GoogleButton() {
+  const { t } = useI18n()
   const [loading, setLoading] = useState(false)
   return (
     <Button
@@ -35,12 +37,13 @@ function GoogleButton() {
           <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
         </svg>
       )}
-      Continuar con Google
+      {t('auth.google')}
     </Button>
   )
 }
 
 export function LoginForm() {
+  const { t } = useI18n()
   const router = useRouter()
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get('callbackUrl') ?? '/app'
@@ -52,9 +55,9 @@ export function LoginForm() {
   const urlError = searchParams.get('error')
   const urlErrorMsg =
     urlError === 'OAuthAccountNotLinked'
-      ? 'Este correo ya tiene una cuenta con contraseña. Inicia sesión con email.'
+      ? t('auth.errors.oauthNotLinked')
       : urlError
-        ? 'Error al iniciar sesión. Intenta de nuevo.'
+        ? t('auth.errors.generic')
         : null
 
   const {
@@ -75,7 +78,7 @@ export function LoginForm() {
         redirect: false,
       })
       if (result?.error) {
-        setServerError('Correo o contraseña incorrectos')
+        setServerError(t('auth.errors.invalidCredentials'))
       } else {
         router.push(callbackUrl)
         router.refresh()
@@ -91,7 +94,7 @@ export function LoginForm() {
 
       <div className="flex items-center gap-3">
         <div className="h-px flex-1 bg-warm-200" />
-        <span className="text-xs text-warm-400">O continúa con email</span>
+        <span className="text-xs text-warm-400">{t('auth.orEmail')}</span>
         <div className="h-px flex-1 bg-warm-200" />
       </div>
 
@@ -104,11 +107,11 @@ export function LoginForm() {
 
       {/* Email */}
       <div className="space-y-1.5">
-        <Label htmlFor="email">Correo electrónico</Label>
+        <Label htmlFor="email">{t('auth.email')}</Label>
         <Input
           id="email"
           type="email"
-          placeholder="tu@correo.com"
+          placeholder={t('auth.emailPlaceholder')}
           autoComplete="email"
           {...register('email')}
           aria-invalid={!!errors.email}
@@ -119,16 +122,16 @@ export function LoginForm() {
       {/* Password */}
       <div className="space-y-1.5">
         <div className="flex items-center justify-between">
-          <Label htmlFor="password">Contraseña</Label>
+          <Label htmlFor="password">{t('auth.password')}</Label>
           <Link href="/password-forgot" className="text-xs text-primary-500 hover:underline">
-            ¿Olvidaste tu contraseña?
+            {t('auth.login.forgot')}
           </Link>
         </div>
         <div className="relative">
           <Input
             id="password"
             type={showPassword ? 'text' : 'password'}
-            placeholder="Tu contraseña"
+            placeholder={t('auth.login.passwordPlaceholder')}
             autoComplete="current-password"
             {...register('password')}
             aria-invalid={!!errors.password}
@@ -148,13 +151,13 @@ export function LoginForm() {
 
       <Button type="submit" className="w-full" disabled={!isValid || isPending}>
         {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
-        Iniciar Sesión
+        {t('auth.login.submit')}
       </Button>
 
       <p className="text-center text-sm text-warm-500">
-        ¿No tienes cuenta?{' '}
+        {t('auth.login.noAccount')}{' '}
         <Link href="/signup" className="font-medium text-primary-500 hover:underline">
-          Crear cuenta gratis
+          {t('auth.login.createAccount')}
         </Link>
       </p>
     </form>
