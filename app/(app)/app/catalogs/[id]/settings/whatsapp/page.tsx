@@ -9,6 +9,7 @@ import { isMetaConfigured, isStoreReplyEnabled } from '@/lib/whatsapp/meta-clien
 import { SettingsTabs } from '@/components/app/settings-tabs'
 import { getSettingsTabs } from '../settings-tabs-config'
 import { WhatsappClient } from './whatsapp-client'
+import { getT } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'WhatsApp' }
 
@@ -34,22 +35,22 @@ export default async function WhatsappSettingsPage({ params }: Props) {
 
   const conversations = await listConversations(id)
   const metaConfigured = isMetaConfigured()
+  const t = await getT()
 
   return (
     <div className="px-6 py-8">
       <SettingsTabs tabs={getSettingsTabs(id)} />
 
       <div className="mb-4">
-        <h1 className="font-display text-2xl font-bold text-night-900">WhatsApp</h1>
-        <p className="text-sm text-night-400">
-          Conversaciones del comercio. Alterna cada chat entre modo IA (responde el bot) y Humano.
-        </p>
+        <h1 className="font-display text-2xl font-bold text-night-900">{t('settings.whatsapp.title')}</h1>
+        <p className="text-sm text-night-400">{t('settings.whatsapp.subtitle')}</p>
       </div>
 
       {!metaConfigured && (
         <div className="mb-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
-          WhatsApp Cloud API no está configurado (variables <code>META_ACCESS_TOKEN</code> /{' '}
-          <code>META_PHONE_NUMBER_ID</code>). Las conversaciones se muestran, pero no se podrán enviar mensajes.
+          {t('settings.whatsapp.notConfiguredPre')}<code>META_ACCESS_TOKEN</code>
+          {t('settings.whatsapp.notConfiguredMid')}
+          <code>META_PHONE_NUMBER_ID</code>{t('settings.whatsapp.notConfiguredPost')}
         </div>
       )}
 

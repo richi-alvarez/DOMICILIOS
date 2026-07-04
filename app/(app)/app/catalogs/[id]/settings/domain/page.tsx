@@ -7,6 +7,7 @@ import { eq } from 'drizzle-orm'
 import { DomainEditor } from '@/components/app/domain-editor'
 import { SettingsTabs } from '@/components/app/settings-tabs'
 import { getSettingsTabs } from '../settings-tabs-config'
+import { getT } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'Dominio personalizado' }
 
@@ -37,11 +38,13 @@ export default async function DomainPage({ params }: Props) {
     dbError = true
   }
 
+  const t = await getT()
+
   if (dbError) {
     return (
       <div className="px-6 py-8">
-        <h1 className="mb-2 font-display text-2xl font-bold text-night-900">Dominio personalizado</h1>
-        <p className="text-sm text-night-400">Configura DATABASE_URL para editar el dominio.</p>
+        <h1 className="mb-2 font-display text-2xl font-bold text-night-900">{t('settings.domain.title')}</h1>
+        <p className="text-sm text-night-400">{t('settings.domain.fallbackSubtitle')}</p>
       </div>
     )
   }
@@ -50,10 +53,8 @@ export default async function DomainPage({ params }: Props) {
 
   return (
     <div className="px-6 py-8 max-w-3xl">
-      <h1 className="text-2xl font-extrabold text-night-800">Dominio personalizado</h1>
-      <p className="mt-1 mb-6 text-sm text-warm-500">
-        Configura tu propio dominio o usa el subdominio automático.
-      </p>
+      <h1 className="text-2xl font-extrabold text-night-800">{t('settings.domain.title')}</h1>
+      <p className="mt-1 mb-6 text-sm text-warm-500">{t('settings.domain.subtitle')}</p>
 
       <SettingsTabs tabs={tabs} />
 

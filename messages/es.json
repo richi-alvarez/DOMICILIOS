@@ -991,5 +991,46 @@
     "saving": "Guardando...",
     "saved": "✓ Guardado",
     "ctaHintPost": "."
+  },
+  "settings": {
+    "tabs": {
+      "salesType": "Tipo de venta",
+      "delivery": "Entregas",
+      "domain": "Dominio",
+      "payments": "Pagos",
+      "whatsapp": "WhatsApp"
+    },
+    "dbErrorGeneric": "Configura DATABASE_URL para editar la configuración.",
+    "delivery": {
+      "title": "Entregas",
+      "subtitle": "Canal de pedidos, tipos de entrega y horarios de atención.",
+      "fallbackTitle": "Configuración",
+      "dangerZone": "Zona de Peligro",
+      "deleteTitle": "Eliminar catálogo",
+      "deleteDesc": "Esta acción eliminará el catálogo y todos sus datos de forma permanente e irreversible.",
+      "notInPlan": "No disponible en tu plan",
+      "requiresPlan": "Requiere plan Pro o superior"
+    },
+    "salesTypePage": {
+      "title": "Tipo de venta",
+      "subtitle": "Elige cómo opera este catálogo: vender productos (carrito) o agendar servicios (citas). Solo puedes seleccionar uno."
+    },
+    "domain": {
+      "title": "Dominio personalizado",
+      "subtitle": "Configura tu propio dominio o usa el subdominio automático.",
+      "fallbackSubtitle": "Configura DATABASE_URL para editar el dominio."
+    },
+    "payments": {
+      "title": "Pagos",
+      "subtitle": "Conecta Stripe para aceptar pagos con tarjeta directamente en tu catálogo.",
+      "fallbackSubtitle": "Configura DATABASE_URL para editar la configuración de pagos."
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "subtitle": "Conversaciones del comercio. Alterna cada chat entre modo IA (responde el bot) y Humano.",
+      "notConfiguredPre": "WhatsApp Cloud API no está configurado (variables ",
+      "notConfiguredMid": " / ",
+      "notConfiguredPost": "). Las conversaciones se muestran, pero no se podrán enviar mensajes."
+    }
   }
 }

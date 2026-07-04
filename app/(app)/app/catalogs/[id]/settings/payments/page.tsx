@@ -8,6 +8,7 @@ import { SettingsTabs } from '@/components/app/settings-tabs'
 import { getSettingsTabs } from '../settings-tabs-config'
 import { getPaymentMethods } from '@/lib/actions/payments'
 import { PaymentsForm } from './payments-form'
+import { getT } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'Configuración de Pagos' }
 
@@ -41,11 +42,13 @@ export default async function PaymentsSettingsPage({ params }: Props) {
     dbError = true
   }
 
+  const t = await getT()
+
   if (dbError) {
     return (
       <div className="px-6 py-8">
-        <h1 className="mb-2 font-display text-2xl font-bold text-night-900">Pagos</h1>
-        <p className="text-sm text-night-400">Configura DATABASE_URL para editar la configuración de pagos.</p>
+        <h1 className="mb-2 font-display text-2xl font-bold text-night-900">{t('settings.payments.title')}</h1>
+        <p className="text-sm text-night-400">{t('settings.payments.fallbackSubtitle')}</p>
       </div>
     )
   }
@@ -53,10 +56,8 @@ export default async function PaymentsSettingsPage({ params }: Props) {
   return (
     <div className="px-6 py-8">
       <SettingsTabs tabs={getSettingsTabs(id)} />
-      <h1 className="mb-1 font-display text-2xl font-bold text-night-900">Pagos</h1>
-      <p className="mb-8 text-sm text-night-400">
-        Conecta Stripe para aceptar pagos con tarjeta directamente en tu catálogo.
-      </p>
+      <h1 className="mb-1 font-display text-2xl font-bold text-night-900">{t('settings.payments.title')}</h1>
+      <p className="mb-8 text-sm text-night-400">{t('settings.payments.subtitle')}</p>
       <PaymentsForm catalogId={id} existing={paymentMethodData} />
     </div>
   )

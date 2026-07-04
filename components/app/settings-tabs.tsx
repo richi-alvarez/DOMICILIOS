@@ -3,10 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { useI18n } from '@/lib/i18n/context'
 
 interface Tab {
   href: string
-  label: string
+  labelKey: string
 }
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
 
 export function SettingsTabs({ tabs }: Props) {
   const pathname = usePathname()
+  const { t } = useI18n()
 
   return (
     <div className="mb-8 flex gap-1 rounded-xl border border-warm-200 bg-warm-50 p-1">
@@ -31,7 +33,7 @@ export function SettingsTabs({ tabs }: Props) {
                 : 'text-warm-500 hover:text-night-700',
             )}
           >
-            {tab.label}
+            {t(tab.labelKey)}
           </Link>
         )
       })}

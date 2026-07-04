@@ -9,6 +9,7 @@ import { SettingsTabs } from '@/components/app/settings-tabs'
 import { getSettingsTabs } from './settings-tabs-config'
 import { DeleteCatalogModal } from './_components/delete-catalog-modal'
 import { getOrgPlan, PLAN_LIMITS } from '@/lib/billing/limits'
+import { getT } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'Configuración de Entregas' }
 
@@ -50,11 +51,13 @@ export default async function SettingsPage({ params }: Props) {
     dbError = true
   }
 
+  const t = await getT()
+
   if (dbError) {
     return (
       <div className="px-6 py-8">
-        <h1 className="mb-2 font-display text-2xl font-bold text-night-900">Configuración</h1>
-        <p className="text-sm text-night-400">Configura DATABASE_URL para editar la configuración.</p>
+        <h1 className="mb-2 font-display text-2xl font-bold text-night-900">{t('settings.delivery.fallbackTitle')}</h1>
+        <p className="text-sm text-night-400">{t('settings.dbErrorGeneric')}</p>
       </div>
     )
   }
@@ -66,8 +69,8 @@ export default async function SettingsPage({ params }: Props) {
   return (
     <div className="px-6 py-8">
       <SettingsTabs tabs={getSettingsTabs(id)} />
-      <h1 className="mb-1 font-display text-2xl font-bold text-night-900">Entregas</h1>
-      <p className="mb-8 text-sm text-night-400">Canal de pedidos, tipos de entrega y horarios de atención.</p>
+      <h1 className="mb-1 font-display text-2xl font-bold text-night-900">{t('settings.delivery.title')}</h1>
+      <p className="mb-8 text-sm text-night-400">{t('settings.delivery.subtitle')}</p>
 
       <DeliverySettingsForm
         catalogId={id}
@@ -87,21 +90,21 @@ export default async function SettingsPage({ params }: Props) {
 
       {/* Danger Zone */}
       <div className="mt-12 pt-8 border-t border-red-200">
-        <h2 className="text-lg font-semibold text-red-900 mb-4">Zona de Peligro</h2>
+        <h2 className="text-lg font-semibold text-red-900 mb-4">{t('settings.delivery.dangerZone')}</h2>
         <div className="bg-red-50 border border-red-200 rounded-lg p-6">
           <div className="flex items-start justify-between">
             <div>
-              <h3 className="font-semibold text-red-900">Eliminar catálogo</h3>
+              <h3 className="font-semibold text-red-900">{t('settings.delivery.deleteTitle')}</h3>
               <p className="text-sm text-red-700 mt-1">
-                Esta acción eliminará el catálogo y todos sus datos de forma permanente e irreversible.
+                {t('settings.delivery.deleteDesc')}
               </p>
             </div>
             {canDeleteCatalog ? (
               <DeleteCatalogModal catalogId={id} catalogName={catalog.name} />
             ) : (
               <div className="text-sm text-red-600">
-                <p className="font-medium">No disponible en tu plan</p>
-                <p className="text-xs text-red-500 mt-1">Requiere plan Pro o superior</p>
+                <p className="font-medium">{t('settings.delivery.notInPlan')}</p>
+                <p className="text-xs text-red-500 mt-1">{t('settings.delivery.requiresPlan')}</p>
               </div>
             )}
           </div>

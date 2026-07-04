@@ -991,5 +991,46 @@
     "saving": "Saving...",
     "saved": "✓ Saved",
     "ctaHintPost": " will be used."
+  },
+  "settings": {
+    "tabs": {
+      "salesType": "Sales type",
+      "delivery": "Deliveries",
+      "domain": "Domain",
+      "payments": "Payments",
+      "whatsapp": "WhatsApp"
+    },
+    "dbErrorGeneric": "Set DATABASE_URL to edit settings.",
+    "delivery": {
+      "title": "Deliveries",
+      "subtitle": "Order channel, delivery types and business hours.",
+      "fallbackTitle": "Settings",
+      "dangerZone": "Danger Zone",
+      "deleteTitle": "Delete catalog",
+      "deleteDesc": "This action will permanently and irreversibly delete the catalog and all its data.",
+      "notInPlan": "Not available on your plan",
+      "requiresPlan": "Requires Pro plan or higher"
+    },
+    "salesTypePage": {
+      "title": "Sales type",
+      "subtitle": "Choose how this catalog operates: sell products (cart) or book services (appointments). You can only pick one."
+    },
+    "domain": {
+      "title": "Custom domain",
+      "subtitle": "Set up your own domain or use the automatic subdomain.",
+      "fallbackSubtitle": "Set DATABASE_URL to edit the domain."
+    },
+    "payments": {
+      "title": "Payments",
+      "subtitle": "Connect Stripe to accept card payments directly in your catalog.",
+      "fallbackSubtitle": "Set DATABASE_URL to edit payment settings."
+    },
+    "whatsapp": {
+      "title": "WhatsApp",
+      "subtitle": "Your store's conversations. Toggle each chat between AI mode (bot replies) and Human.",
+      "notConfiguredPre": "WhatsApp Cloud API is not configured (",
+      "notConfiguredMid": " / ",
+      "notConfiguredPost": " variables). Conversations are shown, but messages can't be sent."
+    }
   }
 }

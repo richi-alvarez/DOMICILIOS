@@ -8,6 +8,7 @@ import { SettingsTabs } from '@/components/app/settings-tabs'
 import { getSettingsTabs } from '../settings-tabs-config'
 import { SalesTypeForm } from './sales-type-form'
 import { DEFAULT_BOOKING, type BookingConfig } from '@/lib/booking/config'
+import { getT } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'Tipo de venta' }
 
@@ -30,15 +31,13 @@ export default async function SalesTypePage({ params }: Props) {
   const settings = (catalog.settingsJson ?? {}) as Record<string, unknown>
   const booking = (settings.booking as BookingConfig) ?? DEFAULT_BOOKING
   const ctaLabel = (settings.ctaLabel as string) ?? ''
+  const t = await getT()
 
   return (
     <div className="px-6 py-8">
       <SettingsTabs tabs={getSettingsTabs(id)} />
-      <h1 className="mb-1 font-display text-2xl font-bold text-night-900">Tipo de venta</h1>
-      <p className="mb-8 text-sm text-night-400">
-        Elige cómo opera este catálogo: vender productos (carrito) o agendar servicios (citas).
-        Solo puedes seleccionar uno.
-      </p>
+      <h1 className="mb-1 font-display text-2xl font-bold text-night-900">{t('settings.salesTypePage.title')}</h1>
+      <p className="mb-8 text-sm text-night-400">{t('settings.salesTypePage.subtitle')}</p>
 
       <SalesTypeForm
         catalogId={id}
