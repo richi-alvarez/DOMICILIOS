@@ -49,3 +49,6 @@ navigate_home.js
 open_visible.mjs
 show_design_*.js
 FINAL_SUMMARY_*.txt
+# Build artifacts / temp
+*.tsbuildinfo
+login-snap.md
