@@ -7,14 +7,16 @@ import { updateOrderStatus } from '@/lib/actions/orders'
 import { Eye, Download } from 'lucide-react'
 import { toast } from 'sonner'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useI18n } from '@/lib/i18n/context'
 
-const STATUS_LABELS: Record<string, { label: string; color: string }> = {
-  pending_send: { label: 'Pendiente',    color: 'bg-yellow-100 text-yellow-700' },
-  received:     { label: 'Recibido',     color: 'bg-blue-100 text-blue-700' },
-  preparing:    { label: 'En prep.',     color: 'bg-orange-100 text-orange-700' },
-  ready:        { label: 'Listo',        color: 'bg-lime-100 text-lime-700' },
-  delivered:    { label: 'Entregado',    color: 'bg-green-100 text-green-700' },
-  cancelled:    { label: 'Cancelado',    color: 'bg-red-100 text-red-600' },
+// Solo estilos por estado; el label se resuelve con t('orders.status.<key>').
+const STATUS_STYLE: Record<string, string> = {
+  pending_send: 'bg-yellow-100 text-yellow-700',
+  received:     'bg-blue-100 text-blue-700',
+  preparing:    'bg-orange-100 text-orange-700',
+  ready:        'bg-lime-100 text-lime-700',
+  delivered:    'bg-green-100 text-green-700',
+  cancelled:    'bg-red-100 text-red-600',
 }
 
 interface Order {
@@ -35,6 +37,8 @@ interface Props {
 }
 
 export function OrdersClient({ initialOrders, catalogId }: Props) {
+  const { t, tRaw } = useI18n()
+  const statusLabel = (k: string) => t(`orders.status.${k}`)
   const router = useRouter()
   const searchParams = useSearchParams()
   const [orders, setOrders] = useState(initialOrders)
@@ -74,7 +78,7 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
 
   function exportCsv() {
     const rows = [
-      ['Código', 'Fecha', 'Cliente', 'Total', 'Estado'],
+      tRaw('orders.csvHeaders') as string[],
       ...orders.map((o) => {
         const customer = o.customerJson as { name?: string }
         const totals = o.totalsJson as { total?: number; currency?: string }
@@ -83,7 +87,7 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
           formatDate(o.createdAt),
           customer.name ?? '',
           totals.total ?? 0,
-          STATUS_LABELS[o.status]?.label ?? o.status,
+          STATUS_STYLE[o.status] ? statusLabel(o.status) : o.status,
         ]
       }),
     ]
@@ -92,7 +96,7 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `pedidos-${Date.now()}.csv`
+    a.download = `${t('orders.csvFilePrefix')}-${Date.now()}.csv`
     a.click()
     URL.revokeObjectURL(url)
   }
@@ -106,15 +110,15 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
           onChange={(e) => applyFilter('status', e.target.value)}
           className="rounded-lg border border-warm-200 bg-white px-3 py-2 text-sm text-night-700 focus:outline-none focus:ring-1 focus:ring-primary-400"
         >
-          <option value="all">Todos los estados</option>
-          {Object.entries(STATUS_LABELS).map(([v, { label }]) => (
-            <option key={v} value={v}>{label}</option>
+          <option value="all">{t('orders.allStatuses')}</option>
+          {Object.keys(STATUS_STYLE).map((v) => (
+            <option key={v} value={v}>{statusLabel(v)}</option>
           ))}
         </select>
 
         <input
           type="text"
-          placeholder="Buscar # pedido"
+          placeholder={t('orders.searchPlaceholder')}
           defaultValue={search}
           onChange={(e) => applyFilter('search', e.target.value)}
           className="rounded-lg border border-warm-200 bg-white px-3 py-2 text-sm text-night-700 placeholder-night-300 focus:outline-none focus:ring-1 focus:ring-primary-400"
@@ -139,7 +143,7 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
           className="ml-auto flex items-center gap-1.5 rounded-lg border border-warm-200 bg-white px-3 py-2 text-sm text-night-600 hover:bg-warm-50"
         >
           <Download className="h-4 w-4" />
-          Exportar CSV
+          {t('orders.exportCsv')}
         </button>
       </div>
 
@@ -147,13 +151,13 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
       {orders.length === 0 ? (
         <div className="flex flex-col items-center gap-3 py-20 text-center text-night-400">
           <span className="text-4xl">📦</span>
-          <p>No hay pedidos {status !== 'all' ? 'con este estado' : 'aún'}.</p>
+          <p>{status !== 'all' ? t('orders.emptyFiltered') : t('orders.emptyNone')}</p>
           {status !== 'all' && (
             <button
               onClick={() => applyFilter('status', '')}
               className="text-sm text-primary-600 underline"
             >
-              Ver todos
+              {t('orders.seeAll')}
             </button>
           )}
         </div>
@@ -162,19 +166,19 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-warm-100 bg-warm-50 text-xs font-semibold uppercase tracking-wide text-night-400">
-                <th className="px-4 py-3 text-left"># Número</th>
-                <th className="px-4 py-3 text-left">Fecha</th>
-                <th className="px-4 py-3 text-left">Cliente</th>
-                <th className="px-4 py-3 text-right">Total</th>
-                <th className="px-4 py-3 text-left">Estado</th>
-                <th className="px-4 py-3 text-center">Detalles</th>
+                <th className="px-4 py-3 text-left">{t('orders.th.number')}</th>
+                <th className="px-4 py-3 text-left">{t('orders.th.date')}</th>
+                <th className="px-4 py-3 text-left">{t('orders.th.customer')}</th>
+                <th className="px-4 py-3 text-right">{t('orders.th.total')}</th>
+                <th className="px-4 py-3 text-left">{t('orders.th.status')}</th>
+                <th className="px-4 py-3 text-center">{t('orders.th.details')}</th>
               </tr>
             </thead>
             <tbody>
               {orders.map((order, i) => {
                 const customer = order.customerJson as { name?: string }
                 const totals = order.totalsJson as { total?: number; currency?: string }
-                const s = STATUS_LABELS[order.status] ?? { label: order.status, color: 'bg-warm-100 text-night-500' }
+                const sColor = STATUS_STYLE[order.status] ?? 'bg-warm-100 text-night-500'
 
                 return (
                   <tr
@@ -194,10 +198,10 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
                         value={order.status}
                         onChange={(e) => handleInlineStatus(order.id, e.target.value)}
                         disabled={isPending}
-                        className={`cursor-pointer rounded-full px-2.5 py-0.5 text-xs font-semibold border-0 focus:outline-none focus:ring-1 focus:ring-primary-400 ${s.color}`}
+                        className={`cursor-pointer rounded-full px-2.5 py-0.5 text-xs font-semibold border-0 focus:outline-none focus:ring-1 focus:ring-primary-400 ${sColor}`}
                       >
-                        {Object.entries(STATUS_LABELS).map(([v, { label }]) => (
-                          <option key={v} value={v}>{label}</option>
+                        {Object.keys(STATUS_STYLE).map((v) => (
+                          <option key={v} value={v}>{statusLabel(v)}</option>
                         ))}
                       </select>
                     </td>
@@ -208,7 +212,7 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
                         className="inline-flex items-center gap-1 rounded-lg px-2.5 py-1.5 text-xs font-medium text-primary-600 hover:bg-primary-50"
                       >
                         <Eye className="h-3.5 w-3.5" />
-                        Ver
+                        {t('orders.view')}
                       </button>
                     </td>
                   </tr>
@@ -217,7 +221,7 @@ export function OrdersClient({ initialOrders, catalogId }: Props) {
             </tbody>
           </table>
           <div className="border-t border-warm-100 px-4 py-3 text-xs text-night-400">
-            {orders.length} pedido{orders.length !== 1 ? 's' : ''}
+            {orders.length} {orders.length !== 1 ? t('orders.countMany') : t('orders.countOne')}
           </div>
         </div>
       )}

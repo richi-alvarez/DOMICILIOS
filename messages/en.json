@@ -1136,5 +1136,73 @@
       "autoTitle": "Automatic subdomain",
       "autoDesc": "Available with no extra configuration:"
     }
+  },
+  "orders": {
+    "title": "Orders",
+    "dbError": "Set DATABASE_URL to see orders in real time.",
+    "receiving": "Receiving orders",
+    "status": {
+      "pending_send": "Pending",
+      "received": "Received",
+      "preparing": "Preparing",
+      "ready": "Ready",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+    "allStatuses": "All statuses",
+    "searchPlaceholder": "Search order #",
+    "exportCsv": "Export CSV",
+    "csvHeaders": [
+      "Code",
+      "Date",
+      "Customer",
+      "Total",
+      "Status"
+    ],
+    "csvFilePrefix": "orders",
+    "emptyNone": "No orders yet.",
+    "emptyFiltered": "No orders with this status.",
+    "seeAll": "See all",
+    "th": {
+      "number": "# Number",
+      "date": "Date",
+      "customer": "Customer",
+      "total": "Total",
+      "status": "Status",
+      "details": "Details"
+    },
+    "view": "View",
+    "countOne": "order",
+    "countMany": "orders",
+    "stepper": {
+      "received": "Received",
+      "preparing": "Preparing",
+      "ready": "Ready",
+      "delivered": "Delivered"
+    },
+    "statusUpdatedPrefix": "Status updated: ",
+    "deleted": "Order deleted",
+    "orderNumberPrefix": "Order #",
+    "updating": "Updating…",
+    "advanceToPrefix": "Advance to ",
+    "deliveredBanner": "✅ Order delivered",
+    "customer": "Customer",
+    "deliveryLabel": "Delivery",
+    "pickup": "Store pickup",
+    "deliveryHome": "Delivery",
+    "products": "Products",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "discount": "Discount",
+    "total": "Total",
+    "delete": "Delete",
+    "deleteConfirmTitle": "Delete order?",
+    "deleteConfirmPre": "This action cannot be undone. Order #",
+    "deleteConfirmPost": " will be permanently deleted.",
+    "cancel": "Cancel",
+    "deleting": "Deleting…",
+    "deleteOrder": "Delete order",
+    "print": "Print",
+    "close": "Close"
   }
 }

@@ -33,12 +33,14 @@ import {
   MapPin,
 } from 'lucide-react'
 import { toast } from 'sonner'
+import { useI18n } from '@/lib/i18n/context'
 
+// value + icono; el label sale de t('orders.stepper.<value>').
 const STATUSES = [
-  { value: 'received',  label: 'Recibido',        icon: CheckCircle2 },
-  { value: 'preparing', label: 'En Preparación',  icon: Package },
-  { value: 'ready',     label: 'Listo',            icon: Clock },
-  { value: 'delivered', label: 'Entregado',        icon: Truck },
+  { value: 'received',  icon: CheckCircle2 },
+  { value: 'preparing', icon: Package },
+  { value: 'ready',     icon: Clock },
+  { value: 'delivered', icon: Truck },
 ]
 
 const STATUS_NEXT: Record<string, string> = {
@@ -68,6 +70,8 @@ interface Props {
 }
 
 export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, onStatusChanged }: Props) {
+  const { t } = useI18n()
+  const stepperLabel = (v: string) => t(`orders.stepper.${v}`)
   const [isPending, startTransition] = useTransition()
 
   if (!order) return null
@@ -88,7 +92,7 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
         toast.error(res.error)
       } else {
         onStatusChanged(order!.id, nextStatus)
-        toast.success(`Estado actualizado: ${STATUSES.find((s) => s.value === nextStatus)?.label}`)
+        toast.success(`${t('orders.statusUpdatedPrefix')}${stepperLabel(nextStatus)}`)
       }
     })
   }
@@ -101,7 +105,7 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
       } else {
         onDeleted(order!.id)
         onClose()
-        toast.success('Pedido eliminado')
+        toast.success(t('orders.deleted'))
       }
     })
   }
@@ -115,7 +119,7 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
       <DialogContent className="flex max-h-[90vh] w-full max-w-xl flex-col overflow-hidden p-0">
         <DialogHeader className="border-b border-warm-100 px-5 py-4">
           <DialogTitle className="text-base font-bold text-night-900">
-            Pedido #{order.code}
+            {t('orders.orderNumberPrefix')}{order.code}
           </DialogTitle>
           <p className="text-xs text-night-400">
             {formatDate(order.createdAt)} · {formatTime(order.createdAt)}
@@ -139,7 +143,7 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
                       <Icon className="h-4 w-4" />
                     </div>
                     <span className={`mt-1 text-center text-[10px] font-medium ${done ? 'text-primary-600' : 'text-night-400'}`}>
-                      {s.label}
+                      {stepperLabel(s.value)}
                     </span>
                     {i < STATUSES.length - 1 && (
                       <div
@@ -160,19 +164,19 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
                 disabled={isPending}
                 className="mt-4 w-full rounded-xl bg-primary-500 py-2.5 text-sm font-semibold text-white transition hover:bg-primary-600 disabled:opacity-60"
               >
-                {isPending ? 'Actualizando…' : `Avanzar a ${STATUSES.find((s) => s.value === nextStatus)?.label}`}
+                {isPending ? t('orders.updating') : `${t('orders.advanceToPrefix')}${stepperLabel(nextStatus)}`}
               </button>
             )}
             {order.status === 'delivered' && (
               <div className="mt-3 rounded-xl bg-lime-50 py-2 text-center text-sm font-medium text-lime-700">
-                ✅ Pedido entregado
+                {t('orders.deliveredBanner')}
               </div>
             )}
           </div>
 
           {/* Customer */}
           <div className="rounded-2xl bg-warm-50 p-4">
-            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-night-400">Cliente</h3>
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-night-400">{t('orders.customer')}</h3>
             <div className="space-y-1.5 text-sm text-night-700">
               {customer.name && (
                 <div className="flex items-center gap-2">
@@ -198,17 +202,17 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
 
           {/* Delivery */}
           <div className="rounded-2xl bg-warm-50 p-4">
-            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-night-400">Entrega</h3>
+            <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-night-400">{t('orders.deliveryLabel')}</h3>
             <div className="flex items-center gap-2 text-sm text-night-700">
               {delivery.type === 'pickup' ? (
                 <>
                   <Store className="h-4 w-4 text-night-400" />
-                  <span>Recoger en tienda</span>
+                  <span>{t('orders.pickup')}</span>
                 </>
               ) : (
                 <>
                   <MapPin className="h-4 w-4 text-night-400" />
-                  <span>{delivery.address ?? 'A domicilio'}</span>
+                  <span>{delivery.address ?? t('orders.deliveryHome')}</span>
                 </>
               )}
             </div>
@@ -216,7 +220,7 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
 
           {/* Items */}
           <div className="rounded-2xl bg-warm-50 p-4">
-            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-night-400">Productos</h3>
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-night-400">{t('orders.products')}</h3>
             <div className="space-y-2">
               {items.map((item, i) => (
                 <div key={i} className="flex items-center justify-between text-sm">
@@ -237,23 +241,23 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
             <div className="rounded-2xl border border-warm-200 p-4">
               <div className="space-y-1.5 text-sm">
                 <div className="flex justify-between text-night-600">
-                  <span>Subtotal</span>
+                  <span>{t('orders.subtotal')}</span>
                   <span>{formatMoney(totals.subtotal ?? 0, totals.currency)}</span>
                 </div>
                 {(totals.shipping ?? 0) > 0 && (
                   <div className="flex justify-between text-night-600">
-                    <span>Envío</span>
+                    <span>{t('orders.shipping')}</span>
                     <span>{formatMoney(totals.shipping ?? 0, totals.currency)}</span>
                   </div>
                 )}
                 {(totals.discount ?? 0) > 0 && (
                   <div className="flex justify-between text-lime-600">
-                    <span>Descuento</span>
+                    <span>{t('orders.discount')}</span>
                     <span>-{formatMoney(totals.discount ?? 0, totals.currency)}</span>
                   </div>
                 )}
                 <div className="flex justify-between border-t border-warm-200 pt-2 font-bold text-night-900">
-                  <span>Total</span>
+                  <span>{t('orders.total')}</span>
                   <span className="text-primary-600">{formatMoney(totals.total ?? 0, totals.currency)}</span>
                 </div>
               </div>
@@ -270,20 +274,20 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
                 className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm text-red-500 hover:bg-red-50"
               >
                 <Trash2 className="h-4 w-4" />
-                Eliminar
+                {t('orders.delete')}
               </button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>¿Eliminar pedido?</AlertDialogTitle>
+                <AlertDialogTitle>{t('orders.deleteConfirmTitle')}</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Esta acción no se puede deshacer. El pedido #{order.code} será eliminado permanentemente.
+                  {t('orders.deleteConfirmPre')}{order.code}{t('orders.deleteConfirmPost')}
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogCancel>{t('orders.cancel')}</AlertDialogCancel>
                 <AlertDialogAction onClick={handleDelete} disabled={isPending}>
-                  {isPending ? 'Eliminando…' : 'Eliminar pedido'}
+                  {isPending ? t('orders.deleting') : t('orders.deleteOrder')}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -296,14 +300,14 @@ export function OrderDetailDialog({ order, open, onClose, catalogId, onDeleted, 
               className="flex items-center gap-1.5 rounded-lg border border-warm-200 px-3 py-2 text-sm text-night-600 hover:bg-warm-50"
             >
               <Printer className="h-4 w-4" />
-              Imprimir
+              {t('orders.print')}
             </button>
             <button
               type="button"
               onClick={onClose}
               className="rounded-lg border border-warm-200 px-4 py-2 text-sm font-medium text-night-700 hover:bg-warm-50"
             >
-              Cerrar
+              {t('orders.close')}
             </button>
           </div>
         </div>

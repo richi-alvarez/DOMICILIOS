@@ -1136,5 +1136,73 @@
       "autoTitle": "Subdominio automático",
       "autoDesc": "Disponible sin configuración adicional:"
     }
+  },
+  "orders": {
+    "title": "Pedidos",
+    "dbError": "Configura DATABASE_URL para ver los pedidos en tiempo real.",
+    "receiving": "Recibiendo pedidos",
+    "status": {
+      "pending_send": "Pendiente",
+      "received": "Recibido",
+      "preparing": "En prep.",
+      "ready": "Listo",
+      "delivered": "Entregado",
+      "cancelled": "Cancelado"
+    },
+    "allStatuses": "Todos los estados",
+    "searchPlaceholder": "Buscar # pedido",
+    "exportCsv": "Exportar CSV",
+    "csvHeaders": [
+      "Código",
+      "Fecha",
+      "Cliente",
+      "Total",
+      "Estado"
+    ],
+    "csvFilePrefix": "pedidos",
+    "emptyNone": "No hay pedidos aún.",
+    "emptyFiltered": "No hay pedidos con este estado.",
+    "seeAll": "Ver todos",
+    "th": {
+      "number": "# Número",
+      "date": "Fecha",
+      "customer": "Cliente",
+      "total": "Total",
+      "status": "Estado",
+      "details": "Detalles"
+    },
+    "view": "Ver",
+    "countOne": "pedido",
+    "countMany": "pedidos",
+    "stepper": {
+      "received": "Recibido",
+      "preparing": "En Preparación",
+      "ready": "Listo",
+      "delivered": "Entregado"
+    },
+    "statusUpdatedPrefix": "Estado actualizado: ",
+    "deleted": "Pedido eliminado",
+    "orderNumberPrefix": "Pedido #",
+    "updating": "Actualizando…",
+    "advanceToPrefix": "Avanzar a ",
+    "deliveredBanner": "✅ Pedido entregado",
+    "customer": "Cliente",
+    "deliveryLabel": "Entrega",
+    "pickup": "Recoger en tienda",
+    "deliveryHome": "A domicilio",
+    "products": "Productos",
+    "subtotal": "Subtotal",
+    "shipping": "Envío",
+    "discount": "Descuento",
+    "total": "Total",
+    "delete": "Eliminar",
+    "deleteConfirmTitle": "¿Eliminar pedido?",
+    "deleteConfirmPre": "Esta acción no se puede deshacer. El pedido #",
+    "deleteConfirmPost": " será eliminado permanentemente.",
+    "cancel": "Cancelar",
+    "deleting": "Eliminando…",
+    "deleteOrder": "Eliminar pedido",
+    "print": "Imprimir",
+    "close": "Cerrar"
   }
 }
