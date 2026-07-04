@@ -7,15 +7,17 @@ import { toast } from 'sonner'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
+import { useI18n } from '@/lib/i18n/context'
 
+// Orden fijo lun→dom; el label localizado sale de settings.deliveryForm.weekdaysFull[i].
 const DAYS = [
-  { key: 'mon', label: 'Lunes' },
-  { key: 'tue', label: 'Martes' },
-  { key: 'wed', label: 'Miércoles' },
-  { key: 'thu', label: 'Jueves' },
-  { key: 'fri', label: 'Viernes' },
-  { key: 'sat', label: 'Sábado' },
-  { key: 'sun', label: 'Domingo' },
+  { key: 'mon', i: 0 },
+  { key: 'tue', i: 1 },
+  { key: 'wed', i: 2 },
+  { key: 'thu', i: 3 },
+  { key: 'fri', i: 4 },
+  { key: 'sat', i: 5 },
+  { key: 'sun', i: 6 },
 ]
 
 const DEFAULT_HOURS = { open: '09:00', close: '18:00', enabled: true }
@@ -39,6 +41,8 @@ interface Props {
 }
 
 export function DeliverySettingsForm({ catalogId, initial }: Props) {
+  const { t, tRaw } = useI18n()
+  const weekdaysFull = tRaw('settings.deliveryForm.weekdaysFull') as string[]
   const [isPending, startTransition] = useTransition()
   const [channel, setChannel] = useState(initial.orderChannel)
   const [phone, setPhone] = useState(initial.contactPhone)
@@ -78,9 +82,9 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
         businessHours: hours,
       })
       if (res?.error) {
-        toast.error('Error al guardar configuración')
+        toast.error(t('settings.deliveryForm.toastError'))
       } else {
-        toast.success('Configuración guardada')
+        toast.success(t('settings.deliveryForm.toastOk'))
       }
     })
   }
@@ -89,7 +93,7 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
     <div className="space-y-8 max-w-2xl">
       {/* Canal de pedidos */}
       <section className="rounded-2xl border border-warm-200 bg-white p-6">
-        <h2 className="mb-4 font-semibold text-night-800">Canal de pedidos</h2>
+        <h2 className="mb-4 font-semibold text-night-800">{t('settings.deliveryForm.orderChannel')}</h2>
         <div className="grid grid-cols-2 gap-3">
           {(['whatsapp', 'email'] as const).map((c) => (
             <button
@@ -118,17 +122,17 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
           {channel === 'whatsapp' ? (
             <div className="col-span-2 flex gap-2">
               <div>
-                <Label htmlFor="countryCode" className="text-xs">Código país</Label>
+                <Label htmlFor="countryCode" className="text-xs">{t('settings.deliveryForm.countryCode')}</Label>
                 <Input id="countryCode" value={countryCode} onChange={(e) => setCountryCode(e.target.value)} placeholder="+57" className="w-24" />
               </div>
               <div className="flex-1">
-                <Label htmlFor="phone" className="text-xs">Teléfono WhatsApp</Label>
+                <Label htmlFor="phone" className="text-xs">{t('settings.deliveryForm.waPhone')}</Label>
                 <Input id="phone" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="3001234567" type="tel" />
               </div>
             </div>
           ) : (
             <div className="col-span-2">
-              <Label htmlFor="email" className="text-xs">Email de contacto</Label>
+              <Label htmlFor="email" className="text-xs">{t('settings.deliveryForm.contactEmail')}</Label>
               <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="tu@negocio.com" />
             </div>
           )}
@@ -137,15 +141,15 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
 
       {/* Tipos de entrega */}
       <section className="rounded-2xl border border-warm-200 bg-white p-6">
-        <h2 className="mb-4 font-semibold text-night-800">Tipos de entrega</h2>
+        <h2 className="mb-4 font-semibold text-night-800">{t('settings.deliveryForm.deliveryTypes')}</h2>
         <div className="space-y-4">
           {/* Pickup */}
           <div className="flex items-center justify-between rounded-xl border border-warm-100 p-4">
             <div className="flex items-center gap-3">
               <Store className="h-5 w-5 text-night-400" />
               <div>
-                <p className="font-medium text-night-800">Recoger en tienda</p>
-                <p className="text-xs text-night-400">El cliente recoge en tu local</p>
+                <p className="font-medium text-night-800">{t('settings.deliveryForm.pickup')}</p>
+                <p className="text-xs text-night-400">{t('settings.deliveryForm.pickupDesc')}</p>
               </div>
             </div>
             <Switch checked={pickup} onCheckedChange={setPickup} />
@@ -157,8 +161,8 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
               <div className="flex items-center gap-3">
                 <Bike className="h-5 w-5 text-night-400" />
                 <div>
-                  <p className="font-medium text-night-800">A domicilio</p>
-                  <p className="text-xs text-night-400">Envías el pedido al cliente</p>
+                  <p className="font-medium text-night-800">{t('settings.deliveryForm.delivery')}</p>
+                  <p className="text-xs text-night-400">{t('settings.deliveryForm.deliveryDesc')}</p>
                 </div>
               </div>
               <Switch checked={delivery} onCheckedChange={setDelivery} />
@@ -166,7 +170,7 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
             {delivery && (
               <div className="grid grid-cols-2 gap-3 border-t border-warm-100 pt-3">
                 <div>
-                  <Label className="text-xs">Costo de envío</Label>
+                  <Label className="text-xs">{t('settings.deliveryForm.deliveryFee')}</Label>
                   <Input
                     type="number"
                     min={0}
@@ -176,7 +180,7 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
                   />
                 </div>
                 <div>
-                  <Label className="text-xs">Pedido mínimo</Label>
+                  <Label className="text-xs">{t('settings.deliveryForm.minOrder')}</Label>
                   <Input
                     type="number"
                     min={0}
@@ -194,8 +198,8 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
             <div className="flex items-center gap-3">
               <UtensilsCrossed className="h-5 w-5 text-night-400" />
               <div>
-                <p className="font-medium text-night-800">Pedir en mesa</p>
-                <p className="text-xs text-night-400">Para restaurantes y cafés</p>
+                <p className="font-medium text-night-800">{t('settings.deliveryForm.dineIn')}</p>
+                <p className="text-xs text-night-400">{t('settings.deliveryForm.dineInDesc')}</p>
               </div>
             </div>
             <Switch checked={dineIn} onCheckedChange={setDineIn} />
@@ -207,17 +211,17 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
       <section className="rounded-2xl border border-warm-200 bg-white p-6">
         <div className="mb-4 flex items-center gap-2">
           <Clock className="h-5 w-5 text-night-400" />
-          <h2 className="font-semibold text-night-800">Horarios de atención</h2>
+          <h2 className="font-semibold text-night-800">{t('settings.deliveryForm.hours')}</h2>
         </div>
         <div className="space-y-3">
-          {DAYS.map(({ key, label }) => (
+          {DAYS.map(({ key, i }) => (
             <div key={key} className="flex items-center gap-3">
               <Switch
                 checked={hours[key]?.enabled ?? true}
                 onCheckedChange={(v) => handleHour(key, 'enabled', v)}
               />
               <span className={`w-20 text-sm font-medium ${hours[key]?.enabled ? 'text-night-700' : 'text-night-300'}`}>
-                {label}
+                {weekdaysFull[i]}
               </span>
               <input
                 type="time"
@@ -248,7 +252,7 @@ export function DeliverySettingsForm({ catalogId, initial }: Props) {
         {isPending ? (
           <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
         ) : null}
-        {isPending ? 'Guardando…' : 'Guardar configuración'}
+        {isPending ? t('settings.deliveryForm.saving') : t('settings.deliveryForm.save')}
       </button>
     </div>
   )

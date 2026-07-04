@@ -13,6 +13,7 @@ import {
   deleteConversationAction,
   setStoreReplyAction,
 } from '@/lib/actions/whatsapp'
+import { useI18n } from '@/lib/i18n/context'
 
 interface Conversation {
   id: string
@@ -39,14 +40,16 @@ interface Props {
   initialConversations: Conversation[]
 }
 
-function timeLabel(d?: string | Date | null) {
+function timeLabel(d: string | Date | null | undefined, dtLocale: string) {
   if (!d) return ''
   const date = new Date(d)
   if (isNaN(date.getTime())) return ''
-  return date.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' })
+  return date.toLocaleTimeString(dtLocale, { hour: '2-digit', minute: '2-digit' })
 }
 
 export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialConversations }: Props) {
+  const { t, locale } = useI18n()
+  const dtLocale = locale === 'en' ? 'en-US' : 'es-CO'
   const [conversations, setConversations] = useState<Conversation[]>(initialConversations)
   const [activeId, setActiveId] = useState<string | null>(initialConversations[0]?.id ?? null)
   const [messages, setMessages] = useState<Message[]>([])
@@ -124,12 +127,12 @@ export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialCon
 
   function deleteConversation() {
     if (!active) return
-    if (!confirm(`¿Eliminar la conversación con ${active.customerName || active.customerPhone}? Se borrará también de la base de datos.`)) {
+    if (!confirm(`${t('settings.whatsappClient.confirmDeletePre')}${active.customerName || active.customerPhone}${t('settings.whatsappClient.confirmDeletePost')}`)) {
       return
     }
     const convId = active.id
     startTransition(async () => {
-      const res = await deleteConversationAction(convId).catch(() => ({ error: 'No se pudo eliminar' }))
+      const res = await deleteConversationAction(convId).catch(() => ({ error: t('settings.whatsappClient.deleteFailed') }))
       if ((res as any)?.error) {
         setError((res as any).error)
         return
@@ -159,10 +162,8 @@ export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialCon
     return (
       <div className="flex flex-col items-center gap-3 rounded-2xl border border-warm-200 bg-white py-20 text-center">
         <MessageCircle className="h-12 w-12 text-warm-300" />
-        <p className="text-night-500">Aún no hay conversaciones de WhatsApp.</p>
-        <p className="text-xs text-warm-400">
-          Aparecerán aquí cuando un cliente escriba o se cree un pedido asociado a este comercio.
-        </p>
+        <p className="text-night-500">{t('settings.whatsappClient.emptyTitle')}</p>
+        <p className="text-xs text-warm-400">{t('settings.whatsappClient.emptyDesc')}</p>
       </div>
     )
   }
@@ -188,7 +189,7 @@ export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialCon
                   c.mode === 'ai' ? 'bg-lime-100 text-lime-700' : 'bg-blue-100 text-blue-700'
                 }`}
               >
-                {c.mode === 'ai' ? 'IA' : 'Humano'}
+                {c.mode === 'ai' ? t('settings.whatsappClient.modeAi') : t('settings.whatsappClient.modeHuman')}
               </span>
             </div>
             <span className="truncate text-xs text-warm-500">{c.lastMessageText || '—'}</span>
@@ -209,15 +210,15 @@ export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialCon
               </div>
               <div className="flex items-center gap-4">
                 <label className="flex items-center gap-2 text-xs font-medium text-night-600">
-                  <User className="h-4 w-4" /> Humano
+                  <User className="h-4 w-4" /> {t('settings.whatsappClient.modeHuman')}
                   <Switch checked={active.mode === 'ai'} onCheckedChange={toggleMode} />
-                  IA <Bot className="h-4 w-4" />
+                  {t('settings.whatsappClient.modeAi')} <Bot className="h-4 w-4" />
                 </label>
                 <button
                   type="button"
                   onClick={deleteConversation}
                   disabled={isPending}
-                  title="Eliminar conversación"
+                  title={t('settings.whatsappClient.deleteTitle')}
                   className="rounded-lg p-2 text-warm-400 transition hover:bg-red-50 hover:text-red-600 disabled:opacity-50"
                 >
                   <Trash2 className="h-4 w-4" />
@@ -231,7 +232,7 @@ export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialCon
               <div className="flex items-center justify-between border-b border-warm-100 bg-warm-50/60 px-4 py-2">
                 <span className="flex items-center gap-2 text-xs text-night-600">
                   <Store className="h-4 w-4 text-night-400" />
-                  Responder desde el WhatsApp de la tienda
+                  {t('settings.whatsappClient.storeReply')}
                 </span>
                 <Switch checked={active.storeReplyEnabled} onCheckedChange={toggleStoreReply} />
               </div>
@@ -251,16 +252,16 @@ export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialCon
                           : 'bg-white text-night-800 shadow-sm'
                       }`}
                     >
-                      {m.sender === 'bot' && <span className="mb-0.5 block text-[10px] font-bold opacity-70">🤖 Bot</span>}
-                      {m.sender === 'system' && <span className="mb-0.5 block text-[10px] font-bold opacity-70">Sistema</span>}
+                      {m.sender === 'bot' && <span className="mb-0.5 block text-[10px] font-bold opacity-70">{t('settings.whatsappClient.bot')}</span>}
+                      {m.sender === 'system' && <span className="mb-0.5 block text-[10px] font-bold opacity-70">{t('settings.whatsappClient.system')}</span>}
                       {m.body}
-                      <span className="ml-2 inline-block text-[10px] opacity-60">{timeLabel(m.createdAt)}</span>
+                      <span className="ml-2 inline-block text-[10px] opacity-60">{timeLabel(m.createdAt, dtLocale)}</span>
                     </div>
                   </div>
                 )
               })}
               {messages.length === 0 && (
-                <p className="py-8 text-center text-sm text-warm-400">Sin mensajes aún.</p>
+                <p className="py-8 text-center text-sm text-warm-400">{t('settings.whatsappClient.noMessages')}</p>
               )}
             </div>
 
@@ -276,7 +277,7 @@ export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialCon
                     send()
                   }
                 }}
-                placeholder={active.mode === 'ai' ? 'Modo IA activo — escribe para intervenir' : 'Escribe un mensaje…'}
+                placeholder={active.mode === 'ai' ? t('settings.whatsappClient.placeholderAi') : t('settings.whatsappClient.placeholderHuman')}
                 disabled={isPending}
               />
               <Button onClick={send} disabled={isPending || !draft.trim()} size="md">
@@ -286,7 +287,7 @@ export function WhatsappClient({ catalogId, storeReplyFeatureEnabled, initialCon
           </>
         ) : (
           <div className="flex flex-1 items-center justify-center text-sm text-warm-400">
-            Selecciona una conversación
+            {t('settings.whatsappClient.selectConversation')}
           </div>
         )}
       </div>
