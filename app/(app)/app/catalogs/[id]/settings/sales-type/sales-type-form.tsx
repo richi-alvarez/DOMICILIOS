@@ -17,6 +17,13 @@ const DAYS = [
   { v: 0, label: 'Dom' },
 ]
 
+// Opciones de hora cada 30 min (00:00 … 23:30) para los selectores Desde/Hasta.
+const TIME_OPTIONS: string[] = Array.from({ length: 48 }, (_, i) => {
+  const h = Math.floor(i / 2)
+  const m = i % 2 === 0 ? '00' : '30'
+  return `${String(h).padStart(2, '0')}:${m}`
+})
+
 interface Props {
   catalogId: string
   initial: {
@@ -132,21 +139,37 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-night-700">Desde</label>
-              <input
-                type="time"
+              <select
                 value={booking.startHour}
                 onChange={(e) => setBooking((b) => ({ ...b, startHour: e.target.value }))}
-                className="w-full rounded-lg border border-warm-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
-              />
+                className="w-full rounded-lg border border-warm-200 bg-white px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+              >
+                {(TIME_OPTIONS.includes(booking.startHour)
+                  ? TIME_OPTIONS
+                  : [booking.startHour, ...TIME_OPTIONS]
+                ).map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label className="mb-1 block text-xs font-medium text-night-700">Hasta</label>
-              <input
-                type="time"
+              <select
                 value={booking.endHour}
                 onChange={(e) => setBooking((b) => ({ ...b, endHour: e.target.value }))}
-                className="w-full rounded-lg border border-warm-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
-              />
+                className="w-full rounded-lg border border-warm-200 bg-white px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
+              >
+                {(TIME_OPTIONS.includes(booking.endHour)
+                  ? TIME_OPTIONS
+                  : [booking.endHour, ...TIME_OPTIONS]
+                ).map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
           <div>

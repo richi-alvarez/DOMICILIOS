@@ -67,8 +67,8 @@ export function BookingFlow({
     () => services.filter((s) => cartQtyById.has(s.id)),
     [services, cartQtyById],
   )
-  const displayedServices =
-    fromCart && selectedServices.length > 0 ? selectedServices : services
+  const showingSelected = !!fromCart && selectedServices.length > 0
+  const displayedServices = showingSelected ? selectedServices : services
   const [service, setService] = useState<Service | null>(
     services.find((s) => s.slug === initialServiceSlug) ?? (services.length === 1 ? services[0] : null),
   )
@@ -78,6 +78,13 @@ export function BookingFlow({
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [done, setDone] = useState<{ code: string } | null>(null)
+
+  // Si solo hay un servicio seleccionado en el carrito, se preselecciona.
+  useEffect(() => {
+    if (showingSelected && !service && selectedServices.length === 1) {
+      setService(selectedServices[0])
+    }
+  }, [showingSelected, service, selectedServices])
 
   const bookedSet = useMemo(() => new Set(booked), [booked])
 
@@ -177,32 +184,47 @@ export function BookingFlow({
       <div className="mx-auto max-w-2xl space-y-6 px-4 py-6">
         {/* 1. Servicio */}
         <section>
-          <h2 className="mb-2 text-sm font-semibold text-night-700">1. Elige el servicio</h2>
+          <h2 className="mb-2 text-sm font-semibold text-night-700">
+            {showingSelected ? '1. Servicios seleccionados' : '1. Elige el servicio'}
+          </h2>
+          {showingSelected && (
+            <p className="mb-2 text-xs text-night-400">
+              Estos son los servicios que agregaste. Elige cuál agendar.
+            </p>
+          )}
           <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-            {services.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => {
-                  setService(s)
-                  setSlot(null)
-                }}
-                className={`flex items-center gap-3 rounded-xl border-2 p-3 text-left transition ${
-                  service?.id === s.id ? 'border-primary-500 bg-primary-50' : 'border-warm-200 bg-white hover:border-warm-300'
-                }`}
-              >
-                {s.image ? (
-                  <img src={s.image} alt={s.name} className="h-12 w-12 rounded-lg object-cover" />
-                ) : (
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-warm-100">
-                    <ImageOff className="h-5 w-5 text-warm-300" />
+            {displayedServices.map((s) => {
+              const qty = cartQtyById.get(s.id) ?? 0
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => {
+                    setService(s)
+                    setSlot(null)
+                  }}
+                  className={`relative flex items-center gap-3 rounded-xl border-2 p-3 text-left transition ${
+                    service?.id === s.id ? 'border-primary-500 bg-primary-50' : 'border-warm-200 bg-white hover:border-warm-300'
+                  }`}
+                >
+                  {showingSelected && qty > 1 && (
+                    <span className="absolute right-2 top-2 rounded-full bg-primary-500 px-1.5 text-[10px] font-bold text-white">
+                      ×{qty}
+                    </span>
+                  )}
+                  {s.image ? (
+                    <img src={s.image} alt={s.name} className="h-12 w-12 rounded-lg object-cover" />
+                  ) : (
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-warm-100">
+                      <ImageOff className="h-5 w-5 text-warm-300" />
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <p className="truncate font-medium text-night-800">{s.name}</p>
+                    {s.price > 0 && <p className="text-sm text-primary-600">{formatMoney(s.price, currency)}</p>}
                   </div>
-                )}
-                <div className="min-w-0">
-                  <p className="truncate font-medium text-night-800">{s.name}</p>
-                  {s.price > 0 && <p className="text-sm text-primary-600">{formatMoney(s.price, currency)}</p>}
-                </div>
-              </button>
-            ))}
+                </button>
+              )
+            })}
           </div>
         </section>
 
