@@ -1,0 +1,14 @@
+# Override local: ajusta los hosts de servicios para cuando la app
+# corre DENTRO de docker-compose (postgres/redis por nombre de servicio).
+# El .env mantiene "localhost" para comandos ejecutados en el host.
+services:
+  app:
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/domicilios
+      REDIS_URL: redis://redis:6379
+
+  pgadmin:
+    # pgAdmin rechaza dominios reservados como .local; usar un email válido.
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@domicilios.com
+      PGADMIN_DEFAULT_PASSWORD: admin

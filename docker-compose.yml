@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: dev
     container_name: domicilios-app
     ports:
       - "${APP_PORT:-3000}:3000"
@@ -54,7 +55,7 @@ services:
     image: redis:7-alpine
     container_name: domicilios-redis
     ports:
-      - "6379:6379"
+      - "63792:6379"
     volumes:
       - redis_data:/data
     healthcheck:
