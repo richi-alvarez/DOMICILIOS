@@ -115,10 +115,22 @@
     "back": "Back",
     "continue": "Continue",
     "businessTypes": {
-      "restaurant": { "label": "Restaurant", "desc": "Digital menu, WhatsApp orders" },
-      "store": { "label": "Store", "desc": "Product catalog" },
-      "service": { "label": "Services", "desc": "Service portfolio" },
-      "other": { "label": "Other", "desc": "Any kind of business" }
+      "restaurant": {
+        "label": "Restaurant",
+        "desc": "Digital menu, WhatsApp orders"
+      },
+      "store": {
+        "label": "Store",
+        "desc": "Product catalog"
+      },
+      "service": {
+        "label": "Services",
+        "desc": "Service portfolio"
+      },
+      "other": {
+        "label": "Other",
+        "desc": "Any kind of business"
+      }
     },
     "step1": {
       "welcome": "Welcome, {name}!",
@@ -547,97 +559,437 @@
       "free": {
         "name": "Free",
         "tagline": "To start risk-free",
-        "features": ["30 products", "1 catalog", "30 orders/mo", "domicilios.app/your-store domain", "WhatsApp orders", "Basic block editor", "Basic analytics"]
+        "features": [
+          "30 products",
+          "1 catalog",
+          "30 orders/mo",
+          "domicilios.app/your-store domain",
+          "WhatsApp orders",
+          "Basic block editor",
+          "Basic analytics"
+        ]
       },
       "basic": {
         "name": "Basic",
         "tagline": "For businesses getting started",
-        "features": ["100 products", "1 catalog", "300 orders/mo", "Integrated payments (1 method)", "Customizable QR", "Email support", "No WaCommerce branding"]
+        "features": [
+          "100 products",
+          "1 catalog",
+          "300 orders/mo",
+          "Integrated payments (1 method)",
+          "Customizable QR",
+          "Email support",
+          "No WaCommerce branding"
+        ]
       },
       "pro": {
         "name": "Pro",
         "tagline": "Most popular for growing",
         "badge": "Most popular",
-        "features": ["500 products", "3 catalogs", "Unlimited orders", "All payment methods", "Custom domain", "Premium blocks", "AI: descriptions & catalog", "Advanced analytics", "Priority support"]
+        "features": [
+          "500 products",
+          "3 catalogs",
+          "Unlimited orders",
+          "All payment methods",
+          "Custom domain",
+          "Premium blocks",
+          "AI: descriptions & catalog",
+          "Advanced analytics",
+          "Priority support"
+        ]
       },
       "business": {
         "name": "Business",
         "tagline": "For brands and large teams",
-        "features": ["Unlimited products", "10 catalogs", "Unlimited orders", "Unlimited collaborators", "Full white-label", "AI image recognition", "Orders API", "Inventory manager", "24/7 support"]
+        "features": [
+          "Unlimited products",
+          "10 catalogs",
+          "Unlimited orders",
+          "Unlimited collaborators",
+          "Full white-label",
+          "AI image recognition",
+          "Orders API",
+          "Inventory manager",
+          "24/7 support"
+        ]
       }
     },
     "featureGroups": [
       {
         "group": "Blocks & Design",
         "rows": [
-          { "label": "Available blocks", "free": "5 basic", "basic": "10 blocks", "pro": "20+ blocks", "business": "All" },
-          { "label": "Drag-and-drop editor", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Real-time preview", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Premium blocks (countdown, map, video)", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Custom HTML embed", "free": false, "basic": false, "pro": true, "business": true }
+          {
+            "label": "Available blocks",
+            "free": "5 basic",
+            "basic": "10 blocks",
+            "pro": "20+ blocks",
+            "business": "All"
+          },
+          {
+            "label": "Drag-and-drop editor",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Real-time preview",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Premium blocks (countdown, map, video)",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Custom HTML embed",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          }
         ]
       },
       {
         "group": "Products",
         "rows": [
-          { "label": "Number of products", "free": "30", "basic": "100", "pro": "500", "business": "Unlimited" },
-          { "label": "Images per product", "free": "1", "basic": "3", "pro": "10", "business": "Unlimited" },
-          { "label": "Product variants", "free": false, "basic": true, "pro": true, "business": true },
-          { "label": "Stock control", "free": false, "basic": true, "pro": true, "business": true },
-          { "label": "SKU & barcode", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "AI image recognition", "free": false, "basic": false, "pro": false, "business": true }
+          {
+            "label": "Number of products",
+            "free": "30",
+            "basic": "100",
+            "pro": "500",
+            "business": "Unlimited"
+          },
+          {
+            "label": "Images per product",
+            "free": "1",
+            "basic": "3",
+            "pro": "10",
+            "business": "Unlimited"
+          },
+          {
+            "label": "Product variants",
+            "free": false,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Stock control",
+            "free": false,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "SKU & barcode",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "AI image recognition",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": true
+          }
         ]
       },
       {
         "group": "Catalogs",
         "rows": [
-          { "label": "Number of catalogs", "free": "1", "basic": "1", "pro": "3", "business": "10" },
-          { "label": "Downloadable QR catalog", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Custom domain (CNAME)", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Multiple languages", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Multi-currency checkout", "free": false, "basic": true, "pro": true, "business": true }
+          {
+            "label": "Number of catalogs",
+            "free": "1",
+            "basic": "1",
+            "pro": "3",
+            "business": "10"
+          },
+          {
+            "label": "Downloadable QR catalog",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Custom domain (CNAME)",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Multiple languages",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Multi-currency checkout",
+            "free": false,
+            "basic": true,
+            "pro": true,
+            "business": true
+          }
         ]
       },
       {
         "group": "Orders & Payments",
         "rows": [
-          { "label": "Orders per month", "free": "30", "basic": "300", "pro": "Unlimited", "business": "Unlimited" },
-          { "label": "WhatsApp orders", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Email orders", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Integrated payment methods", "free": "0", "basic": "1", "pro": "All", "business": "All" },
-          { "label": "Stripe / MercadoPago / PayPal", "free": false, "basic": "One", "pro": true, "business": true },
-          { "label": "Sales commissions", "free": "0%", "basic": "0%", "pro": "0%", "business": "0%" },
-          { "label": "Discounts & coupons", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Print receipt (80mm)", "free": false, "basic": false, "pro": true, "business": true }
+          {
+            "label": "Orders per month",
+            "free": "30",
+            "basic": "300",
+            "pro": "Unlimited",
+            "business": "Unlimited"
+          },
+          {
+            "label": "WhatsApp orders",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Email orders",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Integrated payment methods",
+            "free": "0",
+            "basic": "1",
+            "pro": "All",
+            "business": "All"
+          },
+          {
+            "label": "Stripe / MercadoPago / PayPal",
+            "free": false,
+            "basic": "One",
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Sales commissions",
+            "free": "0%",
+            "basic": "0%",
+            "pro": "0%",
+            "business": "0%"
+          },
+          {
+            "label": "Discounts & coupons",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Print receipt (80mm)",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          }
         ]
       },
       {
         "group": "Brand & Domain",
         "rows": [
-          { "label": "Remove WaCommerce branding", "free": false, "basic": true, "pro": true, "business": true },
-          { "label": "Custom domain", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Automatic SSL", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Custom OG image", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Full white-label (emails & storefront)", "free": false, "basic": false, "pro": false, "business": true }
+          {
+            "label": "Remove WaCommerce branding",
+            "free": false,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Custom domain",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Automatic SSL",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Custom OG image",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Full white-label (emails & storefront)",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": true
+          }
         ]
       },
       {
         "group": "Language & Collaboration",
         "rows": [
-          { "label": "Catalog language", "free": "1", "basic": "1", "pro": "es/en/pt", "business": "es/en/pt/fr" },
-          { "label": "Collaborators (team members)", "free": "1", "basic": "2", "pro": "5", "business": "Unlimited" },
-          { "label": "Roles & permissions", "free": false, "basic": false, "pro": true, "business": true }
+          {
+            "label": "Catalog language",
+            "free": "1",
+            "basic": "1",
+            "pro": "es/en/pt",
+            "business": "es/en/pt/fr"
+          },
+          {
+            "label": "Collaborators (team members)",
+            "free": "1",
+            "basic": "2",
+            "pro": "5",
+            "business": "Unlimited"
+          },
+          {
+            "label": "Roles & permissions",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          }
         ]
       },
       {
         "group": "Agency Features",
         "rows": [
-          { "label": "Multi-client dashboard", "free": false, "basic": false, "pro": false, "business": "Agency" },
-          { "label": "Reusable templates", "free": false, "basic": false, "pro": false, "business": "Agency" },
-          { "label": "Bulk CSV update", "free": false, "basic": false, "pro": false, "business": "Agency" },
-          { "label": "Consolidated billing", "free": false, "basic": false, "pro": false, "business": "Agency" }
+          {
+            "label": "Multi-client dashboard",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": "Agency"
+          },
+          {
+            "label": "Reusable templates",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": "Agency"
+          },
+          {
+            "label": "Bulk CSV update",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": "Agency"
+          },
+          {
+            "label": "Consolidated billing",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": "Agency"
+          }
         ]
       }
     ]
+  },
+  "citas": {
+    "title": "Appointments",
+    "subtitle": "Your appointment schedule. Click an appointment to see details and change its status.",
+    "productsMode": {
+      "pre": "This catalog is in ",
+      "products": "products",
+      "mid": " mode. To receive appointments, switch it to ",
+      "services": "Services (appointments)",
+      "post": " in Settings → Sales type."
+    },
+    "today": "Today",
+    "month": "Month",
+    "week": "Week",
+    "weekdays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    },
+    "modal": {
+      "codePrefix": "Appointment #",
+      "confirm": "Confirm",
+      "markCompleted": "Mark completed",
+      "cancel": "Cancel appointment"
+    }
+  },
+  "salesType": {
+    "products": {
+      "title": "Products (cart)",
+      "desc": "Your customers add products to the cart and place an order."
+    },
+    "appointments": {
+      "title": "Services (appointments)",
+      "desc": "Your customers book an appointment for a service on a date and time."
+    },
+    "ctaLabel": "Button text on the cards",
+    "ctaHintPre": "If left empty, ",
+    "defaultCtaProducts": "Add to cart",
+    "defaultCtaAppointments": "Book",
+    "availability": "Booking availability",
+    "duration": "Duration (min)",
+    "from": "From",
+    "to": "To",
+    "daysLabel": "Available days",
+    "weekdays": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "hint": {
+      "pre": "In appointments mode, your ",
+      "bold1": "products are shown as services",
+      "mid": " and the \"Book\" button opens the booking calendar. Appointments appear in the ",
+      "bold2": "Appointments",
+      "post": " tab of the catalog."
+    },
+    "save": "Save",
+    "saving": "Saving...",
+    "saved": "✓ Saved",
+    "ctaHintPost": " will be used."
   }
 }

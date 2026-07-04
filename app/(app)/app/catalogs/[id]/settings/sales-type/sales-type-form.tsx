@@ -6,15 +6,17 @@ import { ShoppingCart, CalendarDays, Loader2, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { updateSalesType } from '@/lib/actions/catalog-type'
 import type { BookingConfig } from '@/lib/booking/config'
+import { useI18n } from '@/lib/i18n/context'
 
+// Valor del día (0 = Dom … 6 = Sáb) e índice del label localizado (Lun-first).
 const DAYS = [
-  { v: 1, label: 'Lun' },
-  { v: 2, label: 'Mar' },
-  { v: 3, label: 'Mié' },
-  { v: 4, label: 'Jue' },
-  { v: 5, label: 'Vie' },
-  { v: 6, label: 'Sáb' },
-  { v: 0, label: 'Dom' },
+  { v: 1, i: 0 },
+  { v: 2, i: 1 },
+  { v: 3, i: 2 },
+  { v: 4, i: 3 },
+  { v: 5, i: 4 },
+  { v: 6, i: 5 },
+  { v: 0, i: 6 },
 ]
 
 // Opciones de hora cada 30 min (00:00 … 23:30) para los selectores Desde/Hasta.
@@ -35,6 +37,8 @@ interface Props {
 
 export function SalesTypeForm({ catalogId, initial }: Props) {
   const router = useRouter()
+  const { t, tRaw } = useI18n()
+  const WEEKDAYS = tRaw('salesType.weekdays') as string[]
   const [type, setType] = useState<'products' | 'appointments'>(initial.type)
   const [ctaLabel, setCtaLabel] = useState(initial.ctaLabel)
   const [booking, setBooking] = useState<BookingConfig>(initial.booking)
@@ -42,7 +46,8 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
   const [saved, setSaved] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const defaultCta = type === 'appointments' ? 'Agendar' : 'Agregar al carrito'
+  const defaultCta =
+    type === 'appointments' ? t('salesType.defaultCtaAppointments') : t('salesType.defaultCtaProducts')
 
   const save = async () => {
     setSaving(true)
@@ -74,14 +79,14 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
             {
               v: 'products' as const,
               icon: ShoppingCart,
-              title: 'Productos (carrito)',
-              desc: 'Tus clientes agregan productos al carrito y hacen un pedido.',
+              title: t('salesType.products.title'),
+              desc: t('salesType.products.desc'),
             },
             {
               v: 'appointments' as const,
               icon: CalendarDays,
-              title: 'Servicios (citas)',
-              desc: 'Tus clientes agendan una cita para un servicio en una fecha y hora.',
+              title: t('salesType.appointments.title'),
+              desc: t('salesType.appointments.desc'),
             },
           ]
         ).map((opt) => {
@@ -107,7 +112,7 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
       {/* Texto del botón */}
       <div>
         <label className="mb-2 block text-sm font-medium text-night-800">
-          Texto del botón en las tarjetas
+          {t('salesType.ctaLabel')}
         </label>
         <input
           type="text"
@@ -117,17 +122,17 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
           className="w-full rounded-lg border border-warm-200 px-4 py-2 text-sm focus:border-primary-500 focus:outline-none"
         />
         <p className="mt-1 text-xs text-warm-400">
-          Si lo dejas vacío, se usará &quot;{defaultCta}&quot;.
+          {t('salesType.ctaHintPre')}&quot;{defaultCta}&quot;{t('salesType.ctaHintPost')}
         </p>
       </div>
 
       {/* Config de agendamiento (solo en modo citas) */}
       {type === 'appointments' && (
         <div className="space-y-4 rounded-xl border border-warm-200 p-4">
-          <h3 className="font-semibold text-night-800">Disponibilidad de agendamiento</h3>
+          <h3 className="font-semibold text-night-800">{t('salesType.availability')}</h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-night-700">Duración (min)</label>
+              <label className="mb-1 block text-xs font-medium text-night-700">{t('salesType.duration')}</label>
               <input
                 type="number"
                 min={5}
@@ -138,7 +143,7 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-night-700">Desde</label>
+              <label className="mb-1 block text-xs font-medium text-night-700">{t('salesType.from')}</label>
               <select
                 value={booking.startHour}
                 onChange={(e) => setBooking((b) => ({ ...b, startHour: e.target.value }))}
@@ -155,7 +160,7 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-night-700">Hasta</label>
+              <label className="mb-1 block text-xs font-medium text-night-700">{t('salesType.to')}</label>
               <select
                 value={booking.endHour}
                 onChange={(e) => setBooking((b) => ({ ...b, endHour: e.target.value }))}
@@ -173,7 +178,7 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
             </div>
           </div>
           <div>
-            <label className="mb-2 block text-xs font-medium text-night-700">Días disponibles</label>
+            <label className="mb-2 block text-xs font-medium text-night-700">{t('salesType.daysLabel')}</label>
             <div className="flex flex-wrap gap-2">
               {DAYS.map((d) => (
                 <button
@@ -186,15 +191,17 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
                       : 'border-warm-200 text-night-600 hover:border-warm-300'
                   }`}
                 >
-                  {d.label}
+                  {WEEKDAYS[d.i]}
                 </button>
               ))}
             </div>
           </div>
           <p className="text-xs text-warm-400">
-            En modo citas, tus <strong>productos se muestran como servicios</strong> y el botón
-            &quot;Agendar&quot; abre el calendario de reserva. Las citas aparecen en la pestaña
-            <strong> Citas</strong> del catálogo.
+            {t('salesType.hint.pre')}
+            <strong>{t('salesType.hint.bold1')}</strong>
+            {t('salesType.hint.mid')}
+            <strong>{t('salesType.hint.bold2')}</strong>
+            {t('salesType.hint.post')}
           </p>
         </div>
       )}
@@ -206,9 +213,9 @@ export function SalesTypeForm({ catalogId, initial }: Props) {
       <div className="flex items-center gap-3">
         <Button onClick={save} disabled={saving} className="gap-2">
           {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-          {saving ? 'Guardando...' : 'Guardar'}
+          {saving ? t('salesType.saving') : t('salesType.save')}
         </Button>
-        {saved && <span className="text-sm font-medium text-lime-600">✓ Guardado</span>}
+        {saved && <span className="text-sm font-medium text-lime-600">{t('salesType.saved')}</span>}
       </div>
     </div>
   )

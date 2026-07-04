@@ -115,10 +115,22 @@
     "back": "Atrás",
     "continue": "Continuar",
     "businessTypes": {
-      "restaurant": { "label": "Restaurante", "desc": "Menú digital, pedidos por WhatsApp" },
-      "store": { "label": "Tienda", "desc": "Catálogo de productos" },
-      "service": { "label": "Servicios", "desc": "Portafolio de servicios" },
-      "other": { "label": "Otro", "desc": "Cualquier tipo de negocio" }
+      "restaurant": {
+        "label": "Restaurante",
+        "desc": "Menú digital, pedidos por WhatsApp"
+      },
+      "store": {
+        "label": "Tienda",
+        "desc": "Catálogo de productos"
+      },
+      "service": {
+        "label": "Servicios",
+        "desc": "Portafolio de servicios"
+      },
+      "other": {
+        "label": "Otro",
+        "desc": "Cualquier tipo de negocio"
+      }
     },
     "step1": {
       "welcome": "¡Bienvenido, {name}!",
@@ -547,97 +559,437 @@
       "free": {
         "name": "Gratis",
         "tagline": "Para empezar sin riesgo",
-        "features": ["30 productos", "1 catálogo", "30 pedidos/mes", "Dominio domicilios.app/tu-tienda", "Pedidos por WhatsApp", "Editor de bloques básico", "Analítica básica"]
+        "features": [
+          "30 productos",
+          "1 catálogo",
+          "30 pedidos/mes",
+          "Dominio domicilios.app/tu-tienda",
+          "Pedidos por WhatsApp",
+          "Editor de bloques básico",
+          "Analítica básica"
+        ]
       },
       "basic": {
         "name": "Basic",
         "tagline": "Para negocios que arrancan",
-        "features": ["100 productos", "1 catálogo", "300 pedidos/mes", "Pagos integrados (1 método)", "QR personalizable", "Soporte por email", "Sin marca WaCommerce"]
+        "features": [
+          "100 productos",
+          "1 catálogo",
+          "300 pedidos/mes",
+          "Pagos integrados (1 método)",
+          "QR personalizable",
+          "Soporte por email",
+          "Sin marca WaCommerce"
+        ]
       },
       "pro": {
         "name": "Pro",
         "tagline": "El más popular para crecer",
         "badge": "Más popular",
-        "features": ["500 productos", "3 catálogos", "Pedidos ilimitados", "Todos los métodos de pago", "Dominio propio", "Bloques premium", "IA: descripciones y catálogo", "Analítica avanzada", "Soporte prioritario"]
+        "features": [
+          "500 productos",
+          "3 catálogos",
+          "Pedidos ilimitados",
+          "Todos los métodos de pago",
+          "Dominio propio",
+          "Bloques premium",
+          "IA: descripciones y catálogo",
+          "Analítica avanzada",
+          "Soporte prioritario"
+        ]
       },
       "business": {
         "name": "Business",
         "tagline": "Para marcas y equipos grandes",
-        "features": ["Productos ilimitados", "10 catálogos", "Pedidos ilimitados", "Colaboradores ilimitados", "White-label completo", "Reconocimiento de imágenes con IA", "API de pedidos", "Gestor de inventario", "Soporte 24/7"]
+        "features": [
+          "Productos ilimitados",
+          "10 catálogos",
+          "Pedidos ilimitados",
+          "Colaboradores ilimitados",
+          "White-label completo",
+          "Reconocimiento de imágenes con IA",
+          "API de pedidos",
+          "Gestor de inventario",
+          "Soporte 24/7"
+        ]
       }
     },
     "featureGroups": [
       {
         "group": "Bloques y Diseño",
         "rows": [
-          { "label": "Bloques disponibles", "free": "5 básicos", "basic": "10 bloques", "pro": "20+ bloques", "business": "Todos" },
-          { "label": "Editor drag-and-drop", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Previsualización en tiempo real", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Bloques premium (countdown, mapa, video)", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "HTML embed personalizado", "free": false, "basic": false, "pro": true, "business": true }
+          {
+            "label": "Bloques disponibles",
+            "free": "5 básicos",
+            "basic": "10 bloques",
+            "pro": "20+ bloques",
+            "business": "Todos"
+          },
+          {
+            "label": "Editor drag-and-drop",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Previsualización en tiempo real",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Bloques premium (countdown, mapa, video)",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "HTML embed personalizado",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          }
         ]
       },
       {
         "group": "Productos",
         "rows": [
-          { "label": "Número de productos", "free": "30", "basic": "100", "pro": "500", "business": "Ilimitados" },
-          { "label": "Imágenes por producto", "free": "1", "basic": "3", "pro": "10", "business": "Ilimitadas" },
-          { "label": "Variantes de productos", "free": false, "basic": true, "pro": true, "business": true },
-          { "label": "Control de stock", "free": false, "basic": true, "pro": true, "business": true },
-          { "label": "SKU y código de barras", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Reconocimiento de imágenes IA", "free": false, "basic": false, "pro": false, "business": true }
+          {
+            "label": "Número de productos",
+            "free": "30",
+            "basic": "100",
+            "pro": "500",
+            "business": "Ilimitados"
+          },
+          {
+            "label": "Imágenes por producto",
+            "free": "1",
+            "basic": "3",
+            "pro": "10",
+            "business": "Ilimitadas"
+          },
+          {
+            "label": "Variantes de productos",
+            "free": false,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Control de stock",
+            "free": false,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "SKU y código de barras",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Reconocimiento de imágenes IA",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": true
+          }
         ]
       },
       {
         "group": "Catálogos",
         "rows": [
-          { "label": "Número de catálogos", "free": "1", "basic": "1", "pro": "3", "business": "10" },
-          { "label": "Catálogo QR descargable", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Dominio propio (CNAME)", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Múltiples idiomas", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Multi-moneda en checkout", "free": false, "basic": true, "pro": true, "business": true }
+          {
+            "label": "Número de catálogos",
+            "free": "1",
+            "basic": "1",
+            "pro": "3",
+            "business": "10"
+          },
+          {
+            "label": "Catálogo QR descargable",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Dominio propio (CNAME)",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Múltiples idiomas",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Multi-moneda en checkout",
+            "free": false,
+            "basic": true,
+            "pro": true,
+            "business": true
+          }
         ]
       },
       {
         "group": "Pedidos y Pagos",
         "rows": [
-          { "label": "Pedidos por mes", "free": "30", "basic": "300", "pro": "Ilimitados", "business": "Ilimitados" },
-          { "label": "Pedidos por WhatsApp", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Pedidos por email", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "Métodos de pago integrados", "free": "0", "basic": "1", "pro": "Todos", "business": "Todos" },
-          { "label": "Stripe / MercadoPago / PayPal", "free": false, "basic": "Uno", "pro": true, "business": true },
-          { "label": "Comisiones sobre ventas", "free": "0%", "basic": "0%", "pro": "0%", "business": "0%" },
-          { "label": "Descuentos y cupones", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "Ticket de impresión (80mm)", "free": false, "basic": false, "pro": true, "business": true }
+          {
+            "label": "Pedidos por mes",
+            "free": "30",
+            "basic": "300",
+            "pro": "Ilimitados",
+            "business": "Ilimitados"
+          },
+          {
+            "label": "Pedidos por WhatsApp",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Pedidos por email",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Métodos de pago integrados",
+            "free": "0",
+            "basic": "1",
+            "pro": "Todos",
+            "business": "Todos"
+          },
+          {
+            "label": "Stripe / MercadoPago / PayPal",
+            "free": false,
+            "basic": "Uno",
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Comisiones sobre ventas",
+            "free": "0%",
+            "basic": "0%",
+            "pro": "0%",
+            "business": "0%"
+          },
+          {
+            "label": "Descuentos y cupones",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Ticket de impresión (80mm)",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          }
         ]
       },
       {
         "group": "Marca y Dominio",
         "rows": [
-          { "label": "Quitar marca WaCommerce", "free": false, "basic": true, "pro": true, "business": true },
-          { "label": "Dominio personalizado", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "SSL automático", "free": true, "basic": true, "pro": true, "business": true },
-          { "label": "OG image personalizada", "free": false, "basic": false, "pro": true, "business": true },
-          { "label": "White-label completo (emails y storefront)", "free": false, "basic": false, "pro": false, "business": true }
+          {
+            "label": "Quitar marca WaCommerce",
+            "free": false,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "Dominio personalizado",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "SSL automático",
+            "free": true,
+            "basic": true,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "OG image personalizada",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          },
+          {
+            "label": "White-label completo (emails y storefront)",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": true
+          }
         ]
       },
       {
         "group": "Idioma y Colaboración",
         "rows": [
-          { "label": "Idioma del catálogo", "free": "1", "basic": "1", "pro": "es/en/pt", "business": "es/en/pt/fr" },
-          { "label": "Colaboradores (miembros del equipo)", "free": "1", "basic": "2", "pro": "5", "business": "Ilimitados" },
-          { "label": "Roles y permisos", "free": false, "basic": false, "pro": true, "business": true }
+          {
+            "label": "Idioma del catálogo",
+            "free": "1",
+            "basic": "1",
+            "pro": "es/en/pt",
+            "business": "es/en/pt/fr"
+          },
+          {
+            "label": "Colaboradores (miembros del equipo)",
+            "free": "1",
+            "basic": "2",
+            "pro": "5",
+            "business": "Ilimitados"
+          },
+          {
+            "label": "Roles y permisos",
+            "free": false,
+            "basic": false,
+            "pro": true,
+            "business": true
+          }
         ]
       },
       {
         "group": "Funciones para Agencias",
         "rows": [
-          { "label": "Panel multi-cliente", "free": false, "basic": false, "pro": false, "business": "Agency" },
-          { "label": "Plantillas reutilizables", "free": false, "basic": false, "pro": false, "business": "Agency" },
-          { "label": "Actualización masiva CSV", "free": false, "basic": false, "pro": false, "business": "Agency" },
-          { "label": "Facturación consolidada", "free": false, "basic": false, "pro": false, "business": "Agency" }
+          {
+            "label": "Panel multi-cliente",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": "Agency"
+          },
+          {
+            "label": "Plantillas reutilizables",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": "Agency"
+          },
+          {
+            "label": "Actualización masiva CSV",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": "Agency"
+          },
+          {
+            "label": "Facturación consolidada",
+            "free": false,
+            "basic": false,
+            "pro": false,
+            "business": "Agency"
+          }
         ]
       }
     ]
+  },
+  "citas": {
+    "title": "Citas",
+    "subtitle": "Agenda de tus citas. Haz clic en una cita para ver el detalle y cambiar su estado.",
+    "productsMode": {
+      "pre": "Este catálogo está en modo ",
+      "products": "productos",
+      "mid": ". Para recibir citas cámbialo a ",
+      "services": "Servicios (citas)",
+      "post": " en Configuración → Tipo de venta."
+    },
+    "today": "Hoy",
+    "month": "Mes",
+    "week": "Semana",
+    "weekdays": [
+      "Lun",
+      "Mar",
+      "Mié",
+      "Jue",
+      "Vie",
+      "Sáb",
+      "Dom"
+    ],
+    "months": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ],
+    "status": {
+      "pending": "Pendiente",
+      "confirmed": "Confirmada",
+      "completed": "Completada",
+      "cancelled": "Cancelada"
+    },
+    "modal": {
+      "codePrefix": "Cita #",
+      "confirm": "Confirmar",
+      "markCompleted": "Marcar completada",
+      "cancel": "Cancelar cita"
+    }
+  },
+  "salesType": {
+    "products": {
+      "title": "Productos (carrito)",
+      "desc": "Tus clientes agregan productos al carrito y hacen un pedido."
+    },
+    "appointments": {
+      "title": "Servicios (citas)",
+      "desc": "Tus clientes agendan una cita para un servicio en una fecha y hora."
+    },
+    "ctaLabel": "Texto del botón en las tarjetas",
+    "ctaHintPre": "Si lo dejas vacío, se usará ",
+    "defaultCtaProducts": "Agregar al carrito",
+    "defaultCtaAppointments": "Agendar",
+    "availability": "Disponibilidad de agendamiento",
+    "duration": "Duración (min)",
+    "from": "Desde",
+    "to": "Hasta",
+    "daysLabel": "Días disponibles",
+    "weekdays": [
+      "Lun",
+      "Mar",
+      "Mié",
+      "Jue",
+      "Vie",
+      "Sáb",
+      "Dom"
+    ],
+    "hint": {
+      "pre": "En modo citas, tus ",
+      "bold1": "productos se muestran como servicios",
+      "mid": " y el botón \"Agendar\" abre el calendario de reserva. Las citas aparecen en la pestaña ",
+      "bold2": "Citas",
+      "post": " del catálogo."
+    },
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "saved": "✓ Guardado",
+    "ctaHintPost": "."
   }
 }

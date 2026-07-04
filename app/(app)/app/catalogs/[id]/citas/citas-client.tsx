@@ -4,19 +4,15 @@ import { useMemo, useState } from 'react'
 import { ChevronLeft, ChevronRight, X, Phone, User, CalendarDays, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { updateAppointmentStatus, type AppointmentDTO, type AppointmentStatus } from '@/lib/actions/appointments'
+import { useI18n } from '@/lib/i18n/context'
 
-const STATUS_META: Record<AppointmentStatus, { label: string; chip: string; dot: string }> = {
-  pending: { label: 'Pendiente', chip: 'bg-amber-100 text-amber-700', dot: 'bg-amber-500' },
-  confirmed: { label: 'Confirmada', chip: 'bg-blue-100 text-blue-700', dot: 'bg-blue-500' },
-  completed: { label: 'Completada', chip: 'bg-lime-100 text-lime-700', dot: 'bg-lime-500' },
-  cancelled: { label: 'Cancelada', chip: 'bg-warm-100 text-warm-500 line-through', dot: 'bg-warm-400' },
+// Solo estilos por estado; el texto (label) se resuelve vía i18n en el render.
+const STATUS_STYLE: Record<AppointmentStatus, { chip: string; dot: string }> = {
+  pending: { chip: 'bg-amber-100 text-amber-700', dot: 'bg-amber-500' },
+  confirmed: { chip: 'bg-blue-100 text-blue-700', dot: 'bg-blue-500' },
+  completed: { chip: 'bg-lime-100 text-lime-700', dot: 'bg-lime-500' },
+  cancelled: { chip: 'bg-warm-100 text-warm-500 line-through', dot: 'bg-warm-400' },
 }
-
-const WEEKDAYS = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
-const MONTHS = [
-  'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre',
-]
 
 // Las horas de las citas se guardan en UTC. Al ser este un componente cliente
 // con SSR, formatear sin zona horaria usaba la TZ del servidor (UTC) en el
@@ -37,6 +33,13 @@ function startOfWeek(d: Date) {
 }
 
 export function CitasClient({ appointments: initial }: { appointments: AppointmentDTO[] }) {
+  const { t, tRaw, locale } = useI18n()
+  const WEEKDAYS = tRaw('citas.weekdays') as string[]
+  const MONTHS = tRaw('citas.months') as string[]
+  const statusLabel = (s: AppointmentStatus) => t(`citas.status.${s}`)
+  // Localiza fecha/hora según el idioma activo (mismas zonas de negocio).
+  const dtLocale = locale === 'en' ? 'en-US' : 'es-CO'
+
   const [appointments, setAppointments] = useState(initial)
   const [view, setView] = useState<'month' | 'week'>('month')
   const [anchor, setAnchor] = useState(() => new Date())
@@ -118,7 +121,7 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
             onClick={() => setAnchor(new Date())}
             className="rounded-lg border border-warm-200 px-3 py-2 text-sm hover:bg-warm-50"
           >
-            Hoy
+            {t('citas.today')}
           </button>
           <button onClick={() => move(1)} className="rounded-lg border border-warm-200 p-2 hover:bg-warm-50">
             <ChevronRight className="h-4 w-4" />
@@ -134,7 +137,7 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
                 view === v ? 'bg-primary-500 text-white' : 'text-night-600 hover:bg-warm-50'
               }`}
             >
-              {v === 'month' ? 'Mes' : 'Semana'}
+              {v === 'month' ? t('citas.month') : t('citas.week')}
             </button>
           ))}
         </div>
@@ -175,18 +178,18 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
               </div>
               <div className="space-y-1">
                 {dayAppts.map((a) => {
-                  const meta = STATUS_META[a.status]
-                  const t = new Date(a.startAt).toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', timeZone: APP_TZ })
+                  const meta = STATUS_STYLE[a.status]
+                  const hhmm = new Date(a.startAt).toLocaleTimeString(dtLocale, { hour: '2-digit', minute: '2-digit', timeZone: APP_TZ })
                   return (
                     <button
                       key={a.id}
                       onClick={() => setSelected(a)}
                       className={`flex w-full items-center gap-1 truncate rounded px-1.5 py-1 text-left text-[11px] ${meta.chip}`}
-                      title={`${t} · ${a.service} · ${a.customer.name}`}
+                      title={`${hhmm} · ${a.service} · ${a.customer.name}`}
                     >
                       <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${meta.dot}`} />
                       <span className="truncate">
-                        {t} {a.service}
+                        {hhmm} {a.service}
                       </span>
                     </button>
                   )
@@ -199,10 +202,10 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
 
       {/* Leyenda */}
       <div className="mt-3 flex flex-wrap gap-3 text-xs text-warm-500">
-        {(Object.keys(STATUS_META) as AppointmentStatus[]).map((s) => (
+        {(Object.keys(STATUS_STYLE) as AppointmentStatus[]).map((s) => (
           <span key={s} className="inline-flex items-center gap-1.5">
-            <span className={`h-2 w-2 rounded-full ${STATUS_META[s].dot}`} />
-            {STATUS_META[s].label}
+            <span className={`h-2 w-2 rounded-full ${STATUS_STYLE[s].dot}`} />
+            {statusLabel(s)}
           </span>
         ))}
       </div>
@@ -220,7 +223,7 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
             <div className="mb-4 flex items-start justify-between">
               <div>
                 <h2 className="text-lg font-bold text-night-800">{selected.service}</h2>
-                <p className="text-xs text-warm-400">Cita #{selected.code}</p>
+                <p className="text-xs text-warm-400">{t('citas.modal.codePrefix')}{selected.code}</p>
               </div>
               <button onClick={() => setSelected(null)} className="rounded-lg p-1 hover:bg-warm-100">
                 <X className="h-5 w-5 text-warm-400" />
@@ -230,7 +233,7 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2 text-night-700">
                 <CalendarDays className="h-4 w-4 text-warm-400" />
-                {new Date(selected.startAt).toLocaleString('es-CO', {
+                {new Date(selected.startAt).toLocaleString(dtLocale, {
                   weekday: 'long',
                   day: '2-digit',
                   month: 'long',
@@ -251,8 +254,8 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
               </div>
               {selected.notes && <p className="text-night-500">📝 {selected.notes}</p>}
               <div className="pt-1">
-                <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_META[selected.status].chip}`}>
-                  {STATUS_META[selected.status].label}
+                <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_STYLE[selected.status].chip}`}>
+                  {statusLabel(selected.status)}
                 </span>
               </div>
             </div>
@@ -260,13 +263,13 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
             <div className="mt-6 flex flex-wrap gap-2">
               {selected.status !== 'confirmed' && selected.status !== 'cancelled' && (
                 <Button size="sm" variant="outline" disabled={updating} onClick={() => changeStatus('confirmed')}>
-                  Confirmar
+                  {t('citas.modal.confirm')}
                 </Button>
               )}
               {selected.status !== 'completed' && (
                 <Button size="sm" disabled={updating} onClick={() => changeStatus('completed')} className="gap-1">
                   {updating ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : null}
-                  Marcar completada
+                  {t('citas.modal.markCompleted')}
                 </Button>
               )}
               {selected.status !== 'cancelled' && (
@@ -276,7 +279,7 @@ export function CitasClient({ appointments: initial }: { appointments: Appointme
                   disabled={updating}
                   onClick={() => changeStatus('cancelled')}
                 >
-                  Cancelar cita
+                  {t('citas.modal.cancel')}
                 </Button>
               )}
             </div>
