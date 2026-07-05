@@ -3,6 +3,7 @@ import { eq } from 'drizzle-orm'
 import { getBlocksForCatalog } from '@/lib/actions/design'
 import { THEME_DEFAULTS, themeSchema } from '@/lib/design/theme'
 import DesignEditor from './_components/design-editor'
+import { getT } from '@/lib/i18n/server'
 
 interface ThemeState {
   selectedPalette: string | null
@@ -112,7 +113,8 @@ export default async function DesignPage({ params }: { params: Promise<{ id: str
   })
 
   if (!catalog) {
-    return <div>Catálogo no encontrado</div>
+    const t = await getT()
+    return <div>{t('design.notFound')}</div>
   }
 
   // Load categories from database

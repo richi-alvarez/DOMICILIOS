@@ -1,26 +1,38 @@
 'use client'
 
 import { X } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
-const BLOCK_CATEGORIES = {
-  Presentación: [
-    { type: 'presentation', label: 'Sección Hero', description: 'Banner con título y CTA', icon: '🎯', plan: 'BASIC' },
-    { type: 'carousel', label: 'Carrusel', description: 'Slider rotativo con imágenes y texto', icon: '🎠', plan: 'BASIC' },
-    { type: 'benefits', label: 'Beneficios y Características', description: 'Lista de características con iconos', icon: '⭐', plan: 'BASIC' },
-    { type: 'socialproof', label: 'Prueba Social', description: 'Testimonios con calificaciones y avatares', icon: '💬', plan: 'BASIC' },
-  ],
-  Contenido: [
-    { type: 'text', label: 'Texto', description: 'Bloque de texto editable', icon: '📝', plan: 'BASIC' },
-    { type: 'cta-reinforcement', label: 'CTA de Refuerzo', description: 'Botón de llamado a acción al final', icon: '🎬', plan: 'BASIC' },
-  ],
-  'E-Commerce': [
-    { type: 'catalog', label: 'Catálogo de Productos', description: 'Muestra tus productos', icon: '📦', plan: 'BASIC' },
-    { type: 'cart', label: 'Botón de carrito de compras', description: 'Botón flotante del carrito', icon: '🛒', plan: 'BASIC' },
-  ],
-  Institucional: [
-    { type: 'footer', label: 'Pie de Página', description: 'Información de empresa y contacto', icon: '🏛️', plan: 'BASIC' },
-  ],
-}
+// Categorías de bloques: tipo/icono/plan son datos; label y descripción salen de i18n.
+const BLOCK_CATEGORIES = [
+  {
+    catKey: 'catPresentation',
+    blocks: [
+      { type: 'presentation', k: 'presentation', icon: '🎯', plan: 'BASIC' },
+      { type: 'carousel', k: 'carousel', icon: '🎠', plan: 'BASIC' },
+      { type: 'benefits', k: 'benefits', icon: '⭐', plan: 'BASIC' },
+      { type: 'socialproof', k: 'socialproof', icon: '💬', plan: 'BASIC' },
+    ],
+  },
+  {
+    catKey: 'catContent',
+    blocks: [
+      { type: 'text', k: 'text', icon: '📝', plan: 'BASIC' },
+      { type: 'cta-reinforcement', k: 'cta', icon: '🎬', plan: 'BASIC' },
+    ],
+  },
+  {
+    catKey: 'catEcommerce',
+    blocks: [
+      { type: 'catalog', k: 'catalog', icon: '📦', plan: 'BASIC' },
+      { type: 'cart', k: 'cart', icon: '🛒', plan: 'BASIC' },
+    ],
+  },
+  {
+    catKey: 'catInstitutional',
+    blocks: [{ type: 'footer', k: 'footer', icon: '🏛️', plan: 'BASIC' }],
+  },
+] as const
 
 interface AddBlockModalProps {
   open: boolean
@@ -29,6 +41,7 @@ interface AddBlockModalProps {
 }
 
 export default function AddBlockModal({ open, onOpenChange, onAddBlock }: AddBlockModalProps) {
+  const { t } = useI18n()
   if (!open) return null
 
   return (
@@ -36,7 +49,7 @@ export default function AddBlockModal({ open, onOpenChange, onAddBlock }: AddBlo
       <div className="bg-white rounded-lg max-w-md w-full max-h-[80vh] overflow-y-auto">
         {/* Header */}
         <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Agregar Bloque</h2>
+          <h2 className="text-lg font-semibold">{t('design.addBlock.title')}</h2>
           <button
             onClick={() => onOpenChange(false)}
             className="p-1 hover:bg-gray-100 rounded"
@@ -47,9 +60,9 @@ export default function AddBlockModal({ open, onOpenChange, onAddBlock }: AddBlo
 
         {/* Content */}
         <div className="p-6 space-y-8">
-          {Object.entries(BLOCK_CATEGORIES).map(([category, blocks]) => (
-            <div key={category}>
-              <h3 className="font-semibold text-sm mb-3 text-gray-700">{category}</h3>
+          {BLOCK_CATEGORIES.map(({ catKey, blocks }) => (
+            <div key={catKey}>
+              <h3 className="font-semibold text-sm mb-3 text-gray-700">{t(`design.addBlock.${catKey}`)}</h3>
               <div className="space-y-2">
                 {blocks.map((block) => (
                   <button
@@ -63,8 +76,8 @@ export default function AddBlockModal({ open, onOpenChange, onAddBlock }: AddBlo
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{block.icon}</span>
                       <div className="flex-1">
-                        <p className="font-medium text-sm">{block.label}</p>
-                        <p className="text-xs text-gray-600 mt-1">{block.description}</p>
+                        <p className="font-medium text-sm">{t(`design.addBlock.${block.k}Label`)}</p>
+                        <p className="text-xs text-gray-600 mt-1">{t(`design.addBlock.${block.k}Desc`)}</p>
                         <div className="mt-2">
                           <span className="text-xs px-2 py-1 bg-gray-100 rounded">
                             {block.plan}

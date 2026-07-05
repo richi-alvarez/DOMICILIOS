@@ -13,6 +13,7 @@ import GlobalPanel from './global-panel'
 import BlocksPanel from './blocks-panel'
 import PreviewPanel from './preview-panel'
 import AddBlockModal from './add-block-modal'
+import { useI18n } from '@/lib/i18n/context'
 
 // Types
 interface ThemeState {
@@ -423,6 +424,7 @@ export default function DesignEditor({
   initialThemeSettings = THEME_SETTINGS_DEFAULTS,
   categories = [],
 }: DesignEditorProps) {
+  const { t } = useI18n()
   const [theme, setTheme] = useState<ThemeState>(
     initialTheme ? { ...THEME_DEFAULTS, ...initialTheme } : THEME_DEFAULTS
   )
@@ -812,15 +814,15 @@ export default function DesignEditor({
         setSaved(true)
         setTimeout(() => setSaved(false), 2000)
       } else if ('error' in designResult) {
-        alert(designResult.error || 'Error al guardar')
+        alert(designResult.error || t('design.editor.saveError'))
       } else if ('error' in themeResult) {
-        alert(themeResult.error || 'Error al guardar tema')
+        alert(themeResult.error || t('design.editor.saveThemeError'))
       } else if ('error' in themeSettingsResult) {
-        alert(themeSettingsResult.error || 'Error al guardar tema')
+        alert(themeSettingsResult.error || t('design.editor.saveThemeError'))
       }
     } catch (err) {
       console.error('Save error:', err)
-      alert('Error al guardar el diseño')
+      alert(t('design.editor.saveDesignError'))
     } finally {
       setSaving(false)
     }
@@ -833,7 +835,7 @@ export default function DesignEditor({
         <div className="px-6 py-3 flex items-center justify-between">
           <Link href={`/app/catalogs/${catalogId}`} className="flex items-center gap-2 hover:text-gray-600">
             <ChevronLeft className="w-5 h-5" />
-            <h1 className="text-xl font-semibold">Diseño de Página</h1>
+            <h1 className="text-xl font-semibold">{t('design.editor.title')}</h1>
           </Link>
 
           <div className="flex items-center gap-4">
@@ -842,14 +844,14 @@ export default function DesignEditor({
               <button
                 onClick={() => setPreviewMode('desktop')}
                 className={`p-2 rounded ${previewMode === 'desktop' ? 'bg-white shadow-sm' : 'text-gray-500'}`}
-                title="Vista Desktop"
+                title={t('design.editor.viewDesktop')}
               >
                 <Monitor className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setPreviewMode('mobile')}
                 className={`p-2 rounded ${previewMode === 'mobile' ? 'bg-white shadow-sm' : 'text-gray-500'}`}
-                title="Vista Móvil"
+                title={t('design.editor.viewMobile')}
               >
                 <Smartphone className="w-4 h-4" />
               </button>
@@ -857,7 +859,7 @@ export default function DesignEditor({
 
             <div className="flex items-center gap-2">
               {dirty && !saving && !saved && (
-                <span className="text-xs font-medium text-amber-500">Sin guardar</span>
+                <span className="text-xs font-medium text-amber-500">{t('design.editor.unsaved')}</span>
               )}
               <button
                 onClick={handleSaveDesign}
@@ -867,17 +869,17 @@ export default function DesignEditor({
                 {saved ? (
                   <>
                     <Check className="w-4 h-4" />
-                    Guardado
+                    {t('design.editor.saved')}
                   </>
                 ) : saving ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    Guardando...
+                    {t('design.editor.saving')}
                   </>
                 ) : (
                   <>
                     <Globe className="w-4 h-4" />
-                    Guardar
+                    {t('design.editor.save')}
                   </>
                 )}
               </button>
@@ -893,10 +895,10 @@ export default function DesignEditor({
             <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'blocks' | 'global' | 'preview')}>
               <TabsList className="w-full grid grid-cols-2">
                 <TabsTrigger value="blocks" className="text-xs">
-                  Bloques
+                  {t('design.editor.tabBlocks')}
                 </TabsTrigger>
                 <TabsTrigger value="preview" className="text-xs">
-                  Vista Previa
+                  {t('design.editor.tabPreview')}
                 </TabsTrigger>
               </TabsList>
             </Tabs>
@@ -919,13 +921,13 @@ export default function DesignEditor({
               <div className="sticky top-0 z-10 bg-gray-50 border-b border-gray-200 px-4 py-3">
                 <TabsList className="w-full grid md:grid-cols-2 grid-cols-3">
                   <TabsTrigger value="blocks" className="text-xs">
-                    Bloques
+                    {t('design.editor.tabBlocks')}
                   </TabsTrigger>
                   <TabsTrigger value="global" className="text-xs">
-                    Global
+                    {t('design.editor.tabGlobal')}
                   </TabsTrigger>
                   <TabsTrigger value="preview" className="text-xs md:hidden">
-                    Vista Previa
+                    {t('design.editor.tabPreview')}
                   </TabsTrigger>
                 </TabsList>
               </div>

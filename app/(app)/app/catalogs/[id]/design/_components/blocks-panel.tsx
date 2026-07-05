@@ -10,6 +10,7 @@ import BenefitsSettings from './block-settings/benefits-settings'
 import SocialProofSettings from './block-settings/socialproof-settings'
 import CTAReinforcementSettings from './block-settings/cta-reinforcement-settings'
 import FooterSettings from './block-settings/footer-settings'
+import { useI18n } from '@/lib/i18n/context'
 
 interface BaseBlock {
   id: string
@@ -200,16 +201,17 @@ interface FooterBlock extends BaseBlock {
 
 type Block = PresentationBlock | CatalogBlock | CartBlock | TextBlock | CarouselBlock | BenefitsBlock | SocialProofBlock | CTAReinforcementBlock | FooterBlock
 
-const BLOCK_META: Record<string, { icon: string; label: string }> = {
-  presentation: { icon: '🎯', label: 'Sección de Presentación' },
-  catalog: { icon: '📦', label: 'Catálogo de Productos' },
-  cart: { icon: '🛒', label: 'Botón de carrito de compras' },
-  text: { icon: '📝', label: 'Texto' },
-  carousel: { icon: '🎠', label: 'Carrusel' },
-  benefits: { icon: '⭐', label: 'Beneficios y Características' },
-  socialproof: { icon: '💬', label: 'Prueba Social' },
-  'cta-reinforcement': { icon: '🎬', label: 'CTA de Refuerzo' },
-  footer: { icon: '🏛️', label: 'Pie de Página' },
+// icon = dato; el label se resuelve con t('design.panel.<key>').
+const BLOCK_META: Record<string, { icon: string; key: string }> = {
+  presentation: { icon: '🎯', key: 'presentation' },
+  catalog: { icon: '📦', key: 'catalog' },
+  cart: { icon: '🛒', key: 'cart' },
+  text: { icon: '📝', key: 'text' },
+  carousel: { icon: '🎠', key: 'carousel' },
+  benefits: { icon: '⭐', key: 'benefits' },
+  socialproof: { icon: '💬', key: 'socialproof' },
+  'cta-reinforcement': { icon: '🎬', key: 'ctaReinforcement' },
+  footer: { icon: '🏛️', key: 'footer' },
 }
 
 interface BlocksPanelProps {
@@ -241,6 +243,7 @@ export default function BlocksPanel({
   onDragStart,
   onDragEnd,
 }: BlocksPanelProps) {
+  const { t } = useI18n()
   // Modo citas: si el bloque de catálogo usa "Agendar cita", el botón flotante
   // pasa a ser "Botón de citas" con ícono de calendario.
   const appointmentMode = blocks.some(
@@ -248,8 +251,8 @@ export default function BlocksPanel({
   )
   const metaFor = (block: Block) =>
     block.type === 'cart' && appointmentMode
-      ? { icon: '📅', label: 'Botón de citas' }
-      : BLOCK_META[block.type]
+      ? { icon: '📅', label: t('design.panel.appointmentCart') }
+      : { icon: BLOCK_META[block.type].icon, label: t(`design.panel.${BLOCK_META[block.type].key}`) }
 
   return (
     <div className="space-y-4">
@@ -258,8 +261,8 @@ export default function BlocksPanel({
           <div className="flex items-start gap-2 mb-2">
             <span className="text-lg">❓</span>
             <div className="flex-1">
-              <p className="font-medium text-sm">¿Necesitas ayuda con el editor?</p>
-              <p className="text-xs text-gray-600 mt-1">Tutorial paso a paso para aprender a crear páginas increíbles.</p>
+              <p className="font-medium text-sm">{t('design.blocksPanel.helpTitle')}</p>
+              <p className="text-xs text-gray-600 mt-1">{t('design.blocksPanel.helpDesc')}</p>
             </div>
           </div>
           <div className="flex gap-2">
@@ -267,10 +270,10 @@ export default function BlocksPanel({
               onClick={onDismissHelp}
               className="flex-1 text-xs px-2 py-1 text-gray-600 hover:bg-white rounded"
             >
-              No mostrar de nuevo
+              {t('design.blocksPanel.helpDismiss')}
             </button>
             <button className="flex-1 text-xs px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">
-              Ver video tutorial
+              {t('design.blocksPanel.helpVideo')}
             </button>
           </div>
         </div>
@@ -281,7 +284,7 @@ export default function BlocksPanel({
         className="w-full flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium"
       >
         <Plus className="w-4 h-4" />
-        Agregar Bloque
+        {t('design.blocksPanel.addBlock')}
       </button>
 
       <div className="space-y-2">
@@ -307,7 +310,7 @@ export default function BlocksPanel({
                   onToggleVisibility(block.id)
                 }}
                 className="p-1 hover:bg-gray-100 rounded"
-                title={block.visible ? 'Ocultar' : 'Mostrar'}
+                title={block.visible ? t('design.blocksPanel.hide') : t('design.blocksPanel.show')}
               >
                 {block.visible ? (
                   <Eye className="w-4 h-4 text-gray-600" />
@@ -332,7 +335,7 @@ export default function BlocksPanel({
                     className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-gray-50 text-left"
                   >
                     <Copy className="w-4 h-4" />
-                    Duplicar
+                    {t('design.blocksPanel.duplicate')}
                   </button>
                   <button
                     onClick={(e) => {
@@ -344,12 +347,12 @@ export default function BlocksPanel({
                     {block.visible ? (
                       <>
                         <EyeOff className="w-4 h-4" />
-                        Ocultar
+                        {t('design.blocksPanel.hide')}
                       </>
                     ) : (
                       <>
                         <Eye className="w-4 h-4" />
-                        Mostrar
+                        {t('design.blocksPanel.show')}
                       </>
                     )}
                   </button>
@@ -361,7 +364,7 @@ export default function BlocksPanel({
                     className="flex items-center gap-2 w-full px-3 py-2 text-sm hover:bg-red-50 text-red-600"
                   >
                     <Trash2 className="w-4 h-4" />
-                    Eliminar
+                    {t('design.blocksPanel.delete')}
                   </button>
                 </div>
               </div>

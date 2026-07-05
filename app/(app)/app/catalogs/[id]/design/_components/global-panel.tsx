@@ -2,6 +2,7 @@
 
 import { ThemeEditor } from '@/components/design-editor/theme-editor'
 import type { ThemeConfig } from '@/lib/design/theme'
+import { useI18n } from '@/lib/i18n/context'
 
 interface ThemeState {
   selectedPalette: string | null
@@ -46,6 +47,7 @@ interface GlobalPanelProps {
 }
 
 export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPalettes, fonts, theme, onUpdateTheme, catalogId, catalogSlug, themeSettings, onUpdateThemeSettings }: GlobalPanelProps) {
+  const { t } = useI18n()
   const renderPaletteSection = (
     title: string,
     palettes: Record<string, { primary: string; secondary: string; tertiary: string }>,
@@ -70,7 +72,7 @@ export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPale
               isCustomMode ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
             }`}
           >
-            {isCustomMode ? 'Personalizado' : 'Personalizar'}
+            {isCustomMode ? t('design.global.personalized') : t('design.global.customize')}
           </button>
         </div>
 
@@ -105,9 +107,9 @@ export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPale
         {isCustomMode && (
           <div className="space-y-2 bg-gray-50 p-3 rounded-lg">
             {[
-              { key: primaryKey, label: 'Color Principal' },
-              { key: secondaryKey, label: 'Color Secundario' },
-              { key: tertiaryKey, label: 'Color Terciario' },
+              { key: primaryKey, label: t('design.global.colorPrimary') },
+              { key: secondaryKey, label: t('design.global.colorSecondary') },
+              { key: tertiaryKey, label: t('design.global.colorTertiary') },
             ].map(({ key, label }) => (
               <div key={key} className="flex items-center gap-2">
                 <label className="text-xs font-medium w-32">{label}</label>
@@ -194,34 +196,34 @@ export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPale
       <div className="border-t border-gray-200 pt-2" />
 
       {/* Paletas simplificadas: color del elemento + color del texto (estilo Colores) */}
-      {renderColorSection('Paleta de Botones (Portada + Agregar al Carrito)', [
-        { label: 'Color primario', hint: 'Fondo del botón', key: 'buttonPrimaryColor' },
-        { label: 'Texto sobre primario', hint: 'Color del texto del botón', key: 'buttonTextColor' },
+      {renderColorSection(t('design.global.paletteButtons'), [
+        { label: t('design.global.primaryColor'), hint: t('design.global.hintButtonBg'), key: 'buttonPrimaryColor' },
+        { label: t('design.global.textOnPrimary'), hint: t('design.global.hintButtonText'), key: 'buttonTextColor' },
       ])}
-      {renderColorSection('Paleta de Categoría', [
-        { label: 'Color primario', hint: 'Fondo del filtro de categoría', key: 'categoryPrimaryColor' },
-        { label: 'Texto sobre primario', hint: 'Color del texto del filtro', key: 'categoryTextColor' },
+      {renderColorSection(t('design.global.paletteCategory'), [
+        { label: t('design.global.primaryColor'), hint: t('design.global.hintCategoryBg'), key: 'categoryPrimaryColor' },
+        { label: t('design.global.textOnPrimary'), hint: t('design.global.hintCategoryText'), key: 'categoryTextColor' },
       ])}
-      {renderColorSection('Paleta de Carrito de Compras', [
-        { label: 'Color primario', hint: 'Fondo del botón del carrito', key: 'cartPrimaryColor' },
-        { label: 'Texto sobre primario', hint: 'Color del ícono', key: 'cartTextColor' },
-        { label: 'Cantidad de productos', hint: 'Fondo del contador de items', key: 'cartCountColor' },
-        { label: 'Total', hint: 'Fondo del total', key: 'cartTotalColor' },
+      {renderColorSection(t('design.global.paletteCart'), [
+        { label: t('design.global.primaryColor'), hint: t('design.global.hintCartBg'), key: 'cartPrimaryColor' },
+        { label: t('design.global.textOnPrimary'), hint: t('design.global.hintCartIcon'), key: 'cartTextColor' },
+        { label: t('design.global.productCount'), hint: t('design.global.hintCartCount'), key: 'cartCountColor' },
+        { label: t('design.global.total'), hint: t('design.global.hintCartTotal'), key: 'cartTotalColor' },
       ])}
-      {renderColorSection('Paleta de Productos', [
-        { label: 'Nombre y descripción', hint: 'Color del texto del producto', key: 'productNameColor' },
-        { label: 'Precio', hint: 'Color del precio', key: 'productPriceColor' },
+      {renderColorSection(t('design.global.paletteProducts'), [
+        { label: t('design.global.nameAndDesc'), hint: t('design.global.hintProductName'), key: 'productNameColor' },
+        { label: t('design.global.price'), hint: t('design.global.hintProductPrice'), key: 'productPriceColor' },
       ])}
-      {renderColorSection('Paleta de Filtros y Búsqueda', [
-        { label: 'Texto de filtros y búsqueda', hint: 'Color del texto de búsqueda y filtros', key: 'filterTextColor' },
+      {renderColorSection(t('design.global.paletteFilters'), [
+        { label: t('design.global.filterText'), hint: t('design.global.hintFilterText'), key: 'filterTextColor' },
       ])}
 
       {/* Font Selection (diseño de tarjetas con vista previa de la fuente) */}
       <div className="rounded-2xl border border-warm-200 bg-white p-4 sm:p-5">
-        <h3 className="text-sm font-semibold mb-3">Fuente Tipográfica</h3>
+        <h3 className="text-sm font-semibold mb-3">{t('design.global.font')}</h3>
         {Object.entries(fonts).map(([category, fontList]) => (
           <div key={category} className="mb-4">
-            <p className="text-xs text-gray-600 mb-2">{category}</p>
+            <p className="text-xs text-gray-600 mb-2">{category === 'Serif y elegantes' ? t('design.global.fontSerif') : t('design.global.fontSans')}</p>
             <div className="grid grid-cols-2 gap-2">
               {fontList.map((font) => (
                 <button
@@ -246,12 +248,12 @@ export default function GlobalPanel({ buttonPalettes, categoryPalettes, cartPale
 
       {/* Border Radius (diseño con vista previa del radio: el div con borde) */}
       <div className="rounded-2xl border border-warm-200 bg-white p-4 sm:p-5">
-        <h3 className="text-sm font-semibold mb-3">Esquinas</h3>
+        <h3 className="text-sm font-semibold mb-3">{t('design.global.corners')}</h3>
         <div className="grid grid-cols-3 gap-2">
           {[
-            { value: 'none', label: 'Rectas', css: '0px' },
-            { value: 'sm', label: 'Suave', css: '8px' },
-            { value: 'full', label: 'Redondas', css: '9999px' },
+            { value: 'none', label: t('design.global.cornerStraight'), css: '0px' },
+            { value: 'sm', label: t('design.global.cornerSoft'), css: '8px' },
+            { value: 'full', label: t('design.global.cornerRound'), css: '9999px' },
           ].map(({ value, label, css }) => (
             <button
               key={value}
