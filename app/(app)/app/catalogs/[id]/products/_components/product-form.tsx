@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { createProduct, updateProduct } from '@/lib/actions/products'
 import type { CreateProductPayload, UpdateProductPayload } from '@/lib/actions/products'
+import { useI18n } from '@/lib/i18n/context'
 
 interface ProductFormProps {
   catalogId: string
@@ -50,6 +51,7 @@ export function ProductForm({
   product,
 }: ProductFormProps) {
   const router = useRouter()
+  const { t } = useI18n()
   const isEditing = !!product
 
   const [formData, setFormData] = useState({
@@ -217,7 +219,7 @@ export function ProductForm({
         }, 1000)
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al guardar el producto')
+      setError(err instanceof Error ? err.message : t('products.editor.saveError'))
     } finally {
       setIsLoading(false)
     }
@@ -253,7 +255,7 @@ export function ProductForm({
             {businessName}
           </Button>
         </Link>
-        <span className="text-2xl font-extrabold text-night-800">Productos</span>
+        <span className="text-2xl font-extrabold text-night-800">{t('products.editor.title')}</span>
       </div>
 
       {/* Image Upload Section */}
@@ -293,11 +295,11 @@ export function ProductForm({
                   htmlFor="file-input"
                   className="cursor-pointer font-medium text-primary-600 hover:underline"
                 >
-                  Subir archivo
+                  {t('products.editor.uploadFile')}
                 </label>
-                {' '}o arrastra y suelta
+                {t('products.editor.orDragDrop')}
               </p>
-              <p className="mt-1 text-xs text-warm-400">PNG, JPG, GIF hasta 8MB</p>
+              <p className="mt-1 text-xs text-warm-400">{t('products.editor.fileHint')}</p>
             </>
           )}
         </div>
@@ -313,18 +315,18 @@ export function ProductForm({
             className="gap-2"
           >
             <Wand2 className="h-4 w-4" />
-            Funciones IA
+            {t('products.editor.aiFunctions')}
           </Button>
           {showAIMenu && (
             <div className="absolute right-0 mt-2 w-56 rounded-lg border border-warm-200 bg-white shadow-lg z-10">
               <button className="flex w-full items-center gap-2 px-4 py-2 text-sm hover:bg-warm-50">
-                Generar a partir de texto →
+                {t('products.editor.aiFromText')}
               </button>
               <button className="flex w-full items-center gap-2 px-4 py-2 text-sm hover:bg-warm-50 opacity-50 cursor-not-allowed">
-                <Zap className="h-4 w-4" /> Generar a partir de imagen
+                <Zap className="h-4 w-4" /> {t('products.editor.aiFromImage')}
               </button>
               <button className="flex w-full items-center gap-2 px-4 py-2 text-sm hover:bg-warm-50 opacity-50 cursor-not-allowed">
-                <Zap className="h-4 w-4" /> Mejorar redacción
+                <Zap className="h-4 w-4" /> {t('products.editor.aiImprove')}
               </button>
             </div>
           )}
@@ -343,40 +345,40 @@ export function ProductForm({
             className="rounded"
           />
           <label htmlFor="isCart" className="text-sm font-medium text-night-800">
-            Producto de carrito
+            {t('products.editor.cartProduct')}
             <span className="ml-2 text-xs text-warm-400">ℹ️</span>
           </label>
         </div>
 
         {/* Title */}
         <div>
-          <label className="block text-sm font-medium text-night-800 mb-2">Título</label>
+          <label className="block text-sm font-medium text-night-800 mb-2">{t('products.editor.titleLabel')}</label>
           <input
             type="text"
             required
             value={formData.name}
             onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
             className="w-full rounded-lg border border-warm-200 px-4 py-2 text-sm focus:border-primary-500 focus:outline-none"
-            placeholder="Nombre del producto"
+            placeholder={t('products.editor.namePlaceholder')}
           />
         </div>
 
         {/* Description */}
         <div>
-          <label className="block text-sm font-medium text-night-800 mb-2">Descripción</label>
+          <label className="block text-sm font-medium text-night-800 mb-2">{t('products.editor.description')}</label>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData((prev) => ({ ...prev, description: e.target.value }))}
             className="w-full rounded-lg border border-warm-200 px-4 py-2 text-sm focus:border-primary-500 focus:outline-none resize-none"
             rows={5}
-            placeholder="Describe tu producto"
+            placeholder={t('products.editor.descPlaceholder')}
           />
         </div>
 
         {/* Price Fields */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-night-800 mb-2">Precio</label>
+            <label className="block text-sm font-medium text-night-800 mb-2">{t('products.editor.price')}</label>
             <div className="relative flex items-center">
               <span className="absolute left-4 text-warm-400">$</span>
               <input
@@ -391,7 +393,7 @@ export function ProductForm({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-night-800 mb-2">Precio oferta</label>
+            <label className="block text-sm font-medium text-night-800 mb-2">{t('products.editor.salePrice')}</label>
             <div className="relative flex items-center">
               <span className="absolute left-4 text-warm-400">$</span>
               <input
@@ -408,13 +410,13 @@ export function ProductForm({
 
         {/* Category */}
         <div>
-          <label className="block text-sm font-medium text-night-800 mb-2">Categoría</label>
+          <label className="block text-sm font-medium text-night-800 mb-2">{t('products.editor.category')}</label>
           <select
             value={formData.categoryId}
             onChange={(e) => setFormData((prev) => ({ ...prev, categoryId: e.target.value }))}
             className="w-full rounded-lg border border-warm-200 px-4 py-2 text-sm focus:border-primary-500 focus:outline-none"
           >
-            <option value="">Selecciona una categoría</option>
+            <option value="">{t('products.editor.selectCategory')}</option>
             {categories.map((cat) => (
               <option key={cat.id} value={cat.id}>
                 {cat.name}
@@ -425,7 +427,7 @@ export function ProductForm({
 
         {/* Tags */}
         <div>
-          <label className="block text-sm font-medium text-night-800 mb-2">Etiquetas</label>
+          <label className="block text-sm font-medium text-night-800 mb-2">{t('products.editor.tags')}</label>
           <div className="space-y-2">
             <input
               type="text"
@@ -438,7 +440,7 @@ export function ProductForm({
                 }
               }}
               className="w-full rounded-lg border border-warm-200 px-4 py-2 text-sm focus:border-primary-500 focus:outline-none"
-              placeholder="Agrega etiquetas (ej: marca, tipo, beneficio)"
+              placeholder={t('products.editor.tagsPlaceholder')}
             />
             {formData.tags.length > 0 && (
               <div className="flex flex-wrap gap-2">
@@ -453,7 +455,7 @@ export function ProductForm({
               </div>
             )}
             <p className="text-xs text-warm-400">
-              Agrega etiquetas como marca, tipo o beneficio para que tus clientes filtren mejor.
+              {t('products.editor.tagsHint')}
             </p>
           </div>
         </div>
@@ -469,15 +471,15 @@ export function ProductForm({
           />
           <div>
             <label htmlFor="isActive" className="text-sm font-medium text-night-800">
-              Esconder
+              {t('products.editor.hide')}
             </label>
-            <p className="text-xs text-warm-400">Oculta este producto si no quieres mostrarlo.</p>
+            <p className="text-xs text-warm-400">{t('products.editor.hideHint')}</p>
           </div>
         </div>
 
         {/* Stock */}
         <div>
-          <label className="block text-sm font-medium text-night-800 mb-2">Inventario</label>
+          <label className="block text-sm font-medium text-night-800 mb-2">{t('products.editor.inventory')}</label>
           <input
             type="number"
             value={formData.stock}
@@ -490,9 +492,9 @@ export function ProductForm({
         {/* Variantes (color / talla) */}
         <div className="space-y-4 border-t border-warm-200 pt-6">
           <div className="flex items-center justify-between">
-            <h3 className="font-bold text-night-800">Variantes</h3>
+            <h3 className="font-bold text-night-800">{t('products.editor.variants')}</h3>
             <span className="text-xs text-warm-400">
-              Imágenes {imageCount}/{MAX_IMAGES}
+              {t('products.editor.imagesLabel')} {imageCount}/{MAX_IMAGES}
             </span>
           </div>
 
@@ -505,7 +507,7 @@ export function ProductForm({
                 onChange={(e) => setColorsEnabled(e.target.checked)}
                 className="rounded"
               />
-              <span className="text-sm font-medium text-night-800">Habilitar colores</span>
+              <span className="text-sm font-medium text-night-800">{t('products.editor.enableColors')}</span>
             </label>
             {colorsEnabled && (
               <div className="space-y-3">
@@ -516,13 +518,13 @@ export function ProductForm({
                       value={c.hex}
                       onChange={(e) => updateColor(idx, 'hex', e.target.value)}
                       className="h-9 w-10 shrink-0 cursor-pointer rounded border border-warm-200"
-                      title="Elegir color"
+                      title={t('products.editor.pickColor')}
                     />
                     <input
                       type="text"
                       value={c.name}
                       onChange={(e) => updateColor(idx, 'name', e.target.value)}
-                      placeholder="Nombre (ej. Azul)"
+                      placeholder={t('products.editor.colorNamePlaceholder')}
                       className="min-w-0 flex-1 rounded-lg border border-warm-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
                     />
                     {c.image ? (
@@ -538,7 +540,7 @@ export function ProductForm({
                       </div>
                     ) : (
                       <label
-                        title={imageCount >= MAX_IMAGES ? `Máximo ${MAX_IMAGES} imágenes` : 'Subir imagen de este color'}
+                        title={imageCount >= MAX_IMAGES ? `${t('products.editor.maxImagesPre')}${MAX_IMAGES}${t('products.editor.maxImagesPost')}` : t('products.editor.uploadColorImg')}
                         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded border border-dashed border-warm-300 ${
                           imageCount >= MAX_IMAGES ? 'cursor-not-allowed opacity-40' : 'cursor-pointer hover:border-primary-400'
                         }`}
@@ -564,7 +566,7 @@ export function ProductForm({
                 ))}
                 <Button type="button" variant="outline" size="sm" className="gap-2" onClick={addColor}>
                   <Plus className="h-4 w-4" />
-                  Agregar color
+                  {t('products.editor.addColor')}
                 </Button>
               </div>
             )}
@@ -579,7 +581,7 @@ export function ProductForm({
                 onChange={(e) => setSizesEnabled(e.target.checked)}
                 className="rounded"
               />
-              <span className="text-sm font-medium text-night-800">Habilitar tallas</span>
+              <span className="text-sm font-medium text-night-800">{t('products.editor.enableSizes')}</span>
             </label>
             {sizesEnabled && (
               <div className="space-y-3">
@@ -589,7 +591,7 @@ export function ProductForm({
                       type="text"
                       value={s.name}
                       onChange={(e) => updateSizeName(idx, e.target.value)}
-                      placeholder="Talla (ej. S, M, 40)"
+                      placeholder={t('products.editor.sizePlaceholder')}
                       className="min-w-0 flex-1 rounded-lg border border-warm-200 px-3 py-2 text-sm focus:border-primary-500 focus:outline-none"
                     />
                     {s.image ? (
@@ -605,7 +607,7 @@ export function ProductForm({
                       </div>
                     ) : (
                       <label
-                        title={imageCount >= MAX_IMAGES ? `Máximo ${MAX_IMAGES} imágenes` : 'Subir imagen de esta talla'}
+                        title={imageCount >= MAX_IMAGES ? `${t('products.editor.maxImagesPre')}${MAX_IMAGES}${t('products.editor.maxImagesPost')}` : t('products.editor.uploadSizeImg')}
                         className={`flex h-9 w-9 shrink-0 items-center justify-center rounded border border-dashed border-warm-300 ${
                           imageCount >= MAX_IMAGES ? 'cursor-not-allowed opacity-40' : 'cursor-pointer hover:border-primary-400'
                         }`}
@@ -631,16 +633,14 @@ export function ProductForm({
                 ))}
                 <Button type="button" variant="outline" size="sm" className="gap-2" onClick={addSize}>
                   <Plus className="h-4 w-4" />
-                  Agregar talla
+                  {t('products.editor.addSize')}
                 </Button>
               </div>
             )}
           </div>
 
           <p className="text-xs text-warm-400">
-            Las muestras de color y las tallas aparecerán en la tienda para que el cliente elija.
-            La imagen de un color o talla se mostrará al seleccionarlo. Máximo {MAX_IMAGES} imágenes en
-            total (principal + colores + tallas).
+            {t('products.editor.variantsHintPre')}{MAX_IMAGES}{t('products.editor.variantsHintPost')}
           </p>
         </div>
       </div>
@@ -653,7 +653,7 @@ export function ProductForm({
       )}
       {success && (
         <div className="rounded-lg border border-lime-200 bg-lime-50 p-4 text-sm text-lime-700">
-          ¡Producto guardado exitosamente! Redirigiendo...
+          {t('products.editor.savedSuccess')}
         </div>
       )}
 
@@ -668,12 +668,12 @@ export function ProductForm({
           {isLoading ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" />
-              Guardando...
+              {t('products.editor.saving')}
             </>
           ) : (
             <>
               <Zap className="h-4 w-4" />
-              {isEditing ? 'Actualizar' : 'Publicar'}
+              {isEditing ? t('products.editor.update') : t('products.editor.publish')}
             </>
           )}
         </Button>

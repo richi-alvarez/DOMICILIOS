@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { scanMenuImages, addProductsFromScan } from '@/lib/actions/menu-scan'
+import { useI18n } from '@/lib/i18n/context'
 
 interface DetectedProduct {
   name: string
@@ -41,6 +42,7 @@ export function ScanMenuModal({
   catalogId,
   categories,
 }: ScanMenuModalProps) {
+  const { t } = useI18n()
   const [state, setState] = useState<ModalState>('initial')
   const [files, setFiles] = useState<File[]>([])
   const [dragActive, setDragActive] = useState(false)
@@ -143,11 +145,11 @@ export function ScanMenuModal({
         )
         setState('success')
       } else {
-        setError('No se encontraron productos en el menú escaneado.')
+        setError(t('products.scan.noProductsFound'))
         setState('error')
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al escanear el menú')
+      setError(err instanceof Error ? err.message : t('products.scan.scanError'))
       setState('error')
     } finally {
       setIsLoading(false)
@@ -246,7 +248,7 @@ export function ScanMenuModal({
         onClose()
       }
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error al agregar productos')
+      setError(err instanceof Error ? err.message : t('products.scan.addError'))
     } finally {
       setIsLoading(false)
     }
@@ -270,10 +272,10 @@ export function ScanMenuModal({
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-primary-500" />
-              <h2 className="text-xl font-bold text-night-800">Sube fotos de tu menú</h2>
+              <h2 className="text-xl font-bold text-night-800">{t('products.scan.uploadTitle')}</h2>
             </div>
             <p className="text-sm text-warm-500">
-              Sube fotos, PDFs o documentos de tu menú y la IA extraerá tus productos
+              {t('products.scan.uploadSubtitle')}
             </p>
 
             <div
@@ -287,17 +289,17 @@ export function ScanMenuModal({
             >
               <Camera className="mx-auto h-8 w-8 text-primary-300 mb-3" />
               <p className="text-sm font-medium text-night-800">
-                Arrastra fotos de tu menú aquí
+                {t('products.scan.dragHere')}
               </p>
               <p className="mt-1 text-xs text-warm-400">
-                Imágenes JPG, PNG o PDF (máx 10MB por archivo)
+                {t('products.scan.fileTypes')}
               </p>
 
               <div className="mt-4 flex gap-2 justify-center">
                 <Button asChild size="sm" className="gap-2 cursor-pointer">
                   <label>
                     <Camera className="h-4 w-4" />
-                    Tomar foto
+                    {t('products.scan.takePhoto')}
                     <input
                       type="file"
                       accept="image/jpeg,image/png"
@@ -311,7 +313,7 @@ export function ScanMenuModal({
                 <Button asChild variant="outline" size="sm" className="gap-2 cursor-pointer">
                   <label>
                     <FileText className="h-4 w-4" />
-                    Elegir archivo
+                    {t('products.scan.chooseFile')}
                     <input
                       type="file"
                       accept="image/jpeg,image/png,application/pdf"
@@ -326,11 +328,11 @@ export function ScanMenuModal({
 
             <div className="flex items-center gap-2 rounded-lg bg-blue-50 p-3 text-xs text-blue-700">
               <span>🔒</span>
-              <span>Tus imágenes se procesan de forma segura y no se almacenan</span>
+              <span>{t('products.scan.secure')}</span>
             </div>
 
             <Button variant="outline" onClick={handleClose} className="w-full">
-              Cancelar
+              {t('products.scan.cancel')}
             </Button>
           </div>
         )}
@@ -339,7 +341,7 @@ export function ScanMenuModal({
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-primary-500" />
-              <h2 className="text-xl font-bold text-night-800">Sube fotos de tu menú</h2>
+              <h2 className="text-xl font-bold text-night-800">{t('products.scan.uploadTitle')}</h2>
             </div>
 
             <div className="grid grid-cols-3 gap-3">
@@ -378,7 +380,7 @@ export function ScanMenuModal({
             </div>
 
             <p className="text-sm text-warm-500">
-              {files.length} imagen{files.length !== 1 ? 'es' : ''} lista{files.length !== 1 ? 's' : ''} para escanear
+              {files.length} {files.length !== 1 ? t('products.scan.readyMany') : t('products.scan.readyOne')}
             </p>
 
             <Button
@@ -389,18 +391,18 @@ export function ScanMenuModal({
               {isLoading ? (
                 <>
                   <Loader2 className="h-4 w-4 animate-spin" />
-                  Escaneando...
+                  {t('products.scan.scanning')}
                 </>
               ) : (
                 <>
                   <Zap className="h-4 w-4" />
-                  Escanear menú
+                  {t('products.scan.scanMenu')}
                 </>
               )}
             </Button>
 
             <Button variant="outline" onClick={handleClose} className="w-full">
-              Cancelar
+              {t('products.scan.cancel')}
             </Button>
           </div>
         )}
@@ -409,10 +411,10 @@ export function ScanMenuModal({
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-primary-500 animate-spin" />
-              <h2 className="text-xl font-bold text-night-800">Analizando tu menú</h2>
+              <h2 className="text-xl font-bold text-night-800">{t('products.scan.analyzingTitle')}</h2>
             </div>
             <p className="text-sm text-warm-500">
-              La IA está leyendo tu menú y extrayendo productos
+              {t('products.scan.analyzingSubtitle')}
             </p>
 
             <div className="space-y-3 max-h-64 overflow-y-auto">
@@ -433,8 +435,8 @@ export function ScanMenuModal({
                     <p className="text-sm font-medium text-night-800 truncate">{file.name}</p>
                     <p className="text-xs text-warm-400">
                       {processingProgress[file.name] === 'done'
-                        ? 'Productos encontrados ✓'
-                        : 'Procesando...'}
+                        ? t('products.scan.foundStatus')
+                        : t('products.scan.processing')}
                     </p>
                   </div>
                   {processingProgress[file.name] === 'done' ? (
@@ -457,10 +459,10 @@ export function ScanMenuModal({
             </div>
             <div>
               <h2 className="text-xl font-bold text-night-800">
-                {detectedProducts.length} productos encontrados
+                {detectedProducts.length} {t('products.scan.foundTitleSuffix')}
               </h2>
               <p className="text-sm text-warm-500 mt-1">
-                Revisa los productos extraídos y personaliza los detalles antes de importar
+                {t('products.scan.foundSubtitle')}
               </p>
             </div>
             <div className="space-y-3">
@@ -468,11 +470,11 @@ export function ScanMenuModal({
                 onClick={() => setState('results')}
                 className="w-full gap-2"
               >
-                Revisar productos
+                {t('products.scan.reviewProducts')}
                 <Zap className="h-4 w-4" />
               </Button>
               <Button variant="outline" onClick={handleClose} className="w-full">
-                Cancelar
+                {t('products.scan.cancel')}
               </Button>
             </div>
           </div>
@@ -483,8 +485,8 @@ export function ScanMenuModal({
             <div className="flex items-center gap-2">
               <Zap className="h-5 w-5 text-primary-500" />
               <div>
-                <h2 className="text-xl font-bold text-night-800">Revisa los productos extraídos</h2>
-                <p className="text-sm text-warm-500">Edita, elimina o agrega productos antes de importar</p>
+                <h2 className="text-xl font-bold text-night-800">{t('products.scan.reviewTitle')}</h2>
+                <p className="text-sm text-warm-500">{t('products.scan.reviewSubtitle')}</p>
               </div>
             </div>
 
@@ -500,12 +502,12 @@ export function ScanMenuModal({
                     />
                     <span className="text-sm text-warm-600">
                       {selectedCount === detectedProducts.length && detectedProducts.length > 0
-                        ? 'Deseleccionar todos'
-                        : 'Seleccionar todos'}
+                        ? t('products.scan.deselectAll')
+                        : t('products.scan.selectAll')}
                     </span>
                   </div>
                   <span className="text-sm text-warm-600">
-                    {selectedCount} de {detectedProducts.length} seleccionados
+                    {selectedCount}{t('products.scan.selectedOfMid')}{detectedProducts.length}{t('products.scan.selectedOfSuffix')}
                   </span>
                 </div>
 
@@ -517,10 +519,10 @@ export function ScanMenuModal({
                           <th className="px-4 py-3 text-left w-10">
                             <input type="checkbox" className="rounded" disabled />
                           </th>
-                          <th className="px-4 py-3 text-left font-semibold text-warm-600">Título</th>
-                          <th className="px-4 py-3 text-left font-semibold text-warm-600">Descripción</th>
-                          <th className="px-4 py-3 text-left font-semibold text-warm-600 w-24">Precio</th>
-                          <th className="px-4 py-3 text-left font-semibold text-warm-600 w-32">Categoría</th>
+                          <th className="px-4 py-3 text-left font-semibold text-warm-600">{t('products.scan.thTitle')}</th>
+                          <th className="px-4 py-3 text-left font-semibold text-warm-600">{t('products.scan.thDescription')}</th>
+                          <th className="px-4 py-3 text-left font-semibold text-warm-600 w-24">{t('products.scan.thPrice')}</th>
+                          <th className="px-4 py-3 text-left font-semibold text-warm-600 w-32">{t('products.scan.thCategory')}</th>
                           <th className="px-4 py-3 text-center w-10"></th>
                         </tr>
                       </thead>
@@ -553,7 +555,7 @@ export function ScanMenuModal({
                                   <Input
                                     value={product.name}
                                     onChange={(e) => handleUpdateProduct(index, 'name', e.target.value)}
-                                    placeholder="Nombre del producto"
+                                    placeholder={t('products.scan.namePlaceholder')}
                                     className="text-sm"
                                   />
 
@@ -575,7 +577,7 @@ export function ScanMenuModal({
                                           value={c.name}
                                           onChange={(e) => updateColor(index, ci, 'name', e.target.value)}
                                           className="w-14 bg-transparent text-[11px] text-warm-700 focus:outline-none"
-                                          placeholder="color"
+                                          placeholder={t('products.scan.colorPlaceholder')}
                                         />
                                         <button
                                           type="button"
@@ -591,7 +593,7 @@ export function ScanMenuModal({
                                       onClick={() => addColor(index)}
                                       className="inline-flex items-center gap-0.5 rounded-full border border-dashed border-warm-300 px-1.5 py-0.5 text-[11px] text-warm-500 hover:border-primary-400 hover:text-primary-600"
                                     >
-                                      <Plus className="h-3 w-3" /> color
+                                      <Plus className="h-3 w-3" /> {t('products.scan.colorChip')}
                                     </button>
                                   </div>
 
@@ -621,7 +623,7 @@ export function ScanMenuModal({
                                         }
                                       }}
                                       className="w-16 rounded border border-dashed border-warm-300 px-1.5 py-0.5 text-[10px] focus:border-primary-400 focus:outline-none"
-                                      placeholder="+ talla"
+                                      placeholder={t('products.scan.sizePlaceholder')}
                                     />
                                   </div>
                                 </div>
@@ -631,7 +633,7 @@ export function ScanMenuModal({
                               <Input
                                 value={product.description}
                                 onChange={(e) => handleUpdateProduct(index, 'description', e.target.value)}
-                                placeholder="Descripción"
+                                placeholder={t('products.scan.descPlaceholder')}
                                 className="text-sm"
                               />
                             </td>
@@ -641,7 +643,7 @@ export function ScanMenuModal({
                                 step="0.01"
                                 value={product.price}
                                 onChange={(e) => handleUpdateProduct(index, 'price', parseFloat(e.target.value) || 0)}
-                                placeholder="Precio"
+                                placeholder={t('products.scan.pricePlaceholder')}
                                 className="text-sm"
                               />
                             </td>
@@ -654,7 +656,7 @@ export function ScanMenuModal({
                                   <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
-                                  <SelectItem value="General">General</SelectItem>
+                                  <SelectItem value="General">{t('products.scan.general')}</SelectItem>
                                   {categories.map((cat) => (
                                     <SelectItem key={cat.id} value={cat.name}>
                                       {cat.name}
@@ -683,14 +685,14 @@ export function ScanMenuModal({
                   onClick={handleAddProduct}
                   className="w-full gap-2"
                 >
-                  + Agregar producto
+                  {t('products.scan.addProductBtn')}
                 </Button>
               </>
             )}
 
             {detectedProducts.length === 0 && (
               <div className="text-center py-8">
-                <p className="text-sm text-warm-500">😕 No hay productos para mostrar</p>
+                <p className="text-sm text-warm-500">{t('products.scan.noProducts')}</p>
               </div>
             )}
 
@@ -700,14 +702,14 @@ export function ScanMenuModal({
                 onClick={() => setState('success')}
                 className="flex-1"
               >
-                Atrás
+                {t('products.scan.back')}
               </Button>
               <Button
                 variant="outline"
                 onClick={handleClose}
                 className="flex-1"
               >
-                Cancelar
+                {t('products.scan.cancel')}
               </Button>
               <Button
                 onClick={handleAddProducts}
@@ -717,10 +719,10 @@ export function ScanMenuModal({
                 {isLoading ? (
                   <>
                     <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                    Importando...
+                    {t('products.scan.importing')}
                   </>
                 ) : (
-                  `Importar ${selectedCount} producto${selectedCount !== 1 ? 's' : ''}`
+                  `${t('products.scan.importPre')}${selectedCount} ${selectedCount !== 1 ? t('products.countMany') : t('products.countOne')}`
                 )}
               </Button>
             </div>
@@ -731,7 +733,7 @@ export function ScanMenuModal({
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <AlertCircle className="h-5 w-5 text-red-500" />
-              <h2 className="text-xl font-bold text-night-800">Error al escanear</h2>
+              <h2 className="text-xl font-bold text-night-800">{t('products.scan.errorScanTitle')}</h2>
             </div>
             <div className="rounded-lg bg-red-50 p-4 text-sm text-red-700">
               {error}
@@ -741,11 +743,11 @@ export function ScanMenuModal({
                 onClick={() => setState('loaded')}
                 className="w-full"
               >
-                Intentar de nuevo
+                {t('products.scan.retry')}
               </Button>
             )}
             <Button variant="outline" onClick={handleClose} className="w-full">
-              Cancelar
+              {t('products.scan.cancel')}
             </Button>
           </div>
         )}

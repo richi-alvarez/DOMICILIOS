@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { updateProduct, deleteProduct, toggleProductActive } from '@/lib/actions/products'
+import { useI18n } from '@/lib/i18n/context'
 
 interface Product {
   id: string; name: string; description: string; price: number; compareAt?: number
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export function ProductActions({ product, catalogId, categories }: Props) {
+  const { t } = useI18n()
   const [editOpen, setEditOpen] = useState(false)
   const [isPending, startTransition] = useTransition()
 
@@ -39,7 +41,7 @@ export function ProductActions({ product, catalogId, categories }: Props) {
   })
 
   const onDelete = () => {
-    if (!confirm(`¿Eliminar "${product.name}"? Esta acción no se puede deshacer.`)) return
+    if (!confirm(`${t('products.actions.confirmDeletePre')}${product.name}${t('products.actions.confirmDeletePost')}`)) return
     startTransition(async () => { await deleteProduct(product.id, catalogId) })
   }
 
@@ -53,65 +55,65 @@ export function ProductActions({ product, catalogId, categories }: Props) {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={() => setEditOpen(true)}>
-            <Pencil className="h-4 w-4" /> Editar
+            <Pencil className="h-4 w-4" /> {t('products.actions.edit')}
           </DropdownMenuItem>
           <DropdownMenuItem onClick={onToggle}>
             {product.active ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-            {product.active ? 'Ocultar' : 'Mostrar'}
+            {product.active ? t('products.actions.hide') : t('products.actions.show')}
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem destructive onClick={onDelete}>
-            <Trash2 className="h-4 w-4" /> Eliminar
+            <Trash2 className="h-4 w-4" /> {t('products.actions.delete')}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
       <Dialog open={editOpen} onOpenChange={setEditOpen}>
         <DialogContent>
-          <DialogHeader><DialogTitle>Editar producto</DialogTitle></DialogHeader>
+          <DialogHeader><DialogTitle>{t('products.dialog.editProduct')}</DialogTitle></DialogHeader>
           <form onSubmit={onEdit} className="space-y-4">
             <div className="space-y-1.5">
-              <Label>Nombre *</Label>
+              <Label>{t('products.form.nameLabel')}</Label>
               <Input name="name" defaultValue={product.name} required />
             </div>
             <div className="space-y-1.5">
-              <Label>Descripción</Label>
+              <Label>{t('products.form.description')}</Label>
               <Textarea name="description" defaultValue={product.description} rows={3} />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1.5">
-                <Label>Precio *</Label>
+                <Label>{t('products.form.price')}</Label>
                 <Input name="price" type="number" min="0" step="0.01" defaultValue={product.price} required />
               </div>
               <div className="space-y-1.5">
-                <Label>Precio anterior</Label>
+                <Label>{t('products.form.compareAt')}</Label>
                 <Input name="compareAt" type="number" min="0" step="0.01" defaultValue={product.compareAt ?? ''} />
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-1.5">
-                <Label>Stock</Label>
+                <Label>{t('products.form.stock')}</Label>
                 <Input name="stock" type="number" min="0" defaultValue={product.stock ?? ''} />
               </div>
               <div className="space-y-1.5">
-                <Label>SKU</Label>
+                <Label>{t('products.form.sku')}</Label>
                 <Input name="sku" defaultValue={product.sku} />
               </div>
             </div>
             {categories.length > 0 && (
               <div className="space-y-1.5">
-                <Label>Categoría</Label>
+                <Label>{t('products.form.category')}</Label>
                 <select name="categoryId" defaultValue={product.categoryId} className="w-full rounded-md border border-warm-200 bg-white py-2 pl-3 pr-8 text-sm text-night-800 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                  <option value="">Sin categoría</option>
+                  <option value="">{t('products.form.noCategory')}</option>
                   {categories.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
                 </select>
               </div>
             )}
             <DialogFooter>
-              <Button type="button" variant="outline" onClick={() => setEditOpen(false)}>Cancelar</Button>
+              <Button type="button" variant="outline" onClick={() => setEditOpen(false)}>{t('products.form.cancel')}</Button>
               <Button type="submit" disabled={isPending}>
                 {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
-                Guardar cambios
+                {t('products.dialog.saveChanges')}
               </Button>
             </DialogFooter>
           </form>

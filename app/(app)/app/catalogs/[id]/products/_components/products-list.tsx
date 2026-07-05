@@ -11,6 +11,7 @@ import { formatMoney } from '@/lib/utils'
 import Link from 'next/link'
 import { deleteProduct, deleteProducts, exportProductsToCSV, createProduct } from '@/lib/actions/products'
 import { ScanMenuModal } from './scan-menu-modal'
+import { useI18n } from '@/lib/i18n/context'
 
 interface Product {
   id: string
@@ -39,6 +40,7 @@ interface ProductsListProps {
 }
 
 export function ProductsList({ products, categories, catalogId, currency }: ProductsListProps) {
+  const { t } = useI18n()
   const [productList, setProductList] = useState(products)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('')
@@ -76,7 +78,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
         const url = window.URL.createObjectURL(blob)
         const a = document.createElement('a')
         a.href = url
-        a.download = `productos-${new Date().toISOString().split('T')[0]}.csv`
+        a.download = `${t('products.list.productsWord').toLowerCase()}-${new Date().toISOString().split('T')[0]}.csv`
         a.click()
         window.URL.revokeObjectURL(url)
       }
@@ -161,7 +163,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
     const count = selectedIds.size
     if (
       !confirm(
-        `¿Eliminar ${count} producto${count !== 1 ? 's' : ''}? Esta acción no se puede deshacer.`,
+        `${t('products.list.confirmBulkPre')}${count} ${count !== 1 ? t('products.countMany') : t('products.countOne')}${t('products.list.confirmBulkPost')}`,
       )
     )
       return
@@ -181,8 +183,8 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
   return (
     <div className="space-y-6">
       <div className="px-4 py-6 mx-0 space-y-2 mb-6">
-        <h2 className="text-2xl font-bold text-night-800">Productos</h2>
-        <p className="text-warm-600 text-sm">Organiza tus productos con herramientas de importación y escaneo de menú.</p>
+        <h2 className="text-2xl font-bold text-night-800">{t('products.list.title')}</h2>
+        <p className="text-warm-600 text-sm">{t('products.list.subtitle')}</p>
       </div>
       <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-3 px-4">
         <div className="flex gap-2 flex-wrap justify-center">
@@ -193,17 +195,17 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
             className="gap-2"
           >
             <Zap className="h-4 w-4" />
-            Escanear menú
+            {t('products.list.scanMenu')}
           </Button>
           <Button variant="outline" size="sm" className="gap-2">
             <Download className="h-4 w-4" />
-            Importar CSV
+            {t('products.list.importCsv')}
           </Button>
         </div>
         <div className="h-6 w-px bg-warm-200 hidden sm:block" />
         <Button size="sm" className="gap-2" onClick={() => setIsAddingProduct(true)}>
           <Plus className="h-4 w-4" />
-          Crear nuevo
+          {t('products.list.createNew')}
         </Button>
       </div>
 
@@ -212,7 +214,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-warm-400" />
           <input
             type="text"
-            placeholder="Buscar por título, categoría o precio"
+            placeholder={t('products.list.searchPlaceholder')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full rounded-lg border border-warm-200 pl-10 pr-4 py-2 text-sm focus:border-primary-500 focus:outline-none"
@@ -225,19 +227,19 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
             className="gap-2"
             onClick={() => setIsActionsOpen(!isActionsOpen)}
           >
-            Acciones
+            {t('products.list.actionsMenu')}
             <ChevronDown className={`h-4 w-4 transition-transform ${isActionsOpen ? 'rotate-180' : ''}`} />
           </Button>
           {isActionsOpen && (
             <div className="absolute right-0 mt-2 w-48 rounded-lg border border-warm-200 bg-white shadow-lg z-10">
               <button type="button" className="w-full text-left px-4 py-2 text-sm hover:bg-warm-50" disabled>
-                Actualización masiva
+                {t('products.list.bulkUpdate')}
               </button>
               <button type="button" className="w-full text-left px-4 py-2 text-sm hover:bg-warm-50" disabled>
-                Duplicar
+                {t('products.list.duplicate')}
               </button>
               <button type="button" className="w-full text-left px-4 py-2 text-sm hover:bg-warm-50" disabled>
-                Importar CSV
+                {t('products.list.importCsv')}
               </button>
               <button
                 type="button"
@@ -248,7 +250,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                 disabled={isExporting}
                 className="w-full text-left px-4 py-2 text-sm hover:bg-warm-50 disabled:opacity-50"
               >
-                {isExporting ? 'Exportando...' : 'Exportar a CSV'}
+                {isExporting ? t('products.list.exporting') : t('products.list.exportCsv')}
               </button>
               <button
                 type="button"
@@ -257,10 +259,10 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                 className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 disabled:opacity-50 disabled:hover:bg-transparent"
               >
                 {isDeleting
-                  ? 'Eliminando...'
+                  ? t('products.list.deleting')
                   : selectedCount > 0
-                    ? `Eliminar (${selectedCount})`
-                    : 'Eliminar'}
+                    ? `${t('products.list.delete')} (${selectedCount})`
+                    : t('products.list.delete')}
               </button>
             </div>
           )}
@@ -272,7 +274,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
           onClick={() => setExpandedCategories(!expandedCategories)}
           className="flex w-full items-center justify-between font-medium text-night-800"
         >
-          <span>Administrar Categorías ({categories.length})</span>
+          <span>{t('products.list.manageCategories')} ({categories.length})</span>
           {expandedCategories ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
         </button>
         {expandedCategories && (
@@ -283,7 +285,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                 !selectedCategory ? 'bg-primary-50 text-primary-600' : 'hover:bg-warm-50'
               }`}
             >
-              Todas
+              {t('products.list.all')}
             </button>
             {categories.map((cat) => (
               <button
@@ -298,7 +300,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
             ))}
             <Button variant="outline" size="sm" className="w-full gap-2 mt-2">
               <Plus className="h-4 w-4" />
-              Nueva categoría
+              {t('products.list.newCategory')}
             </Button>
           </div>
         )}
@@ -308,15 +310,14 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-red-700">
-              {selectedCount} producto{selectedCount !== 1 ? 's' : ''} seleccionado
-              {selectedCount !== 1 ? 's' : ''}
+              {selectedCount} {selectedCount !== 1 ? t('products.list.selectedSuffixMany') : t('products.list.selectedSuffixOne')}
             </span>
             <button
               type="button"
               onClick={() => setSelectedIds(new Set())}
               className="text-xs text-warm-500 underline hover:text-warm-700"
             >
-              Limpiar selección
+              {t('products.list.clearSelection')}
             </button>
           </div>
           <Button
@@ -327,14 +328,14 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
             disabled={isDeleting}
           >
             {isDeleting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Trash2 className="h-4 w-4" />}
-            {isDeleting ? 'Eliminando...' : `Eliminar ${selectedCount}`}
+            {isDeleting ? t('products.list.deleting') : `${t('products.list.delete')} ${selectedCount}`}
           </Button>
         </div>
       )}
 
       {paginatedProducts.length === 0 ? (
         <div className="rounded-lg border border-dashed border-warm-200 bg-white py-12 text-center">
-          <p className="text-warm-500">No hay productos que coincidan con tu búsqueda</p>
+          <p className="text-warm-500">{t('products.list.emptySearch')}</p>
         </div>
       ) : (
         <div className="rounded-lg border border-warm-200 bg-white overflow-hidden shadow-card">
@@ -347,26 +348,26 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                     className="rounded cursor-pointer"
                     checked={allFilteredSelected}
                     onChange={toggleSelectAll}
-                    title="Seleccionar todos"
+                    title={t('products.list.selectAll')}
                   />
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-warm-400">
-                  Producto
+                  {t('products.list.thProduct')}
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-warm-400 hidden sm:table-cell">
-                  Categoría
+                  {t('products.list.thCategory')}
                 </th>
                 <th className="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-warm-400 hidden md:table-cell">
-                  Etiquetas
+                  {t('products.list.thTags')}
                 </th>
                 <th className="px-4 py-3 text-right text-xs font-bold uppercase tracking-wider text-warm-400">
-                  Precio
+                  {t('products.list.thPrice')}
                 </th>
                 <th className="px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-warm-400">
-                  Stock
+                  {t('products.list.thStock')}
                 </th>
                 <th className="px-4 py-3 text-center text-xs font-bold uppercase tracking-wider text-warm-400">
-                  Estado
+                  {t('products.list.thStatus')}
                 </th>
                 <th className="px-4 py-3" />
               </tr>
@@ -426,13 +427,13 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                     </td>
                     <td className="px-4 py-3 text-center">
                       <Badge variant={product.active ? 'lime' : 'muted'}>
-                        {product.active ? 'Activo' : 'Oculto'}
+                        {product.active ? t('products.list.active') : t('products.list.hidden')}
                       </Badge>
                     </td>
                     <td className="px-4 py-3">
                       <Link href={`/app/catalogs/${catalogId}/products/${product.id}`}>
                         <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100">
-                          Editar
+                          {t('products.list.edit')}
                         </Button>
                       </Link>
                     </td>
@@ -443,7 +444,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
           </table>
 
           <div className="flex items-center justify-between border-t border-warm-100 px-4 py-3 bg-warm-50">
-            <span className="text-sm text-warm-500">{sortedProducts.length} Productos</span>
+            <span className="text-sm text-warm-500">{sortedProducts.length} {t('products.list.productsWord')}</span>
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
@@ -451,10 +452,10 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                 onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                 disabled={currentPage === 1}
               >
-                Anterior
+                {t('products.list.previous')}
               </Button>
               <span className="text-sm text-warm-600">
-                Página {currentPage} de {totalPages || 1}
+                {t('products.list.pagePrefix')}{currentPage}{t('products.list.pageMid')}{totalPages || 1}
               </span>
               <Button
                 variant="outline"
@@ -462,7 +463,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                 onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                 disabled={currentPage === totalPages}
               >
-                Siguiente
+                {t('products.list.next')}
               </Button>
             </div>
           </div>
@@ -473,24 +474,24 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="w-full max-w-md rounded-xl bg-white shadow-lg">
             <div className="border-b border-warm-200 px-6 py-4">
-              <h2 className="text-lg font-bold text-night-800">Nuevo producto</h2>
+              <h2 className="text-lg font-bold text-night-800">{t('products.dialog.newProduct')}</h2>
             </div>
             <div className="space-y-4 px-6 py-4 max-h-[70vh] overflow-y-auto">
               <div>
-                <Label htmlFor="name">Nombre *</Label>
+                <Label htmlFor="name">{t('products.form.nameLabel')}</Label>
                 <Input
                   id="name"
-                  placeholder="Nombre del producto"
+                  placeholder={t('products.form.namePlaceholder')}
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   autoFocus
                 />
               </div>
               <div>
-                <Label htmlFor="description">Descripción</Label>
+                <Label htmlFor="description">{t('products.form.description')}</Label>
                 <Textarea
                   id="description"
-                  placeholder="Descripción del producto"
+                  placeholder={t('products.form.descriptionPlaceholder')}
                   value={formData.description}
                   onChange={(e) => setFormData({...formData, description: e.target.value})}
                   rows={3}
@@ -498,7 +499,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label htmlFor="price">Precio *</Label>
+                  <Label htmlFor="price">{t('products.form.price')}</Label>
                   <Input
                     id="price"
                     type="number"
@@ -510,7 +511,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                   />
                 </div>
                 <div>
-                  <Label htmlFor="compareAt">Precio anterior</Label>
+                  <Label htmlFor="compareAt">{t('products.form.compareAt')}</Label>
                   <Input
                     id="compareAt"
                     type="number"
@@ -524,7 +525,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label htmlFor="stock">Stock (vacío = ilimitado)</Label>
+                  <Label htmlFor="stock">{t('products.form.stockUnlimited')}</Label>
                   <Input
                     id="stock"
                     type="number"
@@ -535,7 +536,7 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
                   />
                 </div>
                 <div>
-                  <Label htmlFor="sku">SKU</Label>
+                  <Label htmlFor="sku">{t('products.form.sku')}</Label>
                   <Input
                     id="sku"
                     placeholder="ABC-001"
@@ -546,14 +547,14 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
               </div>
               {categories.length > 0 && (
                 <div>
-                  <Label htmlFor="categoryId">Categoría</Label>
+                  <Label htmlFor="categoryId">{t('products.form.category')}</Label>
                   <select
                     id="categoryId"
                     value={formData.categoryId}
                     onChange={(e) => setFormData({...formData, categoryId: e.target.value})}
                     className="w-full rounded-md border border-warm-200 bg-white py-2 pl-3 pr-8 text-sm text-night-800 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   >
-                    <option value="">Sin categoría</option>
+                    <option value="">{t('products.form.noCategory')}</option>
                     {categories.map((c) => (
                       <option key={c.id} value={c.id}>{c.name}</option>
                     ))}
@@ -562,13 +563,13 @@ export function ProductsList({ products, categories, catalogId, currency }: Prod
               )}
             </div>
             <div className="border-t border-warm-200 flex justify-end gap-3 px-6 py-4">
-              <Button variant="outline" onClick={() => setIsAddingProduct(false)}>Cancelar</Button>
+              <Button variant="outline" onClick={() => setIsAddingProduct(false)}>{t('products.form.cancel')}</Button>
               <Button
                 onClick={handleCreateProduct}
                 disabled={!formData.name.trim() || !formData.price || isPending}
               >
                 {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-                Crear producto
+                {t('products.dialog.createProduct')}
               </Button>
             </div>
           </div>
