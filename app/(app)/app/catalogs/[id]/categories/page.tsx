@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 import type { Metadata } from 'next'
 import { LayoutGrid } from 'lucide-react'
 import { CategoryList } from './category-list'
+import { getT } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'Categorías' }
 
@@ -20,12 +21,13 @@ async function getCategories(catalogId: string) {
 export default async function CategoriesPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
   const categoryList = (await getCategories(id)) as any[]
+  const t = await getT()
 
   return (
     <div className="px-6 py-8 max-w-2xl">
       <div className="mb-6">
-        <h1 className="text-2xl font-extrabold text-night-800">Categorías</h1>
-        <p className="mt-1 text-sm text-warm-500">Organiza tus productos en categorías. Arrástralas para reordenar.</p>
+        <h1 className="text-2xl font-extrabold text-night-800">{t('categories.title')}</h1>
+        <p className="mt-1 text-sm text-warm-500">{t('categories.subtitle')}</p>
       </div>
 
       <CategoryList

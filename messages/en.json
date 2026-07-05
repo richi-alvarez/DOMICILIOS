@@ -1369,5 +1369,16 @@
       "scanError": "Error scanning the menu",
       "addError": "Error adding products"
     }
+  },
+  "categories": {
+    "title": "Categories",
+    "subtitle": "Organize your products into categories. Drag them to reorder.",
+    "emptyTitle": "No categories",
+    "emptyDesc": "Create categories to organize your products.",
+    "namePlaceholder": "Category name",
+    "save": "Save",
+    "addCategory": "Add category",
+    "confirmDeletePre": "Delete the category \"",
+    "confirmDeletePost": "\"?"
   }
 }

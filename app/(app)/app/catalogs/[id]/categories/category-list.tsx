@@ -4,10 +4,12 @@ import { Plus, Pencil, Trash2, ChevronUp, ChevronDown, Check, X, Loader2, Tag } 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { createCategory, updateCategory, deleteCategory, moveCategoryUp, moveCategoryDown } from '@/lib/actions/categories'
+import { useI18n } from '@/lib/i18n/context'
 
 interface Category { id: string; name: string; slug: string; active: boolean; position: number }
 
 export function CategoryList({ catalogId, initialCategories }: { catalogId: string; initialCategories: Category[] }) {
+  const { t } = useI18n()
   const [categories, setCategories] = useState(initialCategories)
   const [adding, setAdding] = useState(false)
   const [newName, setNewName] = useState('')
@@ -43,7 +45,7 @@ export function CategoryList({ catalogId, initialCategories }: { catalogId: stri
   }
 
   const handleDelete = (id: string, name: string) => {
-    if (!confirm(`¿Eliminar la categoría "${name}"?`)) return
+    if (!confirm(`${t('categories.confirmDeletePre')}${name}${t('categories.confirmDeletePost')}`)) return
     startTransition(async () => {
       setCategories(categories.filter(cat => cat.id !== id))
       await deleteCategory(id, catalogId)
@@ -77,8 +79,8 @@ export function CategoryList({ catalogId, initialCategories }: { catalogId: stri
       {categories.length === 0 && !adding && (
         <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-warm-200 bg-white py-12 text-center">
           <Tag className="mb-3 h-8 w-8 text-warm-300" />
-          <p className="font-medium text-night-800">Sin categorías</p>
-          <p className="mt-1 text-sm text-warm-500">Crea categorías para organizar tus productos.</p>
+          <p className="font-medium text-night-800">{t('categories.emptyTitle')}</p>
+          <p className="mt-1 text-sm text-warm-500">{t('categories.emptyDesc')}</p>
         </div>
       )}
 
@@ -148,13 +150,13 @@ export function CategoryList({ catalogId, initialCategories }: { catalogId: stri
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             onKeyDown={(e) => { if (e.key === 'Enter') handleAdd(); if (e.key === 'Escape') setAdding(false) }}
-            placeholder="Nombre de la categoría"
+            placeholder={t('categories.namePlaceholder')}
             className="flex-1"
             autoFocus
           />
           <Button size="sm" onClick={handleAdd} disabled={!newName.trim() || isPending}>
             {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-            Guardar
+            {t('categories.save')}
           </Button>
           <Button size="sm" variant="ghost" onClick={() => setAdding(false)}>
             <X className="h-4 w-4" />
@@ -166,7 +168,7 @@ export function CategoryList({ catalogId, initialCategories }: { catalogId: stri
           className="flex w-full items-center gap-2 rounded-xl border-2 border-dashed border-warm-200 p-4 text-sm font-medium text-warm-400 transition-colors hover:border-primary-300 hover:text-primary-500"
         >
           <Plus className="h-4 w-4" />
-          Agregar categoría
+          {t('categories.addCategory')}
         </button>
       )}
     </div>

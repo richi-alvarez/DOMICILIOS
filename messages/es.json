@@ -1369,5 +1369,16 @@
       "scanError": "Error al escanear el menú",
       "addError": "Error al agregar productos"
     }
+  },
+  "categories": {
+    "title": "Categorías",
+    "subtitle": "Organiza tus productos en categorías. Arrástralas para reordenar.",
+    "emptyTitle": "Sin categorías",
+    "emptyDesc": "Crea categorías para organizar tus productos.",
+    "namePlaceholder": "Nombre de la categoría",
+    "save": "Guardar",
+    "addCategory": "Agregar categoría",
+    "confirmDeletePre": "¿Eliminar la categoría \"",
+    "confirmDeletePost": "\"?"
   }
 }
