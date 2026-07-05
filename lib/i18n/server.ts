@@ -7,6 +7,7 @@ import {
   LOCALE_COOKIE,
   isLocale,
   resolveMessage,
+  resolveRawMessage,
   type Locale,
 } from './config'
 
@@ -29,4 +30,10 @@ export async function getLocale(): Promise<Locale> {
 export async function getT(): Promise<(key: string) => string> {
   const locale = await getLocale()
   return (key: string) => resolveMessage(MESSAGES[locale], key)
+}
+
+/** Equivalente server-side de tRaw(): devuelve el valor crudo (array/objeto/string). */
+export async function getTRaw(): Promise<(key: string) => unknown> {
+  const locale = await getLocale()
+  return (key: string) => resolveRawMessage(MESSAGES[locale], key)
 }

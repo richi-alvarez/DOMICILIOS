@@ -12,19 +12,16 @@ import { BillingPortalButton } from './billing-portal-button'
 import { auth } from '@/auth'
 import { db, memberships } from '@/db'
 import { eq } from 'drizzle-orm'
+import { getT, getLocale, getTRaw } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'Plan y facturación' }
 
 const PLAN_ORDER: PlanCode[] = ['free', 'basic', 'pro', 'business']
 
-const PLAN_HIGHLIGHTS: Record<PlanCode, string[]> = {
-  free: ['1 catálogo', '30 productos', '30 pedidos/mes', 'Dominio domicilios.app/*'],
-  basic: ['1 catálogo', '100 productos', '300 pedidos/mes', 'Sin marca WaCommerce'],
-  pro: ['3 catálogos', '500 productos', 'Pedidos ilimitados', 'Dominio propio', 'Analítica avanzada', 'IA incluida'],
-  business: ['10 catálogos', 'Productos ilimitados', 'Todo lo de Pro', '20 colaboradores', 'Soporte dedicado'],
-}
-
 export default async function BillingPage() {
+  const t = await getT()
+  const tRaw = await getTRaw()
+  const locale = await getLocale()
   const usage = await getOrgUsage()
   const session = await auth()
 
@@ -47,8 +44,8 @@ export default async function BillingPage() {
 
   return (
     <div className="px-6 py-8 max-w-3xl">
-      <h1 className="text-2xl font-extrabold text-night-800">Plan y facturación</h1>
-      <p className="mt-1 mb-8 text-sm text-warm-500">Gestiona tu suscripción y monitorea el uso de tu cuenta.</p>
+      <h1 className="text-2xl font-extrabold text-night-800">{t('billing.title')}</h1>
+      <p className="mt-1 mb-8 text-sm text-warm-500">{t('billing.subtitle')}</p>
 
       {/* Current plan */}
       <div className="mb-6 rounded-2xl border border-warm-200 bg-white p-6">
@@ -56,20 +53,20 @@ export default async function BillingPage() {
           <div className="flex items-center gap-3">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <h2 className="font-extrabold text-night-800 text-lg">Plan actual</h2>
+                <h2 className="font-extrabold text-night-800 text-lg">{t('billing.currentPlan')}</h2>
                 <PlanBadge plan={planCode} />
               </div>
               <p className="text-sm text-warm-500">
                 {isFreePlan
-                  ? 'Estás en el plan gratuito. Actualiza para desbloquear más funciones.'
-                  : `Suscripción activa al plan ${PLAN_NAMES[planCode]}.`}
+                  ? t('billing.freeDesc')
+                  : `${t('billing.activePre')}${PLAN_NAMES[planCode]}.`}
               </p>
             </div>
           </div>
           {planCode !== 'business' && (
             <Button asChild size="sm">
               <Link href="/plans">
-                <Zap className="h-3.5 w-3.5" /> Mejorar plan
+                <Zap className="h-3.5 w-3.5" /> {t('billing.upgrade')}
               </Link>
             </Button>
           )}
@@ -79,17 +76,17 @@ export default async function BillingPage() {
         {usage && (
           <div className="space-y-4">
             <UsageBar
-              label="Catálogos"
+              label={t('billing.usageCatalogs')}
               used={usage.catalogs.used}
               limit={usage.catalogs.limit}
             />
             <UsageBar
-              label="Productos (todos los catálogos)"
+              label={t('billing.usageProducts')}
               used={usage.products.used}
               limit={usage.products.limit}
             />
             <UsageBar
-              label="Pedidos este mes"
+              label={t('billing.usageOrders')}
               used={usage.ordersThisMonth.used}
               limit={usage.ordersThisMonth.limit}
             />
@@ -98,17 +95,17 @@ export default async function BillingPage() {
 
         {!usage && (
           <p className="text-sm text-warm-400 rounded-xl bg-warm-50 px-4 py-3">
-            Conecta la base de datos para ver el uso detallado.
+            {t('billing.noUsage')}
           </p>
         )}
       </div>
 
       {/* Plan comparison */}
-      <h2 className="mb-4 font-bold text-night-800">Comparar planes</h2>
+      <h2 className="mb-4 font-bold text-night-800">{t('billing.comparePlans')}</h2>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {PLAN_ORDER.map((plan) => {
           const isCurrent = plan === planCode
-          const highlights = PLAN_HIGHLIGHTS[plan]
+          const highlights = (tRaw(`billing.hl.${plan}`) as string[]) ?? []
           return (
             <div
               key={plan}
@@ -120,7 +117,7 @@ export default async function BillingPage() {
             >
               <div className="mb-3 flex items-center justify-between">
                 <PlanBadge plan={plan} />
-                {isCurrent && <span className="text-[10px] font-bold text-primary-600">ACTUAL</span>}
+                {isCurrent && <span className="text-[10px] font-bold text-primary-600">{t('billing.current')}</span>}
               </div>
               <ul className="space-y-1.5">
                 {highlights.map((h) => (
@@ -140,18 +137,18 @@ export default async function BillingPage() {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-night-300 mb-1">
-                Próximo nivel
+                {t('billing.nextLevel')}
               </p>
-              <h3 className="text-lg font-extrabold">Plan {PLAN_NAMES[nextPlan]}</h3>
+              <h3 className="text-lg font-extrabold">{t('billing.planPrefix')}{PLAN_NAMES[nextPlan]}</h3>
               <p className="mt-1 text-sm text-night-300">
-                {nextPlan === 'basic' && 'Más productos, sin límite de marca.'}
-                {nextPlan === 'pro' && 'Escala sin límites. Dominio propio + IA incluida.'}
-                {nextPlan === 'business' && 'Para equipos grandes. Todo ilimitado.'}
+                {nextPlan === 'basic' && t('billing.nextBasic')}
+                {nextPlan === 'pro' && t('billing.nextPro')}
+                {nextPlan === 'business' && t('billing.nextBusiness')}
               </p>
             </div>
             <Button asChild variant="lime" size="sm">
               <Link href="/plans">
-                Ver precios <ExternalLink className="h-3.5 w-3.5" />
+                {t('billing.viewPricing')} <ExternalLink className="h-3.5 w-3.5" />
               </Link>
             </Button>
           </div>
@@ -160,15 +157,15 @@ export default async function BillingPage() {
 
       {/* Billing management */}
       <div className="mt-8">
-        <h2 className="mb-4 font-bold text-night-800">Gestión de facturación</h2>
+        <h2 className="mb-4 font-bold text-night-800">{t('billing.manageBilling')}</h2>
         <div className="rounded-2xl border border-warm-200 bg-white px-6 py-6">
           {isFreePlan ? (
-            <p className="text-sm text-warm-500">Sin suscripción activa. Estás en el plan gratuito.</p>
+            <p className="text-sm text-warm-500">{t('billing.noSubscription')}</p>
           ) : (
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-semibold text-night-800">Portal de facturación Stripe</p>
-                <p className="text-sm text-warm-500">Gestiona tu suscripción, métodos de pago e historial de facturas.</p>
+                <p className="font-semibold text-night-800">{t('billing.stripePortal')}</p>
+                <p className="text-sm text-warm-500">{t('billing.stripePortalDesc')}</p>
               </div>
               <BillingPortalButton />
             </div>
@@ -179,7 +176,7 @@ export default async function BillingPage() {
       {/* Transaction history */}
       {transactions.length > 0 && (
         <div className="mt-8">
-          <h2 className="mb-4 font-bold text-night-800">Historial de transacciones</h2>
+          <h2 className="mb-4 font-bold text-night-800">{t('billing.txHistory')}</h2>
           <div className="rounded-2xl border border-warm-200 bg-white overflow-hidden">
             <div className="divide-y divide-warm-100">
               {transactions.map((txn: any) => (
@@ -197,7 +194,7 @@ export default async function BillingPage() {
                     <div>
                       <p className="font-medium text-night-800 text-sm">{txn.description || txn.type}</p>
                       <p className="text-xs text-warm-500">
-                        {new Date(txn.createdAt).toLocaleDateString('es-ES', {
+                        {new Date(txn.createdAt).toLocaleDateString(locale === 'en' ? 'en-US' : 'es-ES', {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric',

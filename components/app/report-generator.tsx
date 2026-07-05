@@ -7,12 +7,14 @@ import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { FileText, Download, Calendar, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { useI18n } from '@/lib/i18n/context'
 
 interface ReportGeneratorProps {
   catalogId: string
 }
 
 export function ReportGenerator({ catalogId }: ReportGeneratorProps) {
+  const { t } = useI18n()
   const [loading, setLoading] = useState(false)
   const [fromDate, setFromDate] = useState(() => {
     const d = new Date()
@@ -29,7 +31,7 @@ export function ReportGenerator({ catalogId }: ReportGeneratorProps) {
 
       if (!response.ok) {
         const error = await response.json()
-        toast.error(error.error || 'Error al generar reporte')
+        toast.error(error.error || t('reports.toastGenError'))
         setLoading(false)
         return
       }
@@ -40,15 +42,15 @@ export function ReportGenerator({ catalogId }: ReportGeneratorProps) {
 
       const filename =
         response.headers.get('content-disposition')?.split('filename="')[1]?.split('"')[0] ||
-        `reporte.${format}`
+        `${t('reports.defaultFilename')}.${format}`
 
       link.download = filename
       link.click()
       URL.revokeObjectURL(link.href)
 
-      toast.success(`Reporte descargado: ${filename}`)
+      toast.success(`${t('reports.toastDownloadedPre')}${filename}`)
     } catch (err: any) {
-      toast.error(err.message || 'Error al descargar reporte')
+      toast.error(err.message || t('reports.toastDownloadError'))
     } finally {
       setLoading(false)
     }
@@ -59,14 +61,14 @@ export function ReportGenerator({ catalogId }: ReportGeneratorProps) {
       <Card className="p-6">
         <h3 className="mb-4 flex items-center gap-2 font-semibold text-night-800">
           <FileText className="h-5 w-5" />
-          Generar reportes
+          {t('reports.generate')}
         </h3>
 
         <div className="space-y-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
               <Label htmlFor="from" className="text-sm font-medium text-night-700">
-                Desde
+                {t('reports.from')}
               </Label>
               <Input
                 id="from"
@@ -79,7 +81,7 @@ export function ReportGenerator({ catalogId }: ReportGeneratorProps) {
             </div>
             <div>
               <Label htmlFor="to" className="text-sm font-medium text-night-700">
-                Hasta
+                {t('reports.to')}
               </Label>
               <Input
                 id="to"
@@ -99,7 +101,7 @@ export function ReportGenerator({ catalogId }: ReportGeneratorProps) {
               variant="default"
             >
               {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
-              Descargar Excel
+              {t('reports.downloadExcel')}
             </Button>
             <Button
               onClick={() => downloadReport('pdf')}
@@ -107,7 +109,7 @@ export function ReportGenerator({ catalogId }: ReportGeneratorProps) {
               variant="outline"
             >
               {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
-              Descargar PDF
+              {t('reports.downloadPdf')}
             </Button>
           </div>
 
@@ -118,13 +120,13 @@ export function ReportGenerator({ catalogId }: ReportGeneratorProps) {
       </Card>
 
       <Card className="border-lime-200 bg-lime-50 p-6">
-        <h4 className="mb-2 font-semibold text-lime-900">Qué incluye el reporte</h4>
+        <h4 className="mb-2 font-semibold text-lime-900">{t('reports.includesTitle')}</h4>
         <ul className="space-y-1 text-sm text-lime-800">
-          <li>✓ Resumen de ventas y órdenes</li>
-          <li>✓ Ingresos totales y promedio por orden</li>
-          <li>✓ Desglose diario de ventas</li>
-          <li>✓ Top 10 productos más vendidos</li>
-          <li>✓ Análisis de ingresos por producto</li>
+          <li>{t('reports.inc1')}</li>
+          <li>{t('reports.inc2')}</li>
+          <li>{t('reports.inc3')}</li>
+          <li>{t('reports.inc4')}</li>
+          <li>{t('reports.inc5')}</li>
         </ul>
       </Card>
     </div>

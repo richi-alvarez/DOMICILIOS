@@ -8,6 +8,7 @@ import { Lock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { ReportGenerator } from '@/components/app/report-generator'
+import { getT } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'Reportes y exportación' }
 
@@ -62,11 +63,13 @@ export default async function ReportsPage({ params }: Props) {
     dbError = true
   }
 
+  const t = await getT()
+
   if (dbError) {
     return (
       <div className="px-6 py-8">
-        <h1 className="mb-2 font-display text-2xl font-bold text-night-900">Reportes</h1>
-        <p className="text-sm text-night-400">Configura DATABASE_URL para usar reportes.</p>
+        <h1 className="mb-2 font-display text-2xl font-bold text-night-900">{t('reports.title')}</h1>
+        <p className="text-sm text-night-400">{t('reports.dbError')}</p>
       </div>
     )
   }
@@ -74,20 +77,20 @@ export default async function ReportsPage({ params }: Props) {
   if (planRequired) {
     return (
       <div className="px-6 py-8 max-w-2xl">
-        <h1 className="text-2xl font-extrabold text-night-800">Reportes y exportación</h1>
-        <p className="mt-1 mb-8 text-sm text-warm-500">Descarga reportes en Excel o PDF con análisis detallado de ventas.</p>
+        <h1 className="text-2xl font-extrabold text-night-800">{t('reports.titleFull')}</h1>
+        <p className="mt-1 mb-8 text-sm text-warm-500">{t('reports.subtitle')}</p>
 
         <div className="rounded-2xl border-2 border-dashed border-warm-300 bg-warm-50 px-8 py-14 text-center">
           <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-warm-200 text-warm-500">
             <Lock className="h-7 w-7" />
           </div>
-          <h2 className="text-lg font-extrabold text-night-800">Reportes disponibles en Pro y Business</h2>
+          <h2 className="text-lg font-extrabold text-night-800">{t('reports.lockedTitle')}</h2>
           <p className="mt-2 text-sm text-warm-500 max-w-sm mx-auto">
-            Mejora tu plan para acceder a reportes detallados en Excel y PDF de tus ventas y productos.
+            {t('reports.lockedDesc')}
           </p>
           <Button asChild className="mt-6">
             <Link href="/app/billing">
-              Mejorar plan
+              {t('reports.upgrade')}
             </Link>
           </Button>
         </div>
@@ -97,9 +100,9 @@ export default async function ReportsPage({ params }: Props) {
 
   return (
     <div className="px-6 py-8 max-w-3xl">
-      <h1 className="text-2xl font-extrabold text-night-800">Reportes y exportación</h1>
+      <h1 className="text-2xl font-extrabold text-night-800">{t('reports.titleFull')}</h1>
       <p className="mt-1 mb-6 text-sm text-warm-500">
-        Descarga reportes en Excel o PDF con análisis detallado de ventas.
+        {t('reports.subtitle')}
       </p>
 
       <ReportGenerator catalogId={id} />

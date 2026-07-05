@@ -10,12 +10,14 @@ import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuIte
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Mail } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 interface AnalyticsDashboardProps {
   organizationId: string
 }
 
 export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) {
+  const { t } = useI18n()
   const [salesData, setSalesData] = useState<any>(null)
   const [customerData, setCustomerData] = useState<any>(null)
   const [overviewData, setOverviewData] = useState<any>(null)
@@ -66,7 +68,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       setSharedTemplates(templatesRes.reports || [])
       setArchivedReports(archivedRes.reports || [])
     } catch (error) {
-      toast.error('Error al cargar datos de analytics')
+      toast.error(t('analytics.toastLoadError'))
       console.error(error)
     } finally {
       setLoading(false)
@@ -98,7 +100,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
 
   function applyCustomDateRange() {
     if (!customStartDate || !customEndDate) {
-      toast.error('Selecciona fecha inicio y fin')
+      toast.error(t('analytics.toastSelectDates'))
       return
     }
     setDateRange({
@@ -106,7 +108,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       endDate: new Date(customEndDate),
     })
     setCustomDateModalOpen(false)
-    toast.success('Rango de fechas actualizado')
+    toast.success(t('analytics.toastRangeUpdated'))
   }
 
   async function loadExportHistory(reportId: string) {
@@ -129,10 +131,10 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
         body: JSON.stringify({ archived: true }),
       })
       if (!response.ok) throw new Error('Failed to archive')
-      toast.success('Reporte archivado')
+      toast.success(t('analytics.toastArchived'))
       await loadData()
     } catch (error) {
-      toast.error('Error al archivar reporte')
+      toast.error(t('analytics.toastArchiveError'))
       console.error(error)
     }
   }
@@ -145,10 +147,10 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
         body: JSON.stringify({ archived: false }),
       })
       if (!response.ok) throw new Error('Failed to restore')
-      toast.success('Reporte restaurado')
+      toast.success(t('analytics.toastRestored'))
       await loadData()
     } catch (error) {
-      toast.error('Error al restaurar reporte')
+      toast.error(t('analytics.toastRestoreError'))
       console.error(error)
     }
   }
@@ -165,9 +167,9 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       setShareUrl(data.shareUrl)
       setSharingReportId(reportId)
       setShareModalOpen(true)
-      toast.success('Link de compartición generado')
+      toast.success(t('analytics.toastShareGenerated'))
     } catch (error) {
-      toast.error('Error al generar link')
+      toast.error(t('analytics.toastShareError'))
       console.error(error)
     } finally {
       setSharingLoading(false)
@@ -182,17 +184,17 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       })
       if (!response.ok) throw new Error('Failed to revoke share link')
       setShareModalOpen(false)
-      toast.success('Link revocado')
+      toast.success(t('analytics.toastRevoked'))
       await loadData()
     } catch (error) {
-      toast.error('Error al revocar link')
+      toast.error(t('analytics.toastRevokeError'))
       console.error(error)
     }
   }
 
   function copyToClipboard() {
     navigator.clipboard.writeText(shareUrl)
-    toast.success('Link copiado al portapapeles')
+    toast.success(t('analytics.toastCopied'))
   }
 
   async function handleExport(format: 'csv' | 'xlsx' | 'pdf') {
@@ -224,9 +226,9 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       // Load updated history
       await loadExportHistory(report.id)
 
-      toast.success(`Reporte exportado en formato ${format.toUpperCase()}`)
+      toast.success(`${t('analytics.toastExportedPre')}${format.toUpperCase()}`)
     } catch (error) {
-      toast.error('Error al exportar reporte')
+      toast.error(t('analytics.toastExportError'))
       console.error(error)
     } finally {
       setExporting(false)
@@ -235,7 +237,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
 
   async function handleSendEmail() {
     if (!emailInput || !tempReportId) {
-      toast.error('Ingresa un email válido')
+      toast.error(t('analytics.toastEmailInvalid'))
       return
     }
 
@@ -252,12 +254,12 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       // Load updated history
       await loadExportHistory(tempReportId)
 
-      toast.success(`Reporte enviado a ${emailInput}`)
+      toast.success(`${t('analytics.toastEmailSentPre')}${emailInput}`)
       setEmailModalOpen(false)
       setEmailInput('')
       setEmailFormat('csv')
     } catch (error) {
-      toast.error('Error al enviar reporte por email')
+      toast.error(t('analytics.toastEmailError'))
       console.error(error)
     } finally {
       setSendingEmail(false)
@@ -279,7 +281,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
               onClick={() => setInterval(i)}
               className="capitalize"
             >
-              {i === 'day' ? 'Diario' : i === 'week' ? 'Semanal' : 'Mensual'}
+              {i === 'day' ? t('analytics.daily') : i === 'week' ? t('analytics.weekly') : t('analytics.monthly')}
             </Button>
           ))}
         </div>
@@ -289,16 +291,16 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
             <DialogTrigger asChild>
               <Button variant="outline" size="sm">
                 <Calendar className="h-4 w-4 mr-2" />
-                Personalizado
+                {t('analytics.custom')}
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Seleccionar rango de fechas</DialogTitle>
+                <DialogTitle>{t('analytics.selectRange')}</DialogTitle>
               </DialogHeader>
               <div className="space-y-4">
                 <div>
-                  <label className="text-sm font-medium">Fecha inicio</label>
+                  <label className="text-sm font-medium">{t('analytics.startDate')}</label>
                   <input
                     type="date"
                     value={customStartDate || formatDateForInput(dateRange.startDate)}
@@ -307,7 +309,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Fecha fin</label>
+                  <label className="text-sm font-medium">{t('analytics.endDate')}</label>
                   <input
                     type="date"
                     value={customEndDate || formatDateForInput(dateRange.endDate)}
@@ -321,10 +323,10 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                   variant="outline"
                   onClick={() => setCustomDateModalOpen(false)}
                 >
-                  Cancelar
+                  {t('analytics.cancel')}
                 </Button>
                 <Button onClick={applyCustomDateRange}>
-                  Aplicar
+                  {t('analytics.apply')}
                 </Button>
               </DialogFooter>
             </DialogContent>
@@ -337,7 +339,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                 ) : (
                   <Download className="h-4 w-4 mr-2" />
                 )}
-                Exportar
+                {t('analytics.export')}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -357,16 +359,16 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
             <DialogTrigger asChild>
               <Button variant="outline" size="sm" disabled={exporting || !tempReportId}>
                 <Mail className="h-4 w-4 mr-2" />
-                Enviar por email
+                {t('analytics.sendEmail')}
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Enviar reporte por email</DialogTitle>
+                <DialogTitle>{t('analytics.sendReportEmail')}</DialogTitle>
               </DialogHeader>
               <div className="space-y-4">
                 <div>
-                  <label className="text-sm font-medium">Correo electrónico</label>
+                  <label className="text-sm font-medium">{t('analytics.email')}</label>
                   <Input
                     type="email"
                     placeholder="tu@email.com"
@@ -376,7 +378,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Formato</label>
+                  <label className="text-sm font-medium">{t('analytics.format')}</label>
                   <div className="flex gap-2">
                     {(['csv', 'xlsx', 'pdf'] as const).map((fmt) => (
                       <button
@@ -401,7 +403,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                   onClick={() => setEmailModalOpen(false)}
                   disabled={sendingEmail}
                 >
-                  Cancelar
+                  {t('analytics.cancel')}
                 </Button>
                 <Button
                   onClick={handleSendEmail}
@@ -410,12 +412,12 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                   {sendingEmail ? (
                     <>
                       <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      Enviando...
+                      {t('analytics.sending')}
                     </>
                   ) : (
                     <>
                       <Mail className="h-4 w-4 mr-2" />
-                      Enviar
+                      {t('analytics.send')}
                     </>
                   )}
                 </Button>
@@ -429,7 +431,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       {sharedTemplates && sharedTemplates.length > 0 && (
         <div className="rounded-lg border border-warm-200 bg-white p-6">
           <h2 className="text-xl font-bold text-night-800 mb-4">
-            Plantillas del Equipo
+            {t('analytics.teamTemplates')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {sharedTemplates.map((template: any) => (
@@ -439,7 +441,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
               >
                 <button
                   onClick={() => {
-                    toast.success(`Plantilla "${template.name}" cargada`)
+                    toast.success(`${t('analytics.toastTemplateLoadedPre')}${template.name}${t('analytics.toastTemplateLoadedPost')}`)
                   }}
                   className="flex-1 text-left"
                 >
@@ -448,7 +450,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                     <p className="text-sm text-warm-600 mt-1">{template.description}</p>
                   )}
                   <p className="text-xs text-warm-500 mt-2 capitalize">
-                    Tipo: {template.queryType}
+                    {t('analytics.typePrefix')}{template.queryType}
                   </p>
                 </button>
                 <div className="mt-2 flex gap-2">
@@ -458,14 +460,14 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                     disabled={sharingLoading}
                   >
                     <Share2 className="h-3 w-3" />
-                    Compartir
+                    {t('analytics.share')}
                   </button>
                   <button
                     onClick={() => archiveReport(template.id)}
                     className="text-xs text-warm-600 hover:text-red-600 flex items-center gap-1"
                   >
                     <Archive className="h-3 w-3" />
-                    Archivar
+                    {t('analytics.archive')}
                   </button>
                 </div>
               </div>
@@ -478,12 +480,12 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       <Dialog open={shareModalOpen} onOpenChange={setShareModalOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Compartir Reporte</DialogTitle>
+            <DialogTitle>{t('analytics.shareReport')}</DialogTitle>
           </DialogHeader>
           {shareUrl && (
             <div className="space-y-4">
               <div className="bg-warm-50 p-4 rounded-lg">
-                <p className="text-sm text-warm-600 mb-2">Link de compartición (válido por 7 días):</p>
+                <p className="text-sm text-warm-600 mb-2">{t('analytics.shareLinkValid')}</p>
                 <div className="flex gap-2">
                   <input
                     type="text"
@@ -500,7 +502,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                 </div>
               </div>
               <p className="text-xs text-warm-600">
-                Cualquiera con este link puede descargar el reporte en formato CSV sin necesidad de autenticación.
+                {t('analytics.shareLinkDesc')}
               </p>
             </div>
           )}
@@ -509,10 +511,10 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
               onClick={() => revokeShareLink(sharingReportId)}
               className="text-xs text-red-600 hover:text-red-700"
             >
-              Revocar link
+              {t('analytics.revokeLink')}
             </button>
             <Button onClick={() => setShareModalOpen(false)}>
-              Cerrar
+              {t('analytics.close')}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -522,7 +524,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       {archivedReports && archivedReports.length > 0 && (
         <div className="rounded-lg border border-warm-200 bg-warm-50 p-6">
           <h2 className="text-xl font-bold text-night-800 mb-4">
-            Reportes Archivados
+            {t('analytics.archivedReports')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {archivedReports.map((report: any) => (
@@ -536,7 +538,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                     <p className="text-sm text-warm-600 mt-1">{report.description}</p>
                   )}
                   <p className="text-xs text-warm-500 mt-2 capitalize">
-                    Tipo: {report.queryType}
+                    {t('analytics.typePrefix')}{report.queryType}
                   </p>
                 </div>
                 <button
@@ -544,7 +546,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                   className="mt-2 text-xs text-primary-600 hover:text-primary-700 flex items-center gap-1"
                 >
                   <RotateCcw className="h-3 w-3" />
-                  Restaurar
+                  {t('analytics.restore')}
                 </button>
               </div>
             ))}
@@ -556,7 +558,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       {exportHistory && exportHistory.length > 0 && (
         <div className="rounded-lg border border-warm-200 bg-white p-6">
           <h2 className="text-xl font-bold text-night-800 mb-4">
-            Historial de Exportaciones
+            {t('analytics.exportHistory')}
           </h2>
           <div className="space-y-3 max-h-64 overflow-y-auto">
             {exportHistory.map((entry: any) => (
@@ -574,12 +576,12 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                     )}
                     {(entry.metadata as any)?.deliveryType === 'download' && (
                       <span className="ml-2 text-xs text-warm-600">
-                        ⬇️ Descarga
+                        {t('analytics.download')}
                       </span>
                     )}
                   </p>
                   <p className="text-xs text-warm-600 mt-1">
-                    {entry.rowCount} filas • {(entry.fileSize / 1024).toFixed(1)} KB
+                    {entry.rowCount} {t('analytics.rowsWord')} • {(entry.fileSize / 1024).toFixed(1)} KB
                   </p>
                 </div>
                 <p className="text-xs text-warm-500">
@@ -595,7 +597,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       {salesData?.data && (
         <div className="rounded-lg border border-warm-200 bg-white p-6">
           <h2 className="text-xl font-bold text-night-800 mb-4">
-            Ventas {interval === 'day' ? 'Diarias' : interval === 'week' ? 'Semanales' : 'Mensuales'}
+            {t('analytics.salesPre')}{interval === 'day' ? t('analytics.salesDaily') : interval === 'week' ? t('analytics.salesWeekly') : t('analytics.salesMonthly')}
           </h2>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={salesData.data}>
@@ -603,8 +605,8 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
               <XAxis dataKey="date" />
               <YAxis />
               <Tooltip
-                formatter={(value) => [`$${value}`, 'Revenue']}
-                labelFormatter={(label) => `Fecha: ${label}`}
+                formatter={(value) => [`$${value}`, t('analytics.chartRevenue')]}
+                labelFormatter={(label) => `${t('analytics.chartDateLabel')}${label}`}
               />
               <Legend />
               <Line
@@ -612,14 +614,14 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                 dataKey="revenue"
                 stroke="#10b981"
                 strokeWidth={2}
-                name="Ingresos"
+                name={t('analytics.chartRevenue')}
               />
               <Line
                 type="monotone"
                 dataKey="orders"
                 stroke="#3b82f6"
                 strokeWidth={2}
-                name="Órdenes"
+                name={t('analytics.chartOrders')}
               />
             </LineChart>
           </ResponsiveContainer>
@@ -630,7 +632,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       {overviewData?.topProducts && overviewData.topProducts.length > 0 && (
         <div className="rounded-lg border border-warm-200 bg-white p-6">
           <h2 className="text-xl font-bold text-night-800 mb-4">
-            Productos Más Vendidos
+            {t('analytics.bestSellers')}
           </h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={overviewData.topProducts}>
@@ -638,13 +640,13 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
               <XAxis dataKey="name" />
               <YAxis />
               <Tooltip
-                formatter={(value) => [`$${value}`, 'Ingresos']}
+                formatter={(value) => [`$${value}`, t('analytics.chartRevenue')]}
               />
               <Legend />
               <Bar
                 dataKey="revenue"
                 fill="#8b5cf6"
-                name="Ingresos"
+                name={t('analytics.chartRevenue')}
               />
             </BarChart>
           </ResponsiveContainer>
@@ -657,14 +659,14 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
           {/* Customer Distribution */}
           <div className="rounded-lg border border-warm-200 bg-white p-6">
             <h2 className="text-xl font-bold text-night-800 mb-4">
-              Distribución de Clientes
+              {t('analytics.customerDistribution')}
             </h2>
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
                   data={[
-                    { name: 'Nuevos', value: customerData.newCustomersThisMonth || 0 },
-                    { name: 'Recurrentes', value: customerData.repeatCustomers || 0 },
+                    { name: t('analytics.newCustomers'), value: customerData.newCustomersThisMonth || 0 },
+                    { name: t('analytics.repeatCustomers'), value: customerData.repeatCustomers || 0 },
                   ]}
                   cx="50%"
                   cy="50%"
@@ -674,7 +676,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                   fill="#8884d8"
                   dataKey="value"
                 >
-                  {['Nuevos', 'Recurrentes'].map((entry, index) => (
+                  {[t('analytics.newCustomers'), t('analytics.repeatCustomers')].map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
@@ -686,7 +688,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
           {/* Top Customers */}
           <div className="rounded-lg border border-warm-200 bg-white p-6">
             <h2 className="text-xl font-bold text-night-800 mb-4">
-              Clientes Principales
+              {t('analytics.topCustomers')}
             </h2>
             <div className="space-y-3">
               {customerData.topCustomers?.map((customer: any) => (
@@ -697,7 +699,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
                   <div>
                     <p className="font-semibold text-night-800">{customer.name}</p>
                     <p className="text-sm text-warm-600">
-                      {customer.orderCount} órdenes
+                      {customer.orderCount}{t('analytics.ordersSuffix')}
                     </p>
                   </div>
                   <p className="font-bold text-green-600">${customer.ltv.toFixed(2)}</p>
@@ -712,14 +714,14 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
       {customerData && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="rounded-lg border border-warm-200 bg-white p-6">
-            <p className="text-sm text-warm-600">LTV Promedio</p>
+            <p className="text-sm text-warm-600">{t('analytics.avgLtv')}</p>
             <p className="text-3xl font-bold text-night-800 mt-2">
               ${customerData.avgLifetimeValue?.toFixed(2) || '0.00'}
             </p>
           </div>
 
           <div className="rounded-lg border border-warm-200 bg-white p-6">
-            <p className="text-sm text-warm-600">Tasa de Recurrencia</p>
+            <p className="text-sm text-warm-600">{t('analytics.repeatRate')}</p>
             <p className="text-3xl font-bold text-night-800 mt-2">
               {customerData.repeatCustomers && customerData.totalCustomers
                 ? ((customerData.repeatCustomers / customerData.totalCustomers) * 100).toFixed(1)
@@ -728,7 +730,7 @@ export function AnalyticsDashboard({ organizationId }: AnalyticsDashboardProps) 
           </div>
 
           <div className="rounded-lg border border-warm-200 bg-white p-6">
-            <p className="text-sm text-warm-600">Tasa de Deserción</p>
+            <p className="text-sm text-warm-600">{t('analytics.churnRate')}</p>
             <p className="text-3xl font-bold text-night-800 mt-2">
               {(customerData.churnRate * 100).toFixed(1)}%
             </p>

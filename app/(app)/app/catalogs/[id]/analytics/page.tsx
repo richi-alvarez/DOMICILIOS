@@ -5,6 +5,7 @@ import { Lock, TrendingUp, ShoppingBag, Eye, DollarSign, ArrowUpRight, Zap } fro
 import { Button } from '@/components/ui/button'
 import { getAnalytics } from '@/lib/actions/analytics'
 import { formatMoney } from '@/lib/utils'
+import { getT } from '@/lib/i18n/server'
 
 export const metadata: Metadata = { title: 'Estadísticas' }
 
@@ -26,7 +27,7 @@ const STATUS_COLORS: Record<string, string> = {
   Cancelado: 'bg-red-100 text-red-700',
 }
 
-function BarChart({ data }: { data: { date: string; count: number }[] }) {
+function BarChart({ data, unitOne, unitMany }: { data: { date: string; count: number }[]; unitOne: string; unitMany: string }) {
   const max = Math.max(...data.map((d) => d.count), 1)
   // Show every 5th label to avoid crowding
   const step = data.length <= 14 ? 2 : 5
@@ -40,7 +41,7 @@ function BarChart({ data }: { data: { date: string; count: number }[] }) {
             <div key={d.date} className="flex flex-1 flex-col items-center gap-0.5 group relative">
               {d.count > 0 && (
                 <div className="absolute -top-6 left-1/2 -translate-x-1/2 rounded bg-night-800 px-1.5 py-0.5 text-[10px] font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
-                  {d.count} pedido{d.count !== 1 ? 's' : ''}
+                  {d.count} {d.count !== 1 ? unitMany : unitOne}
                 </div>
               )}
               <div
@@ -101,31 +102,32 @@ export default async function AnalyticsPage({ params, searchParams }: Props) {
     : 30
 
   const result = await getAnalytics(id, days)
+  const t = await getT()
 
   // Plan gate
   if (!result.ok && (result as any).error === 'plan_required') {
     return (
       <div className="px-6 py-8 max-w-2xl">
-        <h1 className="text-2xl font-extrabold text-night-800">Estadísticas</h1>
-        <p className="mt-1 mb-8 text-sm text-warm-500">Visitas, pedidos y conversión de tu catálogo.</p>
+        <h1 className="text-2xl font-extrabold text-night-800">{t('analytics.statsTitle')}</h1>
+        <p className="mt-1 mb-8 text-sm text-warm-500">{t('analytics.statsSubtitle')}</p>
 
         <div className="rounded-2xl border-2 border-dashed border-warm-300 bg-warm-50 px-8 py-14 text-center">
           <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-warm-200 text-warm-500">
             <Lock className="h-7 w-7" />
           </div>
-          <h2 className="text-lg font-extrabold text-night-800">Analítica disponible en Pro y Business</h2>
+          <h2 className="text-lg font-extrabold text-night-800">{t('analytics.statsLockedTitle')}</h2>
           <p className="mt-2 text-sm text-warm-500 max-w-sm mx-auto">
-            Mejora tu plan para ver visitas, conversiones, productos top y métricas de ingresos en tiempo real.
+            {t('analytics.statsLockedDesc')}
           </p>
           <Button asChild className="mt-6">
             <Link href="/app/billing">
-              <Zap className="h-4 w-4" /> Ver planes
+              <Zap className="h-4 w-4" /> {t('analytics.viewPlans')}
             </Link>
           </Button>
 
           {/* Blurred preview */}
           <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 blur-sm select-none pointer-events-none opacity-60">
-            {['Visitas', 'Pedidos', 'Conversión', 'Ingresos'].map((l) => (
+            {[t('analytics.visits'), t('analytics.orders'), t('analytics.conversion'), t('analytics.revenue')].map((l) => (
               <div key={l} className="rounded-2xl border border-warm-200 bg-white p-5 text-left">
                 <div className="mb-3 h-9 w-9 rounded-xl bg-warm-100" />
                 <p className="text-xs font-medium text-warm-400 uppercase tracking-wide">{l}</p>
@@ -141,7 +143,7 @@ export default async function AnalyticsPage({ params, searchParams }: Props) {
   if (!result.ok) {
     return (
       <div className="px-6 py-8">
-        <p className="text-sm text-warm-500">No se pudieron cargar las estadísticas.</p>
+        <p className="text-sm text-warm-500">{t('analytics.loadError')}</p>
       </div>
     )
   }
@@ -164,8 +166,8 @@ export default async function AnalyticsPage({ params, searchParams }: Props) {
     <div className="px-6 py-8 max-w-4xl">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
         <div>
-          <h1 className="text-2xl font-extrabold text-night-800">Estadísticas</h1>
-          <p className="mt-0.5 text-sm text-warm-500">Datos de los últimos {days} días.</p>
+          <h1 className="text-2xl font-extrabold text-night-800">{t('analytics.statsTitle')}</h1>
+          <p className="mt-0.5 text-sm text-warm-500">{t('analytics.lastDaysPre')}{days}{t('analytics.lastDaysPost')}</p>
         </div>
 
         {/* Day range selector */}
@@ -189,30 +191,30 @@ export default async function AnalyticsPage({ params, searchParams }: Props) {
       {/* KPI cards */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 mb-6">
         <KpiCard
-          label="Visitas"
+          label={t('analytics.visits')}
           value={pageViews.toLocaleString('es')}
-          sub={`${productViews.toLocaleString('es')} vistas de producto`}
+          sub={`${productViews.toLocaleString('es')}${t('analytics.productViewsSuffix')}`}
           icon={Eye}
           color="bg-blue-50 text-blue-600"
         />
         <KpiCard
-          label="Pedidos"
+          label={t('analytics.orders')}
           value={orderCount.toLocaleString('es')}
-          sub={`${days} días`}
+          sub={`${days}${t('analytics.daysSuffix')}`}
           icon={ShoppingBag}
           color="bg-primary-50 text-primary-600"
         />
         <KpiCard
-          label="Conversión"
+          label={t('analytics.conversion')}
           value={`${conversionRate.toFixed(1)}%`}
-          sub="pedidos / visitas"
+          sub={t('analytics.convSub')}
           icon={TrendingUp}
           color="bg-lime-50 text-lime-700"
         />
         <KpiCard
-          label="Ingresos"
+          label={t('analytics.revenue')}
           value={formatMoney(revenue, currency)}
-          sub="pedidos activos"
+          sub={t('analytics.revSub')}
           icon={DollarSign}
           color="bg-green-50 text-green-700"
         />
@@ -224,22 +226,22 @@ export default async function AnalyticsPage({ params, searchParams }: Props) {
         <div className="lg:col-span-2 rounded-2xl border border-warm-200 bg-white p-6">
           <h2 className="mb-4 text-sm font-bold text-night-700 flex items-center gap-2">
             <ArrowUpRight className="h-4 w-4 text-primary-500" />
-            Pedidos por día
+            {t('analytics.ordersPerDay')}
           </h2>
           {orderCount === 0 ? (
             <div className="flex h-36 items-center justify-center text-sm text-warm-400">
-              Sin pedidos en este período
+              {t('analytics.noOrdersPeriod')}
             </div>
           ) : (
-            <BarChart data={ordersByDay} />
+            <BarChart data={ordersByDay} unitOne={t('orders.countOne')} unitMany={t('orders.countMany')} />
           )}
         </div>
 
         {/* Orders by status */}
         <div className="rounded-2xl border border-warm-200 bg-white p-6">
-          <h2 className="mb-4 text-sm font-bold text-night-700">Estado de pedidos</h2>
+          <h2 className="mb-4 text-sm font-bold text-night-700">{t('analytics.orderStatus')}</h2>
           {ordersByStatus.length === 0 ? (
-            <p className="text-sm text-warm-400">Sin pedidos</p>
+            <p className="text-sm text-warm-400">{t('analytics.noOrders')}</p>
           ) : (
             <ul className="space-y-2.5">
               {ordersByStatus
@@ -263,9 +265,9 @@ export default async function AnalyticsPage({ params, searchParams }: Props) {
 
       {/* Top products */}
       <div className="rounded-2xl border border-warm-200 bg-white p-6">
-        <h2 className="mb-5 text-sm font-bold text-night-700">Productos más pedidos</h2>
+        <h2 className="mb-5 text-sm font-bold text-night-700">{t('analytics.topProducts')}</h2>
         {topProducts.length === 0 ? (
-          <p className="text-sm text-warm-400">Sin datos de productos para este período.</p>
+          <p className="text-sm text-warm-400">{t('analytics.noProductData')}</p>
         ) : (
           <ul className="space-y-3">
             {topProducts.map((p, i) => (
@@ -275,7 +277,7 @@ export default async function AnalyticsPage({ params, searchParams }: Props) {
                   <div className="mb-1 flex items-center justify-between">
                     <span className="text-sm font-medium text-night-700 truncate max-w-[60%]">{p.name}</span>
                     <span className="text-sm font-bold text-night-900">
-                      {p.qty} ud{p.qty !== 1 ? 's' : '.'}
+                      {p.qty} {p.qty !== 1 ? t('analytics.unitMany') : t('analytics.unitOne')}
                     </span>
                   </div>
                   <div className="h-1.5 w-full rounded-full bg-warm-100">
