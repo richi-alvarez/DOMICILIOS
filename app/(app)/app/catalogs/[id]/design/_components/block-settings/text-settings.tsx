@@ -1,6 +1,7 @@
 'use client'
 
 import { AlignLeft, AlignCenter, AlignRight, AlignJustify, Bold, Italic, Underline } from 'lucide-react'
+import { useI18n } from '@/lib/i18n/context'
 
 interface TextBlock {
   id: string
@@ -20,6 +21,7 @@ interface TextSettingsProps {
 }
 
 export default function TextSettings({ block, onChange }: TextSettingsProps) {
+  const { t } = useI18n()
   const alignMap = {
     left: 'text-left',
     center: 'text-center',
@@ -36,28 +38,28 @@ export default function TextSettings({ block, onChange }: TextSettingsProps) {
           <button
             onClick={() => onChange({ align: 'left' })}
             className={`p-2 rounded ${block.align === 'left' ? 'bg-white shadow-sm' : 'hover:bg-gray-200'}`}
-            title="Alinear izquierda"
+            title={t('design.settings.common.alignLeft')}
           >
             <AlignLeft className="w-4 h-4" />
           </button>
           <button
             onClick={() => onChange({ align: 'center' })}
             className={`p-2 rounded ${block.align === 'center' ? 'bg-white shadow-sm' : 'hover:bg-gray-200'}`}
-            title="Alinear centro"
+            title={t('design.settings.common.alignCenter')}
           >
             <AlignCenter className="w-4 h-4" />
           </button>
           <button
             onClick={() => onChange({ align: 'right' })}
             className={`p-2 rounded ${block.align === 'right' ? 'bg-white shadow-sm' : 'hover:bg-gray-200'}`}
-            title="Alinear derecha"
+            title={t('design.settings.common.alignRight')}
           >
             <AlignRight className="w-4 h-4" />
           </button>
           <button
             onClick={() => onChange({ align: 'justify' })}
             className={`p-2 rounded ${block.align === 'justify' ? 'bg-white shadow-sm' : 'hover:bg-gray-200'}`}
-            title="Justificar"
+            title={t('design.settings.common.justify')}
           >
             <AlignJustify className="w-4 h-4" />
           </button>
@@ -68,21 +70,21 @@ export default function TextSettings({ block, onChange }: TextSettingsProps) {
           <button
             onClick={() => onChange({ bold: !block.bold })}
             className={`p-2 rounded font-bold ${block.bold ? 'bg-white shadow-sm' : 'hover:bg-gray-200'}`}
-            title="Negrita"
+            title={t('design.settings.common.bold')}
           >
             <Bold className="w-4 h-4" />
           </button>
           <button
             onClick={() => onChange({ italic: !block.italic })}
             className={`p-2 rounded italic ${block.italic ? 'bg-white shadow-sm' : 'hover:bg-gray-200'}`}
-            title="Cursiva"
+            title={t('design.settings.common.italic')}
           >
             <Italic className="w-4 h-4" />
           </button>
           <button
             onClick={() => onChange({ underline: !block.underline })}
             className={`p-2 rounded underline ${block.underline ? 'bg-white shadow-sm' : 'hover:bg-gray-200'}`}
-            title="Subrayado"
+            title={t('design.settings.common.underline')}
           >
             <Underline className="w-4 h-4" />
           </button>
@@ -106,7 +108,7 @@ export default function TextSettings({ block, onChange }: TextSettingsProps) {
 
       {/* Editor */}
       <div>
-        <label className="text-xs font-medium text-gray-700 block mb-2">Contenido de Texto</label>
+        <label className="text-xs font-medium text-gray-700 block mb-2">{t('design.settings.text.content')}</label>
         <textarea
           value={block.content}
           onChange={(e) => onChange({ content: e.target.value })}
@@ -116,13 +118,13 @@ export default function TextSettings({ block, onChange }: TextSettingsProps) {
             block.fontSize === 'sm' ? 'text-sm' : block.fontSize === 'md' ? 'text-base' : 'text-lg'
           }`}
           style={{ minHeight: '200px' }}
-          placeholder="Escribe tu contenido aquí..."
+          placeholder={t('design.settings.text.contentPlaceholder')}
         />
       </div>
 
       {/* Preview */}
       <div className="p-4 bg-gray-50 rounded-lg border border-gray-200">
-        <p className="text-xs font-medium text-gray-600 mb-2">Vista Previa</p>
+        <p className="text-xs font-medium text-gray-600 mb-2">{t('design.settings.common.preview')}</p>
         <div
           className={`${alignMap[block.align]} ${block.bold ? 'font-bold' : ''} ${block.italic ? 'italic' : ''} ${
             block.underline ? 'underline' : ''
@@ -130,7 +132,7 @@ export default function TextSettings({ block, onChange }: TextSettingsProps) {
             block.fontSize === 'sm' ? 'text-sm' : block.fontSize === 'md' ? 'text-base' : 'text-lg'
           }`}
         >
-          {block.content || 'Tu contenido de texto aparecerá aquí...'}
+          {block.content || t('design.settings.text.contentEmpty')}
         </div>
       </div>
     </div>

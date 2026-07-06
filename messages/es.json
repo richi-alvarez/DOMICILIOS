@@ -1662,6 +1662,43 @@
       "cornerStraight": "Rectas",
       "cornerSoft": "Suave",
       "cornerRound": "Redondas"
+    },
+    "settings": {
+      "common": {
+        "alignLeft": "Alinear izquierda",
+        "alignCenter": "Alinear centro",
+        "alignRight": "Alinear derecha",
+        "justify": "Justificar",
+        "bold": "Negrita",
+        "italic": "Cursiva",
+        "underline": "Subrayado",
+        "preview": "Vista Previa",
+        "options": "Opciones",
+        "position": "Posición",
+        "size": "Tamaño",
+        "animation": "Animación",
+        "colors": "Colores",
+        "sizeSmall": "Pequeño",
+        "sizeMedium": "Mediano",
+        "sizeLarge": "Grande",
+        "customizeColors": "Personalizar Colores",
+        "bgColor": "Color de Fondo",
+        "iconColor": "Color del Ícono"
+      },
+      "text": {
+        "content": "Contenido de Texto",
+        "contentPlaceholder": "Escribe tu contenido aquí...",
+        "contentEmpty": "Tu contenido de texto aparecerá aquí..."
+      },
+      "cart": {
+        "showItemCount": "Mostrar Contador de Items",
+        "showTotalPrice": "Mostrar Precio Total",
+        "previewFirst": "Vista Previa Primero",
+        "animNone": "Sin movimiento",
+        "animPulse": "Pulso",
+        "animBounce": "Rebote",
+        "animScale": "Escala"
+      }
     }
   }
 }

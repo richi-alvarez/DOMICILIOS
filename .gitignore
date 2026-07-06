@@ -52,3 +52,6 @@ FINAL_SUMMARY_*.txt
 # Build artifacts / temp
 *.tsbuildinfo
 login-snap.md
+.playwright*
+.next*
+.next.bak

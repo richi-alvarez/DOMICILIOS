@@ -2,6 +2,7 @@
 
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
+import { useI18n } from '@/lib/i18n/context'
 
 interface CartBlock {
   id: string
@@ -24,6 +25,7 @@ interface CartSettingsProps {
 }
 
 export default function CartSettings({ block, onChange }: CartSettingsProps) {
+  const { t } = useI18n()
   const [expandedSection, setExpandedSection] = useState('options')
 
   const positions = [
@@ -43,7 +45,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
           onClick={() => setExpandedSection(expandedSection === 'options' ? '' : 'options')}
           className="w-full flex items-center justify-between p-3 hover:bg-gray-50"
         >
-          <h4 className="font-semibold text-sm">Opciones</h4>
+          <h4 className="font-semibold text-sm">{t('design.settings.common.options')}</h4>
           <ChevronDown className={`w-4 h-4 transition ${expandedSection === 'options' ? 'rotate-180' : ''}`} />
         </button>
 
@@ -56,7 +58,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
                 onChange={(e) => onChange({ showItemCount: e.target.checked })}
                 className="w-4 h-4"
               />
-              <span className="text-xs font-medium">Mostrar Contador de Items</span>
+              <span className="text-xs font-medium">{t('design.settings.cart.showItemCount')}</span>
             </label>
 
             <label className="flex items-center gap-2 cursor-pointer">
@@ -66,7 +68,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
                 onChange={(e) => onChange({ showTotalPrice: e.target.checked })}
                 className="w-4 h-4"
               />
-              <span className="text-xs font-medium">Mostrar Precio Total</span>
+              <span className="text-xs font-medium">{t('design.settings.cart.showTotalPrice')}</span>
             </label>
 
             <label className="flex items-center gap-2 cursor-pointer">
@@ -76,7 +78,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
                 onChange={(e) => onChange({ showPreviewFirst: e.target.checked })}
                 className="w-4 h-4"
               />
-              <span className="text-xs font-medium">Vista Previa Primero</span>
+              <span className="text-xs font-medium">{t('design.settings.cart.previewFirst')}</span>
             </label>
           </div>
         )}
@@ -88,7 +90,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
           onClick={() => setExpandedSection(expandedSection === 'position' ? '' : 'position')}
           className="w-full flex items-center justify-between p-3 hover:bg-gray-50"
         >
-          <h4 className="font-semibold text-sm">Posición</h4>
+          <h4 className="font-semibold text-sm">{t('design.settings.common.position')}</h4>
           <ChevronDown className={`w-4 h-4 transition ${expandedSection === 'position' ? 'rotate-180' : ''}`} />
         </button>
 
@@ -119,7 +121,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
           onClick={() => setExpandedSection(expandedSection === 'size' ? '' : 'size')}
           className="w-full flex items-center justify-between p-3 hover:bg-gray-50"
         >
-          <h4 className="font-semibold text-sm">Tamaño</h4>
+          <h4 className="font-semibold text-sm">{t('design.settings.common.size')}</h4>
           <ChevronDown className={`w-4 h-4 transition ${expandedSection === 'size' ? 'rotate-180' : ''}`} />
         </button>
 
@@ -134,7 +136,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
                     block.size === s ? 'bg-blue-600 text-white' : 'bg-gray-100'
                   }`}
                 >
-                  {s === 'sm' ? 'Pequeño' : s === 'md' ? 'Mediano' : 'Grande'}
+                  {s === 'sm' ? t('design.settings.common.sizeSmall') : s === 'md' ? t('design.settings.common.sizeMedium') : t('design.settings.common.sizeLarge')}
                 </button>
               ))}
             </div>
@@ -148,7 +150,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
           onClick={() => setExpandedSection(expandedSection === 'animation' ? '' : 'animation')}
           className="w-full flex items-center justify-between p-3 hover:bg-gray-50"
         >
-          <h4 className="font-semibold text-sm">Animación</h4>
+          <h4 className="font-semibold text-sm">{t('design.settings.common.animation')}</h4>
           <ChevronDown className={`w-4 h-4 transition ${expandedSection === 'animation' ? 'rotate-180' : ''}`} />
         </button>
 
@@ -163,7 +165,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
                     block.animation === anim ? 'bg-blue-600 text-white' : 'bg-gray-100'
                   }`}
                 >
-                  {anim === 'none' ? 'Sin movimiento' : anim === 'pulse' ? 'Pulso' : anim === 'bounce' ? 'Rebote' : 'Escala'}
+                  {anim === 'none' ? t('design.settings.cart.animNone') : anim === 'pulse' ? t('design.settings.cart.animPulse') : anim === 'bounce' ? t('design.settings.cart.animBounce') : t('design.settings.cart.animScale')}
                 </button>
               ))}
             </div>
@@ -177,7 +179,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
           onClick={() => setExpandedSection(expandedSection === 'colors' ? '' : 'colors')}
           className="w-full flex items-center justify-between p-3 hover:bg-gray-50"
         >
-          <h4 className="font-semibold text-sm">Colores</h4>
+          <h4 className="font-semibold text-sm">{t('design.settings.common.colors')}</h4>
           <ChevronDown className={`w-4 h-4 transition ${expandedSection === 'colors' ? 'rotate-180' : ''}`} />
         </button>
 
@@ -190,13 +192,13 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
                 onChange={(e) => onChange({ useCustomColors: e.target.checked })}
                 className="w-4 h-4"
               />
-              <span className="text-xs font-medium">Personalizar Colores</span>
+              <span className="text-xs font-medium">{t('design.settings.common.customizeColors')}</span>
             </label>
 
             {block.useCustomColors && (
               <>
                 <div>
-                  <label className="text-xs font-medium text-gray-700">Color de Fondo</label>
+                  <label className="text-xs font-medium text-gray-700">{t('design.settings.common.bgColor')}</label>
                   <div className="flex items-center gap-2 mt-1">
                     <input
                       type="color"
@@ -214,7 +216,7 @@ export default function CartSettings({ block, onChange }: CartSettingsProps) {
                 </div>
 
                 <div>
-                  <label className="text-xs font-medium text-gray-700">Color del Ícono</label>
+                  <label className="text-xs font-medium text-gray-700">{t('design.settings.common.iconColor')}</label>
                   <div className="flex items-center gap-2 mt-1">
                     <input
                       type="color"
