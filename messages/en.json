@@ -315,6 +315,7 @@
   },
   "auth": {
     "google": "Continue with Google",
+    "facebook": "Continue with Facebook",
     "orEmail": "Or continue with email",
     "email": "Email",
     "emailPlaceholder": "you@email.com",
