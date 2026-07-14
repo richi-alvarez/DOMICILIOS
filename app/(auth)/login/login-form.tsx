@@ -42,6 +42,35 @@ function GoogleButton() {
   )
 }
 
+function FacebookButton() {
+  const { t } = useI18n()
+  const [loading, setLoading] = useState(false)
+  return (
+    <Button
+      type="button"
+      variant="outline"
+      className="w-full"
+      disabled={loading}
+      onClick={() => {
+        setLoading(true)
+        signIn('facebook', { callbackUrl: '/app' })
+      }}
+    >
+      {loading ? (
+        <Loader2 className="h-4 w-4 animate-spin" />
+      ) : (
+        <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+          <path
+            d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.97.93-1.97 1.89v2.25h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07z"
+            fill="#1877F2"
+          />
+        </svg>
+      )}
+      {t('auth.facebook')}
+    </Button>
+  )
+}
+
 export function LoginForm() {
   const { t } = useI18n()
   const router = useRouter()
@@ -91,6 +120,7 @@ export function LoginForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-4">
       <GoogleButton />
+      <FacebookButton />
 
       <div className="flex items-center gap-3">
         <div className="h-px flex-1 bg-warm-200" />
